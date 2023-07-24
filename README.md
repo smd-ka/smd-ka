@@ -1,3 +1,7 @@
-### Small Group Project
+# SMD KA
 
-This project will enable users to plan their weekly meetings
+Offizielle Website der SMD Karlsruhe
+
+## Setup
+
+Build with svelte kit and pocketbase

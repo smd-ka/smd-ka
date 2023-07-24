@@ -7,12 +7,10 @@ export default {
 		},
 		extend: {
 			colors: {
-				platinum: '#D7D7D7',
-				cerulean: '#0075A2',
-				'curulean-dark': '#005A7F',
-				persimmon: '#F45D01',
-				purple: '#982649',
-				'dark-green': '#002626'
+				'primary-text': '#212427',
+				corperate: '#',
+				primary: '#F78861',
+				'light-blue': '#7E93AE'
 			}
 		}
 	},
