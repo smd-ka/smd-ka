@@ -1,6 +1,7 @@
 <script lang="ts">
 	import header from '$lib/assets/header.png';
-	import Insta from '$lib/components/Insta.svelte';
+	import Calendar from '$lib/components/Calendar.svelte';
+	import Insta from '$lib/components/Calendar.svelte';
 </script>
 
 <div
@@ -15,6 +16,10 @@
 			Willkommen auf der Website der Studenten Mission Karlsruhe. Uns verbindet der Wunsch nach
 			Gemeinschaft, Diskussion und gelebtem Glauben.
 		</p>
+	</div>
+
+	<div class="card">
+		<Calendar />
 	</div>
 
 	<div class="flex justify-center">
