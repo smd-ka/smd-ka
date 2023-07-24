@@ -13,4 +13,5 @@
 
 <div class="mt-10 bg-light-blue text-white flex justify-center gap-8 py-1">
 	<a href="/imprint"> Impressum </a>
+	<a class="" href="https://wiki.smd-karslruhe.de"> Hier gehts zum Wiki </a>
 </div>
