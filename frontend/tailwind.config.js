@@ -8,7 +8,7 @@ export default {
 		extend: {
 			colors: {
 				'primary-text': '#212427',
-				corperate: '#',
+				corperate: '#E84C05',
 				primary: '#F78861',
 				'light-blue': '#7E93AE'
 			}
