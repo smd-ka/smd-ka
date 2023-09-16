@@ -9,7 +9,7 @@
 	</a>
 	<div class="text-primary flex justify-center gap-2 pb-1 text-xl">
 		<a class="hover:text-corperate" href="/neu-hier">Neu Hier</a><span>-</span>
-		<a class="hover:text-corperate" href="#about-us">Über uns</a><span>-</span>
+		<a class="hover:text-corperate" href="/#about-us">Über uns</a><span>-</span>
 		<a class="hover:text-corperate" href="/kalender">Kalender</a>
 		<!-- <span>-</span> -->
 		<!-- <a class="hover:text-corperate" href="/newcomers">Intern</a> -->

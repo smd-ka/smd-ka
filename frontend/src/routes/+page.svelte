@@ -28,7 +28,7 @@
 						christlichen Hochschulgruppe? <bold class="font-bold">Genial! </bold>
 					</p>
 					<p class="">
-						<a class="text-primary" href="newcomers">Hier</a> findest du alles Wichtige über die Hochschul-SMD
+						<a class="text-primary" href="/neu-hier">Hier</a> findest du alles Wichtige über die Hochschul-SMD
 						Karlsruhe und spezielle Angebote zum Semesterstart.
 					</p>
 				</div>
