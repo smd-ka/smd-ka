@@ -1,5 +1,9 @@
 <script lang="ts">
 	import header from '$lib/assets/header-newcomers.png';
+	import kaheim from '$lib/assets/logos/kaheim.png';
+
+	import Fa from 'svelte-fa/src/fa.svelte';
+	import { faChurch, faComments, faCalendar } from '@fortawesome/free-solid-svg-icons';
 </script>
 
 <div class="relative">
@@ -26,8 +30,9 @@
 			für dich!
 		</p>
 		<div class="mt-10 grid gap-8 md:grid-cols-2">
-			<div class="rounded-lg bg-gray-200 p-4">
-				<h2 class="text-2xl font-bold">Ersti Aktionen</h2>
+			<div class="flex flex-col rounded-lg bg-gray-200 p-4">
+				<Fa size="3x" icon={faCalendar} />
+				<h2 class="my-2 text-2xl font-bold">Ersti Aktionen</h2>
 				<p>
 					An den letzten Dienstagen vor dem Vorlesungsbeginn in der Regel Abends wird es spezielle
 					Aktionen für euch geben. Nähere Infos sind im <a
@@ -39,8 +44,9 @@
 				</p>
 			</div>
 
-			<div class="rounded-lg bg-gray-200 p-4">
-				<h2 class="text-2xl font-bold">Mentoring</h2>
+			<div class="flex flex-col rounded-lg bg-gray-200 p-4">
+				<Fa size="3x" icon={faComments} />
+				<h2 class="my-2 text-2xl font-bold">Mentoring</h2>
 				<p>
 					Du suchst jemanden zum quatschen, der dir bei Fragen rund ums Studium und das Leben in
 					Karlsruhe weiterhelfen kann? Dann melde dich bei uns und wir vermitteln dir einen Mentor.
@@ -53,8 +59,9 @@
 				</p>
 			</div>
 
-			<div class="rounded-lg bg-gray-200 p-4">
-				<h2 class="text-2xl font-bold">Church Hopping</h2>
+			<div class="flex flex-col rounded-lg bg-gray-200 p-4">
+				<Fa size="3x" icon={faChurch} />
+				<h2 class="my-2 text-2xl font-bold">Church Hopping</h2>
 				<p>
 					Vielleicht bist du neu in Karlsruhe oder suchst einfach eine neue Gemeinde. Um dir bei der
 					Suche zu helfen, lädt zum Semesterstart jeden Sonntag ein SMDler dich ein, mit ihnen in
@@ -76,8 +83,9 @@
 				</p>
 			</div>
 
-			<div class="rounded-lg bg-gray-200 p-4">
-				<h2 class="text-2xl font-bold">KA-Heim</h2>
+			<div class="flex flex-col rounded-lg bg-gray-200 p-4">
+				<img src={kaheim} class="h-12 self-center" alt="kaheim logo" />
+				<h2 class="my-2 text-2xl font-bold">Kaheim</h2>
 				<p>
 					Bist du auf der Suche nach einer christlichen WG in Karlsruhe? Auf
 					<a
