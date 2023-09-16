@@ -1,3 +1,7 @@
-<script src="https://widgets.sociablekit.com/google-calendar/widget.js" async defer></script>
-
-<div class="sk-ww-google-calendar" data-embed-id="195331" />
+<iframe
+	src="https://widgets.sociablekit.com/google-calendar/iframe/195331"
+	title="Google Calendar Widget"
+	frameborder="0"
+	width="100%"
+	height="500"
+/>
