@@ -1,8 +1,3 @@
-<script async type="module" src="https://embed.styledcalendar.com/assets/parent-window.js"></script>
+<script src="https://widgets.sociablekit.com/google-calendar/widget.js" async defer></script>
 
-<iframe
-	src="https://embed.styledcalendar.com/#Ib4irXJSFCar30e0TpWf"
-	title="Styled Calendar"
-	class="sm:h-[655px] h-[300px] border-none w-full"
-	data-cy="calendar-embed-iframe"
-/>
+<div class="sk-ww-google-calendar" data-embed-id="195331" />
