@@ -3,7 +3,7 @@
 	import groupPicture from '$lib/assets/group-picture.png';
 	import frame from '$lib/assets/frame.svg';
 	import Calendar from '$lib/components/Calendar.svelte';
-	import Insta from '$lib/components/Calendar.svelte';
+	import Instagram from '$lib/components/Instagram.svelte';
 </script>
 
 <div class="relative">
@@ -49,7 +49,10 @@
 
 	<div class="card">
 		<h1 class="text-primary text-4xl">Was geht? - Nächste Events</h1>
-		<Calendar />
+		<div class="grid gap-8 md:grid-cols-[1fr_300px]">
+			<Calendar />
+			<Instagram />
+		</div>
 	</div>
 
 	<div id="about-us" class="card">

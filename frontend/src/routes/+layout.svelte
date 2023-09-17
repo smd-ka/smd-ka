@@ -3,7 +3,7 @@
 	import '../app.css';
 </script>
 
-<nav class="sticky top-0 z-50 flex flex-col bg-white text-white shadow-md">
+<nav class="sticky top-0 z-50 flex flex-col bg-white shadow-md">
 	<a class="flex justify-center" href="/">
 		<img class="h-14 px-4 py-2" src={logo} alt="SMD Logo" />
 	</a>
