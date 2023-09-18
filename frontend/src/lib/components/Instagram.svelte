@@ -9,7 +9,6 @@
 		document.body.appendChild(script);
 
 		const link = document.getElementsByTagName('a');
-		console.log(link);
 	});
 </script>
 
