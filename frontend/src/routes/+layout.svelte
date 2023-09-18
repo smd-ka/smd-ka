@@ -3,15 +3,22 @@
 	import '../app.css';
 </script>
 
-<nav class=" bg-white text-white shadow-md flex justify-center">
-	<a href="/">
-		<img class="h-14 py-2" src={logo} alt="SMD Logo" />
+<nav class="sticky top-0 z-50 flex flex-col bg-white shadow-md">
+	<a class="flex justify-center" href="/">
+		<img class="h-14 px-4 py-2" src={logo} alt="SMD Logo" />
 	</a>
+	<div class="text-primary flex justify-center gap-2 pb-1 text-xl">
+		<a class="hover:text-corperate" href="/neu-hier">Neu Hier</a><span>-</span>
+		<a class="hover:text-corperate" href="/#about-us">Über uns</a><span>-</span>
+		<a class="hover:text-corperate" href="/kalender">Kalender</a>
+		<!-- <span>-</span> -->
+		<!-- <a class="hover:text-corperate" href="/newcomers">Intern</a> -->
+	</div>
 </nav>
 
 <slot />
 
-<div class="mt-10 bg-light-blue text-white flex justify-center gap-8 py-1">
+<div class="bg-light-blue mt-10 flex justify-center gap-8 py-1 text-white">
 	<a href="/imprint"> Impressum </a>
 	<a class="" href="https://wiki.smd-karlsruhe.de"> Hier gehts zum Wiki </a>
 </div>
