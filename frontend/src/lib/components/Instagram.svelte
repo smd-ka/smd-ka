@@ -14,5 +14,5 @@
 
 <div class="relative">
 	<div class="elfsight-app-8ee267ab-3ccc-4953-ab2a-f27a74f11d94 z-0"></div>
-	<div class="absolute bottom-0 z-50 h-12 w-full bg-white"></div>
+	<div class="absolute bottom-20 z-50 h-14 w-full bg-white"></div>
 </div>

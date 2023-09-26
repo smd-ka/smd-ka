@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Calendar from '$lib/components/Calendar.svelte';
 	import header from '$lib/assets/header-calendar.png';
+	import CalendarMonth from '$lib/components/CalendarMonth.svelte';
 </script>
 
 <div class="relative">
@@ -17,6 +17,6 @@
 
 <main class="container mx-auto">
 	<div class="card mt-10">
-		<Calendar height={800} />
+		<CalendarMonth />
 	</div>
 </main>

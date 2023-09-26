@@ -2,10 +2,10 @@
 	import header from '$lib/assets/header.png';
 	import groupPicture from '$lib/assets/group-picture.png';
 	import frame from '$lib/assets/frame.svg';
-	import Calendar from '$lib/components/Calendar.svelte';
 	import Instagram from '$lib/components/Instagram.svelte';
 	import { faChildReaching, faCross, faLightbulb } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
+	import CalendarList from '$lib/components/CalendarList.svelte';
 </script>
 
 <div class="relative">
@@ -52,7 +52,7 @@
 	<div class="card">
 		<h1 class="text-primary text-4xl">Was geht? - Nächste Events</h1>
 		<div class="grid gap-8 md:grid-cols-[1fr_300px]">
-			<Calendar />
+			<CalendarList />
 			<Instagram />
 		</div>
 	</div>
@@ -95,12 +95,31 @@
 	</div>
 
 	<div class="relative flex h-[272px] max-sm:hidden">
-		<div class="bg-primary absolute left-1/2 w-fit -translate-x-1/2 rounded-full px-12 py-10">
-			<Fa size="3x" icon={faCross} />
+		<div class="bg-primary absolute left-1/2 -translate-x-1/2 rounded-full">
+			<div class="peer z-10 rounded-full px-12 py-10">
+				<Fa size="3x" icon={faLightbulb} />
+			</div>
+
+			<div
+				class="absolute bottom-0 z-0 hidden w-[600px] rounded-[64px] bg-white px-20 peer-hover:block"
+			>
+				<h1 class="text-primary text-4xl">GLAUBEN.</h1>
+				<p>Der Glaube an Jesus Christus und seine Auferstehung ist für uns die Mitte.</p>
+				<p>
+					Glauben heißt für uns Jesus Christus als Herrn und Heiland anzuerkennen und uns in Lebens-
+					und Glaubensfragen an der Bibel zu orientieren. Dabei geht es nicht um blinden Gehorsam.
+					Vielmehr wollen wir den wahren Fragen des Lebens mit Hilfe der Bibel auf den Grund gehen.
+				</p>
+				<p>
+					Uns ist es wichtig unseren Glauben auch und gerade im Alltag lebendig werden zu lassen und
+					anderen Menschen Gott nahezubringen. Unser erklärtes Ziel ist den Glauben verständlich und
+					vor allem auf einladende, zeitgemäße Weise zu vermitteln.
+				</p>
+			</div>
 		</div>
 
 		<div class="bg-primary absolute right-[52%] top-36 w-fit rounded-full px-12 py-10">
-			<Fa size="3x" icon={faLightbulb} />
+			<Fa size="3x" icon={faCross} />
 		</div>
 
 		<div class="bg-primary absolute left-[52%] top-36 rounded-full px-12 py-10">
