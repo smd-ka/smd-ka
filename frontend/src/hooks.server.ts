@@ -1,5 +1,5 @@
 import { pb } from '$lib/pocketbase';
-import type { Handle } from '@sveltejs/kit';
+import { redirect, type Handle } from '@sveltejs/kit';
 
 export const handle: Handle = async ({ event, resolve }) => {
 	pb.authStore.loadFromCookie(event.request.headers.get('cookie') || '');
@@ -14,6 +14,10 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 	event.locals.pb = pb;
 	event.locals.user = pb.authStore.model;
+
+	if (!pb.authStore.isValid && event.url.pathname.startsWith('/intern')) {
+		throw redirect(303, '/account/login');
+	}
 
 	const response = await resolve(event);
 
