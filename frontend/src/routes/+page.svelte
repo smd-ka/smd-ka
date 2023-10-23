@@ -53,6 +53,7 @@
 		<h1 class="text-primary text-4xl">Was geht? - Nächste Events</h1>
 		<div class="grid gap-8 md:grid-cols-[1fr_300px]">
 			<CalendarList />
+			<Instagram />
 		</div>
 	</div>
 
