@@ -4,23 +4,10 @@
 
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { faChurch, faComments, faCalendar } from '@fortawesome/free-solid-svg-icons';
+	import HeroShot from '$lib/components/HeroShot.svelte';
 </script>
 
-<div class="relative">
-	<span
-		class="bg-light-blue absolute right-0 top-64 z-10 bg-opacity-90 px-4 py-4 text-center text-2xl text-white md:top-48 lg:py-8 lg:text-4xl"
-		>Denken. Glauben. Erleben.</span
-	>
-	<h1
-		class="absolute left-1/2 top-32 z-10 -translate-x-1/2 whitespace-nowrap text-6xl text-white md:text-8xl"
-	>
-		Neu Hier?
-	</h1>
-	<div
-		class=" h-96 bg-cover bg-[center_top_34%] opacity-90 brightness-105"
-		style="background-image: url({header});"
-	/>
-</div>
+<HeroShot imgSrc={header} title="Neu Hier" bgSlogan="bg-light-blue" />
 
 <main class="container mx-auto flex flex-col gap-8">
 	<div class="card mt-10 text-center">
