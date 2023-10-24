@@ -1,0 +1,107 @@
+<script lang="ts">
+	import { getErrorMessage, pb } from '$lib/pocketbase';
+	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
+	import { goto } from '$app/navigation';
+
+	let email = '';
+	let password = '';
+	let loading = false;
+	let errorMessage = '';
+
+	const login = async (event: Event) => {
+		event.preventDefault();
+		loading = true;
+		try {
+			await pb.collection('users').authWithPassword(email, password);
+		} catch (e: any) {
+			loading = false;
+			errorMessage = getErrorMessage(e);
+			return;
+		}
+
+		await pb.authStore.loadFromCookie(document.cookie);
+		goto('/saft/signup/intern');
+	};
+</script>
+
+<main class="container mx-auto">
+	<div class="card mt-10">
+		<h1 class="text-primary text-center text-4xl">SAFT Anmeldung</h1>
+
+		<div class="mt-10 grid gap-10 md:grid-cols-[1fr_1rem_1fr]">
+			<div class="flex flex-col items-center text-center text-lg md:px-10">
+				<p>Du bist neu hier und hast noch kein Konto? Dann kannst du dich als Gast anmelden:</p>
+				<a
+					class="bg-primary rounded-md px-4 py-2 text-center max-md:w-full"
+					href="/saft/signup/guest">Als Gast anmelden</a
+				>
+				<p class="mt-4">Alternativ kannst du dich jetzt registieren:</p>
+				<a
+					class="rounded-md bg-gray-400 px-4 py-2 text-center max-md:w-full md:w-fit"
+					href="/account/register">Registieren</a
+				>
+			</div>
+
+			<div class="relative bg-gray-300 max-md:h-0.5 md:w-0.5">
+				<span
+					class="text-secondary-text absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white pl-4 tracking-[1rem] md:rotate-90"
+				>
+					ODER
+				</span>
+			</div>
+
+			<div class="flex justify-center">
+				<form class="flex w-80 flex-col gap-4" on:submit={login}>
+					<h2 class="text-center text-xl">Anmelden Intern</h2>
+					<div class="relative">
+						<input
+							bind:value={email}
+							class="peer w-full rounded-md border-2 p-3"
+							type="email"
+							name="email"
+							placeholder="E-Mail-Adresse"
+							required
+						/>
+						<label
+							for="email"
+							class="absolute -top-2.5 left-3 bg-white px-1 text-[#555555] opacity-100 transition-all duration-100 peer-placeholder-shown:opacity-0"
+						>
+							E-Mail-Adresse
+						</label>
+					</div>
+					<div class="relative">
+						<input
+							bind:value={password}
+							class="peer w-full rounded-md border-2 p-3"
+							type="password"
+							name="password"
+							placeholder="Passwort"
+							required
+						/>
+						<label
+							for="password"
+							class="absolute -top-2.5 left-3 bg-white px-1 text-[#555555] opacity-100 transition-all duration-100 peer-placeholder-shown:opacity-0"
+						>
+							Passwort
+						</label>
+					</div>
+					{#if errorMessage}
+						<p class="text-red-500">Ungültige E-Mail-Adresse oder Passwort</p>
+					{/if}
+					<button
+						disabled={loading}
+						class="bg-primary relative flex items-center justify-center rounded-md py-2 text-white"
+					>
+						{#if loading}
+							<img class="absolute left-16 h-8" src={loadingSpinner} alt="loading" />
+						{/if}
+						Login</button
+					>
+					<a href="/account/reset" class="text-center text-sm text-gray-400 hover:underline"
+						>Passwort vergessen?</a
+					>
+				</form>
+			</div>
+		</div>
+	</div>
+</main>

@@ -85,7 +85,7 @@
 				Bahn. Die genauen Infos dazu bekommst du nach der Anmeldung per E-Mail.
 			</p>
 			<p class="text-lg md:font-bold">Interesse geweckt? Dann nichts wie los melde dich an!</p>
-			<button class="bg-primary w-fit rounded-md px-4 py-2"> Jetzt anmelden </button>
+			<a href="/saft/signup" class="bg-primary w-fit rounded-md px-4 py-2"> Jetzt anmelden </a>
 		</div>
 
 		<img class="rounded-md" src={saftBike} alt="Lustige Person, die Apfelschlangen isst" />
