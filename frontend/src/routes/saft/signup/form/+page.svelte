@@ -30,7 +30,7 @@
 		phonenumber: '',
 		takes_car: false,
 		takes_bike: false,
-		takes_train: true,
+		takes_train: false,
 		ticket: '',
 		would_sleep_on_floor: false,
 		allergies: '',
