@@ -46,7 +46,9 @@
 			return;
 		}
 
-		form.username = form.name.toLocaleLowerCase().replace(/\s/g, '');
+		form.username =
+			form.name.toLocaleLowerCase().replace(/\s/g, '') +
+			form.surname.toLocaleLowerCase().replace(/\s/g, '');
 		formData.append('username', form.username);
 		formData.append('name', form.name);
 		formData.append('surname', form.surname);
