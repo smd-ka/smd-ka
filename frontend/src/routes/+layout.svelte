@@ -7,6 +7,11 @@
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { pb } from '$lib/pocketbase';
 
+	let isValid = pb.authStore.isValid;
+	pb.authStore.onChange(() => {
+		isValid = pb.authStore.isValid;
+	});
+
 	let loading = false;
 </script>
 
@@ -15,37 +20,37 @@
 		<a class="flex justify-center" href="/">
 			<img class="h-14 px-4 py-2" src={logo} alt="SMD Logo" />
 		</a>
-		<div class="text-primary flex justify-center gap-2 pb-1 text-xl">
+		<div class="text-primary flex flex-wrap justify-center gap-2 pb-1 text-xl">
 			<a class="hover:text-corperate" href="/neu-hier">Neu Hier</a><span>-</span>
 			<a class="hover:text-corperate" href="/#about-us">Über uns</a><span>-</span>
 			<a class="hover:text-corperate" href="/kalender">Kalender</a><span>-</span>
 			<a class="hover:text-corperate" href="/saft">SAFT</a><span>-</span>
-			<a class="hover:text-corperate" href="/intern">Intern</a><span>-</span>
-
-			<form
-				class="self-center"
-				method="POST"
-				action="account/logout"
-				use:enhance={() => {
-					loading = true;
-					return async ({ result }) => {
-						pb.authStore.clear();
-						await applyAction(result);
-						loading = false;
-					};
-				}}
-			>
-				<button class="hover:bg-curulean-dark flex gap-1 p-4 align-middle" type="submit">
-					{#if loading}
-						<img src={loadingSpinner} class="h-7" alt="loading" />
-					{:else}
-						<Fa class="self-center" icon={faRightFromBracket} />
-					{/if}
-					Logout</button
+			{#if !isValid}
+				<a class="hover:text-corperate" href="/intern">Intern</a>
+			{:else}
+				<form
+					class="self-center"
+					method="POST"
+					action="/account/logout"
+					use:enhance={() => {
+						loading = true;
+						return async ({ result }) => {
+							pb.authStore.clear();
+							await applyAction(result);
+							loading = false;
+						};
+					}}
 				>
-			</form>
-			<!-- <span>-</span> -->
-			<!-- <a class="hover:text-corperate" href="/newcomers">Intern</a> -->
+					<button class="hover:bg-curulean-dark flex gap-2 align-middle" type="submit">
+						{#if loading}
+							<img src={loadingSpinner} class="h-7" alt="loading" />
+						{:else}
+							<Fa class="self-center" icon={faRightFromBracket} />
+						{/if}
+						Logout
+					</button>
+				</form>
+			{/if}
 		</div>
 	</nav>
 

@@ -5,7 +5,7 @@
 
 	let email = '';
 	let password = '';
-	export let loading = false;
+	let loading = false;
 	let errorMessage = '';
 
 	const login = async () => {
@@ -23,11 +23,11 @@
 	};
 </script>
 
-<main class="flex justify-center">
-	<div class="mt-24 w-80 rounded-md bg-white shadow-md">
+<main class="flex flex-col items-center gap-4">
+	<div class="card mt-24">
 		{#if loading}
-			<div class="my-20 flex items-center justify-center">
-				<img src={loadingSpinner} class=" h-32" alt="loading" />
+			<div class="my-20 flex w-80 items-center justify-center">
+				<img src={loadingSpinner} class="h-32" alt="loading" />
 			</div>
 		{:else}
 			<form class="flex w-80 flex-col gap-4 p-4" on:submit={login}>
@@ -73,5 +73,10 @@
 				>
 			</form>
 		{/if}
+	</div>
+
+	<div class="card w-96 text-center text-sm text-gray-400">
+		Noch kein Konto?
+		<a href="/account/register" class="text-primary hover:underline">Jetzt eins anlegen.</a>
 	</div>
 </main>

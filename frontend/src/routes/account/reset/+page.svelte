@@ -29,7 +29,7 @@
 			</div>
 		{:else}
 			<form class="flex w-80 flex-col gap-4 p-4" on:submit={login}>
-				<h1 class="py-5 text-center text-2xl">Achtzehn20 Login</h1>
+				<h1 class="py-5 text-center text-2xl">SMD-KA Intern</h1>
 				<div class="relative">
 					<input
 						bind:value={email}

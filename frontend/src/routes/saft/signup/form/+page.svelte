@@ -1,10 +1,12 @@
 <script lang="ts">
-	import InputField from '$lib/components/InputField.svelte';
+	import InputField from '$lib/components/forms/InputField.svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
-	import InputCheckbox from '$lib/components/InputCheckbox.svelte';
+	import InputCheckbox from '$lib/components/forms/InputCheckbox.svelte';
 	import { getErrorMessage, pb } from '$lib/pocketbase';
 	import { onMount } from 'svelte';
 	import type { saftRegistration } from '$lib/models';
+	import EmailInputField from '$lib/components/forms/EmailInputField.svelte';
+	import TelephoneInputField from '$lib/components/forms/TelephoneInputField.svelte';
 
 	const ticketValues = [
 		'Deutschlandticket/Jugendticket BW',
@@ -98,32 +100,20 @@
 			<form class="my-4 flex flex-col gap-4" on:submit={signup}>
 				{#if !loggedIn}
 					<InputField id="name" bind:value={form.name} label="Name" disabled={loading} required />
-					<InputField
+					<EmailInputField
 						id="email"
 						bind:value={form.email}
 						label="E-Mail-Adresse"
 						disabled={loading}
 						required
 					/>
-					<div class="relative">
-						<input
-							id="phonenumber"
-							bind:value={form.phonenumber}
-							class="peer w-full rounded-md border-2 p-3"
-							name="phonenumber"
-							placeholder="Handynummer"
-							inputmode="tel"
-							type="tel"
-							disabled={loading}
-							required
-						/>
-						<label
-							for="phonenumber"
-							class="text-secondary-text absolute -top-2.5 left-3 bg-white px-1 opacity-100 transition-all duration-100 peer-placeholder-shown:opacity-0"
-						>
-							Handynummer
-						</label>
-					</div>
+					<TelephoneInputField
+						id="phonenumber"
+						bind:value={form.phonenumber}
+						label="Handynummer"
+						disabled={loading}
+						required
+					/>
 				{/if}
 				<h3 class="text-primary text-lg">Wie möchtest du anreisen?</h3>
 
