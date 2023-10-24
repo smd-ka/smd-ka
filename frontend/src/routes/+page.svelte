@@ -41,6 +41,15 @@
 		</div>
 	</div>
 
+	<div class="card flex flex-col gap-4">
+		<h1 class="text-primary text-4xl">SemesterAnfangsFreizeiT - SAFT Anmeldung ist offen!</h1>
+		<p class="text-2xl">
+			Du möchtest die SMD-KA näher kennenlernen und ein hammer Wochende verbringen? Dann melde dich
+			jetzt für die SAFT vom 10-12. November an!
+		</p>
+		<a href="/saft" class="bg-primary w-fit rounded-md px-4 py-2 text-2xl"> Mehr Infos </a>
+	</div>
+
 	<div class="card">
 		<h1 class="text-primary text-4xl">Was geht? - Nächste Events</h1>
 		<div class="grid gap-8 md:grid-cols-[1fr_300px]">

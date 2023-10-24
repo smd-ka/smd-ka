@@ -2,11 +2,16 @@
 	import { getErrorMessage, pb } from '$lib/pocketbase';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 
 	let email = '';
 	let password = '';
 	let loading = false;
 	let errorMessage = '';
+
+	onMount(() => {
+		if (pb.authStore.isValid) goto('/saft/signup/form');
+	});
 
 	const login = async (event: Event) => {
 		event.preventDefault();
@@ -20,12 +25,12 @@
 		}
 
 		await pb.authStore.loadFromCookie(document.cookie);
-		goto('/saft/signup/intern');
+		goto('/saft/signup/form');
 	};
 </script>
 
-<main class="container mx-auto">
-	<div class="card mt-10">
+<main class="container mx-auto grid h-[80vh] items-center">
+	<div class="card">
 		<h1 class="text-primary text-center text-4xl">SAFT Anmeldung</h1>
 
 		<div class="mt-10 grid gap-10 md:grid-cols-[1fr_1rem_1fr]">
@@ -33,7 +38,7 @@
 				<p>Du bist neu hier und hast noch kein Konto? Dann kannst du dich als Gast anmelden:</p>
 				<a
 					class="bg-primary rounded-md px-4 py-2 text-center max-md:w-full"
-					href="/saft/signup/guest">Als Gast anmelden</a
+					href="/saft/signup/form">Als Gast anmelden</a
 				>
 				<p class="mt-4">Alternativ kannst du dich jetzt registieren:</p>
 				<a

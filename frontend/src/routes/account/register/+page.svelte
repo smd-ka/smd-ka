@@ -30,8 +30,6 @@
 			return;
 		}
 
-		console.log(form.profilePicture);
-
 		formData.append('documents', form.profilePicture);
 
 		try {
