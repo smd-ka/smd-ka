@@ -1,9 +1,9 @@
 <script>
 	import HeroShot from '$lib/components/HeroShot.svelte';
-	import header from '$lib/assets/heroshots/saft_heroshot.jpg';
+	import header from '$lib/assets/heroshots/saft_heroshot.png';
 	import promoVid from '$lib/assets/videos/saft.mp4';
-	import saftFunny from '$lib/assets/saft/saft_funny.jpg';
-	import saftBike from '$lib/assets/saft/saft_bike.jpg';
+	import saftFunny from '$lib/assets/saft/saft_funny.png';
+	import saftBike from '$lib/assets/saft/saft_bike.png';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { faCalendarDays, faCoins, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 </script>
