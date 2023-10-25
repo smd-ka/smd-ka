@@ -29,16 +29,19 @@
 	};
 </script>
 
-<main class="container mx-auto grid h-[80vh] items-center">
-	<div class="card">
+<main class="container mx-auto grid items-center lg:h-[80vh]">
+	<div class="card mt-10">
 		<h1 class="text-primary text-center text-4xl">SAFT Anmeldung</h1>
 
-		<div class="mt-10 grid gap-10 md:grid-cols-[1fr_1rem_1fr]">
+		<div class="grid gap-10 lg:grid-cols-[1fr_1rem_1fr]">
 			<div class="flex flex-col items-center text-center text-lg md:px-10">
-				<p>Du bist neu hier und hast noch kein Konto? Dann kannst du dich als Gast anmelden:</p>
+				<p>
+					Du bist neu hier und hast noch kein Konto für den internen Bereich? Dann kannst du dich
+					hier ohne Konto anmelden:
+				</p>
 				<a
 					class="bg-primary rounded-md px-4 py-2 text-center max-md:w-full"
-					href="/saft/signup/form">Als Gast anmelden</a
+					href="/saft/signup/form">Ohne Konto anmelden</a
 				>
 				<p class="mt-4">Alternativ kannst du dich jetzt registieren:</p>
 				<a

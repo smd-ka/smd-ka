@@ -168,7 +168,7 @@
 				<InputCheckbox
 					id="bringsCake"
 					bind:checked={form.brings_cake}
-					label="Ich bringe Kuchen, Muffins oder Ähnliches mit"
+					label="Ich bringe Kuchen, Muffins oder Ähnliches mit für Kaffee und Kuchen am Samstag"
 				/>
 
 				<InputCheckbox
