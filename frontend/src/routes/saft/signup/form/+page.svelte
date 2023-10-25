@@ -64,9 +64,11 @@
 			<div>
 				<h1 class="text-primary text-2xl">Du hast dich erfolgreich angemeldet!</h1>
 				Wir haben folgende Daten von dir gespeichert:
-				<div>Name: {record?.name}</div>
-				<div>E-Mail: {record?.email}</div>
-				<div>Handynummer: {record?.phonenumber}</div>
+				<div>Name: {record?.name ? record?.name : pb.authStore.model?.name}</div>
+				<div>E-Mail: {record?.email ? record?.email : pb.authStore.model?.email}</div>
+				<div>
+					Handynummer: {record?.phonenumber ? record?.phonenumber : pb.authStore.model?.phonenumber}
+				</div>
 				{#if record?.takes_car}
 					<div>Du kommst mit dem Auto und kannst Gepäck der Fahrradfahrer mitnehmen.</div>
 				{/if}
