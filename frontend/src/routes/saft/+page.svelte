@@ -20,8 +20,8 @@
 				>nfangs<bold class="font-bold">F</bold>reizei<bold class="font-bold">T</bold> der SMD
 				Karlsruhe. Sie findet immer am Anfang des Semesters statt und ist eine gute Möglichkeit, die
 				SMD und andere Studierende kennenzulernen. Unser Motto für diese SAFT
-				<bold class=" whitespace-nowrap font-bold">- Vitamin B -</bold>
-				Unter dem Semesterthema "Gemeinsam wachsen" wollen wir zusammen auftanken und unsere Beziehung
+				<bold class=" whitespace-nowrap font-bold">Vitamin B - Beziehungspflege</bold>
+				Unter dem Semesterthema "zusammen:wachsen" wollen wir zusammen auftanken und unsere Beziehung
 				zu Gott und untereinander stärken.
 				<div class="mt-2 flex justify-center">
 					<a href="/saft/signup" class="bg-primary rounded-md px-4 py-2"> Jetzt anmelden </a>

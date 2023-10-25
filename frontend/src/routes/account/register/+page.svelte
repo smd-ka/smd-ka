@@ -47,8 +47,10 @@
 		}
 
 		form.username =
-			form.name.toLocaleLowerCase().replace(/\s/g, '') +
-			form.surname.toLocaleLowerCase().replace(/\s/g, '');
+			form.name.toLocaleLowerCase().replace(/[^\w]/gi, '') +
+			form.surname.toLocaleLowerCase().replace(/[^\w]/gi, '');
+
+		console.log(form.username);
 		formData.append('username', form.username);
 		formData.append('name', form.name);
 		formData.append('surname', form.surname);
