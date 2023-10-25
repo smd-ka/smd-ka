@@ -15,6 +15,6 @@ body {
 
 @layer components {
   .card {
-    @apply bg-white rounded-md p-8;
+    @apply bg-white rounded-md p-8 shadow-md;
   }
 }

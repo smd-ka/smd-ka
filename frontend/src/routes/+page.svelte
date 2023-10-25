@@ -6,18 +6,10 @@
 	import { faChildReaching, faCross, faLightbulb } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import CalendarList from '$lib/components/CalendarList.svelte';
+	import HeroShot from '$lib/components/HeroShot.svelte';
 </script>
 
-<div class="relative">
-	<span
-		class="bg-primary absolute right-0 top-64 z-10 bg-opacity-90 px-4 py-4 text-center text-2xl text-white md:top-48 lg:py-8 lg:text-4xl"
-		>Denken. Glauben. Erleben.</span
-	>
-	<div
-		class=" h-96 bg-cover bg-[center_top_60%] brightness-105"
-		style="background-image: url({header});"
-	/>
-</div>
+<HeroShot imgSrc={header} />
 
 <main class="container mx-auto flex flex-col gap-8">
 	<div class="card mt-10">
@@ -49,8 +41,19 @@
 		</div>
 	</div>
 
+	<div class="card flex flex-col gap-4">
+		<h1 class="text-primary text-2xl lg:text-4xl">
+			SemesterAnfangsFreizeiT - SAFT Anmeldung ist offen!
+		</h1>
+		<p class=" lg:text-2xl">
+			Du möchtest die SMD-KA näher kennenlernen und ein hammer Wochende verbringen? Dann melde dich
+			jetzt für die SAFT vom 10-12. November an!
+		</p>
+		<a href="/saft" class="bg-primary w-fit rounded-md px-4 py-2 text-2xl"> Mehr Infos </a>
+	</div>
+
 	<div class="card">
-		<h1 class="text-primary text-4xl">Was geht? - Nächste Events</h1>
+		<h1 class="text-primary text-2xl lg:text-4xl">Was geht? - Nächste Events</h1>
 		<div class="grid gap-8 md:grid-cols-[1fr_300px]">
 			<CalendarList />
 			<Instagram />
@@ -77,7 +80,7 @@
 			<div
 				class="bg-primary absolute right-0 top-0 -translate-y-1/3 translate-x-1/3 rounded-full px-10 py-8 sm:hidden"
 			>
-				<Fa size="3x" icon={faCross} />
+				<fa size="3x" icon={faCross} />
 			</div>
 			<h1 class="text-primary text-4xl">GLAUBEN.</h1>
 			<p>Der Glaube an Jesus Christus und seine Auferstehung ist für uns die Mitte.</p>

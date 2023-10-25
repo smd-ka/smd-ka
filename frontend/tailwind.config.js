@@ -10,7 +10,8 @@ export default {
 				'primary-text': '#212427',
 				corperate: '#E84C05',
 				primary: '#F78861',
-				'light-blue': '#7E93AE'
+				'light-blue': '#7E93AE',
+				'secondary-text': '#555555'
 			}
 		}
 	},
