@@ -49,7 +49,9 @@
 			Du möchtest die SMD-KA näher kennenlernen und ein hammer Wochende verbringen? Dann melde dich
 			jetzt für die SAFT vom 10-12. November an!
 		</p>
-		<a href="/saft" class="bg-primary w-fit rounded-md px-4 py-2 text-2xl"> Mehr Infos </a>
+		<a href="/saft" class="bg-primary w-fit rounded-md px-4 py-2 text-lg lg:text-2xl">
+			Mehr Infos
+		</a>
 	</div>
 
 	<div class="card">
@@ -80,7 +82,7 @@
 			<div
 				class="bg-primary absolute right-0 top-0 -translate-y-1/3 translate-x-1/3 rounded-full px-10 py-8 sm:hidden"
 			>
-				<fa size="3x" icon={faCross} />
+				<Fa size="3x" icon={faCross} />
 			</div>
 			<h1 class="text-primary text-4xl">GLAUBEN.</h1>
 			<p>Der Glaube an Jesus Christus und seine Auferstehung ist für uns die Mitte.</p>
