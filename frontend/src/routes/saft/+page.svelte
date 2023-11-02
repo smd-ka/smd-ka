@@ -15,17 +15,21 @@
 
 	<div class="grid gap-4 md:grid-cols-2 md:gap-10 md:p-10 md:text-lg">
 		<div class="flex flex-col gap-4">
+			<div class="bg-primary mt-2 rounded-md p-4 text-white">
+				Die Anmeldung dieses Wintersemester ist leider schon abgeschlossen. Möchtest du noch spontan
+				wende dich bitte direkt an die SAFT Orga (Kirsten, Louis, Felix M.).
+			</div>
 			<div>
-				Die SAFT ist die <bold class="font-bold">S</bold>emester<bold class="font-bold">A</bold
+				Die SAFT ist die<bold class="font-bold">S</bold>emester<bold class="font-bold">A</bold
 				>nfangs<bold class="font-bold">F</bold>reizei<bold class="font-bold">T</bold> der SMD
 				Karlsruhe. Sie findet immer am Anfang des Semesters statt und ist eine gute Möglichkeit, die
 				SMD und andere Studierende kennenzulernen. Unser Motto für diese SAFT
 				<bold class=" whitespace-nowrap font-bold">Vitamin B - Beziehungspflege</bold>
 				Unter dem Semesterthema "zusammen:wachsen" wollen wir zusammen auftanken und unsere Beziehung
 				zu Gott und untereinander stärken.
-				<div class="mt-2 flex justify-center">
+				<!-- <div class="mt-2 flex justify-center">
 					<a href="/saft/signup" class="bg-primary rounded-md px-4 py-2"> Jetzt anmelden </a>
-				</div>
+				</div> -->
 			</div>
 		</div>
 
@@ -84,8 +88,8 @@
 				zurückzulegen sind. Oder alternativ, falls du es lieber entspannt angehen lässt mit Bus und
 				Bahn. Die genauen Infos dazu bekommst du nach der Anmeldung per E-Mail.
 			</p>
-			<p class="text-lg md:font-bold">Interesse geweckt? Dann nichts wie los melde dich an!</p>
-			<a href="/saft/signup" class="bg-primary w-fit rounded-md px-4 py-2"> Jetzt anmelden </a>
+			<!-- <p class="text-lg md:font-bold">Interesse geweckt? Dann nichts wie los melde dich an!</p> -->
+			<!-- <a href="/saft/signup" class="bg-primary w-fit rounded-md px-4 py-2"> Jetzt anmelden </a> -->
 		</div>
 
 		<img class="rounded-md" src={saftBike} alt="Lustige Person, die Apfelschlangen isst" />
