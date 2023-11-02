@@ -57,12 +57,12 @@
 		formData.append('email', form.email);
 		formData.append('password', form.password);
 		formData.append('passwordConfirm', form.passwordConfirm);
-		formData.append('field_of_study', form.field_of_study);
+		formData.append('field_of_study', form.field_of_study || '');
 		formData.append('start_of_studies', form.start_of_studies?.toString() || '');
 		formData.append('birthday', form.birthday?.toString() || '');
-		formData.append('phonenumber', form.phonenumber);
-		formData.append('team', form.team);
-		formData.append('address', form.address);
+		formData.append('phonenumber', form.phonenumber || '');
+		formData.append('team', form.team || '');
+		formData.append('address', form.address || '');
 
 		try {
 			const record = await pb.collection('users').create(formData);

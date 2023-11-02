@@ -1,11 +1,11 @@
 <script lang="ts">
-	import InputField from '$lib/components/forms/InputField.svelte';
+	import InputField from '$lib/components/forms/TextInput.svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
-	import InputCheckbox from '$lib/components/forms/InputCheckbox.svelte';
+	import InputCheckbox from '$lib/components/forms/CheckboxInput.svelte';
 	import { getErrorMessage, pb } from '$lib/pocketbase';
 	import { onMount } from 'svelte';
 	import type { saftRegistration } from '$lib/models';
-	import EmailInputField from '$lib/components/forms/EmailInputField.svelte';
+	import EmailInputField from '$lib/components/forms/EmailInput.svelte';
 	import TelephoneInputField from '$lib/components/forms/TelephoneInputField.svelte';
 
 	const ticketValues = [
