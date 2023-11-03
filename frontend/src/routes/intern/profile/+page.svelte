@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { pb } from '$lib/pocketbase';
+	import { getAvatarUrl, pb } from '$lib/pocketbase';
 	import defaultAvatar from '$lib/assets/user_default.png';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { faCross, faDeleteLeft, faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -12,20 +12,8 @@
 
 	// assign default avatar if no avatar is set
 
-	let src = defaultAvatar;
+	let src = getAvatarUrl();
 
-	onMount(() => {
-		if (pb.authStore.model?.avatar) {
-			src = pb.files.getUrl(
-				{
-					collectionId: pb.authStore.model?.collectionId,
-					collectionName: pb.authStore.model?.collectionName,
-					id: pb.authStore.model?.id
-				},
-				pb.authStore.model?.avatar
-			);
-		}
-	});
 
 	console.log(pb.authStore.model);
 
