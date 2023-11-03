@@ -14,9 +14,6 @@
 
 	let src = getAvatarUrl();
 
-
-	console.log(pb.authStore.model);
-
 	let loading = false;
 	let removingProfilePicture = false;
 	let profilePicture: undefined | File = undefined;
@@ -33,14 +30,12 @@
 		loading = true;
 		const form = document.getElementById('form') as HTMLFormElement;
 		let formData = new FormData(form);
-		console.log(formData);
-		if (profilePicture) formData.append('avatar', profilePicture);
+		formData.append('avatar', profilePicture ? profilePicture : pb.authStore.model?.avatar);
+		formData.set('rili', formData.get('rili') === 'on' ? 'true' : 'false');
 		if (!pb.authStore.model?.id) return (loading = false);
-		const record = await pb.collection('users').update(pb.authStore.model.id, formData);
-		console.log(record);
-		loading = false;
+		await pb.collection('users').update(pb.authStore.model.id, formData);
 		await pb.collection('users').authRefresh();
-		console.log(pb.authStore.model?.avatar);
+		loading = false;
 	}
 
 	async function deleteProfilePicture() {
