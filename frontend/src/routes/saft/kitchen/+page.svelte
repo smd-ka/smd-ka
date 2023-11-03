@@ -43,7 +43,7 @@
 		<div class="md:text-lg">
 			<h2 class="text-primary text-lg md:text-4xl">Angaben Küche Wintersemester SAFT 2023</h2>
 			<div>Vielen lieben Dank liebes Küchen Team für eure Arbeit! Ihr seid die Besten!</div>
-			{#if !loading}
+			{#if !loading && !error}
 				<div>
 					Es haben sich: <br />
 					<bold class="text-primary font-bold">{count + 1} Personen</bold> (inkl. Referenten und
@@ -66,7 +66,7 @@
 			<bold class="font-bold">Name</bold>
 			<bold class="font-bold">Allergie</bold>
 			<bold class="font-bold">Bringt Kuchen mit</bold>
-			{#if loading}
+			{#if loading && !error}
 				<div class="col-span-3 justify-self-center">
 					<img class="h-32 w-32" src={loadingSpinner} alt="loading" />
 				</div>

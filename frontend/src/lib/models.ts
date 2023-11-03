@@ -2,7 +2,9 @@ export type User = {
 	name: string;
 	surname: string;
 	email: string;
-	id?: string;
+	id: string;
+	collectionName: string;
+	collectionId: string;
 	avatar?: string;
 	phonenumber?: string;
 	address?: string;
