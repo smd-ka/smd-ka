@@ -17,5 +17,6 @@
 		<div class="h-0.5 bg-gray-200"></div>
 
 		<div>Du kannst nun deine Saftanmeldung hier einsehen</div>
+		<div>Du kannst nun dein Profil einsehen und bearbeiten.</div>
 	</div>
 </main>
