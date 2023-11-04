@@ -13,6 +13,7 @@
 		faUser,
 		faUserGroup
 	} from '@fortawesome/free-solid-svg-icons';
+	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 
 	let records: User[];
 	let error = false;
@@ -61,6 +62,14 @@
 			Daten um.
 		</p>
 	</div>
+
+	{#if loading}
+		<div class="card">
+			<div class="flex justify-center">
+				<img class="h-32 w-32" src={loadingSpinner} alt="loading" />
+			</div>
+		</div>
+	{/if}
 
 	{#if !loading && !error}
 		{#each records as record}
