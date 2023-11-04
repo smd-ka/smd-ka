@@ -24,6 +24,8 @@ export type SendableUser = Omit<User, 'avatar'> & {
 };
 
 export type saftRegistration = {
+	id?: string;
+	paid?: boolean;
 	user?: string;
 	name: string;
 	email: string;

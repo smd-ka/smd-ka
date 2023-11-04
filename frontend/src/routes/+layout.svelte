@@ -12,8 +12,10 @@
 	let loading = false;
 	let src = getAvatarUrl();
 	let isValid = pb.authStore.isValid;
+	let isSaftCoordinator = pb.authStore.model?.roles.includes('saftcoordinator');
 
 	pb.authStore.onChange(() => {
+		isSaftCoordinator = pb.authStore.model?.roles.includes('saftcoordinator');
 		isValid = pb.authStore.isValid;
 		src = getAvatarUrl();
 	});
@@ -89,6 +91,15 @@
 						>
 							Interner Bereich
 						</a>
+						{#if isSaftCoordinator}
+							<a
+								on:click={() => (showMenu = false)}
+								class="hover:text-corperate"
+								href="/intern/saft/list"
+							>
+								Saft Anmeldungen verwalten
+							</a>
+						{/if}
 						<a
 							on:click={() => (showMenu = false)}
 							class="hover:text-corperate"
