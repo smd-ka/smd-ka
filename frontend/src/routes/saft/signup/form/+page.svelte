@@ -122,7 +122,7 @@
 				<InputCheckbox
 					id="takesCar"
 					bind:checked={form.takes_car}
-					label="Ich komme mit Auto und könnte Gepäck mitnehmen"
+					label="Ich komme mit dem Auto und könnte Gepäck mitnehmen"
 				/>
 
 				<InputCheckbox
