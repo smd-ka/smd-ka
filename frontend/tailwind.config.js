@@ -11,7 +11,8 @@ export default {
 				corperate: '#E84C05',
 				primary: '#F78861',
 				'light-blue': '#7E93AE',
-				'secondary-text': '#555555'
+				'secondary-text': '#555555',
+				lime: '#ccd4bf'
 			}
 		}
 	},

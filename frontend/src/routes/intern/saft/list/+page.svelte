@@ -2,6 +2,7 @@
 	import type { saftRegistration } from '$lib/models';
 	import { pb } from '$lib/pocketbase';
 	import {
+		faArrowUpFromBracket,
 		faBicycle,
 		faCar,
 		faCopy,
@@ -88,6 +89,52 @@
 		paidLoading = paidLoading.filter((x) => x !== id);
 		filterRegistrations();
 	}
+
+	function exportToCsv() {
+		const rows = [
+			[
+				'Bezahlt',
+				'Name',
+				'E-Mail-Adresse',
+				'Telefonnummer',
+				'An/Abreise',
+				'Ticket',
+				'Bodenschläfer',
+				'Kuchen',
+				'Vegetarier',
+				'Allergien',
+				'Bemerkung'
+			],
+			...result.map((x) => [
+				x.paid ? 'Ja' : 'Nein',
+				x.name,
+				x.email,
+				x.phonenumber,
+				`${x.takes_car ? 'Auto ' : ''}${x.takes_bike ? 'Fahrrad ' : ''}${
+					x.takes_train ? 'Bus & Bahn ' : ''
+				}`,
+				x.ticket,
+				x.would_sleep_on_floor ? 'Ja' : '',
+				x.brings_cake ? 'Ja' : '',
+				x.is_vegetarian ? 'Ja' : '',
+				x.allergies,
+				'"' + x.comments + '"'
+			])
+		];
+
+		let csvContent = 'data:text/csv;charset=utf-8,' + rows.map((x) => x.join(',')).join('\n');
+
+		const encodedUri = encodeURI(csvContent);
+		const link = document.createElement('a');
+		link.setAttribute('href', encodedUri);
+		link.setAttribute(
+			'download',
+			`SAFT_Anmeldungen_${result.length > 1 ? result[0].semester : ''}_${filter}.csv`
+		);
+		document.body.appendChild(link); // Required for FF
+
+		link.click();
+	}
 </script>
 
 <main class="container mx-auto">
@@ -144,6 +191,15 @@
 					<Fa icon={faCopy} />
 					Email Verteiler Kopieren
 				</button>
+
+				<button
+					class="bg-lime flex gap-2 rounded-md px-4 py-2"
+					on:click|preventDefault={exportToCsv}
+				>
+					<Fa icon={faArrowUpFromBracket} />
+					Als CSV exportieren
+				</button>
+
 				<select bind:value={filter} on:change={filterRegistrations} class="rounded-md px-4">
 					<option value="all">Alle</option>
 					<option value="paid">Bezahlt</option>
