@@ -84,6 +84,13 @@
 					<div class=" text-primary flex flex-col items-center justify-center gap-4 py-4 text-xl">
 						<a
 							on:click={() => (showMenu = false)}
+							class="hover:text-corperate max-md:hidden"
+							href="/intern"
+						>
+							Interner Bereich
+						</a>
+						<a
+							on:click={() => (showMenu = false)}
 							class="hover:text-corperate"
 							href="/intern/address-list"
 						>
@@ -94,7 +101,7 @@
 							class="hover:text-corperate"
 							href="/intern/profile">Dein Profil</a
 						>
-						<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/intern"
+						<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/intern/saft"
 							>Deine Saftanmeldungen</a
 						>
 					</div>
