@@ -6,6 +6,7 @@
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import {
 		faBirthdayCake,
+		faEnvelope,
 		faGraduationCap,
 		faHouse,
 		faPhone,
@@ -87,6 +88,10 @@
 								{record.name}
 								{record.surname}
 							</span>
+						</div>
+						<div class="flex items-center gap-2">
+							<Fa icon={faEnvelope} />
+							{record.email}
 						</div>
 						{#if record.phonenumber}
 							<div class="flex items-center gap-2">
