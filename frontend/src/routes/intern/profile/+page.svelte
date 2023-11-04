@@ -39,12 +39,10 @@
 	}
 
 	async function deleteProfilePicture() {
-		console.log('delete');
 		if (pb.authStore.model?.avatar && pb.authStore.model?.id) {
 			removingProfilePicture = true;
 			const record = await pb.collection('users').update(pb.authStore.model.id, { avatar: null });
 			removingProfilePicture = false;
-			console.log(pb.authStore.model?.avatar);
 		}
 		profilePicture = undefined;
 		src = defaultAvatar;
@@ -126,7 +124,7 @@
 					required
 				/>
 				<div class="text-sm text-gray-400">
-					Aktuell kannst du deine E-Mail-Adresse nicht ändern falls du dies wünscht melde dich
+					Aktuell kannst du deine E-Mail-Adresse nicht ändern falls du dies wünscht wende dich
 					vorübergehend an Claus.
 				</div>
 			</div>
