@@ -19,6 +19,9 @@ export const handle: Handle = async ({ event, resolve }) => {
 		throw redirect(303, '/account/login');
 	}
 
+	if (!pb.authStore.model?.roles.includes('saftcoordinator') && event.url.pathname.startsWith('/intern/saft/list')) {
+		throw redirect(303, '/intern');
+	}
 	const response = await resolve(event);
 
 	response.headers.set('set-cookie', pb.authStore.exportToCookie({ httpOnly: false }));

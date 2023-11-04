@@ -1,9 +1,10 @@
 <script lang="ts">
 	export let disabled = false;
-	export let value = '';
+	export let value: string = '';
 	export let label = '';
 	export let required: boolean = false;
 	export let id = '';
+	export let name = '';
 </script>
 
 <div class="relative">
@@ -11,11 +12,11 @@
 		{id}
 		bind:value
 		class="peer w-full rounded-md border-2 p-3"
-		name={label}
 		placeholder={label}
+		{name}
 		{disabled}
 		{required}
-		type="email"
+		type="password"
 	/>
 	<label
 		for={label}

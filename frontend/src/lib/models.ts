@@ -1,24 +1,31 @@
 export type User = {
-	id?: number;
 	name: string;
 	surname: string;
 	email: string;
-	phonenumber: string;
-	address: string;
-	birthday: Date | string;
-	team: string;
-	field_of_study: string;
-	start_of_studies: Date | string;
+	id: string;
+	collectionName: string;
+	collectionId: string;
+	avatar?: string;
+	phonenumber?: string;
+	address?: string;
+	birthday?: Date | string;
+	team?: string;
+	allergies?: string;
+	field_of_study?: string;
+	start_of_studies?: Date | string;
+	rili?: boolean;
 };
 
-export interface SendableUser extends User {
+export type SendableUser = Omit<User, 'avatar'> & {
 	username: string;
 	password: string;
 	passwordConfirm: string;
 	avatar: FileList | undefined | null;
-}
+};
 
 export type saftRegistration = {
+	id?: string;
+	paid?: boolean;
 	user?: string;
 	name: string;
 	email: string;
