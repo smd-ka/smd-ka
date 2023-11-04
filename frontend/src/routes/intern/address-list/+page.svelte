@@ -91,7 +91,9 @@
 						</div>
 						<div class="flex items-center gap-2">
 							<Fa icon={faEnvelope} />
-							{record.email}
+							<a href={`mailto:${record.email}`}>
+								{record.email}
+							</a>
 						</div>
 						{#if record.phonenumber}
 							<div class="flex items-center gap-2">

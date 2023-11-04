@@ -76,18 +76,17 @@
 		registrationId: string | undefined,
 		paid: boolean | undefined
 	) {
-		console.log(paid);
 		if (!registrationId) return;
 		try {
 			paidLoading = [...paidLoading, id];
 			paidError = paidError.filter((x) => x !== id);
 			const result = await pb.collection('saft').update(registrationId, { paid: paid });
-			console.log(result);
 		} catch (e: any) {
 			console.error(e);
 			paidError = [...paidError, id];
 		}
 		paidLoading = paidLoading.filter((x) => x !== id);
+		filterRegistrations();
 	}
 </script>
 

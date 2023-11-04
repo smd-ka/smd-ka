@@ -19,9 +19,8 @@
 			</h2>
 			<div>
 				Der interne Bereich ist noch immer ein bisschen am entstehen. Solltest du während deiner
-				Nutzung auf Bugs stoßen melde dich gerne bei Claus. Du hast ein Idee was man hier noch so
-				treiben kann? Schreib mir gerne, dann schauen wir mal ob wir das nicht auch umsetzten
-				können!
+				Nutzung auf Bugs stoßen melde dich gerne bei Claus. Du hast eine Idee was man hier noch so
+				treiben kann? Schreib mir gerne, dann schauen wir mal ob wir das nicht auch umsetzen können!
 			</div>
 		</div>
 		<a class="card" href="/intern/address-list">
@@ -66,17 +65,17 @@
 			<p>Die SAFT Koordinatoren können nun die SAFT-Anmeldungen im interenen Bereich einsehen</p>
 			<p>
 				Die Registrierung wurde überarbeitet. Anstatt alles auf einmal anzugeben werden zunächst nur
-				die erforderlichen Daten abgefragt und anschließend automatischa auf die Profilseite
-				weitergeleitet um die restlichen Informationen zu ergänzen.
+				die erforderlichen Daten abgefragt und anschließend automatisch auf die Profilseite
+				weitergeleitet, um die restlichen Informationen zu ergänzen.
 			</p>
 			<p>
-				Die neue Address Liste ist da! Dort kannst du alle registrierten Nutzer des internen
-				Bereichs finden.
+				Die neue Addressliste ist da! Dort kannst du alle registrierten Nutzer des internen Bereichs
+				finden.
 			</p>
 			<p>Du kannst nun deine SAFT Anmeldungen einsehen.</p>
 			<p>
 				Du kannst nun unter deinem Profil deine Allergien hinterlegen (für die nächste SAFT
-				Anmeldung und perspektivisch für den GT). Außerdem kannst du angeben ob du die Richtlininen
+				Anmeldung und perspektivisch für den GT). Außerdem kannst du angeben, ob du die Richtlinien
 				unterschrieben hast.
 			</p>
 			<p>Es ist nun möglich sein Profil einzusehen und zu bearbeiten.</p>
