@@ -18,6 +18,13 @@
 	let removingProfilePicture = false;
 	let profilePicture: undefined | File = undefined;
 
+	let afterRegistration = false;
+
+	onMount(() => {
+		const urlParams = new URLSearchParams(window.location.search);
+		afterRegistration = urlParams.get('new') === 'true';
+	});
+
 	const showPreview = (event: Event) => {
 		const files = (event.target as HTMLInputElement).files;
 		if (files && files.length > 0) {
@@ -55,157 +62,169 @@
 </script>
 
 <main class="container mx-auto">
-	<form
-		id="form"
-		on:submit|preventDefault={updateProfile}
-		class="card mt-8 grid justify-center gap-4 md:grid-cols-2 md:gap-12"
-	>
-		<div class="flex flex-col gap-4">
-			<div class="flex flex-col items-center">
-				<label for="avatar" class="w-32 rounded-full hover:cursor-pointer">
-					<div class="relative">
-						<div class="bg-primary absolute bottom-0 right-0 rounded-full p-2 text-white shadow-lg">
-							<Fa icon={faPencil} />
-						</div>
-						<img
-							class="h-32 w-32 rounded-full border object-cover"
-							{src}
-							alt="user avatar"
-							id="avatar-preview"
-						/>
-					</div>
-					<input
-						type="file"
-						name="avatar"
-						id="avatar"
-						accept="image/*"
-						hidden
-						on:change={showPreview}
-						disabled={loading}
-					/>
-				</label>
-				{#if src !== defaultAvatar}
-					<button
-						type="button"
-						on:click={deleteProfilePicture}
-						class="text-secondary-text mt-4 flex items-center gap-2"
-					>
-						Profilbild löschen
-						<Fa icon={faTrash} class="mr-2" />
-					</button>
-				{/if}
+	<div class="card mt-8 flex flex-col gap-4">
+		<h1 class="text-primary text-2xl md:text-4xl">Profil Bearbeiten</h1>
+
+		{#if afterRegistration}
+			<div class="bg-primary rounded-md bg-opacity-40 p-4">
+				Hi, schön, dass du dich für den internen Bereich registriert hast. Gibt doch gerne deine
+				restlichen Daten hier an, damit man dich in der Adressliste auch wiederfindet :)
 			</div>
+		{/if}
+		<form
+			id="form"
+			on:submit|preventDefault={updateProfile}
+			class=" grid justify-center gap-4 md:grid-cols-2 md:gap-12"
+		>
+			<div class="flex flex-col gap-4">
+				<div class="flex flex-col items-center">
+					<label for="avatar" class="w-32 rounded-full hover:cursor-pointer">
+						<div class="relative">
+							<div
+								class="bg-primary absolute bottom-0 right-0 rounded-full p-2 text-white shadow-lg"
+							>
+								<Fa icon={faPencil} />
+							</div>
+							<img
+								class="h-32 w-32 rounded-full border object-cover"
+								{src}
+								alt="user avatar"
+								id="avatar-preview"
+							/>
+						</div>
+						<input
+							type="file"
+							name="avatar"
+							id="avatar"
+							accept="image/*"
+							hidden
+							on:change={showPreview}
+							disabled={loading}
+						/>
+					</label>
+					{#if src !== defaultAvatar}
+						<button
+							type="button"
+							on:click={deleteProfilePicture}
+							class="text-secondary-text mt-4 flex items-center gap-2"
+						>
+							Profilbild löschen
+							<Fa icon={faTrash} class="mr-2" />
+						</button>
+					{/if}
+				</div>
 
-			<InputField
-				id="name"
-				name="name"
-				label="Name"
-				value={pb.authStore.model?.name}
-				disabled={loading}
-				required
-			/>
-
-			<InputField
-				id="surname"
-				name="surname"
-				label="Nachname"
-				value={pb.authStore.model?.surname}
-				disabled={loading}
-				required
-			/>
-
-			<div>
-				<EmailInputField
-					id="email"
-					name="email"
-					label="E-Mail-Adresse"
-					value={pb.authStore.model?.email}
-					disabled
+				<InputField
+					id="name"
+					name="name"
+					label="Name"
+					value={pb.authStore.model?.name}
+					disabled={loading}
 					required
 				/>
-				<div class="text-sm text-gray-400">
-					Aktuell kannst du deine E-Mail-Adresse nicht ändern falls du dies wünscht wende dich
-					vorübergehend an Claus.
+
+				<InputField
+					id="surname"
+					name="surname"
+					label="Nachname"
+					value={pb.authStore.model?.surname}
+					disabled={loading}
+					required
+				/>
+
+				<div>
+					<EmailInputField
+						id="email"
+						name="email"
+						label="E-Mail-Adresse"
+						value={pb.authStore.model?.email}
+						disabled
+						required
+					/>
+					<div class="text-sm text-gray-400">
+						Aktuell kannst du deine E-Mail-Adresse nicht ändern falls du dies wünscht wende dich
+						vorübergehend an Claus.
+					</div>
 				</div>
+
+				<DateInput
+					id="birthday"
+					name="birthday"
+					label="Geburtstag"
+					value={getDateValue(pb.authStore.model?.birthday)}
+					disabled={loading}
+				/>
+
+				<InputField
+					id="phonenumber"
+					name="phonenumber"
+					label="Handynummer"
+					value={pb.authStore.model?.phonenumber}
+					disabled={loading}
+				/>
+
+				<InputField
+					id="address"
+					name="address"
+					label="Adresse"
+					value={pb.authStore.model?.address}
+					disabled={loading}
+				/>
 			</div>
 
-			<DateInput
-				id="birthday"
-				name="birthday"
-				label="Geburtstag"
-				value={getDateValue(pb.authStore.model?.birthday)}
-				disabled={loading}
-			/>
+			<div class="flex flex-col gap-4">
+				<div class="h-[10.5rem] max-md:hidden"></div>
+				<InputField
+					id="team"
+					name="team"
+					label="SMD Bereich"
+					value={pb.authStore.model?.team}
+					disabled={loading}
+				/>
 
-			<InputField
-				id="phonenumber"
-				name="phonenumber"
-				label="Handynummer"
-				value={pb.authStore.model?.phonenumber}
-				disabled={loading}
-			/>
+				<InputCheckbox
+					id="rili"
+					name="rili"
+					checked={pb.authStore.model?.rili}
+					label="Ich bin Richtlininenmitarbeiter (Rili)"
+					disabled={loading}
+				/>
 
-			<InputField
-				id="address"
-				name="address"
-				label="Adresse"
-				value={pb.authStore.model?.address}
-				disabled={loading}
-			/>
-		</div>
+				<InputField
+					id="allergies"
+					name="allergies"
+					label="Allergien oder Unverträglichkeiten"
+					value={pb.authStore.model?.allergies}
+					disabled={loading}
+				/>
 
-		<div class="flex flex-col gap-4">
-			<div class="h-[10.5rem] max-md:hidden"></div>
-			<InputField
-				id="team"
-				name="team"
-				label="SMD Bereich"
-				value={pb.authStore.model?.team}
-				disabled={loading}
-			/>
+				<InputField
+					id="study"
+					name="study"
+					label="Studiengang"
+					value={pb.authStore.model?.field_of_study}
+					disabled={loading}
+				/>
 
-			<InputCheckbox
-				id="rili"
-				name="rili"
-				checked={pb.authStore.model?.rili}
-				label="Ich bin Richtlininenmitarbeiter (Rili)"
-				disabled={loading}
-			/>
+				<DateInput
+					id="start-of-studies"
+					name="start_of_studies"
+					label="Studienbeginn"
+					value={getDateValue(pb.authStore.model?.start_of_studies)}
+					disabled={loading}
+				/>
 
-			<InputField
-				id="allergies"
-				name="allergies"
-				label="Allergien oder Unverträglichkeiten"
-				value={pb.authStore.model?.allergies}
-				disabled={loading}
-			/>
-
-			<InputField
-				id="study"
-				name="study"
-				label="Studiengang"
-				value={pb.authStore.model?.field_of_study}
-				disabled={loading}
-			/>
-
-			<DateInput
-				id="start-of-studies"
-				name="start_of_studies"
-				label="Studienbeginn"
-				value={getDateValue(pb.authStore.model?.start_of_studies)}
-				disabled={loading}
-			/>
-
-			<button
-				type="submit"
-				disabled={loading}
-				class="bg-primary relative mt-4 flex items-center justify-center rounded-md py-2 text-white"
-			>
-				{#if loading}
-					<img class="absolute left-16 h-8" src={loadingSpinner} alt="loading" />
-				{/if}
-				Profil aktualisieren
-			</button>
-		</div>
-	</form>
+				<button
+					type="submit"
+					disabled={loading}
+					class="bg-primary relative mt-4 flex items-center justify-center rounded-md py-2 text-white"
+				>
+					{#if loading}
+						<img class="absolute left-16 h-8" src={loadingSpinner} alt="loading" />
+					{/if}
+					Profil aktualisieren
+				</button>
+			</div>
+		</form>
+	</div>
 </main>

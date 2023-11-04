@@ -5,13 +5,14 @@
 	export let required: boolean = false;
 	export let id = '';
 	export let name = '';
+	export let error: boolean = false;
 </script>
 
 <div class="relative">
 	<input
 		{id}
 		bind:value
-		class="peer w-full rounded-md border-2 p-3"
+		class="peer w-full rounded-md border-2 p-3 {error ? 'border-red-500' : ''}"
 		placeholder={label}
 		{name}
 		{disabled}
