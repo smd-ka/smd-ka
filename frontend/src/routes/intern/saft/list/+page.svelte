@@ -180,7 +180,7 @@
 					<bold class="font-bold">{countHasKVVSemester()}</bold>
 				</div>
 			</div>
-			<div class="flex max-md:flex-col md:gap-4">
+			<div class="flex gap-2 max-md:flex-col md:gap-4">
 				<a class="bg-primary rounded-md px-4 py-2" href={mailingList()}
 					>Email an den Verteiler senden</a
 				>
@@ -200,7 +200,7 @@
 					Als CSV exportieren
 				</button>
 
-				<select bind:value={filter} on:change={filterRegistrations} class="rounded-md px-4">
+				<select bind:value={filter} on:change={filterRegistrations} class="rounded-md px-4 py-2">
 					<option value="all">Alle</option>
 					<option value="paid">Bezahlt</option>
 					<option value="unpaid">Unbezahlt</option>

@@ -142,7 +142,7 @@
 						required
 					/>
 					<div class="text-sm text-gray-400">
-						Aktuell kannst du deine E-Mail-Adresse nicht ändern falls du dies wünscht wende dich
+						Aktuell kannst du deine E-Mail-Adresse nicht ändern. Falls du dies wünscht, wende dich
 						vorübergehend an Claus.
 					</div>
 				</div>

@@ -46,8 +46,8 @@
 			{#if !loading && !error}
 				<div>
 					Es haben sich: <br />
-					<bold class="text-primary font-bold">{count + 1} Personen</bold> (inkl. Referenten und
-					SAFT Orga) angemeldet. <br />
+					<bold class="text-primary font-bold">{count} Personen</bold> (inkl. Referenten und SAFT
+					Orga) angemeldet. <br />
 					<bold class="text-primary font-bold">{vegies} Vegetarier</bold> angemeldet. <br />
 					<bold class="text-primary font-bold">{cakes} Kuchen oder Ähnliches</bold> angemeldet.
 				</div>
