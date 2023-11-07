@@ -17,7 +17,7 @@
 		<div class="flex flex-col gap-4">
 			<div class="bg-primary mt-2 rounded-md p-4 text-white">
 				Die Anmeldung dieses Wintersemester ist leider schon abgeschlossen. Möchtest du noch spontan
-				wende dich bitte direkt an die SAFT Orga (Kirsten, Louis, Felix M.).
+				wende dich bitte direkt an die SAFT Orga (Kirsten oder Louis).
 			</div>
 			<div>
 				Die SAFT ist die<bold class="font-bold">S</bold>emester<bold class="font-bold">A</bold
