@@ -7,6 +7,7 @@
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import CalendarList from '$lib/components/CalendarList.svelte';
 	import HeroShot from '$lib/components/HeroShot.svelte';
+	import theatreLogo from '$lib/assets/markustheater/markustheater_logo.png';
 </script>
 
 <HeroShot imgSrc={header} />
@@ -18,7 +19,7 @@
 			<div class="flex lg:text-2xl">
 				<div>
 					<p class="py-4">
-						Du startest demnächst mit deinem Studium in Karlsruhe und bist auf der Suche nach einer
+						Du hast gerade in Karlsruhe angefangen zu studieren und bist auf der Suche nach einer
 						christlichen Hochschulgruppe? <bold class="font-bold">Genial! </bold>
 					</p>
 					<p class="">
@@ -36,6 +37,21 @@
 				/>
 				<div class="px-8">
 					<img class="" alt="group" src={groupPicture} />
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="card bg-cover lg:text-2xl">
+		<div class="mt-4 grid gap-8 lg:grid-cols-[1fr_6fr]">
+			<img alt="Markustheater Logo" src={theatreLogo} />
+			<div>
+				Das Markusevangelium in 90 Minuten – ohne Requisiten, ohne Kostüme und als Rundtheater.
+				Interesse geweckt? Dann schau doch bei einer unserer Aufführungen vorbei!
+				<div class="py-4">
+					<a class=" bg-primary rounded-md px-4 py-2 hover:bg-blend-darken" href="/theater">
+						Mehr erfahren
+					</a>
 				</div>
 			</div>
 		</div>
