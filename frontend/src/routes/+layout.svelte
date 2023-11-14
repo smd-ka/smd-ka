@@ -75,7 +75,9 @@
 					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/kalender">
 						Kalender
 					</a>
-					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/saft"> SAFT</a>
+					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/theater"
+						>Markustheater</a
+					>
 					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/intern">
 						Intern
 					</a>
