@@ -50,7 +50,7 @@
 			<a class="hover:text-corperate" href="/neu-hier">Neu Hier</a><span>-</span>
 			<a class="hover:text-corperate" href="/#about-us">Über uns</a><span>-</span>
 			<a class="hover:text-corperate" href="/kalender">Kalender</a><span>-</span>
-			<a class="hover:text-corperate" href="/saft">SAFT</a><span>-</span>
+			<a class="hover:text-corperate" href="/theater">Markustheater</a><span>-</span>
 			<a class="hover:text-corperate" href="/intern">Intern</a>
 		</div>
 
@@ -75,7 +75,9 @@
 					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/kalender">
 						Kalender
 					</a>
-					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/saft"> SAFT</a>
+					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/theater"
+						>Markustheater</a
+					>
 					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/intern">
 						Intern
 					</a>
