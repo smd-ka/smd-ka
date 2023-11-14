@@ -42,7 +42,7 @@
 			allowfullscreen
 		></iframe>
 
-		<img class="rounded-md" src={srcImg} alt="Während des Theaters." />
+		<img class="rounded-md max-lg:hidden" src={srcImg} alt="Während des Theaters." />
 
 		<div class="grid gap-4">
 			<h3 class="text-primary text-xl md:text-3xl">Aufführungen</h3>
@@ -82,6 +82,6 @@
 			</p>
 		</div>
 
-		<div></div>
+		<img class="rounded-md lg:hidden" src={srcImg} alt="Während des Theaters." />
 	</div>
 </main>
