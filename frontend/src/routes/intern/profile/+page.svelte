@@ -9,6 +9,7 @@
 	import DateInput from '$lib/components/forms/DateInput.svelte';
 	import InputCheckbox from '$lib/components/forms/CheckboxInput.svelte';
 	import { onMount } from 'svelte';
+	import TelephoneInputField from '$lib/components/forms/TelephoneInputField.svelte';
 
 	// assign default avatar if no avatar is set
 
@@ -155,7 +156,7 @@
 					disabled={loading}
 				/>
 
-				<InputField
+				<TelephoneInputField
 					id="phonenumber"
 					name="phonenumber"
 					label="Handynummer"

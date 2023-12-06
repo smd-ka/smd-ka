@@ -41,3 +41,30 @@ export type saftRegistration = {
 	comments: string;
 	semester: string;
 };
+
+export type RegiokonRegistration = {
+	id?: string;
+	paid?: boolean;
+	user?: string;
+	name: string;
+	email: string;
+	phonenumber: string;
+	needs_lodging: boolean;
+	allergies: string;
+	is_vegetarian: boolean;
+	group: RegiokonGroup;
+	comments: string;
+};
+
+export enum RegiokonGroup {
+	'Mannheim',
+	'Karlsruhe',
+	'Heidelberg',
+	'Worms',
+	'Freiburg',
+	'Germersheim',
+	'Kaiserslautern',
+	'Landau',
+	'Furtwangen',
+	'andere'
+}
