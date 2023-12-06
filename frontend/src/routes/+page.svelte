@@ -1,64 +1,73 @@
 <script lang="ts">
 	import header from '$lib/assets/header.png';
-	import groupPicture from '$lib/assets/group-picture.png';
-	import frame from '$lib/assets/frame.svg';
 	import Instagram from '$lib/components/Instagram.svelte';
-	import { faChildReaching, faCross, faLightbulb } from '@fortawesome/free-solid-svg-icons';
+	import {
+		faCalendarDays,
+		faChildReaching,
+		faClock,
+		faCross,
+		faLightbulb,
+		faLocationDot
+	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import CalendarList from '$lib/components/CalendarList.svelte';
 	import HeroShot from '$lib/components/HeroShot.svelte';
-	import theatreLogo from '$lib/assets/markustheater/markustheater_logo.png';
+	import ifesLogo from '$lib/assets/logos/ifes.png';
+	import smdLogo from '$lib/assets/logos/smd.png';
+	import christmas1 from '$lib/assets/christmas/christmas1.png';
+	import christmas2 from '$lib/assets/christmas/christmas2.png';
 </script>
 
 <HeroShot imgSrc={header} />
 
 <main class="container mx-auto flex flex-col gap-8">
-	<div class="card mt-10">
-		<h1 class="text-primary text-2xl lg:text-4xl">Schön, dass du hier bist!</h1>
-		<div class="grid gap-4 md:grid-cols-[2fr_1fr]">
-			<div class="flex lg:text-2xl">
-				<div>
-					<p class="py-4">
-						Du hast gerade in Karlsruhe angefangen zu studieren und bist auf der Suche nach einer
-						christlichen Hochschulgruppe? <bold class="font-bold">Genial! </bold>
-					</p>
-					<p class="">
-						<a class="text-primary" href="/neu-hier">Hier</a> findest du alles Wichtige über die Hochschul-SMD
-						Karlsruhe und spezielle Angebote zum Semesterstart.
-					</p>
-				</div>
+	<div class="card mt-10 bg-[#0b620b]">
+		<h1 class="text-center text-2xl text-white md:text-4xl">
+			Von draußen, vom Walde komm ich her; ich muss euch sagen, es weihnachtet sehr!
+		</h1>
+		<div class="mt-2 grid gap-4 md:grid-cols-2">
+			<div class="md:p-4">
+				<img class="rounded-md" alt="Flyer Weihnachtsgottesdienst" src={christmas1} />
 			</div>
+			<div class="grid h-fit gap-8 md:p-4">
+				<p class="rounded bg-white p-4">
+					Der etwas andere Weihnachtsgottesdienst: Hörsaal statt Kirchenbank, Band statt Orgel und
+					warum Engergieeffizienz mit Weihnachten, Glaube und dir zu hat. Der Referent Prof. Dr.
+					Matthias Clausen, vom Institut für Glaube und Wissenschaft, ist deutschlandweit unterwegs
+					und beschäftigt sich mit Apologetik und der rationalen Begründung des Glaubens. Wir freuen
+					uns auf einen spannenden Abend mit dir!
+				</p>
 
-			<div class="relative max-md:my-16 max-sm:my-8">
-				<img
-					class="absolute -top-4 left-8 z-10 rotate-3 scale-110 md:scale-125 lg:left-10"
-					alt="group"
-					src={frame}
-				/>
-				<div class="px-8">
-					<img class="" alt="group" src={groupPicture} />
-				</div>
-			</div>
-		</div>
-	</div>
+				<ul class="grid justify-center gap-4 text-center text-xl text-white">
+					<li class="flex items-center gap-4">
+						<Fa class="text-3xl " icon={faClock} />
+						Mittwoch, 13 Dezember 2023
+					</li>
+					<li class="flex items-center gap-4">
+						<Fa class="text-3xl " icon={faCalendarDays} />
+						Einlass: 19:00 Uhr, Beginn: 19:30 Uhr
+					</li>
+					<li class="flex items-center gap-4 text-left">
+						<Fa class="text-3xl" icon={faLocationDot} />
+						Neue Chemie Hörsaal KIT <br />
+						30.46 Chemie-Hörsaalgebäude
+					</li>
+				</ul>
 
-	<div class="card bg-cover lg:text-2xl">
-		<div class="mt-4 grid gap-8 lg:grid-cols-[1fr_6fr]">
-			<img alt="Markustheater Logo" src={theatreLogo} />
-			<div>
-				Das Markusevangelium in 90 Minuten – ohne Requisiten, ohne Kostüme und als Rundtheater.
-				Interesse geweckt? Dann schau doch bei einer unserer Aufführungen vorbei!
-				<div class="py-4">
-					<a class=" bg-primary rounded-md px-4 py-2 hover:bg-blend-darken" href="/theater">
-						Mehr erfahren
-					</a>
+				<div class="grid text-center">
+					In Kooperation mit: <br />
+					<div>
+						<a class="underline" href="https://khg-karlsruhe.de">KHG Karlsruhe</a>
+						<a class="underline" href="https://sfc-karlsruhe.de">SfC Karlsruhe</a>
+						<a class="underline" href="https://esg-karlsruhe.de">ESG Karlsruhe</a>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="card">
-		<h1 class="text-primary text-2xl lg:text-4xl">Was geht? - Nächste Events</h1>
+		<h1 class="text-primary text-2xl lg:text-3xl">Was geht? - Nächste Events</h1>
 		<div class="grid gap-8 md:grid-cols-[1fr_300px]">
 			<CalendarList />
 			<Instagram />
@@ -66,7 +75,7 @@
 	</div>
 
 	<div id="about-us" class="card scroll-m-24">
-		<h1 class="text-primary text-2xl lg:text-4xl">Über uns</h1>
+		<h1 class="text-primary text-2xl lg:text-3xl">Über uns</h1>
 		<p class="mt-2">
 			Die Hochschul-SMD Karlsruhe ist eine überkonfessionelle, christliche Studentengruppe mit ca.
 			60 Studenten von Erstsemestern bis Doktoranden - alles ist dabei. Dabei ist unser Motto stets:
@@ -78,12 +87,10 @@
 		</p>
 	</div>
 
-	<div class="flex justify-center">
-		<div
-			class="relative mt-10 max-w-3xl flex-col gap-2 rounded-md bg-white p-8 max-sm:mx-10 md:rounded-full md:px-20 md:text-center"
-		>
+	<div class="grid gap-14 lg:grid-cols-2">
+		<div class="relative mt-10 flex-col gap-2 rounded-md bg-white p-8 max-sm:mx-10">
 			<div
-				class="bg-primary absolute right-0 top-0 -translate-y-1/3 translate-x-1/3 rounded-full px-10 py-8 sm:hidden"
+				class="bg-primary absolute right-0 top-0 -translate-y-1/3 translate-x-1/3 rounded-full px-10 py-8"
 			>
 				<Fa size="3x" icon={faCross} />
 			</div>
@@ -100,47 +107,10 @@
 				vor allem auf einladende, zeitgemäße Weise zu vermitteln.
 			</p>
 		</div>
-	</div>
 
-	<div class="relative flex h-[272px] max-sm:hidden">
-		<div class="bg-primary absolute left-1/2 -translate-x-1/2 rounded-full">
-			<div class="peer z-10 rounded-full px-12 py-10">
-				<Fa size="3x" icon={faLightbulb} />
-			</div>
-
+		<div class="relative mt-10 flex flex-col gap-2 rounded-md bg-white p-8 max-sm:mx-10">
 			<div
-				class="absolute bottom-0 z-0 hidden w-[600px] rounded-[64px] bg-white px-20 peer-hover:block"
-			>
-				<h1 class="text-primary text-4xl">GLAUBEN.</h1>
-				<p>Der Glaube an Jesus Christus und seine Auferstehung ist für uns die Mitte.</p>
-				<p>
-					Glauben heißt für uns Jesus Christus als Herrn und Heiland anzuerkennen und uns in Lebens-
-					und Glaubensfragen an der Bibel zu orientieren. Dabei geht es nicht um blinden Gehorsam.
-					Vielmehr wollen wir den wahren Fragen des Lebens mit Hilfe der Bibel auf den Grund gehen.
-				</p>
-				<p>
-					Uns ist es wichtig unseren Glauben auch und gerade im Alltag lebendig werden zu lassen und
-					anderen Menschen Gott nahezubringen. Unser erklärtes Ziel ist den Glauben verständlich und
-					vor allem auf einladende, zeitgemäße Weise zu vermitteln.
-				</p>
-			</div>
-		</div>
-
-		<div class="bg-primary absolute right-[52%] top-36 w-fit rounded-full px-12 py-10">
-			<Fa size="3x" icon={faCross} />
-		</div>
-
-		<div class="bg-primary absolute left-[52%] top-36 rounded-full px-12 py-10">
-			<Fa size="3x" icon={faChildReaching} />
-		</div>
-	</div>
-
-	<div class="mt-10 grid justify-center gap-16 xl:grid-cols-2">
-		<div
-			class="relative flex max-w-4xl flex-col justify-center gap-2 rounded-md bg-white p-8 max-xl:mx-10 sm:px-16 sm:text-center md:rounded-full xl:px-20"
-		>
-			<div
-				class="bg-primary absolute right-0 top-0 -translate-y-1/3 translate-x-1/3 rounded-full px-10 py-8 sm:hidden"
+				class="bg-primary absolute right-0 top-0 -translate-y-1/3 translate-x-1/3 rounded-full px-10 py-8"
 			>
 				<Fa size="3x" icon={faLightbulb} />
 			</div>
@@ -164,11 +134,9 @@
 			</p>
 		</div>
 
-		<div
-			class="relative flex max-w-4xl flex-col justify-center gap-2 rounded-md bg-white p-8 max-xl:mx-10 sm:px-16 sm:text-center md:rounded-full xl:px-20"
-		>
+		<div class="relative col-span-full flex flex-col gap-2 rounded-md bg-white p-8 max-sm:mx-10">
 			<div
-				class="bg-primary absolute right-0 top-0 -translate-y-1/3 translate-x-1/3 rounded-full px-10 py-8 sm:hidden"
+				class="bg-primary absolute right-0 top-0 -translate-y-1/3 translate-x-1/3 rounded-full px-10 py-8"
 			>
 				<Fa size="3x" icon={faChildReaching} />
 			</div>
@@ -193,4 +161,43 @@
 			</p>
 		</div>
 	</div>
+
+	<section class="grid gap-8 md:grid-cols-2">
+		<div class="card grid gap-2">
+			<h1 class="text-primary text-2xl lg:text-3xl">Netzwerk</h1>
+			Die Hochschul-SMD Karlsruhe gehört zur Hochschul-SMD, einem deutschlandweiten Netzwerk Christlicher
+			Hochschulgruppen. Die Hochschul-SMD ihrerseits ist teil des International Fellowship of Evangelical
+			Students. Somit sind wir also auch Teil von IFES. Ein großes interantionales Netzwerk von Christlichen
+			Studenten, die die gute Nachricht ausleben.
+			<div class="grid grid-cols-2 gap-10">
+				<a class="text-primary justify-self-end p-4 underline" href="https://www.smd.org/">
+					<img alt="Logo der SMD" class="w-36" src={smdLogo} />
+					www.smd.org
+				</a>
+				<a href="https://www.ifesworld.org/" class="text-primary p-4 underline">
+					<img alt="Logo der IFES" class="w-36" src={ifesLogo} />
+					www.ifesworld.org
+				</a>
+			</div>
+		</div>
+
+		<div class="card grid h-fit gap-2">
+			<h1 class="text-primary text-2xl lg:text-3xl">Spenden</h1>
+
+			<p>
+				Du möchtest unsere Arbeit in Karlsruhe unterstützen? Dann freuen wir uns über dein Gebet und
+				deine Spende! Die Spenden werden von unserer Zentralstelle in Marburg verwaltet und an uns
+				weitergeleitet. Unter der Angabe einer Adresse im Verwendungzweck kann so auch eine
+				Spendenbescheingung ausgestellt werden. Dazu einfach den Verwendungzweck beachten. Vielen
+				Dank!
+			</p>
+			<ul class="bg-light-blue mt-2 rounded p-8 text-white">
+				<li>SMD e. V.</li>
+				<li>Evangelische Bank, Kassel</li>
+				<li>IBAN: DE75 5206 0410 0000 8004 57</li>
+				<li>BIC: GENODEF1EK1</li>
+				<li>Verwendungzweck: H-SMD Gruppe Karlsruhe</li>
+			</ul>
+		</div>
+	</section>
 </main>
