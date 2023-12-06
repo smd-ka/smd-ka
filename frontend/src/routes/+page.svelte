@@ -15,7 +15,6 @@
 	import ifesLogo from '$lib/assets/logos/ifes.png';
 	import smdLogo from '$lib/assets/logos/smd.png';
 	import christmas1 from '$lib/assets/christmas/christmas1.png';
-	import christmas2 from '$lib/assets/christmas/christmas2.png';
 </script>
 
 <HeroShot imgSrc={header} />
