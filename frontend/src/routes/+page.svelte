@@ -29,38 +29,38 @@
 			<div class="md:p-4">
 				<img class="rounded-md" alt="Flyer Weihnachtsgottesdienst" src={christmas1} />
 			</div>
-			<div class="rounded bg-white p-4">
-				<p>
+			<div class="grid h-fit gap-8 md:p-4">
+				<p class="rounded bg-white p-4">
 					Der etwas andere Weihnachtsgottesdienst: Hörsaal statt Kirchenbank, Band statt Orgel und
 					warum Engergieeffizienz mit Weihnachten, Glaube und dir zu hat. Der Referent Prof. Dr.
 					Matthias Clausen, vom Institut für Glaube und Wissenschaft, ist deutschlandweit unterwegs
 					und beschäftigt sich mit Apologetik und der rationalen Begründung des Glaubens. Wir freuen
 					uns auf einen spannenden Abend mit dir!
 				</p>
-			</div>
 
-			<ul class="grid justify-center gap-2 text-center text-xl text-white">
-				<li class="flex items-center gap-4">
-					<Fa class="text-3xl " icon={faClock} />
-					Mittwoch, 13 Dezember 2023
-				</li>
-				<li class="flex items-center gap-4">
-					<Fa class="text-3xl " icon={faCalendarDays} />
-					Einlass: 19:00 Uhr, Beginn: 19:30 Uhr
-				</li>
-				<li class="flex items-center gap-4 text-left">
-					<Fa class="text-3xl" icon={faLocationDot} />
-					Neue Chemie Hörsaal KIT <br />
-					30.46 Chemie-Hörsaalgebäude
-				</li>
-			</ul>
+				<ul class="grid justify-center gap-4 text-center text-xl text-white">
+					<li class="flex items-center gap-4">
+						<Fa class="text-3xl " icon={faClock} />
+						Mittwoch, 13 Dezember 2023
+					</li>
+					<li class="flex items-center gap-4">
+						<Fa class="text-3xl " icon={faCalendarDays} />
+						Einlass: 19:00 Uhr, Beginn: 19:30 Uhr
+					</li>
+					<li class="flex items-center gap-4 text-left">
+						<Fa class="text-3xl" icon={faLocationDot} />
+						Neue Chemie Hörsaal KIT <br />
+						30.46 Chemie-Hörsaalgebäude
+					</li>
+				</ul>
 
-			<div class="grid text-center">
-				In Kooperation mit: <br />
-				<div>
-					<a class="underline" href="https://khg-karlsruhe.de">KHG Karlsruhe</a>
-					<a class="underline" href="https://sfc-karlsruhe.de">SfC Karlsruhe</a>
-					<a class="underline" href="https://esg-karlsruhe.de">ESG Karlsruhe</a>
+				<div class="grid text-center">
+					In Kooperation mit: <br />
+					<div>
+						<a class="underline" href="https://khg-karlsruhe.de">KHG Karlsruhe</a>
+						<a class="underline" href="https://sfc-karlsruhe.de">SfC Karlsruhe</a>
+						<a class="underline" href="https://esg-karlsruhe.de">ESG Karlsruhe</a>
+					</div>
 				</div>
 			</div>
 		</div>
