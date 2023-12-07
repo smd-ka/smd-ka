@@ -3,7 +3,7 @@
 	import HeroShot from '$lib/components/HeroShot.svelte';
 </script>
 
-<HeroShot imgSrc={header} bgPosition="bottom" title="Regiokon" />
+<HeroShot imgSrc={header} bgPosition="bg-bottom" title="Regiokon" />
 
 <main class="card container mx-auto mt-10 flex flex-col gap-4">
 	<div>
