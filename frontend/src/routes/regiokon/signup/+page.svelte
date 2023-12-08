@@ -61,6 +61,12 @@
 			<EmailInput label="E-Mail" required name="email" />
 			<TelephoneInputField label="Telefonnummer" name="phonenumber" required />
 
+			<select value="" id="gender" name="gender" class="rounded-md p-4" required>
+				<option value="" disabled>Bitte wähle ein Geschlecht aus</option>
+				<option value="female">weiblich</option>
+				<option value="male">männlich</option>
+			</select>
+
 			<select value="" id="group" name="group" class="rounded-md p-4" required>
 				<option value="" disabled>Bitte wähle deine Gruppe aus</option>
 				{#each options as option}

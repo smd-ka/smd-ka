@@ -7,6 +7,7 @@ onRecordAfterCreateRequest((e) => {
 
   const needs_lodging = e.record.get("needs_lodging") ? " Ja" : " Nein";
   const vegetarian = e.record.get("vegetarian") ? "Ja" : "Nein";
+  const gender = e.record.get("gender") == "male" ? "Männlich" : "Weiblich";
 
   const message = new MailerMessage({
     from: {
@@ -28,6 +29,9 @@ onRecordAfterCreateRequest((e) => {
       "<br>" +
       "<b>Telefon:</b> " +
       e.record.get("phonenumber") +
+      "<br>" +
+      "<b>Geschlecht:</b> " +
+      gender +
       "<br>" +
       "<b>Du benötigst einen Schlafplatz:</b> " +
       needs_lodging +

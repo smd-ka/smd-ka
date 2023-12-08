@@ -54,6 +54,10 @@ export type RegiokonRegistration = {
 	is_vegetarian: boolean;
 	group: RegiokonGroup;
 	comments: string;
+	lodging_female: number;
+	lodging_male: number;
+	lodging_both: number;
+	gender: 'male' | 'female';
 };
 
 export enum RegiokonGroup {
