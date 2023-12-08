@@ -12,7 +12,7 @@
 			<div class="text-right">Christ <br /> Optimist</div>
 		</div>
 		<div class="text-secondary-text text-right text-4xl tracking-widest max-md:text-lg">
-			Erschreckend Ermutigt 2024
+			Erschreckend Ermutigt für 2024
 		</div>
 	</div>
 
