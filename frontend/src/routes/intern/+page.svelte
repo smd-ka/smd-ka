@@ -12,7 +12,7 @@
 </script>
 
 <main class="container mx-auto mt-8 flex flex-col gap-8">
-	<div class="grid gap-8 md:grid-cols-5">
+	<div class="grid gap-8 lg:grid-cols-5">
 		<div class="card md:col-span-2">
 			<h2 class="text-primary text-2xl md:text-4xl">
 				Willkommen {pb.authStore.model?.name ?? ''}
@@ -40,6 +40,12 @@
 				<Fa icon={faGlassWater} class="text-corperate text-7xl" />
 			</div>
 			<h2 class="py-4 text-center text-lg md:text-2xl">Hier gehts zu deinen SAFT Anmeldungen</h2>
+		</a>
+		<a class="card" href="/intern/regiokon">
+			<div class="flex justify-center">
+				<Fa icon={faRegistered} class="text-7xl text-green-500" />
+			</div>
+			<h2 class="py-4 text-center text-lg md:text-2xl">Hier gehts zur Regiokon Anmeldung</h2>
 		</a>
 	</div>
 
@@ -79,6 +85,10 @@
 				unterschrieben hast.
 			</p>
 			<p>Es ist nun möglich sein Profil einzusehen und zu bearbeiten.</p>
+			<p>
+				Du kannst nun angeben ob du vegetarisch ist oder nicht. Außerdem kannst du dich aus der
+				Adressliste ausblenden lassen.
+			</p>
 		</div>
 	</div>
 </main>
