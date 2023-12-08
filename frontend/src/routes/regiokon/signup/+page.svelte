@@ -9,6 +9,7 @@
 	import TextArea from '$lib/components/forms/TextArea.svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 	import { pb } from '$lib/pocketbase';
+	import GenderInput from '$lib/components/forms/GenderInput.svelte';
 
 	const options = Object.keys(RegiokonGroup).filter((key) => isNaN(Number(key)));
 	let loading = false;
@@ -60,12 +61,7 @@
 			<TextInput label="Name" required name="name" />
 			<EmailInput label="E-Mail" required name="email" />
 			<TelephoneInputField label="Telefonnummer" name="phonenumber" required />
-
-			<select value="" id="gender" name="gender" class="rounded-md p-4" required>
-				<option value="" disabled>Bitte wähle ein Geschlecht aus</option>
-				<option value="female">weiblich</option>
-				<option value="male">männlich</option>
-			</select>
+			<GenderInput />
 
 			<select value="" id="group" name="group" class="rounded-md p-4" required>
 				<option value="" disabled>Bitte wähle deine Gruppe aus</option>

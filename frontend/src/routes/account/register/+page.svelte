@@ -8,6 +8,7 @@
 	import type { ClientResponseError } from 'pocketbase';
 	import EmailInput from '$lib/components/forms/EmailInput.svelte';
 	import PasswordInput from '$lib/components/forms/PasswordInput.svelte';
+	import GenderInput from '$lib/components/forms/GenderInput.svelte';
 
 	let loading = false;
 	let emailError: 'invalid' | 'taken' | undefined;
@@ -94,11 +95,14 @@
 			disabled={loading}
 			required
 		/>
+
 		{#if emailError === 'invalid'}
 			<p class="px-3 text-sm text-red-500">Diese E-Mail-Adresse ist ungültig.</p>
 		{:else if emailError === 'taken'}
 			<p class="px-3 text-sm text-red-500">Diese E-Mail-Adresse ist bereits vergeben.</p>
 		{/if}
+
+		<GenderInput />
 
 		<PasswordInput label="Passwort" name="password" disabled={loading} required />
 		<PasswordInput label="Passwort bestätigen" name="passwordConfirm" disabled={loading} required />

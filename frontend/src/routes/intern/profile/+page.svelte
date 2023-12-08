@@ -10,6 +10,7 @@
 	import InputCheckbox from '$lib/components/forms/CheckboxInput.svelte';
 	import { onMount } from 'svelte';
 	import TelephoneInputField from '$lib/components/forms/TelephoneInputField.svelte';
+	import GenderInput from '$lib/components/forms/GenderInput.svelte';
 
 	// assign default avatar if no avatar is set
 
@@ -152,6 +153,8 @@
 						vorübergehend an Claus.
 					</div>
 				</div>
+
+				<GenderInput currentGender={pb.authStore.model?.gender} />
 
 				<DateInput
 					id="birthday"
