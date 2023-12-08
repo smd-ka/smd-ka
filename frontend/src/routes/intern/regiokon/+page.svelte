@@ -4,7 +4,7 @@
 	import { onMount } from 'svelte';
 	import { pb } from '$lib/pocketbase';
 	import type { RegiokonRegistration } from '$lib/models';
-	import NumerInput from '$lib/components/forms/NumerInput.svelte';
+	import NumerInput from '$lib/components/forms/NumberInput.svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 
 	let initialLoad = true;
