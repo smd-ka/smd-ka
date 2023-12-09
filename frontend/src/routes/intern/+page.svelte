@@ -83,9 +83,10 @@
 				unterschrieben hast.
 			</p>
 			<p>Es ist nun möglich sein Profil einzusehen und zu bearbeiten.</p>
-			<p>
-				Du kannst nun sperat angeben ob du vegetarisch ist oder nicht. Außerdem kannst du dich aus
-				der Adressliste ausblenden lassen.
+			<p>Du kannst nun sperat angeben ob du vegetarisch ist oder nicht.</p>
+			<p class="font-bold">
+				Du kannst dich aus der Addressliste ausblenden lassen, falls du das aus Datenschutzgründen
+				bspw. nicht möchtest
 			</p>
 			<p>
 				Dein Profil wurde um ein Geschlechtsfeld erweitert. Dies erleichtert uns die Planung von
