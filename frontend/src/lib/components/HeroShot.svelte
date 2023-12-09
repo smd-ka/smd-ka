@@ -2,6 +2,7 @@
 	export let imgSrc: string;
 	export let title: string | undefined = undefined;
 	export let bgSlogan: string = 'bg-primary';
+	export let bgPosition: string = 'bg-[center_top_34%]';
 </script>
 
 <div class="relative">
@@ -15,7 +16,7 @@
 		{title || ''}
 	</h1>
 	<div
-		class=" h-96 bg-cover bg-[center_top_34%] opacity-90 brightness-105"
+		class=" h-96 bg-cover {bgPosition} opacity-90 brightness-105"
 		style="background-image: url({imgSrc});"
 	/>
 </div>

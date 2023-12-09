@@ -12,15 +12,18 @@
 </script>
 
 <main class="container mx-auto mt-8 flex flex-col gap-8">
-	<div class="grid gap-8 md:grid-cols-5">
+	<div class="grid gap-8 max-md:mx-6 lg:grid-cols-5">
 		<div class="card md:col-span-2">
 			<h2 class="text-primary text-2xl md:text-4xl">
 				Willkommen {pb.authStore.model?.name ?? ''}
 			</h2>
 			<div>
-				Der interne Bereich ist noch immer ein bisschen am entstehen. Solltest du während deiner
-				Nutzung auf Bugs stoßen melde dich gerne bei Claus. Du hast eine Idee was man hier noch so
-				treiben kann? Schreib mir gerne, dann schauen wir mal ob wir das nicht auch umsetzen können!
+				Du kannst dich nun zur Regiokon anmelden. Bitte vergesse nicht vorher dein Profil zu
+				aktualisieren, da die Daten für die Anmeldung benötigt werden.
+				<br />
+				Der interne Bereich entwickelt sich so langsam. Solltest du während deiner Nutzung auf Bugs stoßen
+				melde dich gerne bei Claus. Du hast eine Idee was man hier noch so treiben kann? Schreib mir
+				gerne, dann schauen wir mal ob wir das nicht auch umsetzen können!
 			</div>
 		</div>
 		<a class="card" href="/intern/address-list">
@@ -41,22 +44,23 @@
 			</div>
 			<h2 class="py-4 text-center text-lg md:text-2xl">Hier gehts zu deinen SAFT Anmeldungen</h2>
 		</a>
-	</div>
 
-	{#if isSaftCoordinator}
-		<div class="card flex flex-wrap md:gap-8">
-			<div class="pb-0.5">
-				<span class="text-primary text-lg md:text-2xl">Danke</span>, dass du an der SAFT
-				mitorganisierst!
-			</div>
-			<a
-				class="bg-primary hover:bg-corperate rounded-lg px-4 py-2 text-white max-md:text-sm"
-				href="/intern/saft/list"
-			>
-				Jetzt SAFT-Anmeldungen verwalten
+		{#if isSaftCoordinator}
+			<a href="/intern/saft/list" class="card">
+				<div class="flex justify-center">
+					<Fa icon={faGlassWater} class="text-secondary-text text-7xl" />
+				</div>
+				<h2 class="py-4 text-center text-lg md:text-2xl">SAFT Anmeldungen verwalten</h2>
 			</a>
-		</div>
-	{/if}
+		{/if}
+
+		<a class="card" href="/intern/regiokon">
+			<div class="flex justify-center">
+				<Fa icon={faRegistered} class="text-7xl text-green-500" />
+			</div>
+			<h2 class="py-4 text-center text-lg md:text-2xl">Hier gehts zur Regiokon Anmeldung</h2>
+		</a>
+	</div>
 
 	<div class="card">
 		<h2 class="text-gray-600">Changelog</h2>
@@ -79,6 +83,15 @@
 				unterschrieben hast.
 			</p>
 			<p>Es ist nun möglich sein Profil einzusehen und zu bearbeiten.</p>
+			<p>Du kannst nun sperat angeben ob du vegetarisch ist oder nicht.</p>
+			<p class="font-bold">
+				Du kannst dich aus der Addressliste ausblenden lassen, falls du das aus Datenschutzgründen
+				bspw. nicht möchtest
+			</p>
+			<p>
+				Dein Profil wurde um ein Geschlechtsfeld erweitert. Dies erleichtert uns die Planung von
+				Freizeiten. Außerdem ist das Geschlecht von nun an Pflichtfeld bei der Registrierung.
+			</p>
 		</div>
 	</div>
 </main>

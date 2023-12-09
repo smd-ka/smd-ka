@@ -9,6 +9,8 @@
 	import DateInput from '$lib/components/forms/DateInput.svelte';
 	import InputCheckbox from '$lib/components/forms/CheckboxInput.svelte';
 	import { onMount } from 'svelte';
+	import TelephoneInputField from '$lib/components/forms/TelephoneInputField.svelte';
+	import GenderInput from '$lib/components/forms/GenderInput.svelte';
 
 	// assign default avatar if no avatar is set
 
@@ -39,6 +41,11 @@
 		let formData = new FormData(form);
 		formData.append('avatar', profilePicture ? profilePicture : pb.authStore.model?.avatar);
 		formData.set('rili', formData.get('rili') === 'on' ? 'true' : 'false');
+		formData.set(
+			'hidden_in_addresslist',
+			formData.get('hidden_in_addresslist') === 'on' ? 'true' : 'false'
+		);
+		formData.set('vegetarian', formData.get('vegetarian') === 'on' ? 'true' : 'false');
 		if (!pb.authStore.model?.id) return (loading = false);
 		await pb.collection('users').update(pb.authStore.model.id, formData);
 		await pb.collection('users').authRefresh();
@@ -147,6 +154,8 @@
 					</div>
 				</div>
 
+				<GenderInput currentGender={pb.authStore.model?.gender} />
+
 				<DateInput
 					id="birthday"
 					name="birthday"
@@ -155,7 +164,7 @@
 					disabled={loading}
 				/>
 
-				<InputField
+				<TelephoneInputField
 					id="phonenumber"
 					name="phonenumber"
 					label="Handynummer"
@@ -187,6 +196,22 @@
 					name="rili"
 					checked={pb.authStore.model?.rili}
 					label="Ich bin Richtlininenmitarbeiter (Rili)"
+					disabled={loading}
+				/>
+
+				<InputCheckbox
+					id="hidden-in-addresslist"
+					name="hidden_in_addresslist"
+					checked={pb.authStore.model?.hidden_in_addresslist}
+					label="Ich möchte nicht in der Adressliste auftauchen"
+					disabled={loading}
+				/>
+
+				<InputCheckbox
+					id="vegetarian"
+					name="vegetarian"
+					checked={pb.authStore.model?.vegetarian}
+					label="Ich esse vegetarisch"
 					disabled={loading}
 				/>
 
