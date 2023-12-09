@@ -31,10 +31,11 @@
 			<div class="grid h-fit gap-8 md:p-4">
 				<p class="rounded bg-white p-4">
 					Der etwas andere Weihnachtsgottesdienst: Hörsaal statt Kirchenbank, Band statt Orgel und
-					warum Engergieeffizienz mit Weihnachten, Glaube und dir zu hat. Der Referent Prof. Dr.
-					Matthias Clausen, vom Institut für Glaube und Wissenschaft, ist deutschlandweit unterwegs
-					und beschäftigt sich mit Apologetik und der rationalen Begründung des Glaubens. Wir freuen
-					uns auf einen spannenden Abend mit dir!
+					wie man trotz Energie- und anderen Krisen ernsthaft Weihnachten feiern kann. Der Referent
+					Prof. Dr. Matthias Clausen aus Marburg, vom Insitut für Glaube und Wissenschaft, ist
+					deutschlandweit als Redner unterwegs. Er mag schwarzen Kaffee und Asterix - und findet,
+					dass skeptische Fragen an den Glauben durchdachte Antworten verdienen. Herzliche
+					Einladung!
 				</p>
 
 				<ul class="grid justify-center gap-4 text-center text-xl text-white">
@@ -71,6 +72,23 @@
 			<CalendarList />
 			<Instagram />
 		</div>
+	</div>
+
+	<div class="card">
+		<h1 class="text-primary text-2xl lg:text-3xl">Die Regiokonanmeldung ist jetzt offen!</h1>
+		<div class="grid gap-2">
+			<p>
+				Die Regiokon ist eine Konferenz für alle SMDler aus der Region. Dieses Jahr findet sie vom
+				12.01.2024 bis 14.01.2024 in Karlsruhe statt. Melde dich gleich an!
+			</p>
+			<div class="flex gap-4">
+				<a class="w-fit rounded-md bg-gray-400 px-4 py-2" href="/regiokon">Mehr Infos</a>
+				<a class="bg-primary w-fit rounded-md px-4 py-2" href="/regiokon/signup">Jetzt Anmelden</a>
+			</div>
+		</div>
+		<span class="text-secondary-text text-sm"
+			>Alle Karlsruher melden sich bitte über den Internen Bereich an.
+		</span>
 	</div>
 
 	<div id="about-us" class="card scroll-m-24">
