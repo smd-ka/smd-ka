@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { RegiokonRegistration, saftRegistration } from '$lib/models';
+	import type { RegiokonRegistration } from '$lib/models';
 	import { pb } from '$lib/pocketbase';
 	import {
 		faArrowUpFromBracket,
@@ -33,7 +33,6 @@
 			error = true;
 		}
 		loading = false;
-		console.log(result);
 		filterRegistrations();
 	});
 
@@ -63,6 +62,25 @@
 	// const countHasKVVSemester = () =>
 	// 	currentList.filter((x) => x.ticket === 'KVV-Semesterticket').length;
 	// const countHasKVV = () => currentList.filter((x) => x.ticket === 'KVV-Bescheinigung').length;
+
+	const countLodgingNeeded = (gender: 'female' | 'male') =>
+		currentList.filter((x) => x.gender === gender).length;
+
+	const countLodgingOffered = (gender: 'female' | 'male' | 'both') => {
+		let count = 0;
+		switch (gender) {
+			case 'female':
+				currentList.forEach((x) => (count += x.lodging_female));
+				break;
+			case 'male':
+				currentList.forEach((x) => (count += x.lodging_male));
+				break;
+			case 'both':
+				currentList.forEach((x) => (count += x.lodging_both));
+				break;
+		}
+		return count;
+	};
 
 	const mailingList = () => {
 		const list = currentList
@@ -129,10 +147,7 @@
 		const encodedUri = encodeURI(csvContent);
 		const link = document.createElement('a');
 		link.setAttribute('href', encodedUri);
-		link.setAttribute(
-			'download',
-			`SAFT_Anmeldungen_${result.length > 1 ? result[0].semester : ''}_${filter}.csv`
-		);
+		link.setAttribute('download', `Regiokon_Anmeldungen_${filter}.csv`);
 		document.body.appendChild(link); // Required for FF
 
 		link.click();
@@ -156,34 +171,31 @@
 		{:else if error}
 			<p>Es ist ein Fehler aufgetreten.</p>
 		{:else}
-			<!-- <div class=" rounded-md bg-gray-200 p-4">
+			<div class=" rounded-md bg-gray-200 p-4">
 				<div>
 					Anmeldungen gesamt:
 					<bold class="font-bold">{currentList.length}</bold>
 				</div>
-				<div>
-					Anzahl Fahrradfahrer:
-					<bold class="font-bold">{countTakesBike()}</bold>
-				</div>
-				<div>
-					Anzahl Bahnfahrer:
-					<bold class="font-bold">{countTakesTrain()}</bold>
-				</div>
-				<div>
-					Anzahl Bahnfahrer mit D-Ticket:
-					<bold class="font-bold">{countHasDTicket()}</bold>
-				</div>
-				<div>
-					Anzahl Bahnfahrer mit KVV-Bescheinigung:
-					<bold class="font-bold">{countHasKVV()}</bold>
-				</div>
-				<div>
-					Bahnfahrer mit KVV-Semesterticket:
-					<bold class="font-bold">{countHasKVVSemester()}</bold>
+				<div class="flex">
+					<div class="grid grid-cols-[1fr_2px_repeat(3,minmax(0,1fr))] gap-x-2">
+						<div>Schlafplätze</div>
+						<div class="bg-slate-600"></div>
+						<div class="font-bold">Männer</div>
+						<div class="font-bold">Frauen</div>
+						<div class="font-bold">Beide</div>
+						<div class="col-span-full h-0.5 bg-slate-600"></div>
+						<div class="font-bold">Vorhanden</div>
+						<div class="bg-slate-600"></div>
+						<div>{countLodgingOffered('male')}</div>
+						<div>{countLodgingOffered('female')}</div>
+						<div>{countLodgingOffered('both')}</div>
+						<div class="font-bold">Benötigt</div>
+						<div class="bg-slate-600"></div>
+						<div>{countLodgingNeeded('female')}</div>
+						<div>{countLodgingNeeded('male')}</div>
+					</div>
 				</div>
 			</div>
-
-            -->
 
 			<div class="flex gap-2 max-md:flex-col md:gap-4">
 				<a class="bg-primary rounded-md px-4 py-2" href={mailingList()}
@@ -243,8 +255,10 @@
 							{/if}
 						</div>
 						<div>{registration.name}</div>
-						<div>{registration.email}</div>
-						<div>{registration.phonenumber}</div>
+						<a href="mailto:{registration.email}" class="hover:cursor-pointer hover:underline"
+							>{registration.email}</a
+						>
+						<a href="tel:{registration.phonenumber}">{registration.phonenumber}</a>
 
 						<div>
 							{registration.group}
