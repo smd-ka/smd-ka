@@ -3,7 +3,7 @@
 	import logo from '$lib/assets/logos/smd-ka_modified.svg';
 	import { faBars, faRightFromBracket, faX } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
-	import { getAvatarUrl, pb } from '$lib/pocketbase';
+	import { SAFT_COORDINATOR, getAvatarUrl, pb } from '$lib/pocketbase';
 	import { applyAction, enhance } from '$app/forms';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 	import { click_outside } from '$lib/click_outside';
@@ -12,10 +12,10 @@
 	let loading = false;
 	let src = getAvatarUrl();
 	let isValid = pb.authStore.isValid;
-	let isSaftCoordinator = pb.authStore.model?.roles.includes('saftcoordinator');
+	let isSaftCoordinator = pb.authStore.model?.roles.includes(SAFT_COORDINATOR);
 
 	pb.authStore.onChange(() => {
-		isSaftCoordinator = pb.authStore.model?.roles.includes('saftcoordinator');
+		isSaftCoordinator = pb.authStore.model?.roles.includes(SAFT_COORDINATOR);
 		isValid = pb.authStore.isValid;
 		src = getAvatarUrl();
 	});

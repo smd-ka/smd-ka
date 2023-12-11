@@ -1,13 +1,13 @@
 <script lang="ts">
-	import type { saftRegistration } from '$lib/models';
+	import type { RegiokonRegistration, saftRegistration } from '$lib/models';
 	import { pb } from '$lib/pocketbase';
 	import {
 		faArrowUpFromBracket,
-		faBicycle,
-		faCar,
 		faCopy,
 		faExclamationTriangle,
-		faTrain
+		faMars,
+		faVenus,
+		faVenusMars
 	} from '@fortawesome/free-solid-svg-icons';
 	import type { Record } from 'pocketbase';
 	import { onMount } from 'svelte';
@@ -16,16 +16,16 @@
 
 	let loading = true;
 	let error = false;
-	let currentList: saftRegistration[] = [];
-	let result: saftRegistration[] = [];
+	let currentList: RegiokonRegistration[] = [];
+	let result: RegiokonRegistration[] = [];
 
 	let paidLoading: number[] = [];
 	let paidError: number[] = [];
-	let filter: 'all' | 'paid' | 'unpaid' | 'bike' | 'train' = 'all';
+	let filter: 'all' | 'paid' | 'unpaid' | 'needs_lodging' = 'all';
 
 	onMount(async () => {
 		try {
-			result = await pb.collection('saft_registrations').getFullList({
+			result = await pb.collection('regiokon_registrations').getFullList({
 				sort: 'name'
 			});
 		} catch (e: any) {
@@ -33,6 +33,7 @@
 			error = true;
 		}
 		loading = false;
+		console.log(result);
 		filterRegistrations();
 	});
 
@@ -47,22 +48,21 @@
 			case 'unpaid':
 				currentList = result.filter((x) => !x.paid);
 				break;
-			case 'bike':
-				currentList = result.filter((x) => x.takes_bike);
-				break;
-			case 'train':
-				currentList = result.filter((x) => x.takes_train);
+			case 'needs_lodging':
+				currentList = result.filter((x) => x.needs_lodging);
 				break;
 		}
 	}
 
-	const countTakesBike = () => currentList.filter((x) => x.takes_bike).length;
-	const countTakesTrain = () => currentList.filter((x) => x.takes_train).length;
-	const countHasDTicket = () =>
-		currentList.filter((x) => x.ticket === 'Deutschlandticket/Jugendticket BW').length;
-	const countHasKVVSemester = () =>
-		currentList.filter((x) => x.ticket === 'KVV-Semesterticket').length;
-	const countHasKVV = () => currentList.filter((x) => x.ticket === 'KVV-Bescheinigung').length;
+	// TODO build overview of registrations
+
+	// const countTakesBike = () => currentList.filter((x) => x.takes_bike).length;
+	// const countTakesTrain = () => currentList.filter((x) => x.takes_train).length;
+	// const countHasDTicket = () =>
+	// 	currentList.filter((x) => x.ticket === 'Deutschlandticket/Jugendticket BW').length;
+	// const countHasKVVSemester = () =>
+	// 	currentList.filter((x) => x.ticket === 'KVV-Semesterticket').length;
+	// const countHasKVV = () => currentList.filter((x) => x.ticket === 'KVV-Bescheinigung').length;
 
 	const mailingList = () => {
 		const list = currentList
@@ -81,7 +81,7 @@
 		try {
 			paidLoading = [...paidLoading, id];
 			paidError = paidError.filter((x) => x !== id);
-			const result = await pb.collection('saft').update(registrationId, { paid: paid });
+			const result = await pb.collection('regiokon').update(registrationId, { paid: paid });
 		} catch (e: any) {
 			console.error(e);
 			paidError = [...paidError, id];
@@ -90,6 +90,8 @@
 		filterRegistrations();
 	}
 
+	// TODO FIX CSV EXPORT
+
 	function exportToCsv() {
 		const rows = [
 			[
@@ -97,12 +99,12 @@
 				'Name',
 				'E-Mail-Adresse',
 				'Telefonnummer',
-				'An/Abreise',
-				'Ticket',
-				'Bodenschläfer',
-				'Kuchen',
+				'Gruppe',
+				'Braucht einen Schlafplatz',
+				'Schlafplätze',
 				'Vegetarier',
 				'Allergien',
+				'Geschlecht',
 				'Bemerkung'
 			],
 			...result.map((x) => [
@@ -154,7 +156,7 @@
 		{:else if error}
 			<p>Es ist ein Fehler aufgetreten.</p>
 		{:else}
-			<div class=" rounded-md bg-gray-200 p-4">
+			<!-- <div class=" rounded-md bg-gray-200 p-4">
 				<div>
 					Anmeldungen gesamt:
 					<bold class="font-bold">{currentList.length}</bold>
@@ -180,6 +182,9 @@
 					<bold class="font-bold">{countHasKVVSemester()}</bold>
 				</div>
 			</div>
+
+            -->
+
 			<div class="flex gap-2 max-md:flex-col md:gap-4">
 				<a class="bg-primary rounded-md px-4 py-2" href={mailingList()}
 					>Email an den Verteiler senden</a
@@ -204,24 +209,22 @@
 					<option value="all">Alle</option>
 					<option value="paid">Bezahlt</option>
 					<option value="unpaid">Unbezahlt</option>
-					<option value="bike">Fahrradfahrer</option>
-					<option value="train">Bahnfahrer</option>
+					<option value="needs_lodging">Braucht einen Schlafplatz</option>
 				</select>
 			</div>
-
 			<div class="flex flex-col overflow-auto">
 				<div class="grid grid-cols-[repeat(11,1fr)] gap-x-4 whitespace-nowrap">
 					<bold class="font-bold">Bezahlt</bold>
 					<bold class="font-bold">Name</bold>
 					<bold class="font-bold">E-Mail-Adresse</bold>
 					<bold class="font-bold">Telefonnummer</bold>
-					<bold class="font-bold">An/Abreise</bold>
-					<bold class="font-bold">Ticket</bold>
-					<bold class="font-bold">Bemerkung</bold>
-					<bold class="font-bold">Bodenschläfer</bold>
-					<bold class="font-bold">Kuchen</bold>
+					<bold class="font-bold">Gruppe</bold>
+					<bold class="font-bold">Benötigt einen <br /> Schlafplatz</bold>
+					<bold class="font-bold">Hat folgende <br />Schlafplätze</bold>
+					<bold class="font-bold">Bemerkungen</bold>
 					<bold class="font-bold">Vegetarier</bold>
 					<bold class="font-bold">Allergien</bold>
+					<bold class="font-bold">Geschlecht</bold>
 
 					{#each currentList as registration, i}
 						<div class="col-span-11 h-0.5 bg-gray-300"></div>
@@ -244,36 +247,33 @@
 						<div>{registration.phonenumber}</div>
 
 						<div>
-							{#if registration.takes_car}
-								<div class="flex items-center gap-2">
-									<Fa icon={faCar} />
-									Auto
-								</div>
-							{/if}
-							{#if registration.takes_bike}
-								<div class="flex items-center gap-2">
-									<Fa icon={faBicycle} />
-									Fahrrad
-								</div>
-							{/if}
-							{#if registration.takes_train}
-								<div class="flex items-center gap-2">
-									<Fa icon={faTrain} />
-									Bus & Bahn
-								</div>
-							{/if}
+							{registration.group}
 						</div>
 						<div>
-							{registration.ticket || ''}
+							{registration.needs_lodging ? 'Ja' : ''}
+						</div>
+
+						<div class="flex items-start gap-3">
+							<div class="flex items-center gap-1">
+								<Fa icon={faVenus} class="text-pink-500" />
+								{registration.lodging_female}
+							</div>
+							<div class="flex items-center gap-1">
+								<Fa icon={faMars} class="text-blue-800" />
+								{registration.lodging_male}
+							</div>
+							<div class="flex items-center gap-1">
+								<Fa icon={faVenusMars} />
+								{registration.lodging_both}
+							</div>
 						</div>
 						<div class="w-72 whitespace-pre-wrap">
 							{registration.comments || ''}
 						</div>
 
-						<div>{registration.would_sleep_on_floor ? 'Ja' : ''}</div>
-						<div>{registration.brings_cake ? 'Ja' : ''}</div>
 						<div>{registration.is_vegetarian ? 'Ja' : ''}</div>
 						<div class="w-60 whitespace-pre-wrap">{registration.allergies}</div>
+						<div>{registration.gender === 'female' ? 'Weiblich' : 'Männlich'}</div>
 					{/each}
 				</div>
 			</div>
