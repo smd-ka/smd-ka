@@ -129,26 +129,24 @@
 				'Telefonnummer',
 				'Gruppe',
 				'Braucht einen Schlafplatz',
-				'Schlafplätze',
+				'Hat folgende Schlafplätze',
+				'Bemerkung',
 				'Vegetarier',
 				'Allergien',
-				'Geschlecht',
-				'Bemerkung'
+				'Geschlecht'
 			],
 			...result.map((x) => [
 				x.paid ? 'Ja' : 'Nein',
 				x.name,
 				x.email,
 				x.phonenumber,
-				`${x.takes_car ? 'Auto ' : ''}${x.takes_bike ? 'Fahrrad ' : ''}${
-					x.takes_train ? 'Bus & Bahn ' : ''
-				}`,
-				x.ticket,
-				x.would_sleep_on_floor ? 'Ja' : '',
-				x.brings_cake ? 'Ja' : '',
-				x.is_vegetarian ? 'Ja' : '',
+				x.group,
+				x.needs_lodging ? 'Ja' : '',
+				`"M: ${x.lodging_male}, F: ${x.lodging_female}, B: ${x.lodging_both}"`,
+				'"' + x.comments + '"',
+				x.vegetarian ? 'Ja' : '',
 				x.allergies,
-				'"' + x.comments + '"'
+				x.gender === 'female' ? 'Weiblich' : 'Männlich'
 			])
 		];
 
