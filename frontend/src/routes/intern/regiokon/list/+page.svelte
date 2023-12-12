@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { RegiokonRegistration } from '$lib/models';
+	import { RegiokonGroup, type RegiokonRegistration } from '$lib/models';
 	import { pb } from '$lib/pocketbase';
 	import {
 		faArrowUpFromBracket,
@@ -21,7 +21,9 @@
 
 	let paidLoading: number[] = [];
 	let paidError: number[] = [];
-	let filter: 'all' | 'paid' | 'unpaid' | 'needs_lodging' = 'all';
+	const groups = Object.keys(RegiokonGroup).filter((key) => isNaN(Number(key)));
+	let filter: 'all' | 'paid' | 'unpaid' | 'needs_lodging' | RegiokonGroup = 'all';
+	let groupStatsHeights: { name: string; height: number }[] = [];
 
 	onMount(async () => {
 		try {
@@ -34,7 +36,18 @@
 		}
 		loading = false;
 		filterRegistrations();
+
+		groupStatsHeights = groups.map((group) => ({
+			name: group,
+			height: calcHeight(group)
+		}));
+		groupStatsHeights.sort((a, b) => b.height - a.height);
 	});
+
+	function calcHeight(group: string) {
+		const count = result.filter((x) => x.group.toString() === group).length;
+		return (count / result.length) * 150;
+	}
 
 	function filterRegistrations() {
 		switch (filter) {
@@ -50,18 +63,13 @@
 			case 'needs_lodging':
 				currentList = result.filter((x) => x.needs_lodging);
 				break;
+			default:
+				currentList = result.filter((x) => x.group === filter);
+				break;
 		}
 	}
 
 	// TODO build overview of registrations
-
-	// const countTakesBike = () => currentList.filter((x) => x.takes_bike).length;
-	// const countTakesTrain = () => currentList.filter((x) => x.takes_train).length;
-	// const countHasDTicket = () =>
-	// 	currentList.filter((x) => x.ticket === 'Deutschlandticket/Jugendticket BW').length;
-	// const countHasKVVSemester = () =>
-	// 	currentList.filter((x) => x.ticket === 'KVV-Semesterticket').length;
-	// const countHasKVV = () => currentList.filter((x) => x.ticket === 'KVV-Bescheinigung').length;
 
 	const countLodgingNeeded = (gender: 'female' | 'male') =>
 		currentList.filter((x) => x.gender === gender).length;
@@ -81,6 +89,8 @@
 		}
 		return count;
 	};
+
+	const countVegetarians = () => currentList.filter((x) => x.vegetarian).length;
 
 	const mailingList = () => {
 		const list = currentList
@@ -157,7 +167,7 @@
 <main class="container mx-auto">
 	<div class="card mt-8 flex flex-col gap-4">
 		<div>
-			<h1 class="text-primary text-2xl md:text-4xl">SAFT Anmeldungen</h1>
+			<h1 class="text-primary text-2xl md:text-4xl">Regiokon Anmeldungen</h1>
 			<div class="flex flex-wrap">
 				<bold class="pr-2 font-bold">Achtung!</bold>
 				Sollte dieses Symbol <Fa class="px-2 text-red-700" icon={faExclamationTriangle} /> neben dem
@@ -172,27 +182,49 @@
 			<p>Es ist ein Fehler aufgetreten.</p>
 		{:else}
 			<div class=" rounded-md bg-gray-200 p-4">
-				<div>
-					Anmeldungen gesamt:
-					<bold class="font-bold">{currentList.length}</bold>
-				</div>
-				<div class="flex">
-					<div class="grid grid-cols-[1fr_2px_repeat(3,minmax(0,1fr))] gap-x-2">
-						<div>Schlafplätze</div>
-						<div class="bg-slate-600"></div>
-						<div class="font-bold">Männer</div>
-						<div class="font-bold">Frauen</div>
-						<div class="font-bold">Beide</div>
-						<div class="col-span-full h-0.5 bg-slate-600"></div>
-						<div class="font-bold">Vorhanden</div>
-						<div class="bg-slate-600"></div>
-						<div>{countLodgingOffered('male')}</div>
-						<div>{countLodgingOffered('female')}</div>
-						<div>{countLodgingOffered('both')}</div>
-						<div class="font-bold">Benötigt</div>
-						<div class="bg-slate-600"></div>
-						<div>{countLodgingNeeded('female')}</div>
-						<div>{countLodgingNeeded('male')}</div>
+				<div class="grid gap-8 md:grid-cols-2">
+					<div>
+						<div>
+							Anmeldungen gesamt:
+							<bold class="font-bold">{currentList.length}</bold>
+						</div>
+
+						<div>
+							Anzahl Vegetarier: {countVegetarians()}
+						</div>
+						<div class="flex h-min">
+							<div class="grid grid-cols-[1fr_2px_repeat(3,minmax(0,1fr))] gap-x-2">
+								<div>Schlafplätze</div>
+								<div class="bg-slate-600"></div>
+								<div class="font-bold">Männer</div>
+								<div class="font-bold">Frauen</div>
+								<div class="font-bold">Beide</div>
+								<div class="col-span-full h-0.5 bg-slate-600"></div>
+								<div class="font-bold">Vorhanden</div>
+								<div class="bg-slate-600"></div>
+								<div>{countLodgingOffered('male')}</div>
+								<div>{countLodgingOffered('female')}</div>
+								<div>{countLodgingOffered('both')}</div>
+								<div class="font-bold">Benötigt</div>
+								<div class="bg-slate-600"></div>
+								<div>{countLodgingNeeded('female')}</div>
+								<div>{countLodgingNeeded('male')}</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="flex flex-col items-center gap-2">
+						<h2 class="text-lg">Gruppenzusammensetzung</h2>
+						<div class="grid h-[150px] grid-cols-10 items-end justify-center gap-2">
+							{#each groupStatsHeights as { name, height }}
+								<div class="relative flex h-full items-end rounded bg-white">
+									<div class="bg-lilac w-6 rounded" style="height: {height}px;"></div>
+									<div class="absolute bottom-[50px] left-3 -translate-x-1/2 rotate-90">
+										{name}
+									</div>
+								</div>
+							{/each}
+						</div>
 					</div>
 				</div>
 			</div>
@@ -222,6 +254,9 @@
 					<option value="paid">Bezahlt</option>
 					<option value="unpaid">Unbezahlt</option>
 					<option value="needs_lodging">Braucht einen Schlafplatz</option>
+					{#each groups as group}
+						<option value={group}>{group}</option>
+					{/each}
 				</select>
 			</div>
 			<div class="flex flex-col overflow-auto">
@@ -285,7 +320,7 @@
 							{registration.comments || ''}
 						</div>
 
-						<div>{registration.is_vegetarian ? 'Ja' : ''}</div>
+						<div>{registration.vegetarian ? 'Ja' : ''}</div>
 						<div class="w-60 whitespace-pre-wrap">{registration.allergies}</div>
 						<div>{registration.gender === 'female' ? 'Weiblich' : 'Männlich'}</div>
 					{/each}

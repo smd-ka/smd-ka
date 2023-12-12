@@ -12,7 +12,8 @@ export default {
 				primary: '#F78861',
 				'light-blue': '#7E93AE',
 				'secondary-text': '#555555',
-				lime: '#ccd4bf'
+				lime: '#ccd4bf',
+				lilac: '#D0B0D4'
 			}
 		}
 	},
