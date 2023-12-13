@@ -51,7 +51,7 @@ export type RegiokonRegistration = {
 	phonenumber: string;
 	needs_lodging: boolean;
 	allergies: string;
-	is_vegetarian: boolean;
+	vegetarian: boolean;
 	group: RegiokonGroup;
 	comments: string;
 	lodging_female: number;

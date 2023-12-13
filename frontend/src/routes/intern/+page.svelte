@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { pb } from '$lib/pocketbase';
+	import { REGIOKON_COORDINATOR, SAFT_COORDINATOR, pb } from '$lib/pocketbase';
 	import {
 		faAddressBook,
 		faGlassWater,
@@ -8,7 +8,8 @@
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 
-	let isSaftCoordinator = pb.authStore.model?.roles.includes('saftcoordinator');
+	let isSaftCoordinator = pb.authStore.model?.roles.includes(SAFT_COORDINATOR);
+	let isRegiokonCoordinator = pb.authStore.model?.roles.includes(REGIOKON_COORDINATOR);
 </script>
 
 <main class="container mx-auto mt-8 flex flex-col gap-8">
@@ -60,6 +61,15 @@
 			</div>
 			<h2 class="py-4 text-center text-lg md:text-2xl">Hier gehts zur Regiokon Anmeldung</h2>
 		</a>
+
+		{#if isRegiokonCoordinator}
+			<a href="/intern/regiokon/list" class="card">
+				<div class="flex justify-center">
+					<Fa icon={faRegistered} class="text-secondary-text text-7xl" />
+				</div>
+				<h2 class="py-4 text-center text-lg md:text-2xl">Regiokon Anmeldungen verwalten</h2>
+			</a>
+		{/if}
 	</div>
 
 	<div class="card">

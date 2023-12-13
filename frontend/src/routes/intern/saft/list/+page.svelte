@@ -143,7 +143,7 @@
 			<h1 class="text-primary text-2xl md:text-4xl">SAFT Anmeldungen</h1>
 			<div class="flex flex-wrap">
 				<bold class="pr-2 font-bold">Achtung!</bold>
-				Sollte dieses Symobol <Fa class="px-2 text-red-700" icon={faExclamationTriangle} /> neben dem
+				Sollte dieses Symbol <Fa class="px-2 text-red-700" icon={faExclamationTriangle} /> neben dem
 				Haken angezeigt werden, dann wurde die Änderung nicht gespeichert!
 			</div>
 		</div>
