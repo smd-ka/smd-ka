@@ -20,61 +20,7 @@
 <HeroShot imgSrc={header} />
 
 <main class="container mx-auto flex flex-col gap-8">
-	<div class="card mt-10 bg-[#0b620b]">
-		<h1 class="text-center text-2xl text-white md:text-4xl">
-			Von draußen, vom Walde komm ich her; ich muss euch sagen, es weihnachtet sehr!
-		</h1>
-		<div class="mt-2 grid gap-4 md:grid-cols-2">
-			<div class="md:p-4">
-				<img class="rounded-md" alt="Flyer Weihnachtsgottesdienst" src={christmas1} />
-			</div>
-			<div class="grid h-fit gap-8 md:p-4">
-				<p class="rounded bg-white p-4">
-					Der etwas andere Weihnachtsgottesdienst: Hörsaal statt Kirchenbank, Band statt Orgel und
-					wie man trotz Energie- und anderen Krisen ernsthaft Weihnachten feiern kann. Der Referent
-					Prof. Dr. Matthias Clausen aus Marburg, vom Insitut für Glaube und Wissenschaft, ist
-					deutschlandweit als Redner unterwegs. Er mag schwarzen Kaffee und Asterix - und findet,
-					dass skeptische Fragen an den Glauben durchdachte Antworten verdienen. Herzliche
-					Einladung!
-				</p>
-
-				<ul class="grid justify-center gap-4 text-center text-xl text-white">
-					<li class="flex items-center gap-4">
-						<Fa class="text-3xl " icon={faClock} />
-						Mittwoch, 13 Dezember 2023
-					</li>
-					<li class="flex items-center gap-4">
-						<Fa class="text-3xl " icon={faCalendarDays} />
-						Einlass: 19:00 Uhr, Beginn: 19:30 Uhr
-					</li>
-					<li class="flex items-center gap-4 text-left">
-						<Fa class="text-3xl" icon={faLocationDot} />
-						Neue Chemie Hörsaal KIT <br />
-						30.46 Chemie-Hörsaalgebäude
-					</li>
-				</ul>
-
-				<div class="grid text-center">
-					In Kooperation mit: <br />
-					<div>
-						<a class="underline" href="https://khg-karlsruhe.de">KHG Karlsruhe</a>
-						<a class="underline" href="https://sfc-karlsruhe.de">SfC Karlsruhe</a>
-						<a class="underline" href="https://esg-karlsruhe.de">ESG Karlsruhe</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="card">
-		<h1 class="text-primary text-2xl lg:text-3xl">Was geht? - Nächste Events</h1>
-		<div class="grid gap-8 md:grid-cols-[1fr_300px]">
-			<CalendarList />
-			<Instagram />
-		</div>
-	</div>
-
-	<div class="card">
+	<div class="card mt-8">
 		<h1 class="text-primary text-2xl lg:text-3xl">Die Regiokonanmeldung ist jetzt offen!</h1>
 		<div class="grid gap-2">
 			<p>
@@ -89,6 +35,14 @@
 		<span class="text-secondary-text text-sm"
 			>Alle Karlsruher melden sich bitte über den Internen Bereich an.
 		</span>
+	</div>
+
+	<div class="card">
+		<h1 class="text-primary text-2xl lg:text-3xl">Was geht? - Nächste Events</h1>
+		<div class="grid gap-8 md:grid-cols-[1fr_300px]">
+			<CalendarList />
+			<Instagram />
+		</div>
 	</div>
 
 	<div id="about-us" class="card scroll-m-24">
