@@ -72,7 +72,9 @@
 	// TODO build overview of registrations
 
 	const countLodgingNeeded = (gender: 'female' | 'male') =>
-		currentList.filter((x) => x.gender === gender).length;
+		currentList.filter((x) => x.gender === gender && x.needs_lodging).length;
+	const countVegetarians = () => currentList.filter((x) => x.vegetarian).length;
+	const countGroup = (group: RegiokonGroup) => currentList.filter((x) => x.group === group).length;
 
 	const countLodgingOffered = (gender: 'female' | 'male' | 'both') => {
 		let count = 0;
@@ -89,8 +91,6 @@
 		}
 		return count;
 	};
-
-	const countVegetarians = () => currentList.filter((x) => x.vegetarian).length;
 
 	const mailingList = () => {
 		const list = currentList
@@ -117,8 +117,6 @@
 		paidLoading = paidLoading.filter((x) => x !== id);
 		filterRegistrations();
 	}
-
-	// TODO FIX CSV EXPORT
 
 	function exportToCsv() {
 		const rows = [
@@ -213,13 +211,16 @@
 
 					<div class="flex flex-col items-center gap-2">
 						<h2 class="text-lg">Gruppenzusammensetzung</h2>
-						<div class="grid h-[150px] grid-cols-10 items-end justify-center gap-2">
+						<div class="grid h-[174px] grid-cols-10 items-end justify-center gap-2">
 							{#each groupStatsHeights as { name, height }}
-								<div class="relative flex h-full items-end rounded bg-white">
-									<div class="bg-lilac w-6 rounded" style="height: {height}px;"></div>
-									<div class="absolute bottom-[50px] left-3 -translate-x-1/2 rotate-90">
-										{name}
+								<div class="flex h-full flex-col">
+									<div class="relative flex h-full items-end rounded bg-white">
+										<div class="bg-lilac w-6 rounded" style="height: {height}px;"></div>
+										<div class="absolute bottom-[50px] left-3 -translate-x-1/2 rotate-90">
+											{name}
+										</div>
 									</div>
+									<div class="flex h-6 w-6 justify-center text-gray-700">{countGroup(name)}</div>
 								</div>
 							{/each}
 						</div>
