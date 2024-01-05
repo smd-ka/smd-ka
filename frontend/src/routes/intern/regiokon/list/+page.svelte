@@ -69,8 +69,6 @@
 		}
 	}
 
-	// TODO build overview of registrations
-
 	const countLodgingNeeded = (gender: 'female' | 'male') =>
 		currentList.filter((x) => x.gender === gender && x.needs_lodging).length;
 	const countVegetarians = () => currentList.filter((x) => x.vegetarian).length;
@@ -203,8 +201,8 @@
 								<div>{countLodgingOffered('both')}</div>
 								<div class="font-bold">Benötigt</div>
 								<div class="bg-slate-600"></div>
-								<div>{countLodgingNeeded('female')}</div>
 								<div>{countLodgingNeeded('male')}</div>
+								<div>{countLodgingNeeded('female')}</div>
 							</div>
 						</div>
 					</div>
