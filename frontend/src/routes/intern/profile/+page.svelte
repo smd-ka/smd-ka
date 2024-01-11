@@ -225,7 +225,7 @@
 
 				<InputField
 					id="study"
-					name="study"
+					name="field_of_study"
 					label="Studiengang"
 					value={pb.authStore.model?.field_of_study}
 					disabled={loading}
