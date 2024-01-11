@@ -2,6 +2,7 @@
 	import { getErrorMessage, pb } from '$lib/pocketbase';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 	import { goto } from '$app/navigation';
+	import { enhance } from '$app/forms';
 
 	let email = '';
 	let password = '';
@@ -30,7 +31,7 @@
 				<img src={loadingSpinner} class="h-32" alt="loading" />
 			</div>
 		{:else}
-			<form class="flex w-80 flex-col gap-4 p-4" on:submit={login}>
+			<form method="post" class="flex w-80 flex-col gap-4 p-4" on:submit={login}>
 				<h1 class="text-primary py-5 text-center text-2xl">SMD-KA INTERN</h1>
 				<div class="relative">
 					<input
