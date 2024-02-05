@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { REGIOKON_COORDINATOR, SAFT_COORDINATOR, pb } from '$lib/pocketbase';
+	import { SAFT_COORDINATOR, pb } from '$lib/pocketbase';
 	import {
 		faAddressBook,
 		faGlassWater,
@@ -9,7 +9,6 @@
 	import Fa from 'svelte-fa/src/fa.svelte';
 
 	let isSaftCoordinator = pb.authStore.model?.roles.includes(SAFT_COORDINATOR);
-	let isRegiokonCoordinator = pb.authStore.model?.roles.includes(REGIOKON_COORDINATOR);
 </script>
 
 <main class="container mx-auto mt-8 flex flex-col gap-8">
@@ -19,12 +18,14 @@
 				Willkommen {pb.authStore.model?.name ?? ''}
 			</h2>
 			<div>
-				Du kannst dich nun zur Regiokon anmelden. Bitte vergesse nicht vorher dein Profil zu
-				aktualisieren, da die Daten für die Anmeldung benötigt werden.
-				<br />
-				Der interne Bereich entwickelt sich so langsam. Solltest du während deiner Nutzung auf Bugs stoßen
-				melde dich gerne bei Claus. Du hast eine Idee was man hier noch so treiben kann? Schreib mir
-				gerne, dann schauen wir mal ob wir das nicht auch umsetzen können!
+				<p>
+					Du befindest dich im internen Bereich der SMD Karlsruhe. Hier findest du alle wichtigen
+					Informationen und Funktionen, die für dich als Mitglied der SMD Karlsruhe relevant sind.
+				</p>
+				<p>
+					Bitte beachte, dass du vertrauliche Informationen nicht weitergeben darfst. Falls du
+					Fragen hast, wende dich bitte an das Public Relations and IT (PRIT) Team.
+				</p>
 			</div>
 		</div>
 		<a class="card" href="/intern/address-list">
@@ -52,22 +53,6 @@
 					<Fa icon={faGlassWater} class="text-secondary-text text-7xl" />
 				</div>
 				<h2 class="py-4 text-center text-lg md:text-2xl">SAFT Anmeldungen verwalten</h2>
-			</a>
-		{/if}
-
-		<a class="card" href="/intern/regiokon">
-			<div class="flex justify-center">
-				<Fa icon={faRegistered} class="text-7xl text-green-500" />
-			</div>
-			<h2 class="py-4 text-center text-lg md:text-2xl">Hier gehts zur Regiokon Anmeldung</h2>
-		</a>
-
-		{#if isRegiokonCoordinator}
-			<a href="/intern/regiokon/list" class="card">
-				<div class="flex justify-center">
-					<Fa icon={faRegistered} class="text-secondary-text text-7xl" />
-				</div>
-				<h2 class="py-4 text-center text-lg md:text-2xl">Regiokon Anmeldungen verwalten</h2>
 			</a>
 		{/if}
 	</div>

@@ -3,7 +3,7 @@
 	import logo from '$lib/assets/logos/smd-ka_modified.svg';
 	import { faBars, faRightFromBracket, faX } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
-	import { REGIOKON_COORDINATOR, SAFT_COORDINATOR, getAvatarUrl, pb } from '$lib/pocketbase';
+	import { SAFT_COORDINATOR, getAvatarUrl, pb } from '$lib/pocketbase';
 	import { applyAction, enhance } from '$app/forms';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 	import { click_outside } from '$lib/click_outside';
@@ -13,7 +13,6 @@
 	let src = getAvatarUrl();
 	let isValid = pb.authStore.isValid;
 	let isSaftCoordinator = pb.authStore.model?.roles.includes(SAFT_COORDINATOR);
-	let isRegiokonCoordinator = pb.authStore.model?.roles.includes(REGIOKON_COORDINATOR);
 
 	pb.authStore.onChange(() => {
 		isSaftCoordinator = pb.authStore.model?.roles.includes(SAFT_COORDINATOR);
@@ -51,7 +50,6 @@
 			<a class="hover:text-corperate" href="/neu-hier">Neu Hier</a><span>-</span>
 			<a class="hover:text-corperate" href="/#about-us">Über uns</a><span>-</span>
 			<a class="hover:text-corperate" href="/kalender">Kalender</a><span>-</span>
-			<a class="hover:text-corperate" href="/regiokon">Regiokon</a><span>-</span>
 			<a class="hover:text-corperate" href="/intern">Intern</a>
 		</div>
 
@@ -76,9 +74,6 @@
 					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/kalender">
 						Kalender
 					</a>
-					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/regiokon"
-						>Regiokon</a
-					>
 					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/intern">
 						Intern
 					</a>
@@ -117,20 +112,6 @@
 								href="/intern/saft/list"
 							>
 								Saft Anmeldungen verwalten
-							</a>
-						{/if}
-						<a
-							on:click={() => (showMenu = false)}
-							class="hover:text-corperate"
-							href="/intern/regiokon">Regiokon Anmeldung</a
-						>
-						{#if isRegiokonCoordinator}
-							<a
-								on:click={() => (showMenu = false)}
-								class="hover:text-corperate"
-								href="/intern/regiokon/list"
-							>
-								Regiokon Anmeldungen verwalten
 							</a>
 						{/if}
 					</div>

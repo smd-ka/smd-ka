@@ -14,27 +14,15 @@
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import ifesLogo from '$lib/assets/logos/ifes.png';
 	import smdLogo from '$lib/assets/logos/smd.png';
-	import christmas1 from '$lib/assets/christmas/christmas1.png';
 </script>
 
 <HeroShot imgSrc={header} />
 
 <main class="container mx-auto flex flex-col gap-8">
 	<div class="card mt-8">
-		<h1 class="text-primary text-2xl lg:text-3xl">Die Regiokonanmeldung ist jetzt offen!</h1>
-		<div class="grid gap-2">
-			<p>
-				Die Regiokon ist eine Konferenz für alle SMDler aus der Region. Dieses Jahr findet sie vom
-				12.01.2024 bis 14.01.2024 in Karlsruhe statt. Melde dich gleich an!
-			</p>
-			<div class="flex gap-4">
-				<a class="w-fit rounded-md bg-gray-400 px-4 py-2" href="/regiokon">Mehr Infos</a>
-				<a class="bg-primary w-fit rounded-md px-4 py-2" href="/regiokon/signup">Jetzt Anmelden</a>
-			</div>
-		</div>
-		<span class="text-secondary-text text-sm"
-			>Alle Karlsruher melden sich bitte über den Internen Bereich an.
-		</span>
+		<h1 class="text-primary text-2xl lg:text-3xl">
+			Herzlich Willkommen auf der Website der SMD Karlsruhe
+		</h1>
 	</div>
 
 	<div class="card">
