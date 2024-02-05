@@ -1,14 +1,15 @@
 <script lang="ts">
-	import { SAFT_COORDINATOR, pb } from '$lib/pocketbase';
+	import { FESD_COORDINATOR, SAFT_COORDINATOR, pb } from '$lib/pocketbase';
 	import {
 		faAddressBook,
+		faChampagneGlasses,
 		faGlassWater,
-		faRegistered,
 		faUser
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 
 	let isSaftCoordinator = pb.authStore.model?.roles.includes(SAFT_COORDINATOR);
+	let isFesdCoordinator = pb.authStore.model?.roles.includes(FESD_COORDINATOR);
 </script>
 
 <main class="container mx-auto mt-8 flex flex-col gap-8">
@@ -53,6 +54,22 @@
 					<Fa icon={faGlassWater} class="text-secondary-text text-7xl" />
 				</div>
 				<h2 class="py-4 text-center text-lg md:text-2xl">SAFT Anmeldungen verwalten</h2>
+			</a>
+		{/if}
+
+		<a class="card" href="/intern/fesd">
+			<div class="flex justify-center">
+				<Fa icon={faChampagneGlasses} class="text-lime text-7xl" />
+			</div>
+			<h2 class="py-4 text-center text-lg md:text-2xl">FESD Anmeldung</h2>
+		</a>
+
+		{#if isFesdCoordinator}
+			<a href="/intern/fesd/list" class="card">
+				<div class="flex justify-center">
+					<Fa icon={faChampagneGlasses} class="text-secondary-text text-7xl" />
+				</div>
+				<h2 class="py-4 text-center text-lg md:text-2xl">FESD Anmeldungen verwalten</h2>
 			</a>
 		{/if}
 	</div>

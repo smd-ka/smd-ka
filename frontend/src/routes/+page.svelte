@@ -20,9 +20,29 @@
 
 <main class="container mx-auto flex flex-col gap-8">
 	<div class="card mt-8">
-		<h1 class="text-primary text-2xl lg:text-3xl">
-			Herzlich Willkommen auf der Website der SMD Karlsruhe
+		<h1 class=" text-2xl lg:text-3xl">
+			<span class="text-primary">FESD</span> - <bold class="text-primary font-bold">F</bold>est am
+			<bold class="text-primary font-bold">E</bold>nde des
+			<bold class="text-primary font-bold">S</bold>emesters aus
+			<bold class="text-primary font-bold">D</bold>ankbarkeit
 		</h1>
+		<p class="mt-2">
+			Wir wollen feiern! Zum Ende des Semesters aus Dankbarkeit.
+			<br />Und dazu geht es am Dienstag, den 20.02.24, in die Laurenziusgemeinde
+			<a class="underline" href="https://maps.app.goo.gl/YnzFavtQyqm9Qupt7"
+				>(Schäferstraße 13, 76139 Karlsruhe)</a
+			>
+			in Hagsfeld. Start ist um 18:30 Uhr, das Essen wird um 19 Uhr starten. Wir wollen uns in einer
+			stimmungsvollen Atmosphäre bei euch allen bedanken für alles, was ihr in der SMD im letzten Semester
+			in Bewegung gebracht habt. Und natürlich danken wir auch dem, der das alles möglich macht. Hierzu
+			wird es an dem Abend ein gutes Essen geben. Zieht euch sehr gerne auch etwas gehobener an ;) Zwischen
+			den Gängen gibt es ein buntes Programm.
+			<br />
+			<br />
+		</p>
+		<div>
+			<a class="bg-primary w-fit rounded-md px-4 py-2" href="/fesd">Jetzt Anmelden</a>
+		</div>
 	</div>
 
 	<div class="card">

@@ -5,6 +5,7 @@ import defaultAvatar from '$lib/assets/user_default.png';
 export const pb = new PocketBase('https://smd-ka.pockethost.io');
 
 export const SAFT_COORDINATOR = 'saftcoordinator';
+export const FESD_COORDINATOR = '1rbfl16lwv0676d';
 
 export const currentUser = writable(pb.authStore.model);
 

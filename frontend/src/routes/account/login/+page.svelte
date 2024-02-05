@@ -2,7 +2,6 @@
 	import { getErrorMessage, pb } from '$lib/pocketbase';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 	import { goto } from '$app/navigation';
-	import { enhance } from '$app/forms';
 
 	let email = '';
 	let password = '';
@@ -20,6 +19,11 @@
 		}
 
 		await pb.authStore.loadFromCookie(document.cookie);
+		const urlParams = new URLSearchParams(window.location.search);
+		const redirect = urlParams.get('redirect');
+		if (redirect) {
+			goto(redirect);
+		}
 		goto('/intern');
 	};
 </script>
