@@ -5,10 +5,20 @@
 	import CheckboxInput from '$lib/components/forms/CheckboxInput.svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 	import { pb } from '$lib/pocketbase';
+	import { onMount } from 'svelte';
+	import { redirect } from '@sveltejs/kit';
+	import { goto } from '$app/navigation';
 
 	let loading = false;
 	let error = false;
 	let success = false;
+
+	onMount(() => {
+		if (pb.authStore.isValid) {
+			console.log('redirecting');
+			goto('/intern/fesd');
+		}
+	});
 
 	async function signup() {
 		loading = true;

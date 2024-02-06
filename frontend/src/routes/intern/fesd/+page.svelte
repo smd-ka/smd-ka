@@ -10,10 +10,14 @@
 	let success = false;
 
 	onMount(async () => {
-		if (await pb.collection('fesd').getFirstListItem(`user="${pb.authStore.model?.id}"`)) {
+		try {
+			const record = await pb
+				.collection('fesd')
+				.getFirstListItem(`user="${pb.authStore.model?.id}"`);
 			success = true;
+		} finally {
+			loading = false;
 		}
-		loading = false;
 	});
 
 	async function signup() {
