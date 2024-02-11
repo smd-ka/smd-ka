@@ -1,0 +1,6 @@
+services:
+  frontend:
+    container_name: backend
+    image: ghcr.io/smd-ka/smd-ka/backend:main
+    ports:
+      - 8090:8090
