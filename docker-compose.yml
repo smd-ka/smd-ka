@@ -1,6 +1,13 @@
 services:
-  frontend:
+  backend:
     container_name: backend
     image: ghcr.io/smd-ka/smd-ka/backend:main
+    volumes:
+      - pb_data:/pb/pb_data
+
     ports:
       - 8090:8090
+
+volumes:
+  pb_data:
+    name: pb_data 
