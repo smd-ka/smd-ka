@@ -1,12 +1,13 @@
 services:
   backend:
-    container_name: backend
     image: ghcr.io/smd-ka/smd-ka/backend:main
     volumes:
       - pb_data:/pb/pb_data
 
     ports:
       - 8090:8090
+
+    restart: always
 
 volumes:
   pb_data:
