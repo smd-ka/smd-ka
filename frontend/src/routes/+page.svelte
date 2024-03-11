@@ -20,17 +20,6 @@
 
 <main class="container mx-auto flex flex-col gap-8">
 	<div class="card mt-8">
-		<h1 class=" text-2xl lg:text-3xl">
-			<span class="text-primary">Save the Date - SemesterAnfangsFreizeiT (SAFT)</span>
-		</h1>
-		<p class="mt-2">
-			Tragt euch jetzt schonmal den 3. - 5. Mai 2024 in euren Kalender ein. Wir wollen gemeinsam in
-			das Sommersemester starten und laden euch herzlich zu einem Wochenende voller Spaß,
-			Gemeinschaft und Glauben ein. Mehr Infos folgen im April. Grüße, euere SAFT-Orga
-		</p>
-	</div>
-
-	<div class="card">
 		<h1 class="text-primary text-2xl lg:text-3xl">Was geht? - Nächste Events</h1>
 		<div class="grid gap-8 md:grid-cols-[1fr_300px]">
 			<CalendarList />
@@ -45,7 +34,7 @@
 			60 Studenten von Erstsemestern bis Doktoranden - alles ist dabei. Dabei ist unser Motto stets:
 			Denken. Glauben. Erleben. Wir wollen unsere Glaubensüberzeugungen mit dem Verstand erforschen
 			und in unserem Alltag leben. Dabei ist uns die Gemeinschaft untereinander sehr wichtig.
-			Deshalb treffen wir uns regelmäßig in in Hauskreisen oder alle zusammen als Großgruppe bei
+			Deshalb treffen wir uns regelmäßig in Hauskreisen oder alle zusammen als Großgruppe bei
 			unserem Gruppentreff. Interesse geweckt? Dann schau doch mal bei einem unserer regelmäßigen
 			Treffen vorbei!
 		</p>
@@ -107,7 +96,7 @@
 			<h1 class="text-primary text-4xl">Erleben.</h1>
 			<p>
 				Erleben bedeutet für uns, einander begegnen und miteinander Gott begegnen - in Gruppen und
-				Projektteams, bei Tagungen und Freizeiten, durch bloßes Dabeisein genso wie durch aktives
+				Projektteams, bei Tagungen und Freizeiten, durch bloßes Dabeisein genauso wie durch aktives
 				Mitarbeiten.
 			</p>
 			<p>
