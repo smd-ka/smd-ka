@@ -2,28 +2,38 @@ version: '3.8'
 
 services:
   backend:
+    container_name: backend
     image: ghcr.io/smd-ka/smd-ka/backend:main
     volumes:
       - pb_data:/pb/pb_data
 
     restart: always
-
-    ports:
-      - 8090:8090
+    networks:
+      - smd_ka_network
 
 
   nginx:
+    container_name: nginx
     image: nginx:latest
     volumes:
       - type: bind
-        source: ./nginx
-        target: /etc/nginx/conf.d
+        source: ./nginx/conf.d/
+        target: /etc/nginx/conf.d/
+      - type: bind
+        source: ./nginx/nginx.conf
+        target: /etc/nginx/nginx.conf
     ports:
       - 80:80
       - 443:443
     links:
      - backend
     restart: always
+    networks:
+      - smd_ka_network
+
+networks:
+  smd_ka_network:
+    driver: bridge
 
 volumes:
   pb_data:
