@@ -27,7 +27,7 @@
 <HeroShot imgSrc={header} />
 
 <main class="container mx-auto flex flex-col gap-24 py-24 text-lg">
-	<div class="container flex flex-col gap-6 px-4 lg:px-80">
+	<div class="container flex flex-col gap-6 px-4 xl:px-80">
 		<h1 class="text-5xl font-bold">SCHÖN, DASS DU HIER BIST!</h1>
 
 		<p>
@@ -63,7 +63,7 @@
 	</Saos>
 
 	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
-		<div class="grid gap-8 px-4 lg:grid-cols-2 lg:px-80">
+		<div class="grid gap-8 px-4 lg:grid-cols-2 xl:px-80">
 			<img alt="Semesterprogramm" src={placeholder} />
 
 			<div class="flex flex-col gap-4">
@@ -79,7 +79,7 @@
 	</Saos>
 
 	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
-		<div class="grid gap-8 px-4 lg:grid-cols-2 lg:px-80">
+		<div class="grid gap-8 px-4 lg:grid-cols-2 xl:px-80">
 			<div class="flex flex-col gap-4">
 				<h1 class="text-5xl font-bold uppercase">Wie du uns erreichst</h1>
 				<p>
@@ -106,7 +106,7 @@
 		</div>
 	</div>
 
-	<div class="flex flex-col gap-8 px-4 lg:px-80">
+	<div class="flex flex-col gap-8 px-4 xl:px-80">
 		<div class="flex flex-col">
 			<h1 class="text-4xl font-bold uppercase lg:text-5xl">DU MÖCHTEST MEHR ERFAHREN?</h1>
 			<h1 class="self-end text-4xl font-bold uppercase lg:text-5xl">SCHREIB UNS.</h1>

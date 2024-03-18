@@ -36,27 +36,27 @@
 				<img class="max-h-10 pl-4" src={logo} alt="SMD Logo" />
 			</a>
 
-			<div class="flex gap-4 text-2xl text-white max-lg:hidden">
+			<div class="flex gap-4 text-2xl text-white max-xl:hidden">
 				<!-- Links (only visable for bigger screens) -->
 				<a class="text-primary hover:text-white" href="/">Startseite</a>
 				<div class="hover:text-primary flex items-center gap-2">
 					Über uns
-					<Fa class="text-lg" icon={faChevronDown}></Fa>
+					<Fa class="text-primary text-lg" icon={faChevronDown}></Fa>
 				</div>
 				<!-- <a class="hover:text-primary" href="/neu-hier">Neu Hier</a> -->
 				<div class="hover:text-primary flex items-center gap-2">
 					Was läuft
-					<Fa class="text-lg" icon={faChevronDown}></Fa>
+					<Fa class="text-primary text-lg" icon={faChevronDown}></Fa>
 				</div>
 				<a class="hover:text-primary" href="/kalender">Kontakt</a>
 			</div>
 
-			<div class="text-white">
+			<div class="text-white xl:hidden">
 				<button
 					class="justify-self-end! pb-1 text-2xl md:text-4xl"
 					on:click|stopPropagation={() => (showMenu = !showMenu)}
 				>
-					<Fa class="mr-4 w-6 md:hidden" icon={showMenu ? faX : faBars} />
+					<Fa class="mr-4 w-6" icon={showMenu ? faX : faBars} />
 					{#if isValid}
 						<img
 							class="h-10 w-10 rounded-full border-2 border-gray-400 object-cover max-md:hidden"
@@ -175,6 +175,7 @@
 			</div>
 		</div>
 	</nav>
+	<div class="bg-primary h-1"></div>
 
 	<div class=" flex-[1_1_auto]">
 		<slot />
