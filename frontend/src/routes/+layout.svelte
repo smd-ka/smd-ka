@@ -1,7 +1,12 @@
 <script lang="ts">
 	import '../app.css';
 	import logo from '$lib/assets/logos/smd-ka_modified.svg';
-	import { faBars, faRightFromBracket, faX } from '@fortawesome/free-solid-svg-icons';
+	import {
+		faBars,
+		faChevronDown,
+		faRightFromBracket,
+		faX
+	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { FESD_COORDINATOR, SAFT_COORDINATOR, getAvatarUrl, pb } from '$lib/pocketbase';
 	import { applyAction, enhance } from '$app/forms';
@@ -25,18 +30,33 @@
 </script>
 
 <main class="flex min-h-screen flex-col">
-	<nav class="sticky top-0 z-50 flex flex-[0_1_auto] flex-col bg-white shadow-md">
-		<div class="relative flex items-center justify-between gap-2 px-2 md:gap-4 md:px-4">
-			<div></div>
+	<nav class="bg-grey sticky top-0 z-50 flex flex-[0_1_auto] flex-col py-4 shadow-md">
+		<div class="container mx-auto flex items-center justify-between gap-4">
 			<a class=" py-2" href="/">
-				<img class="max-h-10" src={logo} alt="SMD Logo" />
+				<img class="max-h-10 pl-4" src={logo} alt="SMD Logo" />
 			</a>
-			<div class="">
+
+			<div class="flex gap-4 text-2xl text-white max-lg:hidden">
+				<!-- Links (only visable for bigger screens) -->
+				<a class="text-primary hover:text-white" href="/">Startseite</a>
+				<div class="hover:text-primary flex items-center gap-2">
+					Über uns
+					<Fa class="text-lg" icon={faChevronDown}></Fa>
+				</div>
+				<!-- <a class="hover:text-primary" href="/neu-hier">Neu Hier</a> -->
+				<div class="hover:text-primary flex items-center gap-2">
+					Was läuft
+					<Fa class="text-lg" icon={faChevronDown}></Fa>
+				</div>
+				<a class="hover:text-primary" href="/kalender">Kontakt</a>
+			</div>
+
+			<div class="text-white">
 				<button
 					class="justify-self-end! pb-1 text-2xl md:text-4xl"
 					on:click|stopPropagation={() => (showMenu = !showMenu)}
 				>
-					<Fa class="w-6 md:hidden" icon={showMenu ? faX : faBars} />
+					<Fa class="mr-4 w-6 md:hidden" icon={showMenu ? faX : faBars} />
 					{#if isValid}
 						<img
 							class="h-10 w-10 rounded-full border-2 border-gray-400 object-cover max-md:hidden"
@@ -48,16 +68,7 @@
 			</div>
 		</div>
 
-		<!-- Links below Logo (only visable for bigger screens) -->
-		<div class="text-primary flex flex-wrap justify-center gap-2 pb-1 text-xl max-md:hidden">
-			<a class="hover:text-corperate" href="/neu-hier">Neu Hier</a><span>-</span>
-			<a class="hover:text-corperate" href="/#about-us">Über uns</a><span>-</span>
-			<a class="hover:text-corperate" href="/kalender">Kalender</a><span>-</span>
-			<!-- <a class="hover:text-corperate" href="/fesd">FESD</a><span>-</span> -->
-			<a class="hover:text-corperate" href="/intern">Intern</a>
-		</div>
-
-		<!-- Dropdown Navigatoin. Attentions this serves as well the mobiles as desktops! -->
+		<!-- Dropdown Navigation. Attentions this serves as well the mobiles as desktops! -->
 		<div
 			use:click_outside
 			on:outsideclick={() => (showMenu = false)}
@@ -171,7 +182,7 @@
 
 	<footer class="flex-[0_1_auto]">
 		<div class="bg-primary">
-			<div class="container mx-auto flex justify-center gap-4">
+			<div class="container mx-auto flex items-center justify-center gap-4 max-lg:flex-col">
 				<a href="https://www.smd.org/hochschul-smd/startseite" class="p-8"
 					><img
 						class="w-36"
@@ -203,7 +214,7 @@
 			</div>
 		</div>
 		<div class="bg-grey text-white">
-			<div class="container mx-auto grid justify-center gap-8 py-20 md:grid-cols-3 md:px-80">
+			<div class="container mx-auto grid justify-center gap-8 px-4 py-20 md:grid-cols-3 md:px-80">
 				<section class="flex flex-col gap-4">
 					<h2 class="text-primary text-xl uppercase">Unser Netzwerk</h2>
 					<p>
@@ -281,6 +292,10 @@
 </main>
 
 <style>
+	a {
+		@apply no-underline;
+	}
+
 	.menu {
 		display: grid;
 		grid-template-rows: 0fr;
