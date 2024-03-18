@@ -2,8 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: #D9D9D9;
+body {;
   scroll-behavior: smooth;
 } 
 
@@ -11,6 +10,10 @@ body {
   body {
     @apply text-primary-text;
   }  
+  
+  a {
+    @apply underline hover:no-underline;
+  }
 }
 
 @layer components {

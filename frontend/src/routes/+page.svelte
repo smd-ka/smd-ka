@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Saos from 'saos';
 	import header from '$lib/assets/header.png';
 	import Instagram from '$lib/components/Instagram.svelte';
 	import {
@@ -14,12 +15,113 @@
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import ifesLogo from '$lib/assets/logos/ifes.png';
 	import smdLogo from '$lib/assets/logos/smd.png';
+	import sloganBg from '$lib/assets/heroshots/slogan-bg.jpg';
+	import placeholder from '$lib/assets/placeholder.jpg';
+	import placeholder2 from '$lib/assets/placeholder1.jpg';
+	import TextInput from '$lib/components/forms/TextInput.svelte';
+	import TextArea from '$lib/components/forms/TextArea.svelte';
+	import CheckboxInput from '$lib/components/forms/CheckboxInput.svelte';
 </script>
 
 <HeroShot imgSrc={header} />
 
-<main class="container mx-auto flex flex-col gap-8">
-	<div class="card mt-8">
+<main class="container mx-auto flex flex-col gap-24 py-24 text-lg">
+	<div class="container flex flex-col gap-6 lg:px-80">
+		<h1 class="text-5xl font-bold">SCHÖN, DASS DU HIER BIST!</h1>
+
+		<p>
+			Zwischen Uni-Alltag und WG-Wahnsinn haben wir einen Treffpunkt, an dem Studierende aus allen
+			Ecken der Hochschule zusammenkommen. Uns verbindet der Wunsch nach Gemeinschaft, Diskussion
+			und gelebtem Glauben.
+		</p>
+		<p>
+			In unserer Hochschulgruppe sind alle herzlich willkommen. Egal was dein Hintergrund ist und
+			was du glaubst, wir freuen uns auf dich!
+		</p>
+
+		<p>
+			Wir sind aktuell rund 60 Studierende aller Fachrichtungen, kommen aus verschiedenen Kirchen
+			und Gemeinden und wünschen uns, dass jeder Student und jede Studentin von der guten Nachricht
+			von Jesus hören kann.
+		</p>
+	</div>
+
+	<Saos
+		animation={'slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
+		animation_out={'slide-out-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
+	>
+		<div class="relative py-20">
+			<h1
+				class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-5xl uppercase text-white"
+			>
+				Denken. Glauben. Erleben.
+			</h1>
+			<img class="z-0" alt="Werte der Hochschul-SMD" src={sloganBg} />
+		</div>
+	</Saos>
+
+	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
+		<div class="grid grid-cols-2 gap-8 lg:px-80">
+			<img alt="Semesterprogramm" src={placeholder} />
+
+			<div class="flex flex-col gap-4">
+				<h1 class="text-5xl font-bold uppercase">Was wir machen</h1>
+				<p>
+					Im Semester treffen wir uns meistens abwechselnd zu Groß- und Kleingruppenabenden. Beide
+					sind eine Mischung aus Input, Austausch und Gemeinschaft – wir wollen gemeinsam nachdenken
+					und Spaß haben.
+				</p>
+				<button class="w-fit bg-black p-4 text-white">Semesterprogramm</button>
+			</div>
+		</div>
+	</Saos>
+
+	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
+		<div class="grid grid-cols-2 gap-8 lg:px-80">
+			<div class="flex flex-col gap-4">
+				<h1 class="text-5xl font-bold uppercase">Wie du uns erreichst</h1>
+				<p>
+					Du möchtest regelmäßige Infos erhalten, hast eine Frage an uns oder ein anderes Anliegen?
+					Schreib eine Mail unser Leitungsteam Debora und Daniel.
+				</p>
+				<button class="w-fit bg-black p-4 text-white">Schreib uns ne mail</button>
+			</div>
+			<img alt="Semesterprogramm" src={placeholder} />
+		</div>
+	</Saos>
+
+	<div class="relative my-20">
+		<img alt="Springbreak" src={placeholder2} />
+
+		<div class="absolute left-14 top-14 text-white">
+			<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
+				<div class="flex flex-col gap-4">
+					<h1 class="text-5xl">Springbreak</h1>
+					<p>alle zwei Wochen Dienstagabend.</p>
+					<button class="w-fit bg-black p-4 text-white">Weitere Infos</button>
+				</div>
+			</Saos>
+		</div>
+	</div>
+
+	<div class="flex flex-col gap-8 lg:px-80">
+		<div class="flex flex-col">
+			<h1 class="text-5xl font-bold uppercase">DU MÖCHTEST MEHR ERFAHREN?</h1>
+			<h1 class="self-end text-5xl font-bold uppercase">SCHREIB UNS.</h1>
+		</div>
+		<h2 class="text-4xl">Kontakt aufnehmen</h2>
+		<TextInput label="Name" />
+		<TextInput label="Betreff" />
+		<TextInput label="Deine E-Mail-Addresse" />
+		<TextArea label="Deine Nachricht" />
+		<CheckboxInput
+			id="datenschutz"
+			label="Ich bin damit einverstanden, dass meine Daten zur Bearbeitung meines Anliegens verwendet werden."
+		/>
+		<button class="bg-primary w-fit p-4 text-white">Abschicken</button>
+	</div>
+
+	<!-- <div class="card mt-8">
 		<h1 class="text-primary text-2xl lg:text-3xl">Was geht? - Nächste Events</h1>
 		<div class="grid gap-8 md:grid-cols-[1fr_300px]">
 			<CalendarList />
@@ -152,5 +254,38 @@
 				<li>Verwendungzweck: H-SMD Gruppe Karlsruhe</li>
 			</ul>
 		</div>
-	</section>
+	</section> -->
 </main>
+
+<style>
+	@keyframes -global-slide-in {
+		0% {
+			transform: translateY(200vh);
+			opacity: 0;
+		}
+		100% {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+
+	@keyframes -global-slide-in-bottom {
+		0% {
+			transform: translateY(30vh);
+			opacity: 0;
+		}
+		100% {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+
+	@keyframes -global-slide-out-bottom {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+</style>
