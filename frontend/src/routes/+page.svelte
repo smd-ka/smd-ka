@@ -16,6 +16,7 @@
 	import ifesLogo from '$lib/assets/logos/ifes.png';
 	import smdLogo from '$lib/assets/logos/smd.png';
 	import sloganBg from '$lib/assets/heroshots/slogan-bg.jpg';
+	import sloganBgSm from '$lib/assets/heroshots/slogan-bg-sm.jpg';
 	import placeholder from '$lib/assets/placeholder.jpg';
 	import placeholder2 from '$lib/assets/placeholder1.jpg';
 	import TextInput from '$lib/components/forms/TextInput.svelte';
@@ -26,7 +27,7 @@
 <HeroShot imgSrc={header} />
 
 <main class="container mx-auto flex flex-col gap-24 py-24 text-lg">
-	<div class="container flex flex-col gap-6 lg:px-80">
+	<div class="container flex flex-col gap-6 px-4 lg:px-80">
 		<h1 class="text-5xl font-bold">SCHÖN, DASS DU HIER BIST!</h1>
 
 		<p>
@@ -52,16 +53,17 @@
 	>
 		<div class="relative py-20">
 			<h1
-				class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-5xl uppercase text-white"
+				class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-4xl uppercase text-white lg:text-5xl"
 			>
 				Denken. Glauben. Erleben.
 			</h1>
-			<img class="z-0" alt="Werte der Hochschul-SMD" src={sloganBg} />
+			<img class="z-0 max-lg:hidden" alt="Werte der Hochschul-SMD" src={sloganBg} />
+			<img class="z-0 lg:hidden" alt="Werte der Hochschul-SMD" src={sloganBgSm} />
 		</div>
 	</Saos>
 
 	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
-		<div class="grid grid-cols-2 gap-8 lg:px-80">
+		<div class="grid gap-8 px-4 lg:grid-cols-2 lg:px-80">
 			<img alt="Semesterprogramm" src={placeholder} />
 
 			<div class="flex flex-col gap-4">
@@ -77,7 +79,7 @@
 	</Saos>
 
 	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
-		<div class="grid grid-cols-2 gap-8 lg:px-80">
+		<div class="grid gap-8 px-4 lg:grid-cols-2 lg:px-80">
 			<div class="flex flex-col gap-4">
 				<h1 class="text-5xl font-bold uppercase">Wie du uns erreichst</h1>
 				<p>
@@ -104,12 +106,12 @@
 		</div>
 	</div>
 
-	<div class="flex flex-col gap-8 lg:px-80">
+	<div class="flex flex-col gap-8 px-4 lg:px-80">
 		<div class="flex flex-col">
-			<h1 class="text-5xl font-bold uppercase">DU MÖCHTEST MEHR ERFAHREN?</h1>
-			<h1 class="self-end text-5xl font-bold uppercase">SCHREIB UNS.</h1>
+			<h1 class="text-4xl font-bold uppercase lg:text-5xl">DU MÖCHTEST MEHR ERFAHREN?</h1>
+			<h1 class="self-end text-4xl font-bold uppercase lg:text-5xl">SCHREIB UNS.</h1>
 		</div>
-		<h2 class="text-4xl">Kontakt aufnehmen</h2>
+		<h2 class="text-3xl lg:text-4xl">Kontakt aufnehmen</h2>
 		<TextInput label="Name" />
 		<TextInput label="Betreff" />
 		<TextInput label="Deine E-Mail-Addresse" />
