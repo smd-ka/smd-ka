@@ -1,5 +1,8 @@
 <script lang="ts">
 	import '../app.css';
+	import '@fontsource/anton';
+	// Supports weights 300-800
+	import '@fontsource-variable/merriweather-sans';
 	import logo from '$lib/assets/logos/smd-ka_modified.svg';
 	import {
 		faBars,
@@ -30,8 +33,11 @@
 </script>
 
 <main class="flex min-h-screen flex-col">
-	<nav class="bg-grey sticky top-0 z-50 flex flex-[0_1_auto] flex-col py-4 shadow-md">
-		<div class="container mx-auto flex items-center justify-between gap-4">
+	<nav class="bg-grey sticky top-0 z-50 flex flex-[0_1_auto] flex-col shadow-md">
+		<div
+			class="container mx-auto flex items-center justify-between gap-4 py-3
+		"
+		>
 			<a class=" py-2" href="/">
 				<img class="max-h-10 pl-4" src={logo} alt="SMD Logo" />
 			</a>
@@ -44,10 +50,10 @@
 					<Fa class="text-primary text-lg" icon={faChevronDown}></Fa>
 				</div>
 				<!-- <a class="hover:text-primary" href="/neu-hier">Neu Hier</a> -->
-				<div class="hover:text-primary flex items-center gap-2">
+				<a href="/semesterprogramm" class="hover:text-primary flex items-center gap-2">
 					Was läuft
 					<Fa class="text-primary text-lg" icon={faChevronDown}></Fa>
-				</div>
+				</a>
 				<a class="hover:text-primary" href="/kalender">Kontakt</a>
 			</div>
 
@@ -72,13 +78,13 @@
 		<div
 			use:click_outside
 			on:outsideclick={() => (showMenu = false)}
-			class="menu absolute top-14 grid bg-white px-8 max-md:w-full md:right-0 md:rounded-md {showMenu
-				? 'open md:border'
+			class="menu absolute top-[5.25rem] grid bg-white px-8 max-xl:w-full md:right-0 md:rounded-md {showMenu
+				? 'open xl:border'
 				: ''} "
 		>
 			<div class="overflow-hidden">
 				<div
-					class=" text-primary flex flex-col items-center justify-center gap-4 py-4 text-xl md:hidden"
+					class=" text-primary flex flex-col items-center justify-center gap-4 py-4 text-xl xl:hidden"
 				>
 					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/neu-hier">
 						Neu Hier
@@ -89,9 +95,7 @@
 					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/kalender">
 						Kalender
 					</a>
-					<!-- <a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/fesd">
-						FESD
-					</a> -->
+
 					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/intern">
 						Intern
 					</a>
@@ -174,8 +178,8 @@
 				{/if}
 			</div>
 		</div>
+		<div class="bg-primary h-1"></div>
 	</nav>
-	<div class="bg-primary h-1"></div>
 
 	<div class=" flex-[1_1_auto]">
 		<slot />
