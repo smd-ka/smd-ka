@@ -3,7 +3,9 @@ export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		fontFamily: {
-			sans: ['roboto', 'sans-serif']
+			sans: ['roboto', 'sans-serif'],
+			anton: ['Anton', 'sans-serif'],
+			merriweather: ['Merriweather Sans Variable', 'sans-serif']
 		},
 		extend: {
 			colors: {

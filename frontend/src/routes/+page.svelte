@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Saos from 'saos';
-	import header from '$lib/assets/header.png';
+	import header from '$lib/assets/heroshots/karlsruhe.jpeg';
 	import Instagram from '$lib/components/Instagram.svelte';
 	import {
 		faCalendarDays,
@@ -25,11 +25,14 @@
 </script>
 
 <HeroShot imgSrc={header} />
+<div class="bg-primary text-grey z-10 px-4 py-8 text-center text-4xl font-bold md:hidden md:py-4">
+	Herzlich Willkommen bei der Hochschul-SMD <br class="md:hidden" />
+	<span class="text-white">Karlsruhe</span>
+</div>
 
 <main class="container mx-auto flex flex-col gap-24 py-24 text-lg">
 	<div class="container flex flex-col gap-6 px-4 xl:px-80">
-		<h1 class="text-5xl font-bold">SCHÖN, DASS DU HIER BIST!</h1>
-
+		<h1 class="text-5xl font-bold uppercase">SCHÖN, DASS DU HIER BIST!</h1>
 		<p>
 			Zwischen Uni-Alltag und WG-Wahnsinn haben wir einen Treffpunkt, an dem Studierende aus allen
 			Ecken der Hochschule zusammenkommen. Uns verbindet der Wunsch nach Gemeinschaft, Diskussion
@@ -69,24 +72,26 @@
 			<div class="flex flex-col gap-4">
 				<h1 class="text-5xl font-bold uppercase">Was wir machen</h1>
 				<p>
-					Im Semester treffen wir uns meistens abwechselnd zu Groß- und Kleingruppenabenden. Beide
-					sind eine Mischung aus Input, Austausch und Gemeinschaft – wir wollen gemeinsam nachdenken
-					und Spaß haben.
+					Im Semester treffen wir uns abwechselnd zum Gruppentreff und in Hauskreisen. Beide sind
+					eine Mischung aus Input, Austausch und Gemeinschaft – wir wollen gemeinsam nachdenken und
+					Spaß haben.
 				</p>
-				<button class="w-fit bg-black p-4 text-white">Semesterprogramm</button>
+				<a href="semesterprogramm" class="w-fit bg-black p-4 text-white">Semesterprogramm</a>
 			</div>
 		</div>
 	</Saos>
 
 	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
 		<div class="grid gap-8 px-4 lg:grid-cols-2 xl:px-80">
-			<div class="flex flex-col gap-4">
+			<div class="flex flex-col gap-4 text-right">
 				<h1 class="text-5xl font-bold uppercase">Wie du uns erreichst</h1>
 				<p>
 					Du möchtest regelmäßige Infos erhalten, hast eine Frage an uns oder ein anderes Anliegen?
-					Schreib eine Mail unser Leitungsteam Debora und Daniel.
+					Schreib eine Mail an Felix aus unserem Leitungsteam.
 				</p>
-				<button class="w-fit bg-black p-4 text-white">Schreib uns ne mail</button>
+				<a href="leiter@smd-karlsruhe.de" class="w-fit self-end bg-black p-4 text-white"
+					>Schreib uns ne mail</a
+				>
 			</div>
 			<img alt="Semesterprogramm" src={placeholder} />
 		</div>
