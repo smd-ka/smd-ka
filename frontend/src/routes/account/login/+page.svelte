@@ -28,8 +28,8 @@
 	};
 </script>
 
-<main class="flex flex-col items-center gap-4">
-	<div class="card mt-24">
+<main class="flex flex-col items-center gap-4 bg-gray-100 py-24">
+	<div class="card">
 		{#if loading}
 			<div class="my-20 flex w-80 items-center justify-center">
 				<img src={loadingSpinner} class="h-32" alt="loading" />
