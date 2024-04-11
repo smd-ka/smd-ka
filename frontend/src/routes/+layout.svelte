@@ -8,6 +8,7 @@
 		faBars,
 		faChevronDown,
 		faRightFromBracket,
+		faRightToBracket,
 		faX
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
@@ -55,6 +56,9 @@
 					<Fa class="text-primary text-lg" icon={faChevronDown}></Fa>
 				</a>
 				<a class="hover:text-primary" href="/kalender">Kontakt</a>
+				<a class="hover:text-primary self-center" href="/intern">
+					<Fa class="text-xl text-white" icon={faRightToBracket} />
+				</a>
 			</div>
 
 			<div class="text-white xl:hidden">
