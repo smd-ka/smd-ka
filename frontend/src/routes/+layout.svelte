@@ -17,7 +17,7 @@
 	import { click_outside } from '$lib/click_outside';
 	import ifes from '$lib/assets/logos/ifes.png';
 
-	let showMenu = false;
+	let showMenu = true;
 	let loading = false;
 	let src = getAvatarUrl();
 	let isValid = pb.authStore.isValid;
@@ -78,22 +78,47 @@
 		<div
 			use:click_outside
 			on:outsideclick={() => (showMenu = false)}
-			class="menu absolute top-[5.25rem] grid bg-white px-8 max-xl:w-full md:right-0 md:rounded-md {showMenu
+			class="menu absolute top-[4.5rem] grid bg-white px-8 max-xl:w-full md:right-0 md:rounded-md {showMenu
 				? 'open xl:border'
 				: ''} "
 		>
-			<div class="overflow-hidden">
-				<div
-					class=" text-primary flex flex-col items-center justify-center gap-4 py-4 text-xl xl:hidden"
-				>
-					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/neu-hier">
-						Neu Hier
+			<div class="flex justify-center overflow-hidden">
+				<div class="text-primary flex flex-col justify-center gap-4 py-4 text-xl xl:hidden">
+					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/">Startseite</a
+					>
+
+					<div>
+						<a on:click={() => (showMenu = false)} class="!underline" href="/about"> Über uns </a>
+
+						<div class="text-primary-text grid pl-8">
+							<a on:click={() => (showMenu = false)} class="hover:underline" href="/about">
+								Wer wir sind
+							</a>
+							<a on:click={() => (showMenu = false)} class="hover:underline" href="/about#orga">
+								Wie wir uns organisieren
+							</a>
+							<a
+								on:click={() => (showMenu = false)}
+								class="hover:underline"
+								href="/about#mitarbeit"
+							>
+								Mitarbeit
+							</a>
+							<a on:click={() => (showMenu = false)} class="hover:underline" href="/about#sup">
+								Unterstützen
+							</a>
+						</div>
+					</div>
+					<a
+						on:click={() => (showMenu = false)}
+						class="hover:text-corperate"
+						href="/semesterprogramm"
+					>
+						Was läuft
 					</a>
-					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/about">
-						Über uns
-					</a>
+
 					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/kalender">
-						Kalender
+						Kontakt
 					</a>
 
 					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/intern">
