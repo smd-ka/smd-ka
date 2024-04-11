@@ -145,6 +145,7 @@
 				</div>
 			{/each}
 		</div>
+		<div id="orga"></div>
 	</div>
 
 	<div class="flex flex-col gap-8 px-4 xl:px-80">
@@ -180,7 +181,11 @@
 		</div>
 	</div>
 
-	<!-- TODO Mitarbeit -->
+	<div id="mitarbeit">
+		<h1 class="text-4xl font-bold uppercase md:text-5xl">Mitarbeit</h1>
+		TODO Mitarbeit
+		<div id="sup"></div>
+	</div>
 
 	<div class="flex flex-col gap-8 px-4 xl:px-80">
 		<h1 class="text-4xl font-bold uppercase md:text-5xl">Unterstützung</h1>
