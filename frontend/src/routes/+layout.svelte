@@ -39,16 +39,16 @@
 		"
 		>
 			<a class=" py-2" href="/">
-				<img class="max-h-10 pl-4" src={logo} alt="SMD Logo" />
+				<img class="max-h-7 pl-4" src={logo} alt="SMD Logo" />
 			</a>
 
-			<div class="flex gap-4 text-2xl text-white max-xl:hidden">
+			<div class="flex gap-4 text-xl text-white max-xl:hidden">
 				<!-- Links (only visable for bigger screens) -->
 				<a class="text-primary hover:text-white" href="/">Startseite</a>
-				<div class="hover:text-primary flex items-center gap-2">
+				<a href="/about" class="hover:text-primary flex items-center gap-2">
 					Über uns
 					<Fa class="text-primary text-lg" icon={faChevronDown}></Fa>
-				</div>
+				</a>
 				<!-- <a class="hover:text-primary" href="/neu-hier">Neu Hier</a> -->
 				<a href="/semesterprogramm" class="hover:text-primary flex items-center gap-2">
 					Was läuft
@@ -89,7 +89,7 @@
 					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/neu-hier">
 						Neu Hier
 					</a>
-					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/#about-us">
+					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/about">
 						Über uns
 					</a>
 					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/kalender">
@@ -238,7 +238,7 @@
 				<section class="flex flex-col gap-4">
 					<h2 class="text-primary text-xl uppercase">Quick Links</h2>
 					<div>
-						<a href="#TODO">Über uns</a><br />
+						<a href="about">Über uns</a><br />
 						<a href="#TODO">Kontakt</a><br />
 						<a href="#TODO">Impressum</a><br />
 						<a href="$TODO">Datenschutzerklärung</a>
