@@ -61,13 +61,13 @@
 <div class="relative bg-cover" style="background-image: url({background});">
 	<main class="container mx-auto flex flex-col gap-24 py-24 text-lg">
 		<div class="container flex flex-col gap-6 px-4 xl:px-80">
-			<div class="grid grid-cols-[1fr_2rem]">
+			<div class="grid grid-cols-[1fr_3.2rem]">
 				<div>
 					<h1 class="font-anton text-primary text-5xl font-bold uppercase tracking-wide">
 						Semester
 						<span class=" bordered-text text-white">Termine</span>
 					</h1>
-					<div class="text-2xl">
+					<div class="text-xl md:text-2xl">
 						Dienstags +++ gemeinsames Essen: 18:30 Uhr <br /> Programmbeginn: 19:30 Uhr +++ Reinhold-Frank-Straße
 						44A
 					</div>
@@ -92,9 +92,9 @@
 						})}
 					</h3>
 					<div>
-						<h3 class="text-3xl font-bold">{event.title}</h3>
+						<h3 class="text-xl font-bold md:text-3xl">{event.title}</h3>
 						{#if event.lecturer}
-							<p class="italic">{event.lecturer}</p>
+							<p class="text-sm italic">{event.lecturer}</p>
 						{/if}
 						{#if event.location}
 							<p class="text-primary">{event.location}</p>
@@ -104,8 +104,12 @@
 			{/each}
 		</div>
 	</main>
-	<img src={heart} alt="Herzenssache" class="absolute bottom-4 left-0" />
+	<div class="flex justify-center">
+		<img src={heart} alt="Herzenssache" class="bottom-4 left-4 w-60 xl:absolute" />
+	</div>
 </div>
+
+<div class="mt-20">Wöchentliche Aktionen</div>
 
 <style>
 	.bordered-text {
