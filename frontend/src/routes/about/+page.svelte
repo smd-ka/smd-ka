@@ -62,7 +62,7 @@
 		</p>
 	</div>
 
-	<div class="grid grid-cols-3">
+	<div class="grid lg:grid-cols-3">
 		<button class="flex flex-col items-center" on:click={() => (showDenken = !showDenken)}>
 			<img src={glauben} alt="Kopf mit Glühbrine" />
 			<h3 class="text-3xl font-bold uppercase">Denken</h3>
@@ -131,9 +131,9 @@
 	</div>
 
 	<div class="flex flex-col gap-8 px-4 xl:px-80">
-		<h1 class="text-5xl font-bold uppercase">Warum wir bei der SMD sind.</h1>
+		<h1 class="text-4xl font-bold uppercase md:text-5xl">Warum wir bei der SMD sind.</h1>
 
-		<div class="grid grid-cols-2 gap-4">
+		<div class="grid gap-4 md:grid-cols-2">
 			{#each statements as statement}
 				<div class="bg-[#EDEDED]">
 					<img src={statement.image} alt="Profilbild" />
@@ -148,7 +148,7 @@
 	</div>
 
 	<div class="flex flex-col gap-8 px-4 xl:px-80">
-		<h1 class="text-5xl font-bold uppercase">
+		<h1 class="break-words text-4xl font-bold uppercase md:text-5xl">
 			Hochschul-SMD <br /> Ein deutschlandweites Netzwerk
 		</h1>
 		<div>
@@ -165,7 +165,7 @@
 	</div>
 
 	<div class="flex flex-col gap-8 px-4 xl:px-80">
-		<h1 class="text-5xl font-bold uppercase">Leitungsteam</h1>
+		<h1 class="text-4xl font-bold uppercase md:text-5xl">Leitungsteam</h1>
 
 		<div class="grid gap-8 lg:grid-cols-2 lg:gap-16">
 			<div class="flex flex-col items-center">
@@ -180,10 +180,12 @@
 		</div>
 	</div>
 
-	<div class="flex flex-col gap-8 px-4 xl:px-80">
-		<h1 class="text-5xl font-bold uppercase">Unterstützung</h1>
+	<!-- TODO Mitarbeit -->
 
-		<div class="grid grid-cols-[1fr_3fr] gap-8">
+	<div class="flex flex-col gap-8 px-4 xl:px-80">
+		<h1 class="text-4xl font-bold uppercase md:text-5xl">Unterstützung</h1>
+
+		<div class="grid gap-8 md:grid-cols-[1fr_3fr]">
 			<h2 class="text-3xl font-bold uppercase">Gebet</h2>
 			<p>
 				Bete, dass Gottes Liebe an unserer Hochschule sichtbar wird, Gott uns als Hochschulgruppe
@@ -196,8 +198,6 @@
 				Kontaktiere uns, schau bei einem unserer Gruppenabende vorbei und steig mit ein. Wir freuen
 				uns auf dich.
 			</p>
-
-			#TODO Mitarbeit
 
 			<h2 class="text-3xl font-bold uppercase">Spenden</h2>
 
