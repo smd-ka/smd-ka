@@ -4,6 +4,8 @@
 	import { onMount } from 'svelte';
 	import background from '$lib/assets/ss24/background_ss24.png';
 	import heart from '$lib/assets/ss24/herzenssache.png';
+	import Saos from 'saos';
+	import promoVid from '$lib/assets/videos/saft.mp4';
 
 	let program = [
 		{
@@ -108,10 +110,41 @@
 		<img src={heart} alt="Herzenssache" class="bottom-4 left-4 w-60 xl:absolute" />
 	</div>
 </div>
+<div class="text-primary py-4 text-center text-5xl tracking-widest">+++</div>
 
-<div class="mt-20">Wöchentliche Aktionen</div>
+<div class="relative">
+	<video class="h-96" autoplay muted loop>
+		<source src={promoVid} type="video/mp4" />
+		<track kind="captions" />
+		Your browser does not support the video tag.
+	</video>
+
+	<div class="absolute left-14 top-14 text-white">
+		<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
+			<div class="flex flex-col gap-4">
+				<h1 class="text-5xl">SemesterAnfangsFreizeiT</h1>
+				<p>From the Inside out</p>
+				<a href="/saft" class="w-fit bg-black p-4 text-white">Weitere Infos</a>
+			</div>
+		</Saos>
+	</div>
+</div>
+
+<div class="text-primary py-4 text-center text-5xl tracking-widest">+++</div>
 
 <style>
+	video {
+		width: 100%;
+		height: 500px;
+		object-fit: cover;
+	}
+
+	@media (max-width: 700px) {
+		video {
+			height: 300px;
+		}
+	}
+
 	.bordered-text {
 		-webkit-text-stroke: 2px #e84c05; /* width and color */
 	}

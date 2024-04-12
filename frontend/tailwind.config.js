@@ -5,7 +5,8 @@ export default {
 		fontFamily: {
 			sans: ['roboto', 'sans-serif'],
 			anton: ['Anton', 'sans-serif'],
-			merriweather: ['Merriweather Sans Variable', 'sans-serif']
+			merriweather: ['Merriweather Sans Variable', 'sans-serif'],
+			bebas: ['Bebas Neue', 'sans-serif']
 		},
 		extend: {
 			colors: {

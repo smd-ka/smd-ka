@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Saos from 'saos';
 	import header from '$lib/assets/heroshots/karlsruhe.jpeg';
-	import Instagram from '$lib/components/Instagram.svelte';
 	import {
 		faCalendarDays,
 		faChildReaching,
@@ -22,6 +21,7 @@
 	import TextInput from '$lib/components/forms/TextInput.svelte';
 	import TextArea from '$lib/components/forms/TextArea.svelte';
 	import CheckboxInput from '$lib/components/forms/CheckboxInput.svelte';
+	import saft_heroshot from '$lib/assets/heroshots/saft_heroshot.png';
 </script>
 
 <HeroShot imgSrc={header} />
@@ -98,14 +98,17 @@
 	</Saos>
 
 	<div class="relative my-20">
-		<img alt="Springbreak" src={placeholder2} />
+		<div
+			class="h-[400px] bg-cover bg-[center_top_34%] opacity-80"
+			style="background-image: url({saft_heroshot});"
+		/>
 
 		<div class="absolute left-14 top-14 text-white">
 			<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
 				<div class="flex flex-col gap-4">
-					<h1 class="text-5xl">Springbreak</h1>
-					<p>alle zwei Wochen Dienstagabend.</p>
-					<button class="w-fit bg-black p-4 text-white">Weitere Infos</button>
+					<h1 class="text-5xl">SemesterAnfangsFreizeiT</h1>
+					<p>From the Inside out</p>
+					<a href="/saft" class="w-fit bg-black p-4 text-white">Weitere Infos</a>
 				</div>
 			</Saos>
 		</div>
