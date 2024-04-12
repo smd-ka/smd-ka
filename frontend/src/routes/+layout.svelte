@@ -20,7 +20,7 @@
 	import ifes from '$lib/assets/logos/ifes.png';
 	import { text } from '@sveltejs/kit';
 
-	let showMenu = true;
+	let showMenu = false;
 	let loading = false;
 	let src = getAvatarUrl();
 	let isValid = pb.authStore.isValid;
@@ -111,11 +111,11 @@
 		>
 			<div class="flex justify-center overflow-hidden">
 				<div class="text-primary flex flex-col justify-center gap-4 py-4 text-xl xl:hidden">
-					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/">Startseite</a
+					<a on:click={() => (showMenu = false)} class="!underline !hover:no-underline" href="/">Startseite</a
 					>
 
 					<div>
-						<a on:click={() => (showMenu = false)} class="!underline" href="/about"> Über uns </a>
+						<a on:click={() => (showMenu = false)} class="!underline !hover:no-underline" href="/about"> Über uns </a>
 
 						<div class="text-primary-text grid pl-8">
 							<a on:click={() => (showMenu = false)} class="hover:underline" href="/about">
@@ -136,19 +136,35 @@
 							</a>
 						</div>
 					</div>
-					<a
-						on:click={() => (showMenu = false)}
-						class="hover:text-corperate"
-						href="/semesterprogramm"
-					>
-						Was läuft
-					</a>
-
-					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/kalender">
+					<div>
+						<a
+							on:click={() => (showMenu = false)}
+							class="!underline !hover:underline"
+							href="/semesterprogramm"
+						>
+							Was läuft
+						</a>
+						<div class="text-primary-text grid pl-8">
+							<a on:click={() => (showMenu = false)} class="hover:underline" href="/semesterprogramm">
+								Semesterprogramm
+							</a>
+							<a on:click={() => (showMenu = false)} class="hover:underline" href="/semesterprogramm#saft">
+								SemesterAnfangsFreizeiT
+							</a>
+							<a
+								on:click={() => (showMenu = false)}
+								class="hover:underline"
+								href="/semesterprogramm#aktionen"
+							>
+								Wöchentliche Aktionen
+							</a>
+						</div>
+					</div>
+					<a on:click={() => (showMenu = false)} class="!underline !hover:no-underline" href="/kalender">
 						Kontakt
 					</a>
 
-					<a on:click={() => (showMenu = false)} class="hover:text-corperate" href="/intern">
+					<a on:click={() => (showMenu = false)} class="!underline !hover:no-underline" href="/intern">
 						Intern
 					</a>
 				</div>

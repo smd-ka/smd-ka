@@ -60,7 +60,7 @@
 
 <img src={header_mobile} alt="Herzenssache" class="w-full md:hidden" />
 <img src={header} alt="Herzenssache" class="w-full max-md:hidden" />
-<div class="relative bg-cover" style="background-image: url({background});">
+<div class="relative bg-cover bg-right" style="background-image: url({background});">
 	<main class="container mx-auto flex flex-col gap-24 py-24 text-lg">
 		<div class="container flex flex-col gap-6 px-4 xl:px-80">
 			<div class="grid grid-cols-[1fr_3.2rem]">
@@ -110,7 +110,7 @@
 		<img src={heart} alt="Herzenssache" class="bottom-4 left-4 w-60 xl:absolute" />
 	</div>
 </div>
-<div class="text-primary py-4 text-center text-5xl tracking-widest">+++</div>
+<div id="saft" class="text-primary py-4 text-center text-5xl tracking-widest">+++</div>
 
 <div class="relative">
 	<video class="h-96" autoplay muted loop>
@@ -122,7 +122,8 @@
 	<div class="absolute left-14 top-14 text-white">
 		<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
 			<div class="flex flex-col gap-4">
-				<h1 class="text-5xl">SemesterAnfangsFreizeiT</h1>
+				<h1 class="text-3xl md:hidden">SemesterAnfangs- <br /> FreizeiT</h1>
+				<h1 class="text-5xl max-md:hidden">SemesterAnfangsFreizeiT</h1>
 				<p>From the Inside out</p>
 				<a href="/saft" class="w-fit bg-black p-4 text-white">Weitere Infos</a>
 			</div>
