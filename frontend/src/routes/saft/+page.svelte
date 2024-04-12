@@ -5,7 +5,7 @@
 	import header_mobile from '$lib/assets/saft/saft_flyer_mobile.png';
 	import promoVid from '$lib/assets/videos/saft.mp4';
 	import saftFunny from '$lib/assets/saft/saft_funny.png';
-	import saftBike from '$lib/assets/saft/saft_bike.png';
+	import saftGroup from '$lib/assets/heroshots/saft_heroshot.png';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { faCalendarDays, faCoins, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 </script>
@@ -35,7 +35,7 @@
 
 	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
 		<div class="grid gap-8 px-4 lg:grid-cols-2 xl:px-60">
-			<img alt="Semesterprogramm" src={saftBike} />
+			<img alt="Semesterprogramm" src={saftGroup} />
 
 			<div class="flex flex-col gap-4">
 				<h1 class="text-4xl font-bold uppercase">Worum gehts?</h1>
@@ -43,9 +43,9 @@
 					Die SAFT ist die <bold class="font-bold">S</bold>emester<bold class="font-bold">A</bold
 					>nfangs<bold class="font-bold">F</bold>reizei<bold class="font-bold">T</bold> der SMD
 					Karlsruhe. Sie findet immer am Anfang des Semesters statt und ist eine gute Möglichkeit,
-					die SMD und andere Studierende kennenzulernen. Unser Motto für diese SAFT
+					die SMD und andere Studierende kennenzulernen. Unser Motto für diese SAFT ist
 					<bold class=" whitespace-nowrap font-bold uppercase">From the inside out</bold>. Um
-					herauszufinden was das mit dir und unserem Semesterthema Herzenssache zu tun hat, melde
+					herauszufinden, was das mit dir und unserem Semesterthema "Herzenssache" zu tun hat, melde
 					dich jetzt gleich an!
 				</p>
 				<a href="/saft" class="w-fit bg-black p-4 text-white">Jetzt anmelden</a>
@@ -60,7 +60,7 @@
 				<div class="mt-4 flex flex-col items-end gap-2 text-lg md:text-xl">
 					<div class="flex items-center gap-2">
 						<Fa class="text-primary" icon={faCalendarDays} />
-						Datum: 10 - 12 November
+						Datum: 3 - 5 Mai
 					</div>
 					<div class="flex items-center gap-2">
 						<Fa class="text-primary" icon={faCoins} />

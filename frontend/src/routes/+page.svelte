@@ -102,11 +102,11 @@
 			class="h-[400px] bg-cover bg-[center_top_34%] opacity-80"
 			style="background-image: url({saft_heroshot});"
 		/>
-
-		<div class="absolute left-14 top-14 text-white">
+		<div class="absolute left-8 top-14 text-white md:left-14">
 			<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
 				<div class="flex flex-col gap-4">
-					<h1 class="text-5xl">SemesterAnfangsFreizeiT</h1>
+					<h1 class="text-4xl md:hidden">SemesterAnfangs- <br />FreizeiT</h1>
+					<h1 class="text-5xl max-md:hidden">SemesterAnfangsFreizeiT</h1>
 					<p>From the Inside out</p>
 					<a href="/saft" class="w-fit bg-black p-4 text-white">Weitere Infos</a>
 				</div>
