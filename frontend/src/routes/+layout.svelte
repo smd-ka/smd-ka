@@ -3,6 +3,7 @@
 	import '@fontsource/anton';
 	// Supports weights 300-800
 	import '@fontsource-variable/merriweather-sans';
+	import '@fontsource/bebas-neue';
 	import logo from '$lib/assets/logos/smd-ka_modified.svg';
 	import {
 		faBars,
@@ -17,6 +18,7 @@
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 	import { click_outside } from '$lib/click_outside';
 	import ifes from '$lib/assets/logos/ifes.png';
+	import { text } from '@sveltejs/kit';
 
 	let showMenu = true;
 	let loading = false;
@@ -45,17 +47,38 @@
 
 			<div class="flex gap-4 text-xl text-white max-xl:hidden">
 				<!-- Links (only visable for bigger screens) -->
+
 				<a class="text-primary hover:text-white" href="/">Startseite</a>
-				<a href="/about" class="hover:text-primary flex items-center gap-2">
-					Über uns
-					<Fa class="text-primary text-lg" icon={faChevronDown}></Fa>
-				</a>
-				<!-- <a class="hover:text-primary" href="/neu-hier">Neu Hier</a> -->
-				<a href="/semesterprogramm" class="hover:text-primary flex items-center gap-2">
-					Was läuft
-					<Fa class="text-primary text-lg" icon={faChevronDown}></Fa>
-				</a>
-				<a class="hover:text-primary" href="/kalender">Kontakt</a>
+				<div class="relative">
+					<a href="/about" class="hover:text-primary peer flex items-center gap-2">
+						Über uns
+						<Fa class="text-primary text-lg" icon={faChevronDown}></Fa>
+					</a>
+					<div
+						class=" bg-primary absolute hidden justify-center gap-4 px-8 py-2 hover:grid peer-hover:grid"
+					>
+						<a class="hover:text-primary-text" href="/about">Wer wir sind</a>
+						<a class="hover:text-primary-text" href="/about#orga">Wie wir uns organisieren</a>
+						<a class="hover:text-primary-text" href="/about#mitarbeit">Mitarbeit</a>
+						<a class="hover:text-primary-text" href="/about#sup">Unterstützen</a>
+					</div>
+				</div>
+				<div>
+					<a href="/semesterprogramm" class="hover:text-primary peer flex items-center gap-2">
+						Was läuft
+						<Fa class="text-primary text-lg" icon={faChevronDown}></Fa>
+					</a>
+					<div
+						class=" bg-primary absolute hidden justify-center gap-4 px-8 py-2 hover:grid peer-hover:grid"
+					>
+						<a class="hover:text-primary-text" href="/semesterprogramm">Semesterprogramm</a>
+						<a class="hover:text-primary-text" href="/saft">SemesterAnfangsFreizeiT </a>
+						<a class="hover:text-primary-text" href="/semesterprogramm#aktionen"
+							>Wöchentliche Aktionen</a
+						>
+					</div>
+				</div>
+				<a class="hover:text-primary" href="/">Kontakt</a>
 				<a class="hover:text-primary self-center" href="/intern">
 					<Fa class="text-xl text-white" icon={faRightToBracket} />
 				</a>

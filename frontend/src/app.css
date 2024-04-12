@@ -22,3 +22,7 @@ body {;
     @apply bg-white rounded-md p-8 shadow-md;
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}
