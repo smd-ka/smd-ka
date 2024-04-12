@@ -15,7 +15,7 @@
 		},
 		{
 			date: new Date('2024-4-30'),
-			title: 'HERZensthema Christenverfolgung¹',
+			title: 'HERZensthema Christenverfolgung',
 			lecturer: 'Samuel Kaiser, OpenDoors',
 			location: ' Veranstaltungsort: EFG Karlsruhe, Ohiostraße 17 '
 		},
