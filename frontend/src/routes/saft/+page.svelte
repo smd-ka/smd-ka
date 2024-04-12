@@ -79,26 +79,30 @@
 				</div>
 			</div>
 			<img alt="Semesterprogramm" src={saftFunny} />
-		</div></Saos
-	>
+		</div>
+	</Saos>
 
 	<div class="px-4 xl:px-60">
-		<h1 class="text-4xl font-bold uppercase">Wie siehts da aus?</h1>
-		<p>
-			Um einen Eindruck von der SAFT zu bekommen schau dir gerne einfach das Video an. Wir werden
-			ein geniales Wochenende mit Andachten, Workshops, Sport, Spielen, Singen, Beten, Lobpreis und
-			vielem mehr verbringen. Selbstverständlich wird auch genung Zeit zum relaxen, quatschen und
-			chillen sein. Highlight-Empfehlung des Autors: Nachts Baden in der Enz!
-			<br />
-			<br />
-			<span class="font-bold">Wir freuen uns riesig, wenn du mit dabei bist!</span>
-		</p>
+		<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
+			<h1 class="text-4xl font-bold uppercase">Wie siehts da aus?</h1>
+			<p>
+				Um einen Eindruck von der SAFT zu bekommen schau dir gerne einfach das Video an. Wir werden
+				ein geniales Wochenende mit Andachten, Workshops, Sport, Spielen, Singen, Beten, Lobpreis
+				und vielem mehr verbringen. Selbstverständlich wird auch genung Zeit zum relaxen, quatschen
+				und chillen sein. Highlight-Empfehlung des Autors: Nachts Baden in der Enz!
+				<br />
+				<br />
+				<span class="font-bold">Wir freuen uns riesig, wenn du mit dabei bist!</span>
+			</p>
+		</Saos>
 
-		<video class="py-16" controls>
-			<source src={promoVid} type="video/mp4" />
-			<track kind="captions" />
-			Your browser does not support the video tag.
-		</video>
+		<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
+			<video class="py-16" controls>
+				<source src={promoVid} type="video/mp4" />
+				<track kind="captions" />
+				Your browser does not support the video tag.
+			</video>
+		</Saos>
 
 		<h1 class="py-10 text-5xl font-bold uppercase">
 			Du bist dabei? Dann nichts wie los melde dich an!
