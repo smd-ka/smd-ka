@@ -48,7 +48,7 @@
 					herauszufinden, was das mit dir und unserem Semesterthema "Herzenssache" zu tun hat, melde
 					dich jetzt gleich an!
 				</p>
-				<a href="/saft" class="w-fit bg-black p-4 text-white">Jetzt anmelden</a>
+				<a href="/saft/signup" class="w-fit bg-black p-4 text-white">Jetzt anmelden</a>
 			</div>
 		</div>
 	</Saos>
@@ -107,6 +107,6 @@
 		<h1 class="py-10 text-5xl font-bold uppercase">
 			Du bist dabei? Dann nichts wie los melde dich an!
 		</h1>
-		<a href="/saft" class="w-fit bg-black p-4 text-white">Hier gehts zur Anmeldung</a>
+		<a href="/saft/signup" class="w-fit bg-black p-4 text-white">Hier gehts zur Anmeldung</a>
 	</div>
 </main>

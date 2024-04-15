@@ -73,9 +73,9 @@
 					>
 						<a class="hover:text-primary-text" href="/semesterprogramm">Semesterprogramm</a>
 						<a class="hover:text-primary-text" href="/saft">SemesterAnfangsFreizeiT </a>
-						<a class="hover:text-primary-text" href="/semesterprogramm#aktionen"
+						<!-- <a class="hover:text-primary-text" href="/semesterprogramm#aktionen"
 							>Wöchentliche Aktionen</a
-						>
+						> -->
 					</div>
 				</div>
 				<a class="hover:text-primary" href="/">Kontakt</a>
@@ -111,11 +111,18 @@
 		>
 			<div class="flex justify-center overflow-hidden">
 				<div class="text-primary flex flex-col justify-center gap-4 py-4 text-xl xl:hidden">
-					<a on:click={() => (showMenu = false)} class="!underline !hover:no-underline" href="/">Startseite</a
+					<a on:click={() => (showMenu = false)} class="!hover:no-underline !underline" href="/"
+						>Startseite</a
 					>
 
 					<div>
-						<a on:click={() => (showMenu = false)} class="!underline !hover:no-underline" href="/about"> Über uns </a>
+						<a
+							on:click={() => (showMenu = false)}
+							class="!hover:no-underline !underline"
+							href="/about"
+						>
+							Über uns
+						</a>
 
 						<div class="text-primary-text grid pl-8">
 							<a on:click={() => (showMenu = false)} class="hover:underline" href="/about">
@@ -139,32 +146,48 @@
 					<div>
 						<a
 							on:click={() => (showMenu = false)}
-							class="!underline !hover:underline"
+							class="!hover:underline !underline"
 							href="/semesterprogramm"
 						>
 							Was läuft
 						</a>
 						<div class="text-primary-text grid pl-8">
-							<a on:click={() => (showMenu = false)} class="hover:underline" href="/semesterprogramm">
+							<a
+								on:click={() => (showMenu = false)}
+								class="hover:underline"
+								href="/semesterprogramm"
+							>
 								Semesterprogramm
 							</a>
-							<a on:click={() => (showMenu = false)} class="hover:underline" href="/semesterprogramm#saft">
+							<a
+								on:click={() => (showMenu = false)}
+								class="hover:underline"
+								href="/semesterprogramm#saft"
+							>
 								SemesterAnfangsFreizeiT
 							</a>
-							<a
+							<!-- <a
 								on:click={() => (showMenu = false)}
 								class="hover:underline"
 								href="/semesterprogramm#aktionen"
 							>
 								Wöchentliche Aktionen
-							</a>
+							</a> -->
 						</div>
 					</div>
-					<a on:click={() => (showMenu = false)} class="!underline !hover:no-underline" href="/kalender">
+					<a
+						on:click={() => (showMenu = false)}
+						class="!hover:no-underline !underline"
+						href="/kalender"
+					>
 						Kontakt
 					</a>
 
-					<a on:click={() => (showMenu = false)} class="!underline !hover:no-underline" href="/intern">
+					<a
+						on:click={() => (showMenu = false)}
+						class="!hover:no-underline !underline"
+						href="/intern"
+					>
 						Intern
 					</a>
 				</div>
@@ -306,10 +329,10 @@
 				<section class="flex flex-col gap-4">
 					<h2 class="text-primary text-xl uppercase">Quick Links</h2>
 					<div>
-						<a href="about">Über uns</a><br />
-						<a href="#TODO">Kontakt</a><br />
-						<a href="#TODO">Impressum</a><br />
-						<a href="$TODO">Datenschutzerklärung</a>
+						<a href="/about">Über uns</a><br />
+						<a href="/kontakt">Kontakt</a><br />
+						<a href="/imprint">Impressum</a><br />
+						<a href="/privacy">Datenschutzerklärung</a>
 					</div>
 				</section>
 

@@ -39,7 +39,7 @@
 		brings_cake: false,
 		is_vegetarian: false,
 		comments: '',
-		semester: 'WS23/24'
+		semester: 'SS24'
 	};
 
 	const signup = async (event: Event) => {
@@ -58,8 +58,8 @@
 	};
 </script>
 
-<main class="container mx-auto">
-	<div class="card mt-10">
+<main class="container mx-auto py-24">
+	<div class="px-4 lg:px-80">
 		{#if success}
 			<div>
 				<h1 class="text-primary text-2xl">Du hast dich erfolgreich angemeldet!</h1>
@@ -94,7 +94,7 @@
 				<div>Du hast folgende Anmerkungen angegeben: {record?.comments}</div>
 			</div>
 		{:else}
-			<h1 class="text-primary text-2xl">SAFT Anmeldung WiSe 2023</h1>
+			<h1 class="text-5xl font-bold uppercase">SAFT Anmeldung SoSe 2024</h1>
 			{#if loggedIn}
 				Schön, dass du dabei bist {pb.authStore.model?.name}!
 			{/if}
@@ -117,7 +117,12 @@
 						required
 					/>
 				{/if}
-				<h3 class="text-primary text-lg">Wie möchtest du anreisen?</h3>
+				<h3 class="text-3xl font-bold uppercase">Wie möchtest du anreisen?</h3>
+
+				<p>
+					Die Bahnanreise wird um 16:30 vom Hauptbahnhof starten. Die Fahrradanreise wird gegen
+					13:30 aus der Stadtmitte starten.
+				</p>
 
 				<InputCheckbox
 					id="takesCar"
@@ -135,7 +140,7 @@
 					<InputCheckbox
 						id="takesTrain"
 						bind:checked={form.takes_train}
-						label="Ich nehme an der organisieren Bahnfahrt teil."
+						label="Ich nehme an der organisierten Bahnfahrt teil."
 					/>
 
 					{#if form.takes_train}
@@ -159,7 +164,7 @@
 					{/if}
 				</div>
 
-				<h3 class="text-primary text-lg">Organisatorisches</h3>
+				<h3 class="text-3xl font-bold uppercase">Organisatorisches</h3>
 
 				<InputCheckbox
 					id="wouldSleepOnFloor"
@@ -194,9 +199,21 @@
 					></textarea>
 				</div>
 
+				<span
+					>Dürfen wir Bilder von dir machen und anschließend auf Instagram und der Website
+					veröffentlichen?</span
+				>
+				<select bind:value={form.semester} class="rounded-md border-2 py-3" required>
+					<option value="yes">Ja</option>
+					<option value="always ask"
+						>Ja ihr dürft Bilder von mir machen, fragt mich bitte bevor ihr Bilder veröffentlicht.
+					</option>
+					<option value="never">Bitte macht keine Bilder von mir.</option>
+				</select>
+
 				<button
 					disabled={loading}
-					class="bg-primary relative flex items-center justify-center rounded-md px-12 py-2 text-white md:w-fit"
+					class="relative flex items-center justify-center bg-black px-12 py-4 text-white md:w-fit"
 				>
 					{#if loading}
 						<img class="absolute left-2 h-8" src={loadingSpinner} alt="loading" />

@@ -40,6 +40,7 @@ export type saftRegistration = {
 	is_vegetarian: boolean;
 	comments: string;
 	semester: string;
+	post_images: 'never' | 'always ask' | 'yes';
 };
 
 export type FESDRegistration = {
@@ -47,4 +48,14 @@ export type FESDRegistration = {
 	name: string;
 	allergies: string;
 	vegetarian: boolean;
+};
+
+export type Statement = {
+	id: string;
+	collectionName: string;
+	collectionId: string;
+	name: string;
+	subject: string;
+	statement: string;
+	picture: string;
 };

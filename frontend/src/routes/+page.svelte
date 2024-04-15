@@ -16,12 +16,12 @@
 	import smdLogo from '$lib/assets/logos/smd.png';
 	import sloganBg from '$lib/assets/heroshots/slogan-bg.jpg';
 	import sloganBgSm from '$lib/assets/heroshots/slogan-bg-sm.jpg';
-	import placeholder from '$lib/assets/placeholder.jpg';
-	import placeholder2 from '$lib/assets/placeholder1.jpg';
 	import TextInput from '$lib/components/forms/TextInput.svelte';
 	import TextArea from '$lib/components/forms/TextArea.svelte';
 	import CheckboxInput from '$lib/components/forms/CheckboxInput.svelte';
 	import saft_heroshot from '$lib/assets/heroshots/saft_heroshot.png';
+	import herzenssache_16_9 from '$lib/assets/ss24/herzenssache_16_9.png';
+	import felix from '$lib/assets/about/Felix.jpeg';
 </script>
 
 <HeroShot imgSrc={header} />
@@ -67,7 +67,7 @@
 
 	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
 		<div class="grid gap-8 px-4 lg:grid-cols-2 xl:px-80">
-			<img alt="Semesterprogramm" src={placeholder} />
+			<img alt="Semesterprogramm" src={herzenssache_16_9} />
 
 			<div class="flex flex-col gap-4">
 				<h1 class="text-5xl font-bold uppercase">Was wir machen</h1>
@@ -93,7 +93,7 @@
 					>Schreib uns ne mail</a
 				>
 			</div>
-			<img alt="Semesterprogramm" src={placeholder} />
+			<img alt="Semesterprogramm" src={felix} />
 		</div>
 	</Saos>
 

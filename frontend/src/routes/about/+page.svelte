@@ -9,41 +9,68 @@
 	import erleben from '$lib/assets/about/erleben.png';
 	import felix from '$lib/assets/about/Felix.jpeg';
 	import leitung from '$lib/assets/about/leitungsteam.png';
+	import { onMount } from 'svelte';
+	import { getAvatarUrl, pb } from '$lib/pocketbase';
+	import type { Statement } from '$lib/models';
 
 	let showDenken = false;
 	let showGlauben = false;
 	let showErleben = false;
+	let statements: Array<Statement> = [];
 
-	let statements = [
-		{
-			image: felix,
-			name: 'Felix',
-			subject: 'Physik',
-			statement:
-				'Die SMD ist ein super Ort, um unglaublich viel für das Leben mitzunehmen. Man kann im Glauben gestärkt werden oder auch überhaupt erst mal was darüber erfahren, aber auch Verantwortung übernehmen. Und man lernt Leute kennen, die etwas komplett anderes studieren und denken als man selber. '
-		},
-		{
-			image: felix,
-			name: 'Felix',
-			subject: 'Physik',
-			statement:
-				'Die SMD ist ein super Ort, um unglaublich viel für das Leben mitzunehmen. Man kann im Glauben gestärkt werden oder auch überhaupt erst mal was darüber erfahren, aber auch Verantwortung übernehmen. Und man lernt Leute kennen, die etwas komplett anderes studieren und denken als man selber. '
-		},
-		{
-			image: felix,
-			name: 'Felix',
-			subject: 'Physik',
-			statement:
-				'Die SMD ist ein super Ort, um unglaublich viel für das Leben mitzunehmen. Man kann im Glauben gestärkt werden oder auch überhaupt erst mal was darüber erfahren, aber auch Verantwortung übernehmen. Und man lernt Leute kennen, die etwas komplett anderes studieren und denken als man selber. '
-		},
-		{
-			image: felix,
-			name: 'Felix',
-			subject: 'Physik',
-			statement:
-				'Die SMD ist ein super Ort, um unglaublich viel für das Leben mitzunehmen. Man kann im Glauben gestärkt werden oder auch überhaupt erst mal was darüber erfahren, aber auch Verantwortung übernehmen. Und man lernt Leute kennen, die etwas komplett anderes studieren und denken als man selber. '
-		}
-	];
+	onMount(async () => {
+		statements = await pb.collection('statements').getFullList({
+			sort: '-created'
+		});
+		console.log(statements);
+	});
+
+	// let statements = [
+	// 	{
+	// 		image: felix,
+	// 		name: 'Felix',
+	// 		subject: 'Physik',
+	// 		statement:
+	// 			'Die SMD ist ein super Ort, um unglaublich viel für das Leben mitzunehmen. Man kann im Glauben gestärkt werden oder auch überhaupt erst mal was darüber erfahren, aber auch Verantwortung übernehmen. Und man lernt Leute kennen, die etwas komplett anderes studieren und denken als man selber. '
+	// 	},
+	// 	{
+	// 		image: felix,
+	// 		name: 'Felix',
+	// 		subject: 'Physik',
+	// 		statement:
+	// 			'Die SMD ist ein super Ort, um unglaublich viel für das Leben mitzunehmen. Man kann im Glauben gestärkt werden oder auch überhaupt erst mal was darüber erfahren, aber auch Verantwortung übernehmen. Und man lernt Leute kennen, die etwas komplett anderes studieren und denken als man selber. '
+	// 	},
+	// 	{
+	// 		image: felix,
+	// 		name: 'Felix',
+	// 		subject: 'Physik',
+	// 		statement:
+	// 			'Die SMD ist ein super Ort, um unglaublich viel für das Leben mitzunehmen. Man kann im Glauben gestärkt werden oder auch überhaupt erst mal was darüber erfahren, aber auch Verantwortung übernehmen. Und man lernt Leute kennen, die etwas komplett anderes studieren und denken als man selber. '
+	// 	},
+	// 	{
+	// 		image: felix,
+	// 		name: 'Felix',
+	// 		subject: 'Physik',
+	// 		statement:
+	// 			'Die SMD ist ein super Ort, um unglaublich viel für das Leben mitzunehmen. Man kann im Glauben gestärkt werden oder auch überhaupt erst mal was darüber erfahren, aber auch Verantwortung übernehmen. Und man lernt Leute kennen, die etwas komplett anderes studieren und denken als man selber. '
+	// 	}
+	// ];
+
+	const src = (
+		picture: string | undefined,
+		id: string,
+		collectionId: string,
+		collectionName: string
+	) => {
+		return pb.files.getUrl(
+			{
+				collectionId: collectionId,
+				collectionName: collectionName,
+				id: id
+			},
+			picture
+		);
+	};
 </script>
 
 <HeroShot imgSrc={header} />
@@ -136,7 +163,15 @@
 		<div class="grid gap-4 md:grid-cols-2">
 			{#each statements as statement}
 				<div class="bg-[#EDEDED]">
-					<img src={statement.image} alt="Profilbild" />
+					<img
+						src={src(
+							statement.picture,
+							statement.id,
+							statement.collectionId,
+							statement.collectionName
+						)}
+						alt="Profilbild"
+					/>
 					<div class="flex flex-col gap-6 p-4">
 						<h3 class="font-bold">{statement.subject}</h3>
 						<h2 class="text-2xl font-bold uppercase">{statement.name}</h2>
@@ -181,11 +216,11 @@
 		</div>
 	</div>
 
-	<div id="mitarbeit">
+	<!-- <div id="mitarbeit">
 		<h1 class="text-4xl font-bold uppercase md:text-5xl">Mitarbeit</h1>
 		TODO Mitarbeit
 		<div id="sup"></div>
-	</div>
+	</div> -->
 
 	<div class="flex flex-col gap-8 px-4 xl:px-80">
 		<h1 class="text-4xl font-bold uppercase md:text-5xl">Unterstützung</h1>
