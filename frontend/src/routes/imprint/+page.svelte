@@ -1,5 +1,5 @@
-<div class="container mx-auto mt-10 flex flex-col gap-4 card">
-	<h1 class="text-xl">Impressum</h1>
+<div class="container mx-auto flex flex-col gap-4 px-4 py-24">
+	<h1 class="fond-bold text-5xl uppercase">Impressum</h1>
 	<p>
 		Die Gruppenleitung der Hochschul-SMD Karlsruhe ist erreichbar unter: <a
 			href="mailto:leiter@smd-karlsruhe.de">leiter@smd-karlsruhe.de</a

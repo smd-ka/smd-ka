@@ -29,23 +29,22 @@
 	};
 </script>
 
-<main class="container mx-auto grid items-center lg:h-[80vh]">
-	<div class="card mt-10">
-		<h1 class="text-primary text-center text-4xl">SAFT Anmeldung</h1>
-
+<main class="container mx-auto grid py-24">
+	<h1 class="text-center text-5xl font-bold uppercase">SAFT Anmeldung</h1>
+	<div class="py-8">
 		<div class="grid gap-10 lg:grid-cols-[1fr_1rem_1fr]">
 			<div class="flex flex-col items-center text-center text-lg md:px-10">
-				<p>
+				<p class="py-4">
 					Du bist neu hier und hast noch kein Konto für den internen Bereich? Dann kannst du dich
 					hier ohne Konto anmelden:
 				</p>
 				<a
-					class="bg-primary rounded-md px-4 py-2 text-center max-md:w-full"
+					class="bg-primary rounded-md p-4 text-center text-white max-md:w-full"
 					href="/saft/signup/form">Ohne Konto anmelden</a
 				>
-				<p class="mt-4">Alternativ kannst du dich jetzt registieren:</p>
+				<p class="py-4">Alternativ kannst du dich jetzt registieren:</p>
 				<a
-					class="rounded-md bg-gray-400 px-4 py-2 text-center max-md:w-full md:w-fit"
+					class=" rounded-md bg-black p-4 text-center text-white max-md:w-full md:w-fit"
 					href="/account/register">Registieren</a
 				>
 			</div>
@@ -98,7 +97,7 @@
 					{/if}
 					<button
 						disabled={loading}
-						class="bg-primary relative flex items-center justify-center rounded-md py-2 text-white"
+						class="bg-primary relative flex items-center justify-center rounded-md p-3 text-white"
 					>
 						{#if loading}
 							<img class="absolute left-16 h-8" src={loadingSpinner} alt="loading" />
