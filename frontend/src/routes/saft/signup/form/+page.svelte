@@ -39,6 +39,7 @@
 		brings_cake: false,
 		is_vegetarian: false,
 		comments: '',
+		post_images: 'never',
 		semester: 'SS24'
 	};
 
@@ -61,42 +62,16 @@
 <main class="container mx-auto py-24">
 	<div class="px-4 lg:px-80">
 		{#if success}
-			<div>
-				<h1 class="text-primary text-2xl">Du hast dich erfolgreich angemeldet!</h1>
-				Wir haben folgende Daten von dir gespeichert:
-				<div>Name: {record?.name ? record?.name : pb.authStore.model?.name}</div>
-				<div>E-Mail: {record?.email ? record?.email : pb.authStore.model?.email}</div>
-				<div>
-					Handynummer: {record?.phonenumber ? record?.phonenumber : pb.authStore.model?.phonenumber}
-				</div>
-				{#if record?.takes_car}
-					<div>Du kommst mit dem Auto und kannst Gepäck der Fahrradfahrer mitnehmen.</div>
-				{/if}
-				{#if record?.takes_bike}
-					<div>Du nimmst an der Fahrradtour zur SAFT teil.</div>
-				{/if}
-				{#if record?.takes_train}
-					<div>Du reist mit Bus und Bahn an.</div>
-				{/if}
-				<div>Du hast folgendes Ticket angegeben: {record?.ticket}</div>
-				{#if record?.would_sleep_on_floor}
-					<div>
-						Du würdest Isomatte und Schlafsack mitzubringen und auf dem Boden schlafen falls nötig.
-					</div>
-				{/if}
-				{#if record?.brings_cake}
-					<div>Du bringst einen Kuchen, Muffins oder Ähnliches mit.</div>
-				{/if}
-				{#if record?.is_vegetarian}
-					<div>Du isst vegetarisch.</div>
-				{/if}
-				<div>Du hast folgende Allergien/Unverträglichkeiten angegeben: {record?.allergies}</div>
-				<div>Du hast folgende Anmerkungen angegeben: {record?.comments}</div>
+			<div class="grid gap-8">
+				<h1 class=" text-3xl font-bold uppercase">Du hast dich erfolgreich angemeldet!</h1>
+				<p>Wir haben dir eine Bestätigung per Email zukommen lassen ;).</p>
 			</div>
 		{:else}
 			<h1 class="text-5xl font-bold uppercase">SAFT Anmeldung SoSe 2024</h1>
 			{#if loggedIn}
-				Schön, dass du dabei bist {pb.authStore.model?.name}!
+				<p class="text-primary py-6 text-xl">
+					Schön, dass du dabei bist {pb.authStore.model?.name}!
+				</p>
 			{/if}
 
 			<form class="my-4 flex flex-col gap-4" on:submit={signup}>
@@ -119,15 +94,26 @@
 				{/if}
 				<h3 class="text-3xl font-bold uppercase">Wie möchtest du anreisen?</h3>
 
-				<p>
-					Die <strong class="font-bold">Bahnanreise</strong> wird um 16:30 vom Hauptbahnhof starten.
-					<br />
-					Verbindung: <br /> 16:32 Gl.12 von Karlsruhe Hbf nach Stuttgart Hbf IRE1 <br />
-					17:02 Umstieg in Mühlacker in den Bus 707 in Richtung Bahnhof, Vaihingen an der Enz Stuttgart
-					<br />
-					Die <strong class="font-bold">Fahrradanreise</strong> wird gegen 13:30 aus der Stadtmitte starten.
-				</p>
+				<div>
+					<p>
+						Die <strong class="font-bold">Bahnanreise</strong> wird um 16:30 vom Hauptbahnhof
+						starten.
+						<br />
+						Verbindung:
+					</p>
+					<ul class="list-disc pl-4">
+						<li>16:32 Gl.12 von Karlsruhe Hbf nach Stuttgart Hbf IRE1; Ausstieg Mühlacker 17:02</li>
+						<li>
+							17:08 Weiterfahrt in Mühlacker mit den Bus 707 in Richtung Bahnhof, Vaihingen an der
+							Enz Stuttgart; Austieg Mühlhausen Schloßstraße 17:17
+						</li>
+					</ul>
 
+					<p>
+						Die <strong class="font-bold">Fahrradanreise</strong> wird gegen 13:30 aus der Stadtmitte
+						starten.
+					</p>
+				</div>
 				<InputCheckbox
 					id="takesCar"
 					bind:checked={form.takes_car}
@@ -144,7 +130,7 @@
 					<InputCheckbox
 						id="takesTrain"
 						bind:checked={form.takes_train}
-						label="Ich nehme an der organisierten Bahnfahrt teil."
+						label="Ich nehme an der Bahnfahrt teil."
 					/>
 
 					{#if form.takes_train}
@@ -168,7 +154,7 @@
 					{/if}
 				</div>
 
-				<p>Weitere Infos zur Anreise folgen per Mail.</p>
+				<p class="font-bold">Weitere Infos zur Anreise folgen per Mail.</p>
 
 				<h3 class="text-3xl font-bold uppercase">Organisatorisches</h3>
 
@@ -209,7 +195,7 @@
 					>Dürfen wir Bilder von dir machen und anschließend auf Instagram und der Website
 					veröffentlichen?</span
 				>
-				<select bind:value={form.semester} class="rounded-md border-2 py-3" required>
+				<select bind:value={form.post_images} class="rounded-md border-2 py-3" required>
 					<option value="yes">Ja</option>
 					<option value="always ask"
 						>Ja ihr dürft Bilder von mir machen, fragt mich bitte bevor ihr Bilder veröffentlicht.

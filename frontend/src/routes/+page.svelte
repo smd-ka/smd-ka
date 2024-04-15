@@ -128,7 +128,13 @@
 			id="datenschutz"
 			label="Ich bin damit einverstanden, dass meine Daten zur Bearbeitung meines Anliegens verwendet werden."
 		/>
-		<button class="bg-primary w-fit p-4 text-white">Abschicken</button>
+
+		<p>
+			Leider steht das Kontaktformular noch nicht zur Verfügung schreibe uns stattdessen gerne
+			einfach direkt eine Mail an leiter@smd-karlsruhe.de
+		</p>
+
+		<button disabled class="bg-primary w-fit p-4 text-white">Abschicken</button>
 	</div>
 
 	<!-- <div class="card mt-8">

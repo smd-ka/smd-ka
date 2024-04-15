@@ -19,28 +19,17 @@ onRecordAfterCreateRequest((e) => {
         address: $app.settings().meta.senderAddress,
         name: $app.settings().meta.senderName,
       },
-      to: [{ address: e.record.email() }],
-      subject: "[SMD-KA] Regoikon 2023 Anmeldung",
+      to: [{ address: result.email }],
+      subject: "[SMD-KA] Saft Anmeldung SoSe24",
       html:
         "Hallo " +
         result.name +
-        ",<br><br>vielen Dank für deine Anmeldung zum Regiokon 2024. Wir freuen uns, dich dabei zu haben!<br><br>" +
-        "Wir haben folgende Daten von dir erhalten:<br>" +
-        "<b>Du hast folgende Schlafplätze</b> " +
-        "Männer: " +
-        e.record.get("lodging_male") +
-        ", Frauen: " +
-        e.record.get("lodging_female") +
-        ", Beide: " +
-        e.record.get("lodging_both") +
-        "<br>" +
-        "<b>Deine Anermerkungen:</b> " +
-        e.record.get("comments") +
-        "<br><br>" +
-        "Genaue Informationen zur Regiokon 2024 bekommst du in den Tagen davor an diese E-Mail-Adresse gesendet. " +
+        ",<br><br>vielen Dank für deine Anmeldung zur Saft im SoSe" +
+        ". Wir freuen uns, dich dabei zu haben!<br><br>" +
+        "Genaue Informationen zur Anreise und Packliste folgen du in den Tagen vor der SAFT und werden an diese E-Mail-Adresse gesendet. " +
         "Solltest du Fragen haben," +
-        " erreichst du uns unter <a href='mailto:regiokon24@smd-karsruhe.de'>regiokon24@smd-karlsruhe.de</a> <br><br>" +
-        "Dein Regiokon-Team<br><br>",
+        " erreichst du uns unter <a href='mailto:claus@chammann.dev'>claus@chammann.dev</a> <br><br>" +
+        "Deine SAFT-Orga<br>Kirsten, Lilly und Claus<br>",
     });
 
     $app.newMailClient().send(message);
@@ -58,44 +47,17 @@ onRecordAfterCreateRequest((e) => {
       name: $app.settings().meta.senderName,
     },
     to: [{ address: e.record.email() }],
-    subject: "[SMD-KA] Regoikon 2023 Anmeldung",
+    subject: "[SMD-KA] Saft Anmeldung SoSe24",
     html:
       "Hallo " +
       e.record.get("name") +
-      ",<br><br>vielen Dank für deine Anmeldung zum Regiokon 2024. Wir freuen uns, dich dabei zu haben!<br><br>" +
-      "Wir haben folgende Daten von dir erhalten:<br><br>" +
-      "<b>Name:</b> " +
-      e.record.get("name") +
-      "<br>" +
-      "<b>E-Mail:</b> " +
-      e.record.get("email") +
-      "<br>" +
-      "<b>Telefon:</b> " +
-      e.record.get("phonenumber") +
-      "<br>" +
-      "<b>Geschlecht:</b> " +
-      gender +
-      "<br>" +
-      "<b>Du benötigst einen Schlafplatz:</b> " +
-      needs_lodging +
-      "<br>" +
-      "<b>Du bist Vegetarier:</b> " +
-      vegetarian +
-      "<br>" +
-      "<b>Deine Allergien:</b> " +
-      e.record.get("allergies") +
-      "<br>" +
-      "<b>Deine Gruppe:</b> " +
-      e.record.get("group") +
-      "<br>" +
-      "<b>Deine Anermerkungen:</b> " +
-      e.record.get("comments") +
-      "<br><br>" +
-      "Genaue Informationen zur Regiokon 2024 bekommst du in den Tagen davor an diese E-Mail-Adresse gesendet. " +
-      "Solltest du Angaben nochmals ändern müssen oder Fragen haben," +
-      " erreichst du uns unter <a href='mailto:regiokon24@smd-karsruhe.de'>regiokon24@smd-karlsruhe.de</a> <br><br>" +
-      "Dein Regiokon-Team<br><br>",
+      ",<br><br>vielen Dank für deine Anmeldung zur Saft im SoSe" +
+      ". Wir freuen uns, dich dabei zu haben!<br><br>" +
+      "Genaue Informationen zur Anreise und Packliste folgen du in den Tagen vor der SAFT und werden an diese E-Mail-Adresse gesendet. " +
+      "Solltest du Fragen haben," +
+      " erreichst du uns unter <a href='mailto:claus@chammann.dev'>claus@chammann.dev</a> <br><br>" +
+      "Deine SAFT-Orga<br>Kirsten, Lilly und Claus<br>",
   });
 
   $app.newMailClient().send(message);
-}, "regiokon");
+}, "saft");
