@@ -18,7 +18,6 @@
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 	import { click_outside } from '$lib/click_outside';
 	import ifes from '$lib/assets/logos/ifes.png';
-	import { text } from '@sveltejs/kit';
 
 	let showMenu = false;
 	let loading = false;
@@ -37,15 +36,12 @@
 
 <main class="flex min-h-screen flex-col">
 	<nav class="bg-grey sticky top-0 z-50 flex flex-[0_1_auto] flex-col shadow-md">
-		<div
-			class="container mx-auto flex items-center justify-between gap-4 py-3
-		"
-		>
+		<div class="container mx-auto flex items-center justify-between gap-4 py-3">
 			<a class=" py-2" href="/">
 				<img class="max-h-7 pl-4" src={logo} alt="SMD Logo" />
 			</a>
 
-			<div class="flex gap-4 text-xl text-white max-xl:hidden">
+			<div class="flex items-center gap-4 text-xl text-white max-lg:hidden">
 				<!-- Links (only visable for bigger screens) -->
 
 				<a class="text-primary hover:text-white" href="/">Startseite</a>
@@ -79,25 +75,36 @@
 					</div>
 				</div>
 				<a class="hover:text-primary" href="/">Kontakt</a>
-				<a class="hover:text-primary self-center" href="/intern">
-					<Fa class="text-xl text-white" icon={faRightToBracket} />
+				<a class=" self-center" href="/intern">
+					{#if isValid}
+						<img
+							class=" h-10 w-10 rounded-full border-2 border-gray-400 object-cover"
+							{src}
+							alt="user avatar"
+						/>
+					{:else}
+						<Fa class="text-xl text-white" icon={faRightToBracket} />
+					{/if}
 				</a>
 			</div>
 
-			<div class="text-white xl:hidden">
+			<div class="flex items-center gap-2 text-white lg:hidden">
 				<button
 					class="justify-self-end! pb-1 text-2xl md:text-4xl"
 					on:click|stopPropagation={() => (showMenu = !showMenu)}
 				>
 					<Fa class="mr-4 w-6" icon={showMenu ? faX : faBars} />
-					{#if isValid}
+				</button>
+
+				{#if isValid}
+					<a href="/intern">
 						<img
 							class="h-10 w-10 rounded-full border-2 border-gray-400 object-cover max-md:hidden"
 							{src}
 							alt="user avatar"
 						/>
-					{/if}
-				</button>
+					</a>
+				{/if}
 			</div>
 		</div>
 
@@ -188,10 +195,36 @@
 						class="!hover:no-underline !underline"
 						href="/intern"
 					>
-						Intern
+						Interner Bereich
 					</a>
+					{#if isValid}
+						<form
+							method="POST"
+							action="/account/logout"
+							use:enhance={() => {
+								loading = true;
+								return async ({ result }) => {
+									pb.authStore.clear();
+									await applyAction(result);
+									showMenu = false;
+									loading = false;
+								};
+							}}
+							class=" text-primary flex flex-col items-center justify-center gap-4 py-4 text-xl"
+						>
+							<button class="hover:bg-curulean-dark flex gap-2 align-middle" type="submit">
+								{#if loading}
+									<img src={loadingSpinner} class="h-7" alt="loading" />
+								{:else}
+									<Fa class="self-center" icon={faRightFromBracket} />
+								{/if}
+								Logout
+							</button>
+						</form>
+					{/if}
 				</div>
-				{#if isValid}
+
+				<!-- {#if isValid}
 					<div class="h-0.5 bg-gray-200 md:hidden"></div>
 
 					<div class=" text-primary flex flex-col items-center justify-center gap-4 py-4 text-xl">
@@ -266,7 +299,7 @@
 							Logout
 						</button>
 					</form>
-				{/if}
+				{/if} -->
 			</div>
 		</div>
 		<div class="bg-primary h-1"></div>

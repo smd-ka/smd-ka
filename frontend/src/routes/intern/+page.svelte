@@ -1,15 +1,20 @@
 <script lang="ts">
+	import { applyAction, enhance } from '$app/forms';
 	import { FESD_COORDINATOR, SAFT_COORDINATOR, pb } from '$lib/pocketbase';
 	import {
 		faAddressBook,
 		faChampagneGlasses,
 		faGlassWater,
-		faUser
+		faUser,
+		faRightFromBracket
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
+	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 
 	let isSaftCoordinator = pb.authStore.model?.roles.includes(SAFT_COORDINATOR);
 	let isFesdCoordinator = pb.authStore.model?.roles.includes(FESD_COORDINATOR);
+
+	let loading = false;
 </script>
 
 <main class="container mx-auto mt-8 flex flex-col gap-8">
@@ -72,6 +77,33 @@
 				<h2 class="py-4 text-center text-lg md:text-2xl">FESD Anmeldungen verwalten</h2>
 			</a>
 		{/if}
+
+		<div class="card">
+			<form
+				method="POST"
+				action="/account/logout"
+				use:enhance={() => {
+					loading = true;
+					return async ({ result }) => {
+						pb.authStore.clear();
+						await applyAction(result);
+						loading = false;
+					};
+				}}
+				class=" text-primary flex flex-col items-center justify-center gap-4 py-4 text-xl"
+			>
+				<button class="hover:bg-curulean-dark flex gap-2 align-middle" type="submit">
+					{#if loading}
+						<img src={loadingSpinner} class="h-7" alt="loading" />
+					{:else}
+						<div class="flex flex-col items-center text-lg md:text-2xl">
+							<Fa class="self-center text-7xl" icon={faRightFromBracket} />
+							Logout
+						</div>
+					{/if}
+				</button>
+			</form>
+		</div>
 	</div>
 
 	<div class="card">
