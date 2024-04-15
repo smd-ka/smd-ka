@@ -120,8 +120,12 @@
 				<h3 class="text-3xl font-bold uppercase">Wie möchtest du anreisen?</h3>
 
 				<p>
-					Die Bahnanreise wird um 16:30 vom Hauptbahnhof starten. Die Fahrradanreise wird gegen
-					13:30 aus der Stadtmitte starten.
+					Die <strong class="font-bold">Bahnanreise</strong> wird um 16:30 vom Hauptbahnhof starten.
+					<br />
+					Verbindung: <br /> 16:32 Gl.12 von Karlsruhe Hbf nach Stuttgart Hbf IRE1 <br />
+					17:02 Umstieg in Mühlacker in den Bus 707 in Richtung Bahnhof, Vaihingen an der Enz Stuttgart
+					<br />
+					Die <strong class="font-bold">Fahrradanreise</strong> wird gegen 13:30 aus der Stadtmitte starten.
 				</p>
 
 				<InputCheckbox
@@ -163,6 +167,8 @@
 						</fieldset>
 					{/if}
 				</div>
+
+				<p>Weitere Infos zur Anreise folgen per Mail.</p>
 
 				<h3 class="text-3xl font-bold uppercase">Organisatorisches</h3>
 
