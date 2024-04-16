@@ -9,45 +9,45 @@
 
 	let program = [
 		{
-			date: new Date('2024-4-16'),
+			date: new Date('2024/4/16'),
 			title: '🫀📲 ❤️ - Wie Social Media uns beeinflusst',
 			lecturer: 'Rufina Kaehler, Regionalreferentin SMD'
 		},
 		{
-			date: new Date('2024-4-30'),
+			date: new Date('2024/4/30'),
 			title: 'HERZensthema Christenverfolgung',
 			lecturer: 'Samuel Kaiser, OpenDoors',
 			location: ' Veranstaltungsort: EFG Karlsruhe, Ohiostraße 17 '
 		},
 		{
-			date: new Date('2024-5-14'),
+			date: new Date('2024/5/14'),
 			title: 'Geländespiel mit HERZhaftem Picknick',
 			location: 'findet im Schlosspark statt'
 		},
 		{
-			date: new Date('2024-5-28'),
+			date: new Date('2024/5/28'),
 			title: 'Mein HERZ? - Sein Geschenk',
 			lecturer: 'Rebekka, Lehrerin im Tschad'
 		},
 		{
-			date: new Date('2024-6-11'),
+			date: new Date('2024/6/11'),
 			title:
 				'Zwischen GletscHERZerstörung und Konfliktherden - Hoffnung finden auf einer gefährdeten Welt',
 			lecturer: 'Prof. Dr. Peter Imming, Chemiker',
 			location: 'KIT Campus Süd'
 		},
 		{
-			date: new Date('2024-6-25'),
+			date: new Date('2024/6/25'),
 			title: 'Follow your HEART - Mach einfach was dich glücklich macht? ',
 			lecturer: 'Andreas Rennig , Pfarrer'
 		},
 		{
-			date: new Date('2024-7-9'),
+			date: new Date('2024/7/9'),
 			title: 'Große Fragen persönlich erlebt - ein Philosoph teilt sein HERZ',
 			lecturer: 'Heinzpeter Hempelmann, Philosoph/Theologe'
 		},
 		{
-			date: new Date('2024-7-23'),
+			date: new Date('2024/7/23'),
 			title: 'Selbstfürsorge - HERZgesund leben in einer rastlosen Welt',
 			lecturer: 'Susanne Stieler, Psychologin'
 		}
