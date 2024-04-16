@@ -84,4 +84,10 @@
 		Noch kein Konto?
 		<a href="/account/register" class="text-primary hover:underline">Jetzt eins anlegen.</a>
 	</div>
+
+	<div class="card w-96 text-center text-sm text-gray-400">
+		<a href="https://wiki.smd-karlsruhe.de" class="text-primary hover:underline"
+			>Hier gehts zum Wiki</a
+		>
+	</div>
 </main>

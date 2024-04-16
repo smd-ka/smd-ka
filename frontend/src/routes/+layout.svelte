@@ -365,7 +365,8 @@
 						<a href="/about">Über uns</a><br />
 						<a href="/kontakt">Kontakt</a><br />
 						<a href="/imprint">Impressum</a><br />
-						<a href="/privacy">Datenschutzerklärung</a>
+						<a href="/privacy">Datenschutzerklärung</a><br />
+						<a href="https://wiki.smd-karlsruhe.de">Wiki</a>
 					</div>
 				</section>
 

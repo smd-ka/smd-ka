@@ -10,6 +10,7 @@
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
+	import { faWikipediaW } from '@fortawesome/free-brands-svg-icons';
 
 	let isSaftCoordinator = pb.authStore.model?.roles.includes(SAFT_COORDINATOR);
 	let isFesdCoordinator = pb.authStore.model?.roles.includes(FESD_COORDINATOR);
@@ -62,21 +63,12 @@
 			</a>
 		{/if}
 
-		<a class="card" href="/intern/fesd">
+		<a class="card" href="https://wiki.smd-karlsruhe.de">
 			<div class="flex justify-center">
-				<Fa icon={faChampagneGlasses} class="text-lime text-7xl" />
+				<Fa icon={faWikipediaW} class="text-lime text-7xl" />
 			</div>
-			<h2 class="py-4 text-center text-lg md:text-2xl">FESD Anmeldung</h2>
+			<h2 class="py-4 text-center text-lg md:text-2xl">Wiki</h2>
 		</a>
-
-		{#if isFesdCoordinator}
-			<a href="/intern/fesd/list" class="card">
-				<div class="flex justify-center">
-					<Fa icon={faChampagneGlasses} class="text-secondary-text text-7xl" />
-				</div>
-				<h2 class="py-4 text-center text-lg md:text-2xl">FESD Anmeldungen verwalten</h2>
-			</a>
-		{/if}
 
 		<div class="card">
 			<form
