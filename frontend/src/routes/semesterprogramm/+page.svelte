@@ -113,7 +113,7 @@
 <div id="saft" class="text-primary py-4 text-center text-5xl tracking-widest">+++</div>
 
 <div class="relative">
-	<video class="h-96" autoplay muted loop>
+	<video class="h-96" autoplay muted loop playsinline>
 		<source src={promoVid} type="video/mp4" />
 		<track kind="captions" />
 		Your browser does not support the video tag.
