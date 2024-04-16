@@ -54,7 +54,7 @@
 
 	<div class="grid lg:grid-cols-3">
 		<button class="flex flex-col items-center" on:click={() => (showDenken = !showDenken)}>
-			<img src={glauben} alt="Kopf mit Glühbrine" />
+			<img src={denken} alt="Kopf mit Glühbrine" />
 			<h3 class="text-3xl font-bold uppercase">Denken</h3>
 
 			<div class="menu grid justify-center px-8 {showDenken ? 'open' : ''} ">
@@ -76,7 +76,7 @@
 		</button>
 
 		<button class="flex flex-col items-center" on:click={() => (showGlauben = !showGlauben)}>
-			<img src={erleben} alt="Kopf mit Glühbrine" />
+			<img src={glauben} alt="Kopf mit Glühbrine" />
 			<h3 class="text-3xl font-bold uppercase">Glauben</h3>
 
 			<div class="menu grid justify-center px-8 {showGlauben ? 'open' : ''} ">
@@ -98,7 +98,7 @@
 		</button>
 
 		<button class="flex flex-col items-center" on:click={() => (showErleben = !showErleben)}>
-			<img src={denken} alt="Kopf mit Glühbrine" />
+			<img src={erleben} alt="Kopf mit Glühbrine" />
 			<h3 class="text-3xl font-bold uppercase">Erleben</h3>
 
 			<div class="menu grid justify-center px-8 {showErleben ? 'open' : ''} ">
