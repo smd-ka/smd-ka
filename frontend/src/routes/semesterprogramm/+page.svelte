@@ -54,7 +54,7 @@
 	];
 
 	onMount(() => {
-		program = program.filter((event) => event.date > new Date());
+		program = program.filter((event) => event.date > new Date(new Date().getDate() + 1));
 	});
 </script>
 
