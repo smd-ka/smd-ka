@@ -59,3 +59,12 @@ export type Statement = {
 	statement: string;
 	picture: string;
 };
+
+export type Team = {
+	id: string;
+	collectionName: string;
+	collectionId: string;
+	name: string;
+	description: string;
+	image: string;
+};
