@@ -25,43 +25,7 @@
 		console.log(statements);
 	});
 
-	// let statements = [
-	// 	{
-	// 		image: felix,
-	// 		name: 'Felix',
-	// 		subject: 'Physik',
-	// 		statement:
-	// 			'Die SMD ist ein super Ort, um unglaublich viel für das Leben mitzunehmen. Man kann im Glauben gestärkt werden oder auch überhaupt erst mal was darüber erfahren, aber auch Verantwortung übernehmen. Und man lernt Leute kennen, die etwas komplett anderes studieren und denken als man selber. '
-	// 	},
-	// 	{
-	// 		image: felix,
-	// 		name: 'Felix',
-	// 		subject: 'Physik',
-	// 		statement:
-	// 			'Die SMD ist ein super Ort, um unglaublich viel für das Leben mitzunehmen. Man kann im Glauben gestärkt werden oder auch überhaupt erst mal was darüber erfahren, aber auch Verantwortung übernehmen. Und man lernt Leute kennen, die etwas komplett anderes studieren und denken als man selber. '
-	// 	},
-	// 	{
-	// 		image: felix,
-	// 		name: 'Felix',
-	// 		subject: 'Physik',
-	// 		statement:
-	// 			'Die SMD ist ein super Ort, um unglaublich viel für das Leben mitzunehmen. Man kann im Glauben gestärkt werden oder auch überhaupt erst mal was darüber erfahren, aber auch Verantwortung übernehmen. Und man lernt Leute kennen, die etwas komplett anderes studieren und denken als man selber. '
-	// 	},
-	// 	{
-	// 		image: felix,
-	// 		name: 'Felix',
-	// 		subject: 'Physik',
-	// 		statement:
-	// 			'Die SMD ist ein super Ort, um unglaublich viel für das Leben mitzunehmen. Man kann im Glauben gestärkt werden oder auch überhaupt erst mal was darüber erfahren, aber auch Verantwortung übernehmen. Und man lernt Leute kennen, die etwas komplett anderes studieren und denken als man selber. '
-	// 	}
-	// ];
-
-	const src = (
-		picture: string | undefined,
-		id: string,
-		collectionId: string,
-		collectionName: string
-	) => {
+	const src = (picture: string, id: string, collectionId: string, collectionName: string) => {
 		return pb.files.getUrl(
 			{
 				collectionId: collectionId,
@@ -85,7 +49,7 @@
 			in ganz Deutschland. Ein wesentlicher Teil des christlichen Glaubens ist nach unserem Verständnis
 			Kommunikation: Gott teilt sich uns durch die Bibel und andere Menschen mit. Deshalb tauschen wir
 			uns untereinander über Glaubensfragen aus und sprechen mit unseren Kommilitonen über das, was uns
-			bewegt. Denken, glauben und erleben gehören für uns dabei zusammen.
+			bewegt. Denken, Glauben und Erleben gehören für uns dabei zusammen.
 		</p>
 	</div>
 
@@ -114,7 +78,7 @@
 
 		<button class="flex flex-col items-center" on:click={() => (showGlauben = !showGlauben)}>
 			<img src={erleben} alt="Kopf mit Glühbrine" />
-			<h3 class="text-3xl font-bold uppercase">Denken</h3>
+			<h3 class="text-3xl font-bold uppercase">Glauben</h3>
 
 			<div class="menu grid justify-center px-8 {showGlauben ? 'open' : ''} ">
 				<div class="overflow-hidden">
@@ -136,7 +100,7 @@
 
 		<button class="flex flex-col items-center" on:click={() => (showErleben = !showErleben)}>
 			<img src={denken} alt="Kopf mit Glühbrine" />
-			<h3 class="text-3xl font-bold uppercase">Denken</h3>
+			<h3 class="text-3xl font-bold uppercase">Erleben</h3>
 
 			<div class="menu grid justify-center px-8 {showErleben ? 'open' : ''} ">
 				<div class="overflow-hidden">
@@ -210,17 +174,16 @@
 			</div>
 			<div>
 				Unsere Leitung wird jedes Semester von der Gruppe gewählt. Momentan leiten Felix M., Felix
-				R. und Maike unsere Gruppe. Felix ist 21 und studiert Umweltingenieurwesen (Bau), Felix M.
-				ist 23 und studiert Physik und Maike ist 24 und studiert Grundschullehramt.
+				R. und Maike unsere Gruppe. Felix M. ist 23 und studiert Physik, Felix R. ist 21 und
+				studiert Umweltingenieurwesen (Bau) und Maike ist 24 und studiert Grundschullehramt.
 			</div>
 		</div>
+		<div id="mitarbeit"></div>
 	</div>
 
-	<!-- <div id="mitarbeit">
-		<h1 class="text-4xl font-bold uppercase md:text-5xl">Mitarbeit</h1>
-		TODO Mitarbeit
+	<div>
 		<div id="sup"></div>
-	</div> -->
+	</div>
 
 	<div class="flex flex-col gap-8 px-4 xl:px-80">
 		<h1 class="text-4xl font-bold uppercase md:text-5xl">Unterstützung</h1>

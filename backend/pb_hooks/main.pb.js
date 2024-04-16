@@ -61,3 +61,72 @@ onRecordAfterCreateRequest((e) => {
 
   $app.newMailClient().send(message);
 }, "saft");
+
+onRecordAfterCreateRequest((e) => {
+  const emailSender = new MailerMessage({
+    from: {
+      address: $app.settings().meta.senderAddress,
+      name: $app.settings().meta.senderName,
+    },
+    to: [{ address: e.record.email() }],
+    subject: "[SMD-KA] Kontaktformular",
+    html:
+      "Hallo " +
+      e.record.get("name") +
+      ",<br><br>vielen Dank für deine Nachricht an uns. Wir werden uns baldmöglichst bei dir zurückmelden!" +
+      "Bis dahin wünschen wir dir eine gesegnete Zeit.<br><br>" +
+      "Deine SMD Karlsruhe<br>",
+  });
+
+  const emailLeaders = new MailerMessage({
+    from: {
+      address: $app.settings().meta.senderAddress,
+      name: $app.settings().meta.senderName,
+    },
+    to: [{ address: "leiter@smd-karlsruhe.de" }],
+    subject: "[SMD-KA] Kontaktformular",
+    html:
+      "Moin Leiter " +
+      "es gab folgende Anfrage über das Kontaktformular:<br><br>" +
+      "Name: " +
+      e.record.get("name") +
+      "<br>" +
+      "E-Mail: " +
+      e.record.get("email") +
+      "<br>" +
+      "Betreff: " +
+      e.record.get("subject") +
+      "<br>" +
+      "Nachricht: " +
+      e.record.get("message") +
+      "<br><br>" +
+      "Bitte denkt dran möglichst schnell zu reagieren ;)" +
+      "Liebe Grüße<br>Dein SMD-KA Backend",
+  });
+
+  const emailPrit = new MailerMessage({
+    from: {
+      address: $app.settings().meta.senderAddress,
+      name: $app.settings().meta.senderName,
+    },
+    to: [{ address: "webmaster@smd-karlsruhe.de" }],
+    subject: "[SMD-KA] Kontaktformular",
+    html:
+      "Logs - Kontaktformular" +
+      "Name: " +
+      e.record.get("name") +
+      "<br>" +
+      "E-Mail: " +
+      e.record.get("email") +
+      "<br>" +
+      "Betreff: " +
+      e.record.get("subject") +
+      "<br>" +
+      "Nachricht: " +
+      e.record.get("message"),
+  });
+
+  $app.newMailClient().send(emailSender);
+  $app.newMailClient().send(emailLeaders);
+  $app.newMailClient().send(emailPrit);
+}, "contact");

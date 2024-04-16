@@ -210,8 +210,8 @@
 					{#if loading}
 						<img class="absolute left-2 h-8" src={loadingSpinner} alt="loading" />
 					{/if}
-					Anmelden</button
-				>
+					Anmelden
+				</button>
 			</form>
 		{/if}
 	</div>

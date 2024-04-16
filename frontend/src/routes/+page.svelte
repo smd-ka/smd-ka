@@ -22,6 +22,28 @@
 	import saft_heroshot from '$lib/assets/heroshots/saft_heroshot.png';
 	import herzenssache_16_9 from '$lib/assets/ss24/herzenssache_16_9.png';
 	import felix from '$lib/assets/about/Felix.jpeg';
+	import EmailInput from '$lib/components/forms/EmailInput.svelte';
+	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
+
+	let success = false;
+	let error = false;
+	let loading = false;
+
+	async function sendMail(event: Event) {
+		loading = true;
+		error = false;
+		const form = document.getElementById('form') as HTMLFormElement;
+		let formData = new FormData(form);
+
+		try {
+			const record = await pb.collection('contact').create(formData);
+			form.reset();
+			success = true;
+		} catch (e) {
+			console.error(e);
+			error = true;
+		}
+	}
 </script>
 
 <HeroShot imgSrc={header} />
@@ -87,9 +109,9 @@
 				<h1 class="text-5xl font-bold uppercase">Wie du uns erreichst</h1>
 				<p>
 					Du möchtest regelmäßige Infos erhalten, hast eine Frage an uns oder ein anderes Anliegen?
-					Schreib eine Mail an Felix aus unserem Leitungsteam.
+					Schreib eine Mail an Felix M. aus unserem Leitungsteam.
 				</p>
-				<a href="leiter@smd-karlsruhe.de" class="w-fit self-end bg-black p-4 text-white"
+				<a href="mailto:leiter@smd-karlsruhe.de" class="w-fit self-end bg-black p-4 text-white"
 					>Schreib uns ne mail</a
 				>
 			</div>
@@ -120,21 +142,31 @@
 			<h1 class="self-end text-4xl font-bold uppercase lg:text-5xl">SCHREIB UNS.</h1>
 		</div>
 		<h2 class="text-3xl lg:text-4xl">Kontakt aufnehmen</h2>
-		<TextInput label="Name" />
-		<TextInput label="Betreff" />
-		<TextInput label="Deine E-Mail-Addresse" />
-		<TextArea label="Deine Nachricht" />
-		<CheckboxInput
-			id="datenschutz"
-			label="Ich bin damit einverstanden, dass meine Daten zur Bearbeitung meines Anliegens verwendet werden."
-		/>
+		<form id="form" class="flex flex-col gap-6" on:submit|preventDefault={sendMail}>
+			<TextInput name="name" label="Name" required />
+			<TextInput name="subject" label="Betreff" required />
+			<EmailInput name="email" label="Deine E-Mail-Addresse" required />
+			<TextArea name="message" label="Deine Nachricht" />
+			<CheckboxInput
+				id="datenschutz"
+				label="Ich bin damit einverstanden, dass meine Daten zur Bearbeitung meines Anliegens verwendet werden."
+				required
+			/>
 
-		<p>
-			Leider steht das Kontaktformular noch nicht zur Verfügung schreibe uns stattdessen gerne
-			einfach direkt eine Mail an leiter@smd-karlsruhe.de
-		</p>
+			{#if error}
+				<p class="text-red-500">Es ist ein Fehler aufgetreten. Bitte versuche es erneut.</p>
+			{/if}
 
-		<button disabled class="bg-primary w-fit p-4 text-white">Abschicken</button>
+			<button disabled={loading} type="submit" class="w-fit bg-black p-4 text-white">
+				{#if loading}
+					<img class="absolute left-2 h-8" src={loadingSpinner} alt="loading" />
+				{/if}
+				Abschicken</button
+			>
+		</form>
+		{#if success}
+			<p class="font-bold">Vielen Dank für deine Kontaktaufnahme. Wir melden uns!</p>
+		{/if}
 	</div>
 
 	<!-- <div class="card mt-8">

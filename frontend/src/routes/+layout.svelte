@@ -74,7 +74,7 @@
 						> -->
 					</div>
 				</div>
-				<a class="hover:text-primary" href="/">Kontakt</a>
+				<a class="hover:text-primary" href="/kontakt">Kontakt</a>
 				<a class=" self-center" href="/intern">
 					{#if isValid}
 						<img
@@ -185,7 +185,7 @@
 					<a
 						on:click={() => (showMenu = false)}
 						class="!hover:no-underline !underline"
-						href="/kalender"
+						href="/kontakt"
 					>
 						Kontakt
 					</a>
@@ -347,7 +347,7 @@
 				<section class="flex flex-col gap-4">
 					<h2 class="text-primary text-xl uppercase">Unser Netzwerk</h2>
 					<p>
-						Die Hochschul-SMD Musterstadt gehört zur Hochschul-SMD, einem deutschlandweiten Netzwerk
+						Die Hochschul-SMD Karlsruhe gehört zur Hochschul-SMD, einem deutschlandweiten Netzwerk
 						Christlicher Hochschulgruppen.
 					</p>
 					<p>
