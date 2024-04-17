@@ -5,7 +5,9 @@ services:
     container_name: backend
     image: ghcr.io/smd-ka/smd-ka/backend:main
     volumes:
-      - pb_data:/pb/pb_data
+      - type: bind
+        source: ./backend/pb_data
+        target: /pb/pb_data
 
     restart: always
     networks:
@@ -30,6 +32,7 @@ services:
     restart: always
     networks:
       - smd_ka_network
+
 
 networks:
   smd_ka_network:
