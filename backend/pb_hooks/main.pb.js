@@ -26,7 +26,7 @@ onRecordAfterCreateRequest((e) => {
         result.name +
         ",<br><br>vielen Dank für deine Anmeldung zur Saft im SoSe" +
         ". Wir freuen uns, dich dabei zu haben!<br><br>" +
-        "Genaue Informationen zur Anreise und Packliste folgen du in den Tagen vor der SAFT und werden an diese E-Mail-Adresse gesendet. " +
+        "Genaue Informationen zur Anreise und Packliste folgen in den Tagen vor der SAFT und werden an diese E-Mail-Adresse gesendet. " +
         "Solltest du Fragen haben," +
         " erreichst du uns unter <a href='mailto:claus@chammann.dev'>claus@chammann.dev</a> <br><br>" +
         "Deine SAFT-Orga<br>Kirsten, Lilly und Claus<br>",
@@ -53,7 +53,7 @@ onRecordAfterCreateRequest((e) => {
       e.record.get("name") +
       ",<br><br>vielen Dank für deine Anmeldung zur Saft im SoSe" +
       ". Wir freuen uns, dich dabei zu haben!<br><br>" +
-      "Genaue Informationen zur Anreise und Packliste folgen du in den Tagen vor der SAFT und werden an diese E-Mail-Adresse gesendet. " +
+      "Genaue Informationen zur Anreise und Packliste folgen in den Tagen vor der SAFT und werden an diese E-Mail-Adresse gesendet. " +
       "Solltest du Fragen haben," +
       " erreichst du uns unter <a href='mailto:claus@chammann.dev'>claus@chammann.dev</a> <br><br>" +
       "Deine SAFT-Orga<br>Kirsten, Lilly und Claus<br>",
