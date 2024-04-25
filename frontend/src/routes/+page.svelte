@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Saos from 'saos';
-	import header from '$lib/assets/heroshots/karlsruhe.jpeg';
+	import header from '$lib/assets/heroshots/karlsruhe_luft.jpeg';
 	import {
 		faCalendarDays,
 		faChildReaching,

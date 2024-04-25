@@ -14,5 +14,5 @@
 	>
 		{title || ''}
 	</h1>
-	<div class="h-96 bg-cover {bgPosition} " style="background-image: url({imgSrc});" />
+	<div class="h-96 max-md:h-52 bg-cover {bgPosition} " style="background-image: url({imgSrc});" />
 </div>
