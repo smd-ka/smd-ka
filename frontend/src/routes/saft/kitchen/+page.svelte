@@ -41,7 +41,7 @@
 <main class="container mx-auto">
 	<div class="card mt-8 flex flex-col gap-8">
 		<div class="md:text-lg">
-			<h2 class="text-primary text-lg md:text-4xl">Angaben Küche Wintersemester SAFT 2023</h2>
+			<h2 class="text-primary text-lg md:text-4xl">Angaben für die SAFT Küche</h2>
 			<div>Vielen lieben Dank liebes Küchen Team für eure Arbeit! Ihr seid die Besten!</div>
 			{#if !loading && !error}
 				<div>
