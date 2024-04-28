@@ -1,8 +1,8 @@
 <script lang="ts">
-	import header from '$lib/assets/heroshots/karlsruhe.jpeg';
+	import header from '$lib/assets/heroshots/karlsruhe_luft.jpeg';
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import Fa from 'svelte-fa/src/fa.svelte';
-	import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+	import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 	import denken from '$lib/assets/about/denken.png';
 	import glauben from '$lib/assets/about/glauben.png';

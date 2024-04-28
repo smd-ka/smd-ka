@@ -166,11 +166,7 @@
 							>
 								Semesterprogramm
 							</a>
-							<a
-								on:click={() => (showMenu = false)}
-								class="hover:underline"
-								href="/semesterprogramm#saft"
-							>
+							<a on:click={() => (showMenu = false)} class="hover:underline" href="/saft">
 								SemesterAnfangsFreizeiT
 							</a>
 							<!-- <a

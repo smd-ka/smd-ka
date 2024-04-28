@@ -7,6 +7,8 @@
 	import Saos from 'saos';
 	import promoVid from '$lib/assets/videos/saft.mp4';
 
+	let yesterday: Date;
+
 	let program = [
 		{
 			date: new Date('2024/4/16'),
@@ -54,7 +56,8 @@
 	];
 
 	onMount(() => {
-		program = program.filter((event) => event.date > new Date(new Date().getDate() + 1));
+		yesterday = new Date();
+		yesterday.setDate(yesterday.getDate() - 1);
 	});
 </script>
 
@@ -93,7 +96,7 @@
 							day: 'numeric'
 						})}
 					</h3>
-					<div>
+					<div class={event.date > yesterday ? '' : 'text-gray-500'}>
 						<h3 class="text-xl font-bold md:text-3xl">{event.title}</h3>
 						{#if event.lecturer}
 							<p class="text-sm italic">{event.lecturer}</p>
