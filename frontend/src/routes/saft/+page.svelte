@@ -31,6 +31,10 @@
 			SemesterAnfangsFreizeiT
 		</h1>
 		<h1 class="text-5xl font-bold uppercase max-md:text-center md:hidden">saft</h1>
+		<span
+			>Die Anmeldung für dieses Semester ist geschlossen. Du möchtest unbedingt noch mit? Melde dich
+			bei Claus (<a href="mailto:webmaster@smd-karlsruhe.de">webmaster@smd-karlsruhe.de</a>)</span
+		>
 	</div>
 
 	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
@@ -48,7 +52,7 @@
 					herauszufinden, was das mit dir und unserem Semesterthema "Herzenssache" zu tun hat, melde
 					dich jetzt gleich an!
 				</p>
-				<a href="/saft/signup" class="w-fit bg-black p-4 text-white">Jetzt anmelden</a>
+				<!-- <a href="/saft/signup" class="w-fit bg-black p-4 text-white">Jetzt anmelden</a> -->
 			</div>
 		</div>
 	</Saos>
@@ -104,9 +108,9 @@
 			</video>
 		</Saos>
 
-		<h1 class="py-10 text-5xl font-bold uppercase">
+		<!-- <h1 class="py-10 text-5xl font-bold uppercase">
 			Du bist dabei? Dann nichts wie los melde dich an!
 		</h1>
-		<a href="/saft/signup" class="w-fit bg-black p-4 text-white">Hier gehts zur Anmeldung</a>
+		<a href="/saft/signup" class="w-fit bg-black p-4 text-white">Hier gehts zur Anmeldung</a> -->
 	</div>
 </main>
