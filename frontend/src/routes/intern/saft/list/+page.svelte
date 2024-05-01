@@ -21,7 +21,7 @@
 
 	let paidLoading: number[] = [];
 	let paidError: number[] = [];
-	let filter: 'all' | 'paid' | 'unpaid' | 'bike' | 'train' = 'all';
+	let filter: 'all' | 'paid' | 'unpaid' | 'bike' | 'train' | 'floor_sleeper' = 'all';
 
 	onMount(async () => {
 		try {
@@ -52,6 +52,9 @@
 				break;
 			case 'train':
 				currentList = result.filter((x) => x.takes_train);
+				break;
+			case 'floor_sleeper':
+				currentList = result.filter((x) => x.would_sleep_on_floor);
 				break;
 		}
 	}
@@ -206,11 +209,12 @@
 					<option value="unpaid">Unbezahlt</option>
 					<option value="bike">Fahrradfahrer</option>
 					<option value="train">Bahnfahrer</option>
+					<option value="floor_sleeper">Bodenschläfer</option>
 				</select>
 			</div>
 
 			<div class="flex flex-col overflow-auto">
-				<div class="grid grid-cols-[repeat(11,1fr)] gap-x-4 whitespace-nowrap">
+				<div class="grid grid-cols-[repeat(12,1fr)] gap-x-4 whitespace-nowrap">
 					<bold class="font-bold">Bezahlt</bold>
 					<bold class="font-bold">Name</bold>
 					<bold class="font-bold">E-Mail-Adresse</bold>
@@ -222,9 +226,10 @@
 					<bold class="font-bold">Kuchen</bold>
 					<bold class="font-bold">Vegetarier</bold>
 					<bold class="font-bold">Allergien</bold>
+					<bold class="font-bold">Bilder dürfen gepostet werden</bold>
 
 					{#each currentList as registration, i}
-						<div class="col-span-11 h-0.5 bg-gray-300"></div>
+						<div class="col-span-12 h-0.5 bg-gray-300"></div>
 						<div class="flex items-start gap-4 py-1">
 							<input
 								disabled={paidLoading.includes(i)}
@@ -274,6 +279,7 @@
 						<div>{registration.brings_cake ? 'Ja' : ''}</div>
 						<div>{registration.is_vegetarian ? 'Ja' : ''}</div>
 						<div class="w-60 whitespace-pre-wrap">{registration.allergies}</div>
+						<div>{registration.post_images}</div>
 					{/each}
 				</div>
 			</div>
