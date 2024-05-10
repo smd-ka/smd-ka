@@ -8,6 +8,11 @@ body {;
 } 
 
 @layer base {
+  @font-face {
+    font-family: 'Mokoto';
+    src: url('./fonts/mokoto.ttf');
+  }
+
   body {
     @apply text-primary-text;
   }  

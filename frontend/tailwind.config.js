@@ -6,7 +6,9 @@ export default {
 			sans: ['roboto', 'sans-serif'],
 			anton: ['Anton', 'sans-serif'],
 			merriweather: ['Merriweather Sans Variable', 'sans-serif'],
-			bebas: ['Bebas Neue', 'sans-serif']
+			bebas: ['Bebas Neue', 'sans-serif'],
+			zcool: ['ZCOOL QingKe HuangYou', 'sans-serif'],
+			mokoto: ['Mokoto', 'sans-serif']
 		},
 		extend: {
 			colors: {
