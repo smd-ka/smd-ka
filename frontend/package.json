@@ -38,6 +38,7 @@
 		"@fontsource-variable/merriweather-sans": "^5.0.13",
 		"@fontsource/anton": "^5.0.19",
 		"@fontsource/bebas-neue": "^5.0.19",
+		"@fontsource/zcool-qingke-huangyou": "^5.0.12",
 		"@fortawesome/free-brands-svg-icons": "^6.4.2",
 		"@fortawesome/free-solid-svg-icons": "^6.4.2",
 		"pocketbase": "^0.15.3",

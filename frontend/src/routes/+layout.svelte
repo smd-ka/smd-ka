@@ -4,6 +4,7 @@
 	// Supports weights 300-800
 	import '@fontsource-variable/merriweather-sans';
 	import '@fontsource/bebas-neue';
+	import '@fontsource/zcool-qingke-huangyou';
 	import logo from '$lib/assets/logos/smd-ka_modified.svg';
 	import {
 		faBars,
