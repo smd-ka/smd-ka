@@ -37,10 +37,10 @@
 			</h1>
 
 			<div class="py-10">
-				<h3 class="text-3xl uppercase">
-					Mi. 29. Mai 18:30 <br />
+				<h3 class="neonTextWhite text-3xl uppercase backdrop-blur-lg">
+					<span class="neonTextWhite text-4xl"> Mittwoch 29. Mai 18:30 </span> <br />
 					GERTHSEN-HÖRSAAL KIT CAMPUS SÜD <br />
-					ÖFFENTLICHER VORTRAG EINTRITT FREI
+					EINTRITT FREI
 				</h3>
 			</div>
 
@@ -107,5 +107,10 @@
 			0 0 7px #ff5c00,
 			0 0 10px #ff5c00,
 			0 0 21px #ff5c00;
+	}
+
+	.neonTextWhite {
+		color: #fff;
+		text-shadow: 0 0 7px #fff;
 	}
 </style>

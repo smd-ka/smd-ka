@@ -19,9 +19,9 @@
 	import TextInput from '$lib/components/forms/TextInput.svelte';
 	import TextArea from '$lib/components/forms/TextArea.svelte';
 	import CheckboxInput from '$lib/components/forms/CheckboxInput.svelte';
-	import saft_heroshot from '$lib/assets/heroshots/saft_heroshot.png';
+	import saft_heroshot from '$lib/assets/heroshots/SAFT_compressed.jpg';
 	import herzenssache_16_9 from '$lib/assets/ss24/herzenssache_16_9.png';
-	import felix from '$lib/assets/about/Felix.jpeg';
+	import vortrag_teaser from '$lib/assets/ss24/vortrag_teaser.jpg';
 	import EmailInput from '$lib/components/forms/EmailInput.svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 
@@ -106,31 +106,32 @@
 	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
 		<div class="grid gap-8 px-4 lg:grid-cols-2 xl:px-80">
 			<div class="flex flex-col gap-4 text-right">
-				<h1 class="text-5xl font-bold uppercase">Wie du uns erreichst</h1>
+				<h1 class="text-5xl font-bold uppercase">Vortrag</h1>
 				<p>
-					Du möchtest regelmäßige Infos erhalten, hast eine Frage an uns oder ein anderes Anliegen?
-					Schreib eine Mail an Felix M. aus unserem Leitungsteam.
+					Am 29. Mai hält Prof. Dr. Thomas Schimmel einen Vortrag zum Thema „Der Urknall und die
+					Gottesfrage“. Der allgemein verständliche Vortrag gibt faszinierende Einblicke in die
+					Natur – Von kleinsten Welten im inneren der Atome bis hin zu den weiten des Universums und
+					der spannenden Frage nach seinem Ursprung.
+					<br /> Sei dabei <span class="font-bold">18:30 im Gerthsen-Höhrsaal</span> am KIT Campus Süd
 				</p>
-				<a href="mailto:leiter@smd-karlsruhe.de" class="w-fit self-end bg-black p-4 text-white"
-					>Schreib uns ne mail</a
-				>
+				<a href="/vortrag" class="w-fit self-end bg-black p-4 text-white"> Mehr erfahren </a>
 			</div>
-			<img alt="Semesterprogramm" src={felix} />
+			<img alt="vortrag" src={vortrag_teaser} />
 		</div>
 	</Saos>
 
 	<div class="relative my-20">
 		<div
-			class="h-[400px] bg-cover bg-[center_top_34%] opacity-80"
+			class="h-[400px] bg-cover bg-[center_top_75%]"
 			style="background-image: url({saft_heroshot});"
 		/>
 		<div class="absolute left-8 top-14 text-white md:left-14">
 			<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
 				<div class="flex flex-col gap-4">
-					<h1 class="text-4xl md:hidden">SemesterAnfangs- <br />FreizeiT</h1>
-					<h1 class="text-5xl max-md:hidden">SemesterAnfangsFreizeiT</h1>
-					<p>From the Inside out</p>
-					<a href="/saft" class="w-fit bg-black p-4 text-white">Weitere Infos</a>
+					<!-- <h1 class="text-4xl md:hidden">SemesterAnfangs- <br />FreizeiT</h1> -->
+					<!-- <h1 class="text-5xl max-md:hidden">SemesterAnfangsFreizeiT</h1> -->
+					<!-- <p>From the Inside out</p> -->
+					<!-- <a href="/saft" class="w-fit bg-black p-4 text-white">Weitere Infos</a> -->
 				</div>
 			</Saos>
 		</div>
