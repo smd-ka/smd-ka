@@ -64,23 +64,24 @@
 					</p>
 				</div>
 			</div>
+			<div class="py-20">
+				<div class="grid gap-6 p-4 backdrop-blur-lg">
+					<div class="py-2 backdrop-blur-lg">
+						<h3 class="text-4xl uppercase">Weitere Veranstaltungen</h3>
+						<span class="text-xl font-bold tracking-widest"
+							>+++ immer 19:30 im Redtenbacher Hörsaal +++
+						</span>
+					</div>
 
-			<div class="grid gap-6 py-20">
-				<div class="py-2 backdrop-blur-lg">
-					<h3 class="text-4xl uppercase">Weitere Veranstaltungen</h3>
-					<span class="text-xl font-bold tracking-widest"
-						>+++ immer 19:30 im Redtenbacher Hörsaal +++
-					</span>
-				</div>
-
-				<div class="grid grid-cols-[5rem_1fr] gap-4 text-2xl">
-					{#each futureEvents as event}
-						<div class="font-bold">{event.date}</div>
-						<div class="grid text-left">
-							<span class="neonText">{event.title}</span>
-							<span class="text-lg">{@html event.speaker}</span>
-						</div>
-					{/each}
+					<div class="grid grid-cols-[5rem_1fr] gap-4 text-2xl">
+						{#each futureEvents as event}
+							<div class="font-bold">{event.date}</div>
+							<div class="grid text-left">
+								<span class="neonText">{event.title}</span>
+								<span class="text-lg">{@html event.speaker}</span>
+							</div>
+						{/each}
+					</div>
 				</div>
 			</div>
 
