@@ -56,7 +56,7 @@
 					>
 						<a class="hover:text-primary-text" href="/about">Wer wir sind</a>
 						<a class="hover:text-primary-text" href="/about#orga">Wie wir uns organisieren</a>
-						<a class="hover:text-primary-text" href="/about#mitarbeit">Mitarbeit</a>
+						<a class="hover:text-primary-text" href="/about#mitarbeiten">Mitarbeiten</a>
 						<a class="hover:text-primary-text" href="/about#sup">Unterstützen</a>
 					</div>
 				</div>
@@ -66,16 +66,16 @@
 						<Fa class="text-primary text-lg" icon={faChevronDown}></Fa>
 					</a>
 					<div
-						class=" bg-primary absolute hidden justify-center gap-4 px-8 py-2 hover:grid peer-hover:grid"
+						class=" bg-primary absolute hidden w-64 justify-center gap-4 px-8 py-2 hover:grid peer-hover:grid"
 					>
 						<a class="hover:text-primary-text" href="/semesterprogramm">Semesterprogramm</a>
 						<a class="hover:text-primary-text" href="/saft">SemesterAnfangsFreizeiT </a>
 						<a class="hover:text-primary-text" href="/vortrag">
 							Vortrag: Der Urknall und die Gottesfrage
 						</a>
-						<!-- <a class="hover:text-primary-text" href="/semesterprogramm#aktionen"
+						<a class="hover:text-primary-text" href="/semesterprogramm#aktionen"
 							>Wöchentliche Aktionen</a
-						> -->
+						>
 					</div>
 				</div>
 				<a class="hover:text-primary" href="/kontakt">Kontakt</a>
@@ -145,9 +145,9 @@
 							<a
 								on:click={() => (showMenu = false)}
 								class="hover:underline"
-								href="/about#mitarbeit"
+								href="/about#mitarbeiten"
 							>
-								Mitarbeit
+								Mitarbeiten
 							</a>
 							<a on:click={() => (showMenu = false)} class="hover:underline" href="/about#sup">
 								Unterstützen
@@ -174,14 +174,14 @@
 								SemesterAnfangsFreizeiT
 							</a>
 							<a on:click={() => (showMenu = false)} class="hover:underline" href="/vortrag">
-								<!-- <a
+								Vortrag: Der Urknall und die Gottesfrage
+							</a>
+							<a
 								on:click={() => (showMenu = false)}
 								class="hover:underline"
 								href="/semesterprogramm#aktionen"
 							>
 								Wöchentliche Aktionen
-							</a> -->
-								Vortrag: Der Urknall und die Gottesfrage
 							</a>
 						</div>
 					</div>

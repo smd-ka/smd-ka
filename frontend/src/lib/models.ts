@@ -68,3 +68,13 @@ export type Team = {
 	description: string;
 	image: string;
 };
+
+export type Activity = {
+	id: string;
+	collectionName: string;
+	collectionId: string;
+	title: string;
+	subtitle: string;
+	description: string;
+	image: string;
+};

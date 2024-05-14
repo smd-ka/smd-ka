@@ -38,7 +38,7 @@
 
 <HeroShot imgSrc={header} />
 <main class="container mx-auto flex flex-col gap-24 py-24 text-lg">
-	<div class="container flex flex-col gap-6 px-4 xl:px-80">
+	<div class="flex flex-col gap-6 px-4 xl:px-80">
 		<h1 class="text-5xl font-bold uppercase">Über uns</h1>
 
 		<p>
@@ -52,7 +52,7 @@
 		</p>
 	</div>
 
-	<div class="grid lg:grid-cols-3">
+	<div class="grid py-20 lg:grid-cols-3">
 		<button class="flex flex-col items-center" on:click={() => (showDenken = !showDenken)}>
 			<img src={denken} alt="Kopf mit Glühbrine" />
 			<h3 class="text-3xl font-bold uppercase">Denken</h3>
@@ -143,10 +143,9 @@
 				</div>
 			{/each}
 		</div>
-		<div id="orga"></div>
 	</div>
 
-	<div class="flex flex-col gap-8 px-4 xl:px-80">
+	<div id="orga" class="flex flex-col gap-8 px-4 py-20 xl:px-80">
 		<h1 class="break-words text-4xl font-bold uppercase md:text-5xl">
 			Hochschul-SMD <br /> Ein deutschlandweites Netzwerk
 		</h1>
@@ -177,11 +176,10 @@
 				studiert Umweltingenieurwesen (Bau) und Maike ist 24 und studiert Grundschullehramt.
 			</div>
 		</div>
-		<div id="mitarbeit"></div>
 	</div>
 
 	<div>
-		<div class="flex flex-col gap-8 px-4 xl:px-80">
+		<div id="mitarbeiten" class="flex flex-col gap-8 px-4 py-20 xl:px-80">
 			<h1 class="text-4xl font-bold uppercase md:text-5xl">Mitarbeiten</h1>
 			<p>
 				Neben den Leitern gibt es verschiedene Ämter und Teams. In der Mitarbeit können wir alle
@@ -198,15 +196,14 @@
 						/>
 						<div class="flex flex-col gap-6 p-4">
 							<h2 class="text-2xl font-bold uppercase">{team.name}</h2>
-							<p>{team.description}</p>
+							<p>{@html team.description}</p>
 						</div>
 					</div>
 				{/each}
 			</div>
-			<div id="sup"></div>
 		</div>
 
-		<div class="flex flex-col gap-8 px-4 xl:px-80">
+		<div id="sup" class="flex flex-col gap-8 px-4 py-20 xl:px-80">
 			<h1 class="text-4xl font-bold uppercase md:text-5xl">Unterstützung</h1>
 
 			<div class="grid gap-8 md:grid-cols-[1fr_3fr]">
