@@ -6,9 +6,12 @@
 	import '@fontsource/bebas-neue';
 	import '@fontsource/zcool-qingke-huangyou';
 	import logo from '$lib/assets/logos/smd-ka_modified.svg';
+	import smd_logo from '$lib/assets/logos/smd_invers.png';
+	import insta from '$lib/assets/logos/insta.svg';
 	import {
 		faBars,
 		faChevronDown,
+		faEnvelope,
 		faRightFromBracket,
 		faRightToBracket,
 		faX
@@ -314,7 +317,7 @@
 
 	<footer class="flex-[0_1_auto]">
 		<div class="bg-primary">
-			<div class="container mx-auto flex items-center justify-center gap-4 max-lg:flex-col">
+			<div class="container mx-auto flex items-center justify-center gap-4 max-md:flex-col">
 				<a href="https://www.smd.org/hochschul-smd/startseite" class="p-8"
 					><img
 						class="w-36"
@@ -345,59 +348,78 @@
 				>
 			</div>
 		</div>
-		<div class="bg-grey text-white">
-			<div class="container mx-auto grid justify-center gap-8 px-4 py-20 md:grid-cols-3 md:px-80">
-				<section class="flex flex-col gap-4">
-					<h2 class="text-primary text-xl uppercase">Unser Netzwerk</h2>
-					<p>
-						Die Hochschul-SMD Karlsruhe gehört zur Hochschul-SMD, einem deutschlandweiten Netzwerk
-						Christlicher Hochschulgruppen.
+		<div class="bg-grey text-gray-200">
+			<div class="container mx-auto px-4 py-20 xl:px-80">
+				<div class="pb-10 md:w-1/2">
+					<img class="h-7" src={logo} alt="SMD Logo" />
+					<p class="pt-4">
+						Wir sind eine überkonfessionelle christliche Hochschulgruppe. In verschiedenen Formaten
+						wollen wir zum Nach- und Weiterdenken über den christlichen Glauben anregen und
+						Gemeinschaft erleben.
 					</p>
-					<p>
-						We are part of IFES, a global movement of students sharing and living out the good news
-						of Jesus Christ.
-					</p>
-					<a href="https://ifesworld.org">
-						<img src={ifes} alt="IFES Logo" class="w-24" />
-					</a>
-				</section>
 
-				<section class="flex flex-col gap-4">
-					<h2 class="text-primary text-xl uppercase">Quick Links</h2>
-					<div>
-						<a href="/about">Über uns</a><br />
-						<a href="/kontakt">Kontakt</a><br />
-						<a href="/imprint">Impressum</a><br />
-						<a href="/privacy">Datenschutzerklärung</a><br />
-						<a href="https://wiki.smd-karlsruhe.de">Wiki</a>
+					<div class="flex items-center gap-4 pt-4">
+						<a href="https://www.instagram.com/smd_karlsruhe/" class="flex items-center gap-4">
+							<img src={insta} alt="Instagram Logo" class="w-10" />
+						</a>
+						<a class="text-3xl" href="mailto:leiter@smd-karlsruhe.de">
+							<Fa icon={faEnvelope} />
+						</a>
 					</div>
-				</section>
+				</div>
 
-				<section>
-					<ul class="wp-block-social-links has-huge-icon-size has-icon-color is-style-logos-only">
-						<li class="wp-social-link wp-social-link-instagram wp-block-social-link">
-							<a
-								href="https://www.instagram.com/smd_karlsruhe/"
-								aria-label="Instagram: https://www.instagram.com/smd_karlsruhe/"
-								class="wp-block-social-link-anchor"
-							>
-								<svg
-									width="48"
-									height="48"
-									viewBox="0 0 24 24"
-									version="1.1"
-									xmlns="http://www.w3.org/2000/svg"
-									role="img"
-									aria-hidden="true"
-									focusable="false"
-									fill="#fff"
-									><path
-										d="M12,4.622c2.403,0,2.688,0.009,3.637,0.052c0.877,0.04,1.354,0.187,1.671,0.31c0.42,0.163,0.72,0.358,1.035,0.673 c0.315,0.315,0.51,0.615,0.673,1.035c0.123,0.317,0.27,0.794,0.31,1.671c0.043,0.949,0.052,1.234,0.052,3.637 s-0.009,2.688-0.052,3.637c-0.04,0.877-0.187,1.354-0.31,1.671c-0.163,0.42-0.358,0.72-0.673,1.035 c-0.315,0.315-0.615,0.51-1.035,0.673c-0.317,0.123-0.794,0.27-1.671,0.31c-0.949,0.043-1.233,0.052-3.637,0.052 s-2.688-0.009-3.637-0.052c-0.877-0.04-1.354-0.187-1.671-0.31c-0.42-0.163-0.72-0.358-1.035-0.673 c-0.315-0.315-0.51-0.615-0.673-1.035c-0.123-0.317-0.27-0.794-0.31-1.671C4.631,14.688,4.622,14.403,4.622,12 s0.009-2.688,0.052-3.637c0.04-0.877,0.187-1.354,0.31-1.671c0.163-0.42,0.358-0.72,0.673-1.035 c0.315-0.315,0.615-0.51,1.035-0.673c0.317-0.123,0.794-0.27,1.671-0.31C9.312,4.631,9.597,4.622,12,4.622 M12,3 C9.556,3,9.249,3.01,8.289,3.054C7.331,3.098,6.677,3.25,6.105,3.472C5.513,3.702,5.011,4.01,4.511,4.511 c-0.5,0.5-0.808,1.002-1.038,1.594C3.25,6.677,3.098,7.331,3.054,8.289C3.01,9.249,3,9.556,3,12c0,2.444,0.01,2.751,0.054,3.711 c0.044,0.958,0.196,1.612,0.418,2.185c0.23,0.592,0.538,1.094,1.038,1.594c0.5,0.5,1.002,0.808,1.594,1.038 c0.572,0.222,1.227,0.375,2.185,0.418C9.249,20.99,9.556,21,12,21s2.751-0.01,3.711-0.054c0.958-0.044,1.612-0.196,2.185-0.418 c0.592-0.23,1.094-0.538,1.594-1.038c0.5-0.5,0.808-1.002,1.038-1.594c0.222-0.572,0.375-1.227,0.418-2.185 C20.99,14.751,21,14.444,21,12s-0.01-2.751-0.054-3.711c-0.044-0.958-0.196-1.612-0.418-2.185c-0.23-0.592-0.538-1.094-1.038-1.594 c-0.5-0.5-1.002-0.808-1.594-1.038c-0.572-0.222-1.227-0.375-2.185-0.418C14.751,3.01,14.444,3,12,3L12,3z M12,7.378 c-2.552,0-4.622,2.069-4.622,4.622S9.448,16.622,12,16.622s4.622-2.069,4.622-4.622S14.552,7.378,12,7.378z M12,15 c-1.657,0-3-1.343-3-3s1.343-3,3-3s3,1.343,3,3S13.657,15,12,15z M16.804,6.116c-0.596,0-1.08,0.484-1.08,1.08 s0.484,1.08,1.08,1.08c0.596,0,1.08-0.484,1.08-1.08S17.401,6.116,16.804,6.116z"
-									></path></svg
-								></a
-							>
-						</li>
-					</ul>
+				<div class="grid justify-center gap-8 md:grid-cols-3">
+					<section class="flex flex-col gap-4">
+						<h2 class="text-primary text-xl uppercase">Unser Netzwerk</h2>
+						<p>
+							Die Hochschul-SMD Karlsruhe gehört zur Hochschul-SMD, einem deutschlandweiten Netzwerk
+							Christlicher Hochschulgruppen.
+						</p>
+						<p>
+							We are part of IFES, a global movement of students sharing and living out the good
+							news of Jesus Christ.
+						</p>
+						<div class="flex items-center gap-8">
+							<a href="https://ifesworld.org">
+								<img src={ifes} alt="IFES Logo" class="w-24" />
+							</a>
+							<a href="https://smd.org">
+								<img src={smd_logo} alt="SMD Logo" class="w-24" />
+							</a>
+						</div>
+					</section>
+
+					<section class="flex flex-col gap-3">
+						<h2 class="text-primary text-xl uppercase">Hochschulgruppen</h2>
+						<a href="https://www.sfc-karlsrgrid gap-4uhe.de">SfC - Studierende für Christus</a>
+						<a href="https://www.khg-karlsruhe.de/">KGH - Katholische Hochschulgemeinde</a>
+						<a href="https://esg-karlsruhe.de/">ESG - Evangelische Studierendengemeinde</a>
+						<a href="https://www.kv-karlsruhe.swdec.de/">EC - Entschieden für Christus</a>
+						<a href="https://cvjm-ka.de/">CVJM - Christlicher Verein Junger Menschen</a>
+						<a href="https://www.icf-karlsruhe.de/de/young-adults/"
+							>ICF Young Adults - International Christian Fellowship
+						</a>
+					</section>
+
+					<section class="flex flex-col gap-3">
+						<h2 class="text-primary text-xl uppercase">Gemeinden</h2>
+						<a href="https://feg-karlsruhe.de">FeG Karlsruhe</a>
+						<a href="https://www.cg-karlsruhe.de/">CG Karlsruhe</a>
+						<a href="https://www.efg-karlsruhe.de">EFG Karlsruhe</a>
+						<a href="https://faecherkirche.de">Fächerkirche</a>
+						<a href="https://lkg-karlsruhe.de">LkG Karlsruhe</a>
+						<a href="https://www.icf-karlsruhe.de">ICF Karlsruhe</a>
+						<a href="https://treffpunkt-leben.de/">Treffpunkt Leben</a>
+						<a href="https://www.stadtkirche-karlsruhe.de/">Stadtkirche</a>
+						<a href="https://www.czk.de/">Christliches Zentrum</a>
+					</section>
+				</div>
+				<section class="mt-16 flex flex-wrap gap-8 border-t-[1px] border-[#BEBEBE] py-4">
+					<a href="/imprint">Impressum</a>
+					<a href="/privacy">Datenschutz</a>
+					<a href="/kontakt">Kontakt</a>
+					<a href="/about#sup">Spenden</a>
+					<a href="https://wiki.smd-karlsruhe.de">Wiki</a>
 				</section>
 			</div>
 		</div>
