@@ -49,20 +49,7 @@
 				<!-- Links (only visable for bigger screens) -->
 
 				<a class="text-primary hover:text-white" href="/">Startseite</a>
-				<div class="relative">
-					<a href="/about" class="hover:text-primary peer flex items-center gap-2">
-						Über uns
-						<Fa class="text-primary text-lg" icon={faChevronDown}></Fa>
-					</a>
-					<div
-						class=" bg-primary absolute hidden justify-center gap-4 px-8 py-2 hover:grid peer-hover:grid"
-					>
-						<a class="hover:text-primary-text" href="/about">Wer wir sind</a>
-						<a class="hover:text-primary-text" href="/about#orga">Wie wir uns organisieren</a>
-						<a class="hover:text-primary-text" href="/about#mitarbeiten">Mitarbeiten</a>
-						<a class="hover:text-primary-text" href="/about#sup">Unterstützen</a>
-					</div>
-				</div>
+				<a href="/about" class="hover:text-primary peer flex items-center gap-2"> Über uns </a>
 				<div>
 					<a href="/semesterprogramm" class="hover:text-primary peer flex items-center gap-2">
 						Was läuft
@@ -76,9 +63,7 @@
 						<a class="hover:text-primary-text" href="/vortrag">
 							Vortrag: Der Urknall und die Gottesfrage
 						</a>
-						<a class="hover:text-primary-text" href="/semesterprogramm#aktionen"
-							>Wöchentliche Aktionen</a
-						>
+						<a class="hover:text-primary-text" href="/weekly">Wöchentliche Aktionen</a>
 					</div>
 				</div>
 				<a class="hover:text-primary" href="/kontakt">Kontakt</a>
@@ -137,25 +122,6 @@
 						>
 							Über uns
 						</a>
-
-						<div class="text-primary-text grid pl-8">
-							<a on:click={() => (showMenu = false)} class="hover:underline" href="/about">
-								Wer wir sind
-							</a>
-							<a on:click={() => (showMenu = false)} class="hover:underline" href="/about#orga">
-								Wie wir uns organisieren
-							</a>
-							<a
-								on:click={() => (showMenu = false)}
-								class="hover:underline"
-								href="/about#mitarbeiten"
-							>
-								Mitarbeiten
-							</a>
-							<a on:click={() => (showMenu = false)} class="hover:underline" href="/about#sup">
-								Unterstützen
-							</a>
-						</div>
 					</div>
 					<div>
 						<a
@@ -179,11 +145,7 @@
 							<a on:click={() => (showMenu = false)} class="hover:underline" href="/vortrag">
 								Vortrag: Der Urknall und die Gottesfrage
 							</a>
-							<a
-								on:click={() => (showMenu = false)}
-								class="hover:underline"
-								href="/semesterprogramm#aktionen"
-							>
+							<a on:click={() => (showMenu = false)} class="hover:underline" href="/weekly">
 								Wöchentliche Aktionen
 							</a>
 						</div>
@@ -356,7 +318,7 @@
 						<a href="/imprint">Impressum</a>
 						<a href="/privacy">Datenschutz</a>
 						<a href="/kontakt">Kontakt</a>
-						<a href="/about#sup">Spenden</a>
+						<a href="/spenden">Spenden</a>
 						<a href="https://wiki.smd-karlsruhe.de">Wiki</a>
 					</div>
 

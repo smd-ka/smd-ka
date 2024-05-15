@@ -6,13 +6,9 @@
 
 <div class="relative">
 	<h1
-		class="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 text-5xl font-bold"
-	></h1>
-
-	<h1
 		class="absolute left-1/2 top-32 z-10 -translate-x-1/2 whitespace-nowrap text-5xl text-white sm:text-6xl md:text-7xl"
 	>
 		{title || ''}
 	</h1>
-	<div class="h-96 max-md:h-52 bg-cover {bgPosition} " style="background-image: url({imgSrc});" />
+	<div class="h-96 bg-cover max-md:h-52 {bgPosition} " style="background-image: url({imgSrc});" />
 </div>
