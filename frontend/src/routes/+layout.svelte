@@ -350,25 +350,16 @@
 		</div>
 		<div class="bg-grey text-gray-200">
 			<div class="container mx-auto px-4 py-20 xl:px-80">
-				<div class="pb-10 md:w-1/2">
-					<img class="h-7" src={logo} alt="SMD Logo" />
-					<p class="pt-4">
-						Wir sind eine überkonfessionelle christliche Hochschulgruppe. In verschiedenen Formaten
-						wollen wir zum Nach- und Weiterdenken über den christlichen Glauben anregen und
-						Gemeinschaft erleben.
-					</p>
+				<div class="grid justify-center gap-8 md:grid-cols-2">
+					<!-- <div class="col-span-2 pb-10">
+						<img class="h-7" src={logo} alt="SMD Logo" />
+						<p class="pt-4">
+							Wir sind eine überkonfessionelle christliche Hochschulgruppe. In verschiedenen
+							Formaten wollen wir zum Nach- und Weiterdenken über den christlichen Glauben anregen
+							und Gemeinschaft erleben.
+						</p>
+					</div> -->
 
-					<div class="flex items-center gap-4 pt-4">
-						<a href="https://www.instagram.com/smd_karlsruhe/" class="flex items-center gap-4">
-							<img src={insta} alt="Instagram Logo" class="w-10" />
-						</a>
-						<a class="text-3xl" href="mailto:leiter@smd-karlsruhe.de">
-							<Fa icon={faEnvelope} />
-						</a>
-					</div>
-				</div>
-
-				<div class="grid justify-center gap-8 md:grid-cols-3">
 					<section class="flex flex-col gap-4">
 						<h2 class="text-primary text-xl uppercase">Unser Netzwerk</h2>
 						<p>
@@ -379,6 +370,7 @@
 							We are part of IFES, a global movement of students sharing and living out the good
 							news of Jesus Christ.
 						</p>
+
 						<div class="flex items-center gap-8">
 							<a href="https://ifesworld.org">
 								<img src={ifes} alt="IFES Logo" class="w-24" />
@@ -389,19 +381,14 @@
 						</div>
 					</section>
 
-					<section class="flex flex-col gap-3">
+					<section class="underline-a flex flex-col gap-3">
 						<h2 class="text-primary text-xl uppercase">Hochschulgruppen</h2>
-						<a href="https://www.sfc-karlsrgrid gap-4uhe.de">SfC - Studierende für Christus</a>
+						<a href="https://www.sfc-karlsruhe.de">SfC - Studierende für Christus</a>
 						<a href="https://www.khg-karlsruhe.de/">KGH - Katholische Hochschulgemeinde</a>
 						<a href="https://esg-karlsruhe.de/">ESG - Evangelische Studierendengemeinde</a>
-						<a href="https://www.kv-karlsruhe.swdec.de/">EC - Entschieden für Christus</a>
-						<a href="https://cvjm-ka.de/">CVJM - Christlicher Verein Junger Menschen</a>
-						<a href="https://www.icf-karlsruhe.de/de/young-adults/"
-							>ICF Young Adults - International Christian Fellowship
-						</a>
 					</section>
 
-					<section class="flex flex-col gap-3">
+					<!-- <section class="flex flex-col gap-3">
 						<h2 class="text-primary text-xl uppercase">Gemeinden</h2>
 						<a href="https://feg-karlsruhe.de">FeG Karlsruhe</a>
 						<a href="https://www.cg-karlsruhe.de/">CG Karlsruhe</a>
@@ -412,14 +399,25 @@
 						<a href="https://treffpunkt-leben.de/">Treffpunkt Leben</a>
 						<a href="https://www.stadtkirche-karlsruhe.de/">Stadtkirche</a>
 						<a href="https://www.czk.de/">Christliches Zentrum</a>
-					</section>
+					</section> -->
 				</div>
-				<section class="mt-16 flex flex-wrap gap-8 border-t-[1px] border-[#BEBEBE] py-4">
-					<a href="/imprint">Impressum</a>
-					<a href="/privacy">Datenschutz</a>
-					<a href="/kontakt">Kontakt</a>
-					<a href="/about#sup">Spenden</a>
-					<a href="https://wiki.smd-karlsruhe.de">Wiki</a>
+				<section class="mt-16 flex flex-wrap justify-between border-t-[1px] border-[#BEBEBE] py-3">
+					<div class="underline-a flex flex-wrap gap-8 pt-1">
+						<a href="/imprint">Impressum</a>
+						<a href="/privacy">Datenschutz</a>
+						<a href="/kontakt">Kontakt</a>
+						<a href="/about#sup">Spenden</a>
+						<a href="https://wiki.smd-karlsruhe.de">Wiki</a>
+					</div>
+
+					<div class="flex items-center gap-4">
+						<a href="https://www.instagram.com/smd_karlsruhe/" class="flex items-center gap-4">
+							<img src={insta} alt="Instagram Logo" class="w-10" />
+						</a>
+						<a class="text-3xl" href="mailto:leiter@smd-karlsruhe.de">
+							<Fa icon={faEnvelope} />
+						</a>
+					</div>
 				</section>
 			</div>
 		</div>
@@ -437,6 +435,9 @@
 		transition: grid-template-rows 400ms;
 	}
 
+	.underline-a > a:hover {
+		text-decoration: underline;
+	}
 	.open {
 		grid-template-rows: 1fr;
 	}
