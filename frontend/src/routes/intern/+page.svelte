@@ -18,7 +18,7 @@
 	let loading = false;
 </script>
 
-<main class="container mx-auto mt-8 flex flex-col gap-8">
+<main class="container mx-auto flex flex-col gap-8 pt-8">
 	<div class="grid gap-8 max-md:mx-6 lg:grid-cols-5">
 		<div class="card md:col-span-2">
 			<h2 class="text-primary text-2xl md:text-4xl">
