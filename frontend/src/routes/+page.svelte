@@ -114,7 +114,9 @@
 					der spannenden Frage nach seinem Ursprung.
 					<br /> Sei dabei <span class="font-bold">18:30 im Gerthsen-Höhrsaal</span> am KIT Campus Süd
 				</p>
-				<a href="/vortrag" class="w-fit self-end bg-black p-4 text-white"> Mehr erfahren </a>
+				<a href="/vortrag" class="w-fit self-end whitespace-nowrap bg-black p-4 text-white">
+					Mehr erfahren
+				</a>
 			</div>
 			<img alt="vortrag" src={vortrag_teaser} />
 		</div>

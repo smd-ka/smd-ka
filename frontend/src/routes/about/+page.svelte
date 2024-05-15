@@ -7,11 +7,11 @@
 	import denken from '$lib/assets/about/denken.png';
 	import glauben from '$lib/assets/about/glauben.png';
 	import erleben from '$lib/assets/about/erleben.png';
-	import felix from '$lib/assets/about/Felix.jpeg';
 	import leitung from '$lib/assets/about/leitungsteam.png';
 	import { onMount } from 'svelte';
-	import { getAvatarUrl, pb } from '$lib/pocketbase';
+	import { pb } from '$lib/pocketbase';
 	import type { Statement, Team } from '$lib/models';
+	import Donate from '$lib/components/Donate.svelte';
 
 	let showDenken = false;
 	let showGlauben = false;
@@ -145,7 +145,7 @@
 		</div>
 	</div>
 
-	<div id="orga" class="flex flex-col gap-8 px-4 py-20 xl:px-80">
+	<div class="flex flex-col gap-8 px-4 py-20 xl:px-80">
 		<h1 class="break-words text-4xl font-bold uppercase md:text-5xl">
 			Hochschul-SMD <br /> Ein deutschlandweites Netzwerk
 		</h1>
@@ -179,7 +179,7 @@
 	</div>
 
 	<div>
-		<div id="mitarbeiten" class="flex flex-col gap-8 px-4 py-20 xl:px-80">
+		<div class="flex flex-col gap-8 px-4 py-20 xl:px-80">
 			<h1 class="text-4xl font-bold uppercase md:text-5xl">Mitarbeiten</h1>
 			<p>
 				Neben den Leitern gibt es verschiedene Ämter und Teams. In der Mitarbeit können wir alle
@@ -203,52 +203,8 @@
 			</div>
 		</div>
 
-		<div id="sup" class="flex flex-col gap-8 px-4 py-20 xl:px-80">
-			<h1 class="text-4xl font-bold uppercase md:text-5xl">Unterstützung</h1>
-
-			<div class="grid gap-8 md:grid-cols-[1fr_3fr]">
-				<h2 class="text-3xl font-bold uppercase">Gebet</h2>
-				<p>
-					Bete, dass Gottes Liebe an unserer Hochschule sichtbar wird, Gott uns als Hochschulgruppe
-					gebraucht und Studierende Jesus kennen lernen können.
-				</p>
-
-				<h2 class="text-3xl font-bold uppercase">Mitarbeit</h2>
-				<p>
-					Du hast Interresse bei uns in der Gruppe mitzuarbeiten? Du bist herzlich willkommen!
-					Kontaktiere uns, schau bei einem unserer Gruppenabende vorbei und steig mit ein. Wir
-					freuen uns auf dich.
-				</p>
-
-				<h2 class="text-3xl font-bold uppercase">Spenden</h2>
-
-				<div class="grid gap-8">
-					<p>
-						Neben Engagement und Gebet lebt unsere Arbeit auch von finanzieller Unterstützung. Wir
-						freuen uns, wenn du uns unterstützt. Weitere Infos zur Finanzierung der SMD findest du
-						hier.
-					</p>
-
-					<ul class="font-bold">
-						<li>SMD e. V.</li>
-						<li>Evangelische Bank, Kassel</li>
-						<li>IBAN: DE75 5206 0410 0000 8004 57</li>
-						<li>Verwendungzweck: H-SMD Gruppe Karlsruhe</li>
-					</ul>
-
-					<p class="font-bold">
-						Wir danken dir für deine Spende, sie hilft uns dabei auch in Zukunft diese wichtige
-						Arbeit fortzuführen.
-					</p>
-				</div>
-			</div>
-			<div>
-				Wenn du über die aktuelle Aktionen und Anliegen der Gruppe informiert werden möchtest,
-				kannst du uns gerne unter dieser Email Adresse <a href="mailto:leiter@smd-karlsruhe.de"
-					>leiter@smd-karlsruhe.de</a
-				> nach unserem Freundesbrief nachfragen. Im Freundesbrief stehen alle aktuellen und wichtigen
-				Informationen sowie unsere Gebetsanliegen der Gruppe.
-			</div>
+		<div class="flex flex-col gap-8 px-4 py-20 xl:px-80">
+			<Donate />
 		</div>
 	</div>
 </main>
