@@ -316,93 +316,43 @@
 	</div>
 
 	<footer class="flex-[0_1_auto]">
-		<div class="bg-primary">
-			<div class="container mx-auto flex items-center justify-center gap-4 max-md:flex-col">
-				<a href="https://www.smd.org/hochschul-smd/startseite" class="p-8"
-					><img
-						class="w-36"
-						src="https://hochschul-smd.org/wp-content/uploads/2022/04/Hochschul-SMD_weiss_web.png"
-						alt="Hochschul-SMD"
-					/></a
-				>
-				<a href="https://international.smd.org/start" class="p-8">
-					<img
-						class="w-36"
-						src="https://hochschul-smd.org/wp-content/uploads/2022/04/hochschul_smd_weiss_web-e1649667168460.png"
-						alt="International SMD"
-					/>
-				</a>
-				<a href="https://uncover.smd.org/willkommen" class="p-8"
-					><img
-						class="w-36"
-						src="https://hochschul-smd.org/wp-content/uploads/2022/04/uncover_weiss.png"
-						alt="Uncover"
-					/></a
-				>
-				<a href="https://www.begruendet-glauben.org/" class="p-8"
-					><img
-						class="w-36"
-						src="https://hochschul-smd.org/wp-content/uploads/2022/04/begruendet_logo_weiss_web.png"
-						alt="Begruendet-Glauben"
-					/></a
-				>
-			</div>
-		</div>
 		<div class="bg-grey text-gray-200">
-			<div class="container mx-auto px-4 py-20 xl:px-80">
-				<div class="grid justify-center gap-8 md:grid-cols-2">
-					<!-- <div class="col-span-2 pb-10">
-						<img class="h-7" src={logo} alt="SMD Logo" />
-						<p class="pt-4">
-							Wir sind eine überkonfessionelle christliche Hochschulgruppe. In verschiedenen
-							Formaten wollen wir zum Nach- und Weiterdenken über den christlichen Glauben anregen
-							und Gemeinschaft erleben.
-						</p>
-					</div> -->
-
+			<div class="container mx-auto px-4 py-20 xl:px-40">
+				<div class="grid justify-center gap-20 md:grid-cols-2">
 					<section class="flex flex-col gap-4">
 						<h2 class="text-primary text-xl uppercase">Unser Netzwerk</h2>
-						<p>
-							Die Hochschul-SMD Karlsruhe gehört zur Hochschul-SMD, einem deutschlandweiten Netzwerk
-							Christlicher Hochschulgruppen.
-						</p>
-						<p>
-							We are part of IFES, a global movement of students sharing and living out the good
-							news of Jesus Christ.
-						</p>
-
-						<div class="flex items-center gap-8">
+						<div class="grid grid-cols-[5rem_1fr] gap-4">
 							<a href="https://ifesworld.org">
-								<img src={ifes} alt="IFES Logo" class="w-24" />
+								<img src={smd_logo} alt="SMD Logo" class="" />
 							</a>
+							<p>
+								Die Hochschul-SMD Karlsruhe gehört zur Hochschul-SMD, einem deutschlandweiten
+								Netzwerk Christlicher Hochschulgruppen.
+							</p>
+
 							<a href="https://smd.org">
-								<img src={smd_logo} alt="SMD Logo" class="w-24" />
+								<img src={ifes} alt="IFES Logo" class="w-32" />
 							</a>
+							<p>
+								We are part of IFES, a global movement of students sharing and living out the good
+								news of Jesus Christ.
+							</p>
 						</div>
 					</section>
 
 					<section class="underline-a flex flex-col gap-3">
-						<h2 class="text-primary text-xl uppercase">Hochschulgruppen</h2>
+						<h2 class="text-primary text-xl uppercase">Andere Gruppen</h2>
 						<a href="https://www.sfc-karlsruhe.de">SfC - Studierende für Christus</a>
-						<a href="https://www.khg-karlsruhe.de/">KGH - Katholische Hochschulgemeinde</a>
 						<a href="https://esg-karlsruhe.de/">ESG - Evangelische Studierendengemeinde</a>
+						<a href="https://www.khg-karlsruhe.de/">KGH - Katholische Hochschulgemeinde</a>
+						<a href="https://feg-karlsruhe.de/de/erwachsene/mittendrin/">FeG - Mittendrin</a>
 					</section>
-
-					<!-- <section class="flex flex-col gap-3">
-						<h2 class="text-primary text-xl uppercase">Gemeinden</h2>
-						<a href="https://feg-karlsruhe.de">FeG Karlsruhe</a>
-						<a href="https://www.cg-karlsruhe.de/">CG Karlsruhe</a>
-						<a href="https://www.efg-karlsruhe.de">EFG Karlsruhe</a>
-						<a href="https://faecherkirche.de">Fächerkirche</a>
-						<a href="https://lkg-karlsruhe.de">LkG Karlsruhe</a>
-						<a href="https://www.icf-karlsruhe.de">ICF Karlsruhe</a>
-						<a href="https://treffpunkt-leben.de/">Treffpunkt Leben</a>
-						<a href="https://www.stadtkirche-karlsruhe.de/">Stadtkirche</a>
-						<a href="https://www.czk.de/">Christliches Zentrum</a>
-					</section> -->
 				</div>
-				<section class="mt-16 flex flex-wrap justify-between border-t-[1px] border-[#BEBEBE] py-3">
-					<div class="underline-a flex flex-wrap gap-8 pt-1">
+
+				<section
+					class="mt-16 grid grid-cols-[1fr_6rem] border-t-[1px] border-[#BEBEBE] py-3 max-md:flex-col"
+				>
+					<div class="underline-a flex flex-wrap pt-1 max-md:flex-col md:gap-8">
 						<a href="/imprint">Impressum</a>
 						<a href="/privacy">Datenschutz</a>
 						<a href="/kontakt">Kontakt</a>
@@ -410,11 +360,11 @@
 						<a href="https://wiki.smd-karlsruhe.de">Wiki</a>
 					</div>
 
-					<div class="flex items-center gap-4">
+					<div class="flex gap-4 max-md:flex-col max-md:items-end md:items-center md:justify-end">
 						<a href="https://www.instagram.com/smd_karlsruhe/" class="flex items-center gap-4">
 							<img src={insta} alt="Instagram Logo" class="w-10" />
 						</a>
-						<a class="text-3xl" href="mailto:leiter@smd-karlsruhe.de">
+						<a class="pr-1 text-3xl" href="mailto:leiter@smd-karlsruhe.de">
 							<Fa icon={faEnvelope} />
 						</a>
 					</div>
