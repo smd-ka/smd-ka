@@ -191,7 +191,12 @@
 					disabled={loading}
 				/>
 
-				<select name="post_images" class="rounded-md border-2 py-3" required>
+				<select
+					value={pb.authStore.model?.post_images}
+					name="post_images"
+					class="rounded-md border-2 py-3"
+					required
+				>
 					<option value="never">Bitte macht keine Bilder von mir.</option>
 					<option value="always ask"
 						>Ja ihr dürft Bilder von mir machen, fragt mich bitte bevor ihr Bilder veröffentlicht.
