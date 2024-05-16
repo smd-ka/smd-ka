@@ -191,6 +191,14 @@
 					disabled={loading}
 				/>
 
+				<select name="post_images" class="rounded-md border-2 py-3" required>
+					<option value="never">Bitte macht keine Bilder von mir.</option>
+					<option value="always ask"
+						>Ja ihr dürft Bilder von mir machen, fragt mich bitte bevor ihr Bilder veröffentlicht.
+					</option>
+					<option value="yes">Ja</option>
+				</select>
+
 				<InputCheckbox
 					id="rili"
 					name="rili"
