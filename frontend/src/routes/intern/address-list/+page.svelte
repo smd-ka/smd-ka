@@ -9,6 +9,7 @@
 		faEnvelope,
 		faGraduationCap,
 		faHouse,
+		faImage,
 		faPhone,
 		faSignature,
 		faUser,
@@ -50,6 +51,12 @@
 				{ thumb: '100x100' }
 			);
 		return defaultAvatar;
+	};
+
+	const postImagesString = (post_images: string): string => {
+		if (post_images == 'yes') return 'Ja';
+		if (post_images == 'always ask') return 'Immer fragen';
+		return 'Nein';
 	};
 </script>
 
@@ -141,6 +148,10 @@
 									Rili
 								</div>
 							{/if}
+							<div class="flex gap-2 md:items-center">
+								<Fa class="max-md:mt-0.5" icon={faImage} />
+								{postImagesString(record.post_images)}
+							</div>
 						</div>
 					</div>
 				</div>
