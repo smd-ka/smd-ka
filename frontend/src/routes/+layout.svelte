@@ -22,6 +22,7 @@
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 	import { click_outside } from '$lib/click_outside';
 	import ifes from '$lib/assets/logos/ifes.png';
+	import {page} from "$app/stores";
 
 	let showMenu = false;
 	let loading = false;
@@ -47,14 +48,28 @@
 
 			<div class="flex items-center gap-4 text-xl text-white max-lg:hidden">
 				<!-- Links (only visable for bigger screens) -->
-
-				<a class="text-primary hover:text-white" href="/">Startseite</a>
-				<a href="/about" class="hover:text-primary peer flex items-center gap-2"> Über uns </a>
+				{#if $page.url.pathname==="/"}
+					<a class="text-primary" href="/">Startseite</a>
+				{:else}
+					<a class="hover:text-primary" href="/">Startseite</a>
+				{/if}
+				{#if $page.url.pathname==="/about"}
+					<a href="/about" class="text-primary peer flex items-center gap-2"> Über uns </a>
+				{:else}
+					<a href="/about" class="hover:text-primary peer flex items-center gap-2"> Über uns </a>
+				{/if}
 				<div>
-					<a href="/semesterprogramm" class="hover:text-primary peer flex items-center gap-2">
-						Was läuft
-						<Fa class="text-primary text-lg" icon={faChevronDown}></Fa>
-					</a>
+					{#if $page.url.pathname==="/semesterprogramm" || $page.url.pathname==="/saft" || $page.url.pathname==="/vortrag" || $page.url.pathname==="/weekly"}
+						<a href="/semesterprogramm" class="text-primary peer flex items-center gap-2">
+							Was läuft
+							<Fa class="text-primary text-lg" icon={faChevronDown}></Fa>
+						</a>
+					{:else}
+						<a href="/semesterprogramm" class="hover:text-primary peer flex items-center gap-2">
+							Was läuft
+							<Fa class="hover:text-primary text-lg" icon={faChevronDown}></Fa>
+						</a>
+					{/if}
 					<div
 						class=" bg-primary absolute hidden w-64 justify-center gap-4 px-8 py-2 hover:grid peer-hover:grid"
 					>
@@ -66,7 +81,11 @@
 						<a class="hover:text-primary-text" href="/weekly">Wöchentliche Aktionen</a>
 					</div>
 				</div>
-				<a class="hover:text-primary" href="/kontakt">Kontakt</a>
+				{#if $page.url.pathname==="/kontakt"}
+					<a class="text-primary" href="/kontakt">Kontakt</a>
+				{:else}
+					<a class="hover:text-primary" href="/kontakt">Kontakt</a>
+				{/if}
 				<a class=" self-center" href="/intern">
 					{#if isValid}
 						<img
@@ -75,7 +94,11 @@
 							alt="user avatar"
 						/>
 					{:else}
-						<Fa class="text-xl text-white" icon={faRightToBracket} />
+						{#if $page.url.toString().includes("/login")}
+							<Fa class="text-primary" icon={faRightToBracket} />
+						{:else}
+							<Fa class="hover:text-primary" icon={faRightToBracket} />
+						{/if}
 					{/if}
 				</a>
 			</div>
