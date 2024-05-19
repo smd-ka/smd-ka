@@ -40,9 +40,7 @@
 						activity.collectionName
 					)})"
 				>
-					<div
-						class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white backdrop-blur-sm"
-					>
+					<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white backdrop-blur-sm rounded-lg m-4">
 						<h2 class="text-3xl font-bold uppercase 2xl:whitespace-nowrap 2xl:text-4xl">
 							{activity.title}
 						</h2>
