@@ -1,5 +1,5 @@
 <script>
-	import header from '$lib/assets/ss24/vortrag_background.jpg';
+	import header from '$lib/assets/ss24/backround_schimmel.jpg';
 	import smd_ka_logo from '$lib/assets/logos/smd-ka_modified.svg';
 	import sfc_logo from '$lib/assets/logos/sfc.png';
 
@@ -37,7 +37,7 @@
 			</h1>
 
 			<div class="py-10">
-				<h3 class="neonTextWhite text-3xl uppercase backdrop-blur-lg">
+				<h3 class="relative neonTextWhite mx-auto max-w-2xl text-3xl uppercase rounded-2xl bg-black bg-opacity-40 backdrop-filter">
 					<span class="neonTextWhite text-4xl"> Mittwoch 29. Mai 18:30 </span> <br />
 					GERTHSEN-HÖRSAAL KIT CAMPUS SÜD <br />
 					EINTRITT FREI
@@ -45,8 +45,8 @@
 			</div>
 
 			<div class=" py-20">
-				<div class="my-20 grid gap-6 p-4 text-lg backdrop-blur-lg">
-					<h3 class="text-3xl uppercase">
+				<div class="relative my-20 grid gap-6 p-4 text-lg rounded-2xl bg-black bg-opacity-40 backdrop-filter">
+					<h3 class="text-3xl uppercase text-white mb-4 ">
 						Ein Streifzug vom Inneren der Atome bis an die Grenzen des Universums
 					</h3>
 					<p>
@@ -65,7 +65,7 @@
 				</div>
 			</div>
 			<div class="py-20">
-				<div class="grid gap-6 p-4 backdrop-blur-lg">
+				<div class="relative my-20 grid gap-6 p-4 text-lg rounded-2xl bg-black bg-opacity-40 backdrop-filter">
 					<div class="py-2">
 						<h3 class="text-4xl uppercase">Weitere Veranstaltungen</h3>
 						<span class="text-xl font-bold tracking-widest"
