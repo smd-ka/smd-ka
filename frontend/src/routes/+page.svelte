@@ -24,6 +24,7 @@
 	import vortrag_teaser from '$lib/assets/ss24/vortrag_teaser.jpg';
 	import EmailInput from '$lib/components/forms/EmailInput.svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
+	import { pb } from '$lib/pocketbase';
 
 	let success = false;
 	let error = false;
