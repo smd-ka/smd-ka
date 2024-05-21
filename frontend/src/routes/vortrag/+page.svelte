@@ -67,7 +67,7 @@
 			<div class="py-20">
 				<div class="relative my-20 grid gap-6 p-4 text-lg rounded-2xl bg-black bg-opacity-40 backdrop-filter">
 					<div class="py-2">
-						<h3 class="text-4xl uppercase">Weitere Veranstaltungen</h3>
+						<h3 class="text-3xl sm:text-4xl lg:text-6xl uppercase">Weitere Veranstaltungen</h3>
 						<span class="text-xl font-bold tracking-widest"
 							>+++ immer 19:30 im Redtenbacher Hörsaal +++
 						</span>
