@@ -37,7 +37,7 @@
 			</h1>
 
 			<div class="py-10">
-				<h3 class="relative neonTextWhite mx-auto max-w-2xl text-3xl uppercase rounded-2xl bg-black bg-opacity-40 backdrop-filter">
+				<h3 class=" neonTextWhite text-3xl uppercase rounded-2xl bg-black bg-opacity-40 backdrop-filter">
 					<span class="neonTextWhite text-4xl"> Mittwoch 29. Mai 18:30 </span> <br />
 					GERTHSEN-HÖRSAAL KIT CAMPUS SÜD <br />
 					EINTRITT FREI
@@ -51,7 +51,7 @@
 					</h3>
 					<p>
 						Der allgemein verständliche Vortrag gibt faszinierende Einblicke in die Natur – Von
-						kleinsten Welten im inneren der Atome bis hin zu den weiten des Universums und der
+						kleinsten Welten im inneren der Atome bis hin zu den Weiten des Universums und der
 						spannenden Frage nach seinem Ursprung. Beeindruckende Bilder und faszinierende Zahlen
 						lassen uns staunen, und es stellt sich die Frage nach dem „woher“.
 					</p>

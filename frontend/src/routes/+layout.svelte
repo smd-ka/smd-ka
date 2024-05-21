@@ -24,6 +24,9 @@
 	import ifes from '$lib/assets/logos/ifes.png';
 	import {page} from "$app/stores";
 
+	const semesterprogrammPaths = ["/semesterprogramm", "/saft", "/vortrag", "/weekly"];
+
+	let isHighlighted = semesterprogrammPaths.includes($page.url.pathname);
 	let showMenu = false;
 	let loading = false;
 	let src = getAvatarUrl();
@@ -48,19 +51,10 @@
 
 			<div class="flex items-center gap-4 text-xl text-white max-lg:hidden">
 				<!-- Links (only visable for bigger screens) -->
-				{#if $page.url.pathname==="/"}
-					<a class="text-primary" href="/">Startseite</a>
-				{:else}
-					<a class="hover:text-primary" href="/">Startseite</a>
-				{/if}
-				{#if $page.url.pathname==="/about"}
-					<a href="/about" class="text-primary peer flex items-center gap-2"> Über uns </a>
-				{:else}
-					<a href="/about" class="hover:text-primary peer flex items-center gap-2"> Über uns </a>
-				{/if}
+				<a class={$page.url.pathname==="/" ? "text-primary" : "hover:text-primary"} href="/">Startseite</a>
+				<a class={$page.url.pathname==="/about" ? "text-primary" : "hover:text-primary"} href="/about">Über uns</a>
 				<div>
-					{#if $page.url.pathname==="/semesterprogramm" || $page.url.pathname==="/saft" || $page.url.pathname==="/vortrag" || $page.url.pathname==="/weekly"}
-						<a href="/semesterprogramm" class="text-primary peer flex items-center gap-2">
+					{#if semesterprogrammPaths.includes($page.url.pathname)}						<a href="/semesterprogramm" class="text-primary peer flex items-center gap-2">
 							Was läuft
 							<Fa class="text-primary text-lg" icon={faChevronDown}></Fa>
 						</a>
@@ -81,11 +75,7 @@
 						<a class="hover:text-primary-text" href="/weekly">Wöchentliche Aktionen</a>
 					</div>
 				</div>
-				{#if $page.url.pathname==="/kontakt"}
-					<a class="text-primary" href="/kontakt">Kontakt</a>
-				{:else}
-					<a class="hover:text-primary" href="/kontakt">Kontakt</a>
-				{/if}
+				<a class={$page.url.pathname==="/kontakt" ? "text-primary" : "hover:text-primary"} href="/kontakt">Kontakt</a>
 				<a class=" self-center" href="/intern">
 					{#if isValid}
 						<img
@@ -94,11 +84,7 @@
 							alt="user avatar"
 						/>
 					{:else}
-						{#if $page.url.toString().includes("/login")}
-							<Fa class="text-primary" icon={faRightToBracket} />
-						{:else}
-							<Fa class="hover:text-primary" icon={faRightToBracket} />
-						{/if}
+						<Fa class={$page.url.toString().includes("/login") ? "text-primary" : "hover:text-primary"} icon={faRightToBracket} />
 					{/if}
 				</a>
 			</div>
