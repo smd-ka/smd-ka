@@ -52,9 +52,8 @@
 			<div class="flex items-center gap-4 text-xl text-white max-lg:hidden">
 				<!-- Links (only visable for bigger screens) -->
 				<a class={$page.url.pathname==="/" ? "text-primary" : "hover:text-primary"} href="/">Startseite</a>
-				<a class={$page.url.pathname==="/about" ? "text-primary" : "hover:text-primary"} href="/about">Über uns</a>
-				<div>
-					{#if semesterprogrammPaths.includes($page.url.pathname)}						<a href="/semesterprogramm" class="text-primary peer flex items-center gap-2">
+				<a class={$page.url.pathname.match(/^\/about\/?$/) ? "text-primary" : "hover:text-primary"} href="/about/">Über uns</a>				<div>
+					{#if semesterprogrammPaths.some(path => $page.url.pathname === path || $page.url.pathname === path + '/')}							<a href="/semesterprogramm" class="text-primary peer flex items-center gap-2">
 							Was läuft
 							<Fa class="text-primary text-lg" icon={faChevronDown}></Fa>
 						</a>
@@ -75,7 +74,7 @@
 						<a class="hover:text-primary-text" href="/weekly">Wöchentliche Aktionen</a>
 					</div>
 				</div>
-				<a class={$page.url.pathname==="/kontakt" ? "text-primary" : "hover:text-primary"} href="/kontakt">Kontakt</a>
+			<a class={$page.url.pathname.match(/^\/kontakt\/?$/) ? "text-primary" : "hover:text-primary"} href="/kontakt/">Kontakt</a>
 				<a class=" self-center" href="/intern">
 					{#if isValid}
 						<img
@@ -84,8 +83,7 @@
 							alt="user avatar"
 						/>
 					{:else}
-						<Fa class={$page.url.toString().includes("/login") ? "text-primary" : "hover:text-primary"} icon={faRightToBracket} />
-					{/if}
+						<Fa class={$page.url.pathname.match(/^\/account\/login/) ? "text-primary" : "hover:text-primary"} icon={faRightToBracket} />					{/if}
 				</a>
 			</div>
 
