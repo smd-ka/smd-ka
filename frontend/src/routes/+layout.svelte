@@ -22,11 +22,17 @@
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 	import { click_outside } from '$lib/click_outside';
 	import ifes from '$lib/assets/logos/ifes.png';
-	import {page} from "$app/stores";
+	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
+	import { split } from 'postcss/lib/list';
 
-	const semesterprogrammPaths = ["/semesterprogramm", "/saft", "/vortrag", "/weekly"];
+	const eventPageUrlsRegEx = '/semesterprogramm|saft|vortrag|weekly/';
 
-	let isHighlighted = semesterprogrammPaths.includes($page.url.pathname);
+	onMount(() => {
+		console.log($page.url.pathname);
+		console.log($page.url.pathname.split('/')[0]);
+	});
+
 	let showMenu = false;
 	let loading = false;
 	let src = getAvatarUrl();
@@ -51,18 +57,23 @@
 
 			<div class="flex items-center gap-4 text-xl text-white max-lg:hidden">
 				<!-- Links (only visable for bigger screens) -->
-				<a class={$page.url.pathname==="/" ? "text-primary" : "hover:text-primary"} href="/">Startseite</a>
-				<a class={$page.url.pathname.match(/^\/about\/?$/) ? "text-primary" : "hover:text-primary"} href="/about/">Über uns</a>				<div>
-					{#if semesterprogrammPaths.some(path => $page.url.pathname === path || $page.url.pathname === path + '/')}							<a href="/semesterprogramm" class="text-primary peer flex items-center gap-2">
-							Was läuft
-							<Fa class="text-primary text-lg" icon={faChevronDown}></Fa>
-						</a>
-					{:else}
-						<a href="/semesterprogramm" class="hover:text-primary peer flex items-center gap-2">
-							Was läuft
-							<Fa class="hover:text-primary text-lg" icon={faChevronDown}></Fa>
-						</a>
-					{/if}
+				<a class={$page.url.pathname === '/' ? 'text-primary' : 'hover:text-primary'} href="/"
+					>Startseite</a
+				>
+				<a
+					class={$page.url.pathname.match('/about/') ? 'text-primary' : 'hover:text-primary'}
+					href="/about">Über uns</a
+				>
+				<div>
+					<a
+						href="/semesterprogramm"
+						class="{$page.url.pathname.match(eventPageUrlsRegEx)
+							? 'text-primary hover:text-white'
+							: 'hover:text-primary'} peer flex items-center gap-2"
+					>
+						Was läuft
+						<Fa class="text-lg" icon={faChevronDown}></Fa>
+					</a>
 					<div
 						class=" bg-primary absolute hidden w-64 justify-center gap-4 px-8 py-2 hover:grid peer-hover:grid"
 					>
@@ -74,7 +85,10 @@
 						<a class="hover:text-primary-text" href="/weekly">Wöchentliche Aktionen</a>
 					</div>
 				</div>
-			<a class={$page.url.pathname.match(/^\/kontakt\/?$/) ? "text-primary" : "hover:text-primary"} href="/kontakt/">Kontakt</a>
+				<a
+					class={$page.url.pathname.match('/kontakt/') ? 'text-primary' : 'hover:text-primary'}
+					href="/kontakt">Kontakt</a
+				>
 				<a class=" self-center" href="/intern">
 					{#if isValid}
 						<img
@@ -83,7 +97,13 @@
 							alt="user avatar"
 						/>
 					{:else}
-						<Fa class={$page.url.pathname.match(/^\/account\/login/) ? "text-primary" : "hover:text-primary"} icon={faRightToBracket} />					{/if}
+						<Fa
+							class={$page.url.pathname.match('/account/login/')
+								? 'text-primary'
+								: 'hover:text-primary'}
+							icon={faRightToBracket}
+						/>
+					{/if}
 				</a>
 			</div>
 
