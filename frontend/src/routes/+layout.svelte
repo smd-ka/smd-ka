@@ -17,7 +17,7 @@
 		faX
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
-	import { FESD_COORDINATOR, SAFT_COORDINATOR, getAvatarUrl, pb } from '$lib/pocketbase';
+	import { getAvatarUrl, pb } from '$lib/pocketbase';
 	import { applyAction, enhance } from '$app/forms';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 	import { click_outside } from '$lib/click_outside';
@@ -37,12 +37,8 @@
 	let loading = false;
 	let src = getAvatarUrl();
 	let isValid = pb.authStore.isValid;
-	let isSaftCoordinator = pb.authStore.model?.roles.includes(SAFT_COORDINATOR);
-	let isFesdCoordinator = pb.authStore.model?.roles.includes(FESD_COORDINATOR);
 
 	pb.authStore.onChange(() => {
-		isSaftCoordinator = pb.authStore.model?.roles.includes(SAFT_COORDINATOR);
-		isFesdCoordinator = pb.authStore.model?.roles.includes(FESD_COORDINATOR);
 		isValid = pb.authStore.isValid;
 		src = getAvatarUrl();
 	});
