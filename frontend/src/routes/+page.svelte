@@ -11,6 +11,8 @@
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import HeroShot from '$lib/components/HeroShot.svelte';
+	import header from '$lib/assets/heroshots/karlsruhe_luft.jpeg';
+	import HeroShot from '$lib/components/HeroShot.svelte';
 	import TextInput from '$lib/components/forms/TextInput.svelte';
 	import TextArea from '$lib/components/forms/TextArea.svelte';
 	import CheckboxInput from '$lib/components/forms/CheckboxInput.svelte';
