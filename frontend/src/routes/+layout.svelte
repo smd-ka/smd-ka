@@ -26,7 +26,7 @@
 	import { onMount } from 'svelte';
 	import { split } from 'postcss/lib/list';
 
-	const eventPageUrlsRegEx = '/semesterprogramm|saft|vortrag|weekly/';
+	const eventPageUrlsRegEx = new RegExp('semesterprogramm|saft|vortrag|weekly');
 
 	onMount(() => {
 		console.log($page.url.pathname);
