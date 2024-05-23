@@ -26,7 +26,7 @@
 	import { onMount } from 'svelte';
 	import { split } from 'postcss/lib/list';
 
-	const eventPageUrlsRegEx = '/semesterprogramm|saft|vortrag|weekly/';
+	const eventPageUrlsRegEx = new RegExp('semesterprogramm|saft|vortrag|weekly');
 
 	onMount(() => {
 		console.log($page.url.pathname);
@@ -61,7 +61,7 @@
 					>Startseite</a
 				>
 				<a
-					class={$page.url.pathname.match('/about/') ? 'text-primary' : 'hover:text-primary'}
+					class={$page.url.pathname.match('about') ? 'text-primary' : 'hover:text-primary'}
 					href="/about">Über uns</a
 				>
 				<div>
@@ -86,7 +86,7 @@
 					</div>
 				</div>
 				<a
-					class={$page.url.pathname.match('/kontakt/') ? 'text-primary' : 'hover:text-primary'}
+					class={$page.url.pathname.match('kontakt') ? 'text-primary' : 'hover:text-primary'}
 					href="/kontakt">Kontakt</a
 				>
 				<a class=" self-center" href="/intern">
@@ -98,7 +98,7 @@
 						/>
 					{:else}
 						<Fa
-							class={$page.url.pathname.match('/account/login/')
+							class={$page.url.pathname.match('account/login')
 								? 'text-primary'
 								: 'hover:text-primary'}
 							icon={faRightToBracket}
