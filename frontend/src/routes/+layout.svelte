@@ -98,7 +98,7 @@
 						/>
 					{:else}
 						<Fa
-							class={$page.url.pathname.match('/account/login/')
+							class={$page.url.pathname.match('account/login')
 								? 'text-primary'
 								: 'hover:text-primary'}
 							icon={faRightToBracket}
