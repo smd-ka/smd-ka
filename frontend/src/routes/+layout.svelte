@@ -61,7 +61,7 @@
 					>Startseite</a
 				>
 				<a
-					class={$page.url.pathname.match('/about/') ? 'text-primary' : 'hover:text-primary'}
+					class={$page.url.pathname.match('about') ? 'text-primary' : 'hover:text-primary'}
 					href="/about">Über uns</a
 				>
 				<div>
@@ -86,7 +86,7 @@
 					</div>
 				</div>
 				<a
-					class={$page.url.pathname.match('/kontakt/') ? 'text-primary' : 'hover:text-primary'}
+					class={$page.url.pathname.match('kontakt') ? 'text-primary' : 'hover:text-primary'}
 					href="/kontakt">Kontakt</a
 				>
 				<a class=" self-center" href="/intern">
