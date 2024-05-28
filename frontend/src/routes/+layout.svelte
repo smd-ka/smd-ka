@@ -311,7 +311,7 @@
 					<section class="flex flex-col gap-4">
 						<h2 class="text-primary text-xl uppercase">Unser Netzwerk</h2>
 						<div class="grid grid-cols-[5rem_1fr] gap-4">
-							<a href="https://ifesworld.org">
+							<a href="https://smd.org" target="_blank">
 								<img src={smd_logo} alt="SMD Logo" class="" />
 							</a>
 							<p>
@@ -319,7 +319,7 @@
 								Netzwerk Christlicher Hochschulgruppen.
 							</p>
 
-							<a href="https://smd.org">
+							<a href="https://ifesworld.org" target="_blank">
 								<img src={ifes} alt="IFES Logo" class="w-32" />
 							</a>
 							<p>
