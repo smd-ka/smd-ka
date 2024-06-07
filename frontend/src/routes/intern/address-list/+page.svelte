@@ -33,6 +33,42 @@
 			loading = false;
 		}
 	});
+	// Function to generate contact vCard data
+	function generateVCF(records: User[]) {
+		return records.map(record => {
+			const notes = [];
+			if (record.field_of_study) {
+				notes.push(`${record.field_of_study} seit ${record.start_of_studies ? new Date(record.start_of_studies).toLocaleDateString() : ''}`);
+			}
+			if (record.team) {
+				notes.push(`SMD-Bereiche: ${record.team}`);
+			}
+			return `
+BEGIN:VCARD
+VERSION:3.0
+FN:${record.name} ${record.surname}
+EMAIL:${record.email}
+${record.phonenumber ? `TEL:${record.phonenumber}` : ''}
+${record.birthday ? `BDAY:${new Date(record.birthday).toISOString().split('T')[0]}` : ''}
+${record.address ? `ADR:${record.address}` : ''}
+NOTE:${notes.join(', ')}
+END:VCARD
+            `.trim();
+		}).join('\n');
+	}
+
+	function downloadVCF() {
+		const vcfData = generateVCF(records);
+		const blob = new Blob([vcfData], { type: 'text/vcard' });
+		const url = URL.createObjectURL(blob);
+		const a = document.createElement('a');
+		a.href = url;
+		a.download = 'SMDKontakte.vcf';
+		document.body.appendChild(a);
+		a.click();
+		document.body.removeChild(a);
+		URL.revokeObjectURL(url);
+	}
 
 	const src = (
 		avatar: string | undefined,
@@ -71,6 +107,7 @@
 				Adressliste ist nur für den internen Gebrauch gedacht. Bitte gehe verantwortungsvoll mit den
 				Daten um.
 			</p>
+			<button class="mt-4 px-4 py-2 bg-primary text-white rounded" on:click={downloadVCF}>Alle Kontakte herunterladen</button>
 		</div>
 
 		{#if loading}
