@@ -104,25 +104,6 @@
 		</div>
 	</Saos>
 
-	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
-		<div class="grid gap-8 px-4 lg:grid-cols-2 xl:px-80">
-			<div class="flex flex-col gap-4 text-right">
-				<h1 class="text-5xl font-bold uppercase">Vortrag</h1>
-				<p>
-					Am 29. Mai hält Prof. Dr. Thomas Schimmel einen Vortrag zum Thema „Der Urknall und die
-					Gottesfrage“. Der allgemein verständliche Vortrag gibt faszinierende Einblicke in die
-					Natur – Von kleinsten Welten im inneren der Atome bis hin zu den weiten des Universums und
-					der spannenden Frage nach seinem Ursprung.
-					<br /> Sei dabei <span class="font-bold">18:30 im Gerthsen-Höhrsaal</span> am KIT Campus Süd
-				</p>
-				<a href="/vortrag" class="w-fit self-end whitespace-nowrap bg-black p-4 text-white">
-					Mehr erfahren
-				</a>
-			</div>
-			<img alt="vortrag" src={vortrag_teaser} />
-		</div>
-	</Saos>
-
 	<div class="relative my-20">
 		<div
 			class="h-[400px] bg-cover bg-[center_top_75%]"
