@@ -26,7 +26,7 @@
 	import { onMount } from 'svelte';
 	import { split } from 'postcss/lib/list';
 
-	const eventPageUrlsRegEx = new RegExp('semesterprogramm|saft|vortrag|weekly');
+	const eventPageUrlsRegEx = new RegExp('semesterprogramm|saft|weekly');
 
 	onMount(() => {
 		console.log($page.url.pathname);
@@ -79,9 +79,6 @@
 					>
 						<a class="hover:text-primary-text" href="/semesterprogramm">Semesterprogramm</a>
 						<a class="hover:text-primary-text" href="/saft">SemesterAnfangsFreizeiT </a>
-						<a class="hover:text-primary-text" href="/vortrag">
-							Vortrag: Der Urknall und die Gottesfrage
-						</a>
 						<a class="hover:text-primary-text" href="/weekly">Wöchentliche Aktionen</a>
 					</div>
 				</div>
@@ -168,9 +165,6 @@
 							</a>
 							<a on:click={() => (showMenu = false)} class="hover:underline" href="/saft">
 								SemesterAnfangsFreizeiT
-							</a>
-							<a on:click={() => (showMenu = false)} class="hover:underline" href="/vortrag">
-								Vortrag: Der Urknall und die Gottesfrage
 							</a>
 							<a on:click={() => (showMenu = false)} class="hover:underline" href="/weekly">
 								Wöchentliche Aktionen
