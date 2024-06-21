@@ -14,6 +14,7 @@
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import ifesLogo from '$lib/assets/logos/ifes.png';
 	import smdLogo from '$lib/assets/logos/smd.png';
+	import ImageSlider from '$lib/components/ImageSlider.svelte';
 	import sloganBg from '$lib/assets/heroshots/slogan-bg.jpg';
 	import sloganBgSm from '$lib/assets/heroshots/slogan-bg-sm.jpg';
 	import TextInput from '$lib/components/forms/TextInput.svelte';
@@ -25,10 +26,15 @@
 	import EmailInput from '$lib/components/forms/EmailInput.svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 	import { pb } from '$lib/pocketbase';
+	import image1 from '$lib/assets/heroshots/karlsruhe_luft.jpeg';
+	import image2 from '$lib/assets/heroshots/SAFT_compressed.jpg';
+	import image3 from '$lib/assets/heroshots/slogan-bg-sm.jpg';
 
 	let success = false;
 	let error = false;
 	let loading = false;
+	let images: string[] = [image1, image2, image3];
+	let activeImage = images[0];
 
 	async function sendMail(event: Event) {
 		loading = true;
@@ -47,7 +53,7 @@
 	}
 </script>
 
-<HeroShot imgSrc={header} />
+<ImageSlider {images} />
 <div class="bg-primary text-grey z-10 px-4 py-8 text-center text-4xl font-bold md:hidden md:py-4">
 	Herzlich Willkommen bei der Hochschul-SMD <br class="md:hidden" />
 	<span class="text-white">Karlsruhe</span>
