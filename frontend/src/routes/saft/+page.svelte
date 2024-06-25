@@ -1,8 +1,7 @@
 <script>
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import Saos from 'saos';
-	import header from '$lib/assets/saft/saft_flyer.png';
-	import header_mobile from '$lib/assets/saft/saft_flyer_mobile.png';
+	import header from '$lib/assets/saft/saft_group_ss24.png';
 	import promoVid from '$lib/assets/videos/saft.mp4';
 	import saftFunny from '$lib/assets/saft/saft_funny.png';
 	import saftGroup from '$lib/assets/heroshots/saft_heroshot.png';
@@ -10,31 +9,12 @@
 	import { faCalendarDays, faCoins, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 </script>
 
-<div class="relative">
-	<img src={header} alt="Herzenssache" class="w-full max-md:hidden" />
-	<img src={header_mobile} alt="Herzenssache" class="w-full md:hidden" />
-	<h1
-		class="absolute left-20 top-1/2 z-20 -translate-y-1/2 text-5xl font-bold uppercase max-md:hidden xl:text-6xl"
-	>
-		From <br /> the Inside <br /> out
-	</h1>
-	<h1
-		class="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 whitespace-nowrap text-2xl font-bold uppercase md:hidden"
-	>
-		From the Inside out
-	</h1>
-</div>
+<HeroShot imgSrc={header} />
 
 <main class="container mx-auto flex flex-col gap-24 py-24 text-lg">
 	<div class="container flex flex-col gap-6 px-4 xl:px-80">
-		<h1 class="text-5xl font-bold uppercase max-md:hidden max-md:text-center">
-			SemesterAnfangsFreizeiT
-		</h1>
+		<h1 class="text-center text-5xl font-bold uppercase max-md:hidden">SemesterAnfangsFreizeiT</h1>
 		<h1 class="text-5xl font-bold uppercase max-md:text-center md:hidden">saft</h1>
-		<span
-			>Die Anmeldung für dieses Semester ist geschlossen. Du möchtest unbedingt noch mit? Melde dich
-			bei Claus (<a href="mailto:webmaster@smd-karlsruhe.de">webmaster@smd-karlsruhe.de</a>)</span
-		>
 	</div>
 
 	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
@@ -45,14 +25,12 @@
 				<h1 class="text-4xl font-bold uppercase">Worum gehts?</h1>
 				<p>
 					Die SAFT ist die <bold class="font-bold">S</bold>emester<bold class="font-bold">A</bold
-					>nfangs<bold class="font-bold">F</bold>reizei<bold class="font-bold">T</bold> der SMD
-					Karlsruhe. Sie findet immer am Anfang des Semesters statt und ist eine gute Möglichkeit,
-					die SMD und andere Studierende kennenzulernen. Unser Motto für diese SAFT ist
-					<bold class=" whitespace-nowrap font-bold uppercase">From the inside out</bold>. Um
-					herauszufinden, was das mit dir und unserem Semesterthema "Herzenssache" zu tun hat, melde
-					dich jetzt gleich an!
+					>nfangs<bold class="font-bold">F</bold>reizei<bold class="font-bold">T</bold> der SMD Karlsruhe.
+					Sie findet immer am Anfang des Semesters statt und ist eine gute Möglichkeit, die SMD und andere
+					Studierende kennenzulernen.
 				</p>
-				<!-- <a href="/saft/signup" class="w-fit bg-black p-4 text-white">Jetzt anmelden</a> -->
+				<!-- <a href="/saft/signup" class="w-fit bg-black p-4 text-white pointer">Jetzt anmelden</a> -->
+				<div class="w-fit bg-gray-500 p-4 text-white">Anmeldung ab Mitte Oktober</div>
 			</div>
 		</div>
 	</Saos>
@@ -64,7 +42,7 @@
 				<div class="mt-4 flex flex-col items-end gap-2 text-lg md:text-xl">
 					<div class="flex items-center gap-2">
 						<Fa class="text-primary" icon={faCalendarDays} />
-						Datum: 3 - 5 Mai
+						Datum: 15 - 17 November 2024
 					</div>
 					<div class="flex items-center gap-2">
 						<Fa class="text-primary" icon={faCoins} />
