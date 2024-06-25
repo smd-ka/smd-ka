@@ -327,7 +327,7 @@
 						<h2 class="text-primary text-xl uppercase">Andere Gruppen</h2>
 						<a href="https://www.sfc-karlsruhe.de">SfC - Studierende für Christus</a>
 						<a href="https://esg-karlsruhe.de/">ESG - Evangelische Studierendengemeinde</a>
-						<a href="https://www.khg-karlsruhe.de/">KGH - Katholische Hochschulgemeinde</a>
+						<a href="https://www.khg-karlsruhe.de/">KHG - Katholische Hochschulgemeinde</a>
 						<a href="https://feg-karlsruhe.de/de/erwachsene/mittendrin/">FeG - Mittendrin</a>
 					</section>
 				</div>
