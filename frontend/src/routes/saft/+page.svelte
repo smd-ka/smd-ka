@@ -1,7 +1,7 @@
 <script>
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import Saos from 'saos';
-	import header from '$lib/assets/saft/saft_group_ss24.png';
+	import header from '$lib/assets/saft/saft_group_ss24.jpg';
 	import promoVid from '$lib/assets/videos/saft.mp4';
 	import saftFunny from '$lib/assets/saft/saft_funny.png';
 	import saftGroup from '$lib/assets/heroshots/saft_heroshot.png';
