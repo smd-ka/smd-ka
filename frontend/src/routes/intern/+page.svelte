@@ -9,6 +9,7 @@
 		faTable
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
+	import address_list from '$lib/assets/intern/address_list.jpg';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 	import { faWikipediaW } from '@fortawesome/free-brands-svg-icons';
 
@@ -19,7 +20,7 @@
 
 <main class="container mx-auto flex flex-col gap-8 py-20 pt-8">
 	<div class="grid gap-8 max-md:mx-6 lg:grid-cols-5">
-		<div class="card md:col-span-2">
+		<div class="tile !font-sans md:col-span-2">
 			<h2 class="text-primary text-2xl md:text-4xl">
 				Willkommen {pb.authStore.model?.name ?? ''}
 			</h2>
@@ -34,7 +35,7 @@
 				</p>
 			</div>
 		</div>
-		<a class="tile" href="/intern/address-list">
+		<a class="tile bg-[url({address_list})]" href="/intern/address-list">
 			<Fa icon={faAddressBook} class="text-light-blue text-7xl" />
 			<h2 class="py-4 text-center text-lg md:text-2xl">Adressliste</h2>
 		</a>
@@ -60,13 +61,13 @@
 			<h2 class="py-4 text-center text-lg md:text-2xl">Mitarbeiterportal</h2>
 		</a>
 
-		<a class="card" href="/intern/profile">
+		<a class="tile" href="/intern/profile">
 			<div class="flex justify-center">
 				<Fa icon={faUser} class="-blue text-7xl" />
 			</div>
 			<h2 class="py-4 text-center text-lg md:text-2xl">Dein Profil</h2>
 		</a>
-		<a class="card" href="/intern/saft">
+		<a class="tile" href="/intern/saft">
 			<div class="flex justify-center">
 				<Fa icon={faGlassWater} class="text-corperate text-7xl" />
 			</div>
@@ -74,7 +75,7 @@
 		</a>
 
 		{#if isSaftCoordinator}
-			<a href="/intern/saft/list" class="card">
+			<a href="/intern/saft/list" class="tile">
 				<div class="flex justify-center">
 					<Fa icon={faGlassWater} class="text-secondary-text text-7xl" />
 				</div>
@@ -82,7 +83,7 @@
 			</a>
 		{/if}
 
-		<div class="card">
+		<div class="tile">
 			<form
 				method="POST"
 				action="/account/logout"
@@ -113,7 +114,7 @@
 
 <style>
 	.tile {
-		@apply flex flex-col items-center justify-center rounded-md bg-white p-8 shadow-md;
+		@apply font-mokoto flex flex-col items-center justify-center border-4 border-black bg-white p-8 shadow-md;
 	}
 
 	div > a {
