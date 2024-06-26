@@ -11,7 +11,7 @@
 
 <HeroShot imgSrc={header} />
 
-<main class="container mx-auto flex flex-col max-md:gap-10 max-md:py-10 md:gap-24 md:py-24 text-lg">
+<main class="container mx-auto flex flex-col text-lg max-md:gap-10 max-md:py-10 md:gap-24 md:py-24">
 	<div class="container flex flex-col gap-6 px-4 xl:px-80">
 		<h1 class="text-center text-5xl font-bold uppercase max-md:hidden">SemesterAnfangsFreizeiT</h1>
 		<h1 class="text-5xl font-bold uppercase max-md:text-center md:hidden">saft</h1>
@@ -19,7 +19,7 @@
 
 	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
 		<div class="grid gap-8 px-4 lg:grid-cols-2 xl:px-60">
-			<img class="max-md:hidden" alt="Semesterprogramm" src={saftGroup} />
+			<img class="max-lg:hidden" alt="Semesterprogramm" src={saftGroup} />
 
 			<div class="flex flex-col gap-4">
 				<h1 class="text-4xl font-bold uppercase">Worum gehts?</h1>
@@ -32,7 +32,7 @@
 				<!-- <a href="/saft/signup" class="w-fit bg-black p-4 text-white pointer">Jetzt anmelden</a> -->
 				<div class="w-fit bg-gray-500 p-4 text-white">Anmeldung ab Mitte Oktober</div>
 			</div>
-			<img class="md:hidden" alt="Semesterprogramm" src={saftGroup} />
+			<img class="lg:hidden" alt="Semesterprogramm" src={saftGroup} />
 		</div>
 	</Saos>
 
