@@ -6,10 +6,10 @@
 		faGlassWater,
 		faUser,
 		faRightFromBracket,
-		faTable
+		faTable,
+		faTShirt
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
-	import address_list from '$lib/assets/intern/address_list.jpg';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 	import { faWikipediaW } from '@fortawesome/free-brands-svg-icons';
 
@@ -35,7 +35,7 @@
 				</p>
 			</div>
 		</div>
-		<a class="tile bg-[url({address_list})]" href="/intern/address-list">
+		<a class="tile bg-cover" href="/intern/address-list">
 			<Fa icon={faAddressBook} class="text-light-blue text-7xl" />
 			<h2 class="py-4 text-center text-lg md:text-2xl">Adressliste</h2>
 		</a>
@@ -53,12 +53,9 @@
 			<h2 class="py-4 text-center text-lg md:text-2xl">Wiki</h2>
 		</a>
 
-		<a
-			class="tile"
-			href="https://portal.smd.org/start?tx_felogin_login%5Baction%5D=login&tx_felogin_login%5Bcontroller%5D=Login&cHash=729d251e5641b3e3ca9a2a5b2a063e05"
-		>
-			<Fa icon={faWikipediaW} />
-			<h2 class="py-4 text-center text-lg md:text-2xl">Mitarbeiterportal</h2>
+		<a class="tile" href="https://portal.smd.org/">
+			<Fa icon={faTShirt} />
+			<h2 class="py-4 text-center text-lg md:text-2xl">SMD Mitarbeiterportal</h2>
 		</a>
 
 		<a class="tile" href="/intern/profile">
