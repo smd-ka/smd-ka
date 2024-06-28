@@ -28,11 +28,6 @@
 
 	const eventPageUrlsRegEx = new RegExp('semesterprogramm|saft|weekly');
 
-	onMount(() => {
-		console.log($page.url.pathname);
-		console.log($page.url.pathname.split('/')[0]);
-	});
-
 	let showMenu = false;
 	let loading = false;
 	let src = getAvatarUrl();

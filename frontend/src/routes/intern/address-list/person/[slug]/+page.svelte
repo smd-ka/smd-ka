@@ -47,8 +47,26 @@
 </script>
 
 {#if record}
+	<nav class="container mx-auto px-4 py-4">
+		<ol class="inline-flex list-none">
+			<li class="flex items-center">
+				<a class="!no-underline" href="/intern">Intern</a>
+				<Fa icon={faChevronRight} class="mx-2" />
+			</li>
+			<li class="flex items-center">
+				<a class="!no-underline" href="/intern/address-list">Address List</a>
+				<Fa icon={faChevronRight} class="mx-2" />
+			</li>
+			<li class="flex items-center">
+				<a class="!no-underline" href={`/intern/address-list/person/${record.id}`}
+					>{record.name} {record.surname}</a
+				>
+			</li>
+		</ol>
+	</nav>
+
 	<div class="container mx-auto flex justify-center gap-2 py-8">
-		<div class="border-4 border-black bg-white p-4">
+		<div class="p-4 max-sm:w-full">
 			<img
 				src={src(record.avatar, record.id, record.collectionId, record.collectionName)}
 				alt="avatar"
