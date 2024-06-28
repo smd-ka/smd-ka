@@ -6,6 +6,7 @@
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import {
 		faBirthdayCake,
+		faChevronRight,
 		faEnvelope,
 		faFileExport,
 		faGraduationCap,
@@ -23,24 +24,23 @@
 	let error = false;
 	let loading = true;
 
-	// Search and filter functionality
 	let search = '';
 
-	function handleSearch() {
-		const searchTerm = search.toLocaleLowerCase();
-		records = records.filter((record) => {
-			if (searchTerm === '') return true;
-			return (
-				record.name.toLowerCase().includes(searchTerm) ||
-				record.surname.toLowerCase().includes(searchTerm) ||
-				record.email.toLowerCase().includes(searchTerm) ||
-				(record.phonenumber && record.phonenumber.toLowerCase().includes(searchTerm)) ||
-				(record.address && record.address.toLowerCase().includes(searchTerm)) ||
-				(record.field_of_study && record.field_of_study.toLowerCase().includes(searchTerm)) ||
-				(record.team && record.team.toLowerCase().includes(searchTerm))
-			);
-		});
-	}
+	// function handleSearch() {
+	// 	const searchTerm = search.toLocaleLowerCase();
+	// 	records = records.filter((record) => {
+	// 		if (searchTerm === '') return true;
+	// 		return (
+	// 			record.name.toLowerCase().includes(searchTerm) ||
+	// 			record.surname.toLowerCase().includes(searchTerm) ||
+	// 			record.email.toLowerCase().includes(searchTerm) ||
+	// 			(record.phonenumber && record.phonenumber.toLowerCase().includes(searchTerm)) ||
+	// 			(record.address && record.address.toLowerCase().includes(searchTerm)) ||
+	// 			(record.field_of_study && record.field_of_study.toLowerCase().includes(searchTerm)) ||
+	// 			(record.team && record.team.toLowerCase().includes(searchTerm))
+	// 		);
+	// 	});
+	// }
 
 	onMount(async () => {
 		try {
@@ -123,7 +123,19 @@ END:VCARD
 	};
 </script>
 
-<div class="bg-gray-100">
+<nav class="container mx-auto px-4 py-4">
+	<ol class="inline-flex list-none">
+		<li class="flex items-center">
+			<a class="!no-underline" href="/intern">Intern</a>
+			<Fa icon={faChevronRight} class="mx-2" />
+		</li>
+		<li class="flex items-center">
+			<a class="!no-underline" href="/intern/address-list">Address List</a>
+		</li>
+	</ol>
+</nav>
+
+<div class="">
 	<main class="container mx-auto flex flex-col gap-2">
 		<div class="p-8">
 			<h1 class="font-mokoto text-3xl md:text-4xl">SMD Adressliste</h1>
@@ -140,11 +152,10 @@ END:VCARD
 				<Fa class="text-xl" icon={faFileExport} />
 			</button>
 		</div>
-		<div class="relative flex gap-2 px-4">
+		<div class="relative flex gap-2 px-4 pb-4">
 			<Fa class="absolute left-8 top-5 text-2xl" icon={faSearch} />
 			<input
 				bind:value={search}
-				on:input={handleSearch}
 				class="backdrop: w-full rounded-full border-2 border-black p-4 pl-14"
 				placeholder="Suche"
 				type="text"
@@ -158,7 +169,9 @@ END:VCARD
 		{#if !loading && !error}
 			{#each records as record}
 				<a class="!no-underline" href={`/intern/address-list/person/${record.id}`}>
-					<div class="flex items-center gap-4 px-4 py-2 md:text-lg">
+					<div
+						class=" grid grid-cols-[3rem_1fr] items-center gap-4 px-4 py-2 md:grid-cols-[3rem_2fr_3fr] md:text-lg xl:grid-cols-[3rem_2fr_3fr_3fr_2fr]"
+					>
 						<img
 							src={src(record.avatar, record.id, record.collectionId, record.collectionName)}
 							alt="avatar"
@@ -178,41 +191,22 @@ END:VCARD
 								</div>
 							{/if}
 						</div>
-						<!-- <div class="flex flex-col justify-center">
-							<div class="flex items-center gap-2">
-								<span class="text-xl">
-									{record.name}
-									{record.surname}
-								</span>
-							</div>
-							<div class="flex items-center gap-2">
+						<div class="max-md:hidden">
+							<div class="flex items-center gap-2 self-start">
 								<Fa icon={faEnvelope} />
 								<a href={`mailto:${record.email}`}>
 									{record.email}
 								</a>
 							</div>
-							{#if record.phonenumber}
-								<div class="flex items-center gap-2">
-									<Fa icon={faPhone} />
-									<a href={`tel:${record.phonenumber}`}>
-										{record.phonenumber}
-									</a>
-								</div>
-							{/if}
-							{#if record.birthday}
-								<div class="flex items-center gap-2">
-									<Fa icon={faBirthdayCake} />
-									{new Date(record.birthday).toLocaleDateString()}
-								</div>
-							{/if}
-						</div> -->
-						<!-- <div>
 							{#if record.address}
-								<div class="flex gap-2 md:items-center">
+								<div class="flex gap-2">
 									<Fa class="max-md:mt-0.5" icon={faHouse} />
 									{record.address}
 								</div>
 							{/if}
+						</div>
+
+						<div class="max-xl:hidden">
 							{#if record.field_of_study}
 								<div class="flex gap-2 md:items-center">
 									<Fa class="max-md:mt-0.5" icon={faGraduationCap} />
@@ -223,6 +217,15 @@ END:VCARD
 									{/if}
 								</div>
 							{/if}
+							{#if record.birthday}
+								<div class="flex items-center gap-2">
+									<Fa icon={faBirthdayCake} />
+									{new Date(record.birthday).toLocaleDateString()}
+								</div>
+							{/if}
+						</div>
+
+						<div class="max-xl:hidden">
 							{#if record.team}
 								<div class="flex gap-2 md:items-center">
 									<Fa class="max-md:mt-0.5" icon={faUserGroup} />
@@ -235,7 +238,7 @@ END:VCARD
 									Rili
 								</div>
 							{/if}
-						</div> -->
+						</div>
 					</div>
 				</a>
 			{/each}

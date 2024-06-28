@@ -27,6 +27,8 @@
 	import { headerImageHeight } from '$lib/stores';
 	import { sineInOut } from 'svelte/easing';
 
+	const eventPageUrlsRegEx = new RegExp('semesterprogramm|saft|weekly');
+
 	let showMenu = false;
 	let src = getAvatarUrl();
 	let isValid = pb.authStore.isValid;
