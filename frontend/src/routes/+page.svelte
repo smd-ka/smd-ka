@@ -1,19 +1,7 @@
 <script lang="ts">
 	import Saos from 'saos';
 	import header from '$lib/assets/heroshots/karlsruhe_luft.jpeg';
-	import {
-		faCalendarDays,
-		faChildReaching,
-		faClock,
-		faCross,
-		faLightbulb,
-		faLocationDot
-	} from '@fortawesome/free-solid-svg-icons';
-	import Fa from 'svelte-fa/src/fa.svelte';
-	import CalendarList from '$lib/components/CalendarList.svelte';
 	import HeroShot from '$lib/components/HeroShot.svelte';
-	import ifesLogo from '$lib/assets/logos/ifes.png';
-	import smdLogo from '$lib/assets/logos/smd.png';
 	import sloganBg from '$lib/assets/heroshots/slogan-bg.jpg';
 	import sloganBgSm from '$lib/assets/heroshots/slogan-bg-sm.jpg';
 	import TextInput from '$lib/components/forms/TextInput.svelte';
