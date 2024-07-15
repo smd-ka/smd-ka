@@ -115,12 +115,6 @@ END:VCARD
 			);
 		return defaultAvatar;
 	};
-
-	const postImagesString = (post_images: string): string => {
-		if (post_images == 'yes') return 'Ja';
-		if (post_images == 'always ask') return 'Immer fragen';
-		return 'Nein';
-	};
 </script>
 
 <nav class="container mx-auto px-4 py-4">
@@ -170,12 +164,12 @@ END:VCARD
 			{#each records as record}
 				<a class="!no-underline" href={`/intern/address-list/person/${record.id}`}>
 					<div
-						class=" grid grid-cols-[3rem_1fr] items-center gap-4 px-4 py-2 md:grid-cols-[3rem_2fr_3fr] md:text-lg xl:grid-cols-[3rem_2fr_3fr_3fr_2fr]"
+						class=" grid grid-cols-[3rem_1fr] gap-4 px-4 py-2 md:grid-cols-[3rem_2fr_3fr] md:text-lg xl:grid-cols-[3rem_2fr_3fr_3fr_2fr]"
 					>
 						<img
 							src={src(record.avatar, record.id, record.collectionId, record.collectionName)}
 							alt="avatar"
-							class="border-primary h-12 w-12 rounded-full object-cover"
+							class="border-primary h-12 w-12 items-center rounded-full object-cover"
 						/>
 						<div>
 							<span class="text-xl">

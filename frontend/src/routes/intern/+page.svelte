@@ -111,7 +111,7 @@
 
 <style>
 	.tile {
-		@apply font-mokoto flex flex-col items-center justify-center border-4 border-black bg-white p-8 shadow-md;
+		@apply flex flex-col items-center justify-center border-4 border-black bg-white p-8 shadow-md;
 	}
 
 	div > a {
