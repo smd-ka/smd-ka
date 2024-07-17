@@ -31,7 +31,7 @@
 		)} ${date.toLocaleTimeString('de-DE', {
 			hour: '2-digit',
 			minute: '2-digit'
-		})}`;
+		})} Uhr`;
 	};
 </script>
 
@@ -69,7 +69,7 @@
 			<h2 class="pb-6 pt-12">Ersti Aktionen Wintersemester 2024/25</h2>
 		</div>
 
-		<div class="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+		<div class="grid gap-8 px-4 md:grid-cols-2 xl:grid-cols-3">
 			<div>
 				<div class="relative text-white">
 					<img src={exampleImage} class="brightness-50" alt="TODO" />
@@ -146,6 +146,46 @@
 		<div class="pad pt-16">
 			<h2>Church Hopping</h2>
 		</div>
+
+		<!-- TODO extract into object and use date function to display date -->
+
+		<table
+			class="font-merriweather mt-8 grid grid-cols-[auto_auto_auto] gap-x-2 px-4 md:text-2xl xl:px-72"
+		>
+			<div class="font-bold">Datum</div>
+			<div class="font-bold">Gemeinde</div>
+			<div class="font-bold">Ansprechperson</div>
+
+			<div class="col-span-full h-0.5 bg-gray-600"></div>
+
+			<div>27. Oktober 10:00 Uhr</div>
+			<a href="https://smd-karlsruhe.de">Mustergemeinde</a>
+			<div>Max Mustermann</div>
+
+			<div class="col-span-full h-0.5 bg-gray-300"></div>
+
+			<div>03. November</div>
+			<a href="https://smd-karlsruhe.de">Mustergemeinde</a>
+			<div>Max Mustermann</div>
+
+			<div class="col-span-full h-0.5 bg-gray-300"></div>
+
+			<div>10.11</div>
+			<a href="https://smd-karlsruhe.de">Mustergemeinde</a>
+			<div>Max Mustermann</div>
+
+			<div class="col-span-full h-0.5 bg-gray-300"></div>
+
+			<div>17.11</div>
+			<a href="https://smd-karlsruhe.de">Mustergemeinde</a>
+			<div>Max Mustermann</div>
+
+			<div class="col-span-full h-0.5 bg-gray-300"></div>
+
+			<div>24.11</div>
+			<a href="https://smd-karlsruhe.de">Mustergemeinde</a>
+			<div>Max Mustermann</div>
+		</table>
 	</section>
 
 	<section></section>
