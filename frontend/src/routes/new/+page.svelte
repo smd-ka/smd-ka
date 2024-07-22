@@ -145,8 +145,13 @@
 
 		<div class="pad pt-16">
 			<h2>Church Hopping</h2>
-		</div>
 
+			<p class="py-4">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+				labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+				laboris nisi ut aliquip ex ea commodo consequat.
+			</p>
+		</div>
 		<!-- TODO extract into object and use date function to display date -->
 
 		<table
@@ -235,6 +240,7 @@
 			<div class="flex flex-col rounded-lg bg-gray-200 p-4">
 				<Fa size="3x" icon={faChurch} />
 				<h2 class="my-2 text-2xl font-bold">Church Hopping</h2>
+
 				<p>
 					Vielleicht bist du neu in Karlsruhe oder suchst einfach eine neue Gemeinde. Um dir bei der
 					Suche zu helfen, lädt zum Semesterstart jeden Sonntag ein SMDler dich ein, mit ihnen in
