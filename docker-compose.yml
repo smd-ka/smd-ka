@@ -21,6 +21,7 @@ services:
         - ./nginx/conf.d:/etc/nginx/conf.d
         - ./nginx/certs:/etc/nginx/certs
         - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+        - ./nginx/html:/usr/share/nginx/html 
 
     ports:
       - 80:80
