@@ -43,3 +43,7 @@ services:
 networks:
   smd_ka_network:
     driver: bridge
+
+volumes:
+  letsencrypt:
+  webdata:
