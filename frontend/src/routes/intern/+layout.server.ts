@@ -6,6 +6,6 @@ import type { PageServerLoad } from '../account/logout/$types';
 // that the client actually invokes the server hooks
 export const load: PageServerLoad = async () => {
 	if (!pb.authStore.isValid) {
-		throw redirect(303, '/account/login');
+		redirect(303, '/account/login');
 	}
 };

@@ -17,7 +17,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 	event.locals.user = pb.authStore.model;
 
 	if (!pb.authStore.isValid && event.url.pathname.startsWith('/intern')) {
-		throw redirect(303, `/account/login?redirect=${event.url.pathname}`);
+		redirect(303, `/account/login?redirect=${event.url.pathname}`);
 	}
 
 	if (
@@ -26,7 +26,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 		(!pb.authStore.model?.roles.includes(FESD_COORDINATOR) &&
 			event.url.pathname.startsWith('/intern/fesd/list'))
 	) {
-		throw redirect(303, '/intern');
+		redirect(303, '/intern');
 	}
 	const response = await resolve(event);
 
