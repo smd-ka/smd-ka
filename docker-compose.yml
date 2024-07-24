@@ -13,6 +13,12 @@ services:
     networks:
       - smd_ka_network
 
+  frontend:
+    container_name: frontend
+    image: ghcr.io/smd-ka/smd-ka/frontend:main
+    restart: always
+    networks:
+      - smd_ka_network
 
   nginx:
     container_name: nginx
