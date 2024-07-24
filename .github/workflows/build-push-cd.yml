@@ -1,5 +1,4 @@
-name: Create and publish backend docker image
-
+name: Build, push, and deploy
 on:
   push:
     branches: ['main']

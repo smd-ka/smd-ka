@@ -51,7 +51,7 @@ services:
       - EMAIL=webmaster@smd-karlsruhe.de
       - SERVER_CONTAINER=nginx
       - WEBROOT_PATH=/usr/share/nginx/html
-      - DOMAINS=api.smd-ka.de
+      - DOMAINS=api.smd-ka.de www.smd-ka.de smd-ka.de
       - CHECK_FREQ=7
     restart: always
   
