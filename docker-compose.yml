@@ -55,7 +55,7 @@ services:
       - CHECK_FREQ=7
     restart: always
   
-  
+  # Only need for manual certbot (inital pull of certificates)
   certbot:
     container_name: certbot
     image: certbot/certbot:latest
