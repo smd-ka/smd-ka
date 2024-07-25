@@ -1,6 +1,8 @@
 version: '3.8'
 
+
 services:
+
   backend:
     container_name: backend
     image: ghcr.io/smd-ka/smd-ka/backend:main
@@ -8,7 +10,6 @@ services:
       - type: bind
         source: ./backend/pb_data
         target: /pb/pb_data
-
     restart: always
     networks:
       - smd_ka_network
@@ -24,23 +25,19 @@ services:
     container_name: nginx
     image: nginx:latest
     volumes:
-        - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-        - ./nginx/conf.d/:/etc/nginx/conf.d/:ro
-        - webdata:/usr/share/nginx/html
-        - letsencrypt:/etc/letsencrypt
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d/:/etc/nginx/conf.d/:ro
+      - webdata:/usr/share/nginx/html
+      - letsencrypt:/etc/letsencrypt
     ports:
       - 80:80
       - 443:443
     links:
-     - backend
+      - backend
     restart: always
     networks:
       - smd_ka_network
 
-  
-  
-  
-  
   letsencrypt:
     container_name: letsencrypt
     image: gordonchan/auto-letsencrypt
@@ -54,7 +51,7 @@ services:
       - DOMAINS=api.smd-ka.de www.smd-ka.de smd-ka.de
       - CHECK_FREQ=7
     restart: always
-  
+
   # Only need for manual certbot (inital pull of certificates)
   certbot:
     container_name: certbot
@@ -67,6 +64,7 @@ services:
 networks:
   smd_ka_network:
     driver: bridge
+
 
 volumes:
   letsencrypt:
