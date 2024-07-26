@@ -9,10 +9,22 @@
 		faCalendar,
 		faDroplet,
 		faLocationDot,
-		faCalendarDays
+		faCalendarDays,
+		faSmile
 	} from '@fortawesome/free-solid-svg-icons';
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import header from '$lib/assets/heroshots/karlsruhe_luft.jpeg';
+	import schloss_img from '$lib/assets/pages/new/schloss.jpg';
+
+	// TODO add Churchhopping for this year
+	const churchHopping = [
+		// {
+		// 	date: '27. Oktober 10:00 Uhr',
+		// 	link: 'https://icf-karlsruhe.de',
+		// 	name: 'ICF Karlsruhe',
+		// 	responsible: 'Claus Hamman'
+		// }
+	];
 
 	let date = new Date();
 
@@ -61,8 +73,9 @@
 				vorbereitet.<br />
 				Im Semester bist du herzlich zu unseren SMD Abenden und Hauskreisen eingeladen. Die Hauskreisanmeldung
 				findet immer zu Beginn des Semester statt. Wenn du Fragen hast, schreib uns gerne eine Mail an
-				den
-				<a href="mailto:inreach@smd-karlsruhe.de">Inreach</a>. <br />
+				<a class="whitespace-nowrap" href="mailto:inreach@smd-karlsruhe.de"
+					>inreach@smd-karlsruhe.de
+				</a>. <br />
 				Schau doch mal bei uns vorbei!
 			</p>
 
@@ -147,12 +160,17 @@
 			<h2>Church Hopping</h2>
 
 			<p class="py-4">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-				labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-				laboris nisi ut aliquip ex ea commodo consequat.
+				Am Anfang von jedem Wintersemester bieten wir dir an, die Gemeinden kennen zu lernen, in die
+				wir SMDler gehen. So kannst du ganz unkompliziert eine Gemeinde in Karlsruhe finden, ohne
+				dass du alleine in der Bank sitzt 😉. Außerdem hast du direkt eine Person, der du Fragen zur
+				und über die Gemeinde stellen kannst. Als Studentenmission ist es uns wichtig, dass du eine
+				Gemeinde findest in der geistlich gestärkt wirst!
+				<br />
+				In der Tabelle findest du die Termine für dieses Jahr. Außerdem wird es eine Signal Gruppe geben
+				in der nochmals der genaue Treffpunkt kommuniziert wird. Falls du darin aufgenommen werden möchtest,
+				schreib einfach <a href="claus@chammann.dev">Claus</a> eine E-Mail.
 			</p>
 		</div>
-		<!-- TODO extract into object and use date function to display date -->
 
 		<table
 			class="font-merriweather mt-8 grid grid-cols-[auto_auto_auto] gap-x-2 px-4 md:text-2xl xl:px-72"
@@ -161,42 +179,44 @@
 			<div class="font-bold">Gemeinde</div>
 			<div class="font-bold">Ansprechperson</div>
 
-			<div class="col-span-full h-0.5 bg-gray-600"></div>
+			<!-- <div class="col-span-full h-0.5 bg-gray-600"></div> -->
 
-			<div>27. Oktober 10:00 Uhr</div>
-			<a href="https://smd-karlsruhe.de">Mustergemeinde</a>
-			<div>Max Mustermann</div>
-
-			<div class="col-span-full h-0.5 bg-gray-300"></div>
-
-			<div>03. November</div>
-			<a href="https://smd-karlsruhe.de">Mustergemeinde</a>
-			<div>Max Mustermann</div>
-
-			<div class="col-span-full h-0.5 bg-gray-300"></div>
-
-			<div>10.11</div>
-			<a href="https://smd-karlsruhe.de">Mustergemeinde</a>
-			<div>Max Mustermann</div>
-
-			<div class="col-span-full h-0.5 bg-gray-300"></div>
-
-			<div>17.11</div>
-			<a href="https://smd-karlsruhe.de">Mustergemeinde</a>
-			<div>Max Mustermann</div>
-
-			<div class="col-span-full h-0.5 bg-gray-300"></div>
-
-			<div>24.11</div>
-			<a href="https://smd-karlsruhe.de">Mustergemeinde</a>
-			<div>Max Mustermann</div>
+			{#each churchHopping as hop, i}
+				<div class="col-span-full h-0.5 {i == 0 ? 'bg-gray-600' : 'bg-gray-300'}"></div>
+				<div>{hop.date}</div>
+				<a href={hop.link}>{hop.name}</a>
+				<div>{hop.responsible}</div>
+			{/each}
 		</table>
 	</section>
+</main>
 
-	<section></section>
+<img src={schloss_img} alt="Karlsruher Schloss" />
 
+<main class="main">
 	<section class="pad">
 		<h1>Wohnen, Leben, Studieren</h1>
+
+		<p>
+			Hier findest du einige Tipps und Infos von SMDlern über Karlsruhe und das Studium. Egal ob du
+			schon entschieden hast, dass du nach Karlsruhe ziehst oder noch am Überlegen bist, ob
+			Karlsruhe der richtige Ort für dich ist, hier findest du einige Infos, die dir bei deiner
+			Entscheidung helfen können. Außerdem haben wir einige Tipps für dich, falls du gerade neu in
+			Karlsruhe bist.
+		</p>
+
+		<h2 class="pt-8">Wohnen.</h2>
+		<p>
+			<a href="https://kaheim.de">
+				<img src={kaheim} class="h-12 self-center" alt="kaheim logo" />
+			</a>
+			Auf der Suche nach einer Wohnung? Dann schau doch mal bei
+			<a href="https://kaheim.de">kaheim.de</a> vorbei! Hier findest du eine Zimmerbörse für christliche
+			WGs in Karlsruhe. Wenn du ein Zimmer suchst oder in deiner WG Zimmer frei hast und Mitbewohner
+			suchst, kannst die Einträge dort durchschauen und/oder selbst einen erstellen. Wir betreiben die
+			Plattform selbst in Koorperation mit dem SfC (Studierende für Christus), daher findest du alle
+			Zimmerangebote, von denen wir wissen, auf dieser Seite.
+		</p>
 	</section>
 </main>
 
