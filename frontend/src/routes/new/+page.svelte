@@ -1,30 +1,41 @@
 <script lang="ts">
 	import kaheim from '$lib/assets/logos/kaheim.png';
-	import exampleImage from '$lib/assets/ss24/herzenssache_16_9.png';
 
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import {
 		faChurch,
 		faComments,
 		faCalendar,
-		faDroplet,
 		faLocationDot,
-		faCalendarDays,
-		faSmile
+		faCalendarDays
 	} from '@fortawesome/free-solid-svg-icons';
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import header from '$lib/assets/heroshots/karlsruhe_luft.jpeg';
 	import schloss_img from '$lib/assets/pages/new/schloss.jpg';
+	import turmberg_img from '$lib/assets/pages/new/turmberg.jpg';
+	import schlossgarten_img from '$lib/assets/pages/new/schlossgarten.jpg';
+	import epplesee_img from '$lib/assets/pages/new/epplesee.jpg';
+	import oxford_img from '$lib/assets/pages/new/oxford.png';
+	import type { PageData } from './$types';
+	import { getImageSrc } from '$lib/fetch_img';
 
 	// TODO add Churchhopping for this year
 	const churchHopping = [
-		// {
-		// 	date: '27. Oktober 10:00 Uhr',
-		// 	link: 'https://icf-karlsruhe.de',
-		// 	name: 'ICF Karlsruhe',
-		// 	responsible: 'Claus Hamman'
-		// }
+		{
+			date: '27. Oktober 10:00 Uhr',
+			link: 'https://icf-karlsruhe.de',
+			name: 'ICF Karlsruhe',
+			responsible: 'Claus Hamman'
+		},
+		{
+			date: '27. Oktober 10:00 Uhr',
+			link: 'https://icf-karlsruhe.de',
+			name: 'ICF Karlsruhe',
+			responsible: 'Claus Hamman'
+		}
 	];
+
+	export let data: PageData;
 
 	let date = new Date();
 
@@ -37,7 +48,10 @@
 		'Freitag',
 		'Samstag'
 	];
-	const getDateTimeString = (date: Date) => {
+	const getDateTimeString = (dateString: string) => {
+		date = new Date(dateString);
+		// Substract 2 hours to get the correct time for the event as the date is in UTC
+		date.setHours(date.getHours() - 2);
 		return `${weekdays[date.getDay()]}, ${date.toLocaleDateString(
 			'de-DE'
 		)} ${date.toLocaleTimeString('de-DE', {
@@ -80,80 +94,52 @@
 			</p>
 
 			<h2 class="pb-6 pt-12">Ersti Aktionen Wintersemester 2024/25</h2>
+
+			{#if data.records.length === 0}
+				<p>
+					Die Aktionen befinden sich gerade noch in der Planung, werden aber bald hier
+					veröffentlicht. Sie werden vermutlich vor allem in den letzten September und ersten
+					Oktoberwochen stattfinden. Stay tuned :)
+				</p>
+			{/if}
 		</div>
-
-		<div class="grid gap-8 px-4 md:grid-cols-2 xl:grid-cols-3">
-			<div>
-				<div class="relative text-white">
-					<img src={exampleImage} class="brightness-50" alt="TODO" />
-					<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-						<h3 class="">Bibellesen im Schlossgarten</h3>
+		<div
+			class="} grid gap-8 px-4 md:grid-cols-2 {data.records.length > 2
+				? ' xl:grid-cols-3'
+				: 'px-52'}"
+		>
+			{#each data.records as action}
+				<div>
+					<div class="relative text-white">
+						<img
+							src={getImageSrc(
+								action.background_image,
+								action.id,
+								action.collectionId,
+								action.collectionName
+							)}
+							class="max-h-72 w-full brightness-50"
+							alt={action.title}
+						/>
+						<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+							<h3 class="">{action.title}</h3>
+						</div>
 					</div>
-				</div>
-				<div class="pt-8">
-					<span class="flex items-center gap-2 text-xl font-bold"
-						><Fa icon={faCalendarDays} />{getDateTimeString(date)}
-					</span>
-					<span class="flex items-center gap-2 text-xl font-bold"
-						><Fa icon={faLocationDot} /><a href="https://maps.google.com">
-							Eine Ort mit Mapslink
-						</a>
-					</span>
-				</div>
-				<p class="py-4">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-					ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-					ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				</p>
-			</div>
-
-			<div>
-				<div class="relative text-white">
-					<img src={exampleImage} class="brightness-50" alt="TODO" />
-					<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-						<h3 class="">Bibellesen im Schlossgarten</h3>
+					<div class="pt-8">
+						<span class="flex items-center gap-2 text-xl font-bold"
+							><Fa icon={faCalendarDays} />{getDateTimeString(action.date)}
+						</span>
+						<span class="flex items-center gap-2 text-xl font-bold"
+							><Fa icon={faLocationDot} /><a href={action.google_maps_url}>
+								{action.location}
+							</a>
+						</span>
 					</div>
+					<p class="py-4">
+						{action.description}
+					</p>
 				</div>
-				<div class="pt-8">
-					<span class="flex items-center gap-2 text-xl font-bold"
-						><Fa icon={faCalendarDays} />{getDateTimeString(date)}
-					</span>
-					<span class="flex items-center gap-2 text-xl font-bold"
-						><Fa icon={faLocationDot} /><a href="https://maps.google.com">
-							Eine Ort mit Mapslink
-						</a>
-					</span>
-				</div>
-				<p class="py-4">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-					ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-					ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				</p>
-			</div>
-
-			<div>
-				<div class="relative text-white">
-					<img src={exampleImage} class="brightness-50" alt="TODO" />
-					<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-						<h3 class="">Bibellesen im Schlossgarten</h3>
-					</div>
-				</div>
-				<div class="pt-8">
-					<span class="flex items-center gap-2 text-xl font-bold"
-						><Fa icon={faCalendarDays} />{getDateTimeString(date)}
-					</span>
-					<span class="flex items-center gap-2 text-xl font-bold"
-						><Fa icon={faLocationDot} /><a href="https://maps.google.com">
-							Eine Ort mit Mapslink
-						</a>
-					</span>
-				</div>
-				<p class="py-4">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-					ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-					ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				</p>
-			</div>
+			{/each}
 		</div>
 
 		<div class="pad pt-16">
@@ -164,11 +150,11 @@
 				wir SMDler gehen. So kannst du ganz unkompliziert eine Gemeinde in Karlsruhe finden, ohne
 				dass du alleine in der Bank sitzt 😉. Außerdem hast du direkt eine Person, der du Fragen zur
 				und über die Gemeinde stellen kannst. Als Studentenmission ist es uns wichtig, dass du eine
-				Gemeinde findest in der geistlich gestärkt wirst!
+				Gemeinde findest in der du geistlich gestärkt wirst!
 				<br />
-				In der Tabelle findest du die Termine für dieses Jahr. Außerdem wird es eine Signal Gruppe geben
+				<!-- In der Tabelle findest du die Termine für dieses Jahr. Außerdem wird es eine Signal Gruppe geben
 				in der nochmals der genaue Treffpunkt kommuniziert wird. Falls du darin aufgenommen werden möchtest,
-				schreib einfach <a href="claus@chammann.dev">Claus</a> eine E-Mail.
+				schreib einfach <a href="mailto:claus@chammann.dev">Claus</a> eine E-Mail. -->
 			</p>
 		</div>
 
@@ -178,8 +164,6 @@
 			<div class="font-bold">Datum</div>
 			<div class="font-bold">Gemeinde</div>
 			<div class="font-bold">Ansprechperson</div>
-
-			<!-- <div class="col-span-full h-0.5 bg-gray-600"></div> -->
 
 			{#each churchHopping as hop, i}
 				<div class="col-span-full h-0.5 {i == 0 ? 'bg-gray-600' : 'bg-gray-300'}"></div>
@@ -205,98 +189,88 @@
 			Karlsruhe bist.
 		</p>
 
-		<h2 class="pt-8">Wohnen.</h2>
-		<p>
-			<a href="https://kaheim.de">
-				<img src={kaheim} class="h-12 self-center" alt="kaheim logo" />
-			</a>
-			Auf der Suche nach einer Wohnung? Dann schau doch mal bei
-			<a href="https://kaheim.de">kaheim.de</a> vorbei! Hier findest du eine Zimmerbörse für christliche
-			WGs in Karlsruhe. Wenn du ein Zimmer suchst oder in deiner WG Zimmer frei hast und Mitbewohner
-			suchst, kannst die Einträge dort durchschauen und/oder selbst einen erstellen. Wir betreiben die
-			Plattform selbst in Koorperation mit dem SfC (Studierende für Christus), daher findest du alle
-			Zimmerangebote, von denen wir wissen, auf dieser Seite.
-		</p>
-	</section>
-</main>
-
-<main class="container mx-auto flex flex-col gap-8">
-	<div class="card mt-10 text-center">
-		<h1 class="text-primary text-2xl lg:text-4xl">Angebote für neue Studenten</h1>
-		<p class="mt-2">
-			Um unsere Gruppe kennenzulernen und gut in Karlsruhe zu starten, haben wir mehrere Angebote
-			für dich!
-		</p>
-		<div class="mt-10 grid gap-8 md:grid-cols-2">
-			<div class="flex flex-col rounded-lg bg-gray-200 p-4">
-				<Fa size="3x" icon={faCalendar} />
-				<h2 class="my-2 text-2xl font-bold">Ersti Aktionen</h2>
-				<p>
-					An den letzten Dienstagen vor dem Vorlesungsbeginn in der Regel Abends wird es spezielle
-					Aktionen für euch geben. Nähere Infos sind im <a
-						class="text-primary hover:text-corperate whitespace-nowrap hover:underline"
-						href="/kalender"
-					>
-						Kalender
-					</a> und auf Instagram zu finden. Auch zum Semesterstart wird es noch weitere Angebote geben.
-				</p>
-			</div>
-
-			<div class="flex flex-col rounded-lg bg-gray-200 p-4">
-				<Fa size="3x" icon={faComments} />
-				<h2 class="my-2 text-2xl font-bold">Mentoring</h2>
-				<p>
-					Du suchst jemanden zum quatschen, der dir bei Fragen rund ums Studium und das Leben in
-					Karlsruhe weiterhelfen kann? Dann melde dich bei uns und wir vermitteln dir einen Mentor.
-					Schreibe einfach eine Mail an <a
-						class="text-primary hover:text-corperate whitespace-nowrap hover:underline"
-						href="mailto:inreach@smd-karlsruhe.de"
-					>
-						inreach@smd-karlsruhe.de
-					</a>
-				</p>
-			</div>
-
-			<div class="flex flex-col rounded-lg bg-gray-200 p-4">
-				<Fa size="3x" icon={faChurch} />
-				<h2 class="my-2 text-2xl font-bold">Church Hopping</h2>
-
-				<p>
-					Vielleicht bist du neu in Karlsruhe oder suchst einfach eine neue Gemeinde. Um dir bei der
-					Suche zu helfen, lädt zum Semesterstart jeden Sonntag ein SMDler dich ein, mit ihnen in
-					seine Gemeinde zu kommen, um einen ersten Einblick zu bekommen. So hast du die
-					Möglichkeit, bei dem riesigen/vielfältigen Angebot an Gemeinden in Karlsruhe dir einen
-					Überblick zu verschaffen. Checke den <a
-						class="text-primary hover:text-corperate whitespace-nowrap hover:underline"
-						href="/kalender"
-					>
-						Kalender
-					</a>
-					oder
-					<a
-						class="text-primary hover:text-corperate whitespace-nowrap hover:underline"
-						href="https://www.instagram.com/smd_karlsruhe/"
-					>
-						Instagram
-					</a> für weitere Infos.
-				</p>
-			</div>
-
-			<div class="flex flex-col rounded-lg bg-gray-200 p-4">
-				<img src={kaheim} class="h-12 self-center" alt="kaheim logo" />
-				<h2 class="my-2 text-2xl font-bold">Kaheim</h2>
-				<p>
-					Bist du auf der Suche nach einer christlichen WG in Karlsruhe? Auf
-					<a
-						class="text-primary hover:text-corperate whitespace-nowrap hover:underline"
-						href="https://kaheim.de"
-						>kaheim.de
-					</a>
-					betreiben wir zusammen mit dem SfC (Studierende für Christus) und anderen christlichen Gruppen
-					eine Plattform als Zimmerbörse. Wenn du ein Zimmer suchst oder in deiner WG Zimmer frei hast
-					und Mitbewohner suchst, kannst die Einträge dort durchschauen und/oder selbst einen erstellen.
-				</p>
-			</div>
+		<h2 class="pt-8">Wohnen</h2>
+		<div class="flex">
+			<p>
+				<a class="float-right align-middle" href="https://kaheim.de">
+					<img src={kaheim} class="h-12 self-center" alt="kaheim logo" />
+				</a>
+				Auf der Suche nach einer Wohnung? Dann schau doch mal bei
+				<a href="https://kaheim.de">kaheim.de</a> vorbei! Hier findest du eine Zimmerbörse für
+				christliche WGs in Karlsruhe. Wenn du ein Zimmer suchst oder in deiner WG Zimmer frei hast
+				und Mitbewohner suchst, kannst die Einträge dort durchschauen und/oder selbst einen
+				erstellen. Wir betreiben die Plattform selbst in Koorperation mit dem SfC (Studierende für
+				Christus), daher findest du alle Zimmerangebote, von denen wir wissen, auf dieser Seite.
+				<br />
+				Darüber hinaus kannst du dich auch mal beim
+				<a href="https://www.sw-ka.de/de/wohnen/"> Studierendenwerk</a> umschauen.
+			</p>
 		</div>
-	</div>
+
+		<h2 class="pt-8">Leben</h2>
+		<p>
+			<b> Karlsruhe = Beschte. </b> Nicht nur sind wir die Residenz des Rechts, sondern auch die
+			Fächerstadt. Mit dem Karlsruher Institut für Technologie (KIT), der Pädagogischen Hochschule
+			(PH) und der Hochschule Karlsruhe (HKA) sowie vielen kleinen Hochschulen mehr ist Karlsruhe
+			eine absolute Studentenstadt. UND Karlsruhe ist Fahrradstadt. Daher empfehlen wir, lege dir
+			sobald wie möglich eins zu. Wenn du zudem ein wahrer SMDler werden willst: Helm auf! Wenn du
+			diesen Insider verstehen willst, schau vorbei 😉.
+			<br />
+			Um dir einen kleinen Einblick in das Leben in Karlsruhe zu geben und dir eine Idee zu geben, welche
+			Orte du unbedingt einmal besuchen solltest, haben wir dir hier eine Liste zusammengestellt:
+		</p>
+
+		<div class="grid grid-cols-2 gap-4 gap-y-16 py-20">
+			<img alt="Schlossgarten" class="h-48 w-full object-cover" src={schlossgarten_img} />
+
+			<div>
+				<h3>Der Schlo(ssgarten)</h3>
+
+				<p>
+					Der ideale Treffpunkt zum abhängen, Sonne genießen, Spikeball spielen und vielem mehr.
+					Egal ob unter der Woche nach der Uni oder am Wochenende der Schlossgarten ist Karlsruhes
+					offenes Wohnzimmer. (Zumindest im Sommer :P)
+				</p>
+			</div>
+
+			<div>
+				<h3>Der Turmberg</h3>
+
+				<p>
+					Karlsruhe von oben sehen? Dann ab auf den Turmberg. Besonders zum Sonnenuntergang genießen
+					ist dies der perfekte Ort. Außerdem befindet sich ein Hochseilgarten auf dem Turmberg.
+				</p>
+			</div>
+			<img alt="Turmberg" class="h-48 w-full object-cover" src={turmberg_img} />
+
+			<div class="flex justify-center">
+				<img alt="Oxford" class="h-48 object-cover" src={oxford_img} />
+			</div>
+			<div>
+				<h3>Das Oxford Pub</h3>
+
+				<p>
+					Lecker und günstig als Student essen gehen? Dann ab ins Oxford Pub. Hier gibt es leckere
+					Burger und gutes Bier. Direkt neben dem KIT Campus ist das Oxford eine beliebte Adresse
+					für einen gemütlichen Abend mit Freunden.
+				</p>
+			</div>
+
+			<div>
+				<h3>Der Epplesee</h3>
+				<p>
+					Erfrischung gefällig? Nur eine kleine Fahrradtour entfernt (ca. 10km) liegt im Süden von
+					Karlsruhe der Epplesee. Der See überzeugt mit einer großen Liegewiese und einem schönen
+					Strand. Tipp: Hier lohnt es sich besonders auszunutzen, dass du Student bist und unter der
+					Woche bzw. Vormittags zu gehen.
+				</p>
+			</div>
+			<img alt="Epplesee" class="h-48 w-full object-cover" src={epplesee_img} />
+		</div>
+
+		Frühstück beim Extrablatt Epplesee, Weingarten,
+
+		<h2 class="pt-8">Studieren.</h2>
+		<p>Auch wenn manche von uns behaupten würden, dass sie SMD mit Nebe</p>
+	</section>
 </main>

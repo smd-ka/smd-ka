@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Saos from 'saos';
-	import header from '$lib/assets/heroshots/karlsruhe_luft.jpeg';
+	import header from '$lib/assets/pages/schloss.jpg';
 	import {
 		faCalendarDays,
 		faChildReaching,
@@ -47,31 +47,26 @@
 	}
 </script>
 
-<HeroShot imgSrc={header} />
-<div class="bg-primary text-grey z-10 px-4 py-8 text-center text-4xl font-bold md:hidden md:py-4">
-	Herzlich Willkommen bei der Hochschul-SMD <br class="md:hidden" />
-	<span class="text-white">Karlsruhe</span>
-</div>
-
-<main class="container mx-auto flex flex-col gap-24 py-24 text-lg">
-	<div class="container flex flex-col gap-6 px-4 xl:px-80">
-		<h1 class="text-5xl font-bold uppercase">SCHÖN, DASS DU HIER BIST!</h1>
-		<p>
-			Zwischen Uni-Alltag und WG-Wahnsinn haben wir einen Treffpunkt, an dem Studierende aus allen
-			Ecken der Hochschule zusammenkommen. Uns verbindet der Wunsch nach Gemeinschaft, Diskussion
-			und gelebtem Glauben.
-		</p>
-		<p>
-			In unserer Hochschulgruppe sind alle herzlich willkommen. Egal was dein Hintergrund ist und
-			was du glaubst, wir freuen uns auf dich!
-		</p>
-
-		<p>
-			Wir sind aktuell rund 60 Studierende aller Fachrichtungen, kommen aus verschiedenen Kirchen
-			und Gemeinden und wünschen uns, dass jeder Student und jede Studentin von der guten Nachricht
-			von Jesus hören kann.
-		</p>
+<section class="h-[100svh]">
+	<div
+		class="absolute top-0 h-[100svh] w-full bg-red-300 bg-cover bg-[center_left_60%]"
+		style="background-image: url({header});"
+	></div>
+	<div class="text-grey absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 text-center">
+		<span class="font-mincho whitespace-nowrap text-4xl sm:text-5xl xl:text-7xl">
+			Hier bist du richtig!
+		</span><br />
+		<br />
+		<span class="font-caveat text-xl sm:text-2xl xl:text-3xl">
+			Herzlich Willkommen bei der Hochschul-SMD Karlsruhe
+		</span>
 	</div>
+</section>
+
+<main class="container mx-auto flex flex-col gap-24 py-12 text-lg">
+	<section class="text-center">
+		<h1>Was läuft aktuell?</h1>
+	</section>
 
 	<Saos
 		animation={'slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}

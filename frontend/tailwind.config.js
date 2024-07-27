@@ -8,7 +8,9 @@ export default {
 			merriweather: ['Merriweather Sans Variable', 'sans-serif'],
 			bebas: ['Bebas Neue', 'sans-serif'],
 			zcool: ['ZCOOL QingKe HuangYou', 'sans-serif'],
-			mokoto: ['Mokoto', 'sans-serif']
+			mokoto: ['Mokoto', 'sans-serif'],
+			mincho: ['Shippori Mincho B1', 'serif'],
+			caveat: ['Caveat Variable', 'cursive']
 		},
 		extend: {
 			colors: {
