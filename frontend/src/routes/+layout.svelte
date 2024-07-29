@@ -24,7 +24,6 @@
 	import ifes from '$lib/assets/logos/ifes.png';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
-	import { split } from 'postcss/lib/list';
 
 	const eventPageUrlsRegEx = new RegExp('semesterprogramm|saft|weekly');
 
