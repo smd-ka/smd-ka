@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   frontend:
-    image: ghcr.io/your-username/your-repo/frontend:staging
+    image: ghcr.io/smd-ka/smd-ka/backend:staging
 
   backend:
-    image: ghcr.io/your-username/your-repo/backend:staging
+    image: ghcr.io/smd-ka/smd-ka/frontend:staging
