@@ -20,18 +20,14 @@
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { getAvatarUrl, pb } from '$lib/pocketbase';
-	import { applyAction, enhance } from '$app/forms';
-	import loadingSpinner from '$lib/assets/loading_spinner.gif';
-	import { click_outside } from '$lib/click_outside';
 	import ifes from '$lib/assets/logos/ifes.png';
 	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
 	import { blur, fade } from 'svelte/transition';
+	import { headerImageHeight } from '$lib/header_image_height';
 
 	const eventPageUrlsRegEx = new RegExp('semesterprogramm|saft|weekly');
 
 	let showMenu = false;
-	let loading = false;
 	let src = getAvatarUrl();
 	let isValid = pb.authStore.isValid;
 
@@ -40,17 +36,18 @@
 		src = getAvatarUrl();
 	});
 	let scrollY: number;
-	let innerHeight: number;
+	const navbarHeight = 70;
 </script>
 
-<svelte:window bind:scrollY bind:innerHeight />
+<svelte:window bind:scrollY />
 <main class="flex min-h-screen flex-col">
-	<nav
-		class=" sticky top-0 z-50 flex flex-[0_1_auto] flex-col shadow-md transition-all duration-200"
-	>
+	<nav class=" sticky top-0 z-50 flex flex-[0_1_auto] flex-col shadow-md">
 		<div
-			class="flex items-center justify-between gap-4 px-4 py-3
-			{scrollY < innerHeight - 70 ? 'bg-transparent backdrop-blur-lg backdrop-brightness-90' : 'bg-grey'}"
+			class="{scrollY > $headerImageHeight - navbarHeight
+				? 'bg-grey'
+				: 'bg-transparent backdrop-blur-lg backdrop-brightness-90'} flex items-center justify-between gap-4 px-4 py-3 transition-all
+				duration-200
+				"
 		>
 			<a class=" py-2" href="/">
 				<img class="max-h-7" src={logo} alt="SMD Logo" />
@@ -60,21 +57,16 @@
 				<!-- Links (only visable for bigger screens) -->
 
 				<div>
-					<a
-						href="/about"
-						class="{$page.url.pathname.match(eventPageUrlsRegEx)
-							? 'text-primary hover:text-white'
-							: 'hover:text-primary'} peer flex items-center gap-2"
-					>
+					<span class="CategoryTitle peer">
 						Über uns
 						<Fa class="text-lg" icon={faChevronDown}></Fa>
-					</a>
-					<div
-						class=" bg-primary absolute hidden justify-center gap-4 px-4 py-2 hover:grid peer-hover:grid"
-					>
-						<a class="hover:text-primary-text" href="/semesterprogramm">Wer wir sind</a>
-						<a class="hover:text-primary-text" href="/saft">Was wir machen</a>
-						<a class="hover:text-primary-text" href="/weekly">Kontakt</a>
+					</span>
+					<div class="CategoryLinkList">
+						<a href="/about/us">Wer wir sind</a>
+						<a href="/about/angebote">Was wir machen</a>
+						<a href="/about/mitarbeit">Mitarbeiten</a>
+						<a href="/about/kontakt">Kontakt</a>
+						<a href="/about/spenden">Spenden</a>
 					</div>
 				</div>
 
@@ -348,6 +340,16 @@
 		@apply no-underline;
 	}
 
+	.CategoryLinkList {
+		@apply bg-primary absolute hidden justify-center gap-4 px-4 py-2 hover:grid peer-hover:grid;
+	}
+	.CategoryLinkList > a {
+		@apply hover:text-primary-text;
+	}
+
+	.CategoryTitle {
+		@apply hover:text-primary flex items-center gap-2 hover:cursor-pointer;
+	}
 	.menu {
 		display: grid;
 		grid-template-rows: 0fr;

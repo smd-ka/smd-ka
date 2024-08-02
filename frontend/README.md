@@ -1,6 +1,6 @@
 # create-svelte
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Everything you need to build a Svelte project, powered by [ `create-svelte` ](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
 ## Creating a project
 
@@ -16,7 +16,7 @@ npm create svelte@latest my-app
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn` ), start a development server:
 
 ```bash
 npm run dev
@@ -33,6 +33,10 @@ To create a production version of your app:
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+You can preview the production build with `npm run preview` .
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
+### Naming Conventions
+
+Custom CSS classes (not from Tailwind) should be in PascalCase. This is to avoid conflicts with Tailwind classes and to make it clear that they are custom classes. They should always be found at the bottom of the file.
