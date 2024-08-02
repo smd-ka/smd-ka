@@ -1,14 +1,29 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import { headerImageHeight } from '$lib/header_image_height';
+
 	export let imgSrc: string;
-	export let title: string | undefined = undefined;
-	export let bgPosition: string = 'bg-[center_top_34%]';
+	export let bgPosition: string = 'bg-center';
+	export let height: string = 'h-[100svh]';
+
+	let resizeObserver: ResizeObserver;
+
+	// Retrieve and update the height of the header image for the navbar background (transparent/grey)
+	onMount(() => {
+		resizeObserver = new ResizeObserver((entries) =>
+			headerImageHeight.set(entries[0].target.clientHeight)
+		);
+		const header = document.getElementById('header_component');
+		if (header) {
+			resizeObserver.observe(header);
+		}
+	});
 </script>
 
-<div class="relative">
-	<h1
-		class="absolute left-1/2 top-32 z-10 -translate-x-1/2 whitespace-nowrap text-5xl text-white sm:text-6xl md:text-7xl"
-	>
-		{title || ''}
-	</h1>
-	<div class="h-96 bg-cover max-md:h-52 {bgPosition} " style="background-image: url({imgSrc});" />
-</div>
+<section class="{height} block" id="header_component">
+	<div
+		class="absolute top-0 {height} w-full bg-red-300 bg-cover {bgPosition}"
+		style="background-image: url({imgSrc});"
+	></div>
+	<slot />
+</section>

@@ -36,7 +36,14 @@
 	};
 </script>
 
-<HeroShot imgSrc={header} />
+<HeroShot height={'h-[70svh]'} imgSrc={header} bgPosition={'bg-[center_50%]'}>
+	<div class="absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 text-center text-white">
+		<span class="font-mincho whitespace-nowrap text-4xl sm:text-5xl xl:text-7xl">
+			Wer wir sind
+		</span>
+	</div>
+</HeroShot>
+
 <main class="container mx-auto flex flex-col gap-24 py-24 text-lg">
 	<div class="flex flex-col gap-6 px-4 xl:px-80">
 		<h1 class="text-5xl font-bold uppercase">Über uns</h1>

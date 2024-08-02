@@ -47,11 +47,7 @@
 	}
 </script>
 
-<section class="h-[100svh]">
-	<div
-		class="absolute top-0 h-[100svh] w-full bg-red-300 bg-cover bg-[center_left_60%]"
-		style="background-image: url({header});"
-	></div>
+<HeroShot imgSrc={header} height={'h-[100svh]'} bgPosition={'bg-[center_left_60%]'}>
 	<div class="text-grey absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 text-center">
 		<span class="font-mincho whitespace-nowrap text-4xl sm:text-5xl xl:text-7xl">
 			Hier bist du richtig!
@@ -61,7 +57,7 @@
 			Herzlich Willkommen bei der Hochschul-SMD Karlsruhe
 		</span>
 	</div>
-</section>
+</HeroShot>
 
 <main class="container mx-auto flex flex-col gap-24 py-12 text-lg">
 	<section class="text-center">
