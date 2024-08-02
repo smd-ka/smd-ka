@@ -2,29 +2,30 @@
 	import Saos from 'saos';
 	import header from '$lib/assets/pages/schloss.jpg';
 	import {
+		faCalendarDay,
 		faCalendarDays,
 		faChildReaching,
 		faClock,
 		faCross,
 		faLightbulb,
-		faLocationDot
+		faLocationDot,
+		faVolleyballBall
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import CalendarList from '$lib/components/CalendarList.svelte';
 	import HeroShot from '$lib/components/HeroShot.svelte';
-	import ifesLogo from '$lib/assets/logos/ifes.png';
-	import smdLogo from '$lib/assets/logos/smd.png';
-	import sloganBg from '$lib/assets/heroshots/slogan-bg.jpg';
-	import sloganBgSm from '$lib/assets/heroshots/slogan-bg-sm.jpg';
 	import TextInput from '$lib/components/forms/TextInput.svelte';
 	import TextArea from '$lib/components/forms/TextArea.svelte';
 	import CheckboxInput from '$lib/components/forms/CheckboxInput.svelte';
-	import saft_heroshot from '$lib/assets/heroshots/SAFT_compressed.jpg';
-	import herzenssache_16_9 from '$lib/assets/ss24/herzenssache_16_9.png';
-	import vortrag_teaser from '$lib/assets/ss24/vortrag_teaser.jpg';
 	import EmailInput from '$lib/components/forms/EmailInput.svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 	import { pb } from '$lib/pocketbase';
+	import volleyball from '$lib/assets/pages/home/volleyball.jpg';
+	import erstsemester_programm from '$lib/assets/pages/home/erstsemester_programm.jpg';
+	import glauben from '$lib/assets/pages/home/glauben.jpg';
+	import denken from '$lib/assets/pages/home/denken.jpg';
+	import erleben from '$lib/assets/pages/home/erleben.jpg';
+	import Motto from '$lib/components/Motto.svelte';
 
 	let success = false;
 	let error = false;
@@ -60,57 +61,84 @@
 </HeroShot>
 
 <main class="container mx-auto flex flex-col gap-24 py-12 text-lg">
-	<section class="text-center">
+	<section class="px-4 text-center">
 		<h1>Was läuft aktuell?</h1>
-	</section>
 
-	<Saos
-		animation={'slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
-		animation_out={'slide-out-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
-	>
-		<div class="relative py-20">
-			<h1
-				class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-4xl uppercase text-white lg:text-5xl"
+		<div class="grid gap-8 xl:grid-cols-2">
+			<Saos
+				animation={'slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
+				animation_out={'slide-out-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
 			>
-				Denken. Glauben. Erleben.
-			</h1>
-			<img class="z-0 max-lg:hidden" alt="Werte der Hochschul-SMD" src={sloganBg} />
-			<img class="z-0 lg:hidden" alt="Werte der Hochschul-SMD" src={sloganBgSm} />
-		</div>
-	</Saos>
-
-	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
-		<div class="grid gap-8 px-4 lg:grid-cols-2 xl:px-80">
-			<img alt="Semesterprogramm" src={herzenssache_16_9} />
-
-			<div class="flex flex-col gap-4">
-				<h1 class="text-5xl font-bold uppercase">Was wir machen</h1>
-				<p>
-					Im Semester treffen wir uns abwechselnd zum Gruppentreff und in Hauskreisen. Beide sind
-					eine Mischung aus Input, Austausch und Gemeinschaft – wir wollen gemeinsam nachdenken und
-					Spaß haben.
-				</p>
-				<a href="semesterprogramm" class="w-fit bg-black p-4 text-white">Semesterprogramm</a>
-			</div>
-		</div>
-	</Saos>
-
-	<div class="relative my-20">
-		<div
-			class="h-[400px] bg-cover bg-[center_top_75%]"
-			style="background-image: url({saft_heroshot});"
-		/>
-		<div class="absolute left-8 top-14 text-white md:left-14">
-			<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
-				<div class="flex flex-col gap-4">
-					<!-- <h1 class="text-4xl md:hidden">SemesterAnfangs- <br />FreizeiT</h1> -->
-					<!-- <h1 class="text-5xl max-md:hidden">SemesterAnfangsFreizeiT</h1> -->
-					<!-- <p>From the Inside out</p> -->
-					<!-- <a href="/saft" class="w-fit bg-black p-4 text-white">Weitere Infos</a> -->
+				<div class="relative text-white 2xl:mx-20">
+					<img
+						src={volleyball}
+						class="max-h-72 w-full bg-[top_30%] object-cover brightness-[30%] transition-all duration-300 hover:cursor-pointer hover:brightness-50"
+						alt="VolleyBall"
+					/>
+					<div class="absolute top-1/2 w-full -translate-y-1/2 text-center">
+						<h3 class="flex justify-center gap-2">
+							<Fa icon={faVolleyballBall} /> Summer Break // Volleyball Spielen
+						</h3>
+						<div class="flex flex-wrap justify-center gap-4">
+							<div class="flex items-center gap-2">
+								<Fa icon={faCalendarDays} />
+								<p class="whitespace-nowrap">Dienstag 06.08</p>
+							</div>
+							<div class="flex items-center gap-2">
+								<Fa icon={faClock} />
+								<p class="whitespace-nowrap">ab 18:00 Uhr</p>
+							</div>
+							<div class="flex items-center gap-2">
+								<Fa icon={faLocationDot} />
+								<p class="whitespace-nowrap">
+									<a href="https://maps.app.goo.gl/rFi8yPtiibS6uGUg9">Fasanengarten</a>
+								</p>
+							</div>
+						</div>
+					</div>
 				</div>
 			</Saos>
+
+			<Saos
+				animation={'slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
+				animation_out={'slide-out-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
+			>
+				<a href="/new">
+					<div class="relative text-white 2xl:mx-20">
+						<img
+							src={erstsemester_programm}
+							class="max-h-72 w-full bg-[top_30%] object-cover brightness-[30%] transition-all duration-300 hover:cursor-pointer hover:brightness-50"
+							alt="Erstsemester Programm"
+						/>
+						<div class="absolute top-1/2 w-full -translate-y-1/2 text-center">
+							<h3 class="flex justify-center gap-2">Erstsemester Programm</h3>
+						</div>
+					</div>
+				</a>
+			</Saos>
 		</div>
-	</div>
+	</section>
+
+	<section class="pt-52">
+		<div class="grid grid-flow-dense gap-4 px-4 md:grid-cols-3 md:gap-x-12">
+			<Motto imgSrc={denken} title="Denken">
+				Gott denkt mit. An Gott glauben ist nicht immer problemlos. Deswegen wollen wir –
+				Studierende aller Fachrichtungen und Konfessionen, die der Glaube an Jesus Christus
+				verbindet – miteinander nachdenken, diskutieren, uns austauschen und dabei den Verstand
+				nicht ausschalten.
+			</Motto>
+			<Motto imgSrc={glauben} title="Glauben"
+				>Wir glauben, dass Gott wirkt. An Gott glauben ist für uns nicht nur ein Weg, sondern der
+				Weg. Deswegen wollen wir von unseren Erlebnissen mit Gott reden, damit jeder diesen Gott
+				kennen lernen kann.</Motto
+			>
+			<Motto imgSrc={erleben} title="Erleben"
+				>Wir erleben, dass Gott lebt. An Gott glauben prägt das ganze Leben. Denn Gott verspricht,
+				dass er in jeder Lebenslage bei uns ist und jeden Menschen liebt. Darauf dürfen wir uns
+				verlassen!
+			</Motto>
+		</div>
+	</section>
 
 	<div class="flex flex-col gap-8 px-4 xl:px-80">
 		<div class="flex flex-col">
