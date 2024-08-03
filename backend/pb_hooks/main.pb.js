@@ -1,3 +1,50 @@
+onMailerBeforeRecordVerificationSend((e) => {
+  e.message.subject = "[SMD-KA] Willkommen";
+  e.message.html =
+    "Hallo " +
+    e.record.get("name") +
+    ",<br><br>vielen Dank für deine Registrierung im internen Bereich der SMD Karlsruhe. " +
+    "Das PrIT Team wird deine Anmeldung prüfen und dich dann freischalten." +
+    "<br><br>Deine SMD Karlsruhe<br>";
+
+  const message = new MailerMessage({
+    from: {
+      address: $app.settings().meta.senderAddress,
+      name: $app.settings().meta.senderName,
+    },
+    to: [{ address: "webmaster@smd-karlsruhe.de" }],
+    subject: "[SMD-KA] Registrierung von " + e.record.get("name"),
+    html:
+      "Bitte verifiziere den Benutzer" +
+      JSON.stringify(e.record) +
+      ' <a href="' +
+      $app.settings().meta.appUrl +
+      "/_/#/auth/confirm-verification/" +
+      e.meta.token +
+      '" target="_blank" rel="noopener">Bestätigen</a>' +
+      "<br><br>Deine SMD Karlsruhe<br>",
+  });
+  $app.newMailClient().send(message);
+});
+
+onRecordAfterConfirmVerificationRequest((e) => {
+  const message = new MailerMessage({
+    from: {
+      address: $app.settings().meta.senderAddress,
+      name: $app.settings().meta.senderName,
+    },
+    to: [{ address: e.record.get("email") }],
+    subject: "[SMD-KA] Du wurdest verifiziert",
+    html:
+      "Hallo " +
+      e.record.get("name") +
+      ", <br><br>du wurdest verifiziert und kannst dich jetzt im internen Bereich der SMD Karlsruhe anmelden." +
+      "<br><br>Deine SMD Karlsruhe<br>",
+  });
+
+  $app.newMailClient().send(message);
+}, "users");
+
 onRecordAfterCreateRequest((e) => {
   if (e.record.get("user")) {
     const result = new DynamicModel({
