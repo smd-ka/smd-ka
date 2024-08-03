@@ -7,7 +7,8 @@
 		faUser,
 		faRightFromBracket,
 		faTable,
-		faTShirt
+		faTShirt,
+		faArrowRight
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
@@ -20,14 +21,26 @@
 
 <main class="container mx-auto flex flex-col gap-8 py-20 pt-8">
 	<div class="grid gap-8 max-md:mx-6 lg:grid-cols-5">
-		<div class="tile !font-sans md:col-span-2">
+		<div class="tile !font-sans md:col-span-3 md:row-span-2">
 			<h2 class="text-primary text-2xl md:text-4xl">
 				Willkommen {pb.authStore.model?.name ?? ''}
 			</h2>
-			<div>
+			<div class="grid gap-2">
 				<p>
 					Du befindest dich im internen Bereich der SMD Karlsruhe. Hier findest du alle wichtigen
 					Informationen und Funktionen, die für dich als Mitglied der SMD Karlsruhe relevant sind.
+				</p>
+				<p>
+					Neu in der SMD? Dann schau doch mal bei unserem Onboarding vorbei. Dort findest du alle
+					Infos, die du brauchst, um bei uns durchzustarten.
+					<br />
+					<a
+						class="bg-primary flex w-fit items-center gap-2 rounded-sm px-4 py-2 text-white"
+						href="/intern/onboarding"
+					>
+						<Fa icon={faArrowRight} />
+						Hier geht's zum Onboarding
+					</a>
 				</p>
 				<p>
 					Bitte beachte, dass du vertrauliche Informationen nicht weitergeben darfst. Falls du
