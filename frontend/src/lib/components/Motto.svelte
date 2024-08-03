@@ -25,6 +25,8 @@
 		/>
 		<div class="absolute top-1/2 flex w-full -translate-y-1/2 flex-col text-center">
 			<h2 class="pb-0 text-white">{title}</h2>
+		</div>
+		<div class="absolute bottom-4 flex w-full justify-center">
 			<Fa
 				icon={faChevronDown}
 				class="text-4xl  {showDescription
