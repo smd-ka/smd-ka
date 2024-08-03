@@ -11,11 +11,7 @@
 	import { onMount } from 'svelte';
 	import { pb } from '$lib/pocketbase';
 	import type { Statement, Team } from '$lib/models';
-	import Donate from '$lib/components/Donate.svelte';
 
-	let showDenken = false;
-	let showGlauben = false;
-	let showErleben = false;
 	let statements: Array<Statement> = [];
 	let teams: Array<Team> = [];
 
@@ -59,75 +55,7 @@
 		</p>
 	</div>
 
-	<div class="grid py-20 lg:grid-cols-3">
-		<button class="flex flex-col items-center" on:click={() => (showDenken = !showDenken)}>
-			<img src={denken} alt="Kopf mit Glühbrine" />
-			<h3 class="text-3xl font-bold uppercase">Denken</h3>
-
-			<div class="menu grid justify-center px-8 {showDenken ? 'open' : ''} ">
-				<div class="overflow-hidden">
-					<p>
-						Wir finden, dass Denken und Glauben nicht im Widerspruch stehen. Deshalb greifen wir
-						immer wieder wissenschaftliche Themen auf, um sie vom Glauben her zu denken. Dazu laden
-						wir Experten ein und veranstalten auch gelegentlich größere Vorträge an der Uni.
-					</p>
-				</div>
-
-				<div
-					class="flex w-full justify-center py-2 transition-transform delay-[400ms] duration-200
-                {showDenken ? 'rotate-180' : ''}"
-				>
-					<Fa icon={faChevronDown} />
-				</div>
-			</div>
-		</button>
-
-		<button class="flex flex-col items-center" on:click={() => (showGlauben = !showGlauben)}>
-			<img src={glauben} alt="Kopf mit Glühbrine" />
-			<h3 class="text-3xl font-bold uppercase">Glauben</h3>
-
-			<div class="menu grid justify-center px-8 {showGlauben ? 'open' : ''} ">
-				<div class="overflow-hidden">
-					<p>
-						Wir sind Christen unterschiedlicher Konfessionen, Wege und Erfahrungen. Die
-						Hochschulgruppe ist ein Raum, sich auszutauschen, im Glauben zu wachsen und voneinander
-						zu lernen. Wir treffen uns regelmäßig zum gemeinsamen Bibellesen und Beten.
-					</p>
-				</div>
-
-				<div
-					class="flex w-full justify-center py-2 transition-transform delay-[400ms] duration-200
-                {showGlauben ? 'rotate-180' : ''}"
-				>
-					<Fa icon={faChevronDown} />
-				</div>
-			</div>
-		</button>
-
-		<button class="flex flex-col items-center" on:click={() => (showErleben = !showErleben)}>
-			<img src={erleben} alt="Kopf mit Glühbrine" />
-			<h3 class="text-3xl font-bold uppercase">Erleben</h3>
-
-			<div class="menu grid justify-center px-8 {showErleben ? 'open' : ''} ">
-				<div class="overflow-hidden">
-					<p>
-						Erleben ist für uns Gemeinschaft leben: gemeinsam Sport machen, Ausflüge, Spieleabende…
-						Aber auch: unseren Glauben leben und für andere erlebbar machen. Zum Beispiel mit
-						Theateraufführungen oder Aktionen auf dem Campus.
-					</p>
-				</div>
-
-				<div
-					class="flex w-full justify-center py-2 transition-transform delay-[400ms] duration-200
-                {showErleben ? 'rotate-180' : ''}"
-				>
-					<Fa icon={faChevronDown} />
-				</div>
-			</div>
-		</button>
-	</div>
-
-	<div class="flex flex-col gap-8 px-4 xl:px-80">
+	<div class="flex flex-col gap-8 px-4 xl:px-40">
 		<h1 class="text-4xl font-bold uppercase md:text-5xl">Warum wir bei der SMD sind.</h1>
 
 		<div class="grid gap-4 md:grid-cols-2">
@@ -143,7 +71,7 @@
 						alt="Profilbild"
 					/>
 					<div class="flex flex-col gap-6 p-4">
-						<h3 class="font-bold">{statement.subject}</h3>
+						<h3 class="text-base font-bold">{statement.subject}</h3>
 						<h2 class="text-2xl font-bold uppercase">{statement.name}</h2>
 						<p>{statement.statement}</p>
 					</div>
@@ -182,36 +110,6 @@
 				R. und Maike unsere Gruppe. Felix M. ist 23 und studiert Physik, Felix R. ist 21 und
 				studiert Umweltingenieurwesen (Bau) und Maike ist 24 und studiert Grundschullehramt.
 			</div>
-		</div>
-	</div>
-
-	<div>
-		<div class="flex flex-col gap-8 px-4 py-20 xl:px-80">
-			<h1 class="text-4xl font-bold uppercase md:text-5xl">Mitarbeiten</h1>
-			<p>
-				Neben den Leitern gibt es verschiedene Ämter und Teams. In der Mitarbeit können wir alle
-				unsere Stärken einbringen und viel Neues dazulernen. Auch du möchstest mitarbeiten? Schreib
-				eine Mail an das Leitungsteam, sie vermitteln dich dann an die zuständige Person.
-			</p>
-
-			<div class="grid gap-8 py-12 lg:grid-cols-2">
-				{#each teams as team}
-					<div class="bg-[#EDEDED]">
-						<img
-							src={src(team.image, team.id, team.collectionId, team.collectionName)}
-							alt="Profilbild"
-						/>
-						<div class="flex flex-col gap-6 p-4">
-							<h2 class="text-2xl font-bold uppercase">{team.name}</h2>
-							<p>{@html team.description}</p>
-						</div>
-					</div>
-				{/each}
-			</div>
-		</div>
-
-		<div class="flex flex-col gap-8 px-4 py-20 xl:px-80">
-			<Donate />
 		</div>
 	</div>
 </main>

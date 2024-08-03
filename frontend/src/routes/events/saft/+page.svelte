@@ -9,7 +9,7 @@
 	import { faCalendarDays, faCoins, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 </script>
 
-<HeroShot imgSrc={header} />
+<HeroShot imgSrc={header} height={'h-[60svh]'}></HeroShot>
 
 <main class="container mx-auto flex flex-col text-lg max-md:gap-10 max-md:py-10 md:gap-24 md:py-24">
 	<div class="container flex flex-col gap-6 px-4 xl:px-80">
