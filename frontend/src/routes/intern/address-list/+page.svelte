@@ -18,35 +18,20 @@
 		faUserGroup
 	} from '@fortawesome/free-solid-svg-icons';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
-	import TextInput from '$lib/components/forms/TextInput.svelte';
 
 	let records: User[];
+	let filteredRecords: User[];
 	let error = false;
 	let loading = true;
 
 	let search = '';
-
-	// function handleSearch() {
-	// 	const searchTerm = search.toLocaleLowerCase();
-	// 	records = records.filter((record) => {
-	// 		if (searchTerm === '') return true;
-	// 		return (
-	// 			record.name.toLowerCase().includes(searchTerm) ||
-	// 			record.surname.toLowerCase().includes(searchTerm) ||
-	// 			record.email.toLowerCase().includes(searchTerm) ||
-	// 			(record.phonenumber && record.phonenumber.toLowerCase().includes(searchTerm)) ||
-	// 			(record.address && record.address.toLowerCase().includes(searchTerm)) ||
-	// 			(record.field_of_study && record.field_of_study.toLowerCase().includes(searchTerm)) ||
-	// 			(record.team && record.team.toLowerCase().includes(searchTerm))
-	// 		);
-	// 	});
-	// }
 
 	onMount(async () => {
 		try {
 			records = await pb.collection('users').getFullList({
 				sort: 'name'
 			});
+			filteredRecords = records;
 			loading = false;
 		} catch (e) {
 			console.log(e);
@@ -54,7 +39,30 @@
 			loading = false;
 		}
 	});
+
+	function handleSearch(searchTerm: string) {
+		if (!records) return;
+		searchTerm = searchTerm.toLocaleLowerCase();
+		filteredRecords = records.filter((record) => {
+			if (searchTerm === '') return true;
+			return (
+				record.name.toLowerCase().includes(searchTerm) ||
+				record.surname.toLowerCase().includes(searchTerm) ||
+				record.email.toLowerCase().includes(searchTerm) ||
+				(record.phonenumber && record.phonenumber.toLowerCase().includes(searchTerm)) ||
+				(record.address && record.address.toLowerCase().includes(searchTerm)) ||
+				(record.field_of_study && record.field_of_study.toLowerCase().includes(searchTerm)) ||
+				(record.team && record.team.toLowerCase().includes(searchTerm))
+			);
+		});
+	}
+
+	$: {
+		handleSearch(search);
+	}
+
 	// Function to generate contact vCard data
+	// TODO: Move to util file
 	function generateVCF(records: User[]) {
 		return records
 			.map((record) => {
@@ -70,15 +78,15 @@
 					notes.push(`SMD-Bereiche: ${record.team}`);
 				}
 				return `
-BEGIN:VCARD
-VERSION:3.0
-FN:${record.name} ${record.surname}
-EMAIL:${record.email}
-${record.phonenumber ? `TEL:${record.phonenumber}` : ''}
-${record.birthday ? `BDAY:${new Date(record.birthday).toISOString().split('T')[0]}` : ''}
-${record.address ? `ADR:${record.address}` : ''}
-NOTE:${notes.join(', ')}
-END:VCARD
+					BEGIN:VCARD
+					VERSION:3.0
+					FN:${record.name} ${record.surname}
+					EMAIL:${record.email}
+					${record.phonenumber ? `TEL:${record.phonenumber}` : ''}
+					${record.birthday ? `BDAY:${new Date(record.birthday).toISOString().split('T')[0]}` : ''}
+					${record.address ? `ADR:${record.address}` : ''}
+					NOTE:${notes.join(', ')}
+					END:VCARD
             `.trim();
 			})
 			.join('\n');
@@ -129,78 +137,79 @@ END:VCARD
 	</ol>
 </nav>
 
-<div class="">
-	<main class="container mx-auto flex flex-col gap-2">
-		<div class="p-8">
-			<h1 class="font-mokoto text-3xl md:text-4xl">SMD Adressliste</h1>
-			<p>
-				Hier findest du alle SMDler*innen, die sich in der Adressliste eingetragen haben (also hier
-				im internen Bereich registriert sind). Die Adressliste ist nur für den internen Gebrauch
-				gedacht. Bitte gehe verantwortungsvoll mit den Daten um.
-			</p>
-			<button
-				class="mt-4 flex items-center gap-2 bg-black px-4 py-2 text-white"
-				on:click={downloadVCF}
-			>
-				Alle Kontakte herunterladen
-				<Fa class="text-xl" icon={faFileExport} />
-			</button>
-		</div>
-		<div class="relative flex gap-2 px-4 pb-4">
-			<Fa class="absolute left-8 top-5 text-2xl" icon={faSearch} />
-			<input
-				bind:value={search}
-				class="backdrop: w-full rounded-full border-2 border-black p-4 pl-14"
-				placeholder="Suche"
-				type="text"
-			/>
-		</div>
+<main class="container mx-auto flex flex-col gap-2 pb-12">
+	<div class="p-8">
+		<h1 class=" text-3xl md:text-4xl">SMD Adressliste</h1>
+		<p>
+			Hier findest du alle SMDler*innen, die sich in der Adressliste eingetragen haben (also hier im
+			internen Bereich registriert sind). Die Adressliste ist nur für den internen Gebrauch gedacht.
+			Bitte gehe verantwortungsvoll mit den Daten um.
+		</p>
+		<button
+			class="mt-4 flex items-center gap-2 bg-black px-4 py-2 text-white"
+			on:click={downloadVCF}
+		>
+			Alle Kontakte herunterladen
+			<Fa class="text-xl" icon={faFileExport} />
+		</button>
+	</div>
+	<div class="relative flex gap-2 px-4 pb-4">
+		<Fa class="absolute left-8 top-5 text-2xl" icon={faSearch} />
+		<input
+			bind:value={search}
+			class="backdrop: w-full rounded-full border-2 border-black p-4 pl-14"
+			placeholder="Suche"
+			type="text"
+		/>
+	</div>
 
-		{#if loading}
-			<img class="flex h-32 w-32 self-center" src={loadingSpinner} alt="loading" />
-		{/if}
+	{#if loading}
+		<img class="flex h-32 w-32 self-center" src={loadingSpinner} alt="loading" />
+	{/if}
 
-		{#if !loading && !error}
-			{#each records as record}
-				<a class="!no-underline" href={`/intern/address-list/person/${record.id}`}>
-					<div
-						class=" grid grid-cols-[3rem_1fr] gap-4 px-4 py-2 md:grid-cols-[3rem_2fr_3fr] md:text-lg xl:grid-cols-[3rem_2fr_3fr_3fr_2fr]"
-					>
-						<img
-							src={src(record.avatar, record.id, record.collectionId, record.collectionName)}
-							alt="avatar"
-							class="border-primary h-12 w-12 items-center rounded-full object-cover"
-						/>
-						<div>
-							<span class="text-xl">
-								{record.name}
-								{record.surname}
-							</span>
-							{#if record.phonenumber}
-								<div class="flex items-center gap-2">
-									<Fa icon={faPhone} />
-									<a href={`tel:${record.phonenumber}`}>
-										{record.phonenumber}
-									</a>
-								</div>
-							{/if}
-						</div>
-						<div class="max-md:hidden">
-							<div class="flex items-center gap-2 self-start">
-								<Fa icon={faEnvelope} />
-								<a href={`mailto:${record.email}`}>
-									{record.email}
+	{#if !loading && !error}
+		{#each filteredRecords as record}
+			<a class="!no-underline" href={`/intern/address-list/person/${record.id}`}>
+				<div
+					class=" grid grid-cols-[3rem_1fr_1rem] items-center gap-4 rounded-md bg-slate-100 px-4 py-2 md:grid-cols-[3rem_2fr_3fr_1rem] md:text-lg"
+				>
+					<img
+						src={src(record.avatar, record.id, record.collectionId, record.collectionName)}
+						alt="avatar"
+						class="border-primary h-12 w-12 items-center rounded-full object-cover"
+					/>
+					<div>
+						<span class="text-xl">
+							{record.name}
+							{record.surname}
+						</span>
+						{#if record.phonenumber}
+							<div class="flex items-center gap-2">
+								<Fa icon={faPhone} />
+								<a href={`tel:${record.phonenumber}`}>
+									{record.phonenumber}
 								</a>
 							</div>
-							{#if record.address}
-								<div class="flex gap-2">
-									<Fa class="max-md:mt-0.5" icon={faHouse} />
-									{record.address}
-								</div>
-							{/if}
+						{/if}
+					</div>
+					<div class="max-md:hidden">
+						<div class="flex items-center gap-2 self-start">
+							<Fa icon={faEnvelope} />
+							<a href={`mailto:${record.email}`}>
+								{record.email}
+							</a>
 						</div>
+						{#if record.address}
+							<div class="flex gap-2">
+								<Fa class="max-md:mt-0.5" icon={faHouse} />
+								{record.address}
+							</div>
+						{/if}
+					</div>
 
-						<div class="max-xl:hidden">
+					<Fa icon={faChevronRight} />
+
+					<!-- <div class="max-xl:hidden">
 							{#if record.field_of_study}
 								<div class="flex gap-2 md:items-center">
 									<Fa class="max-md:mt-0.5" icon={faGraduationCap} />
@@ -232,10 +241,9 @@ END:VCARD
 									Rili
 								</div>
 							{/if}
-						</div>
-					</div>
-				</a>
-			{/each}
-		{/if}
-	</main>
-</div>
+						</div> -->
+				</div>
+			</a>
+		{/each}
+	{/if}
+</main>
