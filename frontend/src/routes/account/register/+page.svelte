@@ -64,20 +64,20 @@
 	};
 </script>
 
-<main class="flex justify-center">
+<main class="flex justify-center py-12">
 	<form
 		id="form"
-		class="card mt-8 grid gap-4 shadow-md lg:mt-24"
+		class="card mt-8 grid min-w-[24rem] gap-4 shadow-md"
 		on:submit|preventDefault={register}
 	>
 		<div class="flex justify-center text-7xl">
 			<Fa icon={faRightToBracket} />
 		</div>
 
-		<h1 class="text-primary pb-5 text-center text-2xl">
-			SMD-KA <br />
-			Interner Bereich Registrierung
-		</h1>
+		<div>
+			<h2 class="pb-0 text-center">SMD-KA intern</h2>
+			<h3 class="text-center">Registrierung</h3>
+		</div>
 
 		{#if unknowError}
 			<div>
@@ -114,12 +114,16 @@
 
 		<button
 			disabled={loading}
-			class="bg-primary relative mt-4 flex items-center justify-center rounded-md py-2 text-white"
+			class="relative mt-4 flex items-center justify-center bg-black py-2 text-white"
 		>
 			{#if loading}
 				<img class="absolute left-16 h-8" src={loadingSpinner} alt="loading" />
 			{/if}
 			Registieren
 		</button>
+		<section class="text-center text-sm text-gray-400">
+			Schon ein Konto?
+			<a href="/account/login" class="text-primary hover:underline">Jetzt einloggen.</a>
+		</section>
 	</form>
 </main>

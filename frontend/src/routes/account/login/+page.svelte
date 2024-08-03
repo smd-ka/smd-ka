@@ -37,7 +37,7 @@
 				</div>
 			{:else}
 				<form method="post" class="flex w-80 flex-col gap-4 p-4" on:submit={login}>
-					<h1 class="text-primary py-5 text-center text-2xl">SMD-KA INTERN</h1>
+					<h2>SMD-KA intern</h2>
 					<div class="relative">
 						<input
 							bind:value={email}
@@ -73,7 +73,7 @@
 					{#if errorMessage}
 						<p class="text-red-500">Ungültige E-Mail-Adresse oder Passwort</p>
 					{/if}
-					<button class="bg-primary rounded-md py-2 text-white">Log in</button>
+					<button class="bg-black py-2 text-white">Log in</button>
 					<a href="/account/reset" class="text-center text-sm text-gray-400 hover:underline"
 						>Passwort vergessen?</a
 					>

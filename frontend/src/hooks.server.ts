@@ -1,6 +1,6 @@
 import { pb } from '$lib/pocketbase';
 import { redirect, type Handle } from '@sveltejs/kit';
-import { SAFT_COORDINATOR, FESD_COORDINATOR } from '$lib/pocketbase';
+import { SAFT_COORDINATOR } from '$lib/pocketbase';
 
 export const handle: Handle = async ({ event, resolve }) => {
 	pb.authStore.loadFromCookie(event.request.headers.get('cookie') || '');
@@ -21,13 +21,20 @@ export const handle: Handle = async ({ event, resolve }) => {
 	}
 
 	if (
-		(!pb.authStore.model?.roles.includes(SAFT_COORDINATOR) &&
-			event.url.pathname.startsWith('/intern/saft/list')) ||
-		(!pb.authStore.model?.roles.includes(FESD_COORDINATOR) &&
-			event.url.pathname.startsWith('/intern/fesd/list'))
+		!pb.authStore.model?.roles.includes(SAFT_COORDINATOR) &&
+		event.url.pathname.startsWith('/intern/saft/list')
 	) {
 		redirect(303, '/intern');
 	}
+
+	if (
+		pb.authStore.isValid &&
+		!pb.authStore.model?.verified &&
+		event.url.pathname.startsWith('/intern')
+	) {
+		redirect(303, '/account/verify');
+	}
+
 	const response = await resolve(event);
 
 	response.headers.set('set-cookie', pb.authStore.exportToCookie({ httpOnly: false }));
