@@ -115,18 +115,6 @@
 </main>
 
 <style>
-	video {
-		width: 100%;
-		height: 500px;
-		object-fit: cover;
-	}
-
-	@media (max-width: 700px) {
-		video {
-			height: 300px;
-		}
-	}
-
 	.bordered-text {
 		-webkit-text-stroke: 2px #e84c05; /* width and color */
 	}
