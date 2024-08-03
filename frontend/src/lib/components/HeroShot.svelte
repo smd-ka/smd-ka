@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { headerImageHeight } from '$lib/header_image_height';
+	import { headerImageHeight } from '$lib/stores';
 
 	export let imgSrc: string;
 	export let bgPosition: string = 'bg-center';
@@ -20,7 +20,7 @@
 	});
 </script>
 
-<section class="{height} block" id="header_component">
+<section class="{height}  block" id="header_component">
 	<div
 		class="absolute top-0 {height} w-full bg-red-300 bg-cover {bgPosition}"
 		style="background-image: url({imgSrc});"

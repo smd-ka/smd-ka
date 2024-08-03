@@ -2,17 +2,14 @@
 	import Saos from 'saos';
 	import header from '$lib/assets/pages/schloss.jpg';
 	import {
-		faCalendarDay,
+		faArrowDown,
 		faCalendarDays,
-		faChildReaching,
 		faClock,
-		faCross,
-		faLightbulb,
 		faLocationDot,
-		faVolleyballBall
+		faVolleyballBall,
+		faChevronRight
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
-	import CalendarList from '$lib/components/CalendarList.svelte';
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import TextInput from '$lib/components/forms/TextInput.svelte';
 	import TextArea from '$lib/components/forms/TextArea.svelte';
@@ -72,11 +69,11 @@
 				<div class="relative text-white 2xl:mx-20">
 					<img
 						src={volleyball}
-						class="max-h-72 w-full bg-[top_30%] object-cover brightness-[30%] transition-all duration-300 hover:cursor-pointer hover:brightness-50"
+						class="max-h-72 w-full rounded-sm bg-[top_30%] object-cover brightness-[30%] transition-all duration-300 hover:scale-[101%] hover:cursor-pointer hover:brightness-50"
 						alt="VolleyBall"
 					/>
 					<div class="absolute top-1/2 w-full -translate-y-1/2 text-center">
-						<h3 class="flex justify-center gap-2">
+						<h3 class="flex items-center justify-center gap-2 px-4">
 							<Fa icon={faVolleyballBall} /> Summer Break // Volleyball Spielen
 						</h3>
 						<div class="flex flex-wrap justify-center gap-4">
@@ -103,11 +100,11 @@
 				animation={'slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
 				animation_out={'slide-out-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
 			>
-				<a href="/new">
+				<a href="/new/erstsemester">
 					<div class="relative text-white 2xl:mx-20">
 						<img
 							src={erstsemester_programm}
-							class="max-h-72 w-full bg-[top_30%] object-cover brightness-[30%] transition-all duration-300 hover:cursor-pointer hover:brightness-50"
+							class=" max-h-72 w-full rounded-sm bg-[top_30%] object-cover brightness-[30%] transition-all duration-300 hover:scale-[101%] hover:cursor-pointer hover:brightness-50"
 							alt="Erstsemester Programm"
 						/>
 						<div class="absolute top-1/2 w-full -translate-y-1/2 text-center">
@@ -119,33 +116,49 @@
 		</div>
 	</section>
 
-	<section class="pt-52">
-		<div class="grid grid-flow-dense gap-4 px-4 md:grid-cols-3 md:gap-x-12">
+	<section class="pt-24">
+		<p class="px-4 pb-12 text-center text-xl xl:px-40">
+			Wir sind eine überkonfessionelle christliche Hochschulgruppe. Unter anderem in Groß- und
+			Kleingruppen wollen wir zum Nach- und Weiterdenken über den christlichen Glauben anregen und
+			Gemeinschaft erleben.
+		</p>
+		<div class="flex gap-6 px-4 max-md:flex-col">
+			<Motto imgSrc={glauben} title="Glauben">
+				<div class="flex justify-center">
+					<p class="">
+						Wir glauben, dass Gott wirkt. An Gott glauben ist für uns nicht nur ein Weg, sondern der
+						Weg. Deswegen wollen wir von unseren Erlebnissen mit Gott reden, damit jeder diesen Gott
+						kennen lernen kann.
+					</p>
+				</div>
+			</Motto>
 			<Motto imgSrc={denken} title="Denken">
 				Gott denkt mit. An Gott glauben ist nicht immer problemlos. Deswegen wollen wir –
 				Studierende aller Fachrichtungen und Konfessionen, die der Glaube an Jesus Christus
 				verbindet – miteinander nachdenken, diskutieren, uns austauschen und dabei den Verstand
 				nicht ausschalten.
 			</Motto>
-			<Motto imgSrc={glauben} title="Glauben"
-				>Wir glauben, dass Gott wirkt. An Gott glauben ist für uns nicht nur ein Weg, sondern der
-				Weg. Deswegen wollen wir von unseren Erlebnissen mit Gott reden, damit jeder diesen Gott
-				kennen lernen kann.</Motto
-			>
-			<Motto imgSrc={erleben} title="Erleben"
-				>Wir erleben, dass Gott lebt. An Gott glauben prägt das ganze Leben. Denn Gott verspricht,
+
+			<Motto imgSrc={erleben} title="Erleben">
+				Wir erleben, dass Gott lebt. An Gott glauben prägt das ganze Leben. Denn Gott verspricht,
 				dass er in jeder Lebenslage bei uns ist und jeden Menschen liebt. Darauf dürfen wir uns
 				verlassen!
 			</Motto>
 		</div>
+		<div class="flex justify-center p-8">
+			<a
+				href="/about/us"
+				class="bg-primary flex items-center gap-2 rounded-sm px-4 py-2 text-white no-underline"
+			>
+				<Fa icon={faChevronRight} />
+				Lerne mehr über uns
+			</a>
+		</div>
 	</section>
 
 	<div class="flex flex-col gap-8 px-4 xl:px-80">
-		<div class="flex flex-col">
-			<h1 class="text-4xl font-bold uppercase lg:text-5xl">DU MÖCHTEST MEHR ERFAHREN?</h1>
-			<h1 class="self-end text-4xl font-bold uppercase lg:text-5xl">SCHREIB UNS.</h1>
-		</div>
-		<h2 class="text-3xl lg:text-4xl">Kontakt aufnehmen</h2>
+		<h1 class="pb-0">schreib uns</h1>
+		<h2 class="flex items-center justify-end gap-2">Hier <Fa icon={faArrowDown}></Fa></h2>
 		<form id="form" class="flex flex-col gap-6" on:submit|preventDefault={sendMail}>
 			<TextInput name="name" label="Name" required />
 			<TextInput name="subject" label="Betreff" required />

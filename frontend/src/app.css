@@ -48,7 +48,7 @@
   }
 
   .pad {
-    @apply xl:px-80 px-4;
+    @apply xl:px-40 px-4;
   }
 
   /* min-h-screen */

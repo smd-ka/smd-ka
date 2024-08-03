@@ -11,10 +11,11 @@
 	import smd_logo from '$lib/assets/logos/smd_invers.png';
 	import insta from '$lib/assets/logos/insta.svg';
 	import {
+		faArrowRight,
+		faArrowUpRightFromSquare,
 		faBars,
 		faChevronDown,
 		faEnvelope,
-		faRightFromBracket,
 		faRightToBracket,
 		faX
 	} from '@fortawesome/free-solid-svg-icons';
@@ -22,10 +23,9 @@
 	import { getAvatarUrl, pb } from '$lib/pocketbase';
 	import ifes from '$lib/assets/logos/ifes.png';
 	import { page } from '$app/stores';
-	import { blur, fade } from 'svelte/transition';
-	import { headerImageHeight } from '$lib/header_image_height';
-
-	const eventPageUrlsRegEx = new RegExp('semesterprogramm|saft|weekly');
+	import { blur, slide } from 'svelte/transition';
+	import { headerImageHeight } from '$lib/stores';
+	import { sineInOut } from 'svelte/easing';
 
 	let showMenu = false;
 	let src = getAvatarUrl();
@@ -37,6 +37,68 @@
 	});
 	let scrollY: number;
 	const navbarHeight = 70;
+
+	const tabs = [
+		{
+			name: 'Über uns',
+			routes: [
+				{
+					name: 'Wer wir sind',
+					url: '/about/us'
+				},
+				// {
+				// 	name: 'Was wir machen',
+				// 	url: '/about/angebote'
+				// },
+				{
+					name: 'Mitarbeiten',
+					url: '/about/mitarbeiten'
+				},
+				{
+					name: 'Kontakt',
+					url: '/about/kontakt'
+				},
+				{
+					name: 'Spenden',
+					url: '/about/spenden'
+				}
+			]
+		},
+		{
+			name: 'Events',
+			routes: [
+				// {
+				// 	name: 'Kalender',
+				// 	url: '/events'
+				// },
+				{
+					name: 'Semesterprogramm',
+					url: '/events/semesterprogramm'
+				},
+				{
+					name: 'SAFT',
+					url: '/events/saft'
+				}
+			]
+		},
+		{
+			name: 'Neu hier?',
+			routes: [
+				{
+					name: 'Erstsemester',
+					url: '/new/erstsemester'
+				},
+				{
+					name: 'Über Karlsruhe',
+					url: '/new/karlsruhe'
+				},
+				{
+					name: 'Wohnen',
+					url: '/new/wohnen'
+				}
+			]
+		}
+	];
 </script>
 
 <svelte:window bind:scrollY />
@@ -54,58 +116,20 @@
 			</a>
 
 			<div class="flex items-center gap-4 text-xl text-white max-lg:hidden">
-				<!-- Links (only visable for bigger screens) -->
+				{#each tabs as tab}
+					<div>
+						<span class="CategoryTitle peer">
+							{tab.name}
+							<Fa class="text-lg" icon={faChevronDown}></Fa>
+						</span>
+						<div class="CategoryLinkList">
+							{#each tab.routes as route}
+								<a href={route.url}>{route.name}</a>
+							{/each}
+						</div>
+					</div>
+				{/each}
 
-				<div>
-					<span class="CategoryTitle peer">
-						Über uns
-						<Fa class="text-lg" icon={faChevronDown}></Fa>
-					</span>
-					<div class="CategoryLinkList">
-						<a href="/about/us">Wer wir sind</a>
-						<a href="/about/angebote">Was wir machen</a>
-						<a href="/about/mitarbeit">Mitarbeiten</a>
-						<a href="/about/kontakt">Kontakt</a>
-						<a href="/about/spenden">Spenden</a>
-					</div>
-				</div>
-
-				<div>
-					<a
-						href="/semesterprogramm"
-						class="{$page.url.pathname.match(eventPageUrlsRegEx)
-							? 'text-primary hover:text-white'
-							: 'hover:text-primary'} peer flex items-center gap-2"
-					>
-						Events
-						<Fa class="text-lg" icon={faChevronDown}></Fa>
-					</a>
-					<div
-						class=" bg-primary absolute hidden justify-center gap-4 px-4 py-2 hover:grid peer-hover:grid"
-					>
-						<a class="hover:text-primary-text" href="/semesterprogramm">Semesterprogramm</a>
-						<a class="hover:text-primary-text" href="/saft">SemesterAnfangsFreizeiT </a>
-						<a class="hover:text-primary-text" href="/weekly">Wöchentliche Aktionen</a>
-					</div>
-				</div>
-				<div>
-					<a
-						href="/semesterprogramm"
-						class="{$page.url.pathname.match(eventPageUrlsRegEx)
-							? 'text-primary hover:text-white'
-							: 'hover:text-primary'} peer flex items-center gap-2"
-					>
-						Neu hier?
-						<Fa class="text-lg" icon={faChevronDown}></Fa>
-					</a>
-					<div
-						class=" bg-primary absolute hidden justify-center gap-4 px-4 py-2 hover:grid peer-hover:grid"
-					>
-						<a class="hover:text-primary-text" href="/semesterprogramm">Semesterprogramm</a>
-						<a class="hover:text-primary-text" href="/saft">SemesterAnfangsFreizeiT </a>
-						<a class="hover:text-primary-text" href="/weekly">Wöchentliche Aktionen</a>
-					</div>
-				</div>
 				<a href="https://kings-cafe.de">International</a>
 
 				<a class=" self-center" href="/intern">
@@ -144,119 +168,40 @@
 			</div>
 		</div>
 
-		<!-- <div
-			use:click_outside
-			on:outsideclick={() => (showMenu = false)}
-			class="menu absolute top-[4.5rem] grid w-full {showMenu ? 'open xl:border' : ''} "
-		>
-			<div class="flex justify-center overflow-hidden">
-				<div
-					class="text-primary flex h-screen flex-col justify-center gap-4 py-4 text-xl xl:hidden"
-				>
-					<a on:click={() => (showMenu = false)} class="!hover:no-underline !underline" href="/"
-						>Startseite</a
-					>
-				</div>
-			</div>
-		</div> -->
-
-		<!-- Dropdown Navigation. Attentions this serves as well the mobiles as desktops!
-		<div
-			use:click_outside
-			on:outsideclick={() => (showMenu = false)}
-			class="menu absolute top-[4.5rem] grid bg-white px-8 max-xl:w-full md:right-0 md:rounded-md {showMenu
-				? 'open xl:border'
-				: ''} "
-		>
-			<div class="flex justify-center overflow-hidden">
-				<div class="text-primary flex flex-col justify-center gap-4 py-4 text-xl xl:hidden">
-					<a on:click={() => (showMenu = false)} class="!hover:no-underline !underline" href="/"
-						>Startseite</a
-					>
-
-					<div>
-						<a
-							on:click={() => (showMenu = false)}
-							class="!hover:no-underline !underline"
-							href="/about"
-						>
-							Über uns
-						</a>
-					</div>
-					<div>
-						<a
-							on:click={() => (showMenu = false)}
-							class="!hover:underline !underline"
-							href="/semesterprogramm"
-						>
-							Was läuft
-						</a>
-						<div class="text-primary-text grid pl-8">
-							<a
-								on:click={() => (showMenu = false)}
-								class="hover:underline"
-								href="/semesterprogramm"
-							>
-								Semesterprogramm
-							</a>
-							<a on:click={() => (showMenu = false)} class="hover:underline" href="/saft">
-								SemesterAnfangsFreizeiT
-							</a>
-							<a on:click={() => (showMenu = false)} class="hover:underline" href="/weekly">
-								Wöchentliche Aktionen
-							</a>
-						</div>
-					</div>
-					<a on:click={() => (showMenu = false)} class="!hover:no-underline !underline" href="/new">
-						Neu hier?
-					</a>
-					<a
-						on:click={() => (showMenu = false)}
-						class="!hover:no-underline !underline"
-						href="/kontakt"
-					>
-						Kontakt
-					</a>
-
-					<a
-						on:click={() => (showMenu = false)}
-						class="!hover:no-underline !underline"
-						href="/intern"
-					>
-						Interner Bereich
-					</a>
-					{#if isValid}
-						<form
-							method="POST"
-							action="/account/logout"
-							use:enhance={() => {
-								loading = true;
-								return async ({ result }) => {
-									pb.authStore.clear();
-									await applyAction(result);
-									showMenu = false;
-									loading = false;
-								};
-							}}
-							class=" text-primary flex flex-col items-center justify-center gap-4 py-4 text-xl"
-						>
-							<button class="hover:bg-curulean-dark flex gap-2 align-middle" type="submit">
-								{#if loading}
-									<img src={loadingSpinner} class="h-7" alt="loading" />
-								{:else}
-									<Fa class="self-center" icon={faRightFromBracket} />
-								{/if}
-								Logout
-							</button>
-						</form>
-					{/if}
-				</div>
-			</div>
-		</div> -->
 		<div class="bg-primary h-1"></div>
 
 		{#if showMenu}
-			<div transition:fade class="h-screen backdrop-blur-xl">Some Text in White</div>
+			<div
+				transition:slide={{ duration: 200, easing: sineInOut }}
+				on:click={() => (showMenu = false)}
+				class="flex h-[100svh] flex-col gap-4 pt-12 text-center text-3xl text-white backdrop-blur-xl backdrop-brightness-50 lg:hidden"
+			>
+				{#each tabs as tab}
+					<div>
+						<span class="text-primary">
+							{tab.name}
+						</span>
+						<div class="flex flex-col text-xl">
+							{#each tab.routes as route}
+								<div class="flex items-center justify-center gap-2">
+									<Fa icon={faArrowRight} />
+									<a href={route.url}>{route.name}</a>
+								</div>
+							{/each}
+						</div>
+					</div>
+				{/each}
+
+				<a href="https://kings-cafe.de">
+					<div class="flex items-center justify-center gap-2">
+						International
+						<Fa class="text-xl" icon={faArrowUpRightFromSquare} />
+					</div>
+				</a>
+				<a class="self-center" href="/intern">
+					<Fa icon={faRightToBracket} />
+				</a>
+			</div>
 		{/if}
 	</nav>
 
@@ -350,17 +295,8 @@
 	.CategoryTitle {
 		@apply hover:text-primary flex items-center gap-2 hover:cursor-pointer;
 	}
-	.menu {
-		display: grid;
-		grid-template-rows: 0fr;
-		transition: grid-template-rows 400ms;
-		backdrop-filter: blur(10px);
-	}
 
 	.underline-a > a:hover {
 		text-decoration: underline;
-	}
-	.open {
-		grid-template-rows: 1fr;
 	}
 </style>
