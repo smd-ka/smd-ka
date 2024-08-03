@@ -33,10 +33,46 @@ services:
       - caddy_data:/data
     restart: always
     networks:
+      - reverse_proxy
       - smd_ka_network
+    extra_hosts:
+      - "reverse-proxy.docker.internal:172.31.255.1"
+
+  # INFO: this does not automatically deploy a working Nextcloud instance
+  # rather one needs to initialize Nextcloud AiO via its web UI (see Caddyfile for URL)
+  nextcloud-aio:
+    # WARN: this container's name MUST be set to this
+    container_name: nextcloud-aio-mastercontainer
+    image: nextcloud/all-in-one:latest
+    init: true
+    environment:
+      # binding of Nextcloud instance
+      APACHE_IP_BINDING: 172.31.255.1
+      APACHE_PORT: 11000
+    ports:
+      # binding of Nextcloud AiO web UI
+      - 172.31.255.1:8080:8080
+    volumes:
+      - nextcloud_aio_mastercontainer:/mnt/docker-aio-config
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    restart: always
+    network_mode: bridge  # attaches to "docker run"-bridge
 
 
 networks:
+
+  # for 'externally managed container bindings' (i.e. Nextcloud AiO)
+  reverse_proxy:
+    driver: bridge
+    # allow containers spawned outside of this compose attach
+    attachable: true
+    ipam:
+      # static IPs for abusing in container ports mapping
+      config:
+        - subnet: 172.31.255.0/24
+          gateway: 172.31.255.1
+
+  # for website stuff
   smd_ka_network:
     driver: bridge
 
@@ -44,3 +80,8 @@ networks:
 volumes:
   caddy_config:
   caddy_data:
+  # WARN: this is ONLY the config & data of the master container
+  # Nextcloud will create its own volume not listed here to store its data (i.e. user data)
+  nextcloud_aio_mastercontainer:
+    # WARN: this container's name MUST be set to this
+    name: nextcloud_aio_mastercontainer

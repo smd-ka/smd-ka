@@ -25,3 +25,18 @@ smd-ka.de, www.smd-ka.de, www.smd-karlsruhe.de {
 api.smd-ka.de {
     redir https://api.smd-karlsruhe.de{uri}
 }
+
+
+# Nextcloud
+
+cloud.smd-karlsruhe.de {
+    reverse_proxy reverse-proxy.docker.internal:11000
+}
+
+admin.cloud.smd-karlsruhe.de {
+    reverse_proxy https://reverse-proxy.docker.internal:8080 {
+        transport http {
+            tls_insecure_skip_verify
+        }
+    }
+}
