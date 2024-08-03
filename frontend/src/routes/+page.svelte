@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Saos from 'saos';
-	import header from '$lib/assets/pages/schloss.jpg';
+	import header from '$lib/assets/pages/home/schloss.jpg';
 	import {
 		faArrowDown,
 		faCalendarDays,
