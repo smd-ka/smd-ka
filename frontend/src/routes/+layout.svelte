@@ -111,7 +111,7 @@
 				duration-200
 				"
 		>
-			<a class=" py-2" href="/">
+			<a class=" py-2" on:click={() => (showMenu = false)} href="/">
 				<img class="max-h-7" src={logo} alt="SMD Logo" />
 			</a>
 

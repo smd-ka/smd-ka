@@ -123,6 +123,13 @@
 			Gemeinschaft erleben.
 		</p>
 		<div class="flex gap-6 px-4 max-md:flex-col">
+			<Motto imgSrc={denken} title="Denken">
+				Gott denkt mit. An Gott glauben ist nicht immer problemlos. Deswegen wollen wir –
+				Studierende aller Fachrichtungen und Konfessionen, die der Glaube an Jesus Christus
+				verbindet – miteinander nachdenken, diskutieren, uns austauschen und dabei den Verstand
+				nicht ausschalten.
+			</Motto>
+
 			<Motto imgSrc={glauben} title="Glauben">
 				<div class="flex justify-center">
 					<p class="">
@@ -131,12 +138,6 @@
 						kennen lernen kann.
 					</p>
 				</div>
-			</Motto>
-			<Motto imgSrc={denken} title="Denken">
-				Gott denkt mit. An Gott glauben ist nicht immer problemlos. Deswegen wollen wir –
-				Studierende aller Fachrichtungen und Konfessionen, die der Glaube an Jesus Christus
-				verbindet – miteinander nachdenken, diskutieren, uns austauschen und dabei den Verstand
-				nicht ausschalten.
 			</Motto>
 
 			<Motto imgSrc={erleben} title="Erleben">
