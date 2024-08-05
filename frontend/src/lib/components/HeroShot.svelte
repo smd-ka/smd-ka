@@ -13,15 +13,16 @@
 		resizeObserver = new ResizeObserver((entries) =>
 			headerImageHeight.set(entries[0].target.clientHeight)
 		);
-		const header = document.getElementById('header_component');
+		const header = document.getElementById('header_image');
 		if (header) {
 			resizeObserver.observe(header);
 		}
 	});
 </script>
 
-<section class="{height}  block" id="header_component">
+<section style="height: {$headerImageHeight - 72}px;">
 	<div
+		id="header_image"
 		class="absolute top-0 {height} w-full bg-red-300 bg-cover {bgPosition}"
 		style="background-image: url({imgSrc});"
 	></div>
