@@ -36,7 +36,7 @@
 		src = getAvatarUrl();
 	});
 	let scrollY: number;
-	const navbarHeight = 70;
+	const navbarHeight = 72;
 
 	const tabs = [
 		{
