@@ -1,21 +1,8 @@
 <script lang="ts">
-	import header from '$lib/assets/heroshots/karlsruhe_luft.jpeg';
-	import HeroShot from '$lib/components/HeroShot.svelte';
-	import Fa from 'svelte-fa/src/fa.svelte';
-	import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-
-	import denken from '$lib/assets/about/denken.png';
-	import glauben from '$lib/assets/about/glauben.png';
-	import erleben from '$lib/assets/about/erleben.png';
-	import leitung from '$lib/assets/about/leitungsteam.png';
 	import { onMount } from 'svelte';
 	import { pb } from '$lib/pocketbase';
 	import type { Statement, Team } from '$lib/models';
 
-	let showDenken = false;
-	let showGlauben = false;
-	let showErleben = false;
-	let statements: Array<Statement> = [];
 	let teams: Array<Team> = [];
 
 	onMount(async () => {
