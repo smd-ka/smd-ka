@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import { headerImageHeight } from '$lib/stores';
 
 	export let imgSrc: string;
 	export let bgPosition: string = 'bg-center';
-	export let height: string = 'h-[100svh]';
+	export let height: string = 'h-dvh';
 
 	let resizeObserver: ResizeObserver;
 
@@ -18,12 +18,22 @@
 			resizeObserver.observe(header);
 		}
 	});
+
+	onDestroy(() => {
+		if (resizeObserver) {
+			resizeObserver.disconnect();
+		}
+	});
 </script>
 
-<section style="height: {$headerImageHeight - 72}px;">
+<!-- For now there is a slight problem with this solution: 
+ the section is technically too big by the size of the navbar.
+ This adds a spacing of 72px between the navbar and the content.
+ Should be fixed in the future. -->
+<section id="header_section" class={height}>
 	<div
 		id="header_image"
-		class="absolute top-0 {height} w-full bg-red-300 bg-cover {bgPosition}"
+		class=" absolute top-0 {height} w-full bg-red-300 bg-cover {bgPosition}"
 		style="background-image: url({imgSrc});"
 	></div>
 	<slot />

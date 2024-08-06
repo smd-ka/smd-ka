@@ -30,7 +30,7 @@
 	</div>
 </HeroShot>
 
-<main class="main text-lg">
+<main class="main pt-0 text-lg">
 	<section class="pad">
 		<p>
 			Die <a class="text-primary" href="https://www.smd.org/hochschul-smd/startseite"

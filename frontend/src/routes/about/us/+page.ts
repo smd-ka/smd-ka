@@ -1,4 +1,3 @@
-import type { Statement } from '$lib/models';
 import { pb } from '$lib/pocketbase';
 import type { PageLoad } from './$types';
 
