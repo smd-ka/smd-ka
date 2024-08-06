@@ -81,20 +81,20 @@
 			<p class="pt-4">
 				Die SMD ist ein deutschlandweites Netzwerk christlicher Hochschulgruppen. Wir sind eine von
 				ca. 80 anderen SMD-Gruppen in ganz Deutschland. Uns gibt es in fast jeder Univeristätsstadt.
-				Wir lieben es auch uns überregional zu vernetzen und uns auszutauschen. Dafür gibt es zwei
-				Mal im Jahr Veranstaltungen wie das SMD-Forum. Außerdem treffen wir uns auch zu
-				Regionalkonferenzen (RegioKon) innerhalb unserer Region Süd-West (siehe Karte).
+				Wir lieben es auch, uns überregional zu vernetzen und auszutauschen. Dafür gibt es zwei im
+				Jahr Veranstaltungen wie das SMD-Forum. Außerdem treffen wir uns auch zu Regionalkonferenzen
+				(RegioKon) innerhalb unserer Region Süd-West (siehe Karte).
 
 				<a
 					class="flex items-center gap-2"
 					href="https://www.smd.org/hochschul-smd/hochschulgruppen/gruppenliste"
 				>
-					Liste Aller Hochschul-SMD Gruppen
+					Liste aller Hochschul-SMD Gruppen
 					<Fa class="text-primary" icon={faArrowUpRightFromSquare} />
 				</a>
 			</p>
 			<p class="pt-4">
-				Neben der Hochschul-SMD gibt es auch noch die Schüler-SMD und Akademiker SMD. Falls dich die
+				Neben der Hochschul-SMD gibt es auch noch die Schüler-SMD und Akademiker-SMD. Falls dich die
 				SMD genauer interessiert, schau doch mal auf der
 				<a class="flex items-center gap-2" href="https://www.smd.org">
 					Homepage der SMD
