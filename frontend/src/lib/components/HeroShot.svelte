@@ -26,11 +26,8 @@
 	});
 </script>
 
-<!-- For now there is a slight problem with this solution: 
- the section is technically too big by the size of the navbar.
- This adds a spacing of 72px between the navbar and the content.
- Should be fixed in the future. -->
-<section id="header_section" class={height}>
+<!-- -mb-[72px] needed to accommodate the navbar  -->
+<section id="header_section" class="{height} -mb-[72px]">
 	<div
 		id="header_image"
 		class=" absolute top-0 {height} w-full bg-red-300 bg-cover {bgPosition}"
