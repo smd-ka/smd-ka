@@ -45,7 +45,7 @@
 	}
 </script>
 
-<HeroShot imgSrc={header} height={'h-[100svh]'} bgPosition={'bg-[center_left_60%]'}>
+<HeroShot imgSrc={header} bgPosition={'bg-[center_left_60%]'}>
 	<div class="text-grey absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 text-center">
 		<span class="font-mincho whitespace-nowrap text-4xl sm:text-5xl xl:text-7xl">
 			Hier bist du richtig!

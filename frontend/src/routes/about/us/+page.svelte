@@ -1,24 +1,14 @@
 <script lang="ts">
-	import header from '$lib/assets/heroshots/karlsruhe_luft.jpeg';
+	import header from '$lib/assets/pages/about/us/about_us_header.jpg';
 	import HeroShot from '$lib/components/HeroShot.svelte';
-	import Fa from 'svelte-fa/src/fa.svelte';
-	import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+	import regions from '$lib/assets/pages/about/us/regions.png';
 
-	import denken from '$lib/assets/about/denken.png';
-	import glauben from '$lib/assets/about/glauben.png';
-	import erleben from '$lib/assets/about/erleben.png';
-	import leitung from '$lib/assets/about/leitungsteam.png';
-	import { onMount } from 'svelte';
 	import { pb } from '$lib/pocketbase';
-	import type { Statement, Team } from '$lib/models';
+	import type { PageData } from './$types';
+	import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+	import Fa from 'svelte-fa/src/fa.svelte';
 
-	let statements: Array<Statement> = [];
-	let teams: Array<Team> = [];
-
-	onMount(async () => {
-		statements = await pb.collection('statements').getFullList({});
-		teams = await pb.collection('teams').getFullList({});
-	});
+	export let data: PageData;
 
 	const src = (image: string, id: string, collectionId: string, collectionName: string) => {
 		return pb.files.getUrl(
@@ -40,10 +30,8 @@
 	</div>
 </HeroShot>
 
-<main class="container mx-auto flex flex-col gap-24 py-24 text-lg">
-	<div class="flex flex-col gap-6 px-4 xl:px-80">
-		<h1 class="text-5xl font-bold uppercase">Über uns</h1>
-
+<main class="main text-lg">
+	<section class="pad">
 		<p>
 			Die <a class="text-primary" href="https://www.smd.org/hochschul-smd/startseite"
 				>Hochschul-SMD</a
@@ -53,15 +41,15 @@
 			uns untereinander über Glaubensfragen aus und sprechen mit unseren Kommilitonen über das, was uns
 			bewegt. Denken, Glauben und Erleben gehören für uns dabei zusammen.
 		</p>
-	</div>
+	</section>
 
-	<div class="flex flex-col gap-8 px-4 xl:px-40">
-		<h1 class="text-4xl font-bold uppercase md:text-5xl">Warum wir bei der SMD sind.</h1>
-
-		<div class="grid gap-4 md:grid-cols-2">
-			{#each statements as statement}
-				<div class="bg-[#EDEDED]">
+	<section>
+		<div class="font-caveat pb-12 text-center text-4xl md:text-6xl">Was SMDler sagen...</div>
+		<div class="grid gap-4 px-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+			{#each data.statements as statement}
+				<div class="rounded-xl bg-gray-200">
 					<img
+						class="h-60 w-full rounded-t-xl object-cover"
 						src={src(
 							statement.picture,
 							statement.id,
@@ -70,58 +58,58 @@
 						)}
 						alt="Profilbild"
 					/>
-					<div class="flex flex-col gap-6 p-4">
-						<h3 class="text-base font-bold">{statement.subject}</h3>
-						<h2 class="text-2xl font-bold uppercase">{statement.name}</h2>
+					<div class="flex flex-col gap-2 p-4 sm:gap-8">
+						<b class="h-4">{statement.subject}</b>
+						<h2>{statement.name}</h2>
 						<p>{statement.statement}</p>
 					</div>
 				</div>
 			{/each}
 		</div>
-	</div>
+	</section>
 
-	<div class="flex flex-col gap-8 px-4 py-20 xl:px-80">
-		<h1 class="break-words text-4xl font-bold uppercase md:text-5xl">
-			Hochschul-SMD <br /> Ein deutschlandweites Netzwerk
-		</h1>
+	<!-- TODO add Leiter Block -->
+
+	<div class="flex flex-col gap-8 px-4 py-20">
+		<h1 class="text-center">Unser Netzwerk</h1>
 		<div>
-			Als Hochschulgruppe der SMD sind wir eine ehrenamtliche Initiative. Unterstützt werden wir von
-			einer hauptamtlichen Regionalreferentin und ehrenamtlichen Gruppenbegleitern (SMDler, die ihr
-			Studium schon hinter sich gebracht haben.) Wenn du wissen möchtest, wie die Hochschul-SMD
-			überregional aufgebaut ist, schau dir <a
-				class="text-primary"
-				href="https://www.smd.org/hochschul-smd/hochschul-smd/herzlich-willkommen/"
-			>
-				diese Seite
-			</a> an.
-		</div>
-	</div>
+			<img
+				class="pb-6 max-sm:w-full sm:float-right sm:w-[40] sm:max-w-sm xl:max-w-lg"
+				src={regions}
+				alt="Regionen"
+			/>
+			<p class="pt-4">
+				Die SMD ist ein deutschlandweites Netzwerk christlicher Hochschulgruppen. Wir sind eine von
+				ca. 80 anderen SMD-Gruppen in ganz Deutschland. Uns gibt es in fast jeder Univeristätsstadt.
+				Wir lieben es auch, uns überregional zu vernetzen und auszutauschen. Dafür gibt es zwei im
+				Jahr Veranstaltungen wie das SMD-Forum. Außerdem treffen wir uns auch zu Regionalkonferenzen
+				(RegioKon) innerhalb unserer Region Süd-West (siehe Karte).
 
-	<div class="flex flex-col gap-8 px-4 xl:px-80">
-		<h1 class="text-4xl font-bold uppercase md:text-5xl">Leitungsteam</h1>
-
-		<div class="grid gap-8 lg:grid-cols-2 lg:gap-16">
-			<div class="flex flex-col items-center">
-				<img src={leitung} class="rounded-full" alt="Leitungsteam" />
-				<p class="pt-2">Felix R., Maike, Felix M. (von links nach rechts)</p>
-			</div>
-			<div>
-				Unsere Leitung wird jedes Semester von der Gruppe gewählt. Momentan leiten Felix M., Felix
-				R. und Maike unsere Gruppe. Felix M. ist 23 und studiert Physik, Felix R. ist 21 und
-				studiert Umweltingenieurwesen (Bau) und Maike ist 24 und studiert Grundschullehramt.
-			</div>
+				<a
+					class="flex items-center gap-2"
+					href="https://www.smd.org/hochschul-smd/hochschulgruppen/gruppenliste"
+				>
+					Liste aller Hochschul-SMD Gruppen
+					<Fa class="text-primary" icon={faArrowUpRightFromSquare} />
+				</a>
+			</p>
+			<p class="pt-4">
+				Neben der Hochschul-SMD gibt es auch noch die Schüler-SMD und Akademiker-SMD. Falls dich die
+				SMD genauer interessiert, schau doch mal auf der
+				<a class="flex items-center gap-2" href="https://www.smd.org">
+					Homepage der SMD
+					<Fa class="text-primary" icon={faArrowUpRightFromSquare} />
+				</a>
+			</p>
+			<p class="pt-4">
+				International sind wir auch vernetzt. Die SMD ist Teil der
+				<a href="https://ifesworld.org" class="flex items-center gap-2">
+					IFES
+					<Fa class="text-primary" icon={faArrowUpRightFromSquare} />
+				</a>
+				(International Fellowship of Evangelical Students). Die IFES ist ein weltweiter Dachverband von
+				christlichen Hochschulgruppen.
+			</p>
 		</div>
 	</div>
 </main>
-
-<style>
-	.menu {
-		display: grid;
-		grid-template-rows: 0fr;
-		transition: grid-template-rows 400ms;
-	}
-
-	.open {
-		grid-template-rows: 1fr;
-	}
-</style>

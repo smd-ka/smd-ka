@@ -1,27 +1,9 @@
 <script lang="ts">
-	import header from '$lib/assets/heroshots/karlsruhe_luft.jpeg';
-	import HeroShot from '$lib/components/HeroShot.svelte';
-	import Fa from 'svelte-fa/src/fa.svelte';
-	import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-
-	import denken from '$lib/assets/about/denken.png';
-	import glauben from '$lib/assets/about/glauben.png';
-	import erleben from '$lib/assets/about/erleben.png';
-	import leitung from '$lib/assets/about/leitungsteam.png';
-	import { onMount } from 'svelte';
 	import { pb } from '$lib/pocketbase';
-	import type { Statement, Team } from '$lib/models';
 
-	let showDenken = false;
-	let showGlauben = false;
-	let showErleben = false;
-	let statements: Array<Statement> = [];
-	let teams: Array<Team> = [];
+	import type { PageData } from './$types';
 
-	onMount(async () => {
-		statements = await pb.collection('statements').getFullList({});
-		teams = await pb.collection('teams').getFullList({});
-	});
+	export let data: PageData;
 
 	const src = (image: string, id: string, collectionId: string, collectionName: string) => {
 		return pb.files.getUrl(
@@ -46,7 +28,7 @@
 			</p>
 
 			<div class="grid gap-8 py-12 lg:grid-cols-2">
-				{#each teams as team}
+				{#each data.teams as team}
 					<div class="bg-[#EDEDED]">
 						<img
 							src={src(team.image, team.id, team.collectionId, team.collectionName)}

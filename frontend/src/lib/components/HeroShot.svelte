@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import { headerImageHeight } from '$lib/stores';
 
 	export let imgSrc: string;
 	export let bgPosition: string = 'bg-center';
-	export let height: string = 'h-[100svh]';
+	export let height: string = 'h-dvh';
 
 	let resizeObserver: ResizeObserver;
 
@@ -13,16 +13,25 @@
 		resizeObserver = new ResizeObserver((entries) =>
 			headerImageHeight.set(entries[0].target.clientHeight)
 		);
-		const header = document.getElementById('header_component');
+		const header = document.getElementById('header_image');
 		if (header) {
 			resizeObserver.observe(header);
 		}
 	});
+
+	onDestroy(() => {
+		headerImageHeight.set(0);
+		if (resizeObserver) {
+			resizeObserver.disconnect();
+		}
+	});
 </script>
 
-<section class="{height}  block" id="header_component">
+<!-- -mb-[72px] needed to accommodate the navbar  -->
+<section id="header_section" class="{height} -mb-[72px]">
 	<div
-		class="absolute top-0 {height} w-full bg-red-300 bg-cover {bgPosition}"
+		id="header_image"
+		class=" absolute top-0 {height} w-full bg-red-300 bg-cover {bgPosition}"
 		style="background-image: url({imgSrc});"
 	></div>
 	<slot />
