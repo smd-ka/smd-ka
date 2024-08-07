@@ -30,8 +30,8 @@ services:
     container_name: caddy
     image: docker.io/library/caddy:2.8
     environment:
-      DOMAIN_LONG: smd-karlsruhe.de
-      DOMAIN_SHORT: smd-ka.de
+      DOMAIN_LONG: ${DOMAIN_LONG:-smd-karlsruhe.de}
+      DOMAIN_SHORT: ${DOMAIN_SHORT:-smd-ka.de}
     ports:
       - 80:80
       - 443:443
