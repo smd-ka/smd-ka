@@ -46,7 +46,7 @@
 	<section>
 		<div class="font-caveat pb-12 text-center text-4xl md:text-6xl">Was SMDler sagen...</div>
 		<div class="grid gap-4 px-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-			{#each data.records as statement}
+			{#each data.statements as statement}
 				<div class="rounded-xl bg-gray-200">
 					<img
 						class="h-60 w-full rounded-t-xl object-cover"

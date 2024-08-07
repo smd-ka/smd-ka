@@ -5,10 +5,13 @@ export const prerender = true;
 
 export const load: PageLoad = async () => {
 	try {
-		const records = await pb.collection('statements').getFullList({});
-		return { records: records };
+		return {
+			statements: await pb.collection('statements').getFullList({}),
+		};
 	} catch (error) {
 		console.error(error);
-		return { records: [] };
+		return {
+			statements: [],
+		};
 	}
 };
