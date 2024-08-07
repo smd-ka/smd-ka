@@ -1,14 +1,9 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { pb } from '$lib/pocketbase';
-	import type { Statement, Team } from '$lib/models';
 
-	let teams: Array<Team> = [];
+	import type { PageData } from './$types';
 
-	onMount(async () => {
-		statements = await pb.collection('statements').getFullList({});
-		teams = await pb.collection('teams').getFullList({});
-	});
+	export let data: PageData;
 
 	const src = (image: string, id: string, collectionId: string, collectionName: string) => {
 		return pb.files.getUrl(
@@ -33,7 +28,7 @@
 			</p>
 
 			<div class="grid gap-8 py-12 lg:grid-cols-2">
-				{#each teams as team}
+				{#each data.teams as team}
 					<div class="bg-[#EDEDED]">
 						<img
 							src={src(team.image, team.id, team.collectionId, team.collectionName)}
