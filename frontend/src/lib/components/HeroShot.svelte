@@ -20,6 +20,7 @@
 	});
 
 	onDestroy(() => {
+		headerImageHeight.set(0);
 		if (resizeObserver) {
 			resizeObserver.disconnect();
 		}
