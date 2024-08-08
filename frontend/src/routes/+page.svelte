@@ -6,7 +6,6 @@
 		faCalendarDays,
 		faClock,
 		faLocationDot,
-		faVolleyballBall,
 		faChevronRight
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
@@ -17,7 +16,7 @@
 	import EmailInput from '$lib/components/forms/EmailInput.svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 	import { pb } from '$lib/pocketbase';
-	import volleyball from '$lib/assets/pages/home/volleyball.jpg';
+	import ice_cream from '$lib/assets/pages/home/ice_cream.jpg';
 	import erstsemester_programm from '$lib/assets/pages/home/erstsemester_programm.jpg';
 	import glauben from '$lib/assets/pages/home/glauben.jpg';
 	import denken from '$lib/assets/pages/home/denken.jpg';
@@ -66,29 +65,29 @@
 				animation={'slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
 				animation_out={'slide-out-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
 			>
-				<div class="relative text-white 2xl:mx-20">
+				<div class="relative text-white">
 					<img
-						src={volleyball}
+						src={ice_cream}
 						class="max-h-72 w-full rounded-sm bg-[top_30%] object-cover brightness-[30%] transition-all duration-300 hover:scale-[101%] hover:cursor-pointer hover:brightness-50"
 						alt="VolleyBall"
 					/>
 					<div class="absolute top-1/2 w-full -translate-y-1/2 text-center">
 						<h3 class="flex items-center justify-center gap-2 px-4">
-							<Fa icon={faVolleyballBall} /> Summer Break // Volleyball Spielen
+							Summer Break // Eis machen (und Essen :P)
 						</h3>
 						<div class="flex flex-wrap justify-center gap-4">
 							<div class="flex items-center gap-2">
 								<Fa icon={faCalendarDays} />
-								<p class="whitespace-nowrap">Dienstag 06.08</p>
+								<p class="whitespace-nowrap">Dienstag 20.08</p>
 							</div>
 							<div class="flex items-center gap-2">
 								<Fa icon={faClock} />
-								<p class="whitespace-nowrap">ab 18:00 Uhr</p>
+								<p class="whitespace-nowrap">TBA</p>
 							</div>
 							<div class="flex items-center gap-2">
 								<Fa icon={faLocationDot} />
 								<p class="whitespace-nowrap">
-									<a href="https://maps.app.goo.gl/rFi8yPtiibS6uGUg9">Fasanengarten</a>
+									<a href="https://maps.app.goo.gl/hgkCDogWNvF6hBWU6">Rudolfstraße 1</a>
 								</p>
 							</div>
 						</div>
@@ -101,7 +100,7 @@
 				animation_out={'slide-out-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
 			>
 				<a href="/new/erstsemester">
-					<div class="relative text-white 2xl:mx-20">
+					<div class="relative text-white">
 						<img
 							src={erstsemester_programm}
 							class=" max-h-72 w-full rounded-sm bg-[top_30%] object-cover brightness-[30%] transition-all duration-300 hover:scale-[101%] hover:cursor-pointer hover:brightness-50"
