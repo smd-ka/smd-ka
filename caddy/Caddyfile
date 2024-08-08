@@ -1,6 +1,6 @@
 # Backend
 
-api.smd-karlsruhe.de {
+api.{$DOMAIN_LONG} {
     reverse_proxy backend:8090 {
         # X-Forwarded-For & X-Forwarded-Proto are set by default
         header_up X-Real-IP {remote_host}
@@ -10,7 +10,7 @@ api.smd-karlsruhe.de {
 
 # Frontend
 
-smd-karlsruhe.de {
+{$DOMAIN_LONG} {
     reverse_proxy frontend:3000 {
         # X-Forwarded-For & X-Forwarded-Proto are set by default
         header_up X-Real-IP {remote_host}
@@ -18,10 +18,10 @@ smd-karlsruhe.de {
 }
 
 # redirections
-smd-ka.de, www.smd-ka.de, www.smd-karlsruhe.de {
-    redir https://smd-karlsruhe.de{uri}
+{$DOMAIN_SHORT}, www.{$DOMAIN_SHORT}, www.{$DOMAIN_LONG} {
+    redir https://{$DOMAIN_LONG}{uri}
 }
 
-api.smd-ka.de {
-    redir https://api.smd-karlsruhe.de{uri}
+api.{$DOMAIN_SHORT} {
+    redir https://api.{$DOMAIN_LONG}{uri}
 }
