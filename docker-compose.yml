@@ -6,6 +6,9 @@ services:
   backend:
     container_name: backend
     image: ghcr.io/smd-ka/smd-ka/backend:main
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
     volumes:
       - ./backend/pb_data:/pb/pb_data
       - ./backend/pb_migrations:/pb/pb_migrations
@@ -16,6 +19,9 @@ services:
   frontend:
     container_name: frontend
     image: ghcr.io/smd-ka/smd-ka/frontend:main
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
     restart: always
     networks:
       - smd_ka_network
@@ -23,6 +29,9 @@ services:
   caddy:
     container_name: caddy
     image: docker.io/library/caddy:2.8
+    environment:
+      DOMAIN_LONG: ${DOMAIN_LONG:-smd-karlsruhe.de}
+      DOMAIN_SHORT: ${DOMAIN_SHORT:-smd-ka.de}
     ports:
       - 80:80
       - 443:443
