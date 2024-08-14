@@ -120,7 +120,7 @@
 						</span>
 					</div>
 					<p class="py-4">
-						{action.description}
+						{@html action.description}
 					</p>
 				</div>
 			{/each}
