@@ -69,7 +69,7 @@
 			routes: [
 				{
 					name: 'Kalender',
-					url: '/events/calendar'
+					url: '/events/kalender'
 				},
 				{
 					name: 'Semesterprogramm',

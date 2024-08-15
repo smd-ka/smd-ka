@@ -53,7 +53,7 @@
 				</div>
 
 				<div class="grid gap-2 lg:grid-cols-2">
-					<a class="lg:order-last" href="#">
+					<a class="lg:order-last" href={'/events/kalender/event/' + event.id}>
 						<img
 							src={getImageSrc(event.image, event.id, event.collectionId, event.collectionName)}
 							class="max-h-36 w-full object-cover brightness-50"
