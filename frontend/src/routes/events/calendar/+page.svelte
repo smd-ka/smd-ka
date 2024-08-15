@@ -41,8 +41,8 @@
 	<div class="pad py-24">
 		<h1 class="text-center">Kalender</h1>
 
-		{#each data.events as event}
-			<div class="grid grid-cols-[fit-content(6rem)_1fr] gap-2">
+		<div class="grid grid-cols-[fit-content(6rem)_1fr] gap-2 gap-y-6">
+			{#each data.events as event}
 				<div class="flex flex-col items-center lg:px-8">
 					<span class="text-xl uppercase">
 						{getWeekday(event.start_date_time)}
@@ -52,12 +52,14 @@
 					</span>
 				</div>
 
-				<div class="grid lg:grid-cols-2">
-					<img
-						src={getImageSrc(event.image, event.id, event.collectionId, event.collectionName)}
-						class="max-h-36 w-full object-cover brightness-50 lg:order-last"
-						alt={event.title}
-					/>
+				<div class="grid gap-2 lg:grid-cols-2">
+					<a class="lg:order-last" href="#">
+						<img
+							src={getImageSrc(event.image, event.id, event.collectionId, event.collectionName)}
+							class="max-h-36 w-full object-cover brightness-50"
+							alt={event.title}
+						/>
+					</a>
 					<div>
 						<div class="py-2 text-sm text-gray-700">
 							{getFullDate(event.start_date_time, event.end_date_time)}
@@ -73,12 +75,12 @@
 								{event.location}
 							</a>
 						</div>
-						<p>
+						<p class="line-clamp-3 max-lg:hidden">
 							{event.description ? event.description : ''}
 						</p>
 					</div>
 				</div>
-			</div>
-		{/each}
+			{/each}
+		</div>
 	</div>
 </main>
