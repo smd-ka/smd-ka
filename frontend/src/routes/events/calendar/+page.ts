@@ -7,8 +7,8 @@ export const load: PageLoad = async () => {
 	try {
 		const now = new Date();
 		const records = await pb.collection('calendar').getFullList({
-			sort: '+date_time',
-			filter: `date_time >= "${now.toISOString()}"`
+			sort: '+start_date_time',
+			filter: `start_date_time >= "${now.toISOString()}"`
 		});
 		return { events: records };
 	} catch (error) {
