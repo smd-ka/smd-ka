@@ -67,10 +67,10 @@
 		{
 			name: 'Events',
 			routes: [
-				// {
-				// 	name: 'Kalender',
-				// 	url: '/events'
-				// },
+				{
+					name: 'Kalender',
+					url: '/events/calendar'
+				},
 				{
 					name: 'Semesterprogramm',
 					url: '/events/semesterprogramm'
