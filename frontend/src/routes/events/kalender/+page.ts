@@ -1,4 +1,5 @@
 import { pb } from '$lib/pocketbase';
+import { calendarEvents } from '$lib/stores';
 import type { PageLoad } from './$types';
 
 export const prerender = true;
@@ -10,6 +11,7 @@ export const load: PageLoad = async () => {
 			sort: '+start_date_time',
 			filter: `start_date_time >= "${now.toISOString()}"`
 		});
+		calendarEvents.set(records);
 		return { events: records };
 	} catch (error) {
 		console.error(error);
