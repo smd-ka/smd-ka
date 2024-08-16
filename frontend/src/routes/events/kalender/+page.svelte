@@ -34,6 +34,17 @@
 			);
 		}
 		const endDate = new Date(endDateString);
+		return (
+			startDate.toLocaleDateString('de-DE', {
+				day: '2-digit',
+				month: 'long'
+			}) +
+			' - ' +
+			endDate.toLocaleDateString('de-DE', {
+				day: '2-digit',
+				month: 'long'
+			})
+		);
 	};
 </script>
 
@@ -53,10 +64,10 @@
 				</div>
 
 				<div class="grid gap-2 lg:grid-cols-2">
-					<a class="lg:order-last" href={'/events/kalender/event/' + event.id}>
+					<a class="lg:order-last" href={'/events/kalender/' + event.id}>
 						<img
 							src={getImageSrc(event.image, event.id, event.collectionId, event.collectionName)}
-							class="max-h-36 w-full object-cover brightness-50"
+							class="max-h-36 w-full object-cover brightness-75 transition-all duration-200 hover:brightness-100"
 							alt={event.title}
 						/>
 					</a>
@@ -65,8 +76,9 @@
 							{getFullDate(event.start_date_time, event.end_date_time)}
 						</div>
 						<div class="lg:text-3xl">
-							<a href="#" class="text-primary no-underline hover:underline max-md:text-lg"
-								>{event.title}</a
+							<a
+								href={'/events/kalender/' + event.id}
+								class="text-primary no-underline hover:underline max-md:text-lg">{event.title}</a
 							>
 						</div>
 						<div class="font-bold">
