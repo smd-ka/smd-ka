@@ -233,7 +233,7 @@
 							</a>
 							<p>
 								Die Hochschul-SMD Karlsruhe gehört zur Hochschul-SMD, einem deutschlandweiten
-								Netzwerk Christlicher Hochschulgruppen.
+								Netzwerk christlicher Hochschulgruppen.
 							</p>
 
 							<a href="https://ifesworld.org" target="_blank">
