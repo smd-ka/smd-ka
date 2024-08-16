@@ -47,7 +47,7 @@
 					</div>
 					<div class="flex items-center gap-2">
 						<Fa class="text-primary" icon={faCoins} />
-						Preis: 40€
+						Preis: TBA
 					</div>
 					<div class="flex flex-col">
 						<div class="flex justify-end gap-2">
