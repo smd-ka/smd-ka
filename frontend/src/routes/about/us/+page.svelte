@@ -2,6 +2,7 @@
 	import header from '$lib/assets/pages/about/us/about_us_header.jpg';
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import regions from '$lib/assets/pages/about/us/regions.png';
+	import leitungsteam from '$lib/assets/pages/about/us/leitungsteam.jpg';
 
 	import { pb } from '$lib/pocketbase';
 	import type { PageData } from './$types';
@@ -68,9 +69,31 @@
 		</div>
 	</section>
 
-	<!-- TODO add Leiter Block -->
+	<section class="px-4">
+		<h1 class="text-center">Unser Leitungsteam</h1>
+		<div class="grid gap-4 md:grid-cols-[fit-content(6rem)_1fr]">
+			<img
+				class="md:max-w-80 object-cover max-md:max-h-80 max-md:w-full lg:max-w-[30rem]"
+				alt="Leitungsteam"
+				src={leitungsteam}
+			/>
+			<p>
+				Das Leitungsteam dieses Semester besteht aus (v.l.n.r): <br />
+				Felix R. ist 22 Jahre alt, mag sehr gerne Eidechsen und hat an der HKA Umweltingenieurwesen studiert.
+				<br />
+				Lilly, 22, klettert gerne auf Bäume und studiert Medizintechnik am KIT im fünften Semester.
+				<br />
+				Felix M., ebenfalls 22, mag Kaffee und studiert im siebten Semester Physik am KIT.
+				<br />
+				<br />
+				Diese drei haben die derzeitige Gesamtleitung der Hochschul-SMD Karlsruhe und stehen jederzeit
+				für Fragen und Anregungen unter
+				<a href="mailto:leiter@smd-karlsruhe.de"> leiter@smd-karlsruhe.de</a> zur Verfügung.
+			</p>
+		</div>
+	</section>
 
-	<div class="flex flex-col gap-8 px-4 py-20">
+	<section class="flex flex-col gap-8 px-4 py-20">
 		<h1 class="text-center">Unser Netzwerk</h1>
 		<div>
 			<img
@@ -111,5 +134,5 @@
 				christlichen Hochschulgruppen.
 			</p>
 		</div>
-	</div>
+	</section>
 </main>
