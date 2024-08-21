@@ -67,40 +67,6 @@
 				animation={'slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
 				animation_out={'slide-out-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
 			>
-				<div class="relative text-white">
-					<img
-						src={ice_cream}
-						class="max-h-72 w-full rounded-sm bg-[top_30%] object-cover brightness-[30%] transition-all duration-300 hover:scale-[101%] hover:cursor-pointer hover:brightness-50"
-						alt="VolleyBall"
-					/>
-					<div class="absolute top-1/2 w-full -translate-y-1/2 text-center">
-						<h3 class="flex items-center justify-center gap-2 px-4">
-							Summer Break // Eis machen (und Essen :P)
-						</h3>
-						<div class="flex flex-wrap justify-center gap-4">
-							<div class="flex items-center gap-2">
-								<Fa icon={faCalendarDays} />
-								<p class="whitespace-nowrap">Dienstag 20.08</p>
-							</div>
-							<div class="flex items-center gap-2">
-								<Fa icon={faClock} />
-								<p class="whitespace-nowrap">TBA</p>
-							</div>
-							<div class="flex items-center gap-2">
-								<Fa icon={faLocationDot} />
-								<p class="whitespace-nowrap">
-									<a href="https://maps.app.goo.gl/hgkCDogWNvF6hBWU6">Rudolfstraße 1</a>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</Saos>
-
-			<Saos
-				animation={'slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
-				animation_out={'slide-out-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
-			>
 				<a href="/new/erstsemester">
 					<div class="relative text-white">
 						<img
