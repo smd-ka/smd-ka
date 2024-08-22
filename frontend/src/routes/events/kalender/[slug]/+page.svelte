@@ -85,6 +85,10 @@
 						<a href={data.entry.maps_url} target="_blank" rel="noopener">
 							{data.entry.location}
 						</a>
+					{:else if data.entry.location_url}
+						<a href={data.entry.location_url} target="_blank" rel="noopener">
+							{data.entry.location}
+						</a>
 					{:else}
 						{data.entry.location}
 					{/if}
