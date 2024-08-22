@@ -83,9 +83,17 @@
 						</div>
 						<div class="font-bold">
 							Ort:
-							<a href={event.location_url}>
+							{#if event.maps_url}
+								<a href={event.maps_url} target="_blank" rel="noopener">
+									{event.location}
+								</a>
+							{:else if event.location_url}
+								<a href={event.location_url} target="_blank" rel="noopener">
+									{event.location}
+								</a>
+							{:else}
 								{event.location}
-							</a>
+							{/if}
 						</div>
 						<p class="line-clamp-3 max-lg:hidden">
 							{event.description ? event.description : ''}
