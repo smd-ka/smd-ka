@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { getImageSrc } from '$lib/fetch_img';
 	import type { PageData } from './$types';
+	import placeholder from '$lib/assets/pages/events/kalender/placeholder.jpg';
 
 	export let data: PageData;
 
@@ -46,13 +47,20 @@
 			})
 		);
 	};
+
+	function imgSrc(image: string, id: string, collectionId: string, collectionName: string) {
+		if (!image) {
+			return placeholder;
+		}
+		return getImageSrc(image, id, collectionId, collectionName);
+	}
 </script>
 
 <main class="container mx-auto">
 	<div class="pad py-24">
 		<h1 class="text-center">Kalender</h1>
 
-		<div class="grid grid-cols-[fit-content(6rem)_1fr] gap-2 gap-y-6">
+		<div class="grid grid-cols-[fit-content(6rem)_1fr] gap-2 gap-y-8">
 			{#each data.events as event}
 				<div class="flex flex-col items-center lg:px-8">
 					<span class="text-xl uppercase">
@@ -66,8 +74,8 @@
 				<div class="grid gap-2 lg:grid-cols-2">
 					<a class="lg:order-last" href={'/events/kalender/' + event.id}>
 						<img
-							src={getImageSrc(event.image, event.id, event.collectionId, event.collectionName)}
-							class="max-h-36 w-full object-cover brightness-75 transition-all duration-200 hover:brightness-100"
+							src={imgSrc(event.image, event.id, event.collectionId, event.collectionName)}
+							class="max-h-40 w-full object-cover brightness-75 transition-all duration-200 hover:brightness-100"
 							alt={event.title}
 						/>
 					</a>
@@ -95,7 +103,7 @@
 								{event.location}
 							{/if}
 						</div>
-						<p class="line-clamp-3 max-lg:hidden">
+						<p class="line-clamp-2 max-lg:hidden">
 							{event.description ? event.description : ''}
 						</p>
 					</div>
