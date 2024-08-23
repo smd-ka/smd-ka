@@ -2,8 +2,6 @@ import { pb } from '$lib/pocketbase';
 import { calendarEvents } from '$lib/stores';
 import type { PageLoad } from './$types';
 
-export const prerender = true;
-
 export const load: PageLoad = async () => {
 	try {
 		const now = new Date();
