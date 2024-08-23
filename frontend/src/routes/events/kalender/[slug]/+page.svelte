@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+	import { faArrowLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 	import type { PageData } from '../$types';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import HeroShot from '$lib/components/HeroShot.svelte';
@@ -72,7 +72,12 @@
 		)}
 		height="h-[80svh]"
 	/>
-	<main class="container mx-auto px-4 py-12">
+	<main class="container relative mx-auto px-4 py-12">
+		<a
+			href="/events/kalender"
+			class="text-primary absolute -left-6 top-14 text-3xl hover:brightness-110"
+			><Fa icon={faArrowLeft} /></a
+		>
 		<h1 class="pb-0">{data.entry.title}</h1>
 		<div class="pb-6 text-gray-500">
 			{getDate(data.entry.start_date_time, data.entry.end_date_time)}
