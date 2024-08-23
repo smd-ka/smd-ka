@@ -4,6 +4,7 @@
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import { getImageSrc } from '$lib/fetch_img';
+	import placeholder from '$lib/assets/pages/events/kalender/placeholder.jpg';
 
 	export let data: PageData;
 
@@ -39,6 +40,13 @@
 			})
 		);
 	};
+
+	function imgSrc(image: string, id: string, collectionId: string, collectionName: string) {
+		if (!image) {
+			return placeholder;
+		}
+		return getImageSrc(image, id, collectionId, collectionName);
+	}
 </script>
 
 {#if !data.entry}
@@ -56,7 +64,7 @@
 	</div>
 {:else}
 	<HeroShot
-		imgSrc={getImageSrc(
+		imgSrc={imgSrc(
 			data.entry.image,
 			data.entry.id,
 			data.entry.collectionId,
