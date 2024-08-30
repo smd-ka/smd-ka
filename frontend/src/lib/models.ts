@@ -43,13 +43,6 @@ export type saftRegistration = {
 	post_images: 'never' | 'always ask' | 'yes';
 };
 
-export type FESDRegistration = {
-	id?: string;
-	name: string;
-	allergies: string;
-	vegetarian: boolean;
-};
-
 export type Statement = {
 	id: string;
 	collectionName: string;

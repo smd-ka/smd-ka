@@ -67,10 +67,10 @@
 		{
 			name: 'Events',
 			routes: [
-				// {
-				// 	name: 'Kalender',
-				// 	url: '/events'
-				// },
+				{
+					name: 'Kalender',
+					url: '/events/kalender'
+				},
 				{
 					name: 'Semesterprogramm',
 					url: '/events/semesterprogramm'
@@ -233,7 +233,7 @@
 							</a>
 							<p>
 								Die Hochschul-SMD Karlsruhe gehört zur Hochschul-SMD, einem deutschlandweiten
-								Netzwerk Christlicher Hochschulgruppen.
+								Netzwerk christlicher Hochschulgruppen.
 							</p>
 
 							<a href="https://ifesworld.org" target="_blank">
