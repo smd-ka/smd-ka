@@ -151,13 +151,25 @@
 		</div>
 	</section>
 
-	<section class="pt-24">
-		<p class="px-4 pb-12 text-center text-xl xl:px-40">
-			Wir sind eine überkonfessionelle christliche Hochschulgruppe. Unter anderem in Groß- und
-			Kleingruppen wollen wir zum Nach- und Weiterdenken über den christlichen Glauben anregen und
-			Gemeinschaft erleben.
+	<section class="grid gap-4 px-4 pt-24 text-center text-2xl xl:px-40">
+		<p>
+			Die SMD ist ein Treffpunkt für Studierende aller Karlsruher Hochschulen und darüber hinaus.
+			Uns verbindet der Wunsch nach Gemeinschaft, Diskussion und gelebtem Glauben.
 		</p>
-		<div class="flex gap-6 px-4 max-md:flex-col">
+		<p>
+			In unserer Hochschulgruppe sind alle herzlich willkommen. Egal was dein Hintergrund ist und
+			was du glaubst, wir freuen uns auf dich!
+		</p>
+		<p>
+			Wir sind aktuell rund 50 Studierende aller Fachrichtungen, kommen aus verschiedenen Kirchen
+			und Gemeinden und wünschen uns, dass jeder Student und jede Studentin von der guten Nachricht
+			von Jesus hören kann.
+		</p>
+	</section>
+
+	<section>
+		<h1 class="text-center">Unser Motto</h1>
+		<div class="flex gap-6 px-4 pt-4 max-md:flex-col">
 			<Motto imgSrc={denken} title="Denken">
 				Gott denkt mit. An Gott glauben ist nicht immer problemlos. Deswegen wollen wir –
 				Studierende aller Fachrichtungen und Konfessionen, die der Glaube an Jesus Christus
