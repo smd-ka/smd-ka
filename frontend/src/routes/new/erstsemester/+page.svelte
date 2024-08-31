@@ -23,17 +23,6 @@
 
 	export let data: PageData;
 
-	let date = new Date();
-
-	const weekdays = [
-		'Sonntag',
-		'Montag',
-		'Dienstag',
-		'Mittwoch',
-		'Donnerstag',
-		'Freitag',
-		'Samstag'
-	];
 	const getDateTimeString = (startDateString: string, endDateString) => {
 		const startDate = new Date(startDateString);
 		if (!endDateString) {
@@ -52,8 +41,6 @@
 		}
 	};
 </script>
-
-{JSON.stringify(data)}
 
 <main class="main">
 	<section class="pad">
