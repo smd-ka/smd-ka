@@ -153,13 +153,13 @@
 			Uns verbindet der Wunsch nach Gemeinschaft, Diskussion und gelebtem Glauben.
 		</p>
 		<p>
-			In unserer Hochschulgruppe sind alle herzlich willkommen. Egal was dein Hintergrund ist und
-			was du glaubst, wir freuen uns auf dich!
-		</p>
-		<p>
 			Wir sind aktuell rund 50 Studierende aller Fachrichtungen, kommen aus verschiedenen Kirchen
 			und Gemeinden und wünschen uns, dass jeder Student und jede Studentin von der guten Nachricht
 			von Jesus hören kann.
+		</p>
+		<p>
+			In unserer Hochschulgruppe sind alle herzlich willkommen. Egal, was dein Hintergrund ist und
+			was du glaubst, wir freuen uns auf dich!
 		</p>
 	</section>
 
