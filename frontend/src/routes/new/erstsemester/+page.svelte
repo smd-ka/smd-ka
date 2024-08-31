@@ -34,18 +34,26 @@
 		'Freitag',
 		'Samstag'
 	];
-	const getDateTimeString = (dateString: string) => {
-		date = new Date(dateString);
-		// Substract 2 hours to get the correct time for the event as the date is in UTC
-		date.setHours(date.getHours() - 2);
-		return `${weekdays[date.getDay()]}, ${date.toLocaleDateString(
-			'de-DE'
-		)} ${date.toLocaleTimeString('de-DE', {
-			hour: '2-digit',
-			minute: '2-digit'
-		})} Uhr`;
+	const getDateTimeString = (startDateString: string, endDateString) => {
+		const startDate = new Date(startDateString);
+		if (!endDateString) {
+			return (
+				startDate.toLocaleDateString('de-DE', {
+					weekday: 'long',
+					day: '2-digit',
+					month: 'long'
+				}) +
+				' // ' +
+				startDate.toLocaleTimeString('de-DE', {
+					hour: '2-digit',
+					minute: '2-digit'
+				})
+			);
+		}
 	};
 </script>
+
+{JSON.stringify(data)}
 
 <main class="main">
 	<section class="pad">
@@ -71,15 +79,20 @@
 				vorbereitet.<br />
 				Im Semester bist du herzlich zu unseren SMD Abenden und Hauskreisen eingeladen. Die Hauskreisanmeldung
 				findet immer zu Beginn des Semester statt. Wenn du Fragen hast, schreib uns gerne eine Mail an
-				<a class="whitespace-nowrap" href="mailto:inreach@smd-karlsruhe.de"
-					>inreach@smd-karlsruhe.de
+				<a class="whitespace-nowrap" href="mailto:erstsemester@smd-karlsruhe.de"
+					>erstsemester@smd-karlsruhe.de
 				</a>. <br />
 				Schau doch mal bei uns vorbei!
 			</p>
 
 			<h2 class="pb-6 pt-12">Ersti Aktionen Wintersemester 2024/25</h2>
 
-			{#if data.records.length === 0}
+			<p>
+				Wir haben für dich einige coole Aktionen geplant, bei denen du uns und andere Erstsemester
+				kennen lernen kannst. Wir freuen uns auf dich!
+			</p>
+
+			{#if data.events.length === 0}
 				<p>
 					Die Aktionen befinden sich gerade noch in der Planung, werden aber bald hier
 					veröffentlicht. Sie werden vermutlich vor allem in den letzten September und ersten
@@ -88,43 +101,47 @@
 			{/if}
 		</div>
 		<div
-			class="grid gap-8 px-4 md:grid-cols-2 {data.records.length > 2
+			class="grid gap-8 px-4 md:grid-cols-2 {data.events.length > 2
 				? ' xl:grid-cols-3'
 				: 'xl:px-52'}"
 		>
-			{#each data.records as action}
+			{#each data.events as event}
 				<div>
 					<div class="relative text-white">
 						<img
-							src={getImageSrc(
-								action.background_image,
-								action.id,
-								action.collectionId,
-								action.collectionName
-							)}
-							class="max-h-72 w-full brightness-50"
-							alt={action.title}
+							src={getImageSrc(event.image, event.id, event.collectionId, event.collectionName)}
+							class="h-72 w-full object-cover brightness-50"
+							alt={event.title}
 						/>
 						<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-							<h3 class="">{action.title}</h3>
+							<h3 class="">{event.title}</h3>
 						</div>
 					</div>
 					<div class="pt-8">
 						<span class="flex items-center gap-2 text-xl font-bold"
-							><Fa icon={faCalendarDays} />{getDateTimeString(action.date)}
+							><Fa icon={faCalendarDays} />{getDateTimeString(
+								event.start_date_time,
+								event.end_date_time
+							)}
 						</span>
 						<span class="flex items-center gap-2 text-xl font-bold"
-							><Fa icon={faLocationDot} /><a href={action.google_maps_url}>
-								{action.location}
+							><Fa icon={faLocationDot} /><a href={event.google_maps_url}>
+								{event.location}
 							</a>
 						</span>
 					</div>
 					<p class="py-4">
-						{@html action.description}
+						{@html event.description}
 					</p>
 				</div>
 			{/each}
 		</div>
+
+		<p class="pad text-sm">
+			Erklärung Summerbreaks: Diese sind unsere Großgruppenevents über den Sommer, also die ideale
+			Möglichkeit nicht nur Erstsemester sondern auch alle anderen aus der Gruppe kennen zu lernen.
+			Sobald das Semester beginnt, treffen wir uns zu SMD-Abenden alle zwei Wochen dienstagabends
+		</p>
 
 		<div class="pad pt-16">
 			<h2>Church Hopping</h2>
