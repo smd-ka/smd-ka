@@ -16,10 +16,6 @@
 	import EmailInput from '$lib/components/forms/EmailInput.svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 	import { pb } from '$lib/pocketbase';
-	import ice_cream from '$lib/assets/pages/home/ice_cream.jpg';
-	import erstsemester_programm from '$lib/assets/pages/home/erstsemester_programm.jpg';
-	import schlosslichtspiele from '$lib/assets/pages/home/schlosslichtspiele.jpg';
-	import offener_hauskreis from '$lib/assets/pages/home/offener_hauskreis.jpg';
 	import glauben from '$lib/assets/pages/home/glauben.jpg';
 	import denken from '$lib/assets/pages/home/denken.jpg';
 	import erleben from '$lib/assets/pages/home/erleben.jpg';
@@ -74,7 +70,7 @@
 
 	const getTime = (startDateString: string) => {
 		const startDate = new Date(startDateString);
-		return startDate.toLocaleDateString('de-DE', { hour: '2-digit', minute: '2-digit' });
+		return startDate.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
 	};
 </script>
 
@@ -91,10 +87,10 @@
 </HeroShot>
 
 <main class="container mx-auto flex flex-col gap-24 py-12 text-lg">
-	<section class="px-4 text-center">
-		<h1>Was läuft aktuell?</h1>
+	{#if data.events}
+		<section class="px-4 text-center">
+			<h1>Was läuft aktuell?</h1>
 
-		{#if data.events}
 			<div class="grid gap-8 xl:grid-cols-2">
 				{#each data.events.items as event}
 					<Saos
@@ -134,8 +130,22 @@
 					</Saos>
 				{/each}
 			</div>
-		{/if}
-	</section>
+			<Saos
+				animation={'slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
+				animation_out={'slide-out-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
+			>
+				<div class="flex justify-center p-8">
+					<a
+						href="/events/kalender"
+						class="bg-primary flex items-center gap-2 rounded-sm px-4 py-2 text-white no-underline"
+					>
+						<Fa icon={faChevronRight} />
+						Alle Events
+					</a>
+				</div>
+			</Saos>
+		</section>
+	{/if}
 
 	<section class="grid gap-4 px-4 pt-24 text-center text-2xl xl:px-40">
 		<p>
