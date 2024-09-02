@@ -120,7 +120,7 @@
 										<div class="flex items-center gap-2">
 											<Fa icon={faLocationDot} />
 											<p>
-												<a href="https://maps.app.goo.gl/6GKR4efPtFraG8fV8">Schlosspark</a>
+												<a href={event.location_url}>{event.location}</a>
 											</p>
 										</div>
 									</div>
