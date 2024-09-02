@@ -5,12 +5,14 @@ export const prerender = true;
 
 export const load: PageLoad = async () => {
 	try {
-		const records = await pb.collection('ersti_actions').getFullList({
-			sort: '+date'
+		const now = new Date();
+		const records = await pb.collection('calendar').getFullList({
+			sort: '+start_date_time',
+			filter: `start_date_time >= "${now.toISOString()}" && category="erstsemesteraktion"`
 		});
-		return { records: records };
+		return { events: records };
 	} catch (error) {
 		console.error(error);
-		return { records: [] };
+		return { events: [] };
 	}
 };

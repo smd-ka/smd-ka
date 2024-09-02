@@ -16,18 +16,18 @@
 	import EmailInput from '$lib/components/forms/EmailInput.svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 	import { pb } from '$lib/pocketbase';
-	import ice_cream from '$lib/assets/pages/home/ice_cream.jpg';
-	import erstsemester_programm from '$lib/assets/pages/home/erstsemester_programm.jpg';
-	import schlosslichtspiele from '$lib/assets/pages/home/schlosslichtspiele.jpg';
-	import offener_hauskreis from '$lib/assets/pages/home/offener_hauskreis.jpg';
 	import glauben from '$lib/assets/pages/home/glauben.jpg';
 	import denken from '$lib/assets/pages/home/denken.jpg';
 	import erleben from '$lib/assets/pages/home/erleben.jpg';
 	import Motto from '$lib/components/Motto.svelte';
+	import type { PageData } from './$types';
+	import { getImageSrc } from '$lib/fetch_img';
 
 	let success = false;
 	let error = false;
 	let loading = false;
+
+	export let data: PageData;
 
 	async function sendMail(event: Event) {
 		loading = true;
@@ -44,6 +44,34 @@
 			error = true;
 		}
 	}
+
+	const getDate = (startDateString: string, endDateString?: string) => {
+		const startDate = new Date(startDateString);
+		if (!endDateString) {
+			return startDate.toLocaleDateString('de-DE', {
+				weekday: 'long',
+				day: '2-digit',
+				month: '2-digit'
+			});
+		}
+		const endDate = new Date(endDateString);
+		return (
+			startDate.toLocaleDateString('de-DE', {
+				day: '2-digit',
+				month: 'long'
+			}) +
+			' - ' +
+			endDate.toLocaleDateString('de-DE', {
+				day: '2-digit',
+				month: 'long'
+			})
+		);
+	};
+
+	const getTime = (startDateString: string) => {
+		const startDate = new Date(startDateString);
+		return startDate.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
+	};
 </script>
 
 <HeroShot imgSrc={header} bgPosition={'bg-[center_left_60%]'}>
@@ -59,105 +87,85 @@
 </HeroShot>
 
 <main class="container mx-auto flex flex-col gap-24 py-12 text-lg">
-	<section class="px-4 text-center">
-		<h1>Was läuft aktuell?</h1>
+	{#if data.events}
+		<section class="px-4 text-center">
+			<h1>Was läuft aktuell?</h1>
 
-		<div class="grid gap-8 xl:grid-cols-2">
-			<Saos
-				animation={'slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
-				animation_out={'slide-out-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
-			>
-				<a href="/new/erstsemester">
-					<div class="relative text-white">
-						<img
-							src={erstsemester_programm}
-							class=" max-h-72 w-full rounded-sm bg-[top_30%] object-cover brightness-[30%] transition-all duration-300 hover:scale-[101%] hover:cursor-pointer hover:brightness-50"
-							alt="Erstsemester Programm"
-						/>
-						<div class="absolute top-1/2 w-full -translate-y-1/2 text-center">
-							<h3 class="flex justify-center gap-2">Erstsemester Programm</h3>
-						</div>
-					</div>
-				</a>
-			</Saos>
-
-			<Saos
-				animation={'slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
-				animation_out={'slide-out-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
-			>
-				<div class="relative text-white">
-					<img
-						src={schlosslichtspiele}
-						class="max-h-72 w-full rounded-sm bg-[top_30%] object-cover brightness-[30%] transition-all duration-300 hover:scale-[101%] hover:cursor-pointer hover:brightness-50"
-						alt="Schlosslichtspiele"
-					/>
-					<div class="absolute top-1/2 w-full -translate-y-1/2 text-center">
-						<h3 class="flex items-center justify-center gap-2 px-4">
-							Summer Break // Picknick & Schlosslichtspiele
-						</h3>
-						<div class="flex flex-wrap justify-center gap-4">
-							<div class="flex items-center gap-2">
-								<Fa icon={faCalendarDays} />
-								<p class="whitespace-nowrap">Dienstag 03.09</p>
-							</div>
-							<div class="flex items-center gap-2">
-								<Fa icon={faClock} />
-								<p class="whitespace-nowrap">19:00</p>
-							</div>
-							<div class="flex items-center gap-2">
-								<Fa icon={faLocationDot} />
-								<p class="whitespace-nowrap">
-									<a href="https://maps.app.goo.gl/6GKR4efPtFraG8fV8">Schlosspark</a>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</Saos>
-
-			<Saos
-				animation={'slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
-				animation_out={'slide-out-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
-			>
-				<div class="relative text-white">
-					<a href="/new/erstsemester">
-						<img
-							src={offener_hauskreis}
-							class="max-h-72 w-full rounded-sm bg-[top_30%] object-cover brightness-[30%] transition-all duration-300 hover:scale-[101%] hover:cursor-pointer hover:brightness-50"
-							alt="Offener Hauskreis"
-						/>
-						<div class="absolute top-1/2 w-full -translate-y-1/2 text-center">
-							<h3 class="flex items-center justify-center gap-2 px-4">
-								Erstsemester Aktion // Offener Hauskreis
-							</h3>
-							<div class="flex flex-wrap justify-center gap-4">
-								<div class="flex items-center gap-2">
-									<Fa icon={faCalendarDays} />
-									<p class="whitespace-nowrap">ab 18.09 mittwochs</p>
+			<div class="grid gap-8 xl:grid-cols-2">
+				{#each data.events.items as event}
+					<Saos
+						animation={'slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
+						animation_out={'slide-out-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
+					>
+						<a href="/events/kalender/{event.id}">
+							<div class="relative text-white">
+								<img
+									src={getImageSrc(event.image, event.id, event.collectionId, event.collectionName)}
+									class=" max-h-72 w-full rounded-sm bg-[top_30%] object-cover brightness-[30%] transition-all duration-300 hover:scale-[101%] hover:cursor-pointer hover:brightness-50"
+									alt="Erstsemester Programm"
+								/>
+								<div class="absolute top-1/2 w-full -translate-y-1/2 text-center">
+									<h3 class="px-4">{event.title}</h3>
+									<div class="flex justify-center gap-4 whitespace-nowrap">
+										<div class="flex items-center gap-2">
+											<Fa icon={faCalendarDays} />
+											<p>
+												{getDate(event.start_date_time, event.end_date_time)}
+											</p>
+										</div>
+										<div class="flex items-center gap-2">
+											<Fa icon={faClock} />
+											<p>{getTime(event.start_date_time)}</p>
+										</div>
+										<div class="flex items-center gap-2">
+											<Fa icon={faLocationDot} />
+											<p>
+												<a href="https://maps.app.goo.gl/6GKR4efPtFraG8fV8">Schlosspark</a>
+											</p>
+										</div>
+									</div>
 								</div>
-								<!-- <div class="flex items-center gap-2">
-									<Fa icon={faClock} />
-									<p class="whitespace-nowrap">Abends (TBA)</p>
-								</div>
-								<div class="flex items-center gap-2">
-									<Fa icon={faLocationDot} />
-									<p class="whitespace-nowrap">TBA</p>
-								</div> -->
 							</div>
-						</div>
+						</a>
+					</Saos>
+				{/each}
+			</div>
+			<Saos
+				animation={'slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
+				animation_out={'slide-out-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
+			>
+				<div class="flex justify-center p-8">
+					<a
+						href="/events/kalender"
+						class="bg-primary flex items-center gap-2 rounded-sm px-4 py-2 text-white no-underline"
+					>
+						<Fa icon={faChevronRight} />
+						Alle Events
 					</a>
 				</div>
 			</Saos>
-		</div>
+		</section>
+	{/if}
+
+	<section class="grid gap-4 px-4 pt-24 text-center text-2xl xl:px-40">
+		<p>
+			Die SMD ist ein Treffpunkt für Studierende aller Karlsruher Hochschulen und darüber hinaus.
+			Uns verbindet der Wunsch nach Gemeinschaft, Diskussion und gelebtem Glauben.
+		</p>
+		<p>
+			Wir sind aktuell rund 50 Studierende aller Fachrichtungen, kommen aus verschiedenen Kirchen
+			und Gemeinden und wünschen uns, dass jeder Student und jede Studentin von der guten Nachricht
+			von Jesus hören kann.
+		</p>
+		<p>
+			In unserer Hochschulgruppe sind alle herzlich willkommen. Egal, was dein Hintergrund ist und
+			was du glaubst, wir freuen uns auf dich!
+		</p>
 	</section>
 
-	<section class="pt-24">
-		<p class="px-4 pb-12 text-center text-xl xl:px-40">
-			Wir sind eine überkonfessionelle christliche Hochschulgruppe. Unter anderem in Groß- und
-			Kleingruppen wollen wir zum Nach- und Weiterdenken über den christlichen Glauben anregen und
-			Gemeinschaft erleben.
-		</p>
-		<div class="flex gap-6 px-4 max-md:flex-col">
+	<section>
+		<h1 class="text-center">Unser Motto</h1>
+		<div class="flex gap-6 px-4 pt-4 max-md:flex-col">
 			<Motto imgSrc={denken} title="Denken">
 				Gott denkt mit. An Gott glauben ist nicht immer problemlos. Deswegen wollen wir –
 				Studierende aller Fachrichtungen und Konfessionen, die der Glaube an Jesus Christus
