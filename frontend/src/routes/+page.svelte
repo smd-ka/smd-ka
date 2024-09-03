@@ -106,7 +106,7 @@
 								/>
 								<div class="absolute top-1/2 w-full -translate-y-1/2 text-center">
 									<h3 class="px-4">{event.title}</h3>
-									<div class="flex justify-center gap-4 whitespace-nowrap">
+									<div class="flex flex-wrap justify-center gap-x-4">
 										<div class="flex items-center gap-2">
 											<Fa icon={faCalendarDays} />
 											<p>
