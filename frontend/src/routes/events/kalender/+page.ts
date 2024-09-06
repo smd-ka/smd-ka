@@ -7,7 +7,7 @@ export const load: PageLoad = async () => {
 		const now = new Date();
 		const records = await pb.collection('calendar').getFullList({
 			sort: '+start_date_time',
-			filter: `start_date_time >= "${now.toISOString()}"`
+			filter: `start_date_time >= "${now.toISOString()}" && category!='kingscafe'`
 		});
 		calendarEvents.set(records);
 		return { events: records };
