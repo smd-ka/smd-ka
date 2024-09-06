@@ -22,6 +22,16 @@ services:
       dockerfile: ./Dockerfile
     restart: always
 
+  kings_cafe:
+    container_name: kings_cafe
+    image: ghcr.io/smd-ka/smd-ka/kings_cafe:main
+    build:
+      context: ./kings-cafe
+      dockerfile: ./Dockerfile
+    restart: always
+    networks:
+      - smd_ka_network
+
   caddy:
     container_name: caddy
     image: docker.io/library/caddy:2.8
@@ -29,6 +39,7 @@ services:
       DOMAIN_LONG: ${DOMAIN_LONG:-smd-karlsruhe.de}
       DOMAIN_SHORT: ${DOMAIN_SHORT:-smd-ka.de}
       PR_NUMBER: ${PR_NUMBER:-0}
+      DOMAIN_KINGS_CAFE: ${DOMAIN_KINGS_CAFE:-kings-cafe.de}
     ports:
       - 80:80
       - 443:443

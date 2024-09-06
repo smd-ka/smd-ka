@@ -41,3 +41,7 @@ preview.api.{$DOMAIN_LONG} {
         header_up X-Real-IP {remote_host}
     }
 }
+
+preview.{$DOMAIN_KINGS_CAFE} {
+   reverse_proxy kings_cafe:3000
+}
