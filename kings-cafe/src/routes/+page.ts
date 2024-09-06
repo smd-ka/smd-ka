@@ -6,7 +6,7 @@ export const prerender = true;
 export const load: PageLoad = async () => {
 	try {
 		const now = new Date();
-		const records = await pb.collection('calendar').getList(1, 4, {
+		const records = await pb.collection('calendar').getList(1, 6, {
 			sort: '+start_date_time',
 			filter: `start_date_time >= "${now.toISOString()}" && category='kingscafe'`
 		});
