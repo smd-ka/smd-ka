@@ -26,6 +26,7 @@
 	import { blur, slide } from 'svelte/transition';
 	import { headerImageHeight } from '$lib/stores';
 	import { sineInOut } from 'svelte/easing';
+	import { base } from '$app/paths';
 
 	let showMenu = false;
 	let src = getAvatarUrl();
@@ -41,6 +42,7 @@
 	const tabs = [
 		{
 			name: 'Über uns',
+			baseUrl: '/about',
 			routes: [
 				{
 					name: 'Wer wir sind',
@@ -66,6 +68,7 @@
 		},
 		{
 			name: 'Events',
+			baseUrl: '/events',
 			routes: [
 				{
 					name: 'Kalender',
@@ -83,6 +86,7 @@
 		},
 		{
 			name: 'Neu hier?',
+			baseUrl: '/new',
 			routes: [
 				{
 					name: 'Erstsemester',
@@ -118,7 +122,11 @@
 			<div class="flex items-center gap-4 text-xl text-white max-lg:hidden">
 				{#each tabs as tab}
 					<div>
-						<span class="CategoryTitle peer">
+						<span
+							class="CategoryTitle peer {$page.url.pathname.includes(tab.baseUrl)
+								? 'text-primary'
+								: ''}"
+						>
 							{tab.name}
 							<Fa class="text-lg" icon={faChevronDown}></Fa>
 						</span>
@@ -130,7 +138,7 @@
 					</div>
 				{/each}
 
-				<a href="https://kings-cafe.de">International</a>
+				<a class="hover:text-primary" href="https://kings-cafe.de">International</a>
 
 				<a class=" self-center" href="/intern">
 					{#if isValid}
