@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  backend:
+  preview-backend:
     image: ghcr.io/smd-ka/backend:pr-${PR_NUMBER}  
     container_name: backend-pr-${PR_NUMBER}  
     environment:
@@ -9,7 +9,7 @@ services:
     networks:
       - pr
 
-  frontend:
+  preview-frontend:
     image: ghcr.io/smd-ka/frontend:pr-${PR_NUMBER}  
     container_name: frontend-pr-${PR_NUMBER} 
     environment:
