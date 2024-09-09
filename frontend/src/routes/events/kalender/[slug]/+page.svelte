@@ -70,7 +70,7 @@
 			data.entry.collectionId,
 			data.entry.collectionName
 		)}
-		height="h-[80svh]"
+		height="h-[40svh]"
 	/>
 	<main class="container relative mx-auto px-4 py-12">
 		<a
@@ -78,16 +78,16 @@
 			class="text-primary absolute -left-6 top-14 text-3xl hover:brightness-110"
 			><Fa icon={faArrowLeft} /></a
 		>
-		<h1 class="pb-0">{data.entry.title}</h1>
+		<h1 class="break-words pb-0">{data.entry.title}</h1>
 		<div class="pb-6 text-gray-500">
 			{getDate(data.entry.start_date_time, data.entry.end_date_time)}
 		</div>
 
-		<section class="grid md:grid-cols-[1fr_fit-content(12rem)]">
+		<section class="grid gap-8 md:grid-cols-[1fr_fit-content(12rem)]">
 			<div>
 				{data.entry.description}
 			</div>
-			<div class="grid whitespace-nowrap max-md:order-first">
+			<div class=" whitespace-nowrap max-md:order-first">
 				<h3 class="uppercase">Details</h3>
 				<p>
 					Datum: {getDate(data.entry.start_date_time, data.entry.end_date_time)}
