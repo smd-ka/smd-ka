@@ -84,7 +84,7 @@
 		</div>
 
 		<section class="grid gap-8 md:grid-cols-[1fr_fit-content(12rem)]">
-			<div>
+			<div class="overflow-hidden whitespace-pre-line">
 				{data.entry.description}
 			</div>
 			<div class=" whitespace-nowrap max-md:order-first">
