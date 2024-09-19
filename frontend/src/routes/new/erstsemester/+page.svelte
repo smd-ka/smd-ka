@@ -7,18 +7,18 @@
 
 	// TODO add Churchhopping for this year
 	const churchHopping = [
-		// {
-		// 	date: '27. Oktober 10:00 Uhr',
-		// 	link: 'https://icf-karlsruhe.de',
-		// 	name: 'ICF Karlsruhe',
-		// 	responsible: 'Claus Hamman'
-		// },
-		// {
-		// 	date: '27. Oktober 10:00 Uhr',
-		// 	link: 'https://icf-karlsruhe.de',
-		// 	name: 'ICF Karlsruhe',
-		// 	responsible: 'Claus Hamman'
-		// }
+		{
+			date: '22. September 10:00 Uhr',
+			link: 'https://lkg-karlsruhe.de/',
+			name: 'LKG',
+			responsible: 'Claus'
+		},
+		{
+			date: '29. Oktober 10:00 Uhr',
+			link: 'https://faecherkirche.de/',
+			name: 'Fächerkirche',
+			responsible: 'Frederik'
+		}
 	];
 
 	export let data: PageData;
@@ -140,9 +140,7 @@
 				und über die Gemeinde stellen kannst. Als Studentenmission ist es uns wichtig, dass du eine
 				Gemeinde findest in der du geistlich gestärkt wirst!
 				<br />
-				<!-- In der Tabelle findest du die Termine für dieses Jahr. Außerdem wird es eine Signal Gruppe geben
-				in der nochmals der genaue Treffpunkt kommuniziert wird. Falls du darin aufgenommen werden möchtest,
-				schreib einfach <a href="mailto:claus@chammann.dev">Claus</a> eine E-Mail. -->
+				In der Tabelle findest du die Termine für dieses Jahr.
 			</p>
 		</div>
 
