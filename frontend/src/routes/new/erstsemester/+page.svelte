@@ -27,16 +27,16 @@
 		const startDate = new Date(startDateString);
 		if (!endDateString) {
 			return (
-					startDate.toLocaleDateString('de-DE', {
-						weekday: 'long',
-						day: '2-digit',
-						month: 'long'
-					}) +
-					' // ' +
-					startDate.toLocaleTimeString('de-DE', {
-						hour: '2-digit',
-						minute: '2-digit'
-					})
+				startDate.toLocaleDateString('de-DE', {
+					weekday: 'long',
+					day: '2-digit',
+					month: 'long'
+				}) +
+				' // ' +
+				startDate.toLocaleTimeString('de-DE', {
+					hour: '2-digit',
+					minute: '2-digit'
+				})
 			);
 		}
 	};
@@ -62,19 +62,25 @@
 			<h1>Angebote für neue Studierende</h1>
 
 			<p>
-				Komm vorbei – noch bevor die Vorlesungen starten, haben wir ein paar coole Aktionen für dich geplant!<br />
-				Im Semester bist du herzlich zu unseren SMD-Abenden und Hauskreisen eingeladen. Die Anmeldung für die Hauskreise gibt’s immer zum Start des Semesters.<br />
+				Komm vorbei – noch bevor die Vorlesungen starten, haben wir ein paar coole Aktionen für dich
+				geplant!<br />
+				Im Semester bist du herzlich zu unseren SMD-Abenden und Hauskreisen eingeladen. Die Anmeldung
+				für die Hauskreise gibt’s immer zum Start des Semesters.<br />
 				Bei Fragen, schreib uns gerne eine Mail an
-				<a class="whitespace-nowrap" href="mailto:erstsemester@smd-karlsruhe.de">erstsemester@smd-karlsruhe.de</a>.<br />
-				Für unsere interne Kommunikation nutzen wir Signal – schick uns einfach deine Nummer per Mail, um nichts zu verpassen!<br />
+				<a class="whitespace-nowrap" href="mailto:erstsemester@smd-karlsruhe.de"
+					>erstsemester@smd-karlsruhe.de</a
+				>.<br />
+
+				Um auf dem Laufenden zu bleiben kannst du gerne unserer Signal – schick uns einfach deine
+				Nummer per Mail, um nichts zu verpassen! (Oder Frag bei einer Events einen SMDler :)<br />
 				Wir freuen uns auf dich!
 			</p>
-
 
 			<h2 class="pb-6 pt-12">Ersti Aktionen Wintersemester 2024/25</h2>
 
 			<p>
-				Hier haben wir eininge coole Aktionen geplant, bei denen du uns und andere Erstsemester kennenlernen kannst.<br />
+				Hier haben wir einige coole Aktionen geplant, bei denen du uns und andere Erstsemester
+				kennenlernen kannst.<br />
 				Wir freuen uns auf dich!
 			</p>
 
@@ -87,7 +93,7 @@
 			{/if}
 		</div>
 		<div
-				class="grid gap-8 px-4 md:grid-cols-2 {data.events.length > 2
+			class="grid gap-8 px-4 md:grid-cols-2 {data.events.length > 2
 				? ' xl:grid-cols-3'
 				: 'xl:px-52'}"
 		>
@@ -95,9 +101,9 @@
 				<div>
 					<div class="relative text-white">
 						<img
-								src={getImageSrc(event.image, event.id, event.collectionId, event.collectionName)}
-								class="h-72 w-full object-cover brightness-50"
-								alt={event.title}
+							src={getImageSrc(event.image, event.id, event.collectionId, event.collectionName)}
+							class="h-72 w-full object-cover brightness-50"
+							alt={event.title}
 						/>
 						<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
 							<h3 class="">{event.title}</h3>
@@ -105,13 +111,13 @@
 					</div>
 					<div class="pt-8">
 						<span class="flex items-center gap-2 text-xl font-bold"
-						><Fa icon={faCalendarDays} />{getDateTimeString(
+							><Fa icon={faCalendarDays} />{getDateTimeString(
 								event.start_date_time,
 								event.end_date_time
-						)}
+							)}
 						</span>
 						<span class="flex items-center gap-2 text-xl font-bold"
-						><Fa icon={faLocationDot} /><a href={event.google_maps_url}>
+							><Fa icon={faLocationDot} /><a href={event.google_maps_url}>
 								{event.location}
 							</a>
 						</span>
@@ -124,9 +130,10 @@
 		</div>
 
 		<p class="pad text-sm">
-			Erklärung Summerbreaks: Diese sind unsere Großgruppenevents über den Sommer, also die ideale Möglichkeit,
-			nicht nur Erstsemester, sondern auch alle anderen aus der Gruppe kennenzulernen. Sobald das Semester beginnt,
-			treffen wir uns zu SMD-Abenden alle zwei Wochen dienstagabends, im wechsel zu unseren Hauskreisen.
+			Erklärung Summerbreaks: Diese sind unsere Großgruppenevents über den Sommer, also die ideale
+			Möglichkeit, nicht nur Erstsemester, sondern auch alle anderen aus der Gruppe kennenzulernen.
+			Sobald das Semester beginnt, treffen wir uns zu SMD-Abenden alle zwei Wochen dienstagabends,
+			im wechsel zu unseren Hauskreisen.
 		</p>
 
 		<div class="pad pt-16">
@@ -144,7 +151,7 @@
 		</div>
 
 		<table
-				class="font-merriweather mt-8 grid grid-cols-[auto_auto_auto] gap-x-2 px-4 md:text-2xl xl:px-72"
+			class="mt-8 grid grid-cols-[auto_auto_auto] gap-x-2 px-4 font-merriweather md:text-2xl xl:px-72"
 		>
 			<!-- <div class="font-bold">Datum</div>
 			<div class="font-bold">Gemeinde</div>
