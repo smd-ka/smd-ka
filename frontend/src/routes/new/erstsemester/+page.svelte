@@ -7,18 +7,18 @@
 
 	// TODO add Churchhopping for this year
 	const churchHopping = [
-		// {
-		// 	date: '27. Oktober 10:00 Uhr',
-		// 	link: 'https://icf-karlsruhe.de',
-		// 	name: 'ICF Karlsruhe',
-		// 	responsible: 'Claus Hamman'
-		// },
-		// {
-		// 	date: '27. Oktober 10:00 Uhr',
-		// 	link: 'https://icf-karlsruhe.de',
-		// 	name: 'ICF Karlsruhe',
-		// 	responsible: 'Claus Hamman'
-		// }
+		{
+			date: '22. September 10:00 Uhr',
+			link: 'https://lkg-karlsruhe.de/',
+			name: 'LKG',
+			responsible: 'Claus'
+		},
+		{
+			date: '29. Oktober 10:00 Uhr',
+			link: 'https://faecherkirche.de/',
+			name: 'Fächerkirche',
+			responsible: 'Frederik'
+		}
 	];
 
 	export let data: PageData;
@@ -62,21 +62,26 @@
 			<h1>Angebote für neue Studierende</h1>
 
 			<p>
-				Noch vor Vorlesungsbeginn für PH und KIT haben wir einige richtig coole Aktionen für dich
-				vorbereitet.<br />
-				Im Semester bist du herzlich zu unseren SMD Abenden und Hauskreisen eingeladen. Die Hauskreisanmeldung
-				findet immer zu Beginn des Semester statt. Wenn du Fragen hast, schreib uns gerne eine Mail an
+				Komm vorbei – noch bevor die Vorlesungen starten, haben wir ein paar coole Aktionen für dich
+				geplant!<br />
+				Im Semester bist du herzlich zu unseren SMD-Abenden und Hauskreisen eingeladen. Die Anmeldung
+				für die Hauskreise gibt’s immer zum Start des Semesters.<br />
+				Bei Fragen, schreib uns gerne eine Mail an
 				<a class="whitespace-nowrap" href="mailto:erstsemester@smd-karlsruhe.de"
-					>erstsemester@smd-karlsruhe.de
-				</a>. <br />
-				Schau doch mal bei uns vorbei!
+					>erstsemester@smd-karlsruhe.de</a
+				>.<br />
+
+				Um auf dem Laufenden zu bleiben kannst du gerne unserer Signal – schick uns einfach deine
+				Nummer per Mail, um nichts zu verpassen! (Oder Frag bei einer Events einen SMDler :)<br />
+				Wir freuen uns auf dich!
 			</p>
 
 			<h2 class="pb-6 pt-12">Ersti Aktionen Wintersemester 2024/25</h2>
 
 			<p>
-				Wir haben für dich einige coole Aktionen geplant, bei denen du uns und andere Erstsemester
-				kennen lernen kannst. Wir freuen uns auf dich!
+				Hier haben wir einige coole Aktionen geplant, bei denen du uns und andere Erstsemester
+				kennenlernen kannst.<br />
+				Wir freuen uns auf dich!
 			</p>
 
 			{#if data.events.length === 0}
@@ -126,8 +131,9 @@
 
 		<p class="pad text-sm">
 			Erklärung Summerbreaks: Diese sind unsere Großgruppenevents über den Sommer, also die ideale
-			Möglichkeit nicht nur Erstsemester sondern auch alle anderen aus der Gruppe kennen zu lernen.
-			Sobald das Semester beginnt, treffen wir uns zu SMD-Abenden alle zwei Wochen dienstagabends
+			Möglichkeit, nicht nur Erstsemester, sondern auch alle anderen aus der Gruppe kennenzulernen.
+			Sobald das Semester beginnt, treffen wir uns zu SMD-Abenden alle zwei Wochen dienstagabends,
+			im wechsel zu unseren Hauskreisen.
 		</p>
 
 		<div class="pad pt-16">
@@ -140,14 +146,12 @@
 				und über die Gemeinde stellen kannst. Als Studentenmission ist es uns wichtig, dass du eine
 				Gemeinde findest in der du geistlich gestärkt wirst!
 				<br />
-				<!-- In der Tabelle findest du die Termine für dieses Jahr. Außerdem wird es eine Signal Gruppe geben
-				in der nochmals der genaue Treffpunkt kommuniziert wird. Falls du darin aufgenommen werden möchtest,
-				schreib einfach <a href="mailto:claus@chammann.dev">Claus</a> eine E-Mail. -->
+				In der Tabelle findest du die Termine für dieses Jahr.
 			</p>
 		</div>
 
 		<table
-			class="font-merriweather mt-8 grid grid-cols-[auto_auto_auto] gap-x-2 px-4 md:text-2xl xl:px-72"
+			class="mt-8 grid grid-cols-[auto_auto_auto] gap-x-2 px-4 font-merriweather md:text-2xl xl:px-72"
 		>
 			<!-- <div class="font-bold">Datum</div>
 			<div class="font-bold">Gemeinde</div>
