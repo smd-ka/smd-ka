@@ -13,9 +13,9 @@
 				Auf der Suche nach einer Wohnung? Dann schau doch mal bei
 				<a href="https://kaheim.de">kaheim.de</a> vorbei! Hier findest du eine Zimmerbörse für
 				christliche WGs in Karlsruhe. Wenn du ein Zimmer suchst oder in deiner WG Zimmer frei hast
-				und Mitbewohner suchst, kannst die Einträge dort durchschauen und/oder selbst einen
-				erstellen. Wir betreiben die Plattform selbst in Koorperation mit dem SfC (Studierende für
-				Christus), daher findest du alle Zimmerangebote, von denen wir wissen, auf dieser Seite.
+				und Mitbewohner suchst, kannst du die Einträge dort durchschauen und/oder selbst einen
+				erstellen. Wir betreiben die Plattform selbst in Kooperation mit dem SfC (Studierende für
+				Christus). Du findest hier also alle Zimmerangebote, von denen wir wissen.
 				<br />
 				Darüber hinaus kannst du dich auch mal beim
 				<a href="https://www.sw-ka.de/de/wohnen/"> Studierendenwerk</a> umschauen.
