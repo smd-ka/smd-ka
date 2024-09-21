@@ -153,9 +153,9 @@
 			Uns verbindet der Wunsch nach Gemeinschaft, Diskussion und gelebtem Glauben.
 		</p>
 		<p>
-			Wir sind aktuell rund 50 Studierende aller Fachrichtungen, kommen aus verschiedenen Kirchen
-			und Gemeinden und wünschen uns, dass jeder Student und jede Studentin von der guten Nachricht
-			von Jesus hören kann.
+			Wir sind Studierende aller Fachrichtungen, kommen aus verschiedenen Kirchen und Gemeinden und
+			wünschen uns, dass jeder Student und jede Studentin von der guten Nachricht von Jesus hören
+			kann.
 		</p>
 		<p>
 			In unserer Hochschulgruppe sind alle herzlich willkommen. Egal, was dein Hintergrund ist und
@@ -167,26 +167,27 @@
 		<h1 class="text-center">Unser Motto</h1>
 		<div class="flex gap-6 px-4 pt-4 max-md:flex-col">
 			<Motto imgSrc={denken} title="Denken">
-				Gott denkt mit. An Gott glauben ist nicht immer problemlos. Deswegen wollen wir –
+				An Gott zu glauben heißt nicht, den Verstand auszuschalten. Deswegen wollen wir –
 				Studierende aller Fachrichtungen und Konfessionen, die der Glaube an Jesus Christus
-				verbindet – miteinander nachdenken, diskutieren, uns austauschen und dabei den Verstand
-				nicht ausschalten.
+				verbindet – miteinander nachdenken, uns austauschen und dabei an wertvollen Erkenntnissen
+				zunehmen.
 			</Motto>
 
 			<Motto imgSrc={glauben} title="Glauben">
 				<div class="flex justify-center">
 					<p class="">
-						Wir glauben, dass Gott wirkt. An Gott glauben ist für uns nicht nur ein Weg, sondern der
-						Weg. Deswegen wollen wir von unseren Erlebnissen mit Gott reden, damit jeder diesen Gott
-						kennen lernen kann.
+						“Was ist nun also der Glaube? Er ist das <b>Vertrauen</b> darauf, dass das, was wir
+						hoffen, sich erfüllen wird, und die <b>Überzeugung</b>, dass das, was man nicht sieht,
+						existiert.” - Hebräer 11,1
 					</p>
 				</div>
 			</Motto>
 
 			<Motto imgSrc={erleben} title="Erleben">
-				Wir erleben, dass Gott lebt. An Gott glauben prägt das ganze Leben. Denn Gott verspricht,
-				dass er in jeder Lebenslage bei uns ist und jeden Menschen liebt. Darauf dürfen wir uns
-				verlassen!
+				Wir können Gottes Wirken in jedem Lebensbereich erleben. Denn Gott verspricht, dass er in
+				jeder Lebenslage bei uns ist (Matthäus 28,20) und jeden Menschen liebt (Johannes 3,16).
+				Daran wollen wir uns erinnern und uns gegenseitig ermutigen, indem wir Zeugnis davon geben,
+				was wir mit Gott erleben.
 			</Motto>
 		</div>
 		<div class="flex justify-center p-8">
