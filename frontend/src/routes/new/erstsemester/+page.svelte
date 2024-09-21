@@ -8,13 +8,13 @@
 	// TODO add Churchhopping for this year
 	const churchHopping = [
 		{
-			date: '22. September 10:00 Uhr',
+			date: '22. September // 10:00 Uhr',
 			link: 'https://lkg-karlsruhe.de/',
 			name: 'LKG',
 			responsible: 'Claus'
 		},
 		{
-			date: '29. Oktober 10:00 Uhr',
+			date: '29. Oktober // 10:00 Uhr',
 			link: 'https://faecherkirche.de/',
 			name: 'Fächerkirche',
 			responsible: 'Frederik'
@@ -47,13 +47,15 @@
 		<h1 class="text-center">endlich Student</h1>
 		<p>
 			Du bist neu in Karlsruhe oder planst hierher zu ziehen für dein Studium? Du bist auf der Suche
-			nach christlicher Gemeinschaft? Dann bist du hier genau richtig! Wir sind eine
-			überkonfessionelle Hochschulgruppe, die es auf dem Herzen hat unseren Glauben authentisch im
-			Studienalltag zu leben.
+			nach christlicher Gemeinschaft? Was für ein Zufall (oder was für eine Fügung), denn dann bist
+			du hier genau richtig! Wir haben es auf dem Herzen, unseren Glauben authentisch im
+			Studienalltag zu leben. Bei uns hast du die Chance, schnell Anschluss zu finden, damit KA
+			nicht nur KlausurenAnstalt heißt, sondern für eine Stadt steht, die du gerne dein neues
+			Zuhause nennen kannst.
 		</p>
 		<p>
 			Wir haben ein vielfältiges Angebot an Veranstaltungen und Aktionen, bei denen du uns und
-			andere Erstsemester kennen lernen kannst. Wir freuen uns auf dich!
+			andere Erstsemester kennenlernen kannst. Wir freuen uns auf dich!
 		</p>
 	</section>
 
@@ -71,18 +73,13 @@
 					>erstsemester@smd-karlsruhe.de</a
 				>.<br />
 
-				Um auf dem Laufenden zu bleiben kannst du gerne unserer Signal – schick uns einfach deine
-				Nummer per Mail, um nichts zu verpassen! (Oder Frag bei einer Events einen SMDler :)<br />
+				Um auf dem Laufenden zu bleiben kannst du gerne unserer Signalgruppe beitreten – schick uns
+				dazu einfach deine Nummer per Mail, um nichts zu verpassen! (Oder frag bei einer der
+				Aktionen einen SMDler :)<br />
 				Wir freuen uns auf dich!
 			</p>
 
-			<h2 class="pb-6 pt-12">Ersti Aktionen Wintersemester 2024/25</h2>
-
-			<p>
-				Hier haben wir einige coole Aktionen geplant, bei denen du uns und andere Erstsemester
-				kennenlernen kannst.<br />
-				Wir freuen uns auf dich!
-			</p>
+			<h2 class="pb-12 pt-12">Ersti-Aktionen Wintersemester 2024/25</h2>
 
 			{#if data.events.length === 0}
 				<p>
@@ -140,22 +137,20 @@
 			<h2>Church Hopping</h2>
 
 			<p class="py-4">
-				Am Anfang von jedem Wintersemester bieten wir dir an, die Gemeinden kennen zu lernen, in die
+				Am Anfang jedes Wintersemesters bieten wir dir an, die Gemeinden kennen zu lernen, in die
 				wir SMDler gehen. So kannst du ganz unkompliziert eine Gemeinde in Karlsruhe finden, ohne
 				dass du alleine in der Bank sitzt 😉. Außerdem hast du direkt eine Person, der du Fragen zur
-				und über die Gemeinde stellen kannst. Als Studentenmission ist es uns wichtig, dass du eine
-				Gemeinde findest in der du geistlich gestärkt wirst!
-				<br />
-				In der Tabelle findest du die Termine für dieses Jahr.
+				und über die Gemeinde stellen kannst. Da sich die SMD bewusst <i>nicht</i> als eine Gemeinde
+				sieht, ist es uns wichtig, dass du eine Gemeinde findest, in der du geistlich auftanken darfst!
 			</p>
 		</div>
 
 		<table
-			class="mt-8 grid grid-cols-[auto_auto_auto] gap-x-2 px-4 font-merriweather md:text-2xl xl:px-72"
+			class="font-merriweather mt-8 grid grid-cols-[auto_auto_auto] gap-x-2 px-4 md:text-2xl xl:px-72"
 		>
-			<!-- <div class="font-bold">Datum</div>
+			<div class="font-bold">Datum</div>
 			<div class="font-bold">Gemeinde</div>
-			<div class="font-bold">Ansprechperson</div> -->
+			<div class="font-bold">Ansprechperson</div>
 
 			{#each churchHopping as hop, i}
 				<div class="col-span-full h-0.5 {i == 0 ? 'bg-gray-600' : 'bg-gray-300'}"></div>
