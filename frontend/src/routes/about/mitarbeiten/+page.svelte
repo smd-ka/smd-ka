@@ -22,9 +22,11 @@
 		<div class="flex flex-col gap-8 px-4 py-20 xl:px-80">
 			<h1 class="text-4xl font-bold uppercase md:text-5xl">Mitarbeiten</h1>
 			<p>
-				Neben den Leitern gibt es verschiedene Ämter und Teams. In der Mitarbeit können wir alle
-				unsere Stärken einbringen und viel Neues dazulernen. Auch du möchstest mitarbeiten? Schreib
-				eine Mail an das Leitungsteam, sie vermitteln dich dann an die zuständige Person.
+				Unsere geschätzten Leiter schmeißen den Laden natürlich nicht alleine (sowieso nicht, wir
+				machen alles aus Gottes Kraft heraus). Es gibt viele verschiedene Ämter und Teams. In der
+				Mitarbeit können wir unsere bereits bekannten Stärken einbringen und weiterentwickeln und
+				uns auch in Neuem ausprobieren. Auch du möchtest mitarbeiten? Dann sprich einen der Leiter
+				an oder schreib ihnen eine Mail. Wir freuen uns immer über Verstärkung!
 			</p>
 
 			<div class="grid gap-8 py-12 lg:grid-cols-2">
