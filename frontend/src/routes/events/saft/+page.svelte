@@ -43,11 +43,11 @@
 				<div class="mt-4 flex flex-col items-end gap-2 text-lg md:text-xl">
 					<div class="flex items-center gap-2">
 						<Fa class="text-primary" icon={faCalendarDays} />
-						Datum: 15 - 17 November 2024
+						Datum: 15. - 17. November 2024
 					</div>
 					<div class="flex items-center gap-2">
 						<Fa class="text-primary" icon={faCoins} />
-						Preis: TBA
+						Preis: folgt
 					</div>
 					<div class="flex flex-col">
 						<div class="flex justify-end gap-2">
@@ -67,12 +67,12 @@
 
 	<div class="px-4 xl:px-60">
 		<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
-			<h1 class="text-4xl font-bold uppercase">Wie siehts da aus?</h1>
+			<h1 class="text-4xl font-bold uppercase">Wie sieht's da aus?</h1>
 			<p>
-				Um einen Eindruck von der SAFT zu bekommen schau dir gerne einfach das Video an. Wir werden
+				Um einen Eindruck von der SAFT zu bekommen, schau dir gerne einfach das Video an. Wir werden
 				ein geniales Wochenende mit Andachten, Workshops, Sport, Spielen, Singen, Beten, Lobpreis
-				und vielem mehr verbringen. Selbstverständlich wird auch genung Zeit zum relaxen, quatschen
-				und chillen sein. Highlight-Empfehlung des Autors: Nachts Baden in der Enz!
+				und vielem mehr verbringen. Selbstverständlich wird auch genug Zeit zum Relaxen, Quatschen
+				und Chillen sein. Highlight-Empfehlung des Autors: Nachts Baden in der Enz!
 				<br />
 				<br />
 				<span class="font-bold">Wir freuen uns riesig, wenn du mit dabei bist!</span>
