@@ -33,9 +33,9 @@
 
 		<div>
 			<h2 class="text-3xl font-bold">Gerne kannst du dich bei uns melden wenn du...</h2>
-			<p>… genaueres zu unserem nächsten Treffen wissen möchtest.</p>
-			<p>… regelmäßige Updates über unseren E-Mailverteiler erhalten möchtest.</p>
-			<p>… oder ein ganz anderes Anliegen hast.</p>
+			<p>… Genaueres zu unserem nächsten Treffen wissen möchtest.</p>
+			<p>… regelmäßige Updates über unseren E-Mail-Verteiler erhalten möchtest.</p>
+			<p>… ein ganz anderes Anliegen hast.</p>
 			<p>
 				Nutze dazu einfach das unten stehende Kontaktformular oder schreib uns eine E-Mail
 				<a class="text-primary" href="mailto:leiter@smd-karlsruhe.de">leiter@smd-karlsruhe.de</a>.
@@ -43,8 +43,8 @@
 		</div>
 
 		<p>
-			Solltest du auf der Suche nach einer Wohnung bzw. WG-Zimmer in Karlsruhe sein, dann schau doch
-			mal auf
+			Solltest du auf der Suche nach einer Wohnung bzw. einem WG-Zimmer in Karlsruhe sein, dann
+			schau doch mal auf
 			<a class="text-primary whitespace-nowrap" href="https://kaheim.de">KA-Heim</a> vorbei.
 		</p>
 
