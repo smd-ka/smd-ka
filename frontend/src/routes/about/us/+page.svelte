@@ -34,13 +34,16 @@
 <main class="main text-lg">
 	<section class="pad">
 		<p>
-			Die <a class="text-primary" href="https://www.smd.org/hochschul-smd/startseite"
+			Wir als SMD Karlsruhe sind eine von ca. 80 über ganz Deutschland verteilte Gruppen, die alle
+			zusammen die <a class="text-primary" href="https://www.smd.org/hochschul-smd/startseite"
 				>Hochschul-SMD</a
-			> ist ein Netzwerk christlicher Hochschulgruppen. Wir sind eine von ca. 80 anderen SMD-Gruppen
-			in ganz Deutschland. Ein wesentlicher Teil des christlichen Glaubens ist nach unserem Verständnis
-			Kommunikation: Gott teilt sich uns durch die Bibel und andere Menschen mit. Deshalb tauschen wir
-			uns untereinander über Glaubensfragen aus und sprechen mit unseren Kommilitonen über das, was uns
-			bewegt. Denken, Glauben und Erleben gehören für uns dabei zusammen.
+			>
+			(<b>S</b>tudenten<b>M</b>ission in <b>D</b>eutschland) bilden. Studenten aller Hochschulen und
+			gelegentlich auch Azubis sorgen dafür, dass dieser bunte Haufen auch wirklich bunt ist. Die
+			eine große Gemeinsamkeit, nach der wir streben, ist eine echte Beziehung zu Jesus Christus. Um
+			in dieser Beziehung zu wachsen, tauschen wir uns untereinander über Glaubensfragen aus und
+			sprechen mit unseren Kommilitonen über das, was uns bewegt. Denken, Glauben und Erleben
+			gehören für uns dabei zusammen.
 		</p>
 	</section>
 
@@ -78,7 +81,7 @@
 				src={leitungsteam}
 			/>
 			<p>
-				Das Leitungsteam dieses Semester besteht aus (v.l.n.r): <br />
+				Das Leitungsteam dieses Semester besteht aus (v.l.n.r.): <br />
 				Felix R. ist 22 Jahre alt, mag sehr gerne Eidechsen und hat an der HKA Umweltingenieurwesen studiert.
 				<br />
 				Lilly, 22, klettert gerne auf Bäume und studiert Medizintechnik am KIT im fünften Semester.
@@ -102,11 +105,14 @@
 				alt="Regionen"
 			/>
 			<p class="pt-4">
-				Die SMD ist ein deutschlandweites Netzwerk christlicher Hochschulgruppen. Wir sind eine von
-				ca. 80 anderen SMD-Gruppen in ganz Deutschland. Uns gibt es in fast jeder Univeristätsstadt.
-				Wir lieben es auch, uns überregional zu vernetzen und auszutauschen. Dafür gibt es zwei im
-				Jahr Veranstaltungen wie das SMD-Forum. Außerdem treffen wir uns auch zu Regionalkonferenzen
-				(RegioKon) innerhalb unserer Region Süd-West (siehe Karte).
+				Die Hochschul-SMD ist ein deutschlandweites Netzwerk von ca. 80 christlichen
+				Hochschulgruppen; man findet sie also in fast jeder Universitätsstadt. Hier in Karlsruhe
+				sind wir eine am KIT (Karlsruher Institut für Technologie) und an der PH (Pädagogische
+				Hochschule) eingetragene Hochschulgruppe. Wir bleiben aber nicht nur unter uns, sondern
+				vernetzen uns überregional und wollen im Austausch miteinander voneinander lernen und uns
+				weiterentwickeln. Dafür gibt es primär zwei jährliche Veranstaltungen: das SMD-Forum, bei
+				dem sich ganz Deutschland trifft, und die RegioKon (RegionalKonferenz), bei der wir uns mit
+				anderen SMD-Gruppen aus unserer Region Süd-West treffen (siehe Karte).
 
 				<a
 					class="flex items-center gap-2"
