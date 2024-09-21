@@ -42,11 +42,11 @@
 			</div>
 		</div>
 		<div>
-			Wenn du über die aktuelle Aktionen und Anliegen der Gruppe informiert werden möchtest, kannst
-			du uns gerne unter dieser Email Adresse <a href="mailto:leiter@smd-karlsruhe.de"
+			Wenn du über die aktuellen Aktionen und Anliegen der Gruppe informiert werden möchtest, kannst
+			du gerne unter dieser E-Mail-Adresse <a href="mailto:leiter@smd-karlsruhe.de"
 				>leiter@smd-karlsruhe.de</a
 			> nach unserem Freundesbrief nachfragen. Im Freundesbrief stehen alle aktuellen und wichtigen Informationen
-			sowie unsere Gebetsanliegen der Gruppe.
+			sowie unsere Gebetsanliegen.
 		</div>
 	</div>
 </main>
