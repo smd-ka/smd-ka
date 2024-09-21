@@ -20,11 +20,12 @@
 		<h2 class="pt-8">Leben</h2>
 		<p>
 			<b> Karlsruhe = Beschte. </b> Nicht nur sind wir die Residenz des Rechts, sondern auch die
-			Fächerstadt. Mit dem Karlsruher Institut für Technologie (KIT), der Pädagogischen Hochschule
-			(PH) und der Hochschule Karlsruhe (HKA) sowie vielen kleinen Hochschulen mehr ist Karlsruhe
-			eine absolute Studentenstadt. UND Karlsruhe ist Fahrradstadt. Daher empfehlen wir, lege dir
-			sobald wie möglich eins zu. Wenn du zudem ein wahrer SMDler werden willst: Helm auf! Wenn du
-			diesen Insider verstehen willst, schau vorbei 😉.
+			Fächerstadt: schau dir KA auf Maps an, da stellt man fest, dass die Straßen vom Schloss aus
+			<i>fächer</i>förmig gebaut sind. Mit dem Karlsruher Institut für Technologie (KIT), der
+			Pädagogischen Hochschule (PH) und der Hochschule Karlsruhe (HKA) sowie vielen kleinen
+			Hochschulen mehr ist Karlsruhe eine absolute Studentenstadt. UND Karlsruhe ist Fahrradstadt!
+			Daher empfehlen wir, lege dir sobald wie möglich eins zu. Wenn du zudem ein wahrer SMDler
+			werden willst: Helm auf! Wenn du diesen Insider verstehen willst, schau vorbei 😉.
 			<br />
 			Um dir einen kleinen Einblick in das Leben in Karlsruhe zu geben und dir eine Idee zu geben, welche
 			Orte du unbedingt einmal besuchen solltest, haben wir dir hier eine Liste zusammengestellt:
@@ -37,8 +38,8 @@
 				<h3>Der Schlo(ssgarten)</h3>
 
 				<p>
-					Der ideale Treffpunkt zum abhängen, Sonne genießen, Spikeball spielen und vielem mehr.
-					Egal ob unter der Woche nach der Uni oder am Wochenende der Schlossgarten ist Karlsruhes
+					Der ideale Treffpunkt zum Abhängen, Sonnegenießen, Spikeballspielen und vielem mehr. Egal
+					ob unter der Woche nach der Uni oder am Wochenende; der Schlossgarten ist Karlsruhes
 					offenes Wohnzimmer. (Zumindest im Sommer :P)
 				</p>
 			</div>
@@ -47,36 +48,28 @@
 				<h3>Der Turmberg</h3>
 
 				<p>
-					Karlsruhe von oben sehen? Dann ab auf den Turmberg. Besonders zum Sonnenuntergang genießen
-					ist dies der perfekte Ort. Außerdem befindet sich ein Hochseilgarten auf dem Turmberg.
+					Karlsruhe von oben sehen? Dann ab auf den Turmberg! Viel mehr Höhenmeter gibt es hier auch
+					nicht (zum Glück für die Radler ;). Besonders, um den Sonnenuntergang zu genießen, ist
+					dies der perfekte Ort. Außerdem befindet sich ein Hochseilgarten auf dem Turmberg.
 				</p>
 			</div>
+
 			<img alt="Turmberg" class="h-48 w-full object-cover" src={turmberg_img} />
 
-			<div class="flex justify-center">
-				<img alt="Oxford" class="h-48 object-cover" src={oxford_img} />
-			</div>
-			<div>
-				<h3>Das Oxford Pub</h3>
-
-				<p>
-					Lecker und günstig als Student essen gehen? Dann ab ins Oxford Pub. Hier gibt es leckere
-					Burger und gutes Bier. Direkt neben dem KIT Campus ist das Oxford eine beliebte Adresse
-					für einen gemütlichen Abend mit Freunden.
-				</p>
-			</div>
+			<img alt="Epplesee" class="h-48 w-full object-cover" src={epplesee_img} />
 
 			<div>
 				<h3>Der Epplesee</h3>
 				<p>
-					Erfrischung gefällig? Nur eine kleine Fahrradtour entfernt (ca. 10km) liegt im Süden von
-					Karlsruhe der Epplesee. Der See überzeugt mit einer großen Liegewiese und einem schönen
-					Strand. Tipp: Hier lohnt es sich besonders auszunutzen, dass du Student bist und unter der
-					Woche bzw. Vormittags zu gehen.
+					Erfrischung gefällig? Nur eine kleine Fahrradtour entfernt (ca. 10km vom Schloss) liegt im
+					Süden von Karlsruhe der Epplesee. Der See überzeugt mit einer großen Liegewiese und einem
+					schönen Strand. Tipp: Hier lohnt es sich besonders auszunutzen, dass du Student bist und
+					entsprechend unter der Woche bzw. vormittags zu gehen.
 				</p>
 			</div>
-			<img alt="Epplesee" class="h-48 w-full object-cover" src={epplesee_img} />
 		</div>
+
+		<h3>Unter SMDlern beliebte Restaurants</h3>
 
 		<!-- Frühstück beim Extrablatt Epplesee, Weingarten,
 
