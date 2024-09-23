@@ -8,12 +8,6 @@
 	// TODO add Churchhopping for this year
 	const churchHopping = [
 		{
-			date: '22. September // 10:00 Uhr',
-			link: 'https://lkg-karlsruhe.de/',
-			name: 'LKG',
-			responsible: 'Claus'
-		},
-		{
 			date: '29. Oktober // 10:00 Uhr',
 			link: 'https://faecherkirche.de/',
 			name: 'Fächerkirche',
