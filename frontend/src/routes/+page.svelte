@@ -154,8 +154,7 @@
 		</p>
 		<p>
 			Wir sind Studierende aller Fachrichtungen, kommen aus verschiedenen Kirchen und Gemeinden und
-			wünschen uns, dass jeder Student und jede Studentin von der guten Nachricht von Jesus hören
-			kann.
+			wünschen uns, dass jeder Student und jede Studentin von der guten Nachricht von Jesus hört.
 		</p>
 		<p>
 			In unserer Hochschulgruppe sind alle herzlich willkommen. Egal, was dein Hintergrund ist und
