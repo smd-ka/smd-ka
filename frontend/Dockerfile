@@ -2,8 +2,11 @@
 FROM node:lts-alpine AS build
 WORKDIR /app
 
-# Accept a build argument for the API URL (or any other variable)
-ARG APP_URL="https://api.smd-karlsruhe.de"
+# Define build argument (ARG)
+ARG API_URL="https://api.smd-karlsruhe.de"
+
+# Set environment variable (optional for runtime)
+ENV VITE_API_URL=$API_URL
 
 # Copy package.json and install dependencies
 COPY ./package*.json ./
@@ -12,8 +15,6 @@ RUN npm install
 # Copy all source files
 COPY . .
 
-# Replace the placeholder URL in your source files during build time
-RUN sed -i "s|https://api.smd-karlsruhe.de|${APP_URL}|g" src/**/*.js
 
 # Build the application
 RUN npm run build
