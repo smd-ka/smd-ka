@@ -79,6 +79,8 @@ jobs:
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/frontend:pr-${{ github.event.number }}
           labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            APP_URL=https://preview.api.smd-karlsruhe.de
 
 
 

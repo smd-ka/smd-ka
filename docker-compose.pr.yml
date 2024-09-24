@@ -6,18 +6,14 @@ services:
     container_name: backend-pr-${PR_NUMBER}  
     environment:
       - NODE_ENV=staging  
-    networks:
-      - pr
 
   preview-frontend:
     image: ghcr.io/smd-ka/frontend:pr-${PR_NUMBER}  
     container_name: frontend-pr-${PR_NUMBER} 
     environment:
       - NODE_ENV=staging  
-    networks:
-      - pr
 
 networks:
   default:
-    name: smd_ka_default
+    name: smd-ka_default
     external: true
