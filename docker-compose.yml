@@ -32,7 +32,7 @@ services:
     environment:
       DOMAIN_LONG: ${DOMAIN_LONG:-smd-karlsruhe.de}
       DOMAIN_SHORT: ${DOMAIN_SHORT:-smd-ka.de}
-      PR__NUMBER: ${PR_NUMBER:-0}
+      PR_NUMBER: ${PR_NUMBER:-0}
     ports:
       - 80:80
       - 443:443
