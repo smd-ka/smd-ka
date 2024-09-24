@@ -10,7 +10,6 @@ export const load: PageLoad = async () => {
 			sort: '+start_date_time',
 			filter: `start_date_time >= "${now.toISOString()}" && category!='kingscafe'`
 		});
-		console.log(records);
 		return { events: records };
 	} catch (error) {
 		console.error(error);
