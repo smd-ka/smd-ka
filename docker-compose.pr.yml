@@ -19,4 +19,5 @@ services:
 
 networks:
   pr:
-    driver: bridge
+    name: smd_ka_network
+    external: true
