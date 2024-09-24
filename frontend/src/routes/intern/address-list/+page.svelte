@@ -65,19 +65,19 @@
 	// TODO: Move to util file
 	function generateVCF(records: User[]) {
 		return records
-			.map((record) => {
-				const notes = [];
-				if (record.field_of_study) {
-					notes.push(
-						`${record.field_of_study} seit ${
-							record.start_of_studies ? new Date(record.start_of_studies).toLocaleDateString() : ''
-						}`
-					);
-				}
-				if (record.team) {
-					notes.push(`SMD-Bereiche: ${record.team}`);
-				}
-				return `
+				.map((record) => {
+					const notes = [];
+					if (record.field_of_study) {
+						notes.push(
+								`${record.field_of_study} seit ${
+										record.start_of_studies ? new Date(record.start_of_studies).toLocaleDateString() : ''
+								}`
+						);
+					}
+					if (record.team) {
+						notes.push(`SMD-Bereiche: ${record.team}`);
+					}
+					return `
 					BEGIN:VCARD
 					VERSION:3.0
 					FN:${record.name} ${record.surname}
@@ -87,9 +87,9 @@
 					${record.address ? `ADR:${record.address}` : ''}
 					NOTE:${notes.join(', ')}
 					END:VCARD
-            `.trim();
-			})
-			.join('\n');
+					`.trimStart();
+				})
+				.join('\n');
 	}
 
 	function downloadVCF() {
@@ -104,6 +104,7 @@
 		document.body.removeChild(a);
 		URL.revokeObjectURL(url);
 	}
+
 
 	const src = (
 		avatar: string | undefined,
