@@ -1,14 +1,14 @@
 version: '3.8'
 
 services:
-  backend:
-    image: ghcr.io/smd-ka/backend:pr-${PR_NUMBER}  
+  preview-backend:
+    image: ghcr.io/smd-ka/smd-ka/backend:pr-${PR_NUMBER}  
     container_name: backend-pr-${PR_NUMBER}  
     environment:
       - NODE_ENV=staging  
 
-  frontend:
-    image: ghcr.io/smd-ka/frontend:pr-${PR_NUMBER}  
+  preview-frontend:
+    image: ghcr.io/smd-ka/smd-ka/frontend:pr-${PR_NUMBER}  
     container_name: frontend-pr-${PR_NUMBER} 
     environment:
       - NODE_ENV=staging  
