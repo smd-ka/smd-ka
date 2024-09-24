@@ -63,38 +63,35 @@
 
 	// Function to generate contact vCard data
 	// TODO: Move to util file
-	function generateVCF(records: User[]) {
+	function generateVCF(records) {
 		return records
 				.map((record) => {
 					const notes = [];
 					if (record.field_of_study) {
-						notes.push(
-								`${record.field_of_study} seit ${
-										record.start_of_studies ? new Date(record.start_of_studies).toLocaleDateString() : ''
-								}`
-						);
+						notes.push(`${record.field_of_study} seit ${record.start_of_studies ? new Date(record.start_of_studies).toLocaleDateString() : ''}`);
 					}
 					if (record.team) {
 						notes.push(`SMD-Bereiche: ${record.team}`);
 					}
-					return `
-					BEGIN:VCARD
-					VERSION:3.0
-					FN:${record.name} ${record.surname}
-					EMAIL:${record.email}
-					${record.phonenumber ? `TEL:${record.phonenumber}` : ''}
-					${record.birthday ? `BDAY:${new Date(record.birthday).toISOString().split('T')[0]}` : ''}
-					${record.address ? `ADR:${record.address}` : ''}
-					NOTE:${notes.join(', ')}
-					END:VCARD
-					`.trimStart();
+					// Building vCard with essential fields
+					return [
+						"BEGIN:VCARD",
+						"VERSION:3.0",
+						`FN:${record.name} ${record.surname}`,
+						`EMAIL:${record.email}`,
+						record.phonenumber ? `TEL:${record.phonenumber}` : '',
+						record.birthday ? `BDAY:${new Date(record.birthday).toISOString().split('T')[0]}` : '',
+						record.address ? `ADR:${record.address}` : '',
+						`NOTE:${notes.join(', ')}`,
+						"END:VCARD"
+					].filter(Boolean).join('\n'); // Remove empty lines
 				})
 				.join('\n');
 	}
 
 	function downloadVCF() {
 		const vcfData = generateVCF(records);
-		const blob = new Blob([vcfData], { type: 'text/vcard' });
+		const blob = new Blob([vcfData], { type: 'text/vcard;charset=utf-8' }); // Ensure UTF-8 encoding
 		const url = URL.createObjectURL(blob);
 		const a = document.createElement('a');
 		a.href = url;
@@ -104,6 +101,7 @@
 		document.body.removeChild(a);
 		URL.revokeObjectURL(url);
 	}
+
 
 
 	const src = (
