@@ -4,9 +4,11 @@ WORKDIR /app
 
 # Define build argument (ARG)
 ARG API_URL="https://api.smd-karlsruhe.de"
+ARG PR_NUMBER=""
 
 # Set environment variable (optional for runtime)
 ENV VITE_API_URL=$API_URL
+ENV VITE_PR_NUMBER=$PR_NUMBER
 
 # Copy package.json and install dependencies
 COPY ./package*.json ./
