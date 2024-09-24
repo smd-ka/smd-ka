@@ -97,6 +97,6 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
       - name: connect and pull
-        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && git pull && docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} && docker compose pull && PR_NUMBER=${{ github.event.number }} docker compose -f docker-compose.yml -f docker-compose.pr.yml up -d && exit"
+        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && git pull && docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} && docker compose pull -f docker-compose.pr.yml && PR_NUMBER=${{ github.event.number }} docker compose -f docker-compose.yml -f docker-compose.pr.yml up -d && exit"
       - name: cleanup
         run: rm -rf ~/.ssh
