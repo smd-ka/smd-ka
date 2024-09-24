@@ -13,8 +13,6 @@ services:
       - ./backend/pb_data:/pb/pb_data
       - ./backend/pb_migrations:/pb/pb_migrations
     restart: always
-    networks:
-      - smd_ka_network
 
   frontend:
     container_name: frontend
@@ -23,8 +21,6 @@ services:
       context: ./frontend
       dockerfile: ./Dockerfile
     restart: always
-    networks:
-      - smd_ka_network
 
   caddy:
     container_name: caddy
@@ -42,13 +38,8 @@ services:
       - caddy_config:/config
       - caddy_data:/data
     restart: always
-    networks:
-      - smd_ka_network
 
 
-networks:
-  smd_ka_network:
-    driver: bridge
 
 
 volumes:
