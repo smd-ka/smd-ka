@@ -5,6 +5,16 @@
 	import TextInput from '$lib/components/forms/TextInput.svelte';
 	import { pb } from '$lib/pocketbase';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
+	import { faSignalMessenger, faInstagram } from '@fortawesome/free-brands-svg-icons';
+	import Fa from 'svelte-fa';
+	import {
+		faEnvelope,
+		faGlobe,
+		faChevronRight,
+		faArrowUpRightFromSquare
+	} from '@fortawesome/free-solid-svg-icons';
+	import rightArrow from '$lib/assets/pages/about/kontakt/right-arrow-handdrawn.svg';
+	import iphoneInstagram from '$lib/assets/pages/about/kontakt/Iphone_Instagram.png';
 
 	let success = false;
 	let error = false;
@@ -27,28 +37,98 @@
 	}
 </script>
 
-<main class="container mx-auto flex flex-col gap-24 py-24 text-lg">
-	<div class="flex flex-col gap-6 px-4 xl:px-80">
-		<h1 class="text-5xl font-bold uppercase">Kontakt aufnehmen</h1>
-
-		<div>
-			<h2 class="text-3xl font-bold">Gerne kannst du dich bei uns melden wenn du...</h2>
-			<p>… Genaueres zu unserem nächsten Treffen wissen möchtest.</p>
-			<p>… regelmäßige Updates über unseren E-Mail-Verteiler erhalten möchtest.</p>
-			<p>… ein ganz anderes Anliegen hast.</p>
-			<p>
-				Nutze dazu einfach das unten stehende Kontaktformular oder schreib uns eine E-Mail
-				<a class="text-primary" href="mailto:leiter@smd-karlsruhe.de">leiter@smd-karlsruhe.de</a>.
-			</p>
+<main class="container mx-auto grid px-4 pb-24 pt-12 text-lg">
+	<section class="text-center text-xl xl:px-60">
+		<div class="flex flex-wrap items-center justify-center">
+			<h1 class="pb-0 max-sm:text-4xl">Verbinde dich</h1>
+			<div class="flex items-center">
+				<img alt="rechter Pfeil" class="mx-4 w-28" src={rightArrow} />
+				<h1 class="pb-0 max-sm:text-4xl">mit uns</h1>
+			</div>
 		</div>
 
 		<p>
-			Solltest du auf der Suche nach einer Wohnung bzw. einem WG-Zimmer in Karlsruhe sein, dann
-			schau doch mal auf
-			<a class="text-primary whitespace-nowrap" href="https://kaheim.de">KA-Heim</a> vorbei.
+			Egal, ob du mehr über uns wissen möchtest, Fragen zum christlichen Glauben hast, neu in
+			Karlsruhe bist und Infos über Stadt, Gemeinden, etc. brauchst, du einen Hauskreis suchst oder
+			Teil unserer Signal-Gruppe werden willst, wir sind für dich da!
 		</p>
+		<p class="my-4">Du darfst Dich gerne jederzeit bei uns <a href="#form-section">melden!</a></p>
+	</section>
 
-		<h2 class="text-3xl font-bold">Kontaktformular</h2>
+	<section class="grid items-center justify-center xl:grid-cols-2">
+		<img
+			alt="Instagram Screenshot"
+			class="mx-4 h-[50rem] rotate-6 max-xl:hidden"
+			src={iphoneInstagram}
+		/>
+
+		<div>
+			<h2 class="normal-case max-xl:text-center">Nichts mehr verpassen!</h2>
+
+			<div class="grid grid-cols-[3rem_1fr] items-center gap-x-8 gap-y-4 text-3xl">
+				<Fa class="text-5xl" icon={faSignalMessenger} />
+				<div>
+					<div class="text-3xl italic">Messenger</div>
+					<a
+						href="https://signal.group/#CjQKILxV0vWmZBW7kvIbxe4V3RoXfcjBBYOhUr8ezW78a75EEhCe2qNDAZ0IGRWzryk6GpfC"
+						class="flex items-center gap-2 text-xl no-underline hover:underline"
+					>
+						Signal Gruppe
+						<Fa icon={faArrowUpRightFromSquare} />
+					</a>
+				</div>
+				<Fa class="text-5xl" icon={faInstagram} />
+				<div>
+					<div class="text-3xl italic">Instagram</div>
+					<a
+						href="https://www.instagram.com/smd_karlsruhe/"
+						class="flex items-center gap-2 text-xl no-underline hover:underline"
+					>
+						@smd_karlsruhe
+						<Fa icon={faArrowUpRightFromSquare} />
+					</a>
+				</div>
+				<Fa class="text-5xl" icon={faEnvelope} />
+				<div>
+					<div class="text-3xl italic">E-Mail-Verteiler</div>
+					<div class="text-xl"></div>
+				</div>
+				<Fa class="text-5xl" icon={faGlobe} />
+				<div>
+					<div class="text-3xl italic">Webseite</div>
+					<a
+						href="/events/kalender"
+						class="flex items-center gap-2 text-xl no-underline hover:underline"
+					>
+						<Fa icon={faChevronRight} />Kalender</a
+					>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="flex justify-center py-12 xl:hidden">
+		<img alt="Instagram Screenshot" class=" h-[25rem] rotate-6" src={iphoneInstagram} />
+	</section>
+
+	<section class="xl:pt-24">
+		<h1 class="font-caveat text-center normal-case">Wir freuen uns von dir zu hören!</h1>
+
+		<div class="grid gap-x-4 text-xl xl:grid-cols-[1r_2fr]">
+			<p class="xl:justify-self-end">Egal ob du…</p>
+			<p></p>
+			<p class="xl:col-start-2">...mehr über uns wissen möchtest.</p>
+			<p class="xl:col-start-2">...Fragen zum christlichen Glauben hast.</p>
+			<p class="xl:col-start-2">
+				...neu in Karlsruhe bist und Infos über Stadt, Gemeinden, etc. brauchst
+			</p>
+			<p class="xl:col-start-2">
+				...du gerne in den E-Mail-Verteiler oder die Signal Gruppen aufgenommen werden möchtest.
+			</p>
+		</div>
+	</section>
+
+	<section id="form-section" class="pt-24 xl:px-80">
+		<h2 class="text-center max-sm:text-3xl">Kontaktformular</h2>
 		<form id="form" class="flex flex-col gap-6" on:submit|preventDefault={sendMail}>
 			<TextInput name="name" label="Name" required />
 			<TextInput name="subject" label="Betreff" required />
@@ -73,20 +153,5 @@
 		{#if success}
 			<p class="font-bold">Vielen Dank für deine Kontaktaufnahme. Wir melden uns!</p>
 		{/if}
-	</div>
-
-	<div class="flex flex-col gap-6 px-4 xl:px-80">
-		<h1 class="text-5xl font-bold uppercase">Unsere Adresse</h1>
-		<p>Meistens treffen wir uns in der Christlichen Gemeinde (CG). Die Adresse lautet:</p>
-		<p>Reinhold-Frank-Straße 44A<br /> 76133 Karlsruhe</p>
-
-		<iframe
-			title="Karte mit Standort der Christlichen Gemeinde Karlsruhe"
-			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1165.7704409863782!2d8.386977565885125!3d49.00932776250289!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479706582b62df3b%3A0x68be4b2492cb5f0f!2sReinhold-Frank-Stra%C3%9Fe%2044A%2C%2076133%20Karlsruhe!5e0!3m2!1sen!2sde!4v1713252458894!5m2!1sen!2sde"
-			height="450"
-			style="border:0;"
-			loading="lazy"
-			referrerpolicy="no-referrer-when-downgrade"
-		></iframe>
-	</div>
+	</section>
 </main>
