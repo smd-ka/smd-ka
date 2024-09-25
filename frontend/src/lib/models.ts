@@ -28,6 +28,7 @@ export type saftRegistration = {
 	paid?: boolean;
 	user?: string;
 	name: string;
+	surname: string;
 	email: string;
 	phonenumber: string;
 	takes_car: boolean;
