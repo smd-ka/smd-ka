@@ -5,6 +5,10 @@
 	import TextInput from '$lib/components/forms/TextInput.svelte';
 	import { pb } from '$lib/pocketbase';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
+	import { faSignalMessenger, faInstagram } from '@fortawesome/free-brands-svg-icons';
+	import Fa from 'svelte-fa';
+	import { faEnvelope, faGlobe } from '@fortawesome/free-solid-svg-icons';
+	import rightArrow from '$lib/assets/pages/about/kontakt/right-arrow-handdrawn.svg';
 
 	let success = false;
 	let error = false;
@@ -27,66 +31,77 @@
 	}
 </script>
 
-<main class="container mx-auto flex flex-col gap-24 py-24 text-lg">
-	<div class="flex flex-col gap-6 px-4 xl:px-80">
-		<h1 class="text-5xl font-bold uppercase">Kontakt aufnehmen</h1>
+<main class="container mx-auto pb-24 pt-12 text-lg">
+	<div class="px-4 xl:px-60">
+		<section class="text-center text-xl">
+			<div class="flex items-center justify-center">
+				<h1 class="pb-0">Verbinde dich</h1>
+				<img alt="rechter Pfeil" class="mx-4 w-28" src={rightArrow} />
+				<h1 class="pb-0">mit uns</h1>
+			</div>
 
-		<div>
-			<h2 class="text-3xl font-bold">Gerne kannst du dich bei uns melden wenn du...</h2>
-			<p>… Genaueres zu unserem nächsten Treffen wissen möchtest.</p>
-			<p>… regelmäßige Updates über unseren E-Mail-Verteiler erhalten möchtest.</p>
-			<p>… ein ganz anderes Anliegen hast.</p>
 			<p>
-				Nutze dazu einfach das unten stehende Kontaktformular oder schreib uns eine E-Mail
-				<a class="text-primary" href="mailto:leiter@smd-karlsruhe.de">leiter@smd-karlsruhe.de</a>.
+				Egal, ob du mehr über uns wissen möchtest, Fragen zum christlichen Glauben hast, neu in
+				Karlsruhe bist und Infos über Stadt, Gemeinden, etc. brauchst, du einen Hauskreis suchst
+				oder Teil unserer Signal-Gruppe werden willst, wir sind für dich da!
 			</p>
-		</div>
+			<p class="my-4">Du darfst Dich gerne jederzeit bei uns melden!</p>
+		</section>
 
-		<p>
-			Solltest du auf der Suche nach einer Wohnung bzw. einem WG-Zimmer in Karlsruhe sein, dann
-			schau doch mal auf
-			<a class="text-primary whitespace-nowrap" href="https://kaheim.de">KA-Heim</a> vorbei.
-		</p>
+		<section class="grid justify-center">
+			<h2 class="text-center normal-case">Nichts mehr verpassen!</h2>
 
-		<h2 class="text-3xl font-bold">Kontaktformular</h2>
-		<form id="form" class="flex flex-col gap-6" on:submit|preventDefault={sendMail}>
-			<TextInput name="name" label="Name" required />
-			<TextInput name="subject" label="Betreff" required />
-			<EmailInput name="email" label="Deine E-Mail-Addresse" required />
-			<TextArea name="message" label="Deine Nachricht" />
-			<CheckboxInput
-				id="datenschutz"
-				label="Ich bin damit einverstanden, dass meine Daten zur Bearbeitung meines Anliegens verwendet werden."
-				required
-			/>
-			{#if error}
-				<p class="text-red-500">Es ist ein Fehler aufgetreten. Bitte versuche es erneut.</p>
-			{/if}
+			<div class="grid grid-cols-[2rem_1fr] gap-x-8 gap-y-4 text-3xl">
+				<Fa icon={faSignalMessenger} /> Signal Gruppen
+				<Fa icon={faEnvelope} /> E-Mail-Verteiler
+				<Fa icon={faInstagram} /> Instagram
+				<Fa icon={faGlobe} /> Webseite
+			</div>
+		</section>
 
-			<button disabled={loading} type="submit" class="w-fit bg-black p-4 text-white">
-				{#if loading}
-					<img class="absolute left-2 h-8" src={loadingSpinner} alt="loading" />
+		<section class="pt-24">
+			<h1 class="font-caveat text-center normal-case">Wir freuen uns von dir zu hören!</h1>
+
+			<div class="grid grid-cols-[1r_2fr] gap-x-4 text-xl">
+				<p class="justify-self-end">Egal ob du…</p>
+				<p></p>
+				<p class="col-start-2">...mehr über uns wissen möchtest.</p>
+				<p class="col-start-2">...Fragen zum christlichen Glauben hast.</p>
+				<p class="col-start-2">
+					...neu in Karlsruhe bist und Infos über Stadt, Gemeinden, etc. brauchst
+				</p>
+				<p class="col-start-2">
+					...du gerne in den E-Mail-Verteiler oder die Signal Gruppen aufgenommen werden möchtest.
+				</p>
+			</div>
+		</section>
+
+		<section class="pt-12">
+			<h2 class="text-3xl font-bold">Kontaktformular</h2>
+			<form id="form" class="flex flex-col gap-6" on:submit|preventDefault={sendMail}>
+				<TextInput name="name" label="Name" required />
+				<TextInput name="subject" label="Betreff" required />
+				<EmailInput name="email" label="Deine E-Mail-Addresse" required />
+				<TextArea name="message" label="Deine Nachricht" />
+				<CheckboxInput
+					id="datenschutz"
+					label="Ich bin damit einverstanden, dass meine Daten zur Bearbeitung meines Anliegens verwendet werden."
+					required
+				/>
+				{#if error}
+					<p class="text-red-500">Es ist ein Fehler aufgetreten. Bitte versuche es erneut.</p>
 				{/if}
-				Abschicken</button
-			>
-		</form>
-		{#if success}
-			<p class="font-bold">Vielen Dank für deine Kontaktaufnahme. Wir melden uns!</p>
-		{/if}
-	</div>
 
-	<div class="flex flex-col gap-6 px-4 xl:px-80">
-		<h1 class="text-5xl font-bold uppercase">Unsere Adresse</h1>
-		<p>Meistens treffen wir uns in der Christlichen Gemeinde (CG). Die Adresse lautet:</p>
-		<p>Reinhold-Frank-Straße 44A<br /> 76133 Karlsruhe</p>
-
-		<iframe
-			title="Karte mit Standort der Christlichen Gemeinde Karlsruhe"
-			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1165.7704409863782!2d8.386977565885125!3d49.00932776250289!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479706582b62df3b%3A0x68be4b2492cb5f0f!2sReinhold-Frank-Stra%C3%9Fe%2044A%2C%2076133%20Karlsruhe!5e0!3m2!1sen!2sde!4v1713252458894!5m2!1sen!2sde"
-			height="450"
-			style="border:0;"
-			loading="lazy"
-			referrerpolicy="no-referrer-when-downgrade"
-		></iframe>
+				<button disabled={loading} type="submit" class="w-fit bg-black p-4 text-white">
+					{#if loading}
+						<img class="absolute left-2 h-8" src={loadingSpinner} alt="loading" />
+					{/if}
+					Abschicken</button
+				>
+			</form>
+			{#if success}
+				<p class="font-bold">Vielen Dank für deine Kontaktaufnahme. Wir melden uns!</p>
+			{/if}
+		</section>
 	</div>
 </main>
