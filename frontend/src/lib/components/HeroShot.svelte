@@ -31,7 +31,7 @@
 <section id="header_section" class="{height} -mb-[72px]">
 	<div
 		id="header_image"
-		class=" absolute top-0 {height} w-full bg-red-300 bg-cover {bgPosition}"
+		class=" absolute top-0 {height} w-full bg-cover {bgPosition}"
 		style="background-image: url({imgSrc});"
 	></div>
 	<slot />
