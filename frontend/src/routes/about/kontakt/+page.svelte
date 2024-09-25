@@ -39,10 +39,12 @@
 
 <main class="container mx-auto grid px-4 pb-24 pt-12 text-lg">
 	<section class="text-center text-xl xl:px-60">
-		<div class="flex items-center justify-center">
-			<h1 class="pb-0">Verbinde dich</h1>
-			<img alt="rechter Pfeil" class="mx-4 w-28" src={rightArrow} />
-			<h1 class="pb-0">mit uns</h1>
+		<div class="flex flex-wrap items-center justify-center">
+			<h1 class="pb-0 max-sm:text-4xl">Verbinde dich</h1>
+			<div class="flex items-center">
+				<img alt="rechter Pfeil" class="mx-4 w-28" src={rightArrow} />
+				<h1 class="pb-0 max-sm:text-4xl">mit uns</h1>
+			</div>
 		</div>
 
 		<p>
@@ -53,11 +55,15 @@
 		<p class="my-4">Du darfst Dich gerne jederzeit bei uns <a href="#form-section">melden!</a></p>
 	</section>
 
-	<section class="grid grid-cols-2 items-center justify-center">
-		<img alt="Instagram Screenshot" class="mx-4 h-[50rem] rotate-6" src={iphoneInstagram} />
+	<section class="grid items-center justify-center xl:grid-cols-2">
+		<img
+			alt="Instagram Screenshot"
+			class="mx-4 h-[50rem] rotate-6 max-xl:hidden"
+			src={iphoneInstagram}
+		/>
 
 		<div>
-			<h2 class="normal-case">Nichts mehr verpassen!</h2>
+			<h2 class="normal-case max-xl:text-center">Nichts mehr verpassen!</h2>
 
 			<div class="grid grid-cols-[3rem_1fr] items-center gap-x-8 gap-y-4 text-3xl">
 				<Fa class="text-5xl" icon={faSignalMessenger} />
@@ -100,26 +106,29 @@
 			</div>
 		</div>
 	</section>
+	<section class="flex justify-center py-12 xl:hidden">
+		<img alt="Instagram Screenshot" class=" h-[25rem] rotate-6" src={iphoneInstagram} />
+	</section>
 
-	<section class="pt-24">
+	<section class="xl:pt-24">
 		<h1 class="font-caveat text-center normal-case">Wir freuen uns von dir zu hören!</h1>
 
-		<div class="grid grid-cols-[1r_2fr] gap-x-4 text-xl">
-			<p class="justify-self-end">Egal ob du…</p>
+		<div class="grid gap-x-4 text-xl xl:grid-cols-[1r_2fr]">
+			<p class="xl:justify-self-end">Egal ob du…</p>
 			<p></p>
-			<p class="col-start-2">...mehr über uns wissen möchtest.</p>
-			<p class="col-start-2">...Fragen zum christlichen Glauben hast.</p>
-			<p class="col-start-2">
+			<p class="xl:col-start-2">...mehr über uns wissen möchtest.</p>
+			<p class="xl:col-start-2">...Fragen zum christlichen Glauben hast.</p>
+			<p class="xl:col-start-2">
 				...neu in Karlsruhe bist und Infos über Stadt, Gemeinden, etc. brauchst
 			</p>
-			<p class="col-start-2">
+			<p class="xl:col-start-2">
 				...du gerne in den E-Mail-Verteiler oder die Signal Gruppen aufgenommen werden möchtest.
 			</p>
 		</div>
 	</section>
 
 	<section id="form-section" class="pt-24 xl:px-80">
-		<h2 class="text-center">Kontaktformular</h2>
+		<h2 class="text-center max-sm:text-3xl">Kontaktformular</h2>
 		<form id="form" class="flex flex-col gap-6" on:submit|preventDefault={sendMail}>
 			<TextInput name="name" label="Name" required />
 			<TextInput name="subject" label="Betreff" required />
@@ -146,9 +155,3 @@
 		{/if}
 	</section>
 </main>
-
-<style>
-	* {
-		@apply outline outline-red-500;
-	}
-</style>
