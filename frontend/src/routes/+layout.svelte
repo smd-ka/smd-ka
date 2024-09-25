@@ -274,7 +274,10 @@
 					</div>
 
 					<div class="flex gap-4 max-md:flex-col max-md:items-end md:items-center md:justify-end">
-						<a href="https://www.instagram.com/smd_karlsruhe/" class="flex items-center gap-4">
+						<a
+							href="https://www.instagram.com/smd_karlsruhe/"
+							class="flex items-center gap-4 text-3xl"
+						>
 							<Fa icon={faInstagram} />
 						</a>
 						<a class="pr-1 text-3xl" href="mailto:leiter@smd-karlsruhe.de">
