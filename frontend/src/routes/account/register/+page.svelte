@@ -67,7 +67,7 @@
 <main class="flex justify-center py-12">
 	<form
 		id="form"
-		class="card mt-8 grid min-w-[24rem] gap-4 shadow-md"
+		class=" mt-8 grid w-full max-w-[28rem] gap-4 p-8 md:rounded-md md:border"
 		on:submit|preventDefault={register}
 	>
 		<div class="flex justify-center text-7xl">
