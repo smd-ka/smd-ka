@@ -7,6 +7,8 @@
 	import type { saftRegistration } from '$lib/models';
 	import EmailInputField from '$lib/components/forms/EmailInput.svelte';
 	import TelephoneInputField from '$lib/components/forms/TelephoneInputField.svelte';
+	import { PUBLIC_SEMESTER } from '$env/static/public';
+	import GenderInput from '$lib/components/forms/GenderInput.svelte';
 
 	const ticketValues = [
 		'Deutschlandticket/Jugendticket BW',
@@ -28,6 +30,7 @@
 	let form: saftRegistration = {
 		user: pb.authStore.model?.id,
 		name: '',
+		surname: '',
 		email: '',
 		phonenumber: '',
 		takes_car: false,
@@ -67,23 +70,19 @@
 				<p>Wir haben dir eine Bestätigung per Email zukommen lassen ;).</p>
 			</div>
 		{:else}
-			<h1 class="text-5xl font-bold uppercase">SAFT Anmeldung SoSe 2024</h1>
+			<h1 class="pb-0 text-5xl font-bold uppercase">SAFT Anmeldung</h1>
+			<span class="text-xl font-bold text-gray-600">im {PUBLIC_SEMESTER}</span>
 			{#if loggedIn}
 				<p class="text-primary py-6 text-xl">
 					Schön, dass du dabei bist {pb.authStore.model?.name}!
 				</p>
 			{/if}
-
-			<form class="my-4 flex flex-col gap-4" on:submit={signup}>
+			<form id="form" class="my-4 flex flex-col gap-4" on:submit|preventDefault={signup}>
 				{#if !loggedIn}
+					<h3>Und du bist?</h3>
 					<InputField id="name" bind:value={form.name} label="Name" disabled={loading} required />
-					<EmailInputField
-						id="email"
-						bind:value={form.email}
-						label="E-Mail-Adresse"
-						disabled={loading}
-						required
-					/>
+					<InputField id="surname" label="Nachname" disabled={loading} required />
+					<EmailInputField id="email" label="E-Mail-Adresse" disabled={loading} required />
 					<TelephoneInputField
 						id="phonenumber"
 						bind:value={form.phonenumber}
@@ -91,23 +90,21 @@
 						disabled={loading}
 						required
 					/>
+					<GenderInput />
+
+					<select class="rounded-md border-2 py-3" required>
+						<option disabled selected value="">Ich komme aus ...</option>
+						<option value="Karlsruhe">Karlsruhe</option>
+						<option value="Landau">Landau</option>
+					</select>
 				{/if}
-				<h3 class="text-3xl font-bold uppercase">Wie möchtest du anreisen?</h3>
+
+				<h3>Wie möchtest du anreisen?</h3>
 
 				<div>
 					<p>
-						Die <strong class="font-bold">Bahnanreise</strong> wird um 16:30 vom Hauptbahnhof
-						starten.
-						<br />
-						Verbindung:
+						Die <strong class="font-bold">Bahnanreise</strong> wird gegen 16:30 vom Hauptbahnhof starten.
 					</p>
-					<ul class="list-disc pl-4">
-						<li>16:32 Gl.12 von Karlsruhe Hbf nach Stuttgart Hbf IRE1; Ausstieg Mühlacker 17:02</li>
-						<li>
-							17:08 Weiterfahrt in Mühlacker mit den Bus 707 in Richtung Bahnhof, Vaihingen an der
-							Enz Stuttgart; Austieg Mühlhausen Schloßstraße 17:17
-						</li>
-					</ul>
 
 					<p>
 						Die <strong class="font-bold">Fahrradanreise</strong> wird gegen 13:30 aus der Stadtmitte
