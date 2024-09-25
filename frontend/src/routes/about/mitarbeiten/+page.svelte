@@ -46,15 +46,3 @@
 		</div>
 	</div>
 </main>
-
-<style>
-	.menu {
-		display: grid;
-		grid-template-rows: 0fr;
-		transition: grid-template-rows 400ms;
-	}
-
-	.open {
-		grid-template-rows: 1fr;
-	}
-</style>
