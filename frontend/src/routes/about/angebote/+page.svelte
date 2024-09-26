@@ -10,21 +10,25 @@
 
 	const slides = [
 		{
-			title: 'SMD Abend',
+			id: 'smd-abend',
+			title: 'SMD-Abend',
 			subtitle: 'Jeden zweiten Dienstag in großer Runde.',
 			image: SMDAbend
 		},
 		{
+			id: 'hoersaalvortrag',
 			title: 'Hörsaalvortrag',
 			subtitle: 'Glaube und Wissenschaft. Ein Widerspruch?',
 			image: Hoersaalvortrag
 		},
 		{
+			id: 'gebetsfruehstueck',
 			title: 'Gebetsfrühstück',
 			subtitle: 'Gemeinsam mit Gott in den Tag starten.',
 			image: Gebetsfruehstueck
 		},
 		{
+			id: 'saft',
 			title: 'SAFT',
 			subtitle: 'Semesteranfangsfreizeit: Gemeinsam ins neue Semester starten.',
 			image: SAFT
@@ -61,7 +65,7 @@
 					<div class="w-fit text-center text-white backdrop-filter">
 						<h1 class="pb-0">{slide.title}</h1>
 						<p class="font-caveat text-xl md:text-3xl">{slide.subtitle}</p>
-						<a class="flex items-center justify-center gap-2" href="hoersaalvortrag">
+						<a class="flex items-center justify-center gap-2" href="# + {slide.id}">
 							Mehr erfahren <Fa icon={faArrowDown} />
 						</a>
 					</div>
@@ -77,14 +81,95 @@
 	</Carousel>
 {/if}
 
-<section>
-	<div class="flex justify-center p-8">
-		<a
-			href="/events/kalender"
-			class="bg-primary flex items-center gap-2 rounded-sm px-4 py-2 text-white no-underline"
-		>
-			<Fa icon={faChevronRight} />
-			alle aktuellen Termine
-		</a>
-	</div>
-</section>
+<main class="container mx-auto grid gap-8 px-4">
+	<section>
+		<div class="flex justify-center p-8">
+			<a
+				href="/events/kalender"
+				class="bg-primary flex items-center gap-2 rounded-sm px-4 py-2 text-white no-underline"
+			>
+				<Fa icon={faChevronRight} />
+				alle aktuellen Termine
+			</a>
+		</div>
+	</section>
+
+	<section>
+		<h3 class="text-primary pb-2">Es gibt vieles zu entdecken ...</h3>
+		<p>
+			... und wie findet man da jetzt <b>Anschluss?</b> Am besten einfach beim nächsten Treffen in Person
+			vorbeischauen. Besonders empfehlen wir dir unsere SMD-Abende, die (unterm Semester) alle zwei Wochen
+			stattfinden. Hier ist es am einfachsten, SMDler kennenzulernen und sich in die Gemeinschaft einzufinden.
+			Selbstverständlich können wir auch alle anderen Veranstaltungen nur wärmstens empfehlen. Wir freuen
+			uns auf dich!
+		</p>
+		<div class="flex justify-center gap-16 py-4 text-2xl">
+			<a
+				class="bg-primary flex items-center gap-2 px-4 py-2 text-white no-underline hover:underline"
+				href="/about/konakt"
+			>
+				<Fa icon={faChevronRight} />
+				Bleib in Kontakt</a
+			>
+			<a
+				class="border-grey text-grey flex items-center gap-2 border-2 px-4 py-2 no-underline hover:underline"
+				href="/about/mitarbeiten"
+			>
+				<Fa icon={faChevronRight} />
+
+				Bring deine Ideen ein.</a
+			>
+		</div>
+	</section>
+
+	<section class="grid gap-8">
+		<div>
+			<h2 class="pb-0">Weitere Infos</h2>
+			<p class="text-gray-600">Unsere Angebote en Detail</p>
+		</div>
+
+		<div id="smd-abend" class="grid gap-2">
+			<h3>SMD-Abend</h3>
+			<p>
+				Alle zwei Wochen treffen wir uns dienstagabends alle zusammen, um Gott zu ehren, bei gutem
+				Essen oder Snacks Gemeinschaft zu haben und einen Vortrag zu hören, nach dem man die
+				Möglichkeit hat, in weiteren Gesprächen tiefer zu gehen oder einfach den Abend gemütlich
+				ausklingen zu lassen. Die Vorträge zu verschiedenen Themen werden gehalten von ausgewählten
+				(oft externen) Referenten. Für zeitliche und örtliche Details sieh dir gerne den Kalender
+				an.
+			</p>
+			<a
+				class="bg-primary flex w-fit items-center gap-2 px-4 py-2 text-white"
+				href="/events/kalender"
+			>
+				<Fa icon={faChevronRight} />
+				Zum Kalender
+			</a>
+		</div>
+		<div class="grid gap-2">
+			<h3>Hörsaalvortrag</h3>
+			<p>
+				Ungefähr ein- bis zweimal im Jahr veranstalten wir, oft zusammen mit dem SfC (Studierende
+				für Christus), einen Hörsaalvortrag, der - wie soll es auch anders sein - in einem Hörsaal
+				direkt am Campus stattfindet. Für die spannenden Vortragsthemen laden wir kompetente
+				Referenten ein, die für jedwede Fragen Rede und Antwort stehen.
+			</p>
+		</div>
+		<div id="saft" class="grid gap-2">
+			<h3>SAFT</h3>
+			<p>
+				Die SAFT (SemesterAnfangsFreizeiT - ja, SMD ist kreativ; wir könnten auch ZKM heißen
+				[Ziemlich Kreative Menschen; dies ist ein Karlsruher Wortwitz, Anm. d. Verf.]) findet immer
+				zu Beginn eines jeden Semesters statt und ist eine super Gelegenheit, mal für mehr als nur
+				2-3 Stunden in einem intimeren Rahmen die Gruppe kennenzulernen. Für ein Wochenende fahren
+				wir an einen Ort, an dem wir nicht andauernd an die nächste Klausur denken müssen, sondern
+				die Gemeinschaft und fantastisches Essen genießen. Auch hier wird uns ein Referent
+				thematisch durch das Wochenende begleiten.
+			</p>
+			<a class="bg-primary flex w-fit items-center gap-2 px-4 py-2 text-white" href="/events/saft">
+				<Fa icon={faChevronRight} />
+				Weitere Infos zur nächsten SAFT
+			</a>
+		</div>
+	</section>
+</main>
