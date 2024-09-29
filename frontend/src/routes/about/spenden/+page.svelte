@@ -12,7 +12,7 @@
 			unsere internationale Arbeit: das King's Café.
 		</p>
 		<p class="font-bold">
-			Wir danken dir für deine Spende, sie hilft uns dabei auch in Zukunft diese wichtige Arbeit
+			Wir danken dir für deine Spende, sie hilft uns dabei, auch in Zukunft diese wichtige Arbeit
 			fortzuführen.
 		</p>
 		<div class=" grid gap-8 py-12 md:grid-cols-2">
@@ -37,11 +37,11 @@
 		<h1 class="text-center max-sm:text-4xl">Freundesbrief</h1>
 		<p>
 			Du fühlst dich mit der SMD-Karlsruhe verbunden und bekommst noch keinen Freundesbrief? Dann
-			lass dich unbedingt auf den Verteiler setzten! Denn einmal im Semester verschicken wir an
-			alle, die möchten einen Freundesbrief. Darin berichten wir über die Arbeit der SMD-Karlsruhe
-			und geben einen Einblick in unsere Gruppe. Dort teilen wir Dankes und Gebetsanliegen sowie die
-			neusten Infos. Wenn du auch einen Freundesbrief bekommen möchtest, dann schreib gerne unseren
-			Leiter eine kurze E-Mail an
+			lass dich unbedingt auf den Verteiler Setzten! Denn einmal im Semester verschicken wir an
+			alle, die möchten, einen Freundesbrief. Darin berichten wir über die Arbeit der SMD-Karlsruhe
+			und geben einen Einblick in unsere Gruppe. Dort teilen wir Dankes- und Gebetsanliegen sowie
+			die neusten Infos. Wenn du auch einen Freundesbrief bekommen möchtest, dann schreib gerne
+			unseren Leitern eine kurze E-Mail an
 			<a class="text-primary" href="mailto:leiter@smd-karlsruhe.de">leiter@smd-karlsruhe.de</a>.
 		</p>
 	</section>
