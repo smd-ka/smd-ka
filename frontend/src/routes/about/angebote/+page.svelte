@@ -55,7 +55,7 @@
 			<button on:click={prev}> <Fa icon={faChevronLeft} /></button>
 		</div>
 		{#each slides as slide}
-			<div class="relative h-[50svh] xl:h-[75svh]">
+			<div class="relative h-[50svh] xl:h-[76svh]">
 				<img
 					src={slide.image}
 					class="h-full w-full object-cover object-center brightness-90"
@@ -83,14 +83,11 @@
 
 <main class="container mx-auto grid gap-8 px-4">
 	<section>
-		<div class="flex justify-center p-8">
-			<a
-				href="/events/kalender"
-				class="bg-primary flex items-center gap-2 rounded-sm px-4 py-2 text-white no-underline"
-			>
-				<Fa icon={faChevronRight} />
-				alle aktuellen Termine
-			</a>
+		<div class="grid justify-center justify-items-center p-8">
+			<h3 class="text-center max-md:text-2xl">
+				Neugierig? Was aktuell läuft siehst du im
+				<a href="/events/kalender" class="text-primary"> Kalender. </a>
+			</h3>
 		</div>
 	</section>
 
@@ -103,10 +100,10 @@
 			Selbstverständlich können wir auch alle anderen Veranstaltungen nur wärmstens empfehlen. Wir freuen
 			uns auf dich!
 		</p>
-		<div class="flex justify-center gap-16 py-4 text-2xl">
+		<div class="mx-auto grid max-w-fit gap-4 py-4 text-2xl md:grid-cols-2 md:gap-16">
 			<a
 				class="bg-primary flex items-center gap-2 px-4 py-2 text-white no-underline hover:underline"
-				href="/about/konakt"
+				href="/about/kontakt"
 			>
 				<Fa icon={faChevronRight} />
 				Bleib in Kontakt</a
@@ -121,7 +118,7 @@
 			>
 		</div>
 	</section>
-
+	<!-- 
 	<section class="grid gap-8">
 		<div>
 			<h2 class="pb-0">Weitere Infos</h2>
@@ -171,5 +168,5 @@
 				Weitere Infos zur nächsten SAFT
 			</a>
 		</div>
-	</section>
+	</section> -->
 </main>
