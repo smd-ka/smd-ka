@@ -26,7 +26,6 @@
 	import { blur, slide } from 'svelte/transition';
 	import { headerImageHeight } from '$lib/stores';
 	import { sineInOut } from 'svelte/easing';
-	import { base } from '$app/paths';
 
 	let showMenu = false;
 	let src = getAvatarUrl();
