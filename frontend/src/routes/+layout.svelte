@@ -48,10 +48,10 @@
 					name: 'Wer wir sind',
 					url: '/about/us'
 				},
-				// {
-				// 	name: 'Was wir machen',
-				// 	url: '/about/angebote'
-				// },
+				{
+					name: 'Was wir machen',
+					url: '/about/angebote'
+				},
 				{
 					name: 'Mitarbeiten',
 					url: '/about/mitarbeiten'
@@ -107,7 +107,7 @@
 
 <svelte:window bind:scrollY />
 <main class="flex min-h-screen flex-col">
-	<nav class=" sticky top-0 z-50 flex flex-[0_1_auto] flex-col shadow-md">
+	<nav class="sticky top-0 z-50 flex flex-[0_1_auto] flex-col shadow-md">
 		<div
 			class="{scrollY > $headerImageHeight - navbarHeight
 				? 'bg-grey'
@@ -178,11 +178,12 @@
 
 		<div class="bg-primary h-1"></div>
 
+		<!-- Navigation for small screens -->
 		{#if showMenu}
 			<div
 				transition:slide={{ duration: 200, easing: sineInOut }}
 				on:click={() => (showMenu = false)}
-				class="flex h-[100svh] flex-col gap-4 pt-12 text-center text-3xl text-white backdrop-blur-xl backdrop-brightness-50 lg:hidden"
+				class="flex h-[100svh] flex-col gap-4 pt-6 text-center text-3xl text-white backdrop-blur-xl backdrop-brightness-50 lg:hidden"
 			>
 				{#each tabs as tab}
 					<div>
