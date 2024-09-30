@@ -1,14 +1,36 @@
 <script>
 	import Carousel from 'svelte-carousel';
+	// Needed b/c of this issue: https://github.com/vadimkorr/svelte-carousel/issues/141
+	// There is an open pull request https://github.com/vadimkorr/svelte-carousel/pull/142
+	// that fixes this issue, but it is not merged yet.
 	import { browser } from '$app/environment';
 	import SAFT from '$lib/assets/pages/about/angebote/SAFT.jpg';
 	import Hoersaalvortrag from '$lib/assets/pages/about/angebote/Hoersaalvortrag.jpg';
 	import Gebetsfruehstueck from '$lib/assets/pages/about/angebote/Gebetsfruehstueck.jpg';
 	import SMDAbend from '$lib/assets/pages/about/angebote/SMDAbend.jpg';
+	import HSMD_Freizeiten from '$lib/assets/pages/about/angebote/H-SMD_Sommerfreizeiten.png';
+	import lehramtler from '$lib/assets/pages/about/angebote/lehramtler.jpg';
+	import mentoring from '$lib/assets/pages/about/angebote/mentoring.jpg';
 	import Fa from 'svelte-fa';
-	import { faChevronLeft, faChevronRight, faArrowDown } from '@fortawesome/free-solid-svg-icons';
+	import {
+		faChevronLeft,
+		faChevronRight,
+		faArrowDown,
+		faArrowUpRightFromSquare
+	} from '@fortawesome/free-solid-svg-icons';
 
-	const slides = [
+	let carouselKarlsruhe;
+	let carouselGermany;
+
+	function prev(carousel) {
+		carousel.goToPrev();
+	}
+
+	function next(carousel) {
+		carousel.goToNext();
+	}
+
+	const slidesKarlsruhe = [
 		{
 			id: 'smd-abend',
 			title: 'SMD-Abend',
@@ -34,27 +56,36 @@
 			image: SAFT
 		}
 	];
-	let carousel;
 
-	function prev() {
-		carousel.goToPrev();
-	}
-
-	function next() {
-		carousel.goToNext();
-	}
+	const slidesGermany = [
+		{
+			title: 'SMD Freizeiten',
+			image: HSMD_Freizeiten,
+			text: 'Die Hochschul-SMD bietet dir für deine Semesterferien etliche Freizeitangebote.'
+		},
+		{
+			title: 'Refendare und junge Lehrkräfte',
+			image: lehramtler,
+			text: 'Dieses Angebot der Arbeits­gemeinschaft christlicher Pädagogen bietet Vernetzung, Unterstützung und Ermutigung für Lehramtsstudierende, Referendare und junge Lehrkräfte.'
+		},
+		{
+			title: 'Mentoring',
+			image: mentoring,
+			text: 'Das Studium ist kein Spaziergang. Besser passt wohl das Bild einer Bergtour mit Engstellen, Geröllfeldern und so manchem Auf und Ab. Da ist es gut, mit erfahrenen Bergsteigern und guter Ausrüstung in einer Seilschaft gemeinsam unterwegs zu sein.'
+		}
+	];
 </script>
 
 <!-- autoplay autoplayDuration={3500} -->
 {#if browser}
-	<Carousel class="relative " bind:this={carousel}>
+	<Carousel class="relative " bind:this={carouselKarlsruhe}>
 		<div
 			slot="prev"
 			class="absolute z-10 ml-4 flex h-full items-center text-3xl text-white lg:text-5xl"
 		>
-			<button on:click={prev}> <Fa icon={faChevronLeft} /></button>
+			<button on:click={() => prev(carouselKarlsruhe)}> <Fa icon={faChevronLeft} /></button>
 		</div>
-		{#each slides as slide}
+		{#each slidesKarlsruhe as slide}
 			<div class="relative h-[50svh] xl:h-[76svh]">
 				<img
 					src={slide.image}
@@ -76,7 +107,7 @@
 			slot="next"
 			class="absolute right-0 z-10 mr-4 flex h-full items-center text-3xl text-white lg:text-5xl"
 		>
-			<button on:click={next}> <Fa icon={faChevronRight} /></button>
+			<button on:click={() => next(carouselKarlsruhe)}> <Fa icon={faChevronRight} /></button>
 		</div>
 	</Carousel>
 {/if}
@@ -118,7 +149,73 @@
 			>
 		</div>
 	</section>
-	<!-- 
+</main>
+
+<section class="py-24">
+	<h1 class="text-center">Überregionales</h1>
+
+	<!-- Carousel for mobile -->
+	{#if browser}
+		<div class="md:hidden">
+			<Carousel bind:this={carouselGermany}>
+				<div slot="prev" class="text-grey grid items-center p-4 text-3xl lg:text-5xl">
+					<button on:click={() => prev(carouselGermany)}> <Fa icon={faChevronLeft} /></button>
+				</div>
+				{#each slidesGermany as slide}
+					<div class="bg-background-gray">
+						<img
+							src={slide.image}
+							class="h-48 w-full object-cover object-center"
+							alt="Sommerfreizeiten"
+						/>
+						<a
+							href="https://www.smd.org/hochschul-smd/veranstaltungen/sommerfreizeiten"
+							class="text-primary px-2 py-1 no-underline hover:underline"
+							target="_blank"
+						>
+							<h3 class="mx-4 flex flex-wrap items-center gap-2">
+								{slide.title}
+								<Fa class="text-xl" icon={faArrowUpRightFromSquare} />
+							</h3>
+						</a>
+						<p class="px-4 py-2">
+							{slide.text}
+						</p>
+					</div>
+				{/each}
+				<div slot="next" class="text-grey grid items-center p-4 text-3xl lg:text-5xl">
+					<button on:click={() => next(carouselGermany)}> <Fa icon={faChevronRight} /></button>
+				</div>
+			</Carousel>
+		</div>
+	{/if}
+
+	<div class="container mx-4 mx-auto grid grid-cols-3 gap-4 max-md:hidden">
+		{#each slidesGermany as slide}
+			<div class="bg-background-gray">
+				<img
+					src={slide.image}
+					class="h-48 w-full object-cover object-center"
+					alt="Sommerfreizeiten"
+				/>
+				<a
+					href="https://www.smd.org/hochschul-smd/veranstaltungen/sommerfreizeiten"
+					class="text-primary px-2 py-1 no-underline hover:underline"
+					target="_blank"
+				>
+					<h3 class="mx-4 flex flex-wrap items-center gap-2">
+						{slide.title}
+						<Fa class="text-xl" icon={faArrowUpRightFromSquare} />
+					</h3>
+				</a>
+				<p class="px-4 py-2">
+					{slide.text}
+				</p>
+			</div>
+		{/each}
+	</div>
+</section>
+<!-- 
 	<section class="grid gap-8">
 		<div>
 			<h2 class="pb-0">Weitere Infos</h2>
@@ -169,4 +266,3 @@
 			</a>
 		</div>
 	</section> -->
-</main>
