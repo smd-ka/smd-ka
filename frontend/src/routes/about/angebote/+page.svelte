@@ -4,13 +4,6 @@
 	// There is an open pull request https://github.com/vadimkorr/svelte-carousel/pull/142
 	// that fixes this issue, but it is not merged yet.
 	import { browser } from '$app/environment';
-	import SAFT from '$lib/assets/pages/about/angebote/SAFT.jpg';
-	import Hoersaalvortrag from '$lib/assets/pages/about/angebote/Hoersaalvortrag.jpg';
-	import Gebetsfruehstueck from '$lib/assets/pages/about/angebote/Gebetsfruehstueck.jpg';
-	import SMDAbend from '$lib/assets/pages/about/angebote/SMDAbend.jpg';
-	import HSMD_Freizeiten from '$lib/assets/pages/about/angebote/H-SMD_Sommerfreizeiten.png';
-	import lehramtler from '$lib/assets/pages/about/angebote/lehramtler.jpg';
-	import mentoring from '$lib/assets/pages/about/angebote/mentoring.jpg';
 
 	import Fa from 'svelte-fa';
 	import {
@@ -22,6 +15,7 @@
 	} from '@fortawesome/free-solid-svg-icons';
 	import { sineInOut } from 'svelte/easing';
 	import { fade } from 'svelte/transition';
+	import type { PageData } from '../$types';
 
 	let carouselKarlsruhe;
 	let carouselGermany;
@@ -46,57 +40,7 @@
 		carousel.goToNext();
 	}
 
-	const slidesKarlsruhe = [
-		{
-			id: 1,
-			title: 'SMD-Abend',
-			subtitle: 'Jeden zweiten Dienstag in großer Runde.',
-			image: SMDAbend,
-			description:
-				'Alle zwei Wochen treffen wir uns dienstagabends alle zusammen, um Gott zu ehren, bei gutem Essen oder Snacks Gemeinschaft zu haben und einen Vortrag zu hören, nach dem man die Möglichkeit hat, in weiteren Gesprächen tiefer zu gehen oder einfach den Abend gemütlich ausklingen zu lassen. Die Vorträge zu verschiedenen Themen werden gehalten von ausgewählten (oft externen) Referenten. Für zeitliche und örtliche Details sieh dir gerne den Kalender an.'
-		},
-		{
-			id: 2,
-			title: 'Hörsaalvortrag',
-			subtitle: 'Glaube und Wissenschaft. Ein Widerspruch?',
-			image: Hoersaalvortrag,
-			description:
-				'Ungefähr ein- bis zweimal im Jahr veranstalten wir, oft zusammen mit dem SfC (Studierende für Christus), einen Hörsaalvortrag, der - wie soll es auch anders sein - in einem Hörsaal direkt am Campus stattfindet. Für die spannenden Vortragsthemen laden wir kompetente Referenten ein, die für jedwede Fragen Rede und Antwort stehen.'
-		},
-		{
-			id: 3,
-			title: 'Gebetsfrühstück',
-			subtitle: 'Gemeinsam mit Gott in den Tag starten.',
-			image: Gebetsfruehstueck,
-			description: 'Dienstags und Donnerstags gibt es ein Gebetsfrühstück.	'
-		},
-		{
-			id: 4,
-			title: 'SAFT',
-			subtitle: 'Semesteranfangsfreizeit: Gemeinsam ins neue Semester starten.',
-			image: SAFT,
-			description:
-				'Die SAFT (SemesterAnfangsFreizeiT - ja, SMD ist kreativ; wir könnten auch ZKM heißen [Ziemlich Kreative Menschen; dies ist ein Karlsruher Wortwitz, Anm. d. Verf.]) findet immer zu Beginn eines jeden Semesters statt und ist eine super Gelegenheit, mal für mehr als nur 2-3 Stunden in einem intimeren Rahmen die Gruppe kennenzulernen. Für ein Wochenende fahren wir an einen Ort, an dem wir nicht andauernd an die nächste Klausur denken müssen, sondern die Gemeinschaft und fantastisches Essen genießen. Auch hier wird uns ein Referent thematisch durch das Wochenende begleiten.'
-		}
-	];
-
-	const slidesGermany = [
-		{
-			title: 'SMD Freizeiten',
-			image: HSMD_Freizeiten,
-			text: 'Die Hochschul-SMD bietet dir für deine Semesterferien etliche Freizeitangebote.'
-		},
-		{
-			title: 'Refendare und junge Lehrkräfte',
-			image: lehramtler,
-			text: 'Dieses Angebot der Arbeits­gemeinschaft christlicher Pädagogen bietet Vernetzung, Unterstützung und Ermutigung für Lehramtsstudierende, Referendare und junge Lehrkräfte.'
-		},
-		{
-			title: 'Mentoring',
-			image: mentoring,
-			text: 'Das Studium ist kein Spaziergang. Besser passt wohl das Bild einer Bergtour mit Engstellen, Geröllfeldern und so manchem Auf und Ab. Da ist es gut, mit erfahrenen Bergsteigern und guter Ausrüstung in einer Seilschaft gemeinsam unterwegs zu sein.'
-		}
-	];
+	export let data: PageData;
 </script>
 
 <!-- autoplay autoplayDuration={3500} -->
@@ -108,7 +52,7 @@
 		>
 			<button on:click={() => prev(carouselKarlsruhe)}> <Fa icon={faChevronLeft} /></button>
 		</div>
-		{#each slidesKarlsruhe as carouselSlide}
+		{#each data.slidesKarlsruhe as carouselSlide}
 			<div>
 				<div class="relative h-[50svh] xl:h-[76svh]">
 					<img
@@ -210,14 +154,14 @@
 <section class="py-24">
 	<h1 class="text-center">Überregionales</h1>
 
-	<!-- Carousel for mobile -->
+	<!-- Carousel for screens smaller than md -->
 	{#if browser}
 		<div class="md:hidden">
 			<Carousel bind:this={carouselGermany}>
 				<div slot="prev" class="text-grey grid items-center p-4 text-3xl lg:text-5xl">
 					<button on:click={() => prev(carouselGermany)}> <Fa icon={faChevronLeft} /></button>
 				</div>
-				{#each slidesGermany as slide}
+				{#each data.slidesGermany as slide}
 					<div class="bg-background-gray">
 						<img
 							src={slide.image}
@@ -246,8 +190,9 @@
 		</div>
 	{/if}
 
-	<div class="container mx-4 mx-auto grid grid-cols-3 gap-4 max-md:hidden">
-		{#each slidesGermany as slide}
+	<!-- for screens lager than md -->
+	<div class="container mx-auto grid grid-cols-3 gap-4 max-md:hidden">
+		{#each data.slidesGermany as slide}
 			<div class="bg-background-gray">
 				<img
 					src={slide.image}
@@ -271,54 +216,3 @@
 		{/each}
 	</div>
 </section>
-<!-- 
-	<section class="grid gap-8">
-		<div>
-			<h2 class="pb-0">Weitere Infos</h2>
-			<p class="text-gray-600">Unsere Angebote en Detail</p>
-		</div>
-
-		<div id="smd-abend" class="grid gap-2">
-			<h3>SMD-Abend</h3>
-			<p>
-				Alle zwei Wochen treffen wir uns dienstagabends alle zusammen, um Gott zu ehren, bei gutem
-				Essen oder Snacks Gemeinschaft zu haben und einen Vortrag zu hören, nach dem man die
-				Möglichkeit hat, in weiteren Gesprächen tiefer zu gehen oder einfach den Abend gemütlich
-				ausklingen zu lassen. Die Vorträge zu verschiedenen Themen werden gehalten von ausgewählten
-				(oft externen) Referenten. Für zeitliche und örtliche Details sieh dir gerne den Kalender
-				an.
-			</p>
-			<a
-				class="bg-primary flex w-fit items-center gap-2 px-4 py-2 text-white"
-				href="/events/kalender"
-			>
-				<Fa icon={faChevronRight} />
-				Zum Kalender
-			</a>
-		</div>
-		<div class="grid gap-2">
-			<h3>Hörsaalvortrag</h3>
-			<p>
-				Ungefähr ein- bis zweimal im Jahr veranstalten wir, oft zusammen mit dem SfC (Studierende
-				für Christus), einen Hörsaalvortrag, der - wie soll es auch anders sein - in einem Hörsaal
-				direkt am Campus stattfindet. Für die spannenden Vortragsthemen laden wir kompetente
-				Referenten ein, die für jedwede Fragen Rede und Antwort stehen.
-			</p>
-		</div>
-		<div id="saft" class="grid gap-2">
-			<h3>SAFT</h3>
-			<p>
-				Die SAFT (SemesterAnfangsFreizeiT - ja, SMD ist kreativ; wir könnten auch ZKM heißen
-				[Ziemlich Kreative Menschen; dies ist ein Karlsruher Wortwitz, Anm. d. Verf.]) findet immer
-				zu Beginn eines jeden Semesters statt und ist eine super Gelegenheit, mal für mehr als nur
-				2-3 Stunden in einem intimeren Rahmen die Gruppe kennenzulernen. Für ein Wochenende fahren
-				wir an einen Ort, an dem wir nicht andauernd an die nächste Klausur denken müssen, sondern
-				die Gemeinschaft und fantastisches Essen genießen. Auch hier wird uns ein Referent
-				thematisch durch das Wochenende begleiten.
-			</p>
-			<a class="bg-primary flex w-fit items-center gap-2 px-4 py-2 text-white" href="/events/saft">
-				<Fa icon={faChevronRight} />
-				Weitere Infos zur nächsten SAFT
-			</a>
-		</div>
-	</section> -->
