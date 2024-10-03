@@ -69,7 +69,8 @@ export const load: PageLoad = () => {
 			title: 'Mentoring',
 			image: mentoring,
 			text: `Das Studium ist kein Spaziergang. Besser passt wohl das Bild einer Bergtour mit Engstellen, 
-            Geröllfeldern und so manchem Auf und Ab. Da ist es gut, mit erfahrenen Bergsteigern und guter Ausrüstung in einer Seilschaft gemeinsam unterwegs zu sein.`
+            Geröllfeldern und so manchem Auf und Ab. Da ist es gut, mit erfahrenen Bergsteigern und guter 
+            Ausrüstung in einer Seilschaft gemeinsam unterwegs zu sein.`
 		}
 	];
 
