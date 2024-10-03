@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Fa from 'svelte-fa/src/fa.svelte';
-	import { faLocationDot, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
+	import { faLocationDot, faCalendarDays, faLinkSlash } from '@fortawesome/free-solid-svg-icons';
 
 	import type { PageData } from '../$types';
 	import { getImageSrc } from '$lib/fetch_img';
@@ -8,10 +8,40 @@
 	// TODO add Churchhopping for this year
 	const churchHopping = [
 		{
-			date: '29. Oktober // 10:00 Uhr',
-			link: 'https://faecherkirche.de/',
-			name: 'Fächerkirche',
-			responsible: 'Frederik'
+			date: '06. Oktober // 9:40 Uhr',
+			link: 'https://www.cg-karlsruhe.de/veranstaltungen',
+			name: 'Christliche Gemeinde (CG)',
+			responsible: 'Fynn, Jona'
+		},
+		{
+			date: '27. Oktober // 11:15 Uhr',
+			link: 'https://feg-karlsruhe.de/',
+			name: 'Freie evangelische Gemeinde (FeG)',
+			responsible: 'Yannick'
+		},
+		{
+			date: '03. November // 11:00 Uhr',
+			link: 'https://treffpunkt-leben.de/',
+			name: 'Treffpunkt Leben (TL)',
+			responsible: 'Felix M.'
+		},
+		{
+			date: '10. November // 10:00 Uhr',
+			link: 'https://lgv-ettlingen.de/',
+			name: 'Liebenzeller Gemeinde Ettlingen',
+			responsible: 'Doreen, Samuel'
+		},
+		{
+			date: '17. November',
+			link: '',
+			name: '=== entfällt wegen SAFT ===',
+			responsible: '(Semesteranfangsfreizeit)'
+		},
+		{
+			date: '24. Oktober // 9:40 Uhr',
+			link: 'https://www.cg-karlsruhe.de/veranstaltungen',
+			name: 'Christliche Gemeinde (CG)',
+			responsible: 'Bettina'
 		}
 	];
 
