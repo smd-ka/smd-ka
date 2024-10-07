@@ -34,7 +34,7 @@
 		{
 			date: '17. November',
 			link: '',
-			name: '=== entfällt wegen SAFT ===',
+			name: 'entfällt wegen SAFT',
 			responsible: '(Semesteranfangsfreizeit)'
 		},
 		{
@@ -169,7 +169,7 @@
 			</p>
 		</div>
 
-		<table
+		<div
 			class="font-merriweather mt-8 grid grid-cols-[auto_auto_auto] gap-x-2 px-4 md:text-2xl xl:px-72"
 		>
 			<div class="font-bold">Datum</div>
@@ -180,8 +180,8 @@
 				<div class="col-span-full h-0.5 {i == 0 ? 'bg-gray-600' : 'bg-gray-300'}"></div>
 				<div>{hop.date}</div>
 				<a href={hop.link}>{hop.name}</a>
-				<div>{hop.responsible}</div>
+				<div class="break-all">{hop.responsible}</div>
 			{/each}
-		</table>
+		</div>
 	</section>
 </main>
