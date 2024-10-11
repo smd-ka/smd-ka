@@ -6,6 +6,8 @@ import SMDAbend from '$lib/assets/pages/about/angebote/SMDAbend.jpg';
 import HSMD_Freizeiten from '$lib/assets/pages/about/angebote/H-SMD_Sommerfreizeiten.png';
 import teachers from '$lib/assets/pages/about/angebote/lehramtler.jpg';
 import mentoring from '$lib/assets/pages/about/angebote/mentoring.jpg';
+import hauskreise from '$lib/assets/pages/about/angebote/Hauskreise.jpg';
+import MIT from '$lib/assets/pages/about/angebote/MIT.jpg';
 
 export const load: PageLoad = () => {
 	const slidesKarlsruhe = [
@@ -22,6 +24,17 @@ export const load: PageLoad = () => {
 		},
 		{
 			id: 2,
+			title: 'Hauskreise',
+			subtitle: 'Gemeinsam über den Glauben reden.',
+			image: hauskreise,
+			description: `Alle anderen zwei Wochen, abwechselnd zu den SMD-Abenden, treffen wir uns in Kleingruppen = Hauskreisen. 
+			Die bestehen meistens aus 5-8 Leuten und treffen sich immer bei einem der Teilnehmer Zuhause, 
+			wo oft zusammen gegessen wird, bevor man ins Thema eintaucht. Die Themen werden von den Hauskreisen selbst ausgesucht. 
+			Wenn du wissen möchtest, welche Hauskreise es gibt und wo du mal reinschnuppern oder einsteigen könntest, 
+			dann melde dich gerne beim Inreach-Team.`
+		},
+		{
+			id: 3,
 			title: 'Hörsaalvortrag',
 			subtitle: 'Glaube und Wissenschaft. Ein Widerspruch?',
 			image: Hoersaalvortrag,
@@ -31,15 +44,29 @@ export const load: PageLoad = () => {
                 Für die spannenden Vortragsthemen laden wir kompetente Referenten ein, 
                 die für jedwede Fragen Rede und Antwort stehen.`
 		},
-		{
-			id: 3,
-			title: 'Gebetsfrühstück',
-			subtitle: 'Gemeinsam mit Gott in den Tag starten.',
-			image: Gebetsfruehstueck,
-			description: 'Dienstags und Donnerstags gibt es ein Gebetsfrühstück.	'
-		},
+		// TODO add Gebetsfrühstück to SlideShow
+		// {
+		// 	id: 3,
+		// 	title: 'Gebetsfrühstück',
+		// 	subtitle: 'Gemeinsam mit Gott in den Tag starten.',
+		// 	image: Gebetsfruehstueck,
+		// 	description: 'Dienstags und Donnerstags gibt es ein Gebetsfrühstück.	'
+		// },
 		{
 			id: 4,
+			title: 'Mitarbeitertreffen (MIT)',
+			subtitle: 'Gemeinsam mit anderen Mitarbeitern die SMD gestalten.',
+			image: MIT,
+			description: `Einmal im Monat (außer zur vorlesungsfreien Zeit) treffen sich alle Mitarbeiter 
+				und an Mitarbeit Interessierten, um in einem kleineren Rahmen als beim Gruppenabend durch 
+				einen Input ermutigt zu werden, in einfachem Stil Gott musikalisch anzubeten, 
+				sich gegenseitig zu ermutigen und alles zu besprechen, was in letzter Zeit war, 
+				was gerade ansteht und was noch in Planung ist (quasi Offenbarung 1,19 😁). 
+				Hier ist auch Raum, um Ideen zu entwickeln, Pläne umzusetzen und zu reflektieren.
+`
+		},
+		{
+			id: 5,
 			title: 'SAFT',
 			subtitle: 'Semesteranfangsfreizeit: Gemeinsam ins neue Semester starten.',
 			image: SAFT,
