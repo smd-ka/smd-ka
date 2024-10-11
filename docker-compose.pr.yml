@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  preview-backend:
+    image: ghcr.io/smd-ka/smd-ka/backend:pr-${PR_NUMBER}  
+    container_name: backend-pr-${PR_NUMBER}  
+    environment:
+      - NODE_ENV=staging  
+
+  preview-frontend:
+    image: ghcr.io/smd-ka/smd-ka/frontend:pr-${PR_NUMBER}  
+    container_name: frontend-pr-${PR_NUMBER} 
+    environment:
+      - NODE_ENV=staging  
+
+networks:
+  default:
+    name: smd-ka_default
+    external: true

@@ -1,8 +1,9 @@
 import PocketBase, { ClientResponseError } from 'pocketbase';
 import { writable } from 'svelte/store';
 import defaultAvatar from '$lib/assets/user_default.png';
+const API_URL: string = import.meta.env.VITE_API_URL;
 
-export const pb = new PocketBase('https://api.smd-karlsruhe.de');
+export const pb = new PocketBase(API_URL);
 
 export const SAFT_COORDINATOR = 'saftcoordinator';
 

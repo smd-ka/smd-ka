@@ -13,8 +13,6 @@ services:
       - ./backend/pb_data:/pb/pb_data
       - ./backend/pb_migrations:/pb/pb_migrations
     restart: always
-    networks:
-      - smd_ka_network
 
   frontend:
     container_name: frontend
@@ -23,8 +21,6 @@ services:
       context: ./frontend
       dockerfile: ./Dockerfile
     restart: always
-    networks:
-      - smd_ka_network
 
   caddy:
     container_name: caddy
@@ -32,6 +28,7 @@ services:
     environment:
       DOMAIN_LONG: ${DOMAIN_LONG:-smd-karlsruhe.de}
       DOMAIN_SHORT: ${DOMAIN_SHORT:-smd-ka.de}
+      PR_NUMBER: ${PR_NUMBER:-0}
     ports:
       - 80:80
       - 443:443
@@ -41,13 +38,8 @@ services:
       - caddy_config:/config
       - caddy_data:/data
     restart: always
-    networks:
-      - smd_ka_network
 
 
-networks:
-  smd_ka_network:
-    driver: bridge
 
 
 volumes:
