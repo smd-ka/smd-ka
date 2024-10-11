@@ -82,7 +82,7 @@
 								<div
 									id={'slide' + carouselSlide.id}
 									transition:fade={{ duration: 200, easing: sineInOut }}
-									class="rounded-md bg-black bg-opacity-60 p-4 text-white backdrop-filter max-md:hidden xl:mx-60"
+									class="rounded-md bg-black bg-opacity-80 p-4 text-white backdrop-filter max-md:hidden xl:mx-60"
 								>
 									<p>{carouselSlide.description}</p>
 								</div>
