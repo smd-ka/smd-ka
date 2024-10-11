@@ -5,14 +5,9 @@
 	import type { PageData } from '../$types';
 	import { getImageSrc } from '$lib/fetch_img';
 
-	// TODO add Churchhopping for this year
+	// This should probably be fetched from the backend
+	// Maybe it would be better to create a category and then list all events in that category
 	const churchHopping = [
-		{
-			date: '06. Oktober // 9:40 Uhr',
-			link: 'https://www.cg-karlsruhe.de/veranstaltungen',
-			name: 'Christliche Gemeinde (CG)',
-			responsible: 'Fynn, Jona'
-		},
 		{
 			date: '27. Oktober // 11:15 Uhr',
 			link: 'https://feg-karlsruhe.de/',
@@ -20,10 +15,10 @@
 			responsible: 'Yannick'
 		},
 		{
-			date: '03. November // 11:00 Uhr',
-			link: 'https://treffpunkt-leben.de/',
-			name: 'Treffpunkt Leben (TL)',
-			responsible: 'Felix M.'
+			date: '03. November // 9:40 Uhr',
+			link: 'https://www.cg-karlsruhe.de/veranstaltungen',
+			name: 'Christliche Gemeinde (CG)',
+			responsible: 'Bettina'
 		},
 		{
 			date: '10. November // 10:00 Uhr',
@@ -39,9 +34,15 @@
 		},
 		{
 			date: '24. Oktober // 9:40 Uhr',
-			link: 'https://www.cg-karlsruhe.de/veranstaltungen',
-			name: 'Christliche Gemeinde (CG)',
-			responsible: 'Bettina'
+			link: 'https://treffpunkt-leben.de/',
+			name: 'Treffpunkt Leben (TL)',
+			responsible: 'Felix'
+		},
+		{
+			date: '08. Dezember // 10:00 Uhr',
+			link: 'https://lkg-karlsruhe.de/',
+			name: 'Landeskirchliche Gemeinschaft (LKG)',
+			responsible: 'Lilly, Claus'
 		}
 	];
 
