@@ -9,6 +9,12 @@
 	// Maybe it would be better to create a category and then list all events in that category
 	const churchHopping = [
 		{
+			date: '20. Oktober // 11 Uhr',
+			link: 'https://www.icf-karlsruhe.de',
+			name: 'ICF Karlsruhe',
+			responsible: 'Jonas'
+		},
+		{
 			date: '27. Oktober // 11:15 Uhr',
 			link: 'https://feg-karlsruhe.de/',
 			name: 'Freie evangelische Gemeinde (FeG)',
