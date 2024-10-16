@@ -10,6 +10,13 @@
     src: url('./fonts/mokoto.ttf');
   }
 
+  @font-face { 
+    font-family: 'Gagalin'; 
+    src: 
+        url('./fonts/gagalin.otf')  
+        format('opentype'); 
+} 
+
   body {
     @apply text-primary-text;
     @apply xl:text-lg;

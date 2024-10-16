@@ -4,11 +4,8 @@
 	import { onMount } from 'svelte';
 	import heart from '$lib/assets/pages/events/semesterprogramm/ss24/herzenssache.png';
 	import HeroShot from '$lib/components/HeroShot.svelte';
-	import type { PageData } from './$types';
 
 	let yesterday: Date;
-
-	export let data: PageData;
 
 	let program = [
 		{
@@ -57,41 +54,41 @@
 		}
 	];
 
-	const getDateString = (dateString: string) => {
-		const date = new Date(dateString);
-		return date.toLocaleDateString('de-DE', {
-			month: '2-digit',
-			day: '2-digit'
-		});
-	};
+	onMount(async () => {
+		yesterday = new Date();
+		yesterday.setDate(yesterday.getDate() - 1);
+	});
 </script>
 
 <HeroShot imgSrc={header} height={'h-[80svh]'} />
 
 <main class="container mx-auto px-4 py-12">
 	<section class="">
+		<!-- <h1 class="font-anton text-primary text-center font-bold tracking-wide">
+			Herzens<span class="bordered-text text-white">sache</span>
+		</h1> -->
 		<h1 class="font-gagalin text-primary text-center tracking-wide">Outside the Box</h1>
-		<h2 class="text-center">Unser Wintersemester 2024/25</h2>
+		<h2 class="text-center">Unser Sommersemester 2024</h2>
 	</section>
 
 	<section class="grid gap-x-24 gap-y-6 py-12 md:grid-cols-2">
-		{#each data.events as event}
-			<div class="grid grid-cols-[6rem_1fr] gap-2">
+		{#each program as event}
+			<div class="flex gap-2">
 				<h3>
-					{getDateString(event.start_date_time)}
+					{event.date.toLocaleDateString('de-DE', {
+						month: 'numeric',
+						day: 'numeric'
+					})}
 				</h3>
 				<div>
 					<h3>
 						{event.title}
 					</h3>
 					<div>
-						{#if event.speaker}
-							<span class="italic">
-								{event.speaker}
-							</span>
-							|
-						{/if}
-						{event.location}
+						<span class="italic">
+							{event.lecturer}
+						</span>
+						| {event.location}
 					</div>
 				</div>
 			</div>
@@ -102,14 +99,14 @@
 		<h3 class=" text-primary font-caveat text-center text-5xl">jeden zweiten Dienstag 18:30</h3>
 	</div>
 
-	<!-- <section class=" py-24">
+	<section class=" py-24">
 		<h3 class="text-center">Vergangene Semester</h3>
 
 		<div>
 			<img alt="SS24" class="h-48 w-48 object-cover" src={heart} />
 			<h3 class="text-center">Herzenssache</h3>
 		</div>
-	</section> -->
+	</section>
 </main>
 
 <style>
