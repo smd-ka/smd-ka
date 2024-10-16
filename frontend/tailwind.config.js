@@ -10,7 +10,8 @@ export default {
 			zcool: ['ZCOOL QingKe HuangYou', 'sans-serif'],
 			mokoto: ['Mokoto', 'sans-serif'],
 			mincho: ['Shippori Mincho B1', 'serif'],
-			caveat: ['Caveat Variable', 'cursive']
+			caveat: ['Caveat Variable', 'cursive'],
+			gagalin: ['Gagalin', 'sans-serif']
 		},
 		extend: {
 			colors: {
