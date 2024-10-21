@@ -7,8 +7,9 @@
 	import type { saftRegistration } from '$lib/models';
 	import EmailInputField from '$lib/components/forms/EmailInput.svelte';
 	import TelephoneInputField from '$lib/components/forms/TelephoneInputField.svelte';
-	import { PUBLIC_SEMESTER } from '$env/static/public';
 	import GenderInput from '$lib/components/forms/GenderInput.svelte';
+
+	const PUBLIC_SEMESTER: string = import.meta.env.PUBLIC_SEMESTER;
 
 	const ticketValues = [
 		'Deutschlandticket/Jugendticket BW',
