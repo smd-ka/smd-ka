@@ -33,19 +33,14 @@
 	<h1 class="text-center text-5xl font-bold uppercase">SAFT Anmeldung</h1>
 	<div class="py-8">
 		<div class="grid gap-10 lg:grid-cols-[1fr_1rem_1fr]">
-			<div class="flex flex-col items-center text-center text-lg md:px-10">
+			<div class="flex flex-col items-center justify-center text-center text-lg md:px-10">
 				<p class="py-4">
-					Du bist neu hier und hast noch kein Konto für den internen Bereich? Dann kannst du dich
-					hier ohne Konto anmelden:
+					Du hast kein Konto für SMD-KA Intern? <br />
+					Dann kannst du dich hier ohne Konto anmelden:
 				</p>
 				<a
-					class="bg-primary rounded-md p-4 text-center text-white max-md:w-full"
+					class=" bg-black p-4 text-center text-white no-underline hover:underline max-md:w-full"
 					href="/saft/signup/form">Ohne Konto anmelden</a
-				>
-				<p class="py-4">Alternativ kannst du dich jetzt registieren:</p>
-				<a
-					class=" rounded-md bg-black p-4 text-center text-white max-md:w-full md:w-fit"
-					href="/account/register">Registieren</a
 				>
 			</div>
 
@@ -97,7 +92,7 @@
 					{/if}
 					<button
 						disabled={loading}
-						class="bg-primary relative flex items-center justify-center rounded-md p-3 text-white"
+						class="relative flex items-center justify-center bg-black p-3 text-white"
 					>
 						{#if loading}
 							<img class="absolute left-16 h-8" src={loadingSpinner} alt="loading" />
@@ -107,6 +102,10 @@
 					<a href="/account/reset" class="text-center text-sm text-gray-400 hover:underline"
 						>Passwort vergessen?</a
 					>
+					<section class="text-center text-sm text-gray-400">
+						Noch kein Konto?
+						<a href="/account/register" class="text-primary hover:underline">Jetzt eins anlegen.</a>
+					</section>
 				</form>
 			</div>
 		</div>

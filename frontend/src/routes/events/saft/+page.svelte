@@ -29,8 +29,8 @@
 					Sie findet immer am Anfang des Semesters statt und ist eine gute Möglichkeit, die SMD und andere
 					Studierende kennenzulernen.
 				</p>
-				<!-- <a href="/saft/signup" class="w-fit bg-black p-4 text-white pointer">Jetzt anmelden</a> -->
-				<div class="w-fit bg-gray-500 p-4 text-white">Anmeldung ab Mitte Oktober</div>
+				<a href="/saft/signup" class="pointer w-fit bg-black p-4 text-white">Jetzt anmelden</a>
+				<!-- <div class="w-fit bg-gray-500 p-4 text-white">Anmeldung ab Mitte Oktober</div> -->
 			</div>
 			<img class="lg:hidden" alt="Semesterprogramm" src={saftGroup} />
 		</div>
@@ -47,7 +47,7 @@
 					</div>
 					<div class="flex items-center gap-2">
 						<Fa class="text-primary" icon={faCoins} />
-						Preis: folgt
+						Preis: 40 €
 					</div>
 					<div class="flex flex-col">
 						<div class="flex justify-end gap-2">
@@ -86,10 +86,11 @@
 				Your browser does not support the video tag.
 			</video>
 		</Saos>
+		<section class="py-12">
+			<h1 class="pb-0">Du bist dabei?</h1>
+			<h3 class="pb-6">Dann nichts wie los melde dich an!</h3>
 
-		<!-- <h1 class="py-10 text-5xl font-bold uppercase">
-			Du bist dabei? Dann nichts wie los melde dich an!
-		</h1>
-		<a href="/saft/signup" class="w-fit bg-black p-4 text-white">Hier gehts zur Anmeldung</a> -->
+			<a href="/saft/signup" class="bg-black p-4 text-white">Hier geht's zur Anmeldung</a>
+		</section>
 	</div>
 </main>

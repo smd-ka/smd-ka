@@ -67,16 +67,16 @@ onRecordAfterCreateRequest((e) => {
         name: $app.settings().meta.senderName,
       },
       to: [{ address: result.email }],
-      subject: "[SMD-KA] Saft Anmeldung SoSe24",
+      subject: "[SMD-KA] SAFT Anmeldung WS24/25",
       html:
         "Hallo " +
         result.name +
-        ",<br><br>vielen Dank für deine Anmeldung zur Saft im SoSe" +
+        ",<br><br>vielen Dank für deine Anmeldung zur Semesteranfangsfreizeit im Wintersemester" +
         ". Wir freuen uns, dich dabei zu haben!<br><br>" +
         "Genaue Informationen zur Anreise und Packliste folgen in den Tagen vor der SAFT und werden an diese E-Mail-Adresse gesendet. " +
         "Solltest du Fragen haben," +
-        " erreichst du uns unter <a href='mailto:claus@chammann.dev'>claus@chammann.dev</a> <br><br>" +
-        "Deine SAFT-Orga<br>Kirsten, Lilly und Claus<br>",
+        " erreichst du uns unter <a href='mailto:bettina.fritzsching@web.de'>bettina.fritzsching@web.de</a> <br><br>" +
+        "Deine SAFT-Orga<br>Doreen, Bettina, Samuel<br>",
     });
 
     $app.newMailClient().send(message);
@@ -94,16 +94,16 @@ onRecordAfterCreateRequest((e) => {
       name: $app.settings().meta.senderName,
     },
     to: [{ address: e.record.email() }],
-    subject: "[SMD-KA] Saft Anmeldung SoSe24",
+    subject: "[SMD-KA] SAFT Anmeldung WS24/25",
     html:
       "Hallo " +
       e.record.get("name") +
-      ",<br><br>vielen Dank für deine Anmeldung zur Saft im SoSe" +
+      ",<br><br>vielen Dank für deine Anmeldung zur SAFT im WS24/25" +
       ". Wir freuen uns, dich dabei zu haben!<br><br>" +
       "Genaue Informationen zur Anreise und Packliste folgen in den Tagen vor der SAFT und werden an diese E-Mail-Adresse gesendet. " +
       "Solltest du Fragen haben," +
-      " erreichst du uns unter <a href='mailto:claus@chammann.dev'>claus@chammann.dev</a> <br><br>" +
-      "Deine SAFT-Orga<br>Kirsten, Lilly und Claus<br>",
+      " erreichst du uns unter <a href='mailto:bettina.fritzsching@web.de'>bettina.fritzsching@web.de</a> <br><br>" +
+      "Deine SAFT-Orga<br>Doreen, Bettina, Samuel<br>",
   });
 
   $app.newMailClient().send(message);

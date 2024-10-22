@@ -28,6 +28,7 @@ export type saftRegistration = {
 	paid?: boolean;
 	user?: string;
 	name: string;
+	surname: string;
 	email: string;
 	phonenumber: string;
 	takes_car: boolean;
@@ -41,6 +42,7 @@ export type saftRegistration = {
 	comments: string;
 	semester: string;
 	post_images: 'never' | 'always ask' | 'yes';
+	group: string;
 };
 
 export type Statement = {
