@@ -42,6 +42,7 @@ export type saftRegistration = {
 	comments: string;
 	semester: string;
 	post_images: 'never' | 'always ask' | 'yes';
+	group: string;
 };
 
 export type Statement = {
