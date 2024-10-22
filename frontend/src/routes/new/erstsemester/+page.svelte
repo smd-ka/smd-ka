@@ -15,16 +15,16 @@
 			responsible: 'Jonas'
 		},
 		{
-			date: '27. Oktober // 11:15 Uhr',
-			link: 'https://feg-karlsruhe.de/',
-			name: 'Freie evangelische Gemeinde (FeG)',
-			responsible: 'Yannick'
-		},
-		{
-			date: '03. November // 9:40 Uhr',
+			date: '27. Oktober // 9:40 Uhr',
 			link: 'https://www.cg-karlsruhe.de/veranstaltungen',
 			name: 'Christliche Gemeinde (CG)',
 			responsible: 'Bettina'
+		},
+		{
+			date: '03. November // 11:15 Uhr',
+			link: 'https://feg-karlsruhe.de/',
+			name: 'Freie evangelische Gemeinde (FeG)',
+			responsible: 'Yannick'
 		},
 		{
 			date: '10. November // 10:00 Uhr',
