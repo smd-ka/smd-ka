@@ -77,11 +77,11 @@
 			</div>
 			<h2 class="py-4 text-center text-lg md:text-2xl">Dein Profil</h2>
 		</a>
-		<a class="tile" href="/intern/saft">
+		<a class="tile" href="/saft/signup">
 			<div class="flex justify-center">
 				<Fa icon={faGlassWater} class="text-corperate text-7xl" />
 			</div>
-			<h2 class="py-4 text-center text-lg md:text-2xl">SAFT Anmeldungen</h2>
+			<h2 class="py-4 text-center text-lg md:text-2xl">SAFT Anmeldung</h2>
 		</a>
 
 		{#if isSaftCoordinator}

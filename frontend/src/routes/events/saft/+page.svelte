@@ -7,11 +7,13 @@
 	import saftGroup from '$lib/assets/heroshots/saft_heroshot.png';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { faCalendarDays, faCoins, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+	import flyer from '$lib/assets/pages/events/saft/saft_beyond.jpg';
 </script>
 
 <HeroShot imgSrc={header} height={'h-[70svh]'}></HeroShot>
 
 <main class="container mx-auto flex flex-col text-lg max-md:gap-10 max-md:py-10 md:gap-24 md:py-24">
+	<!-- <img src={flyer} alt="Flyer" /> -->
 	<div class="container flex flex-col gap-6 px-4 xl:px-80">
 		<h1 class="text-center text-5xl font-bold uppercase max-md:hidden">SemesterAnfangsFreizeiT</h1>
 		<h1 class="text-5xl font-bold uppercase max-md:text-center md:hidden">saft</h1>
@@ -19,7 +21,7 @@
 
 	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
 		<div class="grid gap-8 px-4 lg:grid-cols-2 xl:px-60">
-			<img class="max-lg:hidden" alt="Semesterprogramm" src={saftGroup} />
+			<img class="h-96 w-full object-cover object-top max-lg:hidden" alt="Flyer" src={flyer} />
 
 			<div class="flex flex-col gap-4">
 				<h1 class="text-4xl font-bold uppercase">Worum gehts?</h1>
@@ -32,7 +34,7 @@
 				<a href="/saft/signup" class="pointer w-fit bg-black p-4 text-white">Jetzt anmelden</a>
 				<!-- <div class="w-fit bg-gray-500 p-4 text-white">Anmeldung ab Mitte Oktober</div> -->
 			</div>
-			<img class="lg:hidden" alt="Semesterprogramm" src={saftGroup} />
+			<img class="h-96 w-full object-cover object-top lg:hidden" alt="Flyer" src={flyer} />
 		</div>
 	</Saos>
 
@@ -61,7 +63,7 @@
 					</a>
 				</div>
 			</div>
-			<img alt="Semesterprogramm" src={saftFunny} />
+			<img alt="Semesterprogramm" src={saftGroup} />
 		</div>
 	</Saos>
 

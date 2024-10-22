@@ -29,7 +29,7 @@
 	};
 </script>
 
-<main class="container mx-auto grid py-24">
+<main class="container mx-auto grid px-4 py-24">
 	<h1 class="text-center text-5xl font-bold uppercase">SAFT Anmeldung</h1>
 	<div class="py-8">
 		<div class="grid gap-10 lg:grid-cols-[1fr_1rem_1fr]">
