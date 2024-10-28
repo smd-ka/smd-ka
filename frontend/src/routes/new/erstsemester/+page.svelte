@@ -39,7 +39,7 @@
 			responsible: '(Semesteranfangsfreizeit)'
 		},
 		{
-			date: '24. Oktober // 9:40 Uhr',
+			date: '24. November // 9:40 Uhr',
 			link: 'https://treffpunkt-leben.de/',
 			name: 'Treffpunkt Leben (TL)',
 			responsible: 'Felix'
