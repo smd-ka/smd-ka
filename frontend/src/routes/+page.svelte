@@ -88,48 +88,44 @@
 
 <main class="container mx-auto flex flex-col gap-24 py-12 text-lg">
 	{#if data.events}
-		<section class="px-4 text-center">
-			<h1>Was läuft aktuell?</h1>
+		<section class="px-4">
+			<h1 class="text-center">Was läuft aktuell?</h1>
 
-			<div class="grid gap-8 xl:grid-cols-2">
-				{#each data.events.items as event}
-					<Saos
-						animation={'slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
-						animation_out={'slide-out-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
-					>
-						<a href="/events/kalender/{event.id}">
-							<div class="relative text-white">
-								<img
-									src={getImageSrc(event.image, event.id, event.collectionId, event.collectionName)}
-									class=" max-h-72 w-full rounded-sm bg-[top_30%] object-cover brightness-[30%] transition-all duration-300 hover:scale-[101%] hover:cursor-pointer hover:brightness-50"
-									alt="Erstsemester Programm"
-								/>
-								<div class="absolute top-1/2 w-full -translate-y-1/2 text-center">
-									<h3 class="px-4">{event.title}</h3>
-									<div class="flex flex-wrap justify-center gap-x-4">
-										<div class="flex items-center gap-2">
-											<Fa icon={faCalendarDays} />
-											<p>
-												{getDate(event.start_date_time, event.end_date_time)}
-											</p>
-										</div>
-										<div class="flex items-center gap-2">
-											<Fa icon={faClock} />
-											<p>{getTime(event.start_date_time)}</p>
-										</div>
-										<div class="flex items-center gap-2">
-											<Fa icon={faLocationDot} />
-											<p>
-												<a href={event.location_url}>{event.location}</a>
-											</p>
-										</div>
+			<Saos
+				animation={'slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
+				animation_out={'slide-out-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
+			>
+				<div class="grid gap-8 xl:grid-cols-2 xl:px-20">
+					{#each data.events.items as event}
+						<div class="group flex h-full flex-col">
+							<img
+								src={getImageSrc(event.image, event.id, event.collectionId, event.collectionName)}
+								class="max-h-72 w-full rounded-sm transition-all duration-300 hover:cursor-pointer group-hover:scale-[101%]"
+								alt="Erstsemester Programm"
+							/>
+							<div class="peer flex-1 border-x-2 border-b-2 px-4 py-2">
+								<div class="flex justify-between text-gray-500">
+									<div>
+										{getDate(event.start_date_time, event.end_date_time)} //
+										{getTime(event.start_date_time)}
 									</div>
+									<a class="hover:text-primary hover:cursor-pointer" href={event.location_url}>
+										<Fa icon={faLocationDot} />
+									</a>
 								</div>
+								<div class="text-2xl font-bold">
+									{event.title}
+								</div>
+
+								<p class="line-clamp-2">
+									{event.description}
+								</p>
+								<a href="/events/kalender/{event.id}" class="text-primary">Mehr erfahren</a>
 							</div>
-						</a>
-					</Saos>
-				{/each}
-			</div>
+						</div>
+					{/each}
+				</div>
+			</Saos>
 			<Saos
 				animation={'slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
 				animation_out={'slide-out-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
