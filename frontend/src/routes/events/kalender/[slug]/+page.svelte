@@ -5,6 +5,7 @@
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import { getImageSrc } from '$lib/fetch_img';
 	import placeholder from '$lib/assets/pages/events/kalender/placeholder.jpg';
+	import { _categoryToDisplayName } from './+page';
 
 	export let data: PageData;
 
@@ -63,30 +64,28 @@
 		</a>
 	</div>
 {:else}
-	<HeroShot
-		imgSrc={imgSrc(
-			data.entry.image,
-			data.entry.id,
-			data.entry.collectionId,
-			data.entry.collectionName
-		)}
-		height="h-[40svh]"
-	/>
-	<main class="container relative mx-auto px-4 py-12">
-		<a
-			href="/events/kalender"
-			class="text-primary absolute -left-6 top-14 text-3xl hover:brightness-110"
-			><Fa icon={faArrowLeft} /></a
-		>
+	<main class="container mx-auto px-8 py-12 xl:px-40">
+		<a href="/events/kalender" class="text-primary text-sm no-underline hover:underline">
+			Kalender > {_categoryToDisplayName(data.entry.category)}
+		</a>
+
 		<h1 class="break-words pb-0">{data.entry.title}</h1>
 		<div class="pb-6 text-gray-500">
 			{getDate(data.entry.start_date_time, data.entry.end_date_time)}
 		</div>
 
-		<section class="grid gap-8 md:grid-cols-[1fr_fit-content(12rem)]">
-			<div class="overflow-hidden whitespace-pre-line">
-				{data.entry.description}
-			</div>
+		<img
+			alt="Foto für {data.entry.title}"
+			src={imgSrc(
+				data.entry.image,
+				data.entry.id,
+				data.entry.collectionId,
+				data.entry.collectionName
+			)}
+		/>
+
+		<section class="grid gap-8 py-12 md:grid-cols-[1fr_fit-content(12rem)]">
+			<div>{@html data.entry.description}</div>
 			<div class=" whitespace-nowrap max-md:order-first">
 				<h3 class="uppercase">Details</h3>
 				<p>
@@ -106,6 +105,10 @@
 						{data.entry.location}
 					{/if}
 				</p>
+				<span>Kategorie: {_categoryToDisplayName(data.entry.category)}</span>
+				{#if data.entry.speaker}
+					<span>Referent: {data.entry.speaker}</span>
+				{/if}
 			</div>
 		</section>
 

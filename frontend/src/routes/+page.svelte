@@ -95,7 +95,7 @@
 				animation={'slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
 				animation_out={'slide-out-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
 			>
-				<div class="grid gap-8 xl:grid-cols-2 xl:px-20">
+				<div class="grid gap-8 md:grid-cols-2 xl:px-20">
 					{#each data.events.items as event}
 						<div class="group flex h-full flex-col">
 							<img

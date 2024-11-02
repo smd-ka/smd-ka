@@ -18,3 +18,6 @@ export const load: PageLoad = async ({ params }) => {
 		return null;
 	}
 };
+
+export const _categoryToDisplayName = (category: string) =>
+	category == 'smd_abend' ? 'SMD-Abend' : '';
