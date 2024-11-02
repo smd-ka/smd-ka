@@ -1,78 +1,36 @@
 <script lang="ts">
-	import type { saftRegistration } from '$lib/models';
 	import { pb } from '$lib/pocketbase';
 	import {
 		faArrowUpFromBracket,
-		faBicycle,
-		faCar,
 		faCopy,
 		faExclamationTriangle,
-		faTrain
+		faEnvelope
 	} from '@fortawesome/free-solid-svg-icons';
-	import type { Record } from 'pocketbase';
-	import { onMount } from 'svelte';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
+	import {
+		_exportToCsv,
+		_filterSaftRegistrations,
+		_postImages,
+		_travelOption,
+		_travelOptionIcon,
+		type SaftRegistrationFilter
+	} from './+page';
 
-	let loading = true;
-	let error = false;
-	let currentList: saftRegistration[] = [];
-	let result: saftRegistration[] = [];
+	export let data;
 
+	let filteredList = data.list;
+	let filter: SaftRegistrationFilter = 'all';
 	let paidLoading: number[] = [];
 	let paidError: number[] = [];
-	let filter: 'all' | 'paid' | 'unpaid' | 'bike' | 'train' | 'floor_sleeper' = 'all';
 
-	onMount(async () => {
-		try {
-			result = await pb.collection('saft_registrations').getFullList({
-				sort: 'name'
-			});
-		} catch (e: any) {
-			console.error(e);
-			error = true;
-		}
-		loading = false;
-		filterRegistrations();
-	});
-
-	function filterRegistrations() {
-		switch (filter) {
-			case 'all':
-				currentList = result;
-				break;
-			case 'paid':
-				currentList = result.filter((x) => x.paid);
-				break;
-			case 'unpaid':
-				currentList = result.filter((x) => !x.paid);
-				break;
-			case 'bike':
-				currentList = result.filter((x) => x.takes_bike);
-				break;
-			case 'train':
-				currentList = result.filter((x) => x.takes_train);
-				break;
-			case 'floor_sleeper':
-				currentList = result.filter((x) => x.would_sleep_on_floor);
-				break;
-		}
-	}
-
-	const countTakesBike = () => currentList.filter((x) => x.takes_bike).length;
-	const countTakesTrain = () => currentList.filter((x) => x.takes_train).length;
-	const countHasDTicket = () =>
-		currentList.filter((x) => x.ticket === 'Deutschlandticket/Jugendticket BW').length;
-	const countHasKVVSemester = () =>
-		currentList.filter((x) => x.ticket === 'KVV-Semesterticket').length;
-	const countHasKVV = () => currentList.filter((x) => x.ticket === 'KVV-Bescheinigung').length;
+	console.log(data);
 
 	const mailingList = () => {
-		const list = currentList
+		return `mailto:${filteredList
 			.filter((x) => x.email)
 			.map((x) => x.email)
-			.join(';');
-		return `mailto:${list}`;
+			.join(';')}`;
 	};
 
 	async function togglePaid(
@@ -90,199 +48,177 @@
 			paidError = [...paidError, id];
 		}
 		paidLoading = paidLoading.filter((x) => x !== id);
-		filterRegistrations();
+		filteredList = _filterSaftRegistrations(filter, data.list);
 	}
 
-	function exportToCsv() {
-		const rows = [
-			[
-				'Bezahlt',
-				'Name',
-				'E-Mail-Adresse',
-				'Telefonnummer',
-				'An/Abreise',
-				'Ticket',
-				'Bodenschläfer',
-				'Kuchen',
-				'Vegetarier',
-				'Allergien',
-				'Bemerkung'
-			],
-			...result.map((x) => [
-				x.paid ? 'Ja' : 'Nein',
-				x.name,
-				x.email,
-				x.phonenumber,
-				`${x.takes_car ? 'Auto ' : ''}${x.takes_bike ? 'Fahrrad ' : ''}${
-					x.takes_train ? 'Bus & Bahn ' : ''
-				}`,
-				x.ticket,
-				x.would_sleep_on_floor ? 'Ja' : '',
-				x.brings_cake ? 'Ja' : '',
-				x.is_vegetarian ? 'Ja' : '',
-				x.allergies,
-				'"' + x.comments + '"'
-			])
-		];
-
-		let csvContent = 'data:text/csv;charset=utf-8,' + rows.map((x) => x.join(',')).join('\n');
-
-		const encodedUri = encodeURI(csvContent);
-		const link = document.createElement('a');
-		link.setAttribute('href', encodedUri);
-		link.setAttribute(
-			'download',
-			`SAFT_Anmeldungen_${result.length > 1 ? result[0].semester : ''}_${filter}.csv`
-		);
-		document.body.appendChild(link); // Required for FF
-
-		link.click();
-	}
+	const columns = [
+		'Bezahlt',
+		'Name',
+		'An/Abreise Option',
+		'An/Abreise Kommentar',
+		'Ticket',
+		'Gruppe',
+		'Bodenschläfer',
+		'Bemerkung',
+		'E-Mail-Adresse',
+		'Telefonnummer',
+		'Kuchen',
+		'Vegetarier',
+		'Allergien',
+		'Bildrechte'
+	];
 </script>
 
-<main class="container mx-auto">
-	<div class="card mt-8 flex flex-col gap-4">
-		<div>
-			<h1 class="text-primary text-2xl md:text-4xl">SAFT Anmeldungen</h1>
-			<div class="flex flex-wrap">
-				<bold class="pr-2 font-bold">Achtung!</bold>
-				Sollte dieses Symbol <Fa class="px-2 text-red-700" icon={faExclamationTriangle} /> neben dem
-				Haken angezeigt werden, dann wurde die Änderung nicht gespeichert!
+<main class="mx-auto px-4 py-12 xl:px-10">
+	<h1>SAFT Anmeldungen</h1>
+
+	{#if data.list}
+		<div class="grid rounded-md bg-gray-200 p-4 lg:grid-cols-2">
+			<h3 class="col-span-full">Übersicht über alle Anmeldungen</h3>
+			<div>
+				<div>
+					<bold class="font-bold">{data.list.length}</bold>
+					Anmeldungen gesamt
+				</div>
+				<div>
+					<bold class="font-bold">{data.takesBikeCount}</bold>
+					Fahrradfahrer
+				</div>
+				<div>
+					<bold class="font-bold">{data.takesOwnCount}</bold>
+					reisen selbständig an
+				</div>
+				<div>
+					<bold class="font-bold">{data.takesOwnCount}</bold>
+					Autofahrer (die Gepäck mitnehmen können)
+				</div>
+				<div>
+					<b>{data.landauCount}</b>
+					Landauer
+				</div>
+			</div>
+			<div>
+				<div>
+					<bold class="font-bold">{data.takesTrainCount}</bold>
+					Bahnfahrer, davon
+				</div>
+				<div class="pl-8">
+					<bold class="font-bold">{data.hasDTicketCount}</bold>
+					mit D-Ticket<br />
+					<bold class="font-bold">{data.hasKVVCount}</bold>
+					mit KVV-Bescheinigung<br />
+					<bold class="font-bold">{data.hasKVVSemesterCount}</bold>
+					mit KVV-Semesterticket
+				</div>
+				<div>
+					<bold class="font-bold">{data.takesGroupCount}</bold>
+					Gruppenanreise aus Landau
+				</div>
 			</div>
 		</div>
-		{#if loading}
-			<div class="flex justify-center">
-				<img src={loadingSpinner} class="h-32" alt="loading" />
+
+		<div class="flex flex-wrap items-center pt-6">
+			<bold class="pr-2 font-bold">Achtung!</bold>
+			Sollte dieses Symbol <Fa class="px-2 text-red-700" icon={faExclamationTriangle} /> neben dem Haken
+			angezeigt werden, dann wurde die Änderung nicht gespeichert!
+		</div>
+
+		<div class="flex gap-2 py-2 max-md:flex-col md:gap-4">
+			<a
+				class="flex items-center gap-2 rounded-md bg-orange-600 px-4 py-2 no-underline"
+				href={mailingList()}
+			>
+				<Fa icon={faEnvelope} />
+				Email an den Verteiler senden</a
+			>
+			<button
+				class="bg-light-blue flex items-center gap-2 rounded-md px-4 py-2"
+				on:click={() => navigator.clipboard.writeText(mailingList())}
+			>
+				<Fa icon={faCopy} />
+				Email Verteiler Kopieren
+			</button>
+
+			<button
+				class="bg-lime flex items-center gap-2 rounded-md px-4 py-2"
+				on:click|preventDefault={() => _exportToCsv(filteredList, filter)}
+			>
+				<Fa icon={faArrowUpFromBracket} />
+				Als CSV exportieren
+			</button>
+
+			<select
+				bind:value={filter}
+				on:change={() => (filteredList = _filterSaftRegistrations(filter, data.list))}
+				class="rounded-md px-4 py-2"
+			>
+				<option value="all">Alle</option>
+				<option value="paid">Bezahlt</option>
+				<option value="unpaid">Unbezahlt</option>
+				<option value="bike">Fahrradfahrer</option>
+				<option value="train">Bahnfahrer</option>
+				<option value="landau">Landau Anreise</option>
+				<option value="floor_sleeper">Bodenschläfer</option>
+			</select>
+		</div>
+
+		<div class="flex overflow-auto">
+			<div
+				class="pad-childs grid grid-cols-[repeat(14,1fr)] divide-y-2 divide-y-reverse divide-x-reverse whitespace-nowrap"
+			>
+				{#each columns as column}
+					<div><b>{column}</b></div>
+				{/each}
+
+				{#each filteredList as registration, i}
+					<div class="flex items-start gap-4 py-1">
+						<input
+							disabled={paidLoading.includes(i)}
+							bind:checked={registration.paid}
+							on:change={() => togglePaid(i, registration.id, registration.paid)}
+							type="checkbox"
+						/>
+						{#if paidLoading.includes(i)}
+							<img class="h-4 w-4" src={loadingSpinner} alt="loading" />
+						{/if}
+						{#if paidError.includes(i)}
+							<Fa class="text-red-700" icon={faExclamationTriangle} />
+						{/if}
+					</div>
+					<div>{registration.name}</div>
+					<div class="flex items-center gap-2">
+						<Fa icon={_travelOptionIcon(registration.travel_option)} />
+						{_travelOption(registration.travel_option)}
+					</div>
+					<div class="w-72 whitespace-pre-wrap">
+						{registration.travel_comments || ''}
+					</div>
+					<div>
+						{registration.ticket || ''}
+					</div>
+					<!-- TODO Can this if can be removed after WS24/25 SAFT -->
+					<div>{registration.group === 'Landau' ? 'Landau' : 'Karlsruhe'}</div>
+					<div>{registration.would_sleep_on_floor ? 'Ja' : ''}</div>
+
+					<div class="w-72 whitespace-pre-wrap">
+						{registration.comments || ''}
+					</div>
+					<div>{registration.email}</div>
+					<div>{registration.phonenumber}</div>
+
+					<div>{registration.brings_cake ? 'Ja' : ''}</div>
+					<div>{registration.is_vegetarian ? 'Ja' : ''}</div>
+					<div class="w-60 whitespace-pre-wrap">{registration.allergies}</div>
+					<div>{_postImages(registration.post_images)}</div>
+				{/each}
 			</div>
-		{:else if error}
-			<p>Es ist ein Fehler aufgetreten.</p>
-		{:else}
-			<div class=" rounded-md bg-gray-200 p-4">
-				<div>
-					Anmeldungen gesamt:
-					<bold class="font-bold">{currentList.length}</bold>
-				</div>
-				<div>
-					Anzahl Fahrradfahrer:
-					<bold class="font-bold">{countTakesBike()}</bold>
-				</div>
-				<div>
-					Anzahl Bahnfahrer:
-					<bold class="font-bold">{countTakesTrain()}</bold>
-				</div>
-				<div>
-					Anzahl Bahnfahrer mit D-Ticket:
-					<bold class="font-bold">{countHasDTicket()}</bold>
-				</div>
-				<div>
-					Anzahl Bahnfahrer mit KVV-Bescheinigung:
-					<bold class="font-bold">{countHasKVV()}</bold>
-				</div>
-				<div>
-					Bahnfahrer mit KVV-Semesterticket:
-					<bold class="font-bold">{countHasKVVSemester()}</bold>
-				</div>
-			</div>
-			<div class="flex gap-2 max-md:flex-col md:gap-4">
-				<a class="bg-primary rounded-md px-4 py-2" href={mailingList()}
-					>Email an den Verteiler senden</a
-				>
-				<button
-					class="bg-light-blue flex gap-2 rounded-md px-4 py-2"
-					on:click={() => navigator.clipboard.writeText(mailingList())}
-				>
-					<Fa icon={faCopy} />
-					Email Verteiler Kopieren
-				</button>
-
-				<button
-					class="bg-lime flex gap-2 rounded-md px-4 py-2"
-					on:click|preventDefault={exportToCsv}
-				>
-					<Fa icon={faArrowUpFromBracket} />
-					Als CSV exportieren
-				</button>
-
-				<select bind:value={filter} on:change={filterRegistrations} class="rounded-md px-4 py-2">
-					<option value="all">Alle</option>
-					<option value="paid">Bezahlt</option>
-					<option value="unpaid">Unbezahlt</option>
-					<option value="bike">Fahrradfahrer</option>
-					<option value="train">Bahnfahrer</option>
-					<option value="floor_sleeper">Bodenschläfer</option>
-				</select>
-			</div>
-
-			<div class="flex flex-col overflow-auto">
-				<div class="grid grid-cols-[repeat(12,1fr)] gap-x-4 whitespace-nowrap">
-					<bold class="font-bold">Bezahlt</bold>
-					<bold class="font-bold">Name</bold>
-					<bold class="font-bold">E-Mail-Adresse</bold>
-					<bold class="font-bold">Telefonnummer</bold>
-					<bold class="font-bold">An/Abreise</bold>
-					<bold class="font-bold">Ticket</bold>
-					<bold class="font-bold">Bemerkung</bold>
-					<bold class="font-bold">Bodenschläfer</bold>
-					<bold class="font-bold">Kuchen</bold>
-					<bold class="font-bold">Vegetarier</bold>
-					<bold class="font-bold">Allergien</bold>
-					<bold class="font-bold">Bilder dürfen gepostet werden</bold>
-
-					{#each currentList as registration, i}
-						<div class="col-span-12 h-0.5 bg-gray-300"></div>
-						<div class="flex items-start gap-4 py-1">
-							<input
-								disabled={paidLoading.includes(i)}
-								bind:checked={registration.paid}
-								on:change={() => togglePaid(i, registration.id, registration.paid)}
-								type="checkbox"
-							/>
-							{#if paidLoading.includes(i)}
-								<img class="h-4 w-4" src={loadingSpinner} alt="loading" />
-							{/if}
-							{#if paidError.includes(i)}
-								<Fa class="text-red-700" icon={faExclamationTriangle} />
-							{/if}
-						</div>
-						<div>{registration.name}</div>
-						<div>{registration.email}</div>
-						<div>{registration.phonenumber}</div>
-
-						<div>
-							{#if registration.takes_car}
-								<div class="flex items-center gap-2">
-									<Fa icon={faCar} />
-									Auto
-								</div>
-							{/if}
-							{#if registration.takes_bike}
-								<div class="flex items-center gap-2">
-									<Fa icon={faBicycle} />
-									Fahrrad
-								</div>
-							{/if}
-							{#if registration.takes_train}
-								<div class="flex items-center gap-2">
-									<Fa icon={faTrain} />
-									Bus & Bahn
-								</div>
-							{/if}
-						</div>
-						<div>
-							{registration.ticket || ''}
-						</div>
-						<div class="w-72 whitespace-pre-wrap">
-							{registration.comments || ''}
-						</div>
-
-						<div>{registration.would_sleep_on_floor ? 'Ja' : ''}</div>
-						<div>{registration.brings_cake ? 'Ja' : ''}</div>
-						<div>{registration.is_vegetarian ? 'Ja' : ''}</div>
-						<div class="w-60 whitespace-pre-wrap">{registration.allergies}</div>
-						<div>{registration.post_images}</div>
-					{/each}
-				</div>
-			</div>
-		{/if}
-	</div>
+		</div>
+	{/if}
 </main>
+
+<style>
+	.pad-childs > div {
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
+</style>

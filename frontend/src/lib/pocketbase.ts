@@ -6,6 +6,7 @@ const API_URL: string = import.meta.env.VITE_API_URL;
 export const pb = new PocketBase(API_URL);
 
 export const SAFT_COORDINATOR = 'saftcoordinator';
+export const PRIT_RESPONSABLE = 'pritresponsable';
 
 export const currentUser = writable(pb.authStore.model);
 

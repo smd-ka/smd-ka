@@ -26,8 +26,8 @@
 	onMount(() => {
 		if (pb.authStore.isValid) {
 			loggedIn = true;
-			group = 'Karlsruhe';
 		}
+		group = 'Karlsruhe';
 	});
 
 	const signup = async () => {
@@ -44,9 +44,8 @@
 		formData.set('semester', PUBLIC_SEMESTER);
 		if (pb.authStore.isValid && pb.authStore.model?.id) {
 			formData.set('user', pb.authStore.model?.id);
+			formData.set('group', 'Karlsruhe');
 		}
-
-		console.log(formData);
 
 		try {
 			record = await pb.collection('saft').create(formData);
