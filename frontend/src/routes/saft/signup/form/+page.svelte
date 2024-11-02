@@ -36,11 +36,11 @@
 		console.log(form);
 		let formData = new FormData(form);
 		formData.set(
-			'wouldSleepOnFloor',
-			formData.get('wouldSleepOnFloor') === 'on' ? 'true' : 'false'
+			'would_sleep_on_floor',
+			formData.get('would_sleep_on_floor') === 'on' ? 'true' : 'false'
 		);
-		formData.set('bringsCake', formData.get('bringsCake') === 'on' ? 'true' : 'false');
-		formData.set('isVegetarian', formData.get('isVegetarian') === 'on' ? 'true' : 'false');
+		formData.set('brings_cake', formData.get('brings_cake') === 'on' ? 'true' : 'false');
+		formData.set('is_vegetarian', formData.get('is_vegetarian') === 'on' ? 'true' : 'false');
 		formData.set('semester', PUBLIC_SEMESTER);
 		if (pb.authStore.isValid && pb.authStore.model?.id) {
 			formData.set('user', pb.authStore.model?.id);
@@ -134,7 +134,6 @@
 					</div>
 
 					<select
-						id="travel_option"
 						bind:value={travelOption}
 						name="travel_option"
 						class="w-full rounded-md border-2 py-3"
@@ -163,7 +162,6 @@
 					{/if}
 				{:else}
 					<select
-						id="travel_option"
 						name="travel_option"
 						bind:value={travelOption}
 						class="w-full rounded-md border-2 py-3"
@@ -189,18 +187,16 @@
 				<h3>Essens- und Schlafpräferenzen</h3>
 
 				<InputCheckbox
-					id="wouldSleepOnFloor"
 					name="would_sleep_on_floor"
 					label="Ich könnte mir vorstellen ggf. auf den Boden zu schlafen und Schlafsack / Isomatte dazu mitzubringen"
 				/>
 
 				<InputCheckbox
 					name="brings_cake"
-					id="bringsCake"
 					label="Ich bringe Kuchen, Muffins oder Ähnliches mit für Kaffee und Kuchen am Samstag"
 				/>
 
-				<InputCheckbox name="isVegetarian" id="isVegetarian" label="Ich bin Vegetarier" />
+				<InputCheckbox name="is_vegetarian" label="Ich bin Vegetarier" />
 
 				<InputField
 					name="allergies"
