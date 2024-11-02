@@ -24,7 +24,7 @@
 			date: '03. November // 11:15 Uhr',
 			link: 'https://feg-karlsruhe.de/',
 			name: 'Freie evangelische Gemeinde (FeG)',
-			responsible: 'Yannick'
+			responsible: 'Muss leider krankheitsbedingt ausfallen!'
 		},
 		{
 			date: '10. November // 10:00 Uhr',
@@ -43,6 +43,12 @@
 			link: 'https://treffpunkt-leben.de/',
 			name: 'Treffpunkt Leben (TL)',
 			responsible: 'Felix'
+		},
+		{
+			date: '01. Dezember // 11:00 Uhr',
+			link: 'https://faecherkirche.de/',
+			name: 'Fächerkriche',
+			responsible: 'Aaron, Frederik'
 		},
 		{
 			date: '08. Dezember // 10:00 Uhr',
