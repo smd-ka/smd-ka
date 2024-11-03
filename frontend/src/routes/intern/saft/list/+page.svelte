@@ -26,8 +26,8 @@
 
 	console.log(data);
 
-	const mailingList = () => {
-		return `mailto:${filteredList
+	const mailingList = (list) => {
+		return `mailto:webmaster@smd-karlsruhe?bcc=:${list
 			.filter((x) => x.email)
 			.map((x) => x.email)
 			.join(';')}`;
@@ -126,14 +126,20 @@
 		<div class="flex gap-2 py-2 max-md:flex-col md:gap-4">
 			<a
 				class="flex items-center gap-2 rounded-md bg-orange-600 px-4 py-2 no-underline"
-				href={mailingList()}
+				href={mailingList(filteredList)}
 			>
 				<Fa icon={faEnvelope} />
 				Email an den Verteiler senden</a
 			>
 			<button
 				class="bg-light-blue flex items-center gap-2 rounded-md px-4 py-2"
-				on:click={() => navigator.clipboard.writeText(mailingList())}
+				on:click={() =>
+					navigator.clipboard.writeText(
+						filteredList
+							.filter((x) => x.email)
+							.map((x) => x.email)
+							.join(';')
+					)}
 			>
 				<Fa icon={faCopy} />
 				Email Verteiler Kopieren
