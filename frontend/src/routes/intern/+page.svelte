@@ -9,7 +9,8 @@
 		faTable,
 		faTShirt,
 		faCamera,
-		faArrowRight
+		faArrowRight,
+		faCalendar
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
@@ -84,6 +85,13 @@
 				<Fa icon={faGlassWater} class="text-corperate text-7xl" />
 			</div>
 			<h2 class="py-4 text-center text-lg md:text-2xl">SAFT Anmeldung</h2>
+		</a>
+
+		<a class="tile" href="/intern/add-event">
+			<div class="flex justify-center">
+				<Fa icon={faCalendar} class="text-corperate text-7xl" />
+			</div>
+			<h2 class="py-4 text-center text-lg md:text-2xl">Event zum Kalender hinzufügen</h2>
 		</a>
 
 		{#if isSaftCoordinator}
