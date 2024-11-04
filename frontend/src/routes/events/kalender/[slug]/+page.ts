@@ -4,20 +4,26 @@ import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ params }) => {
 	try {
-		let record = undefined;
+		let event;
 		calendarEvents.subscribe((value) => {
-			record = value.filter((item) => item.slug === params.slug)[0];
+			event = value.filter((item) => item.slug === params.slug)[0];
 		});
 		// Record not found in local store, fetch from server
-		if (!record) {
-			record = await pb.collection('calendar').getOne(params.slug);
+		if (!event) {
+			event = await pb.collection('calendar').getOne(params.slug);
 		}
-		return { entry: record };
+		return { event };
 	} catch (error) {
 		console.error(error);
-		return null;
+		return { error };
 	}
 };
 
-export const _categoryToDisplayName = (category: string) =>
-	category == 'smd_abend' ? 'SMD-Abend' : '';
+export const _categoryToDisplayName = (category: string) => {
+	switch (category) {
+		case 'smd_abend':
+			return 'SMD-Abend';
+		default:
+			return '';
+	}
+};
