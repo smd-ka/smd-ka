@@ -84,7 +84,7 @@
 		/>
 
 		<section class="grid gap-8 py-12 md:grid-cols-[1fr_fit-content(12rem)]">
-			<div>{@html data.event.description}</div>
+			<div class="whitespace-pre-line">{@html data.event.description}</div>
 			<div class="max-md:order-first">
 				<h3 class="uppercase">Details</h3>
 				<p>
