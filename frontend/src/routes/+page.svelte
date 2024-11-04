@@ -98,11 +98,13 @@
 				<div class="grid gap-8 md:grid-cols-2 xl:px-20">
 					{#each data.events.items as event}
 						<div class="group flex h-full flex-col">
-							<img
-								src={getImageSrc(event.image, event.id, event.collectionId, event.collectionName)}
-								class="max-h-72 w-full rounded-sm transition-all duration-300 hover:cursor-pointer group-hover:scale-[101%]"
-								alt="Erstsemester Programm"
-							/>
+							<a href="/events/kalender/{event.id}">
+								<img
+									src={getImageSrc(event.image, event.id, event.collectionId, event.collectionName)}
+									class="h-72 w-full rounded-sm object-cover transition-all duration-300 hover:cursor-pointer group-hover:scale-[101%]"
+									alt="Erstsemester Programm"
+								/>
+							</a>
 							<div class="peer flex-1 border-x-2 border-b-2 px-4 py-2">
 								<div class="flex justify-between text-gray-500">
 									<div>
