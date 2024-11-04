@@ -24,19 +24,23 @@
 		<div>Es ist ein Fehler aufgetreten bitte versuche es erneut oder wende dich an Claus.</div>
 	{/if}
 
-	<section class=" grid grid-cols-3 gap-2 pt-4">
+	<section class=" grid grid-cols-4 gap-1 pt-4">
 		<bold class="font-bold">Name</bold>
 		<bold class="font-bold">Allergie</bold>
+		<b>Vegetarier</b>
 		<bold class="font-bold">Bringt Kuchen mit</bold>
 
 		{#each data.list as record}
-			<div class="col-span-3 h-0.5 bg-gray-300"></div>
+			<div class="col-span-4 h-0.5 bg-gray-300"></div>
 
 			<div>
 				{record.name}
 			</div>
 			<div>
 				{record.allergies}
+			</div>
+			<div>
+				{record.is_vegetarian ? 'Ja' : ''}
 			</div>
 			<div>
 				{record.brings_cake ? 'Ja' : ''}
