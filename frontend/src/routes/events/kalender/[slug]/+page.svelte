@@ -2,9 +2,9 @@
 	import { faArrowLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 	import type { PageData } from '../$types';
 	import Fa from 'svelte-fa/src/fa.svelte';
-	import HeroShot from '$lib/components/HeroShot.svelte';
 	import { getImageSrc } from '$lib/fetch_img';
 	import placeholder from '$lib/assets/pages/events/kalender/placeholder.jpg';
+	import { _categoryToDisplayName } from './+page';
 
 	export let data: PageData;
 
@@ -49,7 +49,7 @@
 	}
 </script>
 
-{#if !data.entry}
+{#if !data.event}
 	<div class="grid justify-center gap-2 px-4 py-24">
 		<div class="lg:5xl text-center font-bold uppercase md:text-3xl">
 			Die Veranstaltung konnte nicht gefunden werden
@@ -63,49 +63,54 @@
 		</a>
 	</div>
 {:else}
-	<HeroShot
-		imgSrc={imgSrc(
-			data.entry.image,
-			data.entry.id,
-			data.entry.collectionId,
-			data.entry.collectionName
-		)}
-		height="h-[40svh]"
-	/>
-	<main class="container relative mx-auto px-4 py-12">
-		<a
-			href="/events/kalender"
-			class="text-primary absolute -left-6 top-14 text-3xl hover:brightness-110"
-			><Fa icon={faArrowLeft} /></a
-		>
-		<h1 class="break-words pb-0">{data.entry.title}</h1>
+	<main class="container mx-auto px-8 py-12 xl:px-40">
+		<a href="/events/kalender" class="text-primary text-sm no-underline hover:underline">
+			Kalender > {_categoryToDisplayName(data.event.category) || data.event.title}
+		</a>
+
+		<h1 class="break-words pb-0">{data.event.title}</h1>
 		<div class="pb-6 text-gray-500">
-			{getDate(data.entry.start_date_time, data.entry.end_date_time)}
+			{getDate(data.event.start_date_time, data.event.end_date_time)}
 		</div>
 
-		<section class="grid gap-8 md:grid-cols-[1fr_fit-content(12rem)]">
-			<div class="overflow-hidden whitespace-pre-line">
-				{data.entry.description}
-			</div>
-			<div class=" whitespace-nowrap max-md:order-first">
+		<img
+			alt="Foto für {data.event.title}"
+			src={imgSrc(
+				data.event.image,
+				data.event.id,
+				data.event.collectionId,
+				data.event.collectionName
+			)}
+		/>
+
+		<section class="grid gap-8 py-12 md:grid-cols-[1fr_fit-content(12rem)]">
+			<div class="whitespace-pre-line">{@html data.event.description}</div>
+			<div class="max-md:order-first">
 				<h3 class="uppercase">Details</h3>
 				<p>
-					Datum: {getDate(data.entry.start_date_time, data.entry.end_date_time)}
+					Datum: {getDate(data.event.start_date_time, data.event.end_date_time)}
 				</p>
 				<p>
 					Ort:
-					{#if data.entry.maps_url}
-						<a href={data.entry.maps_url} target="_blank" rel="noopener">
-							{data.entry.location}
+					{#if data.event.maps_url}
+						<a href={data.event.maps_url} target="_blank" rel="noopener">
+							{data.event.location}
 						</a>
-					{:else if data.entry.location_url}
-						<a href={data.entry.location_url} target="_blank" rel="noopener">
-							{data.entry.location}
+					{:else if data.event.location_url}
+						<a href={data.event.location_url} target="_blank" rel="noopener">
+							{data.event.location}
 						</a>
 					{:else}
-						{data.entry.location}
+						{data.event.location}
 					{/if}
 				</p>
+				{#if _categoryToDisplayName(data.event.category)}
+					<div>Kategorie: {_categoryToDisplayName(data.event.category)}</div>
+				{/if}
+
+				{#if data.event.speaker}
+					<div>Referent: {data.event.speaker}</div>
+				{/if}
 			</div>
 		</section>
 

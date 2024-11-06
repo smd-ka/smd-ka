@@ -89,7 +89,7 @@
 					reisen selbständig an
 				</div>
 				<div>
-					<bold class="font-bold">{data.takesOwnCount}</bold>
+					<bold class="font-bold">{data.takesCarCount}</bold>
 					Autofahrer (die Gepäck mitnehmen können)
 				</div>
 				<div>
