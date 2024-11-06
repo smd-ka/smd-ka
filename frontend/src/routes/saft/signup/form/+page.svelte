@@ -33,7 +33,6 @@
 	const signup = async () => {
 		loading = true;
 		const form = document.getElementById('form') as HTMLFormElement;
-		console.log(form);
 		let formData = new FormData(form);
 		formData.set(
 			'would_sleep_on_floor',
@@ -50,7 +49,6 @@
 		try {
 			record = await pb.collection('saft').create(formData);
 			success = true;
-			console.log(record);
 		} catch (e: any) {
 			loading = false;
 			console.error(getErrorMessage(e));
