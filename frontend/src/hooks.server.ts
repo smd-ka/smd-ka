@@ -1,4 +1,4 @@
-import { pb } from '$lib/pocketbase';
+import { pb, PRIT_RESPONSABLE } from '$lib/pocketbase';
 import { redirect, type Handle } from '@sveltejs/kit';
 import { SAFT_COORDINATOR } from '$lib/pocketbase';
 
@@ -23,6 +23,13 @@ export const handle: Handle = async ({ event, resolve }) => {
 	if (
 		!pb.authStore.model?.roles.includes(SAFT_COORDINATOR) &&
 		event.url.pathname.startsWith('/intern/saft/list')
+	) {
+		redirect(303, '/intern');
+	}
+
+	if (
+		!pb.authStore.model?.roles.includes(PRIT_RESPONSABLE) &&
+		event.url.pathname.startsWith('/intern/saft/prit')
 	) {
 		redirect(303, '/intern');
 	}
