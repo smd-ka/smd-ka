@@ -11,8 +11,6 @@ export type SaftRegistrationFilter =
 	| 'landau'
 	| 'floor_sleeper';
 
-export const prerender = true;
-
 export const load: PageLoad = async () => {
 	try {
 		const records = await pb.collection('saft_registrations').getFullList({

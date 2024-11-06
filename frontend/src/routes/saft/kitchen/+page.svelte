@@ -1,8 +1,4 @@
 <script lang="ts">
-	import { pb } from '$lib/pocketbase';
-	import { onMount } from 'svelte';
-	import loadingSpinner from '$lib/assets/loading_spinner.gif';
-
 	export let data;
 </script>
 
