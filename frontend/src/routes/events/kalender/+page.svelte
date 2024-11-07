@@ -21,7 +21,7 @@
 
 	const getFullDate = (startDateString: string, endDateString?: string) => {
 		const startDate = new Date(startDateString);
-		if (!endDateString) {
+		if (!endDateString || sameDay(startDateString, endDateString)) {
 			return (
 				startDate.toLocaleDateString('de-DE', {
 					day: '2-digit',
@@ -45,6 +45,17 @@
 				day: '2-digit',
 				month: 'long'
 			})
+		);
+	};
+
+	const sameDay = (start_date_time: string, end_date_time?: string) => {
+		if (!end_date_time) return true;
+		const d1 = new Date(start_date_time);
+		const d2 = new Date(end_date_time);
+		return (
+			d1.getFullYear() === d2.getFullYear() &&
+			d1.getMonth() === d2.getMonth() &&
+			d1.getDate() === d2.getDate()
 		);
 	};
 
