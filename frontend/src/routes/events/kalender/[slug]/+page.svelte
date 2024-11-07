@@ -8,7 +8,7 @@
 
 	export let data: PageData;
 
-	const getDate = (startDateString: string, endDateString: string) => {
+	const getDateTime = (startDateString: string, endDateString: string) => {
 		if (!endDateString) {
 			const date = new Date(startDateString);
 			return (
@@ -41,6 +41,92 @@
 		);
 	};
 
+	const getStartDate = (startDateString: string) => {
+		const date = new Date(startDateString);
+		return (
+			date.toLocaleDateString('de-DE', {
+				day: '2-digit',
+				month: 'long',
+				year: 'numeric'
+			}) +
+			' // ' +
+			date.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })
+		);
+	};
+
+	const getEndDate = (endDateString: string) => {
+		const date = new Date(endDateString);
+		return (
+			date.toLocaleDateString('de-DE', {
+				day: '2-digit',
+				month: 'long',
+				year: 'numeric'
+			}) +
+			' // ' +
+			date.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })
+		);
+	};
+
+	const getDate = (startDateString: string, endDateString: string) => {
+		if (!endDateString || sameDay(startDateString, endDateString)) {
+			const date = new Date(startDateString);
+			return date.toLocaleDateString('de-DE', {
+				day: '2-digit',
+				month: 'long',
+				year: 'numeric'
+			});
+		}
+		const startDate = new Date(startDateString);
+		const endDate = new Date(endDateString);
+		return (
+			startDate.toLocaleDateString('de-DE', {
+				day: '2-digit',
+				month: 'long',
+				year: 'numeric'
+			}) +
+			' - ' +
+			endDate.toLocaleDateString('de-DE', {
+				day: '2-digit',
+				month: 'long',
+				year: 'numeric'
+			})
+		);
+	};
+
+	const getHour = (startDateString: string, endDateString: string) => {
+		if (!endDateString) {
+			const date = new Date(startDateString);
+			return date.toLocaleTimeString('de-DE', {
+				hour: '2-digit',
+				minute: '2-digit'
+			});
+		}
+		const startDate = new Date(startDateString);
+		const endDate = new Date(endDateString);
+		return (
+			startDate.toLocaleTimeString('de-DE', {
+				hour: '2-digit',
+				minute: '2-digit'
+			}) +
+			' - ' +
+			endDate.toLocaleTimeString('de-DE', {
+				hour: '2-digit',
+				minute: '2-digit'
+			})
+		);
+	};
+
+	const sameDay = (start_date_time: string, end_date_time?: string) => {
+		if (!end_date_time) return true;
+		const d1 = new Date(start_date_time);
+		const d2 = new Date(end_date_time);
+		return (
+			d1.getFullYear() === d2.getFullYear() &&
+			d1.getMonth() === d2.getMonth() &&
+			d1.getDate() === d2.getDate()
+		);
+	};
+
 	function imgSrc(image: string, id: string, collectionId: string, collectionName: string) {
 		if (!image) {
 			return placeholder;
@@ -70,7 +156,7 @@
 
 		<h1 class="break-words pb-0">{data.event.title}</h1>
 		<div class="pb-6 text-gray-500">
-			{getDate(data.event.start_date_time, data.event.end_date_time)}
+			{getDateTime(data.event.start_date_time, data.event.end_date_time)}
 		</div>
 
 		<img
@@ -83,13 +169,26 @@
 			)}
 		/>
 
-		<section class="grid gap-8 py-12 md:grid-cols-[1fr_fit-content(12rem)]">
+		<section class="grid gap-8 py-12 md:grid-cols-[3fr_fit-content(18rem)]">
 			<div class="whitespace-pre-line">{@html data.event.description}</div>
 			<div class="max-md:order-first">
 				<h3 class="uppercase">Details</h3>
-				<p>
-					Datum: {getDate(data.event.start_date_time, data.event.end_date_time)}
-				</p>
+				{#if sameDay(data.event.start_date_time, data.event.end_date_time)}
+					<p>
+						Datum: {getDate(data.event.start_date_time, data.event.end_date_time)}
+					</p>
+					<p>
+						Uhrzeit: {getHour(data.event.start_date_time, data.event.end_date_time)}
+					</p>
+				{:else}
+					<p>
+						Start: {getStartDate(data.event.start_date_time)}
+					</p>
+					<p>
+						Ende: {getEndDate(data.event.end_date_time)}
+					</p>
+				{/if}
+
 				<p>
 					Ort:
 					{#if data.event.maps_url}
