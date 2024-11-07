@@ -111,7 +111,7 @@
 							<a href="/events/kalender/{event.id}">
 								<img
 									src={getImageSrc(event.image, event.id, event.collectionId, event.collectionName)}
-									class="max-h-40 w-full rounded-sm object-cover transition-all duration-300 hover:cursor-pointer group-hover:scale-[101%]"
+									class="max-h-40 w-full rounded-sm object-cover transition-all duration-300 hover:cursor-pointer group-hover:scale-[101%] lg:max-h-72"
 									alt="Erstsemester Programm"
 								/>
 							</a>
