@@ -31,8 +31,13 @@
 					Sie findet immer am Anfang des Semesters statt und ist eine gute Möglichkeit, die SMD und andere
 					Studierende kennenzulernen.
 				</p>
-				<a href="/saft/signup" class="pointer w-fit bg-black p-4 text-white">Jetzt anmelden</a>
-				<!-- <div class="w-fit bg-gray-500 p-4 text-white">Anmeldung ab Mitte Oktober</div> -->
+				<!-- <a href="/saft/signup" class="pointer w-fit bg-black p-4 text-white">Jetzt anmelden</a> -->
+				<b>
+					Die Anmeldung für diese SAFT ist geschlossen. Falls du ganz spontan noch mit willst wende
+					dich dich an <a href="mailto:bettina.fritzsching@web.de">Bettina</a>.
+				</b>
+
+				<!-- <div class="w-fit bg-gray-500 p-4 text-white">Anmeldung ab Mitte April</div> -->
 			</div>
 			<img class="h-96 w-full object-cover object-top lg:hidden" alt="Flyer" src={flyer} />
 		</div>
@@ -92,7 +97,11 @@
 			<h1 class="pb-0">Du bist dabei?</h1>
 			<h3 class="pb-6">Dann nichts wie los melde dich an!</h3>
 
-			<a href="/saft/signup" class="bg-black p-4 text-white">Hier geht's zur Anmeldung</a>
+			<!-- <a href="/saft/signup" class="bg-black p-4 text-white">Hier geht's zur Anmeldung</a> -->
+			<b>
+				Die Anmeldung für diese SAFT ist abgeschlossen. Falls du ganz spontan doch noch mit willst
+				wende dich dich an <a href="mailto:bettina.fritzsching@web.de">Bettina</a>.
+			</b>
 		</section>
 	</div>
 </main>
