@@ -116,15 +116,35 @@
 				duration-200
 				"
 		>
+			<div class="flex items-center gap-2 text-white lg:hidden">
+				<button
+					class="text-3xl md:text-4xl"
+					on:click|stopPropagation={() => (showMenu = !showMenu)}
+				>
+					{#if showMenu}
+						<div in:blur>
+							<Fa class="w-6" icon={faX} />
+						</div>
+					{:else}
+						<div in:blur>
+							<Fa class="w-6" icon={faBars} />
+						</div>
+					{/if}
+				</button>
+			</div>
+
 			<a class=" py-2" on:click={() => (showMenu = false)} href="/">
 				<img class="max-h-7" src={logo} alt="SMD Logo" />
 			</a>
+			<!-- Pseudo Element to center logo -->
+			<div></div>
 
 			{#if PR_NUMBER}
 				<span class="text-white">
 					Preview for PR#{PR_NUMBER}
 				</span>
 			{/if}
+
 			<div class="flex items-center gap-4 text-xl text-white max-lg:hidden">
 				{#each tabs as tab}
 					<div>
@@ -163,23 +183,6 @@
 					{/if}
 				</a>
 			</div>
-
-			<div class="flex items-center gap-2 text-white lg:hidden">
-				<button
-					class="text-3xl md:text-4xl"
-					on:click|stopPropagation={() => (showMenu = !showMenu)}
-				>
-					{#if showMenu}
-						<div in:blur>
-							<Fa class="w-6" icon={faX} />
-						</div>
-					{:else}
-						<div in:blur>
-							<Fa class="w-6" icon={faBars} />
-						</div>
-					{/if}
-				</button>
-			</div>
 		</div>
 
 		<div class="bg-primary h-1"></div>
@@ -187,45 +190,48 @@
 		{#if showMenu}
 			<div
 				transition:slide={{ duration: 200, easing: sineInOut }}
-				on:click={() => (showMenu = false)}
-				class="flex h-[100svh] flex-col gap-4 pt-12 text-center text-3xl text-white backdrop-blur-xl backdrop-brightness-50 lg:hidden"
+				class="absolute top-[4.5rem] h-[100svh] w-fit bg-white px-4 pt-8 lg:hidden"
 			>
 				{#each tabs as tab}
 					<div>
-						<span class="text-primary">
+						<h3 class="text-primary">
 							{tab.name}
-						</span>
-						<div class="flex flex-col text-xl">
+						</h3>
+						<button on:click={() => (showMenu = false)} class="flex flex-col text-xl">
 							{#each tab.routes as route}
-								<div class="flex items-center justify-center gap-2">
-									<Fa icon={faArrowRight} />
-									<a href={route.url}>{route.name}</a>
-								</div>
+								<a class="ml-4" href={route.url}>{route.name}</a>
 							{/each}
-						</div>
+						</button>
 					</div>
 				{/each}
 
-				<a href="https://kings-cafe.de">
-					<div class="flex items-center justify-center gap-2">
+				<h3 class="text-primary">
+					<a class="flex items-center gap-2" href="https://kings-cafe.de">
 						International
 						<Fa class="text-xl" icon={faArrowUpRightFromSquare} />
-					</div>
-				</a>
-				<a class="self-center" href="/intern">
-					<Fa icon={faRightToBracket} />
-				</a>
+					</a>
+				</h3>
+				<h3 class="text-primary">
+					<a class="flex items-center gap-2" href="/intern">
+						SMD-KA Intern
+						<Fa icon={faRightToBracket} />
+					</a>
+				</h3>
 			</div>
 		{/if}
+		<!-- {#if isValid}
+			<nav
+				class="{scrollY > $headerImageHeight - navbarHeight
+					? 'bg-[#4D4D4D]'
+					: 'border-primary -z-10 border-b-2 bg-transparent backdrop-blur-lg backdrop-brightness-90'} hover:text-primary flex w-full justify-between px-4 py-1 text-white"
+			>
+				<p class="text-primary text-xl font-bold">SMD-KA Intern</p>
+				<div>
+					<a href="/intern/address-list">Adressliste</a>
+				</div>
+			</nav>
+		{/if} -->
 	</nav>
-
-	{#if isValid}
-		<div class="fixed bottom-4 left-4 z-10 lg:hidden">
-			<a href="/intern">
-				<img class="h-14 w-14 rounded-full border object-cover" {src} alt="user avatar" />
-			</a>
-		</div>
-	{/if}
 
 	<!-- -------- begin content --------- -->
 
