@@ -58,6 +58,6 @@
 
 <style>
 	.menu-link {
-		@apply px-4 py-2 hover:bg-white hover:text-black;
+		@apply px-4 py-2 hover:bg-gray-100 hover:text-black;
 	}
 </style>

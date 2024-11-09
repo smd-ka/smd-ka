@@ -157,8 +157,8 @@
 		<div
 			class="{scrollY > $headerImageHeight - navbarHeight
 				? 'bg-grey'
-				: 'bg-transparent backdrop-blur-lg backdrop-brightness-90'} flex items-center justify-between gap-4 px-4 py-3 transition-all
-				duration-200
+				: 'bg-transparent backdrop-blur-lg backdrop-brightness-90'} flex items-center justify-between gap-4 px-4 py-3
+				transition-all duration-200
 				"
 		>
 			<div class="flex items-center gap-2 text-white lg:hidden">
@@ -238,28 +238,31 @@
 		</div>
 
 		{#if showMenu}
-			<div
+			<nav
 				transition:slide={{ duration: 200, easing: sineInOut }}
-				class="absolute top-[4.5rem] h-[100svh] w-fit overflow-scroll bg-white px-4 pt-8 lg:hidden"
+				class="mobile-nav-height absolute top-0 z-0 mt-[4.5rem] w-fit max-w-full overflow-scroll bg-white p-4 lg:hidden"
 			>
 				{#if isValid}
-					<div class="flex gap-4">
-						<img
-							class="h-16 w-16 rounded-full border-2 border-gray-400 object-cover"
-							{src}
-							alt="user avatar"
-						/>
-						<div class="grid justify-center text-lg">
-							<a href="/intern/profile">Profil</a>
-							<a href="/intern/account">Ausloggen</a>
-						</div>
+					<div>
+						<h3 class="text-primary break-words">
+							Hallo, {pb.authStore.model?.name}
+						</h3>
+						<button on:click={() => (showMenu = false)} class="flex flex-col text-xl">
+							<a class="ml-4" href="/intern">Dashboard</a>
+							<a class="ml-4" href="/intern/profile">Profil</a>
+							<a class="ml-4" href="/intern/account">Ausloggen</a>
+						</button>
 					</div>
-					<div class="grid">
-						{#each tabsIntern.routes as route}
-							{#if pb.authStore.model?.roles.includes(route.permission) || !route.permission}
-								<a href={route.url}>{route.name}</a>
-							{/if}
-						{/each}
+
+					<div>
+						<h3 class="text-primary">SMD-KA Intern</h3>
+						<button on:click={() => (showMenu = false)} class="flex flex-col text-xl">
+							{#each tabsIntern.routes as route}
+								{#if pb.authStore.model?.roles.includes(route.permission) || !route.permission}
+									<a class="ml-4" href={route.url}>{route.name}</a>
+								{/if}
+							{/each}
+						</button>
 					</div>
 				{/if}
 
@@ -288,7 +291,7 @@
 						<Fa icon={faRightToBracket} />
 					</a>
 				</h3>
-			</div>
+			</nav>
 		{/if}
 	</nav>
 
@@ -368,10 +371,10 @@
 	}
 
 	.CategoryLinkList {
-		@apply bg-primary absolute hidden justify-center gap-4 px-4 py-2 hover:grid peer-hover:grid;
+		@apply bg-primary absolute hidden justify-center  hover:grid peer-hover:grid;
 	}
 	.CategoryLinkList > a {
-		@apply hover:text-primary-text;
+		@apply px-4 py-2 hover:bg-gray-100 hover:text-black;
 	}
 
 	.CategoryTitle {
@@ -380,5 +383,9 @@
 
 	.underline-a > a:hover {
 		text-decoration: underline;
+	}
+
+	.mobile-nav-height {
+		height: calc(100svh - 4.5rem);
 	}
 </style>
