@@ -19,13 +19,15 @@
 		faX
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
-	import { getAvatarUrl, pb } from '$lib/pocketbase';
+	import { getAvatarUrl, pb, PRIT_RESPONSABLE, SAFT_COORDINATOR } from '$lib/pocketbase';
 	import ifes from '$lib/assets/logos/ifes.png';
 	import { page } from '$app/stores';
 	import { blur, slide } from 'svelte/transition';
 	import { headerImageHeight } from '$lib/stores';
 	import { sineInOut } from 'svelte/easing';
 	import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+	import { onMount } from 'svelte';
+	import NavbarProfile from '$lib/components/NavbarProfile.svelte';
 
 	const PR_NUMBER: string = import.meta.env.VITE_PR_NUMBER;
 
@@ -39,6 +41,12 @@
 	});
 	let scrollY: number;
 	const navbarHeight = 72;
+
+	onMount(() => {
+		window.addEventListener('scroll', () => {
+			scrollY = window.scrollY;
+		});
+	});
 
 	const tabs = [
 		{
@@ -104,11 +112,48 @@
 			]
 		}
 	];
+
+	const tabsIntern = {
+		name: 'Intern',
+		baseUrl: '/intern',
+		routes: [
+			{
+				name: 'Adressliste',
+				url: '/intern/address-list'
+			},
+			{
+				name: 'Event hinzufügen',
+				url: '/intern/add-event'
+			},
+			{
+				name: 'Wiki',
+				url: 'https://wiki.smd-karlsruhe.de'
+			},
+			{
+				name: 'Mastersheet',
+				url: 'https://docs.google.com/spreadsheets/d/1elIUUx3LKdrvCmuGbXDzUgSeF2iMWq7bZRdVswGHLYM/edit?usp=sharing'
+			},
+			{
+				name: 'Mitarbeiter Portal',
+				url: 'https://portal.smd.org/start'
+			},
+			{
+				name: 'SAFT Anmeldungen',
+				url: '/intern/saft/list',
+				permission: SAFT_COORDINATOR
+			},
+			{
+				name: 'SAFT PRIT',
+				url: '/intern/saft/prit',
+				permission: PRIT_RESPONSABLE
+			}
+		]
+	};
 </script>
 
 <svelte:window bind:scrollY />
 <main class="flex min-h-screen flex-col">
-	<nav class=" sticky top-0 z-50 flex flex-[0_1_auto] flex-col shadow-md">
+	<nav class=" border-primary sticky top-0 z-50 flex flex-[0_1_auto] flex-col border-b-4 shadow-md">
 		<div
 			class="{scrollY > $headerImageHeight - navbarHeight
 				? 'bg-grey'
@@ -164,34 +209,60 @@
 					</div>
 				{/each}
 
+				{#if isValid}
+					<div>
+						<span
+							class="CategoryTitle peer {$page.url.pathname.includes(tabsIntern.baseUrl)
+								? 'text-primary'
+								: ''}"
+						>
+							{tabsIntern.name}
+							<Fa class="text-lg" icon={faChevronDown}></Fa>
+						</span>
+						<div class="CategoryLinkList">
+							{#each tabsIntern.routes as route}
+								{#if pb.authStore.model?.roles.includes(route.permission) || !route.permission}
+									<a href={route.url}>{route.name}</a>
+								{/if}
+							{/each}
+						</div>
+					</div>
+				{/if}
+
 				<a class="hover:text-primary" href="https://kings-cafe.de">International</a>
 
-				<a class=" self-center" href="/intern">
-					{#if isValid}
-						<img
-							class="h-10 w-10 rounded-full border-2 border-gray-400 object-cover"
-							{src}
-							alt="user avatar"
-						/>
-					{:else}
-						<Fa
-							class={$page.url.pathname.match('account/login')
-								? 'text-primary'
-								: 'hover:text-primary'}
-							icon={faRightToBracket}
-						/>
-					{/if}
-				</a>
+				<div>
+					<NavbarProfile />
+				</div>
 			</div>
 		</div>
-
-		<div class="bg-primary h-1"></div>
 
 		{#if showMenu}
 			<div
 				transition:slide={{ duration: 200, easing: sineInOut }}
-				class="absolute top-[4.5rem] h-[100svh] w-fit bg-white px-4 pt-8 lg:hidden"
+				class="absolute top-[4.5rem] h-[100svh] w-fit overflow-scroll bg-white px-4 pt-8 lg:hidden"
 			>
+				{#if isValid}
+					<div class="flex gap-4">
+						<img
+							class="h-16 w-16 rounded-full border-2 border-gray-400 object-cover"
+							{src}
+							alt="user avatar"
+						/>
+						<div class="grid justify-center text-lg">
+							<a href="/intern/profile">Profil</a>
+							<a href="/intern/account">Ausloggen</a>
+						</div>
+					</div>
+					<div class="grid">
+						{#each tabsIntern.routes as route}
+							{#if pb.authStore.model?.roles.includes(route.permission) || !route.permission}
+								<a href={route.url}>{route.name}</a>
+							{/if}
+						{/each}
+					</div>
+				{/if}
+
 				{#each tabs as tab}
 					<div>
 						<h3 class="text-primary">
@@ -219,18 +290,6 @@
 				</h3>
 			</div>
 		{/if}
-		<!-- {#if isValid}
-			<nav
-				class="{scrollY > $headerImageHeight - navbarHeight
-					? 'bg-[#4D4D4D]'
-					: 'border-primary -z-10 border-b-2 bg-transparent backdrop-blur-lg backdrop-brightness-90'} hover:text-primary flex w-full justify-between px-4 py-1 text-white"
-			>
-				<p class="text-primary text-xl font-bold">SMD-KA Intern</p>
-				<div>
-					<a href="/intern/address-list">Adressliste</a>
-				</div>
-			</nav>
-		{/if} -->
 	</nav>
 
 	<!-- -------- begin content --------- -->

@@ -23,7 +23,7 @@
 
   }  
   
-  a {
+  p > a {
     @apply underline hover:no-underline;
   }
 
