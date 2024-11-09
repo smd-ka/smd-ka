@@ -9,7 +9,7 @@
 	export let data: PageData;
 
 	const getDateTime = (startDateString: string, endDateString: string) => {
-		if (!endDateString) {
+		if (!endDateString || sameDay(startDateString, endDateString)) {
 			const date = new Date(startDateString);
 			return (
 				date.toLocaleDateString('de-DE', {
