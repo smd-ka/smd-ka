@@ -28,6 +28,7 @@
 	import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 	import { onMount } from 'svelte';
 	import NavbarProfile from '$lib/components/NavbarProfile.svelte';
+	import { click_outside } from '$lib/click_outside';
 
 	const PR_NUMBER: string = import.meta.env.VITE_PR_NUMBER;
 
@@ -149,6 +150,10 @@
 			}
 		]
 	};
+
+	const handle = () => {
+		console.log('handle');
+	};
 </script>
 
 <svelte:window bind:scrollY />
@@ -239,6 +244,8 @@
 
 		{#if showMenu}
 			<nav
+				use:click_outside
+				on:outsideclick={() => (showMenu = false)}
 				transition:slide={{ duration: 200, easing: sineInOut }}
 				class="mobile-nav-height absolute top-0 z-0 mt-[4.5rem] w-fit max-w-full overflow-scroll bg-white p-4 lg:hidden"
 			>
