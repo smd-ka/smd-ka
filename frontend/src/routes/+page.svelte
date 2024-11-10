@@ -47,12 +47,16 @@
 
 	const getDate = (startDateString: string, endDateString?: string) => {
 		const startDate = new Date(startDateString);
-		if (!endDateString) {
-			return startDate.toLocaleDateString('de-DE', {
-				weekday: 'long',
-				day: '2-digit',
-				month: '2-digit'
-			});
+		if (!endDateString || sameDay(startDateString, endDateString)) {
+			return (
+				startDate.toLocaleDateString('de-DE', {
+					weekday: 'long',
+					day: '2-digit',
+					month: '2-digit'
+				}) +
+				' // ' +
+				startDate.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })
+			);
 		}
 		const endDate = new Date(endDateString);
 		return (
@@ -68,9 +72,15 @@
 		);
 	};
 
-	const getTime = (startDateString: string) => {
-		const startDate = new Date(startDateString);
-		return startDate.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
+	const sameDay = (start_date_time: string, end_date_time?: string) => {
+		if (!end_date_time) return true;
+		const d1 = new Date(start_date_time);
+		const d2 = new Date(end_date_time);
+		return (
+			d1.getFullYear() === d2.getFullYear() &&
+			d1.getMonth() === d2.getMonth() &&
+			d1.getDate() === d2.getDate()
+		);
 	};
 </script>
 
@@ -101,15 +111,14 @@
 							<a href="/events/kalender/{event.id}">
 								<img
 									src={getImageSrc(event.image, event.id, event.collectionId, event.collectionName)}
-									class="h-72 w-full rounded-sm object-cover transition-all duration-300 hover:cursor-pointer group-hover:scale-[101%]"
+									class="max-h-40 w-full rounded-sm object-cover transition-all duration-300 hover:cursor-pointer group-hover:scale-[101%] lg:max-h-72"
 									alt="Erstsemester Programm"
 								/>
 							</a>
 							<div class="peer flex-1 border-x-2 border-b-2 px-4 py-2">
 								<div class="flex justify-between text-gray-500">
 									<div>
-										{getDate(event.start_date_time, event.end_date_time)} //
-										{getTime(event.start_date_time)}
+										{getDate(event.start_date_time, event.end_date_time)}
 									</div>
 									<a class="hover:text-primary hover:cursor-pointer" href={event.location_url}>
 										<Fa icon={faLocationDot} />

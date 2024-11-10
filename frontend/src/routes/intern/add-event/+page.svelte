@@ -93,11 +93,7 @@
 				{dateError}
 			</b>
 		</div>
-		<div>
-			<DateTimeInput name="end_date_time" disabled={loading}>Datum und Uhrzeit (Ende)</DateTimeInput
-			>
-			<b>Bitte nur bei mehrtägigen Veranstaltungen angeben.</b>
-		</div>
+		<DateTimeInput name="end_date_time" disabled={loading}>Datum und Uhrzeit (Ende)</DateTimeInput>
 		<TextInput name="location" label="Ort" disabled={loading} />
 		<UrlInput name="location_url" label="Google Maps Link zum Ort" disabled={loading} />
 		<TextInput name="speaker" label="Referent" />
