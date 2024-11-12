@@ -10,7 +10,6 @@
 	import logo from '$lib/assets/logos/smd-ka_modified.svg';
 	import smd_logo from '$lib/assets/logos/smd_invers.png';
 	import {
-		faArrowRight,
 		faArrowUpRightFromSquare,
 		faBars,
 		faChevronDown,
@@ -29,6 +28,7 @@
 	import { onMount } from 'svelte';
 	import NavbarProfile from '$lib/components/NavbarProfile.svelte';
 	import { click_outside } from '$lib/click_outside';
+	import { applyAction, enhance } from '$app/forms';
 
 	const PR_NUMBER: string = import.meta.env.VITE_PR_NUMBER;
 
@@ -42,6 +42,7 @@
 	});
 	let scrollY: number;
 	const navbarHeight = 72;
+	let loading = false;
 
 	onMount(() => {
 		window.addEventListener('scroll', () => {
@@ -257,7 +258,22 @@
 						<button on:click={() => (showMenu = false)} class="flex flex-col text-xl">
 							<a class="ml-4" href="/intern">Dashboard</a>
 							<a class="ml-4" href="/intern/profile">Profil</a>
-							<a class="ml-4" href="/intern/account">Ausloggen</a>
+
+							<form
+								class="menu-link ml-4"
+								method="POST"
+								action="/account/logout"
+								use:enhance={() => {
+									loading = true;
+									return async ({ result }) => {
+										pb.authStore.clear();
+										await applyAction(result);
+										loading = false;
+									};
+								}}
+							>
+								<button>Ausloggen</button>
+							</form>
 						</button>
 					</div>
 
@@ -292,12 +308,14 @@
 						<Fa class="text-xl" icon={faArrowUpRightFromSquare} />
 					</a>
 				</h3>
-				<h3 class="text-primary">
-					<a class="flex items-center gap-2" href="/intern">
-						SMD-KA Intern
-						<Fa icon={faRightToBracket} />
-					</a>
-				</h3>
+				<button on:click={() => (showMenu = false)}>
+					<h3 class="text-primary">
+						<a class="flex items-center gap-2" href="/intern">
+							SMD-KA Intern
+							<Fa icon={faRightToBracket} />
+						</a>
+					</h3>
+				</button>
 			</nav>
 		{/if}
 	</nav>
