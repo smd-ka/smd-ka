@@ -129,15 +129,18 @@
 			},
 			{
 				name: 'Wiki',
-				url: 'https://wiki.smd-karlsruhe.de'
+				url: 'https://wiki.smd-karlsruhe.de',
+				extern: true
 			},
 			{
 				name: 'Mastersheet',
-				url: 'https://docs.google.com/spreadsheets/d/1elIUUx3LKdrvCmuGbXDzUgSeF2iMWq7bZRdVswGHLYM/edit?usp=sharing'
+				url: 'https://docs.google.com/spreadsheets/d/1elIUUx3LKdrvCmuGbXDzUgSeF2iMWq7bZRdVswGHLYM/edit?usp=sharing',
+				extern: true
 			},
 			{
 				name: 'Mitarbeiter Portal',
-				url: 'https://portal.smd.org/start'
+				url: 'https://portal.smd.org/start',
+				extern: true
 			},
 			{
 				name: 'SAFT Anmeldungen',
@@ -150,10 +153,6 @@
 				permission: PRIT_RESPONSABLE
 			}
 		]
-	};
-
-	const handle = () => {
-		console.log('handle');
 	};
 </script>
 
@@ -228,7 +227,12 @@
 						<div class="CategoryLinkList">
 							{#each tabsIntern.routes as route}
 								{#if pb.authStore.model?.roles.includes(route.permission) || !route.permission}
-									<a href={route.url}>{route.name}</a>
+									<a class="fa" href={route.url}>
+										{route.name}
+										{#if route.extern}
+											<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
+										{/if}
+									</a>
 								{/if}
 							{/each}
 						</div>
@@ -282,7 +286,12 @@
 						<button on:click={() => (showMenu = false)} class="flex flex-col text-xl">
 							{#each tabsIntern.routes as route}
 								{#if pb.authStore.model?.roles.includes(route.permission) || !route.permission}
-									<a class="ml-4" href={route.url}>{route.name}</a>
+									<a class="fa ml-4" href={route.url}>
+										{route.name}
+										{#if route.extern}
+											<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
+										{/if}
+									</a>
 								{/if}
 							{/each}
 						</button>
