@@ -23,7 +23,7 @@
 
   }  
   
-  a {
+  p > a {
     @apply underline hover:no-underline;
   }
 
@@ -56,6 +56,10 @@
 
   .pad {
     @apply xl:px-40 px-4;
+  }
+
+  .fa {
+    @apply flex items-center gap-2;
   }
 
 }

@@ -10,7 +10,6 @@
 	import logo from '$lib/assets/logos/smd-ka_modified.svg';
 	import smd_logo from '$lib/assets/logos/smd_invers.png';
 	import {
-		faArrowRight,
 		faArrowUpRightFromSquare,
 		faBars,
 		faChevronDown,
@@ -19,13 +18,17 @@
 		faX
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
-	import { getAvatarUrl, pb } from '$lib/pocketbase';
+	import { getAvatarUrl, pb, PRIT_RESPONSABLE, SAFT_COORDINATOR } from '$lib/pocketbase';
 	import ifes from '$lib/assets/logos/ifes.png';
 	import { page } from '$app/stores';
 	import { blur, slide } from 'svelte/transition';
 	import { headerImageHeight } from '$lib/stores';
 	import { sineInOut } from 'svelte/easing';
 	import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+	import { onMount } from 'svelte';
+	import NavbarProfile from '$lib/components/NavbarProfile.svelte';
+	import { click_outside } from '$lib/click_outside';
+	import { applyAction, enhance } from '$app/forms';
 
 	const PR_NUMBER: string = import.meta.env.VITE_PR_NUMBER;
 
@@ -39,6 +42,13 @@
 	});
 	let scrollY: number;
 	const navbarHeight = 72;
+	let loading = false;
+
+	onMount(() => {
+		window.addEventListener('scroll', () => {
+			scrollY = window.scrollY;
+		});
+	});
 
 	const tabs = [
 		{
@@ -104,27 +114,87 @@
 			]
 		}
 	];
+
+	const tabsIntern = {
+		name: 'Intern',
+		baseUrl: '/intern',
+		routes: [
+			{
+				name: 'Adressliste',
+				url: '/intern/address-list'
+			},
+			{
+				name: 'Event hinzufügen',
+				url: '/intern/add-event'
+			},
+			{
+				name: 'Wiki',
+				url: 'https://wiki.smd-karlsruhe.de',
+				extern: true
+			},
+			{
+				name: 'Mastersheet',
+				url: 'https://docs.google.com/spreadsheets/d/1elIUUx3LKdrvCmuGbXDzUgSeF2iMWq7bZRdVswGHLYM/edit?usp=sharing',
+				extern: true
+			},
+			{
+				name: 'Mitarbeiter Portal',
+				url: 'https://portal.smd.org/start',
+				extern: true
+			},
+			{
+				name: 'SAFT Anmeldungen',
+				url: '/intern/saft/list',
+				permission: SAFT_COORDINATOR
+			},
+			{
+				name: 'SAFT PRIT',
+				url: '/intern/saft/prit',
+				permission: PRIT_RESPONSABLE
+			}
+		]
+	};
 </script>
 
 <svelte:window bind:scrollY />
 <main class="flex min-h-screen flex-col">
-	<nav class=" sticky top-0 z-50 flex flex-[0_1_auto] flex-col shadow-md">
+	<nav class=" border-primary sticky top-0 z-50 flex flex-[0_1_auto] flex-col border-b-4 shadow-md">
 		<div
 			class="{scrollY > $headerImageHeight - navbarHeight
 				? 'bg-grey'
-				: 'bg-transparent backdrop-blur-lg backdrop-brightness-90'} flex items-center justify-between gap-4 px-4 py-3 transition-all
-				duration-200
+				: 'bg-transparent backdrop-blur-lg backdrop-brightness-90'} flex items-center justify-between gap-4 px-4 py-3
+				transition-all duration-200
 				"
 		>
+			<div class="flex items-center gap-2 text-white lg:hidden">
+				<button
+					class="text-3xl md:text-4xl"
+					on:click|stopPropagation={() => (showMenu = !showMenu)}
+				>
+					{#if showMenu}
+						<div in:blur>
+							<Fa class="w-6" icon={faX} />
+						</div>
+					{:else}
+						<div in:blur>
+							<Fa class="w-6" icon={faBars} />
+						</div>
+					{/if}
+				</button>
+			</div>
+
 			<a class=" py-2" on:click={() => (showMenu = false)} href="/">
 				<img class="max-h-7" src={logo} alt="SMD Logo" />
 			</a>
+			<!-- Pseudo Element to center logo -->
+			<div></div>
 
 			{#if PR_NUMBER}
 				<span class="text-white">
 					Preview for PR#{PR_NUMBER}
 				</span>
 			{/if}
+
 			<div class="flex items-center gap-4 text-xl text-white max-lg:hidden">
 				{#each tabs as tab}
 					<div>
@@ -144,88 +214,120 @@
 					</div>
 				{/each}
 
-				<a class="hover:text-primary" href="https://kings-cafe.de">International</a>
-
-				<a class=" self-center" href="/intern">
-					{#if isValid}
-						<img
-							class="h-10 w-10 rounded-full border-2 border-gray-400 object-cover"
-							{src}
-							alt="user avatar"
-						/>
-					{:else}
-						<Fa
-							class={$page.url.pathname.match('account/login')
-								? 'text-primary'
-								: 'hover:text-primary'}
-							icon={faRightToBracket}
-						/>
-					{/if}
-				</a>
-			</div>
-
-			<div class="flex items-center gap-2 text-white lg:hidden">
-				<button
-					class="text-3xl md:text-4xl"
-					on:click|stopPropagation={() => (showMenu = !showMenu)}
-				>
-					{#if showMenu}
-						<div in:blur>
-							<Fa class="w-6" icon={faX} />
-						</div>
-					{:else}
-						<div in:blur>
-							<Fa class="w-6" icon={faBars} />
-						</div>
-					{/if}
-				</button>
-			</div>
-		</div>
-
-		<div class="bg-primary h-1"></div>
-
-		{#if showMenu}
-			<div
-				transition:slide={{ duration: 200, easing: sineInOut }}
-				on:click={() => (showMenu = false)}
-				class="flex h-[100svh] flex-col gap-4 pt-12 text-center text-3xl text-white backdrop-blur-xl backdrop-brightness-50 lg:hidden"
-			>
-				{#each tabs as tab}
+				{#if isValid}
 					<div>
-						<span class="text-primary">
-							{tab.name}
+						<span
+							class="CategoryTitle peer {$page.url.pathname.includes(tabsIntern.baseUrl)
+								? 'text-primary'
+								: ''}"
+						>
+							{tabsIntern.name}
+							<Fa class="text-lg" icon={faChevronDown}></Fa>
 						</span>
-						<div class="flex flex-col text-xl">
-							{#each tab.routes as route}
-								<div class="flex items-center justify-center gap-2">
-									<Fa icon={faArrowRight} />
-									<a href={route.url}>{route.name}</a>
-								</div>
+						<div class="CategoryLinkList">
+							{#each tabsIntern.routes as route}
+								{#if pb.authStore.model?.roles.includes(route.permission) || !route.permission}
+									<a class="fa" href={route.url}>
+										{route.name}
+										{#if route.extern}
+											<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
+										{/if}
+									</a>
+								{/if}
 							{/each}
 						</div>
 					</div>
+				{/if}
+
+				<a class="hover:text-primary" href="https://kings-cafe.de">International</a>
+
+				<div>
+					<NavbarProfile />
+				</div>
+			</div>
+		</div>
+
+		{#if showMenu}
+			<nav
+				use:click_outside
+				on:outsideclick={() => (showMenu = false)}
+				transition:slide={{ duration: 200, easing: sineInOut }}
+				class="mobile-nav-height absolute top-0 z-0 mt-[4.5rem] w-fit max-w-full overflow-scroll bg-white p-4 lg:hidden"
+			>
+				{#if isValid}
+					<div>
+						<h3 class="text-primary break-words">
+							Hallo, {pb.authStore.model?.name}
+						</h3>
+						<button on:click={() => (showMenu = false)} class="flex flex-col text-xl">
+							<a class="ml-4" href="/intern">Dashboard</a>
+							<a class="ml-4" href="/intern/profile">Profil</a>
+
+							<form
+								class="menu-link ml-4"
+								method="POST"
+								action="/account/logout"
+								use:enhance={() => {
+									loading = true;
+									return async ({ result }) => {
+										pb.authStore.clear();
+										await applyAction(result);
+										loading = false;
+									};
+								}}
+							>
+								<button>Ausloggen</button>
+							</form>
+						</button>
+					</div>
+
+					<div>
+						<h3 class="text-primary">SMD-KA Intern</h3>
+						<button on:click={() => (showMenu = false)} class="flex flex-col text-xl">
+							{#each tabsIntern.routes as route}
+								{#if pb.authStore.model?.roles.includes(route.permission) || !route.permission}
+									<a class="fa ml-4" href={route.url}>
+										{route.name}
+										{#if route.extern}
+											<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
+										{/if}
+									</a>
+								{/if}
+							{/each}
+						</button>
+					</div>
+				{/if}
+
+				{#each tabs as tab}
+					<div>
+						<h3 class="text-primary">
+							{tab.name}
+						</h3>
+						<button on:click={() => (showMenu = false)} class="flex flex-col text-xl">
+							{#each tab.routes as route}
+								<a class="ml-4" href={route.url}>{route.name}</a>
+							{/each}
+						</button>
+					</div>
 				{/each}
 
-				<a href="https://kings-cafe.de">
-					<div class="flex items-center justify-center gap-2">
+				<h3 class="text-primary">
+					<a class="flex items-center gap-2" href="https://kings-cafe.de">
 						International
 						<Fa class="text-xl" icon={faArrowUpRightFromSquare} />
-					</div>
-				</a>
-				<a class="self-center" href="/intern">
-					<Fa icon={faRightToBracket} />
-				</a>
-			</div>
+					</a>
+				</h3>
+				<button on:click={() => (showMenu = false)}>
+					<h3 class="text-primary">
+						<a class="flex items-center gap-2" href="/intern">
+							SMD-KA Intern
+							<Fa icon={faRightToBracket} />
+						</a>
+					</h3>
+				</button>
+			</nav>
 		{/if}
 	</nav>
-
-	{#if isValid}
-		<div class="fixed bottom-4 left-4 z-10 lg:hidden">
-			<a href="/intern">
-				<img class="h-14 w-14 rounded-full border object-cover" {src} alt="user avatar" />
-			</a>
-		</div>
-	{/if}
 
 	<!-- -------- begin content --------- -->
 
@@ -303,10 +405,10 @@
 	}
 
 	.CategoryLinkList {
-		@apply bg-primary absolute hidden justify-center gap-4 px-4 py-2 hover:grid peer-hover:grid;
+		@apply bg-primary absolute hidden justify-center  hover:grid peer-hover:grid;
 	}
 	.CategoryLinkList > a {
-		@apply hover:text-primary-text;
+		@apply px-4 py-2 hover:bg-gray-100 hover:text-black;
 	}
 
 	.CategoryTitle {
@@ -315,5 +417,9 @@
 
 	.underline-a > a:hover {
 		text-decoration: underline;
+	}
+
+	.mobile-nav-height {
+		height: calc(100svh - 4.5rem);
 	}
 </style>

@@ -22,7 +22,6 @@
 		let formData = new FormData(form);
 		const email = formData.get('email')?.toString() || '';
 		const password = formData.get('password')?.toString() || '';
-		console.log(formData.get('passwordConfirm')?.toString(), password);
 		if (password !== formData.get('passwordConfirm')?.toString()) {
 			passwordError = 'not matching';
 			return;
@@ -31,8 +30,6 @@
 			return;
 		}
 		loading = true;
-
-		console.log(formData);
 
 		const username =
 			convert(formData.get('name')?.toString() || '') +
