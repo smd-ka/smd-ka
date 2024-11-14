@@ -9,7 +9,6 @@ export const load: PageLoad = async () => {
 			sort: '+start_date_time',
 			filter: `category='smd_abend'`
 		});
-		console.log(records);
 		return { events: records };
 	} catch (error) {
 		console.error(error);
