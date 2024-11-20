@@ -39,7 +39,7 @@
 			responsible: '(Semesteranfangsfreizeit)'
 		},
 		{
-			date: '24. November // 9:40 Uhr',
+			date: '24. November // 11:45 Uhr',
 			link: 'https://treffpunkt-leben.de/',
 			name: 'Treffpunkt Leben (TL)',
 			responsible: 'Felix'
@@ -54,7 +54,7 @@
 			date: '08. Dezember // 10:00 Uhr',
 			link: 'https://lkg-karlsruhe.de/',
 			name: 'Landeskirchliche Gemeinschaft (LKG)',
-			responsible: 'Lilly, Claus'
+			responsible: 'Lilly, Claus, Kathrin'
 		}
 	];
 
