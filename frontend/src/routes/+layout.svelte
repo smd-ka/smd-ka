@@ -59,10 +59,10 @@
 					name: 'Wer wir sind',
 					url: '/about/us'
 				},
-				// {
-				// 	name: 'Was wir machen',
-				// 	url: '/about/angebote'
-				// },
+				{
+					name: 'Was wir machen',
+					url: '/about/angebote'
+				},
 				{
 					name: 'Mitarbeiten',
 					url: '/about/mitarbeiten'

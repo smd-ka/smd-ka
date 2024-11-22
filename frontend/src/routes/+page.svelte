@@ -224,7 +224,11 @@
 				<p class="text-red-500">Es ist ein Fehler aufgetreten. Bitte versuche es erneut.</p>
 			{/if}
 
-			<button disabled={loading} type="submit" class="w-fit bg-black p-4 text-white">
+			<button
+				disabled={loading}
+				type="submit"
+				class="w-fit bg-black p-4 text-white hover:underline"
+			>
 				{#if loading}
 					<img class="absolute left-2 h-8" src={loadingSpinner} alt="loading" />
 				{/if}

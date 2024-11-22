@@ -22,7 +22,8 @@ export default {
 				'secondary-text': '#555555',
 				lime: '#ccd4bf',
 				lilac: '#D0B0D4',
-				grey: '#323232'
+				grey: '#323232',
+				'background-gray': '#EEEEEE'
 			}
 		}
 	},

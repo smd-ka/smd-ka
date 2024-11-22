@@ -43,6 +43,10 @@
     @apply font-bold;
   }
 
+  i {
+    @apply italic
+  }
+
 }
 
 @layer components {
