@@ -3,7 +3,7 @@ import type { PageLoad } from './$types';
 
 export const load: PageLoad = async () => {
 	try {
-		const records = await pb.collection('saft_registrations').getFullList({
+		const records = await pb.collection('saft_prit').getFullList({
 			sort: 'name',
 			fields: 'name,post_images'
 		});
