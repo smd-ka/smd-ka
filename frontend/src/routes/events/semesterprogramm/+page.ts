@@ -12,6 +12,6 @@ export const load: PageLoad = async () => {
 		return { events: records };
 	} catch (error) {
 		console.error(error);
-		return {};
+		return { events: [] };
 	}
 };

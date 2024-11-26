@@ -1,9 +1,8 @@
 <script lang="ts">
-	import header_mobile from '$lib/assets/heroshots/herzenssache_heroshot_mobile.png';
-	import header from '$lib/assets/pages/events/semesterprogramm/outsidethebox_21_9.jpg';
+	import header from '$lib/assets/pages/events/semesterprogramm/herzenssache_21_9.jpg';
 	import { onMount } from 'svelte';
-	import heart from '$lib/assets/pages/events/semesterprogramm/ss24/herzenssache.png';
 	import HeroShot from '$lib/components/HeroShot.svelte';
+	import SemesterProgramSelector from '../SemesterProgramSelector.svelte';
 
 	let yesterday: Date;
 
@@ -28,7 +27,8 @@
 		{
 			date: new Date('2024/5/28'),
 			title: 'Mein HERZ? - Sein Geschenk',
-			lecturer: 'Rebekka, Lehrerin im Tschad'
+			lecturer: 'Rebekka, Lehrerin im Tschad',
+			location: 'Reinhold-Frank-Str. 44A'
 		},
 		{
 			date: new Date('2024/6/11'),
@@ -40,17 +40,20 @@
 		{
 			date: new Date('2024/6/25'),
 			title: 'Follow your HEART - Mach einfach was dich glücklich macht? ',
-			lecturer: 'Andreas Rennig , Pfarrer'
+			lecturer: 'Andreas Rennig , Pfarrer',
+			location: 'Reinhold-Frank-Str. 44A'
 		},
 		{
 			date: new Date('2024/7/9'),
 			title: 'Große Fragen persönlich erlebt - ein Philosoph teilt sein HERZ',
-			lecturer: 'Heinzpeter Hempelmann, Philosoph/Theologe'
+			lecturer: 'Heinzpeter Hempelmann, Philosoph/Theologe',
+			location: 'Reinhold-Frank-Str. 44A'
 		},
 		{
 			date: new Date('2024/7/23'),
 			title: 'Selbstfürsorge - HERZgesund leben in einer rastlosen Welt',
-			lecturer: 'Susanne Stieler, Psychologin'
+			lecturer: 'Susanne Stieler, Psychologin',
+			location: 'Reinhold-Frank-Str. 44A'
 		}
 	];
 
@@ -64,11 +67,11 @@
 
 <main class="container mx-auto px-4 py-12">
 	<section class="">
-		<!-- <h1 class="font-anton text-primary text-center font-bold tracking-wide">
+		<h1 class="font-anton text-primary text-center font-bold tracking-wide">
 			Herzens<span class="bordered-text text-white">sache</span>
-		</h1> -->
-		<h1 class="font-gagalin text-primary text-center tracking-wide">Outside the Box</h1>
-		<h2 class="text-center">Unser Sommersemester 2024</h2>
+		</h1>
+		<h2 class="pb-0 text-center">Unser Sommersemester 2024</h2>
+		<h3 class=" text-primary font-caveat text-center">jeden zweiten Dienstag 18:30</h3>
 	</section>
 
 	<section class="grid gap-x-24 gap-y-6 py-12 md:grid-cols-2">
@@ -85,29 +88,21 @@
 						{event.title}
 					</h3>
 					<div>
-						<span class="italic">
-							{event.lecturer}
-						</span>
-						| {event.location}
+						{#if event.speaker}
+							<span class="italic">
+								{event.speaker}
+							</span>
+							|
+						{/if}
+						{event.location}
 					</div>
 				</div>
 			</div>
 		{/each}
 	</section>
-
-	<div>
-		<h3 class=" text-primary font-caveat text-center text-5xl">jeden zweiten Dienstag 18:30</h3>
-	</div>
-
-	<section class=" py-24">
-		<h3 class="text-center">Vergangene Semester</h3>
-
-		<div>
-			<img alt="SS24" class="h-48 w-48 object-cover" src={heart} />
-			<h3 class="text-center">Herzenssache</h3>
-		</div>
-	</section>
 </main>
+
+<SemesterProgramSelector />
 
 <style>
 	.bordered-text {
