@@ -1,62 +1,10 @@
 <script lang="ts">
-	import header_mobile from '$lib/assets/heroshots/herzenssache_heroshot_mobile.png';
 	import header from '$lib/assets/pages/events/semesterprogramm/outsidethebox_21_9.jpg';
-	import { onMount } from 'svelte';
-	import heart from '$lib/assets/pages/events/semesterprogramm/ss24/herzenssache.png';
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import type { PageData } from './$types';
 	import SemesterProgramSelector from './SemesterProgramSelector.svelte';
 
-	let yesterday: Date;
-
 	export let data: PageData;
-
-	let program = [
-		{
-			date: new Date('2024/4/16'),
-			title: '🫀📲 ❤️ - Wie Social Media uns beeinflusst',
-			lecturer: 'Rufina Kaehler, Regionalreferentin SMD',
-			location: 'Reinhold-Frank-Str. 44A'
-		},
-		{
-			date: new Date('2024/4/30'),
-			title: 'HERZensthema Christenverfolgung',
-			lecturer: 'Samuel Kaiser, OpenDoors',
-			location: ' Veranstaltungsort: EFG Karlsruhe, Ohiostraße 17 '
-		},
-		{
-			date: new Date('2024/5/14'),
-			title: 'Geländespiel mit HERZhaftem Picknick',
-			location: 'findet im Schlosspark statt'
-		},
-		{
-			date: new Date('2024/5/28'),
-			title: 'Mein HERZ? - Sein Geschenk',
-			lecturer: 'Rebekka, Lehrerin im Tschad'
-		},
-		{
-			date: new Date('2024/6/11'),
-			title:
-				'Zwischen GletscHERZerstörung und Konfliktherden - Hoffnung finden auf einer gefährdeten Welt',
-			lecturer: 'Prof. Dr. Peter Imming, Chemiker',
-			location: 'KIT Campus Süd'
-		},
-		{
-			date: new Date('2024/6/25'),
-			title: 'Follow your HEART - Mach einfach was dich glücklich macht? ',
-			lecturer: 'Andreas Rennig , Pfarrer'
-		},
-		{
-			date: new Date('2024/7/9'),
-			title: 'Große Fragen persönlich erlebt - ein Philosoph teilt sein HERZ',
-			lecturer: 'Heinzpeter Hempelmann, Philosoph/Theologe'
-		},
-		{
-			date: new Date('2024/7/23'),
-			title: 'Selbstfürsorge - HERZgesund leben in einer rastlosen Welt',
-			lecturer: 'Susanne Stieler, Psychologin'
-		}
-	];
 
 	const getDateString = (dateString: string) => {
 		const date = new Date(dateString);
@@ -102,9 +50,3 @@
 </main>
 
 <SemesterProgramSelector />
-
-<style>
-	.bordered-text {
-		-webkit-text-stroke: 2px #e84c05; /* width and color */
-	}
-</style>
