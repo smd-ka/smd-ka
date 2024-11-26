@@ -42,16 +42,16 @@
 
 		<p>
 			Rechtsgrundlage für die Erhebung der Daten ist einerseits das berechtigte Interesse in § 6 Nr.
-			8 DSG-EKD, um unsere Website zu verbessern und die Erfüllung einer rechtlichen Pflicht aus § 6
-			Nr. 3 DSG-EKD, da wir sicherstellen müssen, im Falle eines Angriffs adäquat reagieren und
+			8 DSG-EKD, um unsere Webseite zu verbessern und die Erfüllung einer rechtlichen Pflicht aus §
+			6 Nr. 3 DSG-EKD, da wir sicherstellen müssen, im Falle eines Angriffs adäquat reagieren und
 			diesen Angriff auswerten zu können.
 		</p>
 
 		<h2 class="text-3xl font-bold uppercase">Was passiert mit meinen Daten?</h2>
 		<p>
-			Deine Daten nutzen wir ausschließlich, um selbst etwas über die Nutzung unserer Website zu
+			Deine Daten nutzen wir ausschließlich, um selbst etwas über die Nutzung unserer Webseite zu
 			lernen und z.B. festzustellen, welche unserer Artikel besonders interessant sind. <br />
-			Die Website wird in unserem Auftrag auf Servern der Mittwald CM Service netcup GmbH betrieben.
+			Die Webseite wird in unserem Auftrag auf Servern der Mittwald CM Service netcup GmbH betrieben.
 			Im Zuge dieser Leistungserbringung ist ein Einblick in die o.g. Daten möglich. Weitere Informtionen
 			dazu erhältst du unter
 			<a href="https://www.netcup.de/kontakt/datenschutzerklaerung.php">netcup.de</a>

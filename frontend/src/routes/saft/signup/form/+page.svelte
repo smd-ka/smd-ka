@@ -205,13 +205,13 @@
 				<select class="rounded-md border-2 py-3" name="post_images" required>
 					<option disabled selected value> -- Wähle eine Option -- </option>
 					<option value="yes"
-						>Ihr dürft Bilder von mir veröffentlichen. (Instagram, Website, Flyer, ...)</option
+						>Ihr dürft Bilder von mir veröffentlichen. (Instagram, Webseite, Flyer, ...)</option
 					>
 					<option value="no_instagram"
 						>Ihr dürft Bilder von mir veröffentlichen, aber nicht auf Instagram
 					</option>
 					<option value="no_website"
-						>Ihr dürft Bilder von mir veröffentlichen, aber nicht auf der Website
+						>Ihr dürft Bilder von mir veröffentlichen, aber nicht auf der Webseite
 					</option>
 					<option value="never">Bitte veröffentlicht keine Bilder von mir</option>
 				</select>

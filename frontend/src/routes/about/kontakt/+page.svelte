@@ -52,7 +52,7 @@
 			Karlsruhe bist und Infos über Stadt, Gemeinden, etc. brauchst, du einen Hauskreis suchst oder
 			Teil unserer Signal-Gruppe werden willst, wir sind für dich da!
 		</p>
-		<p class="my-4">Du darfst Dich gerne jederzeit bei uns <a href="#form-section">melden!</a></p>
+		<p class="my-4">Du darfst dich gerne jederzeit bei uns <a href="#form-section">melden!</a></p>
 	</section>
 
 	<section class="grid items-center justify-center xl:grid-cols-2">
@@ -73,7 +73,7 @@
 						href="https://signal.group/#CjQKILxV0vWmZBW7kvIbxe4V3RoXfcjBBYOhUr8ezW78a75EEhCe2qNDAZ0IGRWzryk6GpfC"
 						class="flex items-center gap-2 text-xl no-underline hover:underline"
 					>
-						Signal Gruppe
+						Signal-Gruppe
 						<Fa icon={faArrowUpRightFromSquare} />
 					</a>
 				</div>
@@ -122,7 +122,7 @@
 				...neu in Karlsruhe bist und Infos über Stadt, Gemeinden, etc. brauchst
 			</p>
 			<p class="xl:col-start-2">
-				...du gerne in den E-Mail-Verteiler oder die Signal Gruppen aufgenommen werden möchtest.
+				...du gerne in den E-Mail-Verteiler oder die Signal-Gruppen aufgenommen werden möchtest.
 			</p>
 		</div>
 	</section>
