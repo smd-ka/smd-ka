@@ -5,6 +5,7 @@
 	import heart from '$lib/assets/pages/events/semesterprogramm/ss24/herzenssache.png';
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import type { PageData } from './$types';
+	import SemesterProgramSelector from './SemesterProgramSelector.svelte';
 
 	let yesterday: Date;
 
@@ -71,7 +72,8 @@
 <main class="container mx-auto px-4 py-12">
 	<section class="">
 		<h1 class="font-gagalin text-primary text-center tracking-wide">Outside the Box</h1>
-		<h2 class="text-center">Unser Wintersemester 2024/25</h2>
+		<h2 class="pb-0 text-center">Unser Wintersemester 2024/25</h2>
+		<h3 class=" text-primary font-caveat text-center">jeden zweiten Dienstag 18:30</h3>
 	</section>
 
 	<section class="grid gap-x-24 gap-y-6 py-12 md:grid-cols-2">
@@ -97,20 +99,9 @@
 			</div>
 		{/each}
 	</section>
-
-	<div>
-		<h3 class=" text-primary font-caveat text-center text-5xl">jeden zweiten Dienstag 18:30</h3>
-	</div>
-
-	<!-- <section class=" py-24">
-		<h3 class="text-center">Vergangene Semester</h3>
-
-		<div>
-			<img alt="SS24" class="h-48 w-48 object-cover" src={heart} />
-			<h3 class="text-center">Herzenssache</h3>
-		</div>
-	</section> -->
 </main>
+
+<SemesterProgramSelector />
 
 <style>
 	.bordered-text {
