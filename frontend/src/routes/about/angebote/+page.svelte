@@ -78,7 +78,7 @@
 			<p>
 				Alle <i>anderen</i> zwei Wochen, abwechselnd zu den SMD-Abenden, treffen wir uns in Kleingruppen
 				= Hauskreisen. Die bestehen meistens aus 5-8 Leuten und treffen sich immer bei einem der Teilnehmer
-				Zuhause, wo oft zusammen gegessen wird, bevor man ins Thema eintaucht. Die Themen werden von
+				zuhause, wo oft zusammen gegessen wird, bevor man ins Thema eintaucht. Die Themen werden von
 				den Hauskreisen selbst ausgesucht. Wenn du wissen möchtest, welche Hauskreise es gibt und wo
 				du mal reinschnuppern oder einsteigen könntest, dann melde dich gerne beim Inreach-Team.
 			</p>
@@ -113,7 +113,7 @@
 			</p>
 		</CarouselSlide>
 
-		<CarouselSlide title="King's Café" subtitle="Unsere Internationalen Arbeit." src={kingscafe}>
+		<CarouselSlide title="King's Café" subtitle="Unsere Internationalenarbeit." src={kingscafe}>
 			<p>
 				Das King's Café ist ein Angebot insbesondere für internationale Studenten, die miteinander
 				connecten möchten, ggf. ihre Deutschkenntnisse üben wollen und einfach Lust auf bunte und
@@ -128,7 +128,7 @@
 				persönliche Anliegen auszutauschen, gemeinsam dafür zu beten und anschließend entspannt zu
 				frühstücken. Diese Art von Start in den Tag stärkt sowohl körperlich als auch geistlich!
 				Gehostet wird das Gebetsfrühstück dienstags um 07:00 Uhr in der Oststadt und donnerstags um
-				08:00 Uhr in der Südstadt. Für genaue Adressen wende dich bitte an unsere Leiter
+				08:00 Uhr in der Südstadt. Für genaue Adressen wende dich bitte an uns:
 				<a href="mailto:leiter@smd-karlsruhe.de">leiter@smd-karlsruhe.de.</a>
 			</p>
 		</CarouselSlide>
@@ -140,7 +140,7 @@
 		>
 			<p>
 				Ungefähr einmal im Monat (außer zur vorlesungsfreien Zeit) treffen sich alle Mitarbeiter und
-				an Mitarbeit Interessierten, um in einem kleineren Rahmen als beim Gruppenabend durch einen
+				an Mitarbeit Interessierten, um in einem kleineren Rahmen als beim SMD-Abend durch einen
 				Input ermutigt zu werden, in einfachem Stil Gott musikalisch anzubeten, sich gegenseitig zu
 				ermutigen und alles zu besprechen, was in letzter Zeit war, was gerade ansteht und was noch
 				in Planung ist (quasi Offenbarung 1,19 😁). Hier ist auch Raum, um Ideen zu entwickeln,
@@ -161,7 +161,7 @@
 	<section>
 		<div class="grid justify-center justify-items-center p-8">
 			<h3 class="text-center max-md:text-2xl">
-				Neugierig? Was aktuell läuft siehst du im
+				Neugierig? Was aktuell läuft, siehst du im
 				<a href="/events/kalender" class="text-primary"> Kalender. </a>
 			</h3>
 		</div>
@@ -218,14 +218,14 @@
 				</CarouselSlideGermany>
 				<CarouselSlideGermany
 					image={camps}
-					title="SMD Freizeiten"
+					title="SMD-Freizeiten"
 					link="https://www.smd.org/hochschul-smd/veranstaltungen/sommerfreizeiten"
 				>
 					Die Hochschul-SMD bietet dir für deine Semesterferien etliche Freizeitangebote.
 				</CarouselSlideGermany>
 				<CarouselSlideGermany
 					image={teachers}
-					title="Refendare und junge Lehrkräfte"
+					title="Referendare und junge Lehrkräfte"
 					link="https://www.smd.org/akademiker-smd/junge-akademiker/referendare-und-junge-lehrkraefte"
 				>
 					Dieses Angebot der Arbeitsgemeinschaft christlicher Pädagogen bietet Vernetzung,
