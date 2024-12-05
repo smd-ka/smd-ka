@@ -51,19 +51,25 @@
 					<Fa class="text-primary" icon={faCalendarDays} />
 					Datum: 1. - 4. Mai 2025
 				</div>
-				<div class="flex items-center justify-end gap-2">
+				<p>
+					Die Nächste SAFT wird nicht, wie bisher üblich in Mühlhausen stattfinden. Sie wird dennoch
+					legendär wie jedes Semester, deswegen schreib dir den Termin am besten gleich in deinen
+					Kalender. Weitere Infos (Ort, Preis, usw.) werden Anfang des Sommersemesters an dieser
+					Stelle folgen.
+				</p>
+				<!-- <div class="flex items-center justify-end gap-2">
 					<Fa class="text-primary" icon={faCoins} />
 					Preis: ca. 40 €
-				</div>
+				</div> -->
 				<!-- TODO replace with actual location -->
-				<div class="flex justify-end gap-2">
+				<!-- <div class="flex justify-end gap-2">
 					<Fa class="text-primary mt-1 justify-self-end" icon={faLocationDot} />
 					Ort: Reichardtstraße 21,
 				</div>
 				<div>75417 Mühlacker (Mühlhausen)</div>
 				<a href="https://maps.app.goo.gl/gpNex3XSDMUVz4T46" class="w-fit bg-black p-4 text-white">
 					Auf Google Maps anschauen
-				</a>
+				</a> -->
 			</div>
 		</Saos>
 		<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
@@ -75,13 +81,13 @@
 		<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
 			<h1 class="text-4xl font-bold uppercase">Wie sieht's da aus?</h1>
 			<p>
-				Um einen Eindruck von der SAFT zu bekommen, schau dir gerne einfach das Video an. Wir werden
-				ein geniales Wochenende mit Andachten, Workshops, Sport, Spielen, Singen, Beten, Lobpreis
-				und vielem mehr verbringen. Selbstverständlich wird auch genug Zeit zum Relaxen, Quatschen
-				und Chillen sein. Highlight-Empfehlung des Autors: Nachts Baden in der Enz!
+				Das Video zeigt dir einen kleinen Einblick einer vergangen SAFT, die nächste wird etwas
+				anders, aber nicht weniger genial! Wir werden ein geniales Wochenende mit Andachten,
+				Workshops, Sport, Spielen, Singen, Beten, Lobpreis und vielem mehr verbringen.
+				Selbstverständlich wird auch genug Zeit zum Relaxen, Quatschen und Chillen sein.
+				<!-- <br />
 				<br />
-				<br />
-				<span class="font-bold">Wir freuen uns riesig, wenn du mit dabei bist!</span>
+				<span class="font-bold">Wir freuen uns riesig, wenn du mit dabei bist!</span> -->
 			</p>
 		</Saos>
 
