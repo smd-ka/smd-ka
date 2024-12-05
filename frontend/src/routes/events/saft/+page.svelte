@@ -2,8 +2,7 @@
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import Saos from 'saos';
 	import promoVid from '$lib/assets/videos/saft.mp4';
-	// TODO replace with more recent images from SAFT WS24/25
-	import header from '$lib/assets/saft/saft_group_ss24.jpg';
+	import header from '$lib/assets/pages/events/saft/saft_group_WS24-25.jpg';
 	import saftFunny from '$lib/assets/saft/saft_funny.png';
 	import saftGroup from '$lib/assets/heroshots/saft_heroshot.png';
 	import Fa from 'svelte-fa/src/fa.svelte';
@@ -51,16 +50,16 @@
 					<Fa class="text-primary" icon={faCalendarDays} />
 					Datum: 1. - 4. Mai 2025
 				</div>
-				<p>
-					Die Nächste SAFT wird nicht, wie bisher üblich in Mühlhausen stattfinden. Sie wird dennoch
-					legendär wie jedes Semester, deswegen schreib dir den Termin am besten gleich in deinen
-					Kalender. Weitere Infos (Ort, Preis, usw.) werden Anfang des Sommersemesters an dieser
-					Stelle folgen.
-				</p>
-				<!-- <div class="flex items-center justify-end gap-2">
+				<div class="flex items-center justify-end gap-2">
 					<Fa class="text-primary" icon={faCoins} />
 					Preis: ca. 40 €
-				</div> -->
+				</div>
+				<p>
+					Die Nächste SAFT wird nicht, wie bisher üblich in Mühlhausen stattfinden. Wir werden ca.
+					1,5 Stunden (mit der Bahn) von Karlsruhe entfernt sein und der Beitrag wird bei ca. 40€
+					liegen. Genaue Infos werden hier Anfang des nächsten Semesters folgen. Lass dir das nicht
+					entgehen und trag dir den Termin schon mal ein!
+				</p>
 				<!-- TODO replace with actual location -->
 				<!-- <div class="flex justify-end gap-2">
 					<Fa class="text-primary mt-1 justify-self-end" icon={faLocationDot} />
