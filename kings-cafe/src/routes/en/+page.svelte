@@ -115,15 +115,16 @@
 	</Saos>
 
 	<section class="pad">
-		<h3 class="pb-4 text-center text-5xl">Das King's Café</h3>
+		<h3 class="pb-4 text-center text-5xl">The King's Café</h3>
 		<div class="grid gap-4 py-4 md:grid-cols-2">
 			<div>
-				<h3>Ein Angebot für internationale Studenten</h3>
+				<h3>An offer for international students</h3>
 				<p>
-					Das King's Café ist ein Treffpunkt für deutsche und internationale Studenten immer
-					sonntags ab <b>19 Uhr</b> in der <b>Amalienstraße 77</b>. Hier kannst du mit Deutschen in
-					Kontakt kommen und dein Deutsch verbessern, egal, wie gut dein Deutsch ist – wir können
-					auch Englisch.
+					The King's Café is a meeting place for German and international students every Sunday from <b
+						>7 PM</b
+					>
+					at <b>Amalienstraße 77</b>. Here you can get in touch with Germans and improve your
+					German, no matter how good your German is – we can also speak English.
 				</p>
 			</div>
 			<img
@@ -133,15 +134,15 @@
 			/>
 		</div>
 		<p>
-			In kurzen Vorträgen kannst du etwas über verschiedene Themen wie, deutsche Geschichte, Kultur
-			und Tradition, Lifeskills für das Alltagsleben und den christlichen Glauben erfahren. Wir
-			bieten Gemeinschaft bei kostenlosen Snacks und Getränken in gemütlicher Atmosphäre an. Auch
-			organisieren wir Aktivitäten wie Wanderungen im Schwarzwald und Spieleabende Wir lernen gerne
-			andere Kulturen kennenlernen und freuen uns auf dich!
+			In short lectures, you can learn about various topics such as German history, culture and
+			traditions, life skills for everyday life, and the Christian faith. We offer fellowship with
+			free snacks and drinks in a cozy atmosphere. We also organize activities such as hikes in the
+			Black Forest and game nights. We love to learn about other cultures and look forward to
+			meeting you!
 			<br />
-			<b>Bonus:</b> Davor, immer Sonntags ab 18 Uhr gibt es einen „Deutschkurs mit der Bibel“ für alle,
-			die intensiver etwas Deutsch und den christlichen Glauben lernen wollen. Du bist herzlich willkommen
-			– egal, wie gut dein Deutsch ist.
+			<b>Bonus:</b> Beforehand, every Sunday from 6 PM, there is a "German course with the Bible" for
+			anyone who wants to learn more intensively about German and the Christian faith. You are warmly
+			welcome – no matter how good your German is.
 		</p>
 		<div class="flex justify-center py-8">
 			<a
@@ -155,7 +156,7 @@
 	</section>
 
 	<section>
-		<h1 class="text-center">Die nächsten Termine</h1>
+		<h1 class="text-center">Upcoming Events</h1>
 
 		{#if browser && data.events}
 			<Carousel infinite={false} particlesToShow={mobileScreen ? 1 : 3} bind:this={carousel}>
@@ -223,15 +224,14 @@
 	</section>
 
 	<section class="pad">
-		<h2 class="">Über uns</h2>
+		<h2 class="">About Us</h2>
 		<p>
-			Das KingsCafe wird seit 2018 von der Hochschulgruppe SMD-Karlsruhe organisiert. Wir sind ein
-			Team aus deutschen Studenten, die es auf dem Herzen haben internationale Studenten in
-			Karlsruhe zu unterstützen und ihnen die deutsche Kultur und Sprache näher zu bringen.
+			The KingsCafe has been organized by the university group SMD-Karlsruhe since 2018. We are a
+			team of German students who have a heart for supporting international students in Karlsruhe
+			and introducing them to German culture and language.
 			<br />
-			Du hast Fragen oder möchtest uns unterstützen? Dann kannst du dich gerne an
-			<a href="info@kings-cafe.de">info@kings-cafe.de</a>
-			wenden – wir melden uns!
+			Do you have questions or would you like to support us? Then feel free to contact us at
+			<a href="info@kings-cafe.de">info@kings-cafe.de</a> – we will get back to you!
 		</p>
 	</section>
 </main>
