@@ -1,16 +1,50 @@
 <script lang="ts">
 	import Saos from 'saos';
 	import header from '$lib/assets/pages/home/background_kings_cafe.jpg';
-	import { faArrowDown, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+	import {
+		faArrowDown,
+		faArrowUpRightFromSquare,
+		faChevronLeft,
+		faChevronRight,
+		faMap
+	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import type { PageData } from './$types';
 	import trailer from '$lib/assets/pages/home/trailer_compressed.mp4';
 	import logo from '$lib/assets/logos/kings-cafe_white.svg';
 	import logo_black from '$lib/assets/logos/kings-cafe.svg';
+	import evening from '$lib/assets/pages/home/evening.jpg';
 	import { faTelegram } from '@fortawesome/free-brands-svg-icons';
+	import { onDestroy, onMount } from 'svelte';
+	import { browser } from '$app/environment';
+	import Carousel from 'svelte-carousel';
 
 	export let data: PageData;
+
+	let mobileScreen = true;
+	let carousel;
+
+	onMount(() => {
+		if (browser) {
+			updateScreenWidth();
+			window.addEventListener('resize', updateScreenWidth);
+		}
+	});
+
+	onDestroy(() => {
+		if (browser) {
+			window.removeEventListener('resize', updateScreenWidth);
+		}
+	});
+
+	function updateScreenWidth() {
+		const md = 768;
+		if (window.innerWidth >= md) {
+			return (mobileScreen = false);
+		}
+		mobileScreen = true;
+	}
 
 	const getFullDate = (startDateString: string, endDateString?: string) => {
 		const startDate = new Date(startDateString);
@@ -55,38 +89,59 @@
 	>
 		<div class="flex flex-col items-center">
 			<h1 class="font-caveat text-center">Jeden Sonntag 19:00</h1>
-			<a
-				class="bg-primary flex w-fit items-center gap-2 px-4 py-2 text-2xl text-white no-underline hover:underline"
-				href="https:lel.com"
-			>
-				<Fa icon={faChevronRight} />
-				Join our Telegram
-				<Fa icon={faTelegram} />
-			</a>
+			<div class="flex gap-4 max-md:flex-col">
+				<a
+					class="bg-primary flex w-fit items-center gap-2 px-4 py-2 text-2xl text-white no-underline hover:underline"
+					href="https://t.me/+Oj9DUv42zaE4NmNi"
+				>
+					<Fa icon={faChevronRight} />
+					Join our Telegram
+					<Fa icon={faTelegram} />
+				</a>
+
+				<a
+					class="flex w-fit items-center gap-2 bg-black px-4 py-2 text-2xl text-white no-underline hover:underline"
+					href="https://maps.app.goo.gl/enSfgfvXdX6LBd7F6"
+				>
+					<Fa icon={faChevronRight} />
+					Location: Amalienstraße 77
+					<Fa icon={faMap} />
+				</a>
+			</div>
 		</div>
 	</Saos>
 
+	{mobileScreen}
+
 	<section class="pad">
 		<h3 class="pb-4 text-center text-5xl">Das King's Café</h3>
-		<div class="grid gap-4 md:grid-cols-2">
+		<div class="grid gap-4 py-4 md:grid-cols-2">
 			<div>
 				<h3>Ein Angebot für internationale Studenten</h3>
-				Das King’s Café ist ein Treffpunkt für deutsche und internationale Studenten immer sonntags ab
-				19 Uhr in der Amalienstraße 77. Hier kannst du mit Deutschen in Kontakt kommen und dein Deutsch
-				verbessern, egal, wie gut dein Deutsch ist – wir können auch Englisch. Sonntags ab 18 Uhr gibt
-				es einen „Deutschkurs mit der Bibel“ für alle, die intensiver lernen wollen. Jeder ist herzlich
-				willkommen – egal, wie gut sein Deutsch ist. In kurzen Vorträgen kannst Du etwas über verschiedene
-				Themen, deutsche Geschichte, Kultur und Tradition, Lifeskills für das Alltagsleben und den christlichen
-				Glauben erfahren. Wir bieten Gemeinschaft bei kostenlosen Snacks und Getränken in gemütlicher
-				Atmosphäre an, auch Aktivitäten wie Wanderungen im Schwarzwald, Spieleabende, und wir wollen
-				auch andere Kulturen kennenlernen und freuen uns über jeden Gast!
+				<p>
+					Das King's Café ist ein Treffpunkt für deutsche und internationale Studenten immer
+					sonntags ab <b>19 Uhr</b> in der <b>Amalienstraße 77</b>. Hier kannst du mit Deutschen in
+					Kontakt kommen und dein Deutsch verbessern, egal, wie gut dein Deutsch ist – wir können
+					auch Englisch.
+				</p>
 			</div>
 			<img
-				src="https://placehold.co/600x400"
+				src={evening}
 				class="max-h-72 w-full object-cover max-md:order-first"
-				alt="Erleben"
+				alt="Kings Cafe vor Ort"
 			/>
 		</div>
+		<p>
+			In kurzen Vorträgen kannst du etwas über verschiedene Themen wie, deutsche Geschichte, Kultur
+			und Tradition, Lifeskills für das Alltagsleben und den christlichen Glauben erfahren. Wir
+			bieten Gemeinschaft bei kostenlosen Snacks und Getränken in gemütlicher Atmosphäre an. Auch
+			organisieren wir Aktivitäten wie Wanderungen im Schwarzwald und Spieleabende Wir lernen gerne
+			andere Kulturen kennenlernen und freuen uns auf dich!
+			<br />
+			<b>Bonus:</b> Davor, immer Sonntags ab 18 Uhr gibt es einen „Deutschkurs mit der Bibel“ für alle,
+			die intensiver etwas Deutsch und den christlichen Glauben lernen wollen. Du bist herzlich willkommen
+			– egal, wie gut dein Deutsch ist.
+		</p>
 		<div class="flex justify-center py-8">
 			<a
 				href="#trailer"
@@ -97,43 +152,58 @@
 			</a>
 		</div>
 	</section>
-	{#if data.events}
-		<section class="px-10 md:mx-10">
-			<h1 class="text-center">Die nächsten Termine</h1>
-			{#each data.events.items as event}
-				<div class="shadow-md">
-					<div class="bg-grey rounded-t-md p-4 py-12">
-						<h3 class="text-primary text-center">{event.title}</h3>
-						<div class="py-2 text-base font-bold text-white">
-							{getFullDate(event.start_date_time, event.end_date_time)}
-						</div>
-						<div class="text-white lg:text-3xl">
-							<div class="text-base font-bold">
-								Ort:
-								{#if event.maps_url}
-									<a href={event.maps_url} target="_blank" rel="noopener">
-										{event.location}
-									</a>
-								{:else if event.location_url}
-									<a href={event.location_url} target="_blank" rel="noopener">
-										{event.location}
-									</a>
-								{:else}
-									{event.location}
-								{/if}
+
+	<section class="px-10 md:mx-10">
+		<h1 class="text-center">Die nächsten Termine</h1>
+
+		{#if browser && data.events}
+			<Carousel infinite={false} particlesToShow={mobileScreen ? 1 : 3} bind:this={carousel}>
+				<div slot="prev" class="text-grey grid items-center p-4 text-3xl lg:text-5xl">
+					<button on:click={carousel.goToPrev}> <Fa icon={faChevronLeft} /></button>
+				</div>
+
+				{#each data.events.items as event}
+					<div class="p-4">
+						<div class="h-full border border-gray-400 shadow-md">
+							<div class="bg-grey rounded-t-md p-4 py-12">
+								<h3 class="text-primary text-center">{event.title}</h3>
+								<div class="py-2 text-base font-bold text-white">
+									{getFullDate(event.start_date_time, event.end_date_time)}
+								</div>
+								<div class="text-white lg:text-3xl">
+									<div class="flex gap-1 text-base font-bold">
+										Ort:
+										{#if event.location_url}
+											<a class="fa" href={event.location_url} target="_blank" rel="noopener">
+												{event.location}
+												<Fa icon={faArrowUpRightFromSquare} />
+											</a>
+										{:else}
+											{event.location}
+										{/if}
+									</div>
+								</div>
+							</div>
+
+							<div class="p-4">
+								<p>
+									{event.description}
+								</p>
 							</div>
 						</div>
 					</div>
+				{/each}
 
-					<div class="rounded-b-md border-b border-l border-r border-gray-400 p-4">
-						<p>
-							{event.description}
-						</p>
-					</div>
+				<div slot="next" class="text-grey grid items-center p-4 text-3xl lg:text-5xl">
+					<button on:click={carousel.goToNext}> <Fa icon={faChevronRight} /></button>
 				</div>
-			{/each}
-		</section>
-	{/if}
+			</Carousel>
+		{/if}
+	</section>
+
+	<section>
+		<p></p>
+	</section>
 
 	<section id="trailer">
 		<h1 class="pb-0 text-center">Sneak Peak</h1>
@@ -151,23 +221,16 @@
 		</Saos>
 	</section>
 
-	<section class="pad grid gap-4 md:grid-cols-2">
-		<div>
-			<h2 class="">Über uns</h2>
-			<p>
-				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-				invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-				et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-				Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-				diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-				voluptua.
-			</p>
-		</div>
-		<img
-			class="max-h-72 w-full object-cover"
-			alt="Gruppenfoto"
-			src="https://placehold.co/600x400"
-		/>
+	<section class="pad">
+		<h2 class="">Über uns</h2>
+		<p>
+			Das KingsCafe wird seit 2018 von der Hochschulgruppe SMD-Karlsruhe organisiert. Wir sind ein
+			Team aus deutschen Studenten, die es auf dem Herzen haben internationale Studenten in
+			Karlsruhe zu unterstützen und ihnen die deutsche Kultur und Sprache näher zu bringen.
+			<br />
+			Du hast Fragen oder möchtest uns unterstützen? Dann kannst du dich gerne an info@kings-cafe.de
+			wenden – wir melden uns!
+		</p>
 	</section>
 </main>
 

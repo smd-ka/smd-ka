@@ -41,6 +41,7 @@
 		"@fortawesome/free-solid-svg-icons": "^6.4.2",
 		"pocketbase": "^0.15.3",
 		"prettier-plugin-svelte": "^3.0.3",
+		"svelte-carousel": "^1.0.25",
 		"tailwind-merge": "^2.5.2",
 		"tailwind-variants": "^0.2.1"
 	}
