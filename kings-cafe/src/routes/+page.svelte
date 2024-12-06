@@ -229,7 +229,8 @@
 			Team aus deutschen Studenten, die es auf dem Herzen haben internationale Studenten in
 			Karlsruhe zu unterstützen und ihnen die deutsche Kultur und Sprache näher zu bringen.
 			<br />
-			Du hast Fragen oder möchtest uns unterstützen? Dann kannst du dich gerne an info@kings-cafe.de
+			Du hast Fragen oder möchtest uns unterstützen? Dann kannst du dich gerne an
+			<a href="info@kings-cafe.de">info@kings-cafe.de</a>
 			wenden – wir melden uns!
 		</p>
 	</section>
