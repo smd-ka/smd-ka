@@ -151,12 +151,12 @@
 		</div>
 	</section>
 
-	<section class="px-10 md:mx-10">
+	<section>
 		<h1 class="text-center">Die nächsten Termine</h1>
 
 		{#if browser && data.events}
 			<Carousel infinite={false} particlesToShow={mobileScreen ? 1 : 3} bind:this={carousel}>
-				<div slot="prev" class="text-grey grid items-center p-4 text-3xl lg:text-5xl">
+				<div slot="prev" class="text-grey grid items-center p-2 text-3xl lg:text-5xl">
 					<button on:click={carousel.goToPrev}> <Fa icon={faChevronLeft} /></button>
 				</div>
 
@@ -192,7 +192,7 @@
 					</div>
 				{/each}
 
-				<div slot="next" class="text-grey grid items-center p-4 text-3xl lg:text-5xl">
+				<div slot="next" class="text-grey grid items-center p-2 text-3xl lg:text-5xl">
 					<button on:click={carousel.goToNext}> <Fa icon={faChevronRight} /></button>
 				</div>
 			</Carousel>
