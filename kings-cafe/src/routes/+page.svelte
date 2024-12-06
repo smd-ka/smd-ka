@@ -91,7 +91,7 @@
 			<h1 class="font-caveat text-center">Jeden Sonntag 19:00</h1>
 			<div class="flex gap-4 max-md:flex-col">
 				<a
-					class="bg-primary flex w-fit items-center gap-2 px-4 py-2 text-2xl text-white no-underline hover:underline"
+					class="bg-primary fa px-4 py-2 text-2xl text-white no-underline hover:underline"
 					href="https://t.me/+Oj9DUv42zaE4NmNi"
 				>
 					<Fa icon={faChevronRight} />
@@ -100,7 +100,7 @@
 				</a>
 
 				<a
-					class="flex w-fit items-center gap-2 bg-black px-4 py-2 text-2xl text-white no-underline hover:underline"
+					class="fa bg-black px-4 py-2 text-lg text-white no-underline hover:underline md:text-2xl"
 					href="https://maps.app.goo.gl/enSfgfvXdX6LBd7F6"
 				>
 					<Fa icon={faChevronRight} />
@@ -110,8 +110,6 @@
 			</div>
 		</div>
 	</Saos>
-
-	{mobileScreen}
 
 	<section class="pad">
 		<h3 class="pb-4 text-center text-5xl">Das King's Café</h3>
