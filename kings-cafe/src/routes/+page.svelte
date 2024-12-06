@@ -80,7 +80,7 @@
 </script>
 
 <HeroShot imgSrc={header} bgPosition={'bg-[center_left_60%]'}>
-	<div class="text-grey absolute top-1/2 flex w-full -translate-y-1/2 justify-center text-center">
+	<div class="text-grey absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
 		<img src={logo} alt="Kings Cafe Logo" class="" />
 	</div>
 </HeroShot>
@@ -164,7 +164,7 @@
 				</div>
 
 				{#each data.events.items as event}
-					<div class="md:p-4">
+					<div class="p-4">
 						<div class="h-full border border-gray-400 shadow-md">
 							<div class="bg-grey rounded-t-md p-4 py-12">
 								<h3 class="text-primary text-center">{event.title}</h3>
@@ -229,8 +229,7 @@
 			Team aus deutschen Studenten, die es auf dem Herzen haben internationale Studenten in
 			Karlsruhe zu unterstützen und ihnen die deutsche Kultur und Sprache näher zu bringen.
 			<br />
-			Du hast Fragen oder möchtest uns unterstützen? Dann kannst du dich gerne an
-			<a href="info@kings-cafe.de">info@kings-cafe.de</a>
+			Du hast Fragen oder möchtest uns unterstützen? Dann kannst du dich gerne an info@kings-cafe.de
 			wenden – wir melden uns!
 		</p>
 	</section>
