@@ -80,7 +80,7 @@
 </script>
 
 <HeroShot imgSrc={header} bgPosition={'bg-[center_left_60%]'}>
-	<div class="text-grey absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+	<div class="text-grey absolute top-1/2 flex w-full -translate-y-1/2 justify-center text-center">
 		<img src={logo} alt="Kings Cafe Logo" class="" />
 	</div>
 </HeroShot>
