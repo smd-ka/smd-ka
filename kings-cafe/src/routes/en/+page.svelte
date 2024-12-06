@@ -231,7 +231,7 @@
 			and introducing them to German culture and language.
 			<br />
 			Do you have questions or would you like to support us? Then feel free to contact us at
-			<a href="info@kings-cafe.de">info@kings-cafe.de</a> – we will get back to you!
+			<a href="mailto:info@kings-cafe.de">info@kings-cafe.de</a> – we will get back to you!
 		</p>
 	</section>
 </main>
