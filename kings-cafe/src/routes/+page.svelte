@@ -164,7 +164,7 @@
 				</div>
 
 				{#each data.events.items as event}
-					<div class="p-4">
+					<div class="md:p-4">
 						<div class="h-full border border-gray-400 shadow-md">
 							<div class="bg-grey rounded-t-md p-4 py-12">
 								<h3 class="text-primary text-center">{event.title}</h3>
