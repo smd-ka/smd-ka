@@ -29,8 +29,6 @@ services:
       context: ./kings-cafe
       dockerfile: ./Dockerfile
     restart: always
-    networks:
-      - smd_ka_network
 
   caddy:
     container_name: caddy
