@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer base {
+
+  body {
+    @apply text-primary-text;
+    @apply xl:text-lg;
+
+  }  
+  
+  p > a {
+    @apply underline hover:no-underline;
+  }
+
+  h1 {
+    @apply md:text-5xl text-4xl font-bold uppercase pb-8;
+  }
+
+  h2 {
+    @apply md:text-4xl text-3xl font-bold uppercase pb-4 ;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl font-bold;
+  }
+
+  b {
+    @apply font-bold;
+  }
+
+  i {
+    @apply italic
+  }
+
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-md p-8 shadow-md;
+  }
+
+  .main {
+    @apply flex flex-col gap-24 justify-center container mx-auto py-24;
+  }
+
+  .pad {
+    @apply xl:px-40 px-4;
+  }
+
+  .fa {
+    @apply flex items-center gap-2;
+  }
+
+}
+
