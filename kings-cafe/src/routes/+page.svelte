@@ -48,31 +48,34 @@
 
 	const getFullDate = (startDateString: string, endDateString?: string) => {
 		const startDate = new Date(startDateString);
-		if (!endDateString) {
-			return (
-				startDate.toLocaleDateString('de-DE', {
-					day: '2-digit',
-					month: 'long'
-				}) +
-				' // ' +
-				startDate.toLocaleTimeString('de-DE', {
-					hour: '2-digit',
-					minute: '2-digit'
-				})
-			);
-		}
-		const endDate = new Date(endDateString);
-		return (
+		let result =
 			startDate.toLocaleDateString('de-DE', {
 				day: '2-digit',
 				month: 'long'
 			}) +
-			' - ' +
-			endDate.toLocaleDateString('de-DE', {
-				day: '2-digit',
-				month: 'long'
-			})
-		);
+			' // ' +
+			startDate.toLocaleTimeString('de-DE', {
+				hour: '2-digit',
+				minute: '2-digit'
+			});
+		if (!endDateString) return result;
+
+		const endDate = new Date(endDateString);
+		if (startDate.toDateString() === endDate.toDateString()) {
+			return (
+				result + ' - ' + endDate.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })
+			);
+		} else
+			return (
+				result +
+				' - ' +
+				endDate.toLocaleDateString('de-DE', {
+					day: '2-digit',
+					month: 'long'
+				}) +
+				' // ' +
+				endDate.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })
+			);
 	};
 </script>
 
@@ -183,9 +186,9 @@
 								</div>
 							</div>
 
-							<div class="p-4">
+							<div class="whitespace-pre-line p-4">
 								<p>
-									{event.description}
+									{@html event.description}
 								</p>
 							</div>
 						</div>
