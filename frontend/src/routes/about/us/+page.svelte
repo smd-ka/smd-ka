@@ -76,7 +76,7 @@
 		<h1 class="text-center">Unser Leitungsteam</h1>
 		<div class="grid gap-4 md:grid-cols-[fit-content(6rem)_1fr]">
 			<img
-				class="md:max-w-80 object-cover max-md:max-h-80 max-md:w-full lg:max-w-[30rem]"
+				class="object-cover max-md:max-h-80 max-md:w-full md:max-w-80 lg:max-w-[30rem]"
 				alt="Leitungsteam"
 				src={leitungsteam}
 			/>
@@ -92,6 +92,10 @@
 				Diese drei haben die derzeitige Gesamtleitung der Hochschul-SMD Karlsruhe und stehen jederzeit
 				für Fragen und Anregungen unter
 				<a href="mailto:leiter@smd-karlsruhe.de"> leiter@smd-karlsruhe.de</a> zur Verfügung.
+				<br />
+				<br />
+				Felix R. ist dieses Semester ins Berufsleben gestartet und hat das Leitungsteam verlassen. Wir
+				danken ihm für seinen Einsatz und wünschen ihm Gottes Segen für seinen weiteren Weg.
 			</p>
 		</div>
 	</section>
