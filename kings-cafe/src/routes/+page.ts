@@ -6,9 +6,10 @@ export const prerender = true;
 export const load: PageLoad = async () => {
 	try {
 		const now = new Date();
+		const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString();
 		const records = await pb.collection('calendar').getList(1, 6, {
 			sort: '+start_date_time',
-			filter: `start_date_time >= "${now.toISOString()}" && category='kingscafe'`
+			filter: `start_date_time >= "${startOfToday}" && category='kingscafe'`
 		});
 		return { events: records };
 	} catch (error) {
