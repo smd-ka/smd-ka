@@ -1,6 +1,14 @@
 <script lang="ts">
 	export let disabled = false;
-	export let value: Date | string = '';
+	export let value: Date | string | undefined;
+	let formattedValue = '';
+	$: {
+		if (value && typeof value === 'string') {
+			formattedValue = new Date(value).toISOString().slice(0, 16);
+		} else if (value instanceof Date) {
+			formattedValue = value.toISOString().slice(0, 16);
+		}
+	}
 	export let label = '';
 	export let required: boolean = false;
 	export let id = '';
@@ -9,8 +17,7 @@
 
 <div class="relative">
 	<input
-		{id}
-		bind:value
+		bind:value={formattedValue}
 		class="peer w-full rounded-md border-2 p-3"
 		placeholder={label}
 		{name}
