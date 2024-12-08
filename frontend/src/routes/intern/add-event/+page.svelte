@@ -6,7 +6,6 @@
 	import { faPencil, faPlus } from '@fortawesome/free-solid-svg-icons';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 	import Fa from 'svelte-fa';
-	import { load } from '../../saft/+page';
 	import UrlInput from '$lib/components/forms/UrlInput.svelte';
 	import { goto } from '$app/navigation';
 
