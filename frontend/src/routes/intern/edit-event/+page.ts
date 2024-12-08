@@ -15,3 +15,21 @@ export const load: PageLoad = async () => {
 		return { events: [] };
 	}
 };
+
+export const _handleDates = (
+	startDateTime: FormDataEntryValue | null,
+	endDateTime: FormDataEntryValue | null
+) => {
+	if (!startDateTime) {
+		return { error: 'Bitte gib ein Startdatum an' };
+	}
+	const startDate = new Date(startDateTime.toString());
+	if (!endDateTime) {
+		return { startDateTime: startDate.toISOString(), endDateTime: '' };
+	}
+	const endDate = new Date(endDateTime.toString());
+	if (startDate > endDate) {
+		return { error: 'Startpunkt liegt nach Endpunkt' };
+	}
+	return { startDateTime: startDate.toISOString(), endDateTime: endDate.toISOString() };
+};

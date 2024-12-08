@@ -8,6 +8,7 @@
 	import Fa from 'svelte-fa';
 	import UrlInput from '$lib/components/forms/UrlInput.svelte';
 	import { goto } from '$app/navigation';
+	import { _handleDates } from '../edit-event/+page';
 
 	let src = '';
 	let image: undefined | File = undefined;
@@ -23,35 +24,20 @@
 		}
 	};
 
-	const handleDates = (
-		startDateTime: FormDataEntryValue | null,
-		endDateTime: FormDataEntryValue | null
-	) => {
-		if (!startDateTime) {
-			dateError = 'Bitte gib ein Startdatum an';
-			return;
-		}
-		const startDate = new Date(startDateTime.toString());
-		if (!endDateTime) {
-			return { startDateTime: startDate.toISOString(), endDateTime: '' };
-		}
-		const endDate = new Date(endDateTime.toString());
-		if (startDate > endDate) {
-			dateError = 'Startpunkt liegt nach Endpunkt';
-			return;
-		}
-		dateError = '';
-		return { startDateTime: startDate.toISOString(), endDateTime: endDate.toISOString() };
-	};
-
 	async function createEvent() {
 		loading = true;
 		const form = document.getElementById('form') as HTMLFormElement;
 
 		let formData = new FormData(form);
 
-		const dates = handleDates(formData.get('start_date_time'), formData.get('end_date_time'));
-		console.log(dates);
+		const dates = _handleDates(formData.get('start_date_time'), formData.get('end_date_time'));
+
+		if (dates?.startDateTime && dates?.endDateTime && dates.startDateTime > dates.endDateTime) {
+			dateError = 'Das Startdatum muss vor dem Enddatum liegen.';
+			loading = false;
+			return;
+		}
+
 		formData.set('start_date_time', dates?.startDateTime || '');
 		formData.set('end_date_time', dates?.endDateTime || '');
 

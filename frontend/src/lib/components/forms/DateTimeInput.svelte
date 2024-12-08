@@ -1,10 +1,14 @@
 <script lang="ts">
 	export let disabled = false;
-	export let value: Date | string = '';
-	$: formattedValue =
-		typeof value === 'string'
-			? new Date(value).toISOString().slice(0, 16)
-			: value.toISOString().slice(0, 16);
+	export let value: Date | string | undefined;
+	let formattedValue = '';
+	$: {
+		if (value && typeof value === 'string') {
+			formattedValue = new Date(value).toISOString().slice(0, 16);
+		} else if (value instanceof Date) {
+			formattedValue = value.toISOString().slice(0, 16);
+		}
+	}
 	export let label = '';
 	export let required: boolean = false;
 	export let id = '';
