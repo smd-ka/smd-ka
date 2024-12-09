@@ -59,7 +59,7 @@
 			<Fa icon={faChevronRight} class="mx-2" />
 		</li>
 		<li class="flex items-center">
-			<a class="!no-underline" href="/intern/address-list">Address List</a>
+			<a class="!no-underline" href="/intern/add-event">Kalender Event hinzufügen</a>
 		</li>
 	</ol>
 </nav>
