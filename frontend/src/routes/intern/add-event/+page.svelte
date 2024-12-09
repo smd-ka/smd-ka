@@ -32,8 +32,8 @@
 
 		const dates = _handleDates(formData.get('start_date_time'), formData.get('end_date_time'));
 
-		if (dates?.startDateTime && dates?.endDateTime && dates.startDateTime > dates.endDateTime) {
-			dateError = 'Das Startdatum muss vor dem Enddatum liegen.';
+		if (dates?.error) {
+			dateError = dates.error;
 			loading = false;
 			return;
 		}
