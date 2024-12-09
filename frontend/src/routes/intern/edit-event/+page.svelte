@@ -6,7 +6,13 @@
 	import Fa from 'svelte-fa';
 	import type { PageData } from '../$types';
 	import dayjs from 'dayjs';
-	import { faPen, faPencil, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
+	import {
+		faChevronRight,
+		faPen,
+		faPencil,
+		faPlus,
+		faTrash
+	} from '@fortawesome/free-solid-svg-icons';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 	import { pb } from '$lib/pocketbase';
 	import { _handleDates } from './+page';
@@ -55,6 +61,8 @@
 				},
 				shownEvent.image
 			);
+		} else {
+			src = '';
 		}
 	}
 
@@ -97,7 +105,19 @@
 	}
 </script>
 
-<main class="container mx-auto px-4 py-8">
+<nav class="container mx-auto px-4 py-4">
+	<ol class="inline-flex list-none">
+		<li class="flex items-center">
+			<a class="!no-underline" href="/intern">Intern</a>
+			<Fa icon={faChevronRight} class="mx-2" />
+		</li>
+		<li class="flex items-center">
+			<a class="!no-underline" href="/intern/address-list">Address List</a>
+		</li>
+	</ol>
+</nav>
+
+<main class="container mx-auto px-4 pb-8">
 	<h3 class="pl-4">Kalender Event bearbeiten</h3>
 
 	{#if !shownEvent}

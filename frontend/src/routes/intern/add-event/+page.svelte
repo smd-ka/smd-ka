@@ -3,7 +3,7 @@
 	import TextArea from '$lib/components/forms/TextArea.svelte';
 	import TextInput from '$lib/components/forms/TextInput.svelte';
 	import { pb } from '$lib/pocketbase';
-	import { faPencil, faPlus } from '@fortawesome/free-solid-svg-icons';
+	import { faChevronRight, faPencil, faPlus } from '@fortawesome/free-solid-svg-icons';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 	import Fa from 'svelte-fa';
 	import UrlInput from '$lib/components/forms/UrlInput.svelte';
@@ -52,7 +52,19 @@
 	}
 </script>
 
-<main class="container mx-auto px-4 py-12">
+<nav class="container mx-auto px-4 py-4">
+	<ol class="inline-flex list-none">
+		<li class="flex items-center">
+			<a class="!no-underline" href="/intern">Intern</a>
+			<Fa icon={faChevronRight} class="mx-2" />
+		</li>
+		<li class="flex items-center">
+			<a class="!no-underline" href="/intern/address-list">Address List</a>
+		</li>
+	</ol>
+</nav>
+
+<main class="container mx-auto px-4 pb-12">
 	<h1>Kalender Event hinzufügen</h1>
 	<form class="grid gap-4 md:grid-cols-2" id="form" on:submit|preventDefault={createEvent}>
 		{#if error}
