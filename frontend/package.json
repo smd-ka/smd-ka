@@ -44,6 +44,7 @@
 		"@fontsource/zcool-qingke-huangyou": "^5.0.12",
 		"@fortawesome/free-brands-svg-icons": "^6.6.0",
 		"@fortawesome/free-solid-svg-icons": "^6.6.0",
+		"dayjs": "^1.11.13",
 		"pocketbase": "^0.15.3",
 		"prettier-plugin-svelte": "^3.0.3"
 	}

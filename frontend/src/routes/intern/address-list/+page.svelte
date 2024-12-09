@@ -5,17 +5,12 @@
 	import defaultAvatar from '$lib/assets/user_default.png';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import {
-		faBirthdayCake,
 		faChevronRight,
 		faEnvelope,
 		faFileExport,
-		faGraduationCap,
 		faHouse,
-		faImage,
 		faPhone,
-		faSearch,
-		faSignature,
-		faUserGroup
+		faSearch
 	} from '@fortawesome/free-solid-svg-icons';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 
@@ -65,28 +60,32 @@
 	// TODO: Move to util file
 	function generateVCF(records) {
 		return records
-				.map((record) => {
-					const notes = [];
-					if (record.field_of_study) {
-						notes.push(`${record.field_of_study} seit ${record.start_of_studies ? new Date(record.start_of_studies).toLocaleDateString() : ''}`);
-					}
-					if (record.team) {
-						notes.push(`SMD-Bereiche: ${record.team}`);
-					}
-					// Building vCard with essential fields
-					return [
-						"BEGIN:VCARD",
-						"VERSION:3.0",
-						`FN:${record.name} ${record.surname}`,
-						`EMAIL:${record.email}`,
-						record.phonenumber ? `TEL:${record.phonenumber}` : '',
-						record.birthday ? `BDAY:${new Date(record.birthday).toISOString().split('T')[0]}` : '',
-						record.address ? `ADR:${record.address}` : '',
-						`NOTE:${notes.join(', ')}`,
-						"END:VCARD"
-					].filter(Boolean).join('\n'); // Remove empty lines
-				})
-				.join('\n');
+			.map((record) => {
+				const notes = [];
+				if (record.field_of_study) {
+					notes.push(
+						`${record.field_of_study} seit ${record.start_of_studies ? new Date(record.start_of_studies).toLocaleDateString() : ''}`
+					);
+				}
+				if (record.team) {
+					notes.push(`SMD-Bereiche: ${record.team}`);
+				}
+				// Building vCard with essential fields
+				return [
+					'BEGIN:VCARD',
+					'VERSION:3.0',
+					`FN:${record.name} ${record.surname}`,
+					`EMAIL:${record.email}`,
+					record.phonenumber ? `TEL:${record.phonenumber}` : '',
+					record.birthday ? `BDAY:${new Date(record.birthday).toISOString().split('T')[0]}` : '',
+					record.address ? `ADR:${record.address}` : '',
+					`NOTE:${notes.join(', ')}`,
+					'END:VCARD'
+				]
+					.filter(Boolean)
+					.join('\n'); // Remove empty lines
+			})
+			.join('\n');
 	}
 
 	function downloadVCF() {
@@ -101,8 +100,6 @@
 		document.body.removeChild(a);
 		URL.revokeObjectURL(url);
 	}
-
-
 
 	const src = (
 		avatar: string | undefined,

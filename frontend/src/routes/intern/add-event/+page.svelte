@@ -3,12 +3,12 @@
 	import TextArea from '$lib/components/forms/TextArea.svelte';
 	import TextInput from '$lib/components/forms/TextInput.svelte';
 	import { pb } from '$lib/pocketbase';
-	import { faPencil, faPlus } from '@fortawesome/free-solid-svg-icons';
+	import { faChevronRight, faPencil, faPlus } from '@fortawesome/free-solid-svg-icons';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 	import Fa from 'svelte-fa';
-	import { load } from '../../saft/+page';
 	import UrlInput from '$lib/components/forms/UrlInput.svelte';
 	import { goto } from '$app/navigation';
+	import { _handleDates } from '../edit-event/+page';
 
 	let src = '';
 	let image: undefined | File = undefined;
@@ -24,35 +24,20 @@
 		}
 	};
 
-	const handleDates = (
-		startDateTime: FormDataEntryValue | null,
-		endDateTime: FormDataEntryValue | null
-	) => {
-		if (!startDateTime) {
-			dateError = 'Bitte gib ein Startdatum an';
-			return;
-		}
-		const startDate = new Date(startDateTime.toString());
-		if (!endDateTime) {
-			return { startDateTime: startDate.toISOString(), endDateTime: '' };
-		}
-		const endDate = new Date(endDateTime.toString());
-		if (startDate > endDate) {
-			dateError = 'Startpunkt liegt nach Endpunkt';
-			return;
-		}
-		dateError = '';
-		return { startDateTime: startDate.toISOString(), endDateTime: endDate.toISOString() };
-	};
-
 	async function createEvent() {
 		loading = true;
 		const form = document.getElementById('form') as HTMLFormElement;
 
 		let formData = new FormData(form);
 
-		const dates = handleDates(formData.get('start_date_time'), formData.get('end_date_time'));
-		console.log(dates);
+		const dates = _handleDates(formData.get('start_date_time'), formData.get('end_date_time'));
+
+		if (dates?.error) {
+			dateError = dates.error;
+			loading = false;
+			return;
+		}
+
 		formData.set('start_date_time', dates?.startDateTime || '');
 		formData.set('end_date_time', dates?.endDateTime || '');
 
@@ -67,7 +52,19 @@
 	}
 </script>
 
-<main class="container mx-auto px-4 py-12">
+<nav class="container mx-auto px-4 py-4">
+	<ol class="inline-flex list-none">
+		<li class="flex items-center">
+			<a class="!no-underline" href="/intern">Intern</a>
+			<Fa icon={faChevronRight} class="mx-2" />
+		</li>
+		<li class="flex items-center">
+			<a class="!no-underline" href="/intern/add-event">Kalender Event hinzufügen</a>
+		</li>
+	</ol>
+</nav>
+
+<main class="container mx-auto px-4 pb-12">
 	<h1>Kalender Event hinzufügen</h1>
 	<form class="grid gap-4 md:grid-cols-2" id="form" on:submit|preventDefault={createEvent}>
 		{#if error}
