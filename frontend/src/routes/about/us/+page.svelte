@@ -76,20 +76,19 @@
 		<h1 class="text-center">Unser Leitungsteam</h1>
 		<div class="grid gap-4 md:grid-cols-[fit-content(6rem)_1fr]">
 			<img
-				class="md:max-w-80 object-cover max-md:max-h-80 max-md:w-full lg:max-w-[30rem]"
+				class="object-cover max-md:max-h-80 max-md:w-full md:max-w-80 lg:max-w-[30rem]"
 				alt="Leitungsteam"
 				src={leitungsteam}
 			/>
 			<p>
-				Das Leitungsteam dieses Semester besteht aus (v.l.n.r.): <br />
-				Felix R. ist 22 Jahre alt, mag sehr gerne Eidechsen und hat an der HKA Umweltingenieurwesen studiert.
+				Das Leitungsteam dieses Semester besteht aus:
 				<br />
 				Lilly, 22, klettert gerne auf Bäume und studiert Medizintechnik am KIT im fünften Semester.
 				<br />
-				Felix M., ebenfalls 22, mag Kaffee und studiert im siebten Semester Physik am KIT.
+				Felix, ebenfalls 22, mag Kaffee und studiert im siebten Semester Physik am KIT.
 				<br />
 				<br />
-				Diese drei haben die derzeitige Gesamtleitung der Hochschul-SMD Karlsruhe und stehen jederzeit
+				Diese zwei haben die derzeitige Gesamtleitung der Hochschul-SMD Karlsruhe und stehen jederzeit
 				für Fragen und Anregungen unter
 				<a href="mailto:leiter@smd-karlsruhe.de"> leiter@smd-karlsruhe.de</a> zur Verfügung.
 			</p>
