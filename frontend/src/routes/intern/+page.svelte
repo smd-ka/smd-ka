@@ -94,7 +94,7 @@
 			<h2 class="py-4 text-center text-lg md:text-2xl">Event zum Kalender hinzufügen</h2>
 		</a>
 
-		<a class="tile" href="/intern/add-event">
+		<a class="tile" href="/intern/edit-event">
 			<div class="flex justify-center text-orange-400">
 				<Fa icon={faCalendar} class="text-corperate text-7xl" />
 			</div>
