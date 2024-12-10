@@ -1,13 +1,7 @@
 <script lang="ts">
 	import Saos from 'saos';
 	import header from '$lib/assets/pages/home/schloss.jpg';
-	import {
-		faArrowDown,
-		faCalendarDays,
-		faClock,
-		faLocationDot,
-		faChevronRight
-	} from '@fortawesome/free-solid-svg-icons';
+	import { faArrowDown, faLocationDot, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import TextInput from '$lib/components/forms/TextInput.svelte';
@@ -128,7 +122,7 @@
 								</div>
 
 								<p class="line-clamp-2">
-									{event.description}
+									{@html event.description}
 								</p>
 								<a href="/events/kalender/{event.id}" class="text-primary">Mehr erfahren</a>
 							</div>
