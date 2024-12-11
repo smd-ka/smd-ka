@@ -91,7 +91,7 @@
 		animation_out={'slide-out-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
 	>
 		<div class="flex flex-col items-center">
-			<h1 class="font-caveat text-center">Jeden Sonntag 19:00</h1>
+			<h1 class="font-caveat text-center">Every Sunday 7 PM</h1>
 			<div class="flex gap-4 max-md:flex-col">
 				<a
 					class="bg-primary fa px-4 py-2 text-2xl text-white no-underline hover:underline"
@@ -118,7 +118,7 @@
 		<h3 class="pb-4 text-center text-5xl">The King's Café</h3>
 		<div class="grid gap-4 py-4 md:grid-cols-2">
 			<div>
-				<h3>An offer for international students</h3>
+				<h3>For you. For international students.</h3>
 				<p>
 					The King's Café is a meeting place for German and international students every Sunday from <b
 						>7 PM</b
@@ -134,7 +134,7 @@
 			/>
 		</div>
 		<p>
-			In short lectures, you can learn about various topics such as German history, culture and
+			In short presentations, you can learn about various topics such as German history, culture and
 			traditions, life skills for everyday life, and the Christian faith. We offer fellowship with
 			free snacks and drinks in a cozy atmosphere. We also organize activities such as hikes in the
 			Black Forest and game nights. We love to learn about other cultures and look forward to
