@@ -5,59 +5,6 @@
 	import type { PageData } from '../$types';
 	import { getImageSrc } from '$lib/fetch_img';
 
-	// This should probably be fetched from the backend
-	// Maybe it would be better to create a category and then list all events in that category
-	const churchHopping = [
-		{
-			date: '20. Oktober // 11 Uhr',
-			link: 'https://www.icf-karlsruhe.de',
-			name: 'ICF Karlsruhe',
-			responsible: 'Jonas'
-		},
-		{
-			date: '27. Oktober // 9:40 Uhr',
-			link: 'https://www.cg-karlsruhe.de/veranstaltungen',
-			name: 'Christliche Gemeinde (CG)',
-			responsible: 'Bettina'
-		},
-		{
-			date: '03. November // 11:15 Uhr',
-			link: 'https://feg-karlsruhe.de/',
-			name: 'Freie evangelische Gemeinde (FeG)',
-			responsible: 'Muss leider krankheitsbedingt ausfallen!'
-		},
-		{
-			date: '10. November // 10:00 Uhr',
-			link: 'https://lgv-ettlingen.de/',
-			name: 'Liebenzeller Gemeinde Ettlingen',
-			responsible: 'Doreen, Samuel'
-		},
-		{
-			date: '17. November',
-			link: '',
-			name: 'entfällt wegen SAFT',
-			responsible: '(Semesteranfangsfreizeit)'
-		},
-		{
-			date: '24. November // 11:45 Uhr',
-			link: 'https://treffpunkt-leben.de/',
-			name: 'Treffpunkt Leben (TL)',
-			responsible: 'Felix'
-		},
-		{
-			date: '01. Dezember // 11:00 Uhr',
-			link: 'https://faecherkirche.de/',
-			name: 'Fächerkriche',
-			responsible: 'Aaron, Frederik'
-		},
-		{
-			date: '08. Dezember // 10:00 Uhr',
-			link: 'https://lkg-karlsruhe.de/',
-			name: 'Landeskirchliche Gemeinschaft (LKG)',
-			responsible: 'Lilly, Claus, Kathrin'
-		}
-	];
-
 	export let data: PageData;
 
 	const getDateTimeString = (startDateString: string, endDateString) => {
@@ -81,14 +28,14 @@
 
 <main class="main">
 	<section class="pad">
-		<h1 class="text-center">endlich Student</h1>
+		<h1 class="text-center">Erstsemester - und nun?</h1>
 		<p>
 			Du bist neu in Karlsruhe oder planst hierher zu ziehen für dein Studium? Du bist auf der Suche
 			nach christlicher Gemeinschaft? Was für ein Zufall (oder was für eine Fügung), denn dann bist
 			du hier genau richtig! Wir haben es auf dem Herzen, unseren Glauben authentisch im
 			Studienalltag zu leben. Bei uns hast du die Chance, schnell Anschluss zu finden, damit KA
-			nicht nur KlausurenAnstalt heißt, sondern für eine Stadt steht, die du gerne dein neues
-			Zuhause nennen kannst.
+			nicht nur KlausurenAnstalt heißt, sondern für eine Stadt steht, die du gerne dein neues (oder
+			altes) Zuhause nennen kannst.
 		</p>
 		<p>
 			Wir haben ein vielfältiges Angebot an Veranstaltungen und Aktionen, bei denen du uns und
@@ -180,21 +127,6 @@
 				und über die Gemeinde stellen kannst. Da sich die SMD bewusst <i>nicht</i> als eine Gemeinde
 				sieht, ist es uns wichtig, dass du eine Gemeinde findest, in der du geistlich auftanken darfst!
 			</p>
-		</div>
-
-		<div
-			class="font-merriweather mt-8 grid grid-cols-[auto_auto_auto] gap-x-2 px-4 md:text-2xl xl:px-72"
-		>
-			<div class="font-bold">Datum</div>
-			<div class="font-bold">Gemeinde</div>
-			<div class="font-bold">Ansprechperson</div>
-
-			{#each churchHopping as hop, i}
-				<div class="col-span-full h-0.5 {i == 0 ? 'bg-gray-600' : 'bg-gray-300'}"></div>
-				<div>{hop.date}</div>
-				<a href={hop.link}>{hop.name}</a>
-				<div class="break-all">{hop.responsible}</div>
-			{/each}
 		</div>
 	</section>
 </main>

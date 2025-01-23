@@ -45,7 +45,7 @@
 
 		<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
 			<div class="grid justify-end text-right">
-				<h1 class="text-4xl font-bold uppercase">Die Fakten</h1>
+				<h2>Die Fakten</h2>
 				<div class="flex items-center justify-end gap-2">
 					<Fa class="text-primary" icon={faCalendarDays} />
 					Datum: 1. - 4. Mai 2025
@@ -78,7 +78,7 @@
 
 	<div class="px-4 xl:px-60">
 		<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
-			<h1 class="text-4xl font-bold uppercase">Wie sieht's da aus?</h1>
+			<h2>Wie sieht's da aus?</h2>
 			<p>
 				Das Video zeigt dir einen kleinen Einblick einer vergangen SAFT, die nächste wird etwas
 				anders, aber nicht weniger genial! Wir werden ein geniales Wochenende mit Andachten,
