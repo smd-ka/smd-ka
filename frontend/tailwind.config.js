@@ -17,13 +17,13 @@ export default {
 			colors: {
 				'primary-text': '#212427',
 				primary: '#E84C05',
-				'old-primary': '#F78861',
 				'light-blue': '#7E93AE',
 				'secondary-text': '#555555',
 				lime: '#ccd4bf',
 				lilac: '#D0B0D4',
 				grey: '#323232',
-				'background-gray': '#EEEEEE'
+				'background-gray': '#EEEEEE',
+				'background-orange': '#fdc188'
 			}
 		}
 	},

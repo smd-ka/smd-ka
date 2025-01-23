@@ -82,35 +82,48 @@
 
 <section style="background-image: url({background});">
 	<div class="container mx-auto px-4 py-12">
-		<h2 class="text-center">Unsere Lieblingscafés und Restaurants</h2>
+		<h2 class="text-center">
+			Unsere
+			<span class="text-[#f1af71]"> Lieblingscafés </span> und
+			<span class="text-slate-400"> Restaurants </span>
+		</h2>
 
 		<div class="grid gap-4 md:grid-cols-3 xl:grid-cols-5">
-			<div class="rounded-lg bg-slate-300 bg-opacity-50 p-4 shadow-lg">
+			<a
+				href="https://maps.app.goo.gl/ZAv8JF2UQCbBC7iNA"
+				target="_blank"
+				class="rounded-lg bg-slate-300 bg-opacity-50 p-4 shadow-lg transition-all duration-100 hover:scale-105"
+			>
 				<h3 class="text-center">Oxford Pub</h3>
-
-				<div class="fa"><Fa icon={faCoins} /> günstig</div>
-				<div class="fa"><Fa icon={faLocationDot} /> Direkt am KIT</div>
 
 				<p>
 					+ Lecker und günstig <br />
+					+ Super nah am KIT <br />
 					+ Bekannt für gute Burger <br />
 					+ Über 100 Biersorten <br />
-					+ Super nah am KIT <br />
 					+ So richtige pub vibes
 				</p>
-			</div>
+			</a>
 
-			<div class="rounded-lg bg-[#fde9b1] bg-opacity-50 p-4 shadow-lg">
+			<a
+				href="https://maps.app.goo.gl/KGGCHYAdKRErAeEi9"
+				target="_blank"
+				class="bg-background-orange rounded-lg bg-opacity-50 p-4 shadow-lg transition-all duration-100 hover:scale-105"
+			>
 				<h3 class="text-center">Café Wohnzimmer</h3>
 				<p>
-					+ Macht seinem Namen alle Ehre<br />
 					+ In unmittelbarer KIT-Nähe <br />
+					+ Macht seinem Namen alle Ehre<br />
 					+ Explizit glutenfreie Kuchen <br />
 					+ Auch zum Mitnehmen
 				</p>
-			</div>
+			</a>
 
-			<div class="rounded-lg bg-slate-300 bg-opacity-50 p-4 shadow-lg">
+			<a
+				href="https://maps.app.goo.gl/piRfuJ7n3KyvZPwC8"
+				target="_blank"
+				class="rounded-lg bg-slate-300 bg-opacity-50 p-4 shadow-lg transition-all duration-100 hover:scale-105"
+			>
 				<h3 class="text-center">Café Bleu</h3>
 
 				<p>
@@ -119,82 +132,104 @@
 					+ Studentenfreundliche Preise und lecker <br />
 					+ Netter Biergarten
 				</p>
-			</div>
+			</a>
 
-			<div class="rounded-lg bg-[#fde9b1] bg-opacity-50 p-4 shadow-lg">
+			<a
+				href="https://maps.app.goo.gl/kS7Aq1PcCemoYoEy9"
+				target="_blank"
+				class="bg-background-orange rounded-lg bg-opacity-50 p-4 shadow-lg transition-all duration-100 hover:scale-105"
+			>
 				<h3 class="text-center">Iaro</h3>
 				<p>
-					+ KIT-Nähe <br />
+					+ KIT-Nähe; Karl-Wilhelm-Platz<br />
 					+ Minimalistische Ästhetik <br />
 					+ Hauseigene Produkte <br />
-					+ Bieten Workshops zu Latte Art und als Barista ein
+					+ Bieten Workshops zu Latte Art und als Barista ein <br />
+					+ Gibts auch in der Weststadt (Sophienstraße)
 				</p>
-			</div>
+			</a>
 
-			<div class="rounded-lg bg-slate-300 bg-opacity-50 p-4 shadow-lg">
+			<a
+				href="https://maps.app.goo.gl/8mqb3caoun7Ggq2M9"
+				target="_blank"
+				class="ransition-all rounded-lg bg-slate-300 bg-opacity-50 p-4 shadow-lg duration-100 hover:scale-105"
+			>
 				<h3 class="text-center">Kim Fat</h3>
 
 				<p>
 					+ Günstig <br />
-					+ Restaurant<br />
+					+ Direkt am Zirkel <br />
 					+ Chinesische, thailändische und vietnamesische Gerichte <br />
 					+ Klein und fein, betrieben nur von einem Ehepaar <br />
-					<!-- TODO Make sure this is correct  -->
-					+ Zentral am Kronenplatz
 				</p>
-			</div>
+			</a>
 
-			<div class="rounded-lg bg-[#fde9b1] bg-opacity-50 p-4 shadow-lg">
+			<a
+				href="https://maps.app.goo.gl/MzZo7Xs8q3iipk2x5"
+				target="_blank"
+				class="bg-background-orange ransition-all rounded-lg bg-opacity-50 p-4 shadow-lg duration-100 hover:scale-105"
+			>
 				<h3 class="text-center">Berry Su</h3>
-				<!-- TODO -->
 				<p>
-					+ Minimalistische Ästhetik <br />
+					+ Coole Specials je nach Jahreszeit <br />
+					+ Super leckerer Kuchen <br />
 					+ Zentral, Kaiserstraße <br />
-					+ Hauseigene Produkte <br />
-					+ Bieten Workshops zu Latte Art und als Barista ein
 				</p>
-			</div>
+			</a>
 
-			<div class="rounded-lg bg-slate-300 bg-opacity-50 p-4 shadow-lg">
+			<a
+				href="https://maps.app.goo.gl/9F7jtu93P8AcL5yeA"
+				target="_blank"
+				class="rounded-lg bg-slate-300 bg-opacity-50 p-4 shadow-lg duration-100 hover:scale-105"
+			>
 				<h3 class="text-center">L'Osteria</h3>
 
 				<p>
-					+ Günstig <br />
-					+ Restaurant<br />
-					+ Chinesische, thailändische und vietnamesische Gerichte <br />
-					+ Klein und fein, betrieben nur von einem Ehepaar <br />
-					<!-- TODO Make sure this is correct  -->
-					+ Zentral am Kronenplatz
+					+ Günstig, Italienisch <br />
+					+ Sehr große Pizzen <br />
+					+ Zentral, direkt beim Marktplatz <br />
 				</p>
-			</div>
+			</a>
 
-			<div class="rounded-lg bg-[#fde9b1] bg-opacity-50 p-4 shadow-lg">
+			<a
+				href="https://maps.app.goo.gl/yBLWhJtX4yeYAos76"
+				target="_blank"
+				class="bg-background-orange rounded-lg bg-opacity-50 p-4 shadow-lg duration-100 hover:scale-105"
+			>
 				<h3 class="text-center">Yollie - The Popice Café</h3>
 				<p>
-					+ Liebevoll gestaltete Produkte <br />
-					+ (Fast) alles hausgemacht <br />
-					+ Sehr gut für Teeliebhaber <br />
+					+ Innenstadt: Waldstraße <br />
+					+ die Waffeln sind zu empfehlen <br />
+					+ Etwas teurer, aber lecker <br />
+					+ Bhoh Stil <br />
 				</p>
-			</div>
+			</a>
 
-			<div class="rounded-lg bg-slate-300 bg-opacity-50 p-4 shadow-lg">
+			<a
+				href="https://maps.app.goo.gl/oVWvYWyqUF8c3Nod9"
+				target="_blank"
+				class="rounded-lg bg-slate-300 bg-opacity-50 p-4 shadow-lg duration-100 hover:scale-105"
+			>
 				<h3 class="text-center">El Taquito</h3>
-				<!-- TODO Ort Ergänzen -->
 				<p>
+					+ Innenstadt; Passagenhof <br />
 					+ Verschiedene mexikanische Gerichte <br />
 					+ Super lecker
 				</p>
-			</div>
+			</a>
 
-			<div class="rounded-lg bg-[#fde9b1] bg-opacity-50 p-4 shadow-lg">
+			<a
+				href="https://maps.app.goo.gl/SpVfubUshfwnQ7fn6"
+				target="_blank"
+				class="bg-background-orange rounded-lg bg-opacity-50 p-4 shadow-lg duration-100 hover:scale-105"
+			>
 				<h3 class="text-center">Café Mats</h3>
-				<!-- TODO -->
 				<p>
 					+ Liebevoll gestaltete Produkte <br />
 					+ (Fast) alles hausgemacht <br />
 					+ Sehr gut für Teeliebhaber <br />
 				</p>
-			</div>
+			</a>
 		</div>
 
 		<p class="px-4 py-6 text-center font-bold">
