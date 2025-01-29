@@ -83,7 +83,7 @@
 		formData.set('start_date_time', dates?.startDateTime || '');
 		formData.set('end_date_time', dates?.endDateTime || '');
 
-		formData.append('image', image || '');
+		formData.append('image', image || shownEvent?.image);
 		try {
 			const record = await pb.collection('calendar').update(shownEvent.id, formData);
 			goto(`/events/kalender/${record.id}`);
@@ -118,37 +118,37 @@
 </nav>
 
 <main class="container mx-auto px-4 pb-8">
-	<h3 class="pl-4">Kalender Event bearbeiten</h3>
-
 	{#if !shownEvent}
 		<p class="pl-4">
 			Es gibt keine Events du kannst <a href="/intern/add-event">hier</a> welche anlegen
 		</p>
 	{:else}
-		<div class="grid gap-2 rounded-lg border p-4 md:grid-cols-[32rem_1fr]">
-			<section class="h-[78svh] overflow-y-auto overflow-x-hidden text-ellipsis max-md:h-64">
-				<div class="grid divide-y">
+		<div></div>
+
+		<div class="grid gap-2 rounded-lg md:grid-cols-[32rem_1fr]">
+			<section class="h-[84svh] overflow-y-auto overflow-x-hidden text-ellipsis max-md:h-64">
+				<div class="mr-1 grid gap-2">
 					{#each data.events as event}
-						<button
-							on:click={() => (shownEvent = event)}
-							disabled={loading}
-							class="overflow-hidden text-ellipsis py-2 text-left"
-						>
-							<b
-								class="{shownEvent.id === event.id
-									? 'text-primary underline'
-									: ''} whitespace-nowrap">{event.title}</b
+						<div class="rounded-md bg-white p-4 shadow-md">
+							<button
+								on:click={() => (shownEvent = event)}
+								disabled={loading}
+								class="overflow-hidden text-ellipsis py-2 text-left"
 							>
-							<div class="whitespace-pre-line">
-								{getDateString(event.start_date_time, event.end_date_time)} +++
-								{event.location}
-							</div>
-						</button>
+								<b class="{shownEvent.id === event.id ? 'text-primary underline' : ''}  "
+									>{event.title}
+								</b>
+								<div class="whitespace-pre-line">
+									{getDateString(event.start_date_time, event.end_date_time)} +++
+									{event.location}
+								</div>
+							</button>
+						</div>
 					{/each}
 				</div>
 			</section>
 			<div class="h-0.5 bg-black md:hidden"></div>
-			<section class=" bg-gray-50 p-2">
+			<section class=" rounded-md bg-white p-4 shadow-md">
 				<form class="grid gap-4 md:grid-cols-2" id="form" on:submit|preventDefault={updateEvent}>
 					<div class="col-span-full">
 						<TextInput
