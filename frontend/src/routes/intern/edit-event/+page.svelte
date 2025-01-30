@@ -105,7 +105,7 @@
 	}
 </script>
 
-<nav class="container mx-auto px-4 py-4">
+<nav class="container mx-auto flex justify-between px-4 py-4">
 	<ol class="inline-flex list-none">
 		<li class="flex items-center">
 			<a class="!no-underline" href="/intern">Intern</a>
@@ -115,6 +115,9 @@
 			<a class="!no-underline" href="/intern/edit-event">Kalender Event bearbeiten</a>
 		</li>
 	</ol>
+	<button class="bg-primary fa rounded-md p-2 text-white">
+		<Fa icon={faPlus}></Fa> Event hinzufügen
+	</button>
 </nav>
 
 <main class="container mx-auto px-4 pb-8">
@@ -125,7 +128,7 @@
 	{:else}
 		<div></div>
 
-		<div class="grid gap-2 rounded-lg md:grid-cols-[32rem_1fr]">
+		<div class="grid gap-4 rounded-lg md:grid-cols-[32rem_1fr]">
 			<section class="h-[84svh] overflow-y-auto overflow-x-hidden text-ellipsis max-md:h-64">
 				<div class="mr-1 grid gap-2">
 					{#each data.events as event}
@@ -149,6 +152,7 @@
 			</section>
 			<div class="h-0.5 bg-black md:hidden"></div>
 			<section class=" rounded-md bg-white p-4 shadow-md">
+				<h3 class="pb-4">{shownEvent.title} bearbeiten:</h3>
 				<form class="grid gap-4 md:grid-cols-2" id="form" on:submit|preventDefault={updateEvent}>
 					<div class="col-span-full">
 						<TextInput
@@ -204,6 +208,7 @@
 							value={shownEvent.description}
 							name="description"
 							label="Beschreibung"
+							rows={6}
 							disabled={loading}
 						/>
 
@@ -235,8 +240,12 @@
 							/>
 						</label>
 						<b>Bitte achtet darauf, dass die Bilder nicht größer als 500 KB sind.</b><br />
-						<a target="_blank" href="https://imagecompressor.11zon.com/de/image-compressor/"
-							>Hier kann mann kostenlos Bilder komprimieren.
+						<a
+							target="_blank"
+							class="underline"
+							href="https://imagecompressor.11zon.com/de/image-compressor/"
+						>
+							Hier kann mann kostenlos Bilder komprimieren.
 						</a>
 					</div>
 
