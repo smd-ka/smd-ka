@@ -7,11 +7,12 @@
 	import smd_ka_logo from '$lib/assets/logos/smd-ka_modified.svg';
 	import smd_logo from '$lib/assets/logos/smd_invers.png';
 	import insta from '$lib/assets/logos/insta.svg';
-	import { faChevronDown, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+	import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import ifes from '$lib/assets/logos/ifes.png';
 	import { headerImageHeight } from '$lib/stores';
 	import '/node_modules/flag-icons/css/flag-icons.min.css';
+	import { page } from '$app/stores';
 
 	let scrollY: number;
 	const navbarHeight = 90;
@@ -34,10 +35,18 @@
 				<img class="font-mincho max-h-12" src={logo} alt="SMD Logo" />
 				KING's Café
 			</a>
-
 			<div class="flex justify-center gap-4 md:basis-full">
-				<a href="/" class="fi fi-de" title="Deutsch"></a>
-				<a href="/en" class="fi fi-gb" title="English"></a>
+				<a
+					href="/"
+					class="{$page.route.id == '/' ? 'outline outline-2 outline-white' : ''} fi fi-de"
+					title="Deutsch"
+				>
+				</a>
+				<a
+					href="/en"
+					class="{$page.route.id == '/en' ? ' outline outline-2 outline-white' : ''} fi fi-gb"
+					title="English"
+				></a>
 			</div>
 
 			<div class="flex basis-full items-center justify-end gap-4 text-xl text-white max-md:hidden">
