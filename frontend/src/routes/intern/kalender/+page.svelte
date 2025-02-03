@@ -113,7 +113,7 @@
 			<Fa icon={faChevronRight} class="mx-2" />
 		</li>
 		<li class="flex items-center">
-			<a class="!no-underline" href="/intern/edit-event">Kalender Event bearbeiten</a>
+			<a class="!no-underline" href="/intern/kalender">Kalender bearbeiten</a>
 		</li>
 	</ol>
 	<button on:click={() => (shownEvent = undefined)} class="bg-primary fa rounded-md p-2 text-white">
