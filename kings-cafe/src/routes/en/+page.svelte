@@ -91,7 +91,7 @@
 		animation_out={'slide-out-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
 	>
 		<div class="flex flex-col items-center">
-			<h1 class="font-caveat text-center">Every Sunday 7 PM</h1>
+			<h1 class="font-caveat text-center">Every Sunday 7:15 PM</h1>
 			<div class="flex gap-4 max-md:flex-col">
 				<a
 					class="bg-primary fa px-4 py-2 text-2xl text-white no-underline hover:underline"
@@ -121,7 +121,7 @@
 				<h3>For you. For international students.</h3>
 				<p>
 					The King's Café is a meeting place for German and international students every Sunday from <b
-						>7 PM</b
+						>7:15 PM</b
 					>
 					at <b>Amalienstraße 77</b>. Here you can get in touch with Germans and improve your
 					German, no matter how good your German is – we can also speak English.
