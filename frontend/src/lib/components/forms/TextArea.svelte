@@ -5,6 +5,7 @@
 	export let label = '';
 	export let required: boolean = false;
 	export let id = name;
+	export let rows: number = 3;
 </script>
 
 <div class="relative">
@@ -16,6 +17,7 @@
 		placeholder={label}
 		{disabled}
 		{required}
+		{rows}
 	/>
 	<label
 		for={id}

@@ -8,7 +8,7 @@
 	import Fa from 'svelte-fa';
 	import UrlInput from '$lib/components/forms/UrlInput.svelte';
 	import { goto } from '$app/navigation';
-	import { _handleDates } from '../edit-event/+page';
+	import { _handleDates } from './+page';
 
 	let src = '';
 	let image: undefined | File = undefined;
@@ -52,20 +52,8 @@
 	}
 </script>
 
-<nav class="container mx-auto px-4 py-4">
-	<ol class="inline-flex list-none">
-		<li class="flex items-center">
-			<a class="!no-underline" href="/intern">Intern</a>
-			<Fa icon={faChevronRight} class="mx-2" />
-		</li>
-		<li class="flex items-center">
-			<a class="!no-underline" href="/intern/add-event">Kalender Event hinzufügen</a>
-		</li>
-	</ol>
-</nav>
-
 <main class="container mx-auto px-4 pb-12">
-	<h1>Kalender Event hinzufügen</h1>
+	<h3 class="pb-2">Kalender Event hinzufügen</h3>
 	<form class="grid gap-4 md:grid-cols-2" id="form" on:submit|preventDefault={createEvent}>
 		{#if error}
 			<div class="col-span-full">
@@ -83,14 +71,16 @@
 			<option value="MIT">MIT</option>
 		</select>
 		<div>
-			<DateTimeInput required name="start_date_time" disabled={loading}>
+			<DateTimeInput value={undefined} required name="start_date_time" disabled={loading}>
 				Datum und Uhrzeit (Start)*
 			</DateTimeInput>
 			<b class="text-red-500">
 				{dateError}
 			</b>
 		</div>
-		<DateTimeInput name="end_date_time" disabled={loading}>Datum und Uhrzeit (Ende)</DateTimeInput>
+		<DateTimeInput value={undefined} name="end_date_time" disabled={loading}
+			>Datum und Uhrzeit (Ende)</DateTimeInput
+		>
 		<TextInput name="location" label="Ort" disabled={loading} />
 		<UrlInput name="location_url" label="Google Maps Link zum Ort" disabled={loading} />
 		<TextInput name="speaker" label="Referent" />
@@ -126,8 +116,11 @@
 				/>
 			</label>
 			<b>Bitte achtet darauf, dass die Bilder nicht größer als 500 KB sind.</b><br />
-			<a target="_blank" href="https://imagecompressor.11zon.com/de/image-compressor/"
-				>Hier kann mann kostenlos Bilder komprimieren.
+			<a
+				class="underline hover:no-underline"
+				target="_blank"
+				href="https://imagecompressor.11zon.com/de/image-compressor/"
+				>Hier kann man kostenlos Bilder komprimieren.
 			</a>
 		</div>
 

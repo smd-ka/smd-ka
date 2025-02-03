@@ -124,8 +124,8 @@
 				url: '/intern/address-list'
 			},
 			{
-				name: 'Event hinzufügen',
-				url: '/intern/add-event'
+				name: 'Kalender bearbeiten',
+				url: '/intern/kalender'
 			},
 			{
 				name: 'Wiki',
