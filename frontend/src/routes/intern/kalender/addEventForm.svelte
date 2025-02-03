@@ -71,14 +71,16 @@
 			<option value="MIT">MIT</option>
 		</select>
 		<div>
-			<DateTimeInput required name="start_date_time" disabled={loading}>
+			<DateTimeInput value={undefined} required name="start_date_time" disabled={loading}>
 				Datum und Uhrzeit (Start)*
 			</DateTimeInput>
 			<b class="text-red-500">
 				{dateError}
 			</b>
 		</div>
-		<DateTimeInput name="end_date_time" disabled={loading}>Datum und Uhrzeit (Ende)</DateTimeInput>
+		<DateTimeInput value={undefined} name="end_date_time" disabled={loading}
+			>Datum und Uhrzeit (Ende)</DateTimeInput
+		>
 		<TextInput name="location" label="Ort" disabled={loading} />
 		<UrlInput name="location_url" label="Google Maps Link zum Ort" disabled={loading} />
 		<TextInput name="speaker" label="Referent" />

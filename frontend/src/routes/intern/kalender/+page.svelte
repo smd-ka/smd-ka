@@ -87,7 +87,6 @@
 		formData.append('image', image || shownEvent?.image);
 		try {
 			const record = await pb.collection('calendar').update(shownEvent.id, formData);
-			goto(`/events/kalender/${record.id}`);
 		} catch (err) {
 			error = err;
 		}
@@ -129,7 +128,7 @@
 		<div></div>
 
 		<div class="grid gap-4 rounded-lg lg:grid-cols-[32rem_1fr]">
-			<section class="h-[84svh] overflow-y-auto overflow-x-hidden text-ellipsis max-lg:h-64">
+			<section class="h-[82svh] overflow-y-auto overflow-x-hidden text-ellipsis max-lg:h-64">
 				<div class="mr-1 grid gap-2">
 					{#each data.events as event}
 						<div class="rounded-md bg-white p-4 shadow-md">
@@ -141,7 +140,7 @@
 								<b class="{shownEvent?.id === event.id ? 'text-primary underline' : ''}  "
 									>{event.title}
 								</b>
-								<div class="whitespace-pre-line">
+								<div>
 									{getDateString(event.start_date_time, event.end_date_time)} +++
 									{event.location}
 								</div>
@@ -151,7 +150,9 @@
 				</div>
 			</section>
 			<div class="h-0.5 bg-black md:hidden"></div>
-			<section class=" rounded-md bg-white p-4 shadow-md">
+			<section
+				class="overflow-y-auto overflow-x-hidden rounded-md bg-white p-4 shadow-md lg:h-[82svh]"
+			>
 				{#if !shownEvent}
 					<AddEventForm />
 				{:else}
@@ -181,10 +182,8 @@
 							</b>
 						</div>
 
-						<DateTimeInput
-							value={shownEvent.start_date_time}
-							name="end_date_time"
-							disabled={loading}>Datum und Uhrzeit (Ende)</DateTimeInput
+						<DateTimeInput value={shownEvent.end_date_time} name="end_date_time" disabled={loading}
+							>Datum und Uhrzeit (Ende)</DateTimeInput
 						>
 						<TextInput value={shownEvent.location} name="location" label="Ort" disabled={loading} />
 						<UrlInput
