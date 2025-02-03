@@ -116,7 +116,8 @@
 		</li>
 	</ol>
 	<button class="bg-primary fa rounded-md p-2 text-white">
-		<Fa icon={faPlus}></Fa> Event hinzufügen
+		<Fa icon={faPlus}></Fa>
+		<span class="max-md:hidden"> Event hinzufügen </span>
 	</button>
 </nav>
 
@@ -128,8 +129,8 @@
 	{:else}
 		<div></div>
 
-		<div class="grid gap-4 rounded-lg md:grid-cols-[32rem_1fr]">
-			<section class="h-[84svh] overflow-y-auto overflow-x-hidden text-ellipsis max-md:h-64">
+		<div class="grid gap-4 rounded-lg lg:grid-cols-[32rem_1fr]">
+			<section class="h-[84svh] overflow-y-auto overflow-x-hidden text-ellipsis max-lg:h-64">
 				<div class="mr-1 grid gap-2">
 					{#each data.events as event}
 						<div class="rounded-md bg-white p-4 shadow-md">
