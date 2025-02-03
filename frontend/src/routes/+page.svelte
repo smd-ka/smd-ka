@@ -16,6 +16,7 @@
 	import Motto from '$lib/components/Motto.svelte';
 	import type { PageData } from './$types';
 	import { getImageSrc } from '$lib/fetch_img';
+	import trailer from '$lib/assets/videos/trailer.mp4';
 
 	let success = false;
 	let error = false;
@@ -147,20 +148,32 @@
 		</section>
 	{/if}
 
-	<section class="grid gap-4 px-4 pt-24 text-center text-2xl xl:px-40">
-		<p>
-			Die SMD ist ein Treffpunkt für Studierende aller Karlsruher Hochschulen und darüber hinaus.
-			Uns verbindet der Wunsch nach Gemeinschaft, Diskussion und gelebtem Glauben.
-		</p>
-		<p>
-			Wir sind Studierende aller Fachrichtungen, kommen aus verschiedenen Kirchen und Gemeinden und
-			wünschen uns, dass jeder Student und jede Studentin von der guten Nachricht von Jesus hört.
-		</p>
-		<p>
-			In unserer Hochschulgruppe sind alle herzlich willkommen. Egal, was dein Hintergrund ist und
-			was du glaubst, wir freuen uns auf dich!
-		</p>
-	</section>
+	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
+		<h1 class="font-caveat text-center">Lust auf einen Sneak Peak?</h1>
+		<video controls>
+			<source src={trailer} type="video/mp4" />
+			<track kind="captions" />
+			Your browser does not support the video tag.
+		</video>
+	</Saos>
+
+	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
+		<section class="grid gap-4 px-4 text-center text-2xl xl:px-40">
+			<p>
+				Die SMD ist ein Treffpunkt für Studierende aller Karlsruher Hochschulen und darüber hinaus.
+				Uns verbindet der Wunsch nach Gemeinschaft, Diskussion und gelebtem Glauben.
+			</p>
+			<p>
+				Wir sind Studierende aller Fachrichtungen, kommen aus verschiedenen Kirchen und Gemeinden
+				und wünschen uns, dass jeder Student und jede Studentin von der guten Nachricht von Jesus
+				hört.
+			</p>
+			<p>
+				In unserer Hochschulgruppe sind alle herzlich willkommen. Egal, was dein Hintergrund ist und
+				was du glaubst, wir freuen uns auf dich!
+			</p>
+		</section>
+	</Saos>
 
 	<section>
 		<h1 class="text-center">Unser Motto</h1>
