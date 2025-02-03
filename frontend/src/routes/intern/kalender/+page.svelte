@@ -1,32 +1,17 @@
 <script lang="ts">
-	import DateTimeInput from '$lib/components/forms/DateTimeInput.svelte';
-	import TextArea from '$lib/components/forms/TextArea.svelte';
-	import TextInput from '$lib/components/forms/TextInput.svelte';
-	import UrlInput from '$lib/components/forms/UrlInput.svelte';
 	import Fa from 'svelte-fa';
 	import type { PageData } from '../$types';
-	import dayjs from 'dayjs';
-	import {
-		faChevronRight,
-		faPen,
-		faPencil,
-		faPlus,
-		faTrash
-	} from '@fortawesome/free-solid-svg-icons';
-	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
-	import { pb } from '$lib/pocketbase';
-	import { _handleDates } from './+page';
+	import { faChevronRight, faPlus } from '@fortawesome/free-solid-svg-icons';
 	import { onMount } from 'svelte';
 	import AddEventForm from './addEventForm.svelte';
+	import EditEventForm from './editEventForm.svelte';
+	import dayjs from 'dayjs';
 
 	export let data: PageData;
 
-	let src = '';
-	let image: undefined | File = undefined;
-	let loading = false;
-	let dateError: string = '';
-	let error = undefined;
 	let shownEvent = undefined;
+	let loading = false;
+	let updated = false;
 
 	onMount(() => {
 		if (data.events.length > 0) {
@@ -44,64 +29,9 @@
 		return `${dayjs(startDateString).format('DD.MM.YYYY HH:mm')} - ${dayjs(endDateString).format('DD.MM.YYYY HH:mm')}`;
 	};
 
-	const showPreview = (event: Event) => {
-		const files = (event.target as HTMLInputElement).files;
-		if (files && files.length > 0) {
-			src = URL.createObjectURL(files[0]);
-			image = files[0];
-		}
-	};
-
-	$: {
-		if (shownEvent?.image) {
-			src = pb.files.getUrl(
-				{
-					collectionId: shownEvent.collectionId,
-					collectionName: shownEvent.collectionName,
-					id: shownEvent.id
-				},
-				shownEvent.image
-			);
-		} else {
-			src = '';
-		}
-	}
-
-	async function updateEvent() {
-		loading = true;
-		const form = document.getElementById('form') as HTMLFormElement;
-
-		let formData = new FormData(form);
-
-		const dates = _handleDates(formData.get('start_date_time'), formData.get('end_date_time'));
-
-		if (dates?.startDateTime && dates?.endDateTime && dates.startDateTime > dates.endDateTime) {
-			dateError = 'Das Startdatum muss vor dem Enddatum liegen.';
-			loading = false;
-			return;
-		}
-
-		formData.set('start_date_time', dates?.startDateTime || '');
-		formData.set('end_date_time', dates?.endDateTime || '');
-
-		formData.append('image', image || shownEvent?.image);
-		try {
-			const record = await pb.collection('calendar').update(shownEvent.id, formData);
-		} catch (err) {
-			error = err;
-		}
-		loading = false;
-	}
-
-	async function deleteEvent() {
-		loading = true;
-		try {
-			await pb.collection('calendar').delete(shownEvent.id);
-			data.events = data.events.filter((event) => event.id !== shownEvent.id);
-		} catch (err) {
-			error = err;
-		}
-		loading = false;
+	function onChangeEventSelection(event) {
+		shownEvent = event;
+		updated = false;
 	}
 </script>
 
@@ -133,7 +63,7 @@
 					{#each data.events as event}
 						<div class="rounded-md bg-white p-4 shadow-md">
 							<button
-								on:click={() => (shownEvent = event)}
+								on:click={() => onChangeEventSelection(event)}
 								disabled={loading}
 								class="overflow-hidden text-ellipsis py-2 text-left"
 							>
@@ -156,130 +86,7 @@
 				{#if !shownEvent}
 					<AddEventForm />
 				{:else}
-					<h3 class="pb-4">{shownEvent.title} bearbeiten:</h3>
-					<form class="grid gap-4 md:grid-cols-2" id="form" on:submit|preventDefault={updateEvent}>
-						<div class="col-span-full">
-							<TextInput
-								name="title"
-								label="Titel*"
-								value={shownEvent.title}
-								disabled={loading}
-								required
-							/>
-						</div>
-
-						<div>
-							<DateTimeInput
-								value={shownEvent.start_date_time}
-								required
-								name="start_date_time"
-								disabled={loading}
-							>
-								Datum und Uhrzeit (Start)*
-							</DateTimeInput>
-							<b class="text-red-500">
-								{dateError}
-							</b>
-						</div>
-
-						<DateTimeInput value={shownEvent.end_date_time} name="end_date_time" disabled={loading}
-							>Datum und Uhrzeit (Ende)</DateTimeInput
-						>
-						<TextInput value={shownEvent.location} name="location" label="Ort" disabled={loading} />
-						<UrlInput
-							value={shownEvent.location_url}
-							name="location_url"
-							label="Google Maps Link zum Ort"
-							disabled={loading}
-						/>
-						<TextInput value={shownEvent.speaker} name="speaker" label="Referent" />
-
-						<select
-							name="category"
-							value={shownEvent.category}
-							disabled={loading}
-							class="w-full rounded-md border-2 py-3"
-						>
-							<option value="" disabled selected>Kategorie, falls vorhanden</option>
-							<option value="smd_abend">SMD-Abend</option>
-							<option value="erstsemesteraktion">Erstsemesteraktion</option>
-							<option value="kingscafe">Kings-Café</option>
-							<option value="MIT">MIT</option>
-						</select>
-
-						<div class="col-span-full">
-							<TextArea
-								value={shownEvent.description}
-								name="description"
-								label="Beschreibung"
-								rows={6}
-								disabled={loading}
-							/>
-
-							<label for="image">
-								<div class="relative">
-									{#if src}
-										<div class="relative">
-											<div
-												class="bg-primary absolute bottom-0 right-0 rounded-full p-2 text-xl text-white shadow-lg"
-											>
-												<Fa icon={faPencil} />
-											</div>
-											<img class="h-72 border object-cover" {src} alt="Bild zum Event" />
-										</div>
-									{:else}
-										<div class="flex w-fit items-center gap-2 bg-black p-4 text-xl text-white">
-											<Fa icon={faPlus} />
-											Bild hochladen
-										</div>
-									{/if}
-								</div>
-								<input
-									type="file"
-									name="image"
-									id="image"
-									accept="image/*"
-									hidden
-									on:change={showPreview}
-								/>
-							</label>
-							<b>Bitte achtet darauf, dass die Bilder nicht größer als 500 KB sind.</b><br />
-							<a
-								target="_blank"
-								class="underline"
-								href="https://imagecompressor.11zon.com/de/image-compressor/"
-							>
-								Hier kann mann kostenlos Bilder komprimieren.
-							</a>
-						</div>
-
-						<div class="col-span-full flex justify-end gap-8">
-							<button
-								type="button"
-								on:click={deleteEvent}
-								disabled={loading}
-								class="col-span-full flex w-fit items-center justify-center gap-2 place-self-end bg-red-500 p-4 text-white"
-							>
-								<Fa icon={faTrash} />
-								Event löschen
-								{#if loading}
-									<img class="absolute left-16 h-8" src={loadingSpinner} alt="loading" />
-								{/if}
-							</button>
-
-							<button
-								type="submit"
-								disabled={loading}
-								class="col-span-full flex w-fit items-center justify-center gap-2 place-self-end bg-black p-4 text-white"
-							>
-								<Fa icon={faPen} />
-								Änderungen speichern
-								{#if loading}
-									<img class="absolute left-16 h-8" src={loadingSpinner} alt="loading" />
-								{/if}
-							</button>
-						</div>
-					</form>
+					<EditEventForm {shownEvent} bind:loading bind:updated />
 				{/if}
 			</section>
 		</div>

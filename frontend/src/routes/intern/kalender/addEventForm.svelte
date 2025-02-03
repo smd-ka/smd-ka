@@ -120,7 +120,7 @@
 				class="underline hover:no-underline"
 				target="_blank"
 				href="https://imagecompressor.11zon.com/de/image-compressor/"
-				>Hier kann mann kostenlos Bilder komprimieren.
+				>Hier kann man kostenlos Bilder komprimieren.
 			</a>
 		</div>
 

@@ -1,12 +1,14 @@
 <script lang="ts">
+	import dayjs from 'dayjs';
+
 	export let disabled = false;
 	export let value: Date | string | undefined;
 	let formattedValue = '';
 	$: {
-		if (value && typeof value === 'string') {
-			formattedValue = new Date(value).toISOString().slice(0, 16);
-		} else if (value instanceof Date) {
-			formattedValue = value.toISOString().slice(0, 16);
+		if (!value) {
+			formattedValue = '';
+		} else {
+			formattedValue = dayjs(value).format('YYYY-MM-DDTHH:mm');
 		}
 	}
 	export let label = '';
