@@ -87,18 +87,11 @@
 			<h2 class="py-4 text-center text-lg md:text-2xl">SAFT Anmeldung</h2>
 		</a> -->
 
-		<a class="tile" href="/intern/add-event">
-			<div class="flex justify-center">
-				<Fa icon={faCalendar} class="text-corperate text-7xl" />
-			</div>
-			<h2 class="py-4 text-center text-lg md:text-2xl">Event zum Kalender hinzufügen</h2>
-		</a>
-
-		<a class="tile" href="/intern/edit-event">
+		<a class="tile" href="/intern/kalender">
 			<div class="flex justify-center text-orange-400">
 				<Fa icon={faCalendar} class="text-corperate text-7xl" />
 			</div>
-			<h2 class="py-4 text-center text-lg md:text-2xl">Event im Kalender bearbeiten</h2>
+			<h2 class="py-4 text-center text-lg md:text-2xl">Kalender bearbeiten</h2>
 		</a>
 
 		{#if isSaftCoordinator}
