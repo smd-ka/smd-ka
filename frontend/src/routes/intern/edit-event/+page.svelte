@@ -17,6 +17,7 @@
 	import { pb } from '$lib/pocketbase';
 	import { _handleDates } from './+page';
 	import { onMount } from 'svelte';
+	import AddEventForm from './addEventForm.svelte';
 
 	export let data: PageData;
 
@@ -115,18 +116,16 @@
 			<a class="!no-underline" href="/intern/edit-event">Kalender Event bearbeiten</a>
 		</li>
 	</ol>
-	<button class="bg-primary fa rounded-md p-2 text-white">
+	<button on:click={() => (shownEvent = undefined)} class="bg-primary fa rounded-md p-2 text-white">
 		<Fa icon={faPlus}></Fa>
 		<span class="max-md:hidden"> Event hinzufügen </span>
 	</button>
 </nav>
 
-<main class="container mx-auto px-4 pb-8">
-	{#if !shownEvent}
-		<p class="pl-4">
-			Es gibt keine Events du kannst <a href="/intern/add-event">hier</a> welche anlegen
-		</p>
-	{:else}
+{#if !data}
+	<p>loadingSpinner</p>
+{:else}
+	<main class="container mx-auto px-4 pb-8">
 		<div></div>
 
 		<div class="grid gap-4 rounded-lg lg:grid-cols-[32rem_1fr]">
@@ -139,7 +138,7 @@
 								disabled={loading}
 								class="overflow-hidden text-ellipsis py-2 text-left"
 							>
-								<b class="{shownEvent.id === event.id ? 'text-primary underline' : ''}  "
+								<b class="{shownEvent?.id === event.id ? 'text-primary underline' : ''}  "
 									>{event.title}
 								</b>
 								<div class="whitespace-pre-line">
@@ -153,131 +152,137 @@
 			</section>
 			<div class="h-0.5 bg-black md:hidden"></div>
 			<section class=" rounded-md bg-white p-4 shadow-md">
-				<h3 class="pb-4">{shownEvent.title} bearbeiten:</h3>
-				<form class="grid gap-4 md:grid-cols-2" id="form" on:submit|preventDefault={updateEvent}>
-					<div class="col-span-full">
-						<TextInput
-							name="title"
-							label="Titel*"
-							value={shownEvent.title}
-							disabled={loading}
-							required
-						/>
-					</div>
+				{#if !shownEvent}
+					<AddEventForm />
+				{:else}
+					<h3 class="pb-4">{shownEvent.title} bearbeiten:</h3>
+					<form class="grid gap-4 md:grid-cols-2" id="form" on:submit|preventDefault={updateEvent}>
+						<div class="col-span-full">
+							<TextInput
+								name="title"
+								label="Titel*"
+								value={shownEvent.title}
+								disabled={loading}
+								required
+							/>
+						</div>
 
-					<div>
+						<div>
+							<DateTimeInput
+								value={shownEvent.start_date_time}
+								required
+								name="start_date_time"
+								disabled={loading}
+							>
+								Datum und Uhrzeit (Start)*
+							</DateTimeInput>
+							<b class="text-red-500">
+								{dateError}
+							</b>
+						</div>
+
 						<DateTimeInput
 							value={shownEvent.start_date_time}
-							required
-							name="start_date_time"
-							disabled={loading}
+							name="end_date_time"
+							disabled={loading}>Datum und Uhrzeit (Ende)</DateTimeInput
 						>
-							Datum und Uhrzeit (Start)*
-						</DateTimeInput>
-						<b class="text-red-500">
-							{dateError}
-						</b>
-					</div>
-
-					<DateTimeInput value={shownEvent.start_date_time} name="end_date_time" disabled={loading}
-						>Datum und Uhrzeit (Ende)</DateTimeInput
-					>
-					<TextInput value={shownEvent.location} name="location" label="Ort" disabled={loading} />
-					<UrlInput
-						value={shownEvent.location_url}
-						name="location_url"
-						label="Google Maps Link zum Ort"
-						disabled={loading}
-					/>
-					<TextInput value={shownEvent.speaker} name="speaker" label="Referent" />
-
-					<select
-						name="category"
-						value={shownEvent.category}
-						disabled={loading}
-						class="w-full rounded-md border-2 py-3"
-					>
-						<option value="" disabled selected>Kategorie, falls vorhanden</option>
-						<option value="smd_abend">SMD-Abend</option>
-						<option value="erstsemesteraktion">Erstsemesteraktion</option>
-						<option value="kingscafe">Kings-Café</option>
-						<option value="MIT">MIT</option>
-					</select>
-
-					<div class="col-span-full">
-						<TextArea
-							value={shownEvent.description}
-							name="description"
-							label="Beschreibung"
-							rows={6}
+						<TextInput value={shownEvent.location} name="location" label="Ort" disabled={loading} />
+						<UrlInput
+							value={shownEvent.location_url}
+							name="location_url"
+							label="Google Maps Link zum Ort"
 							disabled={loading}
 						/>
+						<TextInput value={shownEvent.speaker} name="speaker" label="Referent" />
 
-						<label for="image">
-							<div class="relative">
-								{#if src}
-									<div class="relative">
-										<div
-											class="bg-primary absolute bottom-0 right-0 rounded-full p-2 text-xl text-white shadow-lg"
-										>
-											<Fa icon={faPencil} />
-										</div>
-										<img class="h-72 border object-cover" {src} alt="Bild zum Event" />
-									</div>
-								{:else}
-									<div class="flex w-fit items-center gap-2 bg-black p-4 text-xl text-white">
-										<Fa icon={faPlus} />
-										Bild hochladen
-									</div>
-								{/if}
-							</div>
-							<input
-								type="file"
-								name="image"
-								id="image"
-								accept="image/*"
-								hidden
-								on:change={showPreview}
+						<select
+							name="category"
+							value={shownEvent.category}
+							disabled={loading}
+							class="w-full rounded-md border-2 py-3"
+						>
+							<option value="" disabled selected>Kategorie, falls vorhanden</option>
+							<option value="smd_abend">SMD-Abend</option>
+							<option value="erstsemesteraktion">Erstsemesteraktion</option>
+							<option value="kingscafe">Kings-Café</option>
+							<option value="MIT">MIT</option>
+						</select>
+
+						<div class="col-span-full">
+							<TextArea
+								value={shownEvent.description}
+								name="description"
+								label="Beschreibung"
+								rows={6}
+								disabled={loading}
 							/>
-						</label>
-						<b>Bitte achtet darauf, dass die Bilder nicht größer als 500 KB sind.</b><br />
-						<a
-							target="_blank"
-							class="underline"
-							href="https://imagecompressor.11zon.com/de/image-compressor/"
-						>
-							Hier kann mann kostenlos Bilder komprimieren.
-						</a>
-					</div>
 
-					<div class="col-span-full flex justify-end gap-8">
-						<button
-							type="button"
-							on:click={deleteEvent}
-							disabled={loading}
-							class="col-span-full flex w-fit items-center justify-center gap-2 place-self-end bg-red-500 p-4 text-white"
-						>
-							<Fa icon={faTrash} />
-							Event löschen
-							{#if loading}
-								<img class="absolute left-16 h-8" src={loadingSpinner} alt="loading" />
-							{/if}
-						</button>
+							<label for="image">
+								<div class="relative">
+									{#if src}
+										<div class="relative">
+											<div
+												class="bg-primary absolute bottom-0 right-0 rounded-full p-2 text-xl text-white shadow-lg"
+											>
+												<Fa icon={faPencil} />
+											</div>
+											<img class="h-72 border object-cover" {src} alt="Bild zum Event" />
+										</div>
+									{:else}
+										<div class="flex w-fit items-center gap-2 bg-black p-4 text-xl text-white">
+											<Fa icon={faPlus} />
+											Bild hochladen
+										</div>
+									{/if}
+								</div>
+								<input
+									type="file"
+									name="image"
+									id="image"
+									accept="image/*"
+									hidden
+									on:change={showPreview}
+								/>
+							</label>
+							<b>Bitte achtet darauf, dass die Bilder nicht größer als 500 KB sind.</b><br />
+							<a
+								target="_blank"
+								class="underline"
+								href="https://imagecompressor.11zon.com/de/image-compressor/"
+							>
+								Hier kann mann kostenlos Bilder komprimieren.
+							</a>
+						</div>
 
-						<button
-							type="submit"
-							disabled={loading}
-							class="col-span-full flex w-fit items-center justify-center gap-2 place-self-end bg-black p-4 text-white"
-						>
-							<Fa icon={faPen} />
-							Änderungen speichern
-							{#if loading}
-								<img class="absolute left-16 h-8" src={loadingSpinner} alt="loading" />
-							{/if}
-						</button>
-					</div>
-				</form>
+						<div class="col-span-full flex justify-end gap-8">
+							<button
+								type="button"
+								on:click={deleteEvent}
+								disabled={loading}
+								class="col-span-full flex w-fit items-center justify-center gap-2 place-self-end bg-red-500 p-4 text-white"
+							>
+								<Fa icon={faTrash} />
+								Event löschen
+								{#if loading}
+									<img class="absolute left-16 h-8" src={loadingSpinner} alt="loading" />
+								{/if}
+							</button>
+
+							<button
+								type="submit"
+								disabled={loading}
+								class="col-span-full flex w-fit items-center justify-center gap-2 place-self-end bg-black p-4 text-white"
+							>
+								<Fa icon={faPen} />
+								Änderungen speichern
+								{#if loading}
+									<img class="absolute left-16 h-8" src={loadingSpinner} alt="loading" />
+								{/if}
+							</button>
+						</div>
+					</form>
+				{/if}
 			</section>
 		</div>
-	{/if}
-</main>
+	</main>
+{/if}
