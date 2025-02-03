@@ -91,7 +91,7 @@
 		animation_out={'slide-out-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
 	>
 		<div class="flex flex-col items-center">
-			<h1 class="font-caveat text-center">Jeden Sonntag 19:15</h1>
+			<h1 class="font-caveat text-center">Jeden Sonntag 19:00</h1>
 			<div class="flex gap-4 max-md:flex-col">
 				<a
 					class="bg-primary fa px-4 py-2 text-2xl text-white no-underline hover:underline"
@@ -121,7 +121,7 @@
 				<h3>Ein Angebot für internationale Studenten</h3>
 				<p>
 					Das King's Café ist ein Treffpunkt für deutsche und internationale Studenten immer
-					sonntags ab <b>19:15 Uhr</b> in der <b>Amalienstraße 77</b>. Hier kannst du mit Deutschen
+					sonntags ab <b>19:00 Uhr</b> in der <b>Amalienstraße 77</b>. Hier kannst du mit Deutschen
 					in Kontakt kommen und dein Deutsch verbessern, egal, wie gut dein Deutsch ist – wir können
 					auch Englisch.
 				</p>
@@ -139,9 +139,9 @@
 			organisieren wir Aktivitäten wie Wanderungen im Schwarzwald und Spieleabende Wir lernen gerne
 			andere Kulturen kennenlernen und freuen uns auf dich!
 			<br />
-			<b>Bonus:</b> Davor, immer Sonntags ab 18 Uhr gibt es einen „Deutschkurs mit der Bibel“ für alle,
-			die intensiver etwas Deutsch und den christlichen Glauben lernen wollen. Du bist herzlich willkommen
-			– egal, wie gut dein Deutsch ist.
+			<b>Bonus:</b> Davor, immer Sonntags ab 18:15 Uhr gibt es einen „Deutschkurs mit der Bibel“ für
+			alle, die intensiver etwas Deutsch und den christlichen Glauben lernen wollen. Du bist herzlich
+			willkommen – egal, wie gut dein Deutsch ist.
 		</p>
 		<div class="flex justify-center py-8">
 			<a
