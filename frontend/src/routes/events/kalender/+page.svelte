@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getImageSrc } from '$lib/fetch_img';
 	import type { PageData } from './$types';
-	import placeholder from '$lib/assets/pages/events/kalender/placeholder.jpg';
+	import placeholder from '$lib/assets/pages/events/kalender/placeholder.png';
 
 	export let data: PageData;
 
@@ -86,7 +86,7 @@
 					<a class="lg:order-last" href={'/events/kalender/' + event.id}>
 						<img
 							src={imgSrc(event.image, event.id, event.collectionId, event.collectionName)}
-							class="max-h-40 w-full object-cover brightness-75 transition-all duration-200 hover:brightness-100"
+							class="w-full object-cover brightness-90 transition-all duration-200 hover:brightness-100"
 							alt={event.title}
 						/>
 					</a>
@@ -114,7 +114,7 @@
 								{event.location}
 							{/if}
 						</div>
-						<p class="line-clamp-2 max-lg:hidden">
+						<p class="line-clamp-3 max-lg:hidden">
 							{event.description ? event.description : ''}
 						</p>
 					</div>

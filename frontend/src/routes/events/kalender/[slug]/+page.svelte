@@ -3,7 +3,7 @@
 	import type { PageData } from '../$types';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { getImageSrc } from '$lib/fetch_img';
-	import placeholder from '$lib/assets/pages/events/kalender/placeholder.jpg';
+	import placeholder from '$lib/assets/pages/events/kalender/placeholder.png';
 	import { _categoryToDisplayName } from './+page';
 
 	export let data: PageData;
