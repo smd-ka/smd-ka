@@ -17,6 +17,7 @@
 	import type { PageData } from './$types';
 	import { getImageSrc } from '$lib/fetch_img';
 	import trailer from '$lib/assets/videos/trailer.mp4';
+	import placeholder from '$lib/assets/pages/events/kalender/placeholder.png';
 
 	let success = false;
 	let error = false;
@@ -77,6 +78,13 @@
 			d1.getDate() === d2.getDate()
 		);
 	};
+
+	function imgSrc(image: string, id: string, collectionId: string, collectionName: string) {
+		if (!image) {
+			return placeholder;
+		}
+		return getImageSrc(image, id, collectionId, collectionName);
+	}
 </script>
 
 <HeroShot imgSrc={header} bgPosition={'bg-[center_left_60%]'}>
@@ -104,8 +112,8 @@
 						<div class="group flex h-full flex-col">
 							<a href="/events/kalender/{event.id}">
 								<img
-									src={getImageSrc(event.image, event.id, event.collectionId, event.collectionName)}
-									class="max-h-40 w-full rounded-sm object-cover transition-all duration-300 hover:cursor-pointer group-hover:scale-[101%] lg:max-h-72"
+									src={imgSrc(event.image, event.id, event.collectionId, event.collectionName)}
+									class="w-full rounded-sm object-cover transition-all duration-300 hover:cursor-pointer group-hover:scale-[101%]"
 									alt="Erstsemester Programm"
 								/>
 							</a>
