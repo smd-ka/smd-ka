@@ -85,7 +85,9 @@
 	}
 </script>
 
-<h3 class="pb-4">{shownEvent.title} bearbeiten:</h3>
+<h3>"{shownEvent.title}" bearbeiten:</h3>
+<div class="pb-4 text-gray-600">Mit * markierte Felder sind Pflichtfelder.</div>
+
 <form class="grid gap-4 md:grid-cols-2" id="form" on:submit|preventDefault={updateEvent}>
 	<div class="col-span-full">
 		<TextInput name="title" label="Titel*" value={shownEvent.title} disabled={loading} required />
@@ -105,8 +107,8 @@
 		</b>
 	</div>
 
-	<DateTimeInput value={shownEvent.end_date_time} name="end_date_time" disabled={loading}>
-		Datum und Uhrzeit (Ende)
+	<DateTimeInput value={shownEvent.end_date_time} required name="end_date_time" disabled={loading}>
+		Datum und Uhrzeit (Ende)*
 	</DateTimeInput>
 	<TextInput value={shownEvent.location} name="location" label="Ort" disabled={loading} />
 	<UrlInput

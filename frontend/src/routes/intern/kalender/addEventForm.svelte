@@ -3,7 +3,7 @@
 	import TextArea from '$lib/components/forms/TextArea.svelte';
 	import TextInput from '$lib/components/forms/TextInput.svelte';
 	import { pb } from '$lib/pocketbase';
-	import { faChevronRight, faPencil, faPlus } from '@fortawesome/free-solid-svg-icons';
+	import { faPencil, faPlus } from '@fortawesome/free-solid-svg-icons';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 	import Fa from 'svelte-fa';
 	import UrlInput from '$lib/components/forms/UrlInput.svelte';
@@ -53,7 +53,9 @@
 </script>
 
 <main class="container mx-auto px-4 pb-12">
-	<h3 class="pb-2">Kalender Event hinzufügen</h3>
+	<h3>Kalender Event hinzufügen</h3>
+	<div class="pb-2">Mit * markierte Felder sind Pflichtfelder.</div>
+
 	<form class="grid gap-4 md:grid-cols-2" id="form" on:submit|preventDefault={createEvent}>
 		{#if error}
 			<div class="col-span-full">
@@ -78,8 +80,8 @@
 				{dateError}
 			</b>
 		</div>
-		<DateTimeInput value={undefined} name="end_date_time" disabled={loading}
-			>Datum und Uhrzeit (Ende)</DateTimeInput
+		<DateTimeInput value={undefined} required name="end_date_time" disabled={loading}
+			>Datum und Uhrzeit (Ende)*</DateTimeInput
 		>
 		<TextInput name="location" label="Ort" disabled={loading} />
 		<UrlInput name="location_url" label="Google Maps Link zum Ort" disabled={loading} />
