@@ -85,7 +85,7 @@
 				<br />
 				Lilly, 22, klettert gerne auf Bäume und studiert Medizintechnik am KIT im fünften Semester.
 				<br />
-				Felix, ebenfalls 22, mag Kaffee und studiert im siebten Semester Physik am KIT.
+				Samuel N., 23 studiert im siebten Semester Bauingenieurwesen am KIT.
 				<br />
 				<br />
 				Diese zwei haben die derzeitige Gesamtleitung der Hochschul-SMD Karlsruhe und stehen jederzeit
