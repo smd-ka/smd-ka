@@ -100,20 +100,22 @@
 								class="text-primary no-underline hover:underline max-md:text-lg">{event.title}</a
 							>
 						</div>
-						<div class="font-bold">
-							Ort:
-							{#if event.maps_url}
-								<a href={event.maps_url} target="_blank" rel="noopener">
+						{#if event.location}
+							<div class="font-bold">
+								Ort:
+								{#if event.maps_url}
+									<a href={event.maps_url} target="_blank" rel="noopener">
+										{event.location}
+									</a>
+								{:else if event.location_url}
+									<a href={event.location_url} target="_blank" rel="noopener">
+										{event.location}
+									</a>
+								{:else}
 									{event.location}
-								</a>
-							{:else if event.location_url}
-								<a href={event.location_url} target="_blank" rel="noopener">
-									{event.location}
-								</a>
-							{:else}
-								{event.location}
-							{/if}
-						</div>
+								{/if}
+							</div>
+						{/if}
 						<p class="line-clamp-3 max-lg:hidden">
 							{event.description ? event.description : ''}
 						</p>
