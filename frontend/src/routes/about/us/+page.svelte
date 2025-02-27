@@ -81,11 +81,18 @@
 				src={leitungsteam}
 			/>
 			<p>
+				Unser Leitungsteam repräsentiert die Hochschul-SMD Karlsruhe nach außen und ist sowohl
+				intern als auch extern Ansprechpartner für alle Belange der Gruppe. Bei Fragen jeder Art
+				sind unsere Leiter sind unter
+				<a href="mailto:leiter@smd-karlsruhe.de">leiter@smd-karlsruhe.de</a> zu erreichen.
+				<br />
+
 				Das Leitungsteam dieses Semester besteht aus:
 				<br />
 				Lilly, 22, klettert gerne auf Bäume und studiert Medizintechnik am KIT im fünften Semester.
 				<br />
-				Samuel N., 23 studiert im siebten Semester Bauingenieurwesen am KIT.
+				Samuel N., wandert gerne alleine durch die Alpen, 23 studiert im siebten Semester Bauingenieurwesen
+				am KIT.
 				<br />
 				<br />
 				Diese zwei haben die derzeitige Gesamtleitung der Hochschul-SMD Karlsruhe und stehen jederzeit
