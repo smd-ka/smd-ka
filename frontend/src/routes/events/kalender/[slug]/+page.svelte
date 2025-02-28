@@ -1,12 +1,15 @@
 <script lang="ts">
-	import { faArrowLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+	import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 	import type { PageData } from '../$types';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { getImageSrc } from '$lib/fetch_img';
 	import placeholder from '$lib/assets/pages/events/kalender/placeholder.png';
 	import { _categoryToDisplayName } from './+page';
+	import dayjs from 'dayjs';
 
 	export let data: PageData;
+	const startDateTime = new Date(data.event.start_date_time);
+	const endDateTime = data.event.end_date_time ? new Date(data.event.end_date_time) : undefined;
 
 	const getDateTime = (startDateString: string, endDateString: string) => {
 		if (!endDateString || sameDay(startDateString, endDateString)) {
@@ -156,7 +159,12 @@
 
 		<h1 class="break-words pb-0">{data.event.title}</h1>
 		<div class="pb-6 text-gray-500">
-			{getDateTime(data.event.start_date_time, data.event.end_date_time)}
+			{#if endDateTime && !dayjs(startDateTime).isSame(dayjs(endDateTime), 'day')}
+				{dayjs(startDateTime).format('DD. MMMM YYYY')} -
+				{dayjs(endDateTime).format('DD. MMMM YYYY')}
+			{:else}
+				{dayjs(startDateTime).format('DD. MMMM YYYY // HH:mm')}
+			{/if}
 		</div>
 
 		<img
