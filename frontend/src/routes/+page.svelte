@@ -18,6 +18,7 @@
 	import { getImageSrc } from '$lib/fetch_img';
 	import trailer from '$lib/assets/videos/trailer.mp4';
 	import placeholder from '$lib/assets/pages/events/kalender/placeholder.png';
+	import dayjs from 'dayjs';
 
 	let success = false;
 	let error = false;
@@ -40,33 +41,6 @@
 			error = true;
 		}
 	}
-
-	const getDate = (startDateString: string, endDateString?: string) => {
-		const startDate = new Date(startDateString);
-		if (!endDateString || sameDay(startDateString, endDateString)) {
-			return (
-				startDate.toLocaleDateString('de-DE', {
-					weekday: 'long',
-					day: '2-digit',
-					month: '2-digit'
-				}) +
-				' // ' +
-				startDate.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })
-			);
-		}
-		const endDate = new Date(endDateString);
-		return (
-			startDate.toLocaleDateString('de-DE', {
-				day: '2-digit',
-				month: 'long'
-			}) +
-			' - ' +
-			endDate.toLocaleDateString('de-DE', {
-				day: '2-digit',
-				month: 'long'
-			})
-		);
-	};
 
 	const sameDay = (start_date_time: string, end_date_time?: string) => {
 		if (!end_date_time) return true;
@@ -120,7 +94,13 @@
 							<div class="peer flex-1 border-x-2 border-b-2 px-4 py-2">
 								<div class="flex justify-between text-gray-500">
 									<div>
-										{getDate(event.start_date_time, event.end_date_time)}
+										{#if event.end_date_time && !dayjs(event.start_date_time).isSame(dayjs(event.end_date_time), 'day')}
+											{dayjs(event.start_date_time).format('DD. MMMM')} - {dayjs(
+												event.end_date_time
+											).format('DD. MMMM')}
+										{:else}
+											{dayjs(event.start_date_time).format('dddd, DD. MM // HH:mm')}
+										{/if}
 									</div>
 									<a class="hover:text-primary hover:cursor-pointer" href={event.location_url}>
 										<Fa icon={faLocationDot} />
@@ -156,14 +136,14 @@
 		</section>
 	{/if}
 
-	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
+	<section>
 		<h1 class="font-caveat text-center">Lust auf einen Sneak Peak?</h1>
 		<video controls>
 			<source src={trailer} type="video/mp4" />
 			<track kind="captions" />
 			Your browser does not support the video tag.
 		</video>
-	</Saos>
+	</section>
 
 	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
 		<section class="grid gap-4 px-4 text-center text-2xl xl:px-40">
