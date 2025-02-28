@@ -1,18 +1,11 @@
 <script lang="ts">
 	import header from '$lib/assets/pages/events/semesterprogramm/outsidethebox_21_9.jpg';
 	import HeroShot from '$lib/components/HeroShot.svelte';
+	import dayjs from 'dayjs';
 	import type { PageData } from './$types';
 	import SemesterProgramSelector from './SemesterProgramSelector.svelte';
 
 	export let data: PageData;
-
-	const getDateString = (dateString: string) => {
-		const date = new Date(dateString);
-		return date.toLocaleDateString('de-DE', {
-			month: '2-digit',
-			day: '2-digit'
-		});
-	};
 </script>
 
 <HeroShot imgSrc={header} height={'h-[80svh]'} />
@@ -28,7 +21,7 @@
 		{#each data.events as event}
 			<div class="grid grid-cols-[6rem_1fr] gap-2">
 				<h3>
-					{getDateString(event.start_date_time)}
+					{dayjs(event.start_date_time).format('DD.MM.')}
 				</h3>
 				<div>
 					<h3>

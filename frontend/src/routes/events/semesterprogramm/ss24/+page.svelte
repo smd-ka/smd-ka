@@ -1,11 +1,10 @@
 <script lang="ts">
 	import header from '$lib/assets/pages/events/semesterprogramm/herzenssache_21_9.jpg';
-	import { onMount } from 'svelte';
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import SemesterProgramSelector from '../SemesterProgramSelector.svelte';
+	import dayjs from 'dayjs';
 
-	let yesterday: Date;
-
+	// TODO: move this to backend and fetch it
 	let program = [
 		{
 			date: new Date('2024/4/16'),
@@ -56,11 +55,6 @@
 			location: 'Reinhold-Frank-Str. 44A'
 		}
 	];
-
-	onMount(async () => {
-		yesterday = new Date();
-		yesterday.setDate(yesterday.getDate() - 1);
-	});
 </script>
 
 <HeroShot imgSrc={header} height={'h-[80svh]'} />
@@ -78,10 +72,7 @@
 		{#each program as event}
 			<div class="flex gap-2">
 				<h3>
-					{event.date.toLocaleDateString('de-DE', {
-						month: 'numeric',
-						day: 'numeric'
-					})}
+					{dayjs(event.date).format('DD.M.')}
 				</h3>
 				<div>
 					<h3>
