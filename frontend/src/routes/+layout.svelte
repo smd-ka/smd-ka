@@ -29,6 +29,10 @@
 	import NavbarProfile from '$lib/components/NavbarProfile.svelte';
 	import { click_outside } from '$lib/click_outside';
 	import { applyAction, enhance } from '$app/forms';
+	import dayjs from 'dayjs';
+	import 'dayjs/locale/de';
+
+	dayjs.locale('de');
 
 	const PR_NUMBER: string = import.meta.env.VITE_PR_NUMBER;
 

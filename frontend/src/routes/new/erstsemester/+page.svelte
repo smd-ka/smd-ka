@@ -4,26 +4,9 @@
 
 	import type { PageData } from '../$types';
 	import { getImageSrc } from '$lib/fetch_img';
+	import dayjs from 'dayjs';
 
 	export let data: PageData;
-
-	const getDateTimeString = (startDateString: string, endDateString) => {
-		const startDate = new Date(startDateString);
-		if (!endDateString) {
-			return (
-				startDate.toLocaleDateString('de-DE', {
-					weekday: 'long',
-					day: '2-digit',
-					month: 'long'
-				}) +
-				' // ' +
-				startDate.toLocaleTimeString('de-DE', {
-					hour: '2-digit',
-					minute: '2-digit'
-				})
-			);
-		}
-	};
 </script>
 
 <main class="main">
@@ -63,13 +46,15 @@
 				Wir freuen uns auf dich!
 			</p>
 
-			<h2 class="pb-12 pt-12">Ersti-Aktionen Wintersemester 2024/25</h2>
+			<h2 class="pt-12">Ersti-Aktionen</h2>
 
 			{#if data.events.length === 0}
 				<p>
-					Die Aktionen befinden sich gerade noch in der Planung, werden aber bald hier
-					veröffentlicht. Sie werden vermutlich vor allem in den letzten September und ersten
-					Oktoberwochen stattfinden. Stay tuned :)
+					Zu Beginn vom Wintersemester planen wir coole Aktionen für dich! Die sind super, um uns
+					als Gruppe, aber auch andere Erstsemester kennenzulernen. Die Aktionen sind immer
+					entspannt und unverbindlich – schau einfach vorbei, wenn du Lust hast! <br />
+					Schau am besten zwischen September und Oktober hier vorbei, um zu sehen, was wir für dich vorbereitet
+					haben.
 				</p>
 			{/if}
 		</div>
@@ -78,6 +63,7 @@
 				? ' xl:grid-cols-3'
 				: 'xl:px-52'}"
 		>
+			<!-- TODO: redesign to match front page (maybe component?) -->
 			{#each data.events as event}
 				<div>
 					<div class="relative text-white">
@@ -91,11 +77,15 @@
 						</div>
 					</div>
 					<div class="pt-8">
-						<span class="flex items-center gap-2 text-xl font-bold"
-							><Fa icon={faCalendarDays} />{getDateTimeString(
-								event.start_date_time,
-								event.end_date_time
-							)}
+						<span class="flex items-center gap-2 text-xl font-bold">
+							<Fa icon={faCalendarDays} />
+							{#if event.end_date_time && !dayjs(event.start_date_time).isSame(dayjs(event.end_date_time), 'day')}
+								{dayjs(event.start_date_time).format('DD. MMMM')} - {dayjs(
+									event.end_date_time
+								).format('DD. MMMM')}
+							{:else}
+								{dayjs(event.start_date_time).format('DD. MMMM // HH:mm')}
+							{/if}
 						</span>
 						<span class="flex items-center gap-2 text-xl font-bold"
 							><Fa icon={faLocationDot} /><a href={event.google_maps_url}>
@@ -109,13 +99,6 @@
 				</div>
 			{/each}
 		</div>
-
-		<p class="pad text-sm">
-			Erklärung Summerbreaks: Diese sind unsere Großgruppenevents über den Sommer, also die ideale
-			Möglichkeit, nicht nur Erstsemester, sondern auch alle anderen aus der Gruppe kennenzulernen.
-			Sobald das Semester beginnt, treffen wir uns zu SMD-Abenden alle zwei Wochen dienstagabends,
-			im wechsel zu unseren Hauskreisen.
-		</p>
 
 		<div class="pad pt-16">
 			<h2>Church Hopping</h2>

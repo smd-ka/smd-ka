@@ -2,62 +2,9 @@
 	import { getImageSrc } from '$lib/fetch_img';
 	import type { PageData } from './$types';
 	import placeholder from '$lib/assets/pages/events/kalender/placeholder.png';
+	import dayjs from 'dayjs';
 
 	export let data: PageData;
-
-	const getWeekday = (dateString: string) => {
-		const date = new Date(dateString);
-		return date.toLocaleDateString('de-DE', {
-			weekday: 'short'
-		});
-	};
-
-	const getDay = (dateString: string) => {
-		const date = new Date(dateString);
-		return date.toLocaleDateString('de-DE', {
-			day: '2-digit'
-		});
-	};
-
-	const getFullDate = (startDateString: string, endDateString?: string) => {
-		const startDate = new Date(startDateString);
-		if (!endDateString || sameDay(startDateString, endDateString)) {
-			return (
-				startDate.toLocaleDateString('de-DE', {
-					day: '2-digit',
-					month: 'long'
-				}) +
-				' // ' +
-				startDate.toLocaleTimeString('de-DE', {
-					hour: '2-digit',
-					minute: '2-digit'
-				})
-			);
-		}
-		const endDate = new Date(endDateString);
-		return (
-			startDate.toLocaleDateString('de-DE', {
-				day: '2-digit',
-				month: 'long'
-			}) +
-			' - ' +
-			endDate.toLocaleDateString('de-DE', {
-				day: '2-digit',
-				month: 'long'
-			})
-		);
-	};
-
-	const sameDay = (start_date_time: string, end_date_time?: string) => {
-		if (!end_date_time) return true;
-		const d1 = new Date(start_date_time);
-		const d2 = new Date(end_date_time);
-		return (
-			d1.getFullYear() === d2.getFullYear() &&
-			d1.getMonth() === d2.getMonth() &&
-			d1.getDate() === d2.getDate()
-		);
-	};
 
 	function imgSrc(image: string, id: string, collectionId: string, collectionName: string) {
 		if (!image) {
@@ -75,10 +22,10 @@
 			{#each data.events as event}
 				<div class="flex flex-col items-center lg:px-8">
 					<span class="text-xl uppercase">
-						{getWeekday(event.start_date_time)}
+						{dayjs(event.start_date_time).format('dd')}
 					</span>
 					<span class="text-3xl font-bold">
-						{getDay(event.start_date_time)}
+						{dayjs(event.start_date_time).format('DD')}
 					</span>
 				</div>
 
@@ -92,7 +39,13 @@
 					</a>
 					<div>
 						<div class="py-2 text-sm text-gray-700">
-							{getFullDate(event.start_date_time, event.end_date_time)}
+							{#if event.end_date_time && !dayjs(event.start_date_time).isSame(dayjs(event.end_date_time), 'day')}
+								{dayjs(event.start_date_time).format('DD. MMMM')} - {dayjs(
+									event.end_date_time
+								).format('DD. MMMM')}
+							{:else}
+								{dayjs(event.start_date_time).format('DD. MMMM // HH:mm')}
+							{/if}
 						</div>
 						<div class="lg:text-3xl">
 							<a
@@ -100,20 +53,22 @@
 								class="text-primary no-underline hover:underline max-md:text-lg">{event.title}</a
 							>
 						</div>
-						<div class="font-bold">
-							Ort:
-							{#if event.maps_url}
-								<a href={event.maps_url} target="_blank" rel="noopener">
+						{#if event.location}
+							<div class="font-bold">
+								Ort:
+								{#if event.maps_url}
+									<a href={event.maps_url} target="_blank" rel="noopener">
+										{event.location}
+									</a>
+								{:else if event.location_url}
+									<a href={event.location_url} target="_blank" rel="noopener">
+										{event.location}
+									</a>
+								{:else}
 									{event.location}
-								</a>
-							{:else if event.location_url}
-								<a href={event.location_url} target="_blank" rel="noopener">
-									{event.location}
-								</a>
-							{:else}
-								{event.location}
-							{/if}
-						</div>
+								{/if}
+							</div>
+						{/if}
 						<p class="line-clamp-3 max-lg:hidden">
 							{event.description ? event.description : ''}
 						</p>
