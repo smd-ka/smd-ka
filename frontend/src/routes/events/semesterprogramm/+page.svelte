@@ -19,8 +19,10 @@
 			Das aktuelle Weltgeschehen gibt viel Anlass zur Hoffnungslosigkeit. Vielleicht hast du es auch
 			persönlich schon einmal erlebt. Wir sind davon überzeugt, dass es gute Gründe gibt zu Hoffen.
 			Bei unseren Veranstaltungen in diesem Semester kannst du entdecken, was es bedeutet Hoffnung
-			zu haben, worin sie liegt und wodurch sie begründet wird. Du bist ganz herzlich eingeladen
-			unverbindlich vorbeizuschauen. Wir freuen uns auf dich!
+			zu haben, worin sie liegt und wodurch sie begründet wird.
+
+			<br />
+			Du bist ganz herzlich eingeladen unverbindlich vorbeizuschauen. Wir freuen uns auf dich!
 		</p>
 	</section>
 
