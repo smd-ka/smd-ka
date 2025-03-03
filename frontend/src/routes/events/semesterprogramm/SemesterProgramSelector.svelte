@@ -1,6 +1,7 @@
 <script lang="ts">
 	import herzenssache from '$lib/assets/pages/events/semesterprogramm/herzenssache_21_9.jpg';
 	import outsidethebox from '$lib/assets/pages/events/semesterprogramm/outsidethebox_21_9.jpg';
+	import vollerhoffnung from '$lib/assets/pages/events/semesterprogramm/voller_hoffnung_21_9.jpg';
 	import background from '$lib/assets/pages/events/semesterprogramm/bg.png';
 	import Carousel from 'svelte-carousel';
 	import { browser } from '$app/environment';
@@ -40,13 +41,19 @@
 			title: 'Herzenssache',
 			subtitle: 'Unser Sommersemester 2024',
 			image: herzenssache,
-			link: '/events/semesterprogramm/ss24'
+			link: '/events/semesterprogramm/sose24'
 		},
 		{
 			title: 'Outside the box',
 			subtitle: 'Unser Wintersemester 2024/25',
 			image: outsidethebox,
-			link: '/events/semesterprogramm'
+			link: '/events/semesterprogramm/wise24_25'
+		},
+		{
+			title: 'Voller Hoffnung',
+			subtitle: 'Unser Sommersemester 2025',
+			image: vollerhoffnung,
+			link: '/events/semesterprogramm/'
 		}
 	];
 </script>
@@ -58,7 +65,7 @@
 		{#if browser}
 			<!-- Needs to be changed to mobileScreen, as soon as another semester is here -->
 			<Carousel
-				particlesToShow={mobileScreen ? 1 : 1}
+				particlesToShow={mobileScreen ? 2 : 2}
 				swiping={false}
 				dots={false}
 				arrows={false}
@@ -70,7 +77,7 @@
 				{#each programs as { title, subtitle, image, link }}
 					<a class="flex justify-center" href={link}>
 						<div class="max-w-96 rounded-md bg-white text-center shadow-md">
-							<img alt="SS24" class="rounded-t-md object-cover" src={image} />
+							<img alt="SOSE24" class="rounded-t-md object-cover" src={image} />
 							<h3 class="text-center">{title}</h3>
 							<h4>{subtitle}</h4>
 						</div>
