@@ -22,7 +22,7 @@
 						<li>SMD e. V.</li>
 						<li>Evangelische Bank, Kassel</li>
 						<li>IBAN: DE75 5206 0410 0000 8004 57</li>
-						<li>Verwendungzweck: H-SMD Gruppe Karlsruhe</li>
+						<li>Verwendungszweck: H-SMD Gruppe Karlsruhe</li>
 					</ul>
 				</div>
 			</div>
