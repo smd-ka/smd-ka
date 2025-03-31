@@ -24,10 +24,12 @@
 	onMount(async () => {
 		try {
 			records = await pb.collection('users').getFullList({
-				sort: 'name'
+				sort: 'name',
+				filter: 'verified = true'
 			});
 			filteredRecords = records;
 			loading = false;
+			console.log(records);
 		} catch (e) {
 			console.log(e);
 			error = true;
