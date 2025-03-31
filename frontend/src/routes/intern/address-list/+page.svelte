@@ -29,7 +29,6 @@
 			});
 			filteredRecords = records;
 			loading = false;
-			console.log(records);
 		} catch (e) {
 			console.log(e);
 			error = true;
