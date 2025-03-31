@@ -24,7 +24,8 @@
 	onMount(async () => {
 		try {
 			records = await pb.collection('users').getFullList({
-				sort: 'name'
+				sort: 'name',
+				filter: 'verified = true'
 			});
 			filteredRecords = records;
 			loading = false;
