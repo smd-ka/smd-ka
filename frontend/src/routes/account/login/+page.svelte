@@ -1,8 +1,10 @@
 <script lang="ts">
-	import { getErrorMessage, pb } from '$lib/pocketbase';
+	import { getErrorMessage, pb, type UserRecord } from '$lib/pocketbase';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
+	import { checkIfUserExistsInAuthentik, createUserInAuthentik } from './authentik';
+	import type { RecordAuthResponse } from 'pocketbase';
 
 	let email = '';
 	let password = '';
@@ -16,8 +18,14 @@
 	const login = async () => {
 		loading = true;
 		try {
-			const res = await pb.collection('users').authWithPassword(email, password);
-			console.log('success', res);
+			const res: RecordAuthResponse<UserRecord> = await pb
+				.collection('users')
+				.authWithPassword(email, password);
+			console.log('success', res.record.email);
+			if (res.record.verified) {
+				createUserInAuthentik(res);
+			}
+
 			handleRedirect();
 		} catch (e: any) {
 			loading = false;
