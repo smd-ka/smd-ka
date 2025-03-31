@@ -50,6 +50,7 @@ services:
       - 443:443/udp
     networks:
       - default
+      - caddy_net
     volumes:
       - ./caddy:/etc/caddy:ro
       - caddy_config:/config
@@ -59,6 +60,10 @@ services:
 
 networks:
   default:
+    driver: bridge
+  # network for other docker-composes to attach to
+  caddy_net:
+    name: caddy_net
     driver: bridge
 
 

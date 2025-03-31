@@ -1,0 +1,33 @@
+diff --git a/docker-compose.orig b/docker-compose.yml
+index 75c8b75..d3c5fa4 100644
+--- a/docker-compose.yml
++++ b/docker-compose.yml
+@@ -45,9 +45,11 @@ services:
+       - ./custom-templates:/templates
+     env_file:
+       - .env
+-    ports:
+-      - "${COMPOSE_PORT_HTTP:-9000}:9000"
+-      - "${COMPOSE_PORT_HTTPS:-9443}:9443"
++    networks:
++      default: {}
++      caddy_net:
++        aliases:
++          - authentik_entrypoint
+     depends_on:
+       postgresql:
+         condition: service_healthy
+@@ -83,6 +85,13 @@ services:
+       redis:
+         condition: service_healthy
+
++networks:
++  default:
++    driver: bridge
++  caddy_net:
++    name: caddy_net
++    external: true
++
+ volumes:
+   database:
+     driver: local
