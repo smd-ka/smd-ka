@@ -46,7 +46,7 @@
 				Wir freuen uns auf dich!
 			</p>
 
-			<h2 class="pt-12">Ersti-Aktionen</h2>
+			<h2 class="pt-12">Erstsemester-Aktionen</h2>
 
 			{#if data.events.length === 0}
 				<p>
