@@ -12,6 +12,8 @@ services:
     volumes:
       - ./backend/pb_data:/pb/pb_data
       - ./backend/pb_migrations:/pb/pb_migrations
+    networks:
+      - default
     restart: always
 
   frontend:
@@ -20,6 +22,8 @@ services:
     build:
       context: ./frontend
       dockerfile: ./Dockerfile
+    networks:
+      - default
     restart: always
 
   kings_cafe:
@@ -28,6 +32,8 @@ services:
     build:
       context: ./kings-cafe
       dockerfile: ./Dockerfile
+    networks:
+      - default
     restart: always
 
   caddy:
@@ -42,6 +48,8 @@ services:
       - 80:80
       - 443:443
       - 443:443/udp
+    networks:
+      - default
     volumes:
       - ./caddy:/etc/caddy:ro
       - caddy_config:/config
@@ -49,6 +57,9 @@ services:
     restart: always
 
 
+networks:
+  default:
+    driver: bridge
 
 
 volumes:
