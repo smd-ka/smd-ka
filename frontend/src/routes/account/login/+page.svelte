@@ -29,7 +29,8 @@
 		}
 	};
 
-	// Will me main login some day
+	// Will be main login some day
+	// possibly link directly to authentik in the Future
 	const loginOAuth = async () => {
 		loading = true;
 		try {
