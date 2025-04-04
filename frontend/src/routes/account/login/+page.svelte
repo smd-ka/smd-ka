@@ -1,24 +1,50 @@
 <script lang="ts">
-	import { getErrorMessage, pb } from '$lib/pocketbase';
+	import { getErrorMessage, pb, type UserRecord } from '$lib/pocketbase';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
+	import type { RecordAuthResponse } from 'pocketbase';
 
 	let email = '';
 	let password = '';
 	let loading = false;
 	let errorMessage = '';
 
+	onMount(() => {
+		if (pb.authStore.isValid) goto('/intern');
+	});
+
 	const login = async () => {
 		loading = true;
 		try {
-			await pb.collection('users').authWithPassword(email, password);
+			const res: RecordAuthResponse<UserRecord> = await pb
+				.collection('users')
+				.authWithPassword(email, password);
+
+			handleRedirect();
 		} catch (e: any) {
 			loading = false;
 			errorMessage = getErrorMessage(e);
 			return;
 		}
+	};
 
-		await pb.authStore.loadFromCookie(document.cookie);
+	// Will be main login some day
+	// possibly link directly to authentik in the Future
+	const loginOAuth = async () => {
+		loading = true;
+		try {
+			await pb.collection('users').authWithOAuth2({
+				provider: 'oidc'
+			});
+			handleRedirect();
+		} catch (e: any) {
+			loading = false;
+			errorMessage = 'Der Login mit authentik hat nicht geklappt.';
+		}
+	};
+
+	const handleRedirect = () => {
 		const urlParams = new URLSearchParams(window.location.search);
 		const redirect = urlParams.get('redirect');
 		if (redirect) {
@@ -74,6 +100,9 @@
 						<p class="text-red-500">Ungültige E-Mail-Adresse oder Passwort</p>
 					{/if}
 					<button class="bg-black py-2 text-white">Log in</button>
+					<button on:click={loginOAuth} class="border-2 border-black py-1.5"
+						>Log in with OAuth</button
+					>
 					<a href="/account/reset" class="text-center text-sm text-gray-400 hover:underline"
 						>Passwort vergessen?</a
 					>
