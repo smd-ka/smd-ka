@@ -55,3 +55,23 @@ auth.{$DOMAIN_LONG} {
         header_up X-Real-IP {remote_host}
     }
 }
+
+
+# Nextcloud AiO
+
+admin.cloud.{$DOMAIN_LONG} {
+    reverse_proxy https://caddy-net.docker.internal:8080 {
+        transport http {
+            tls_insecure_skip_verify
+        }
+        # X-Forwarded-For & X-Forwarded-Proto are set by default
+        header_up X-Real-IP {remote_host}
+    }
+}
+
+cloud.{$DOMAIN_LONG} {
+    reverse_proxy caddy-net.docker.internal:8081 {
+        # X-Forwarded-For & X-Forwarded-Proto are set by default
+        header_up X-Real-IP {remote_host}
+    }
+}

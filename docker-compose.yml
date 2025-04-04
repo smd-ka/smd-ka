@@ -51,22 +51,75 @@ services:
     networks:
       - default
       - caddy_net
+    extra_hosts:
+      - "caddy-net.docker.internal:172.31.255.1"
     volumes:
       - ./caddy:/etc/caddy:ro
       - caddy_config:/config
       - caddy_data:/data
     restart: always
 
+  # INFO: this does not automatically deploy a working Nextcloud instance
+  # rather one needs to initialize Nextcloud AiO via its web UI (see Caddyfile for URL)
+  # based on https://github.com/nextcloud/all-in-one/blob/main/compose.yaml
+  # adapted for reverse-proxy setup, see https://github.com/nextcloud/all-in-one/blob/main/reverse-proxy.md
+  nextcloud-aio:
+    # WARN: this container’s name MUST be set to this
+    container_name: nextcloud-aio-mastercontainer
+    image: nextcloud/all-in-one:latest
+    init: true
+    environment:
+      # binding of Nextcloud’s internal reverse proxy
+      APACHE_IP_BINDING: 172.31.255.1  # <- binding applied by Docker (i.e. outside of container)
+      APACHE_PORT: 8081
+    ports:
+      # binding of Nextcloud AiO web UI
+      - 172.31.255.1:8080:8080
+    volumes:
+      - nextcloud_aio_mastercontainer:/mnt/docker-aio-config
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+    network_mode: bridge  # attaches to "docker run"-bridge
+
 
 networks:
   default:
     driver: bridge
+
   # network for other docker-composes to attach to
+  # how to use this network: 2 possibilities (mostly independent from each other)
+  #   1. bind internally like Authentik
+  #     - (usually requires control over docker-compose of that service)
+  #     - throw service container in this network
+  #     - do NOT add a "ports:" binding to that container
+  #     - instead, give that container an unique alias
+  #     - in the Caddyfile, use that alias to reach the service
+  #   2. bind externally like Nextcloud AiO
+  #     - (only requires control over external/"public" Docker "ports:" bindings)
+  #     - do NOT add the service container to this network
+  #     - choose a not occupied port from the list below per service
+  #     - add a "ports:" binding for the service container, binding to "<caddy_net-host_ip>:<port>",
+  #       e.g. ports: [ "172.31.255.1:8080" ]
+  #     - in the Caddyfile, refer to the same host binding (there is an alias for that IP) to reach the service
   caddy_net:
     name: caddy_net
     driver: bridge
+    attachable: true  # allow containers outside any compose to attach
+    ipam:
+      config:
+        # static IP range important for static IP of docker host
+        - subnet: 172.31.255.0/24
+          gateway: 172.31.255.1  # <- IP of docker host in that network
+    # List of Ports on Host IP:
+    #    8080 : Nextcloud AiO - Administration & Management UI
+    #    8081 : Nextcloud AiO - Nextcloud instance
 
 
 volumes:
   caddy_config:
   caddy_data:
+  # WARN: this is ONLY the config & data of the master container
+  # Nextcloud will create its own volume not listed here to store its data (i.e. user data)
+  nextcloud_aio_mastercontainer:
+    # WARN: this volume’s name MUST be set to this
+    name: nextcloud_aio_mastercontainer
