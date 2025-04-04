@@ -3,7 +3,6 @@
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
-	import { checkIfUserExistsInAuthentik, createUserInAuthentik } from './authentik';
 	import type { RecordAuthResponse } from 'pocketbase';
 
 	let email = '';
@@ -21,10 +20,6 @@
 			const res: RecordAuthResponse<UserRecord> = await pb
 				.collection('users')
 				.authWithPassword(email, password);
-			console.log('success', res.record.email);
-			if (res.record.verified) {
-				createUserInAuthentik(res);
-			}
 
 			handleRedirect();
 		} catch (e: any) {
@@ -34,7 +29,7 @@
 		}
 	};
 
-	// For testing purposes for now
+	// Will me main login some day
 	const loginOAuth = async () => {
 		loading = true;
 		try {
