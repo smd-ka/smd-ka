@@ -60,7 +60,7 @@ auth.{$DOMAIN_LONG} {
 # Nextcloud AiO
 
 admin.cloud.{$DOMAIN_LONG} {
-    reverse_proxy https://caddy-net.docker.internal:8080 {
+    reverse_proxy https://nextcloud-aio-mastercontainer:8080 {
         transport http {
             tls_insecure_skip_verify
         }
