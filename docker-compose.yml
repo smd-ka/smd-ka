@@ -71,6 +71,7 @@ services:
       APACHE_ADDITIONAL_NETWORK: caddy_net
       APACHE_IP_BINDING: 127.0.0.1  # <- binding applied by Docker (i.e. outside of container)
       APACHE_PORT: 8081  # is also used as internal port
+      SKIP_DOMAIN_VALIDATION: "true"  # does not work for us anyway
     ports:
       # binding of Nextcloud AiO web UI
       - 127.0.0.1:8080:8080
