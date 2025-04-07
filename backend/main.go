@@ -4,10 +4,13 @@ import (
 	"encoding/json"
 	"log"
 	"net/mail"
+	"os"
+	"strings"
 
 	"github.com/pocketbase/pocketbase"
 	"github.com/pocketbase/pocketbase/core"
 	"github.com/pocketbase/pocketbase/plugins/ghupdate"
+	"github.com/pocketbase/pocketbase/plugins/migratecmd"
 	"github.com/pocketbase/pocketbase/tools/mailer"
 	"github.com/pocketbase/pocketbase/tools/template"
 )
@@ -17,6 +20,15 @@ func main() {
 
 	// GitHub selfupdate
 	ghupdate.MustRegister(app, app.RootCmd, ghupdate.Config{})
+
+    // loosely check if it was executed using "go run"
+    isGoRun := strings.HasPrefix(os.Args[0], os.TempDir())
+
+    migratecmd.MustRegister(app, app.RootCmd, migratecmd.Config{
+        // enable auto creation of migration files when making collection changes in the Dashboard
+        // (the isGoRun check is to enable it only during development)
+        Automigrate: isGoRun,
+    })
 
 
     app.OnMailerRecordVerificationSend().BindFunc(func(e *core.MailerRecordEvent) error {
