@@ -23,7 +23,6 @@ func SaftEmails(app *pocketbase.PocketBase) {
 
 		user_id := e.Record.GetString("user")
 		if user_id != "" {
-			app.Logger().Debug(user_id)
 
 			// Define how the output of the query below looks like
 			type User struct {

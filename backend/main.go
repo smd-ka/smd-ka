@@ -1,6 +1,7 @@
 package main
 
 import (
+	"SMD-KA-Backend/contact"
 	"SMD-KA-Backend/registration"
 	"SMD-KA-Backend/saft"
 	"log"
@@ -30,6 +31,7 @@ func main() {
 	// Register custom modules
 	registration.SetupVerification(app)
 	saft.SaftEmails(app)
+	contact.ContactForm(app)
 
 	if err := app.Start(); err != nil {
 		log.Fatal(err)
