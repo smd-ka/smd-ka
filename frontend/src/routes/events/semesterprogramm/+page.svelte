@@ -22,7 +22,7 @@
 			zu haben, worin sie liegt und wodurch sie begründet wird.
 
 			<br />
-			Du bist ganz herzlich eingeladen unverbindlich vorbeizuschauen. Wir freuen uns auf dich!
+			Du bist ganz herzlich eingeladen vorbeizuschauen. Wir freuen uns auf dich!
 		</p>
 	</section>
 
