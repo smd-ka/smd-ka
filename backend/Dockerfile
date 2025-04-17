@@ -1,35 +1,35 @@
-# Based on: https://github.com/pocketbase/pocketbase/discussions/2621
+# Stage 1: Build the Go binary
+FROM golang:latest AS builder
 
+# Set working directory
+WORKDIR /app
 
-FROM golang:latest
+# Copy go modules and download them
+COPY go.mod go.sum ./
+RUN go mod download
 
-WORKDIR /pb
-
-
-# Copy all files to the container
+# Copy rest of the app
 COPY . .
 
-# Remove everything except `.go` and `.html` files while preserving directory structure
-# RUN find . -type f ! \( -name "*.go" -o -name "*.html" \) -delete
+# Build your Go app
+RUN CGO_ENABLED=0 GOOS=linux go build -o app .
 
+# Stage 2: Create a minimal image
+FROM alpine:latest
 
+# Set working directory
+WORKDIR /app
 
-# remove any previously initialized go.mod and go.sum files
-# (this is in case the container data wasn't destroyed)
-RUN rm -f go.mod rm go.sum
+# Copy built binary from builder
+COPY --from=builder /app/app .
 
-# initialize Go modules
-RUN go mod init SMD-KA-Backend
+# Copy database from build stage
+COPY --from=builder /app/pb_data ./pb_data 
+# Optionally, if you want to keep data persistent (set mount point)
+VOLUME /app/pb_data
 
-# fetch dependencies
-RUN go mod tidy
-
-# build (switch to 1 to use the CGO SQLite)
-RUN CGO_ENABLED=0 go build -o /pocketbase
-
-# export listener port
+# Expose the port PocketBase runs on
 EXPOSE 8090
 
-# run
-# (ps. don't forget to mount the pb_data as volume in /pb_data)
-CMD ["/pocketbase", "serve", "--http=0.0.0.0:8090"]
+# Run the app
+CMD ["./app", "serve", "--http=0.0.0.0:8090"]
