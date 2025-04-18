@@ -1,8 +1,12 @@
-# Stage 1: Build the Go binary
+# this dockerfile does not automatically update. 
+# Instead the packages need to be made manually 
+# (and applied to the go.mod, go.sum). 
+
+# Stage 1: Build the Go (pocketbase) binary 
 FROM golang:latest AS builder
 
 # Set working directory
-WORKDIR /app
+WORKDIR /pb
 
 # Copy go modules and download them
 COPY go.mod go.sum ./
@@ -12,24 +16,29 @@ RUN go mod download
 COPY . .
 
 # Build your Go app
-RUN CGO_ENABLED=0 GOOS=linux go build -o app .
+RUN CGO_ENABLED=0 GOOS=linux go build -o pocketbase .
 
 # Stage 2: Create a minimal image
 FROM alpine:latest
 
 # Set working directory
-WORKDIR /app
+WORKDIR /pb
 
 # Copy built binary from builder
-COPY --from=builder /app/app .
+COPY . .
+# Remove everything except HTML files
+RUN find . -type f ! -name '*.html' -delete
+# COPY binary
+COPY --from=builder /pb/pocketbase .
 
 # Copy database from build stage
-COPY --from=builder /app/pb_data ./pb_data 
+COPY --from=builder /pb/pb_data ./pb_data 
+
 # Optionally, if you want to keep data persistent (set mount point)
-VOLUME /app/pb_data
+VOLUME /pb/pb_data
 
 # Expose the port PocketBase runs on
 EXPOSE 8090
 
 # Run the app
-CMD ["./app", "serve", "--http=0.0.0.0:8090"]
+CMD ["./pocketbase", "serve", "--http=0.0.0.0:8090"]
