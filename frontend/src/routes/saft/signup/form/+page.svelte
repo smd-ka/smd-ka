@@ -9,6 +9,7 @@
 	import TelephoneInputField from '$lib/components/forms/TelephoneInputField.svelte';
 	import GenderInput from '$lib/components/forms/GenderInput.svelte';
 	import { PUBLIC_SEMESTER } from '$env/static/public';
+	import NumberInput from '$lib/components/forms/NumberInput.svelte';
 
 	const ticketValues = [
 		'Deutschlandticket/Jugendticket BW',
@@ -40,6 +41,11 @@
 		);
 		formData.set('brings_cake', formData.get('brings_cake') === 'on' ? 'true' : 'false');
 		formData.set('is_vegetarian', formData.get('is_vegetarian') === 'on' ? 'true' : 'false');
+		// SS25
+		formData.set('pot', formData.get('pot') === 'on' ? 'true' : 'false');
+		formData.set('bag', formData.get('bag') === 'on' ? 'true' : 'false');
+		formData.set('pad', formData.get('pad') === 'on' ? 'true' : 'false');
+
 		formData.set('semester', PUBLIC_SEMESTER);
 		if (pb.authStore.isValid && pb.authStore.model?.id) {
 			formData.set('user', pb.authStore.model?.id);
@@ -95,7 +101,7 @@
 					/>
 					<GenderInput />
 
-					<div class="flex w-full items-center gap-4">
+					<!-- <div class="flex w-full items-center gap-4">
 						<label class="whitespace-nowrap" for="group">Ich komme aus...</label>
 						<select
 							bind:value={group}
@@ -108,66 +114,52 @@
 							<option value="Karlsruhe">Karlsruhe</option>
 							<option value="Landau">Landau</option>
 						</select>
-					</div>
+					</div> -->
 				{/if}
 
 				<h3>Wie möchtest du anreisen?</h3>
 
-				{#if group == ''}
-					<b>Bitte wähle erst aus, woher du kommst.</b>
-				{:else if group == 'Karlsruhe'}
-					<div>
-						<p>
-							Die <strong class="font-bold">Bahnanreise</strong> wird am Freitag gegen 16:30 vom
-							Hauptbahnhof in Karlsruhe starten.
-							<br />Am Sonntag sind wir gegen 16:00 wieder zurück in Karlsruhe
-						</p>
+				<div class="grid gap-4">
+					<p>
+						Die <strong class="font-bold">Bahnanreise</strong> wird am Donnerstag gegen 13:00 vom
+						Hauptbahnhof in Karlsruhe starten.
+						<br />Am Sonntag sind wir gegen 16:00 wieder zurück in Karlsruhe
+					</p>
 
-						<p class="mt-4">
-							Die <strong class="font-bold">Fahrradanreise</strong> wird am Freitag gegen 13:00 aus
-							der Stadtmitte von Karlsruhe starten.
-							<br /> Am Sonntag sind wir gegen 17:00 wieder zurück in Karlsruhe.
-						</p>
-					</div>
+					<p>
+						Die <strong class="font-bold">Fahrradanreise</strong> wird am Donnerstag gegen 10:00 aus
+						der Stadtmitte von Karlsruhe starten.
+						<br /> Am Sonntag sind wir gegen 17:00 wieder zurück in Karlsruhe.
+					</p>
 
-					<select
-						bind:value={travelOption}
-						name="travel_option"
-						class="w-full rounded-md border-2 py-3"
-						required
+					<!-- <p>Landauer bitte selbständig angeben :)</p> -->
+				</div>
+
+				<select
+					bind:value={travelOption}
+					name="travel_option"
+					class="w-full rounded-md border-2 py-3"
+					required
+				>
+					<option disabled selected value> -- Wähle eine Option -- </option>
+					<option value="takesBike"
+						>Ich nehme an der Fahrradtour zur Anreise (und Abreise) teil.</option
 					>
-						<option disabled selected value> -- Wähle eine Option -- </option>
-						<option value="takesBike"
-							>Ich nehme an der Fahrradtour zur Anreise (und Abreise) teil.</option
-						>
-						<option value="takesTrain">Ich nehme an der Bahnfahrt teil.</option>
-						<option value="takesCar">Ich reise mit dem Auto an und könnte Gepäck mitnehmen.</option>
-						<option value="takesOwn">Ich reise selbständig an.</option>
-					</select>
+					<option value="takesTrain">Ich nehme an der Bahnfahrt teil.</option>
+					<option value="takesOwn">Ich reise selbständig an. </option>
+				</select>
 
-					{#if travelOption === 'takesTrain'}
-						<fieldset class="mt-1">
-							<legend>Welches Ticket besitzt du am Anreise- und Abreisetag?</legend>
+				{#if travelOption === 'takesTrain'}
+					<fieldset class="mt-1">
+						<legend>Welches Ticket besitzt du am Anreise- und Abreisetag?</legend>
 
-							{#each ticketValues as ticketVal}
-								<div class="md:ml-4">
-									<input type="radio" id={ticketVal} name="ticket" value={ticketVal} required />
-									<label for={ticketVal}>{ticketVal}</label>
-								</div>
-							{/each}
-						</fieldset>
-					{/if}
-				{:else}
-					<select
-						name="travel_option"
-						bind:value={travelOption}
-						class="w-full rounded-md border-2 py-3"
-						required
-					>
-						<option disabled selected value> -- Wähle eine Option -- </option>
-						<option value="takesGroup">Ich reise mit der Gruppe an.</option>
-						<option value="takesOwn">Ich reise selbständig an.</option>
-					</select>
+						{#each ticketValues as ticketVal}
+							<div class="md:ml-4">
+								<input type="radio" id={ticketVal} name="ticket" value={ticketVal} required />
+								<label for={ticketVal}>{ticketVal}</label>
+							</div>
+						{/each}
+					</fieldset>
 				{/if}
 
 				<div class="flex flex-col">
@@ -181,25 +173,54 @@
 
 				<p class="font-bold">Weitere Infos zur Anreise folgen per Mail.</p>
 
-				<h3>Essens- und Schlafpräferenzen</h3>
+				<h3>Essenspräferenzen und Material</h3>
 
-				<InputCheckbox
+				<!-- <InputCheckbox
 					name="would_sleep_on_floor"
 					label="Ich könnte mir vorstellen ggf. auf den Boden zu schlafen und Schlafsack / Isomatte dazu mitzubringen"
-				/>
+				/> -->
 
-				<InputCheckbox
+				<!-- <InputCheckbox
 					name="brings_cake"
 					label="Ich bringe Kuchen, Muffins oder Ähnliches mit für Kaffee und Kuchen am Samstag"
-				/>
+				/> -->
 
-				<InputCheckbox name="is_vegetarian" label="Ich bin Vegetarier" />
+				{#if loggedIn}
+					<b class="text-primary">Bitte gebe deine Essenspräferenzen in deinem Profil an!</b>
+				{:else}
+					<InputCheckbox name="is_vegetarian" label="Ich bin Vegetarier" />
+
+					<InputField
+						name="allergies"
+						label="Allergien oder Unverträglichkeiten"
+						disabled={loading}
+					/>
+				{/if}
+
+				<!-- SAFT SS25  -->
 
 				<InputField
-					name="allergies"
-					label="Allergien oder Unverträglichkeiten"
+					name="tents"
+					label="Ich kann folgend(e) Zelte mitbringen: Bitte die Personenanzahl pro Zelt angeben."
 					disabled={loading}
 				/>
+
+				<InputCheckbox name="pot" label="Ich kann einen Gas/ Spirituskocher mit Topf mitbringen" />
+
+				<InputCheckbox
+					name="bag"
+					label="Ich habe einen Schlafsack mit mindestens Komforttemperatur 7 Grad"
+				/>
+
+				<InputCheckbox name="pad" label="Ich habe eine Isomatte" />
+
+				<NumberInput
+					name="bag_count"
+					label="Anzahl Schlafsäcke mit Komforttemperatur mind. 7 Grad., die ich verleihen könnte:"
+				></NumberInput>
+
+				<NumberInput name="pad_count" label="Anzahl Isomatten, die ich verleihen könnte:"
+				></NumberInput>
 
 				<span><b>Rechtliches:</b> Und wie sieht's mit Bildern von dir aus? </span>
 				<select class="rounded-md border-2 py-3" name="post_images" required>
@@ -224,7 +245,7 @@
 				</p>
 
 				<div class="flex flex-col">
-					<label for="comments"> <b>Sonstige Anmerkungen</b></label>
+					<label for="comments"> <b>Sonstige Anmerkungen (auch zum Material)</b></label>
 					<textarea class="rounded-md border-2" name="comments" id="comments" rows="3"></textarea>
 				</div>
 
