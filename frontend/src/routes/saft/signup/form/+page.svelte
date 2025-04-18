@@ -245,7 +245,14 @@
 				</p>
 
 				<div class="flex flex-col">
-					<label for="comments"> <b>Sonstige Anmerkungen (auch zum Material)</b></label>
+					<label for="comments">
+						<b>Sonstige Anmerkungen </b>
+
+						<p>
+							Auch zum Material. Schreib uns hier auch gerne, falls du ein Instrument mitbringen
+							könntest. Wir können gerne einen Transport mit dem Auto organisieren.
+						</p>
+					</label>
 					<textarea class="rounded-md border-2" name="comments" id="comments" rows="3"></textarea>
 				</div>
 
