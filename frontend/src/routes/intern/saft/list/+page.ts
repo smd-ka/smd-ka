@@ -23,6 +23,13 @@ export const load: PageLoad = async () => {
 		const hasKVVCount = records.filter((x) => x.ticket === 'KVV-Bescheinigung').length;
 		const hasKVVSemesterCount = records.filter((x) => x.ticket === 'KVV-Semesterticket').length;
 
+		// SS25
+		const pots = records.filter((x) => x.pot).length;
+		const sleepingBagsMissing = records.filter((x) => !x.bag).length;
+		const sleepingPadsMissing = records.filter((x) => !x.pad).length;
+		const availableBags = records.reduce((sum, x) => sum + x.bag_count, 0);
+		const availablePads = records.reduce((sum, x) => sum + x.pad_count, 0);
+
 		return {
 			list: records,
 			takesBikeCount,
@@ -33,7 +40,12 @@ export const load: PageLoad = async () => {
 			hasDTicketCount,
 			hasKVVCount,
 			hasKVVSemesterCount,
-			landauCount
+			landauCount,
+			pots,
+			sleepingBagsMissing,
+			sleepingPadsMissing,
+			availableBags,
+			availablePads
 		};
 	} catch (error) {
 		console.error(error);

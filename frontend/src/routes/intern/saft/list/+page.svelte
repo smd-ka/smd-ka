@@ -62,6 +62,13 @@
 		'Bemerkung',
 		'E-Mail-Adresse',
 		'Telefonnummer',
+		// SS25
+		'Schlafsack',
+		'Isomatte',
+		'Gaskocher mit Topf',
+		'Zelte',
+		'Anzahl Schlafsäcke zu verleihen',
+		'Anzahl Isomatten zu verleihen',
 		'Kuchen',
 		'Vegetarier',
 		'Allergien',
@@ -88,16 +95,14 @@
 					<b>{data.takesOwnCount}</b>
 					reisen selbständig an
 				</div>
-				<div>
+				<!-- <div>
 					<b>{data.takesCarCount}</b>
 					Autofahrer (die Gepäck mitnehmen können)
-				</div>
+				</div> -->
 				<!-- <div>
 					<b>{data.landauCount}</b>
 					Landauer
 				</div> -->
-			</div>
-			<div>
 				<div>
 					<b>{data.takesTrainCount}</b>
 					Bahnfahrer, davon
@@ -109,6 +114,15 @@
 					mit KVV-Bescheinigung<br />
 					<b>{data.hasKVVSemesterCount}</b>
 					mit KVV-Semesterticket
+				</div>
+			</div>
+			<div>
+				<div>
+					<b>{data.pots}</b> Gaskocher mit Topf <br />
+					<b>{data.sleepingBagsMissing}</b> Personen, die keinen Schlafsack haben <br />
+					<b>{data.availableBags}</b> verfügbare Schlafsäcke <br />
+					<b>{data.sleepingPadsMissing}</b> Personen, die ne Iso brauchen <br />
+					<b>{data.availablePads}</b> verfügbare Isomatten <br />
 				</div>
 			</div>
 		</div>
@@ -165,7 +179,7 @@
 
 		<div class="flex overflow-auto">
 			<div
-				class="pad-childs grid grid-cols-[repeat(13,1fr)] divide-y-2 divide-y-reverse divide-x-reverse whitespace-nowrap"
+				class="pad-childs grid grid-cols-[repeat(19,1fr)] divide-y-2 divide-y-reverse divide-x-reverse whitespace-nowrap"
 			>
 				{#each columns as column}
 					<div><b>{column}</b></div>
@@ -205,6 +219,15 @@
 					</div>
 					<div>{registration.email}</div>
 					<div>{registration.phonenumber}</div>
+
+					<!-- SS25 -->
+
+					<div>{registration.bag ? 'ja' : 'nein'}</div>
+					<div>{registration.pad ? 'ja' : 'nein'}</div>
+					<div>{registration.pot ? 'ja' : 'nein'}</div>
+					<div>{registration.tents}</div>
+					<div>{registration.bag_count}</div>
+					<div>{registration.pad_count}</div>
 
 					<div>{registration.brings_cake ? 'Ja' : ''}</div>
 					<div>{registration.is_vegetarian ? 'Ja' : ''}</div>
