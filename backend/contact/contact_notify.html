@@ -1,0 +1,24 @@
+<h3>Liebe Leiter,</h3>
+
+<p>es gab folgende Anfrage über das Kontaktformular:</p>
+
+<p>
+  Von: {{.name}} <br />
+  Email: {{.email}} <br />
+  Betreff: {{.subject}} <br />
+</p>
+
+<pre>
+    {{.message}}      
+</pre>
+
+<a href="mailto:{{.email}}">Antworten</a>
+
+<p>Bitte denkt dran möglichst schnell zu reagieren ;)</p>
+<p>Deine SMD Karlsruhe</p>
+
+<style>
+  h3 {
+    color: #e84c05;
+  }
+</style>
