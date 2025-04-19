@@ -2,14 +2,7 @@ import { pb } from '$lib/pocketbase';
 import { faBicycle, faCar, faPeopleGroup, faTrain } from '@fortawesome/free-solid-svg-icons';
 import type { PageLoad } from './$types';
 
-export type SaftRegistrationFilter =
-	| 'all'
-	| 'paid'
-	| 'unpaid'
-	| 'bike'
-	| 'train'
-	| 'landau'
-	| 'floor_sleeper';
+export type SaftRegistrationFilter = 'all' | 'paid' | 'unpaid' | 'bike' | 'train' | 'floor_sleeper';
 
 export const load: PageLoad = async () => {
 	try {
@@ -60,8 +53,6 @@ export const _filterSaftRegistrations = (filter: SaftRegistrationFilter, list) =
 			return list.filter((x) => x.travel_option === 'takesBike');
 		case 'train':
 			return list.filter((x) => x.travel_option === 'takesTrain');
-		case 'landau':
-			return list.filter((x) => x.travel_option === 'takesGroup');
 		case 'floor_sleeper':
 			return list.filter((x) => x.would_sleep_on_floor);
 	}

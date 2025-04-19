@@ -57,7 +57,7 @@
 		'An/Abreise Option',
 		'An/Abreise Kommentar',
 		'Ticket',
-		'Gruppe',
+		// 'Gruppe',
 		'Bodenschläfer',
 		'Bemerkung',
 		'E-Mail-Adresse',
@@ -73,52 +73,48 @@
 	<h1>SAFT Anmeldungen</h1>
 
 	{#if data.list}
-		<div class="grid rounded-md bg-gray-200 p-4 lg:grid-cols-2">
+		<div class="card grid lg:grid-cols-2">
 			<h3 class="col-span-full">Übersicht über alle Anmeldungen</h3>
 			<div>
 				<div>
-					<bold class="font-bold">{data.list.length}</bold>
+					<b>{data.list.length}</b>
 					Anmeldungen gesamt
 				</div>
 				<div>
-					<bold class="font-bold">{data.takesBikeCount}</bold>
+					<b>{data.takesBikeCount}</b>
 					Fahrradfahrer
 				</div>
 				<div>
-					<bold class="font-bold">{data.takesOwnCount}</bold>
+					<b>{data.takesOwnCount}</b>
 					reisen selbständig an
 				</div>
 				<div>
-					<bold class="font-bold">{data.takesCarCount}</bold>
+					<b>{data.takesCarCount}</b>
 					Autofahrer (die Gepäck mitnehmen können)
 				</div>
-				<div>
+				<!-- <div>
 					<b>{data.landauCount}</b>
 					Landauer
-				</div>
+				</div> -->
 			</div>
 			<div>
 				<div>
-					<bold class="font-bold">{data.takesTrainCount}</bold>
+					<b>{data.takesTrainCount}</b>
 					Bahnfahrer, davon
 				</div>
 				<div class="pl-8">
-					<bold class="font-bold">{data.hasDTicketCount}</bold>
+					<b>{data.hasDTicketCount}</b>
 					mit D-Ticket<br />
-					<bold class="font-bold">{data.hasKVVCount}</bold>
+					<b>{data.hasKVVCount}</b>
 					mit KVV-Bescheinigung<br />
-					<bold class="font-bold">{data.hasKVVSemesterCount}</bold>
+					<b>{data.hasKVVSemesterCount}</b>
 					mit KVV-Semesterticket
-				</div>
-				<div>
-					<bold class="font-bold">{data.takesGroupCount}</bold>
-					Gruppenanreise aus Landau
 				</div>
 			</div>
 		</div>
 
 		<div class="flex flex-wrap items-center pt-6">
-			<bold class="pr-2 font-bold">Achtung!</bold>
+			<b class="pr-2">Achtung!</b>
 			Sollte dieses Symbol <Fa class="px-2 text-red-700" icon={faExclamationTriangle} /> neben dem Haken
 			angezeigt werden, dann wurde die Änderung nicht gespeichert!
 		</div>
@@ -163,14 +159,13 @@
 				<option value="unpaid">Unbezahlt</option>
 				<option value="bike">Fahrradfahrer</option>
 				<option value="train">Bahnfahrer</option>
-				<option value="landau">Landau Anreise</option>
 				<option value="floor_sleeper">Bodenschläfer</option>
 			</select>
 		</div>
 
 		<div class="flex overflow-auto">
 			<div
-				class="pad-childs grid grid-cols-[repeat(14,1fr)] divide-y-2 divide-y-reverse divide-x-reverse whitespace-nowrap"
+				class="pad-childs grid grid-cols-[repeat(13,1fr)] divide-y-2 divide-y-reverse divide-x-reverse whitespace-nowrap"
 			>
 				{#each columns as column}
 					<div><b>{column}</b></div>
@@ -202,8 +197,7 @@
 					<div>
 						{registration.ticket || ''}
 					</div>
-					<!-- TODO Can this if can be removed after WS24/25 SAFT -->
-					<div>{registration.group === 'Landau' ? 'Landau' : 'Karlsruhe'}</div>
+					<!-- <div>{registration.group === 'Landau' ? 'Landau' : 'Karlsruhe'}</div> -->
 					<div>{registration.would_sleep_on_floor ? 'Ja' : ''}</div>
 
 					<div class="w-72 whitespace-pre-wrap">
