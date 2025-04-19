@@ -68,9 +68,9 @@
 	}
 </script>
 
-<main class="container mx-auto">
-	<div class="card mt-8 flex flex-col gap-4">
-		<h1 class="text-primary text-2xl md:text-4xl">Profil Bearbeiten</h1>
+<main class="container mx-auto py-4">
+	<div class=" card flex flex-col gap-4">
+		<h1>Profil Bearbeiten</h1>
 
 		{#if afterRegistration}
 			<div class="bg-primary rounded-md bg-opacity-40 p-4">
@@ -255,7 +255,7 @@
 				<button
 					type="submit"
 					disabled={loading}
-					class="bg-primary relative mt-4 flex items-center justify-center rounded-md py-2 text-white"
+					class="relative mt-4 flex items-center justify-center bg-black py-2 text-white"
 				>
 					{#if loading}
 						<img class="absolute left-16 h-8" src={loadingSpinner} alt="loading" />

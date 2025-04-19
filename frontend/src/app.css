@@ -51,7 +51,7 @@
 
 @layer components {
   .card {
-    @apply bg-white rounded-md p-8 shadow-md;
+    @apply bg-white rounded-md p-4 shadow-md;
   }
 
   .main {
