@@ -1,6 +1,6 @@
 # PocketBase Go SDK Guide
 
-Our backend application is built using [PocketBase](https://pocketbase.io/). We're using the posability to use pocketbase as a framework and therefore wrote our own main.go and go modules.
+Our backend application is built using [PocketBase](https://pocketbase.io/). We're using the possibility to use pocketbase as a framework and therefore wrote our own main.go and go modules.
 
 ## E-Mail Templates  
 
