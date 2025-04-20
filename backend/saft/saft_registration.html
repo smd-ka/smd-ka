@@ -1,21 +1,150 @@
-<h3>Hallo {{ .name }},</h3>
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAFT Packliste</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      .email-container {
+        max-width: 700px;
+        margin: 30px auto;
+        background-color: #ffffff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      .content {
+        padding: 10px 30px;
+      }
+      h2 {
+        color: #e84c05;
+      }
+      h3 {
+        margin-top: 30px;
+        color: #333;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 5px;
+      }
+      ul {
+        padding-left: 20px;
+        margin-top: 10px;
+      }
+      li {
+        margin-bottom: 10px;
+      }
+      code {
+        background-color: #eee;
+        padding: 2px 4px;
+        border-radius: 4px;
+      }
+      .footer {
+        background-color: #f0f0f0;
+        padding: 20px;
+        text-align: center;
+        font-size: 0.9em;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="email-container">
+      <div class="content">
+        <h2>Hallo {{ .name }},</h2>
+        <p>
+          Du hast dich erfolgreich zur SAFT im Sommersemester 2025 angemeldet.
+          Wir freuen uns riesig, dass du bei unserem gemeinsamen verlängerten
+          SAFT-Wochenende dabei bist! Diese SAFT wird besonders (genial), daher
+          hier schon ein mal die Packliste mit einigen wichtigen Hinweisen.
+          Bitte genau durchlesen!
+        </p>
 
-<p>
-  vielen Dank für deine Anmeldung zur Semesteranfangsfreizeit im Sommersemester
-  2025. Wir freuen uns, dich dabei zu haben!
-</p>
+        <h3>1) Allgemeines & Organisatorisches</h3>
+        <ul>
+          <li>
+            <strong>Teilnahmebeitrag:</strong> 40 € (Donnerstag) oder 35 €
+            (Freitag); bitte bis <strong>28.04.</strong> überweisen an:<br />
+            SMD Karlsruhe, IBAN: <code>DE26 5009 2100 0001 7549 39</code><br />
+            Alternativ Barzahlung vor Ort.
+          </li>
+          <li>
+            <strong>Anreise Donnerstag:</strong> per Bahn oder Fahrrad, beide
+            Gruppen starten mittags. Infos folgen.
+          </li>
+          <li>
+            <strong>Spätanreise:</strong> Ziel wird einen Tag vorher mitgeteilt
+            (ca. 1,5h mit dem Nahverkehr).
+          </li>
+          <li>
+            <strong>Digitale Auszeit:</strong> Wenn möglich ohne Handy & Uhr.
+            Alternativ bei uns abgeben.
+          </li>
+        </ul>
 
-<p>
-  Genaue Informationen zur Anreise und Packliste folgen in den Tagen vor der
-  SAFT und werden an diese E-Mail-Adresse gesendet. Solltest du Fragen haben,
-  erreichst du uns unter
-  <a href="mailto:{{.email}}">{{.email}}</a>.
-</p>
+        <h3>2) Übernachtung</h3>
+        <ul>
+          <li>Zelt (ggf. Absprache mit anderen)</li>
+          <li>Warmer Schlafsack (je nach Wetter)</li>
+          <li>Isomatte oder Luftmatratze</li>
+          <li>Kleines Kissen oder Bezug</li>
+        </ul>
 
-<p>Deine SAFT-Orga</p>
+        <h3>3) Kochen & Essen</h3>
+        <p>Bitte mitbringen (wenn vorhanden):</p>
+        <ul>
+          <li>
+            Kleiner Gas-/Spirituskocher + Brennmaterial (2 Gaskartuschen oder
+            1,5L Spiritus)<br />→ Quittung kann eingereicht werden
+          </li>
+          <li>Topf/Pfanne, Besteck, Teller, Tasse</li>
+          <li>Spülmittel, Schwamm, Geschirrtuch</li>
+          <li>Lieblingsaufstrich oder Snacks</li>
+        </ul>
 
-<style>
-  h3 {
-    color: #e84c05;
-  }
-</style>
+        <h3>4) Kleidung & Persönliches</h3>
+        <ul>
+          <li>
+            Wetterfeste Kleidung (Regenjacke, warme Pullis, ggf. Regenhose)
+          </li>
+          <li>Festes & sportliches Schuhwerk</li>
+          <li>Wechselsachen fürs Wochenende</li>
+          <li>Handtuch und Hygieneartikel</li>
+        </ul>
+
+        <h3>5) Gemeinschaft & Programm</h3>
+        <ul>
+          <li>Bibel & Schreibzeug (Thema: „Zeuge sein“)</li>
+          <li>Notizheft/Tagebuch für Gedanken & Gebet</li>
+          <li>Instrument(e), wenn möglich</li>
+          <li>Spiele (z. B. Wikingerschach, Ball, Karten)</li>
+        </ul>
+
+        <h3>6) Weitere Empfehlungen</h3>
+        <ul>
+          <li>Taschenlampe oder Stirnlampe + Batterien</li>
+          <li>Ohrstöpsel</li>
+          <li>Badesachen für spontane Aktionen</li>
+        </ul>
+
+        <p>
+          <strong>Zusammengefasst:</strong> Alles, was du brauchst, um ein
+          Wochenende draußen komfortabel zu verbringen und gemeinsam zu kochen.
+          Bei Fragen melde dich gerne bei uns!
+        </p>
+
+        <p>
+          Wir freuen uns auf eine gesegnete, abenteuerliche und
+          gemeinschaftliche Zeit mit euch!
+        </p>
+        <p><strong>Euer SAFT-Orga-Team</strong></p>
+      </div>
+      <div class="footer"><a href="mailto:{{.email}}">{{.email}}</a>.</div>
+    </div>
+  </body>
+</html>
