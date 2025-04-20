@@ -10,6 +10,7 @@
 	import GenderInput from '$lib/components/forms/GenderInput.svelte';
 	import { PUBLIC_SEMESTER } from '$env/static/public';
 	import NumberInput from '$lib/components/forms/NumberInput.svelte';
+	import CheckboxInput from '$lib/components/forms/CheckboxInput.svelte';
 
 	const ticketValues = [
 		'Deutschlandticket/Jugendticket BW',
@@ -198,12 +199,10 @@
 				{/if}
 
 				<!-- SAFT SS25  -->
-
-				<InputField
-					name="tents"
-					label="Ich kann folgend(e) Zelte mitbringen: Bitte die Personenanzahl pro Zelt angeben."
-					disabled={loading}
-				/>
+				<div>
+					<p>Ich kann folgend(e) Zelte mitbringen: Bitte die Personenanzahl pro Zelt angeben.</p>
+					<InputField name="tents" label="" disabled={loading} />
+				</div>
 
 				<InputCheckbox name="pot" label="Ich kann einen Gas/ Spirituskocher mit Topf mitbringen" />
 
@@ -246,14 +245,18 @@
 
 				<div class="flex flex-col">
 					<label for="comments">
-						<b>Sonstige Anmerkungen </b>
-
+						<b>Sonstige Anmerkungen: Instrumente und Autos! </b>
 						<p>
-							Auch zum Material. Schreib uns hier auch gerne, falls du ein Instrument mitbringen
-							könntest. Wir können gerne einen Transport mit dem Auto organisieren.
+							Schreib uns hier auch gerne, falls du ein <b>Instrument mitbringen</b>
+							könntest oder du ein <b>Auto hast</b>, was wir nutzen könnten. Für die Instrumente
+							organisieren wir gerne einen Transport mit dem Auto.
+						</p>
+						<p>
+							Falls du Anmerkungen zu deinem Outdoormaterial hast, lass es uns gerne auch hier
+							Wissen
 						</p>
 					</label>
-					<textarea class="rounded-md border-2" name="comments" id="comments" rows="3"></textarea>
+					<textarea class="rounded-md border-2" name="comments" id="comments" rows="5"></textarea>
 				</div>
 
 				<button
