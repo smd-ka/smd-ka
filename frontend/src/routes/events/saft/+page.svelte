@@ -31,7 +31,7 @@
 				<h2>Worum gehts?</h2>
 				<p>
 					Die SAFT ist die
-					<bold>S</bold>emester<bold>A</bold>nfangs<bold>F</bold>reizei<bold>T</bold>
+					<b>S</b>emester<b>A</b>nfangs<b>F</b>reizei<b>T</b>
 					der SMD Karlsruhe. Sie findet immer am Anfang des Semesters statt und ist eine gute Möglichkeit,
 					die SMD und andere Studierende kennenzulernen.
 				</p>
