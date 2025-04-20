@@ -129,11 +129,11 @@
 			</div>
 			<div>
 				<div>
-					<bold class="font-bold">{data.isfemale}</bold>
+					<bold class="font-bold">{data.isFemale}</bold>
 					Anzahl Frauen
 				</div>
 				<div>
-					<bold class="font-bold">{data.ismale}</bold>
+					<bold class="font-bold">{data.isMale}</bold>
 					Anzahl Männer
 				</div>
 			</div>

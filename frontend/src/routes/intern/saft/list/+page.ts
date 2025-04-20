@@ -2,7 +2,16 @@ import { pb } from '$lib/pocketbase';
 import { faBicycle, faCar, faPeopleGroup, faTrain } from '@fortawesome/free-solid-svg-icons';
 import type { PageLoad } from './$types';
 
-export type SaftRegistrationFilter = 'all' | 'paid' | 'unpaid' | 'bike' | 'train' | 'floor_sleeper';
+export type SaftRegistrationFilter =
+	| 'all'
+	| 'paid'
+	| 'unpaid'
+	| 'bike'
+	| 'train'
+	| 'landau'
+	| 'floor_sleeper'
+	| 'female'
+	| 'male';
 
 export const load: PageLoad = async () => {
 	try {
@@ -16,6 +25,10 @@ export const load: PageLoad = async () => {
 		// SMD Landau Group
 		const takesGroupCount = records.filter((x) => x.travel_option === 'takesGroup').length;
 		const landauCount = records.filter((x) => x.group == 'Landau').length;
+
+		const isFemale = records.filter((x) => x.gender == 'female').length;
+		const isMale = records.filter((x) => x.gender == 'male').length;
+
 
 		const hasDTicketCount = records.filter(
 			(x) => x.ticket === 'Deutschlandticket/Jugendticket BW'
@@ -45,7 +58,9 @@ export const load: PageLoad = async () => {
 			sleepingBagsMissing,
 			sleepingPadsMissing,
 			availableBags,
-			availablePads
+			availablePads,
+			isFemale,
+			isMale
 		};
 	} catch (error) {
 		console.error(error);
@@ -67,6 +82,10 @@ export const _filterSaftRegistrations = (filter: SaftRegistrationFilter, list) =
 			return list.filter((x) => x.travel_option === 'takesTrain');
 		case 'floor_sleeper':
 			return list.filter((x) => x.would_sleep_on_floor);
+		case 'female':
+			return list.filter((x) => x.gender === 'female');
+		case 'male':
+			return list.filter((x) => x.gender === 'male');
 	}
 };
 
@@ -75,6 +94,7 @@ export const _exportToCsv = (list, filter) => {
 		[
 			'Bezahlt',
 			'Name',
+			'Geschlecht',
 			'Telefonnummer',
 			'E-Mail-Adresse',
 			'Gruppe',
@@ -98,6 +118,7 @@ export const _exportToCsv = (list, filter) => {
 		...list.map((x) => [
 			x.paid ? 'Ja' : 'Nein',
 			x.name,
+			x.gender === 'female' ? 'w' : 'm',
 			x.phonenumber,
 			x.email,
 			x.group === 'Landau' ? 'Landau' : 'Karlsruhe',
