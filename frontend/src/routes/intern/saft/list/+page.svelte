@@ -69,6 +69,7 @@
 		'Zelte',
 		'Anzahl Schlafsäcke zu verleihen',
 		'Anzahl Isomatten zu verleihen',
+		//
 		'Kuchen',
 		'Vegetarier',
 		'Allergien',
@@ -222,9 +223,9 @@
 
 					<!-- SS25 -->
 
-					<div>{registration.bag ? 'ja' : 'nein'}</div>
-					<div>{registration.pad ? 'ja' : 'nein'}</div>
-					<div>{registration.pot ? 'ja' : 'nein'}</div>
+					<div>{registration.bag ? 'ja' : ''}</div>
+					<div>{registration.pad ? 'ja' : ''}</div>
+					<div>{registration.pot ? 'ja' : ''}</div>
 					<div>{registration.tents}</div>
 					<div>{registration.bag_count}</div>
 					<div>{registration.pad_count}</div>
