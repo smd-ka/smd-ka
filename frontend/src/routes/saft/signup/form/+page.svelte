@@ -255,7 +255,7 @@
 						</p>
 						<p>
 							Falls du Anmerkungen zu deinem Outdoormaterial hast, lass es uns gerne auch hier
-							Wissen
+							Wissen.
 						</p>
 					</label>
 					<textarea class="rounded-md border-2" name="comments" id="comments" rows="5"></textarea>
