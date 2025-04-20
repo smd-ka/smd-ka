@@ -86,7 +86,14 @@ export const _exportToCsv = (list, filter) => {
 			'Kuchen',
 			'Vegetarier',
 			'Allergien',
-			'Bildrechte'
+			'Bildrechte',
+			// SS25
+			'Schlafsack',
+			'Isomatte',
+			'Gaskocher mit Topf',
+			'Zelte',
+			'Anzahl Schlafsäcke zu verleihen',
+			'Anzahl Isomatten zu verleihen'
 		],
 		...list.map((x) => [
 			x.paid ? 'Ja' : 'Nein',
@@ -102,7 +109,14 @@ export const _exportToCsv = (list, filter) => {
 			x.brings_cake ? 'Ja' : '',
 			x.is_vegetarian ? 'Ja' : '',
 			x.allergies,
-			_postImages(x.post_images)
+			_postImages(x.post_images),
+			// SS25
+			x.bag ? 'Ja' : '',
+			x.pad ? 'Ja' : '',
+			x.pot ? 'Ja' : '',
+			x.tents,
+			x.bag_count,
+			x.pad_count
 		])
 	];
 
