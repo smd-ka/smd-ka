@@ -256,7 +256,7 @@
 				use:click_outside
 				on:outsideclick={() => (showMenu = false)}
 				transition:slide={{ duration: 200, easing: sineInOut }}
-				class="mobile-nav-height absolute top-0 z-0 mt-[4.5rem] w-fit max-w-full overflow-scroll bg-white p-4 lg:hidden"
+				class="mobile-nav-height absolute top-0 z-0 mt-[4.5rem] w-fit max-w-full overflow-scroll bg-white p-4 pb-8 lg:hidden"
 			>
 				{#if isValid}
 					<div>
@@ -424,6 +424,6 @@
 	}
 
 	.mobile-nav-height {
-		height: calc(100svh - 4.5rem);
+		height: calc(100vh - 4.5rem);
 	}
 </style>
