@@ -29,7 +29,6 @@ export const load: PageLoad = async () => {
 		const isFemale = records.filter((x) => x.gender == 'female').length;
 		const isMale = records.filter((x) => x.gender == 'male').length;
 
-
 		const hasDTicketCount = records.filter(
 			(x) => x.ticket === 'Deutschlandticket/Jugendticket BW'
 		).length;
@@ -37,6 +36,7 @@ export const load: PageLoad = async () => {
 		const hasKVVSemesterCount = records.filter((x) => x.ticket === 'KVV-Semesterticket').length;
 
 		// SS25
+		const comesFridayCount = records.filter((x) => x.comes_friday).length;
 		const pots = records.filter((x) => x.pot).length;
 		const sleepingBagsMissing = records.filter((x) => !x.bag).length;
 		const sleepingPadsMissing = records.filter((x) => !x.pad).length;
@@ -54,6 +54,7 @@ export const load: PageLoad = async () => {
 			hasKVVCount,
 			hasKVVSemesterCount,
 			landauCount,
+			comesFridayCount,
 			pots,
 			sleepingBagsMissing,
 			sleepingPadsMissing,
@@ -108,6 +109,7 @@ export const _exportToCsv = (list, filter) => {
 			'Allergien',
 			'Bildrechte',
 			// SS25
+			'Anreise Freitag',
 			'Schlafsack',
 			'Isomatte',
 			'Gaskocher mit Topf',
@@ -132,6 +134,7 @@ export const _exportToCsv = (list, filter) => {
 			x.allergies,
 			_postImages(x.post_images),
 			// SS25
+			x.comes_friday ? 'Ja' : '',
 			x.bag ? 'Ja' : '',
 			x.pad ? 'Ja' : '',
 			x.pot ? 'Ja' : '',

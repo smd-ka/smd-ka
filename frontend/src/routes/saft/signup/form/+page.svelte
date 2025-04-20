@@ -43,6 +43,7 @@
 		formData.set('brings_cake', formData.get('brings_cake') === 'on' ? 'true' : 'false');
 		formData.set('is_vegetarian', formData.get('is_vegetarian') === 'on' ? 'true' : 'false');
 		// SS25
+		formData.set('comes_friday', formData.get('comes_friday') === 'on' ? 'true' : 'false');
 		formData.set('pot', formData.get('pot') === 'on' ? 'true' : 'false');
 		formData.set('bag', formData.get('bag') === 'on' ? 'true' : 'false');
 		formData.set('pad', formData.get('pad') === 'on' ? 'true' : 'false');
@@ -164,6 +165,7 @@
 				{/if}
 
 				<div class="flex flex-col">
+					<CheckboxInput name="comes_friday" label="Anreise am Freitag"></CheckboxInput>
 					<label for="travel_comments">
 						<bold class="font-bold">Anmerkungen zur Anreise oder Abreise.</bold> (z.B. ich reise verspätet
 						an oder ich reise früher wieder ab.)</label
