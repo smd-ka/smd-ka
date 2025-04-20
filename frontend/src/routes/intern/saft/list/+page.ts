@@ -2,14 +2,7 @@ import { pb } from '$lib/pocketbase';
 import { faBicycle, faCar, faPeopleGroup, faTrain } from '@fortawesome/free-solid-svg-icons';
 import type { PageLoad } from './$types';
 
-export type SaftRegistrationFilter =
-	| 'all'
-	| 'paid'
-	| 'unpaid'
-	| 'bike'
-	| 'train'
-	| 'landau'
-	| 'floor_sleeper';
+export type SaftRegistrationFilter = 'all' | 'paid' | 'unpaid' | 'bike' | 'train' | 'floor_sleeper';
 
 export const load: PageLoad = async () => {
 	try {
@@ -30,6 +23,13 @@ export const load: PageLoad = async () => {
 		const hasKVVCount = records.filter((x) => x.ticket === 'KVV-Bescheinigung').length;
 		const hasKVVSemesterCount = records.filter((x) => x.ticket === 'KVV-Semesterticket').length;
 
+		// SS25
+		const pots = records.filter((x) => x.pot).length;
+		const sleepingBagsMissing = records.filter((x) => !x.bag).length;
+		const sleepingPadsMissing = records.filter((x) => !x.pad).length;
+		const availableBags = records.reduce((sum, x) => sum + x.bag_count, 0);
+		const availablePads = records.reduce((sum, x) => sum + x.pad_count, 0);
+
 		return {
 			list: records,
 			takesBikeCount,
@@ -40,7 +40,12 @@ export const load: PageLoad = async () => {
 			hasDTicketCount,
 			hasKVVCount,
 			hasKVVSemesterCount,
-			landauCount
+			landauCount,
+			pots,
+			sleepingBagsMissing,
+			sleepingPadsMissing,
+			availableBags,
+			availablePads
 		};
 	} catch (error) {
 		console.error(error);
@@ -60,8 +65,6 @@ export const _filterSaftRegistrations = (filter: SaftRegistrationFilter, list) =
 			return list.filter((x) => x.travel_option === 'takesBike');
 		case 'train':
 			return list.filter((x) => x.travel_option === 'takesTrain');
-		case 'landau':
-			return list.filter((x) => x.travel_option === 'takesGroup');
 		case 'floor_sleeper':
 			return list.filter((x) => x.would_sleep_on_floor);
 	}
@@ -83,7 +86,14 @@ export const _exportToCsv = (list, filter) => {
 			'Kuchen',
 			'Vegetarier',
 			'Allergien',
-			'Bildrechte'
+			'Bildrechte',
+			// SS25
+			'Schlafsack',
+			'Isomatte',
+			'Gaskocher mit Topf',
+			'Zelte',
+			'Anzahl Schlafsäcke zu verleihen',
+			'Anzahl Isomatten zu verleihen'
 		],
 		...list.map((x) => [
 			x.paid ? 'Ja' : 'Nein',
@@ -99,7 +109,14 @@ export const _exportToCsv = (list, filter) => {
 			x.brings_cake ? 'Ja' : '',
 			x.is_vegetarian ? 'Ja' : '',
 			x.allergies,
-			_postImages(x.post_images)
+			_postImages(x.post_images),
+			// SS25
+			x.bag ? 'Ja' : '',
+			x.pad ? 'Ja' : '',
+			x.pot ? 'Ja' : '',
+			x.tents,
+			x.bag_count,
+			x.pad_count
 		])
 	];
 

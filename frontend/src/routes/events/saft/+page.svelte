@@ -11,7 +11,7 @@
 
 <HeroShot imgSrc={header} height={'h-[70svh]'}></HeroShot>
 
-<main class="container mx-auto flex flex-col text-lg max-md:gap-10 max-md:py-10 md:gap-24 md:py-24">
+<main class="container mx-auto flex flex-col gap-10 py-10 text-lg md:gap-24 md:py-24">
 	<div class="container flex flex-col gap-6 px-4 xl:px-80">
 		<h1 class="text-center max-md:hidden">SemesterAnfangsFreizeiT</h1>
 		<h1 class="text-5xl font-bold uppercase max-md:text-center md:hidden">saft</h1>
@@ -27,20 +27,22 @@
 		</Saos>
 
 		<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
-			<h2>Worum gehts?</h2>
-			<p>
-				Die SAFT ist die <bold class="font-bold">S</bold>emester<bold class="font-bold">A</bold
-				>nfangs<bold class="font-bold">F</bold>reizei<bold class="font-bold">T</bold> der SMD Karlsruhe.
-				Sie findet immer am Anfang des Semesters statt und ist eine gute Möglichkeit, die SMD und andere
-				Studierende kennenzulernen.
-			</p>
-			<!-- <a href="/saft/signup" class="pointer w-fit bg-black p-4 text-white">Jetzt anmelden</a> -->
+			<div class="grid">
+				<h2>Worum gehts?</h2>
+				<p>
+					Die SAFT ist die
+					<b>S</b>emester<b>A</b>nfangs<b>F</b>reizei<b>T</b>
+					der SMD Karlsruhe. Sie findet immer am Anfang des Semesters statt und ist eine gute Möglichkeit,
+					die SMD und andere Studierende kennenzulernen.
+				</p>
+				<a href="/saft/signup" class="pointer mt-4 w-fit bg-black p-4 text-white">Jetzt anmelden</a>
+			</div>
 			<!-- <b>
 					Die Anmeldung für diese SAFT ist geschlossen. Falls du ganz spontan noch mit willst wende
 					dich dich an <a href="mailto:bettina.fritzsching@web.de">Bettina</a>.
 				</b> -->
 
-			<div class="mt-4 w-fit bg-gray-500 p-4 text-white">Anmeldung ab Mitte April</div>
+			<!-- <div class="mt-4 w-fit bg-gray-500 p-4 text-white">Anmeldung ab Mitte April</div> -->
 		</Saos>
 
 		<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
@@ -52,15 +54,16 @@
 				</div>
 				<div class="flex items-center justify-end gap-2">
 					<Fa class="text-primary" icon={faCoins} />
-					Preis: ca. 40 €
+					Preis: 40 € (35€ für Freitag bis Sonntag)
 				</div>
 				<p>
-					Die Nächste SAFT wird nicht, wie bisher üblich in Mühlhausen stattfinden. Wir werden ca.
-					1,5 Stunden (mit der Bahn) von Karlsruhe entfernt sein und der Beitrag wird bei ca. 40€
-					liegen. Genaue Infos werden hier Anfang des nächsten Semesters folgen. Lass dir das nicht
-					entgehen und trag dir den Termin schon mal ein!
+					Herzliche Einladung zu unserer SAFT im Sommersemester 2025. Diese SAFT ist etwas
+					Besonderes, wir wollen gemeinsam campen und uns mit dem Thema “Zeuge sein” beschäftigen.
+					Vieles vom Programm liegt dabei in eurer Hand, seid also gespannt, was euch erwartet! Wer
+					mag, darf gerne an unserem Tech-Detox teilnehmen und das Handy daheim lassen. Ebenso
+					wollen wir (wenn möglich) ganz in der Gegenwart ankommen und ebenfalls auf Uhren
+					verzichten. Wir werden ca. 1,5 Stunden (mit der Bahn) von Karlsruhe entfernt sein.
 				</p>
-				<!-- TODO replace with actual location -->
 				<!-- <div class="flex justify-end gap-2">
 					<Fa class="text-primary mt-1 justify-self-end" icon={faLocationDot} />
 					Ort: Reichardtstraße 21,
@@ -98,11 +101,10 @@
 			</video>
 		</Saos>
 
-		<!-- <section class="py-12">
-			<h1 class="pb-0">Du bist dabei?</h1>
-			<h3 class="pb-6">Dann nichts wie los melde dich an!</h3>
+		<section class="py-12">
+			<h3 class="pb-6">Du bist dabei? Dann nichts wie los melde dich an!</h3>
 
 			<a href="/saft/signup" class="bg-black p-4 text-white">Hier geht's zur Anmeldung</a>
-		</section> -->
+		</section>
 	</div>
 </main>

@@ -57,11 +57,19 @@
 		'An/Abreise Option',
 		'An/Abreise Kommentar',
 		'Ticket',
-		'Gruppe',
+		// 'Gruppe',
 		'Bodenschläfer',
 		'Bemerkung',
 		'E-Mail-Adresse',
 		'Telefonnummer',
+		// SS25
+		'Schlafsack',
+		'Isomatte',
+		'Gaskocher mit Topf',
+		'Zelte',
+		'Anzahl Schlafsäcke zu verleihen',
+		'Anzahl Isomatten zu verleihen',
+		//
 		'Kuchen',
 		'Vegetarier',
 		'Allergien',
@@ -73,52 +81,55 @@
 	<h1>SAFT Anmeldungen</h1>
 
 	{#if data.list}
-		<div class="grid rounded-md bg-gray-200 p-4 lg:grid-cols-2">
+		<div class="card grid lg:grid-cols-2">
 			<h3 class="col-span-full">Übersicht über alle Anmeldungen</h3>
 			<div>
 				<div>
-					<bold class="font-bold">{data.list.length}</bold>
+					<b>{data.list.length}</b>
 					Anmeldungen gesamt
 				</div>
 				<div>
-					<bold class="font-bold">{data.takesBikeCount}</bold>
+					<b>{data.takesBikeCount}</b>
 					Fahrradfahrer
 				</div>
 				<div>
-					<bold class="font-bold">{data.takesOwnCount}</bold>
+					<b>{data.takesOwnCount}</b>
 					reisen selbständig an
 				</div>
-				<div>
-					<bold class="font-bold">{data.takesCarCount}</bold>
+				<!-- <div>
+					<b>{data.takesCarCount}</b>
 					Autofahrer (die Gepäck mitnehmen können)
-				</div>
-				<div>
+				</div> -->
+				<!-- <div>
 					<b>{data.landauCount}</b>
 					Landauer
+				</div> -->
+				<div>
+					<b>{data.takesTrainCount}</b>
+					Bahnfahrer, davon
+				</div>
+				<div class="pl-8">
+					<b>{data.hasDTicketCount}</b>
+					mit D-Ticket<br />
+					<b>{data.hasKVVCount}</b>
+					mit KVV-Bescheinigung<br />
+					<b>{data.hasKVVSemesterCount}</b>
+					mit KVV-Semesterticket
 				</div>
 			</div>
 			<div>
 				<div>
-					<bold class="font-bold">{data.takesTrainCount}</bold>
-					Bahnfahrer, davon
-				</div>
-				<div class="pl-8">
-					<bold class="font-bold">{data.hasDTicketCount}</bold>
-					mit D-Ticket<br />
-					<bold class="font-bold">{data.hasKVVCount}</bold>
-					mit KVV-Bescheinigung<br />
-					<bold class="font-bold">{data.hasKVVSemesterCount}</bold>
-					mit KVV-Semesterticket
-				</div>
-				<div>
-					<bold class="font-bold">{data.takesGroupCount}</bold>
-					Gruppenanreise aus Landau
+					<b>{data.pots}</b> Gaskocher mit Topf <br />
+					<b>{data.sleepingBagsMissing}</b> Personen, die keinen Schlafsack haben <br />
+					<b>{data.availableBags}</b> verfügbare Schlafsäcke <br />
+					<b>{data.sleepingPadsMissing}</b> Personen, die ne Iso brauchen <br />
+					<b>{data.availablePads}</b> verfügbare Isomatten <br />
 				</div>
 			</div>
 		</div>
 
 		<div class="flex flex-wrap items-center pt-6">
-			<bold class="pr-2 font-bold">Achtung!</bold>
+			<b class="pr-2">Achtung!</b>
 			Sollte dieses Symbol <Fa class="px-2 text-red-700" icon={faExclamationTriangle} /> neben dem Haken
 			angezeigt werden, dann wurde die Änderung nicht gespeichert!
 		</div>
@@ -163,14 +174,13 @@
 				<option value="unpaid">Unbezahlt</option>
 				<option value="bike">Fahrradfahrer</option>
 				<option value="train">Bahnfahrer</option>
-				<option value="landau">Landau Anreise</option>
 				<option value="floor_sleeper">Bodenschläfer</option>
 			</select>
 		</div>
 
 		<div class="flex overflow-auto">
 			<div
-				class="pad-childs grid grid-cols-[repeat(14,1fr)] divide-y-2 divide-y-reverse divide-x-reverse whitespace-nowrap"
+				class="pad-childs grid grid-cols-[repeat(19,1fr)] divide-y-2 divide-y-reverse divide-x-reverse whitespace-nowrap"
 			>
 				{#each columns as column}
 					<div><b>{column}</b></div>
@@ -202,8 +212,7 @@
 					<div>
 						{registration.ticket || ''}
 					</div>
-					<!-- TODO Can this if can be removed after WS24/25 SAFT -->
-					<div>{registration.group === 'Landau' ? 'Landau' : 'Karlsruhe'}</div>
+					<!-- <div>{registration.group === 'Landau' ? 'Landau' : 'Karlsruhe'}</div> -->
 					<div>{registration.would_sleep_on_floor ? 'Ja' : ''}</div>
 
 					<div class="w-72 whitespace-pre-wrap">
@@ -211,6 +220,15 @@
 					</div>
 					<div>{registration.email}</div>
 					<div>{registration.phonenumber}</div>
+
+					<!-- SS25 -->
+
+					<div>{registration.bag ? 'ja' : ''}</div>
+					<div>{registration.pad ? 'ja' : ''}</div>
+					<div>{registration.pot ? 'ja' : ''}</div>
+					<div>{registration.tents}</div>
+					<div>{registration.bag_count}</div>
+					<div>{registration.pad_count}</div>
 
 					<div>{registration.brings_cake ? 'Ja' : ''}</div>
 					<div>{registration.is_vegetarian ? 'Ja' : ''}</div>
