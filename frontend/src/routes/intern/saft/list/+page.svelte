@@ -54,6 +54,7 @@
 	const columns = [
 		'Bezahlt',
 		'Name',
+		'Geschlecht',
 		'An/Abreise Option',
 		'An/Abreise Kommentar',
 		'Ticket',
@@ -81,7 +82,7 @@
 	<h1>SAFT Anmeldungen</h1>
 
 	{#if data.list}
-		<div class="card grid lg:grid-cols-2">
+		<div class="card grid lg:grid-cols-3">
 			<h3 class="col-span-full">Übersicht über alle Anmeldungen</h3>
 			<div>
 				<div>
@@ -126,6 +127,18 @@
 					<b>{data.availablePads}</b> verfügbare Isomatten <br />
 				</div>
 			</div>
+			<div>
+				<div>
+					<bold class="font-bold">{data.isFemale}</bold>
+					Anzahl Frauen
+				</div>
+				<div>
+					<bold class="font-bold">{data.isMale}</bold>
+					Anzahl Männer
+				</div>
+			</div>
+
+			<!-- nochmal block mit Gender -->
 		</div>
 
 		<div class="flex flex-wrap items-center pt-6">
@@ -175,12 +188,14 @@
 				<option value="bike">Fahrradfahrer</option>
 				<option value="train">Bahnfahrer</option>
 				<option value="floor_sleeper">Bodenschläfer</option>
+				<option value="female">Frauen</option>
+				<option value="male">Männer</option>
 			</select>
 		</div>
 
 		<div class="flex overflow-auto">
 			<div
-				class="pad-childs grid grid-cols-[repeat(19,1fr)] divide-y-2 divide-y-reverse divide-x-reverse whitespace-nowrap"
+				class="pad-childs grid grid-cols-[repeat(20,1fr)] divide-y-2 divide-y-reverse divide-x-reverse whitespace-nowrap"
 			>
 				{#each columns as column}
 					<div><b>{column}</b></div>
@@ -202,6 +217,8 @@
 						{/if}
 					</div>
 					<div>{registration.name}</div>
+					<div>{registration.gender === 'male' ? 'm' : 'w'}</div>
+
 					<div class="flex items-center gap-2">
 						<Fa icon={_travelOptionIcon(registration.travel_option)} />
 						{_travelOption(registration.travel_option)}
