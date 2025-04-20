@@ -56,6 +56,9 @@
 		'Name',
 		'Geschlecht',
 		'An/Abreise Option',
+		// SS25
+		'Anreise Freitag',
+		//
 		'An/Abreise Kommentar',
 		'Ticket',
 		// 'Gruppe',
@@ -96,6 +99,10 @@
 				<div>
 					<b>{data.takesOwnCount}</b>
 					reisen selbständig an
+				</div>
+				<div>
+					<b>{data.comesFridayCount}</b>
+					reisen erst Freitag an
 				</div>
 				<!-- <div>
 					<b>{data.takesCarCount}</b>
@@ -195,7 +202,7 @@
 
 		<div class="flex overflow-auto">
 			<div
-				class="pad-childs grid grid-cols-[repeat(20,1fr)] divide-y-2 divide-y-reverse divide-x-reverse whitespace-nowrap"
+				class="pad-childs grid grid-cols-[repeat(21,1fr)] divide-y-2 divide-y-reverse divide-x-reverse whitespace-nowrap"
 			>
 				{#each columns as column}
 					<div><b>{column}</b></div>
@@ -223,6 +230,7 @@
 						<Fa icon={_travelOptionIcon(registration.travel_option)} />
 						{_travelOption(registration.travel_option)}
 					</div>
+					<div>{registration.comes_friday ? 'ja' : ''}</div>
 					<div class="w-72 whitespace-pre-wrap">
 						{registration.travel_comments || ''}
 					</div>
