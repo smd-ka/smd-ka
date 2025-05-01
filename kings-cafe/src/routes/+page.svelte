@@ -95,7 +95,7 @@
 			<div class="flex gap-4 max-md:flex-col">
 				<a
 					class="bg-primary fa px-4 py-2 text-2xl text-white no-underline hover:underline"
-					href="https://t.me/+Oj9DUv42zaE4NmNi"
+					href="https://t.me/+6ODUb5vjakQxNjcy"
 				>
 					<Fa icon={faChevronRight} />
 					Join our Telegram
