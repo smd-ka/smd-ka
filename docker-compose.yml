@@ -10,7 +10,7 @@ services:
       context: ./backend
       dockerfile: ./Dockerfile
     volumes:
-      - ./backend/pb_data:/pb/pb_data
+      - pb_data:/pb/pb_data
       - ./backend/migrations:/pb/migrations
     networks:
       - default
@@ -107,3 +107,4 @@ volumes:
   nextcloud_aio_mastercontainer:
     # WARN: this volume’s name MUST be set to this
     name: nextcloud_aio_mastercontainer
+  pb_data:
