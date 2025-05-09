@@ -191,17 +191,19 @@
 					disabled={loading}
 				/>
 
-				<select
-					value={pb.authStore.model?.post_images}
-					name="post_images"
-					class="rounded-md border-2 py-3"
-					required
-				>
-					<option value="never">Bitte macht keine Bilder von mir.</option>
-					<option value="always ask"
-						>Ja ihr dürft Bilder von mir machen, fragt mich bitte bevor ihr Bilder veröffentlicht.
+				<span><b>Rechtliches:</b> Und wie sieht's mit Bildern von dir aus? </span>
+				<select class="rounded-md border-2 py-3" name="gdpr" required>
+					<option disabled selected value> -- Wähle eine Option -- </option>
+					<option value="yes"
+						>Ihr dürft Bilder von mir veröffentlichen. (Instagram, Webseite, Flyer, ...)</option
+					>
+					<option value="no_instagram"
+						>Ihr dürft Bilder von mir veröffentlichen, aber nicht auf Instagram
 					</option>
-					<option value="yes">Ja</option>
+					<option value="no_website"
+						>Ihr dürft Bilder von mir veröffentlichen, aber nicht auf der Webseite
+					</option>
+					<option value="never">Bitte veröffentlicht keine Bilder von mir</option>
 				</select>
 
 				<InputCheckbox
