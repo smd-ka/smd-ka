@@ -4,22 +4,27 @@
 
 <main class="main">
 	<section class="pad">
-		<h2 class="pt-8">Wohnen</h2>
-		<div class="flex">
-			<p>
-				<a class="float-right align-middle" href="https://kaheim.de">
-					<img src={kaheim} class="h-12 self-center" alt="kaheim logo" />
-				</a>
-				Auf der Suche nach einer Wohnung? Dann schau doch mal bei
-				<a href="https://kaheim.de">kaheim.de</a> vorbei! Hier findest du eine Zimmerbörse für
-				christliche WGs in Karlsruhe. Wenn du ein Zimmer suchst oder in deiner WG Zimmer frei hast
-				und Mitbewohner suchst, kannst du die Einträge dort durchschauen und/oder selbst einen
-				erstellen. Wir betreiben die Plattform selbst in Kooperation mit dem SfC (Studierende für
-				Christus). Du findest hier also alle Zimmerangebote, von denen wir wissen.
-				<br />
-				Darüber hinaus kannst du dich auch mal beim
-				<a href="https://www.sw-ka.de/de/wohnen/"> Studierendenwerk</a> umschauen.
-			</p>
-		</div>
+		<h1 class="text-center">Auf Wohnungssuche?</h1>
+		<p>
+			Du planst nach Karlsruhe zu ziehen und bist auf der Suche nach einer Wohnung? Wir wissen, dass
+			das nicht immer einfach ist. Hier haben wir dir ein paar Anlaufstellen zusammengestellt, die
+			dir bei deiner Suche helfen können: <br />
+			Unter <a href="https://kaheim.de">kaheim.de</a>
+			findest du eine Zimmerbörse für christliche WGs in Karlsruhe. Viele von uns haben gute Erfahrungen
+			mit den
+			<a href="https://abhrsh.de/">Wohnheimen der Katholischen Hochschulgemeinde</a> gemacht.
+			Darüber hinaus empfehlen wir dir auch beim
+			<a href="https://www.sw-ka.de/de/wohnen/">Studierendenwerk Karlsruhe</a> vorbei zu schauen. Auf
+			deren Webseite findest du auch noch einige Tipps und Tricks, wie man am besten eine Wohnung findet.
+			In Karlsruhe kommt man super mit dem Fahrrad oder den öffentlichen Verkehrsmitteln von A nach B.
+			Es lohnt sich also auch mal ein Blick über den Tellerrand hinauszuwerfen und sich in den umliegenden
+			Stadtteilen umzuschauen.
+		</p>
+	</section>
+
+	<section class="flex justify-center">
+		<a class=" rounded-md bg-gray-200 p-4 shadow-md" href="https://kaheim.de">
+			<img src={kaheim} class="h-16 self-center" alt="kaheim logo" />
+		</a>
 	</section>
 </main>
