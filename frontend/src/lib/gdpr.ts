@@ -1,6 +1,6 @@
 export type GDPR = 'yes' | 'no_instagram' | 'no_website' | 'never';
 
-export const convertGDPRtoString = (gdpr: GDPR): string => {
+export const convertGDPRtoString = (gdpr: GDPR | ''): string => {
 	switch (gdpr) {
 		case 'yes':
 			return 'Ihr dürft Bilder von mir veröffentlichen. (Instagram, Webseite, Flyer, ...)';
@@ -10,5 +10,7 @@ export const convertGDPRtoString = (gdpr: GDPR): string => {
 			return 'Ihr dürft Bilder von mir veröffentlichen, aber nicht auf der Webseite.';
 		case 'never':
 			return 'Ihr dürft keine Bilder von mir veröffentlichen.';
+		default:
+			return 'Unbekannt';
 	}
 };
