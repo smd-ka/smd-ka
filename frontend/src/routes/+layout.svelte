@@ -150,7 +150,7 @@
 				permission: SAFT_COORDINATOR
 			},
 			{
-				name: 'SAFT PRIT',
+				name: 'DSGVO PRIT',
 				url: '/intern/saft/prit',
 				permission: PRIT_RESPONSABLE
 			}
