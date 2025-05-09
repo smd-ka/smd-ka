@@ -26,21 +26,6 @@ api.{$DOMAIN_SHORT} {
     redir https://api.{$DOMAIN_LONG}{uri}
 }
 
-# PR Deployment
-
-preview.{$DOMAIN_LONG} {
-    reverse_proxy frontend-pr-{$PR_NUMBER}:3000 {
-        # X-Forwarded-For & X-Forwarded-Proto are set by default
-        header_up X-Real-IP {remote_host}
-    }
-}
-
-preview.api.{$DOMAIN_LONG} {
-    reverse_proxy backend-pr-{$PR_NUMBER}:8090 {
-        # X-Forwarded-For & X-Forwarded-Proto are set by default
-        header_up X-Real-IP {remote_host}
-    }
-}
 
 {$DOMAIN_KINGS_CAFE} {
    reverse_proxy kings_cafe:3000

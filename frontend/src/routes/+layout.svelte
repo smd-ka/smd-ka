@@ -34,8 +34,6 @@
 
 	dayjs.locale('de');
 
-	const PR_NUMBER: string = import.meta.env.VITE_PR_NUMBER;
-
 	let showMenu = false;
 	let src = getAvatarUrl();
 	let isValid = pb.authStore.isValid;
@@ -192,12 +190,6 @@
 			</a>
 			<!-- Pseudo Element to center logo -->
 			<div></div>
-
-			{#if PR_NUMBER}
-				<span class="text-white">
-					Preview for PR#{PR_NUMBER}
-				</span>
-			{/if}
 
 			<div class="flex items-center gap-4 text-xl text-white max-lg:hidden">
 				{#each tabs as tab}

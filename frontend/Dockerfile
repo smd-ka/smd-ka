@@ -8,7 +8,6 @@ ARG PR_NUMBER=""
 
 # Set environment variable (optional for runtime)
 ENV VITE_API_URL=$API_URL
-ENV VITE_PR_NUMBER=$PR_NUMBER
 
 # Copy package.json and install dependencies
 COPY ./package*.json ./
