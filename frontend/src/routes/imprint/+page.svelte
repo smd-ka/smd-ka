@@ -9,7 +9,7 @@
 		<bold class="font-bold">Angaben gemäß §5 TMG:</bold>
 		<p>Hochschul-SMD Karlsruhe c/o SMD-Zentralstelle</p>
 		<p>
-			Universitätsstraße 30-32 <br /> D-35037 Marburg
+			Schützenstraße 39 <br /> D-35039 Marburg
 		</p>
 		<p>E-Mail: karlsruhe@smd.org Webmaster: webmaster@smd-karlsruhe.de</p>
 	</div>
