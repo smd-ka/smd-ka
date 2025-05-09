@@ -11,6 +11,7 @@
 	import { PUBLIC_SEMESTER } from '$env/static/public';
 	import NumberInput from '$lib/components/forms/NumberInput.svelte';
 	import CheckboxInput from '$lib/components/forms/CheckboxInput.svelte';
+	import { convertGDPRtoString } from '$lib/gdpr';
 
 	const ticketValues = [
 		'Deutschlandticket/Jugendticket BW',
@@ -54,6 +55,16 @@
 			formData.set('group', 'Karlsruhe');
 		}
 
+		if (pb.authStore.isValid && !pb.authStore.model?.gdpr) {
+			// No GDPR set in profile
+			// update the GDPR in the profile (for future events)
+			try {
+				await updateGDPRforUser();
+			} catch (e: any) {
+				console.error(getErrorMessage(e));
+			}
+		}
+
 		try {
 			record = await pb.collection('saft').create(formData);
 			success = true;
@@ -64,6 +75,14 @@
 		}
 		loading = false;
 	};
+
+	async function updateGDPRforUser() {
+		let formData = new FormData();
+		formData.set('gdpr', (document.getElementById('gdpr') as HTMLSelectElement)?.value || '');
+		if (!pb.authStore.model?.id) return (loading = false);
+		await pb.collection('users').update(pb.authStore.model.id, formData);
+		await pb.collection('users').authRefresh();
+	}
 </script>
 
 <main class="container mx-auto py-24">
@@ -223,33 +242,44 @@
 				<NumberInput name="pad_count" label="Anzahl Isomatten, die ich verleihen könnte:"
 				></NumberInput>
 
-				<span><b>Rechtliches:</b> Und wie sieht's mit Bildern von dir aus? </span>
+				<div>
+					{#if loggedIn && pb.authStore.model?.gdpr}
+						<b>Rechtliches:</b>
+						<p>
+							Wir übernehmen folgende Präferenz bzgl. der Veröffentlichung von Bildern von dir aus
+							deinem Profil:
+							<b>
+								{convertGDPRtoString(pb.authStore.model?.gdpr)}
+							</b>
+						</p>
+						<!-- If no GDPR is set in profile this preference will stores for the future in the profile -->
+					{:else}
+						<label for="gdpr"><b>Rechtliches:</b> Und wie sieht's mit Bildern von dir aus? </label>
 
-				{#if loggedIn}
-					<b class="text-primary">Bitte gebe deine Präferenz bzgl. Bilder deinem Profil an!</b>
-				{:else}
-					<select class="rounded-md border-2 py-3" name="gdpr" required>
-						<option disabled selected value> -- Wähle eine Option -- </option>
-						<option value="yes"
-							>Ihr dürft Bilder von mir veröffentlichen. (Instagram, Webseite, Flyer, ...)</option
-						>
-						<option value="no_instagram"
-							>Ihr dürft Bilder von mir veröffentlichen, aber nicht auf Instagram
-						</option>
-						<option value="no_website"
-							>Ihr dürft Bilder von mir veröffentlichen, aber nicht auf der Webseite
-						</option>
-						<option value="never">Bitte veröffentlicht keine Bilder von mir</option>
-					</select>
-				{/if}
+						<select id="gdpr" class="rounded-md border-2 py-3" name="gdpr" required>
+							<option disabled selected value> -- Wähle eine Option -- </option>
+							<option value="yes"
+								>Ihr dürft Bilder von mir veröffentlichen. (Instagram, Webseite, Flyer, ...)</option
+							>
+							<option value="no_instagram"
+								>Ihr dürft Bilder von mir veröffentlichen, aber nicht auf Instagram
+							</option>
+							<option value="no_website"
+								>Ihr dürft Bilder von mir veröffentlichen, aber nicht auf der Webseite
+							</option>
+							<option value="never">Bitte veröffentlicht keine Bilder von mir</option>
+						</select>
 
-				<p class="text-sm font-bold">
-					Anmerkung des Public Relations und IT-Teams: Es werden generell nur Bilder veröffentlicht,
-					auf denen ihr gut ausseht, sollten Zweifel bestehen oder wir es als grenzwertig ansehen,
-					fragen wir nochmal im Einzelfall nach. Bitte habt Verständnis, dass wir dies nicht für
-					jedes Bild/Video machen wollen, da es unsere Arbeit dann ungemein erschwert. Danke
-					schonmal und ich freue mich auf fröhliche und lustige Bilder von der SAFT :P
-				</p>
+						<p class="text-sm font-bold">
+							Anmerkung des Public Relations und IT-Teams: Es werden generell nur Bilder
+							veröffentlicht, auf denen ihr gut ausseht, sollten Zweifel bestehen oder wir es als
+							grenzwertig ansehen, fragen wir nochmal im Einzelfall nach. Bitte habt Verständnis,
+							dass wir dies nicht für jedes Bild/Video machen wollen, da es unsere Arbeit dann
+							ungemein erschwert. Danke schonmal und ich freue mich auf fröhliche und lustige Bilder
+							von der SAFT :P
+						</p>
+					{/if}
+				</div>
 
 				<div class="flex flex-col">
 					<label for="comments">
