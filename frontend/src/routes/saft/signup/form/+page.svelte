@@ -270,13 +270,18 @@
 							<option value="never">Bitte veröffentlicht keine Bilder von mir</option>
 						</select>
 
-						<p class="text-sm font-bold">
-							Anmerkung des Public Relations und IT-Teams: Es werden generell nur Bilder
-							veröffentlicht, auf denen ihr gut ausseht, sollten Zweifel bestehen oder wir es als
-							grenzwertig ansehen, fragen wir nochmal im Einzelfall nach. Bitte habt Verständnis,
-							dass wir dies nicht für jedes Bild/Video machen wollen, da es unsere Arbeit dann
-							ungemein erschwert. Danke schonmal und ich freue mich auf fröhliche und lustige Bilder
-							von der SAFT :P
+						{#if loggedIn}
+							<b class="font-primary">
+								Deine Präferenz wird für weitere Events in deinem Profil gespeichert.
+							</b>
+						{/if}
+
+						<p class="text-sm">
+							<b>Anmerkung des Public Relations und IT-Teams:</b> Es werden generell nur Bilder veröffentlicht,
+							auf denen ihr gut ausseht, sollten Zweifel bestehen oder wir es als grenzwertig ansehen,
+							fragen wir nochmal im Einzelfall nach. Bitte habt Verständnis, dass wir dies nicht für
+							jedes Bild/Video machen wollen, da es unsere Arbeit dann ungemein erschwert. Danke schonmal
+							und ich freue mich auf fröhliche und lustige Bilder von der SAFT :P
 						</p>
 					{/if}
 				</div>
