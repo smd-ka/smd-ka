@@ -2,6 +2,7 @@ package main
 
 import (
 	"SMD-KA-Backend/contact"
+	_ "SMD-KA-Backend/migrations"
 	"SMD-KA-Backend/registration"
 	"SMD-KA-Backend/saft"
 	"log"
