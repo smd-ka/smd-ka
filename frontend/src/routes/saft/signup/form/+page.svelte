@@ -224,19 +224,25 @@
 				></NumberInput>
 
 				<span><b>Rechtliches:</b> Und wie sieht's mit Bildern von dir aus? </span>
-				<select class="rounded-md border-2 py-3" name="post_images" required>
-					<option disabled selected value> -- Wähle eine Option -- </option>
-					<option value="yes"
-						>Ihr dürft Bilder von mir veröffentlichen. (Instagram, Webseite, Flyer, ...)</option
-					>
-					<option value="no_instagram"
-						>Ihr dürft Bilder von mir veröffentlichen, aber nicht auf Instagram
-					</option>
-					<option value="no_website"
-						>Ihr dürft Bilder von mir veröffentlichen, aber nicht auf der Webseite
-					</option>
-					<option value="never">Bitte veröffentlicht keine Bilder von mir</option>
-				</select>
+
+				{#if loggedIn}
+					<b class="text-primary">Bitte gebe deine Präferenz bzgl. Bilder deinem Profil an!</b>
+				{:else}
+					<select class="rounded-md border-2 py-3" name="gdpr" required>
+						<option disabled selected value> -- Wähle eine Option -- </option>
+						<option value="yes"
+							>Ihr dürft Bilder von mir veröffentlichen. (Instagram, Webseite, Flyer, ...)</option
+						>
+						<option value="no_instagram"
+							>Ihr dürft Bilder von mir veröffentlichen, aber nicht auf Instagram
+						</option>
+						<option value="no_website"
+							>Ihr dürft Bilder von mir veröffentlichen, aber nicht auf der Webseite
+						</option>
+						<option value="never">Bitte veröffentlicht keine Bilder von mir</option>
+					</select>
+				{/if}
+
 				<p class="text-sm font-bold">
 					Anmerkung des Public Relations und IT-Teams: Es werden generell nur Bilder veröffentlicht,
 					auf denen ihr gut ausseht, sollten Zweifel bestehen oder wir es als grenzwertig ansehen,
