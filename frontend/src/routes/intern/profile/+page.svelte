@@ -192,7 +192,12 @@
 				/>
 
 				<span><b>Rechtliches:</b> Und wie sieht's mit Bildern von dir aus? </span>
-				<select class="rounded-md border-2 py-3" name="gdpr" required>
+				<select
+					value={pb.authStore.model?.gdpr}
+					class="rounded-md border-2 py-3"
+					name="gdpr"
+					required
+				>
 					<option disabled selected value> -- Wähle eine Option -- </option>
 					<option value="yes"
 						>Ihr dürft Bilder von mir veröffentlichen. (Instagram, Webseite, Flyer, ...)</option
