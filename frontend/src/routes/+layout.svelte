@@ -55,33 +55,31 @@
 	const tabs = [
 		{
 			name: 'Über uns',
-			baseUrl: '/about',
 			routes: [
 				{
 					name: 'Wer wir sind',
-					url: '/about/us'
+					url: '/us'
 				},
 				{
 					name: 'Was wir machen',
-					url: '/about/angebote'
+					url: '/angebote'
 				},
 				{
 					name: 'Mitarbeiten',
-					url: '/about/mitarbeiten'
+					url: '/mitarbeiten'
 				},
 				{
 					name: 'Kontakt',
-					url: '/about/kontakt'
+					url: '/kontakt'
 				},
 				{
 					name: 'Spenden',
-					url: '/about/spenden'
+					url: '/spenden'
 				}
 			]
 		},
 		{
 			name: 'Events',
-			baseUrl: '/events',
 			routes: [
 				{
 					name: 'Kalender',
