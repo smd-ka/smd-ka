@@ -85,33 +85,32 @@
 			routes: [
 				{
 					name: 'Kalender',
-					url: '/events/kalender'
+					url: '/kalender'
 				},
 				{
 					name: 'Semesterprogramm',
-					url: '/events/semesterprogramm'
+					url: '/semesterprogramm'
 				},
 				{
 					name: 'SAFT',
-					url: '/events/saft'
+					url: '/saft'
 				}
 			]
 		},
 		{
 			name: 'Neu hier?',
-			baseUrl: '/new',
 			routes: [
 				{
 					name: 'Erstsemester',
-					url: '/new/erstsemester'
+					url: '/erstsemester'
 				},
 				{
 					name: 'Über Karlsruhe',
-					url: '/new/karlsruhe'
+					url: '/karlsruhe'
 				},
 				{
 					name: 'Wohnen',
-					url: '/new/wohnen'
+					url: '/wohnen'
 				}
 			]
 		}
@@ -192,16 +191,20 @@
 			<div></div>
 
 			<div class="flex items-center gap-4 text-xl text-white max-lg:hidden">
+				<!-- <div>{$page.url.pathname}</div> -->
 				{#each tabs as tab}
 					<div>
 						<span
-							class="CategoryTitle peer {$page.url.pathname.includes(tab.baseUrl)
+							class="CategoryTitle peer {tab.routes.some(
+								(route) => route.url === $page.url.pathname
+							)
 								? 'text-primary'
 								: ''}"
 						>
 							{tab.name}
 							<Fa class="text-lg" icon={faChevronDown}></Fa>
 						</span>
+
 						<div class="CategoryLinkList">
 							{#each tab.routes as route}
 								<a href={route.url}>{route.name}</a>
