@@ -1,10 +1,8 @@
 <script lang="ts">
 	import kaheim from '$lib/assets/logos/kaheim.png';
-	import rightArrow from '$lib/assets/pages/about/kontakt/right-arrow-handdrawn.svg';
-	import turnRightArrow from '$lib/assets/pages/new/wohnen/turn-right-arrow.svg';
+	import rightArrow from '$lib/assets/icons/right-arrow-handdrawn.svg';
+	import turnRightArrow from '$lib/assets/icons/turn-right-arrow.svg';
 </script>
-
-<!-- TODO: move arrows into shared folder -->
 
 <main class="main">
 	<section class="pad">
