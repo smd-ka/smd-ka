@@ -13,7 +13,7 @@
 		faChevronRight,
 		faArrowUpRightFromSquare
 	} from '@fortawesome/free-solid-svg-icons';
-	import rightArrow from '$lib/assets/pages/about/kontakt/right-arrow-handdrawn.svg';
+	import rightArrow from '$lib/assets/icons/right-arrow-handdrawn.svg';
 	import iphoneInstagram from '$lib/assets/pages/about/kontakt/Iphone_Instagram.png';
 
 	let success = false;
