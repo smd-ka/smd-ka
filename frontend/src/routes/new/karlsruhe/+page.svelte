@@ -67,12 +67,13 @@
 			<div class="rounded-lg bg-slate-200">
 				<img alt="Epplesee" class="h-48 w-full rounded-t-lg object-cover" src={epplesee_img} />
 				<div class="p-2">
-					<h3>Am Epplesee</h3>
+					<h3>Am Baggersee</h3>
 					<p>
-						Erfrischung gefällig? Nur eine kleine Fahrradtour entfernt (ca. 10km vom Schloss) liegt
-						im Süden von Karlsruhe der Epplesee. Der See überzeugt mit einer großen Liegewiese und
-						einem schönen Strand. Tipp: Hier lohnt es sich besonders auszunutzen, dass du Student
-						bist und entsprechend unter der Woche bzw. vormittags zu gehen.
+						Erfrischung gefällig? Um Karlsruhe herum gibt es einige Baggerseen. Diese sind nur eine
+						kleine Fahrradtour entfernt (ca. 10-15km vom Schloss). Besonders gerne sind wir unter
+						andrem in Grötzingen, Weingarten und am Epplesee. Tipp: Es lohnt sich besonders
+						auszunutzen, dass du Student bist und entsprechend unter der Woche bzw. vormittags zu
+						gehen.
 					</p>
 				</div>
 			</div>
