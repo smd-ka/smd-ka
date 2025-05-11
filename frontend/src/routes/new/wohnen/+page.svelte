@@ -1,6 +1,10 @@
 <script lang="ts">
 	import kaheim from '$lib/assets/logos/kaheim.png';
+	import rightArrow from '$lib/assets/pages/about/kontakt/right-arrow-handdrawn.svg';
+	import turnRightArrow from '$lib/assets/pages/new/wohnen/turn-right-arrow.svg';
 </script>
+
+<!-- TODO: move arrows into shared folder -->
 
 <main class="main">
 	<section class="pad">
@@ -22,9 +26,17 @@
 		</p>
 	</section>
 
-	<section class="flex justify-center">
-		<a class=" rounded-md bg-gray-200 p-4 shadow-md" href="https://kaheim.de">
-			<img src={kaheim} class="h-16 self-center" alt="kaheim logo" />
-		</a>
+	<section class="flex items-center justify-center gap-4 max-md:flex-col-reverse md:gap-12">
+		<p class="font-caveat text-4xl">Jetzt christliche WG finden</p>
+
+		<div>
+			<img src={rightArrow} class="mb-8 h-40 self-center max-md:hidden" alt="right arrow" />
+		</div>
+		<div class="flex gap-4">
+			<img src={turnRightArrow} class="h-14 self-center md:hidden" alt="right arrow" />
+			<a class="flex h-fit rounded-md bg-gray-200 p-4 shadow-md" href="https://kaheim.de">
+				<img src={kaheim} class="h-14 self-center md:h-16" alt="kaheim logo" />
+			</a>
+		</div>
 	</section>
 </main>
