@@ -64,6 +64,7 @@
 			</div>
 		{/if}
 		<TextInput name="title" label="Titel*" disabled={loading} required />
+		<TextInput name="title_en" label="Titel (Englisch)" disabled={loading} required />
 
 		<select name="category" disabled={loading} class="w-full rounded-md border-2 py-3">
 			<option value="" disabled selected>Kategorie, falls vorhanden</option>
@@ -89,6 +90,7 @@
 
 		<div class="col-span-full">
 			<TextArea name="description" label="Beschreibung" disabled={loading} />
+			<TextArea name="description_en" label="Beschreibung (Englisch)" disabled={loading} />
 
 			<label for="image">
 				<div class="relative">
