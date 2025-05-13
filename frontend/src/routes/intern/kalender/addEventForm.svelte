@@ -64,6 +64,7 @@
 			</div>
 		{/if}
 		<TextInput name="title" label="Titel*" disabled={loading} required />
+		<TextInput name="title_en" label="Englischer Titel" disabled={loading} required />
 
 		<select name="category" disabled={loading} class="w-full rounded-md border-2 py-3">
 			<option value="" disabled selected>Kategorie, falls vorhanden</option>

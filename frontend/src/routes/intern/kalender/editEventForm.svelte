@@ -92,6 +92,14 @@
 	<div class="col-span-full">
 		<TextInput name="title" label="Titel*" value={shownEvent.title} disabled={loading} required />
 	</div>
+	<div class="col-span-full">
+		<TextInput
+			name="title_en"
+			label="Titel (Englisch)"
+			value={shownEvent.title_en}
+			disabled={loading}
+		/>
+	</div>
 
 	<div>
 		<DateTimeInput
@@ -137,6 +145,14 @@
 			value={shownEvent.description}
 			name="description"
 			label="Beschreibung"
+			rows={6}
+			disabled={loading}
+		/>
+
+		<TextArea
+			value={shownEvent.description_en}
+			name="description_en"
+			label="Beschreibung (Englisch)"
 			rows={6}
 			disabled={loading}
 		/>
