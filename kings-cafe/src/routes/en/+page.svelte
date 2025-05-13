@@ -6,6 +6,7 @@
 		faArrowUpRightFromSquare,
 		faChevronLeft,
 		faChevronRight,
+		faEnvelopeOpenText,
 		faMap
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
@@ -168,7 +169,7 @@
 					<div class="md:p-4">
 						<div class="h-full border border-gray-400 shadow-md">
 							<div class="bg-grey rounded-t-md p-4 py-12">
-								<h3 class="text-primary text-center">{event.title}</h3>
+								<h3 class="text-primary text-center">{event.title_en || event.title}</h3>
 								<div class="py-2 text-base font-bold text-white">
 									{getFullDate(event.start_date_time, event.end_date_time)}
 								</div>
@@ -189,7 +190,7 @@
 
 							<div class="whitespace-pre-line p-4">
 								<p>
-									{@html event.description}
+									{@html event.description_en || event.description}
 								</p>
 							</div>
 						</div>
