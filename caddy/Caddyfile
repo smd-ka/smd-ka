@@ -44,18 +44,13 @@ auth.{$DOMAIN_LONG} {
 
 # Nextcloud AiO
 
-admin.cloud.{$DOMAIN_LONG} {
-    reverse_proxy https://nextcloud-aio-mastercontainer:8080 {
-        transport http {
-            tls_insecure_skip_verify
-        }
-        # X-Forwarded-For & X-Forwarded-Proto are set by default
-        header_up X-Real-IP {remote_host}
-    }
-}
+# we cannot easily reach the Nextcloud mastercontainer
+# and really, we do not want to publish it anyway
 
 cloud.{$DOMAIN_LONG} {
-    reverse_proxy caddy-net.docker.internal:8081 {
+    # rely on Nextcloud keeping that name the same
+    # reaching docker host’s localhost is hard to do
+    reverse_proxy nextcloud-aio-apache:8081 {
         # X-Forwarded-For & X-Forwarded-Proto are set by default
         header_up X-Real-IP {remote_host}
     }
