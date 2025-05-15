@@ -2,6 +2,7 @@ package main
 
 import (
 	"SMD-KA-Backend/contact"
+	"SMD-KA-Backend/gdpr"
 	_ "SMD-KA-Backend/migrations"
 	"SMD-KA-Backend/registration"
 	"SMD-KA-Backend/saft"
@@ -33,6 +34,7 @@ func main() {
 	registration.SetupVerification(app)
 	saft.SaftEmails(app)
 	contact.ContactForm(app)
+	gdpr.UpdateGDPRRecord(app)
 
 	if err := app.Start(); err != nil {
 		log.Fatal(err)
