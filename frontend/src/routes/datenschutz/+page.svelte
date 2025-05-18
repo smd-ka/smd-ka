@@ -9,8 +9,8 @@
 		</p>
 		<ul class="border-l-primary border-l-2 px-4 py-2 text-xl">
 			<li>SMD e.V.</li>
-			<li>Universitätsstr. 30</li>
-			<li>35037 Marburg</li>
+			<li>Schützenstraße 39</li>
+			<li>35039 Marburg</li>
 		</ul>
 
 		<p>Unseren Datenschutzbeauftragten erreichts du unter:</p>

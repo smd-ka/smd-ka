@@ -107,7 +107,7 @@
 				>
 					<div class="underline-a flex flex-wrap pt-1 max-md:flex-col md:gap-8">
 						<a href="https://smd-karlsruhe.de/imprint">Impressum</a>
-						<a href="https://smd-karlsruhe.de/privacy">Datenschutz</a>
+						<a href="https://smd-karlsruhe.de/datenschutz">Datenschutz</a>
 						<a href="https://smd-karlsruhe.de/about/kontakt">Kontakt</a>
 						<a href="https://smd-karlsruhe.de/about/spenden">Spenden</a>
 						<a href="https://wiki.smd-karlsruhe.de">Wiki</a>
