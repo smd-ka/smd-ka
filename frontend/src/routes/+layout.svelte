@@ -150,7 +150,7 @@
 				permission: SAFT_COORDINATOR
 			},
 			{
-				name: 'SAFT PRIT',
+				name: 'DSGVO PRIT',
 				url: '/intern/saft/prit',
 				permission: PRIT_RESPONSABLE
 			}
@@ -372,7 +372,7 @@
 				>
 					<div class="underline-a flex flex-wrap pt-1 max-md:flex-col md:gap-8">
 						<a href="/imprint">Impressum</a>
-						<a href="/privacy">Datenschutz</a>
+						<a href="/datenschutz">Datenschutz</a>
 						<a href="/about/kontakt">Kontakt</a>
 						<a href="/about/spenden">Spenden</a>
 						<a href="https://wiki.smd-karlsruhe.de">Wiki</a>
