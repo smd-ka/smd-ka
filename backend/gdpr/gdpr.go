@@ -1,6 +1,7 @@
 package gdpr
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/pocketbase/pocketbase"
@@ -31,8 +32,9 @@ func UpdateGDPRRecord(app *pocketbase.PocketBase) {
 		app.Save(e.Record)
 
 		// Establish a connection to the previous record
-		// Offset is set to 1 since we want to get the last record before the one that was just created
-		records, err := app.FindRecordsByFilter("gdpr", "user = '"+userId.(string)+"'", "-created", 1, 1)
+		// Get the last record for the user with the same purpose
+		filter := fmt.Sprint("user = '", userId.(string), "' && purpose='", e.Record.GetString("purpose"), "'")
+		records, err := app.FindRecordsByFilter("gdpr", filter, "-created", 1, 1)
 		if err != nil {
 			return err
 		}
@@ -43,7 +45,6 @@ func UpdateGDPRRecord(app *pocketbase.PocketBase) {
 		}
 
 		if record != nil {
-			app.Logger().Debug(record.Id)
 			record.Set("withdrawal_date", time.Now())
 			record.Set("updated_record", e.Record.Id)
 			err := app.Save(record)
