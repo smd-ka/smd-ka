@@ -69,7 +69,7 @@
 		class=" mt-8 grid w-full max-w-[28rem] gap-4 p-8 md:rounded-md md:border"
 		on:submit|preventDefault={register}
 	>
-		<div class="flex justify-center text-8xl">
+		<div class="flex justify-center text-7xl">
 			<Fa icon={faRightToBracket} />
 		</div>
 
