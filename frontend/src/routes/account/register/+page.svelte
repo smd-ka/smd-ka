@@ -10,6 +10,7 @@
 	import PasswordInput from '$lib/components/forms/PasswordInput.svelte';
 	import GenderInput from '$lib/components/forms/GenderInput.svelte';
 	import DateInput from '$lib/components/forms/DateInput.svelte';
+	import TelephoneInputField from '$lib/components/forms/TelephoneInputField.svelte';
 
 	let loading = false;
 	let emailError: 'invalid' | 'taken' | undefined;
@@ -100,6 +101,14 @@
 		{:else if emailError === 'taken'}
 			<p class="px-3 text-sm text-red-500">Diese E-Mail-Adresse ist bereits vergeben.</p>
 		{/if}
+
+		<TelephoneInputField
+			id="phonenumber"
+			name="phonenumber"
+			label="Handynummer"
+			value={pb.authStore.model?.phonenumber}
+			disabled={loading}
+		/>
 
 		<GenderInput />
 
