@@ -9,6 +9,7 @@
 	import EmailInput from '$lib/components/forms/EmailInput.svelte';
 	import PasswordInput from '$lib/components/forms/PasswordInput.svelte';
 	import GenderInput from '$lib/components/forms/GenderInput.svelte';
+	import DateInput from '$lib/components/forms/DateInput.svelte';
 
 	let loading = false;
 	let emailError: 'invalid' | 'taken' | undefined;
@@ -67,7 +68,7 @@
 		class=" mt-8 grid w-full max-w-[28rem] gap-4 p-8 md:rounded-md md:border"
 		on:submit|preventDefault={register}
 	>
-		<div class="flex justify-center text-7xl">
+		<div class="flex justify-center text-8xl">
 			<Fa icon={faRightToBracket} />
 		</div>
 
@@ -85,6 +86,7 @@
 
 		<TextInput label="Name" name="name" disabled={loading} required />
 		<TextInput label="Nachname" name="surname" disabled={loading} required />
+		<DateInput id="birthday" name="birthday" label="Geburtstag" disabled={loading} required />
 		<EmailInput
 			label="E-Mail-Addresse"
 			name="email"
