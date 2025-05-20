@@ -9,6 +9,8 @@
 	import EmailInput from '$lib/components/forms/EmailInput.svelte';
 	import PasswordInput from '$lib/components/forms/PasswordInput.svelte';
 	import GenderInput from '$lib/components/forms/GenderInput.svelte';
+	import DateInput from '$lib/components/forms/DateInput.svelte';
+	import TelephoneInputField from '$lib/components/forms/TelephoneInputField.svelte';
 
 	let loading = false;
 	let emailError: 'invalid' | 'taken' | undefined;
@@ -85,6 +87,7 @@
 
 		<TextInput label="Name" name="name" disabled={loading} required />
 		<TextInput label="Nachname" name="surname" disabled={loading} required />
+		<DateInput id="birthday" name="birthday" label="Geburtstag" disabled={loading} required />
 		<EmailInput
 			label="E-Mail-Addresse"
 			name="email"
@@ -98,6 +101,14 @@
 		{:else if emailError === 'taken'}
 			<p class="px-3 text-sm text-red-500">Diese E-Mail-Adresse ist bereits vergeben.</p>
 		{/if}
+
+		<TelephoneInputField
+			id="phonenumber"
+			name="phonenumber"
+			label="Handynummer"
+			disabled={loading}
+			required
+		/>
 
 		<GenderInput />
 
