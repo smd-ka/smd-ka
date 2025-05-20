@@ -106,8 +106,8 @@
 			id="phonenumber"
 			name="phonenumber"
 			label="Handynummer"
-			value={pb.authStore.model?.phonenumber}
 			disabled={loading}
+			required
 		/>
 
 		<GenderInput />
