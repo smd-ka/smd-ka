@@ -1,17 +1,9 @@
 <script lang="ts">
-	import { getImageSrc } from '$lib/fetch_img';
 	import type { PageData } from './$types';
-	import placeholder from '$lib/assets/pages/events/kalender/placeholder.png';
 	import dayjs from 'dayjs';
+	import { _imgSrc } from './+page';
 
 	export let data: PageData;
-
-	function imgSrc(image: string, id: string, collectionId: string, collectionName: string) {
-		if (!image) {
-			return placeholder;
-		}
-		return getImageSrc(image, id, collectionId, collectionName);
-	}
 </script>
 
 <main class="container mx-auto">
@@ -32,7 +24,13 @@
 				<div class="grid gap-2 lg:grid-cols-2">
 					<a class="lg:order-last" href={'/events/kalender/' + event.id}>
 						<img
-							src={imgSrc(event.image, event.id, event.collectionId, event.collectionName)}
+							src={_imgSrc(
+								event.image,
+								event.id,
+								event.collectionId,
+								event.collectionName,
+								event.category
+							)}
 							class="w-full object-cover brightness-90 transition-all duration-200 hover:brightness-100"
 							alt={event.title}
 						/>
