@@ -95,7 +95,7 @@
 				{/if}
 
 				{#if data.event.speaker}
-					<div>Referent: {data.event.speaker}</div>
+					<div>Referent/Referentin: {data.event.speaker}</div>
 				{/if}
 			</div>
 		</section>
