@@ -67,7 +67,7 @@
 		<TextInput name="title" label="Titel*" disabled={loading} required />
 		<TextInput name="title_en" label="Titel (Englisch)" disabled={loading} required />
 
-		<CalendarCategorySelect />
+		<CalendarCategorySelect {loading} />
 
 		<div>
 			<DateTimeInput value={undefined} required name="start_date_time" disabled={loading}>
