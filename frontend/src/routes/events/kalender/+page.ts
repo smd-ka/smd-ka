@@ -1,6 +1,9 @@
 import { pb } from '$lib/pocketbase';
 import { calendarEvents } from '$lib/stores';
 import type { PageLoad } from './$types';
+import placeholder from '$lib/assets/pages/events/kalender/placeholder.png';
+import kingsCafePlaceholder from '$lib/assets/logos/kings-cafe.svg';
+import { getImageSrc } from '$lib/fetch_img';
 
 export const load: PageLoad = async () => {
 	try {
@@ -16,4 +19,21 @@ export const load: PageLoad = async () => {
 		console.error(error);
 		return { events: [] };
 	}
+};
+
+export const _imgSrc = (
+	image: string,
+	id: string,
+	collectionId: string,
+	collectionName: string,
+	category: string
+) => {
+	if (!image && category === 'kingscafe') {
+		// Use a specific placeholder for Kings Cafe if no image is provided
+		return kingsCafePlaceholder;
+	}
+	if (!image) {
+		return placeholder;
+	}
+	return getImageSrc(image, id, collectionId, collectionName);
 };

@@ -2,21 +2,13 @@
 	import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 	import type { PageData } from '../$types';
 	import Fa from 'svelte-fa/src/fa.svelte';
-	import { getImageSrc } from '$lib/fetch_img';
-	import placeholder from '$lib/assets/pages/events/kalender/placeholder.png';
 	import { _categoryToDisplayName } from './+page';
 	import dayjs from 'dayjs';
+	import { _imgSrc } from '../+page';
 
 	export let data: PageData;
 	const startDateTime = new Date(data.event.start_date_time);
 	const endDateTime = data.event.end_date_time ? new Date(data.event.end_date_time) : undefined;
-
-	function imgSrc(image: string, id: string, collectionId: string, collectionName: string) {
-		if (!image) {
-			return placeholder;
-		}
-		return getImageSrc(image, id, collectionId, collectionName);
-	}
 </script>
 
 {#if !data.event}
@@ -50,11 +42,12 @@
 
 		<img
 			alt="Foto für {data.event.title}"
-			src={imgSrc(
+			src={_imgSrc(
 				data.event.image,
 				data.event.id,
 				data.event.collectionId,
-				data.event.collectionName
+				data.event.collectionName,
+				data.event.category
 			)}
 		/>
 
