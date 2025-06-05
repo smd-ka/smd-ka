@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let category: string | undefined = undefined;
+	export let category: string | undefined = '';
 	export let loading = false;
 </script>
 
