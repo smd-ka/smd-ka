@@ -9,6 +9,7 @@
 	import UrlInput from '$lib/components/forms/UrlInput.svelte';
 	import { goto } from '$app/navigation';
 	import { _handleDates } from './+page';
+	import CalendarCategorySelect from './calendarCategorySelect.svelte';
 
 	let src = '';
 	let image: undefined | File = undefined;
@@ -66,13 +67,8 @@
 		<TextInput name="title" label="Titel*" disabled={loading} required />
 		<TextInput name="title_en" label="Titel (Englisch)" disabled={loading} required />
 
-		<select name="category" disabled={loading} class="w-full rounded-md border-2 py-3">
-			<option value="" disabled selected>Kategorie, falls vorhanden</option>
-			<option value="smd_abend">SMD-Abend</option>
-			<option value="erstsemesteraktion">Erstsemesteraktion</option>
-			<option value="kingscafe">Kings-Café</option>
-			<option value="MIT">MIT</option>
-		</select>
+		<CalendarCategorySelect />
+
 		<div>
 			<DateTimeInput value={undefined} required name="start_date_time" disabled={loading}>
 				Datum und Uhrzeit (Start)*

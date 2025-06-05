@@ -14,6 +14,7 @@
 		faTrash
 	} from '@fortawesome/free-solid-svg-icons';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
+	import CalendarCategorySelect from './calendarCategorySelect.svelte';
 	export let shownEvent;
 	export let loading = false;
 	export let updated = false;
@@ -127,20 +128,9 @@
 	/>
 	<TextInput value={shownEvent.speaker} name="speaker" label="Referent" />
 
-	<select
-		name="category"
-		value={shownEvent.category}
-		disabled={loading}
-		class="w-full rounded-md border-2 py-3"
-	>
-		<option value="" disabled selected>Kategorie, falls vorhanden</option>
-		<option value="smd_abend">SMD-Abend</option>
-		<option value="erstsemesteraktion">Erstsemesteraktion</option>
-		<option value="kingscafe">Kings-Café</option>
-		<option value="MIT">MIT</option>
-	</select>
+	<CalendarCategorySelect {loading} category={shownEvent.category} />
 
-	<div class="col-span-full">
+	<div class="col-span-full grid gap-4">
 		<TextArea
 			value={shownEvent.description}
 			name="description"
