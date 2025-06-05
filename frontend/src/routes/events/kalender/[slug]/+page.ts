@@ -23,6 +23,16 @@ export const _categoryToDisplayName = (category: string) => {
 	switch (category) {
 		case 'smd_abend':
 			return 'SMD-Abend';
+		case 'lecture_talk':
+			return 'Hörsaalvortrag';
+		case 'kingscafe':
+			return 'King’s Café';
+		case 'MIT':
+			return 'Mitarbeiter-Treffen';
+		case 'erstsemesteraktion':
+			return 'Erstsemesteraktion';
+		case 'german_bible_study':
+			return 'Deutschkurs mit der Bibel';
 		default:
 			return '';
 	}

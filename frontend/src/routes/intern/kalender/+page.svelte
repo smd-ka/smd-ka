@@ -83,6 +83,10 @@
 			<section
 				class="overflow-y-auto overflow-x-hidden rounded-md bg-white p-4 shadow-md lg:h-[82svh]"
 			>
+				<p class="rounded-md bg-gray-200 text-center">
+					Übersetzung wird aktuell nur auf der Kings-Café-Seite angezeigt! Übersetzung ist aber auch
+					für die Hauptseite geplant.
+				</p>
 				{#if !shownEvent}
 					<AddEventForm />
 				{:else}
