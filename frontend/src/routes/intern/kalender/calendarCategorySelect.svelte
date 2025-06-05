@@ -8,6 +8,7 @@
 	<option value="smd_abend">SMD-Abend</option>
 	<option value="erstsemesteraktion">Erstsemesteraktion</option>
 	<option value="kingscafe">Kings-Café</option>
+	<option value="german_bible_study">Deutschkurs mit der Bibel</option>
 	<option value="MIT">MIT</option>
 	<option value="lecture_talk">Hörsaalvortrag</option>
 	<option value="">sonstige/keine vorhanden</option>
