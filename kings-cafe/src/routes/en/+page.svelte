@@ -95,16 +95,7 @@
 			<h1 class="font-caveat text-center">Every Sunday 7 PM</h1>
 			<div class="flex gap-4 max-md:flex-col">
 				<a
-					class="bg-primary fa px-4 py-2 text-2xl text-white no-underline hover:underline"
-					href="https://t.me/+6ODUb5vjakQxNjcy"
-				>
-					<Fa icon={faChevronRight} />
-					Join our Telegram
-					<Fa icon={faTelegram} />
-				</a>
-
-				<a
-					class="fa bg-black px-4 py-2 text-lg text-white no-underline hover:underline md:text-2xl"
+					class="fa bg-primary px-4 py-2 text-lg text-white no-underline hover:underline md:text-2xl"
 					href="https://maps.app.goo.gl/enSfgfvXdX6LBd7F6"
 				>
 					<Fa icon={faChevronRight} />
