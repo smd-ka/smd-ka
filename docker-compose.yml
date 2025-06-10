@@ -42,8 +42,8 @@ services:
     environment:
       DOMAIN_LONG: ${DOMAIN_LONG:-smd-karlsruhe.de}
       DOMAIN_SHORT: ${DOMAIN_SHORT:-smd-ka.de}
-      PR_NUMBER: ${PR_NUMBER:-0}
       DOMAIN_KINGS_CAFE: ${DOMAIN_KINGS_CAFE:-kings-cafe.de}
+      DOMAIN_LECTURE_TALK: ${DOMAIN_LECTURE_TALK:-hoersaalvortrag-ka.de}
     ports:
       - 80:80
       - 443:443
