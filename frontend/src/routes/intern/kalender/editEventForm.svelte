@@ -5,7 +5,7 @@
 	import TextInput from '$lib/components/forms/TextInput.svelte';
 	import UrlInput from '$lib/components/forms/UrlInput.svelte';
 	import Fa from 'svelte-fa';
-	import { _handleDates } from './+page';
+	import { _handleDates, type CalendarEvent } from './+page';
 	import {
 		faCheckCircle,
 		faPen,
@@ -15,7 +15,8 @@
 	} from '@fortawesome/free-solid-svg-icons';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 	import CalendarCategorySelect from './calendarCategorySelect.svelte';
-	export let shownEvent;
+	import { _eventStore } from './+page';
+	export let shownEvent: CalendarEvent;
 	export let loading = false;
 	export let updated = false;
 
@@ -66,11 +67,15 @@
 
 		formData.append('image', image || shownEvent?.image);
 		try {
-			const record = await pb.collection('calendar').update(shownEvent.id, formData);
+			const record = await pb.collection('calendar').update<CalendarEvent>(shownEvent.id, formData);
 			updated = true;
+			_eventStore.update((events) =>
+				events.map((event) => (event.id === record.id ? record : event))
+			);
 		} catch (err) {
 			error = err;
 		}
+
 		loading = false;
 	}
 

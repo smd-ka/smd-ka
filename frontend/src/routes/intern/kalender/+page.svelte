@@ -6,18 +6,21 @@
 	import AddEventForm from './addEventForm.svelte';
 	import EditEventForm from './editEventForm.svelte';
 	import dayjs from 'dayjs';
+	import { _eventStore, type CalendarEvent } from './+page';
 
-	export let data: PageData;
-
-	let shownEvent = undefined;
+	let shownEvent: CalendarEvent | undefined = undefined;
 	let loading = false;
 	let updated = false;
 
-	onMount(() => {
-		if (data.events.length > 0) {
-			shownEvent = data.events[0];
-		}
-	});
+	// onMount(() => {
+	// 	_eventStore.subscribe((events) => {
+	// 		if (events.length === 0) {
+	// 			shownEvent = undefined;
+	// 			return;
+	// 		}
+	// 		shownEvent = events[0]; // Set the first event as the shown event by default
+	// 	});
+	// });
 
 	const getDateString = (startDateString: string, endDateString: string) => {
 		if (!endDateString) {
@@ -29,7 +32,7 @@
 		return `${dayjs(startDateString).format('DD.MM.YYYY HH:mm')} - ${dayjs(endDateString).format('DD.MM.YYYY HH:mm')}`;
 	};
 
-	function onChangeEventSelection(event) {
+	function onChangeEventSelection(event: CalendarEvent) {
 		shownEvent = event;
 		updated = false;
 	}
@@ -51,7 +54,7 @@
 	</button>
 </nav>
 
-{#if !data}
+{#if !$_eventStore}
 	<p>loadingSpinner</p>
 {:else}
 	<main class="container mx-auto px-4 pb-8">
@@ -60,7 +63,7 @@
 		<div class="grid gap-4 rounded-lg lg:grid-cols-[32rem_1fr]">
 			<section class="h-[82svh] overflow-y-auto overflow-x-hidden text-ellipsis max-lg:h-64">
 				<div class="mr-1 grid gap-2">
-					{#each data.events as event}
+					{#each $_eventStore as event}
 						<div class="rounded-md bg-white p-4 shadow-md">
 							<button
 								on:click={() => onChangeEventSelection(event)}
