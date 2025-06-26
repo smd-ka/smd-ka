@@ -1,16 +1,15 @@
-<main class="container mx-auto py-24 text-lg">
+<main class="container mx-auto py-6 text-lg lg:py-12">
 	<div class="container flex flex-col gap-6 px-4 xl:px-80">
-		<h1 class="text-4xl font-bold uppercase md:hidden">Datenschutz- <br />erklärung</h1>
-		<h1 class="break-words text-5xl font-bold uppercase max-md:hidden">Datenschutzerklärung</h1>
-		<h2 class="text-3xl font-bold uppercase">Wer ist verantwortlich?</h2>
+		<h1>Datenschutzerklärung</h1>
+		<h2>Wer ist verantwortlich?</h2>
 		<p>
 			Verantwortliche Stelle für diese Seite und damit für die Erhebung deiner Daten ist die
 			Studentenmission in Deutschland (SMD) e.V.:
 		</p>
 		<ul class="border-l-primary border-l-2 px-4 py-2 text-xl">
 			<li>SMD e.V.</li>
-			<li>Universitätsstr. 30</li>
-			<li>35037 Marburg</li>
+			<li>Schützenstraße 39</li>
+			<li>35039 Marburg</li>
 		</ul>
 
 		<p>Unseren Datenschutzbeauftragten erreichts du unter:</p>
@@ -19,7 +18,7 @@
 			<li><a class="text-primary" href="mailto:datenschutz@smd.org">datenschutz@smd.org</a></li>
 		</ul>
 
-		<h2 class="text-3xl font-bold uppercase">Was für Daten erhebt ihr und warum?</h2>
+		<h2>Was für Daten erhebt ihr und warum?</h2>
 		<p>
 			Diese Seite ist explizit so gebaut, dass für den Betrieb (fast) keine Daten von dir notwendig
 			sind. Es werden lediglich die üblichen Logdateien auf dem Server geschrieben. Diese
@@ -27,11 +26,11 @@
 		</p>
 
 		<ul class="list-disc pl-4">
-			<li class="">deine IP-Adresse</li>
-			<li class="">die Seite, die du aufrufst</li>
-			<li class="">die Uhrzeit, zu der du die Seite aufgerufen hast</li>
-			<li class="">von welcher Ursprungsseite du hierher geleitet wurdest</li>
-			<li class="">welchen Browser und welches Betriebssystem du verwendest</li>
+			<li>deine IP-Adresse</li>
+			<li>die Seite, die du aufrufst</li>
+			<li>die Uhrzeit, zu der du die Seite aufgerufen hast</li>
+			<li>von welcher Ursprungsseite du hierher geleitet wurdest</li>
+			<li>welchen Browser und welches Betriebssystem du verwendest</li>
 		</ul>
 
 		<p>
@@ -47,7 +46,7 @@
 			diesen Angriff auswerten zu können.
 		</p>
 
-		<h2 class="text-3xl font-bold uppercase">Was passiert mit meinen Daten?</h2>
+		<h2>Was passiert mit meinen Daten?</h2>
 		<p>
 			Deine Daten nutzen wir ausschließlich, um selbst etwas über die Nutzung unserer Webseite zu
 			lernen und z.B. festzustellen, welche unserer Artikel besonders interessant sind. <br />
@@ -57,34 +56,34 @@
 			<a href="https://www.netcup.de/kontakt/datenschutzerklaerung.php">netcup.de</a>
 		</p>
 
-		<h2 class="text-3xl font-bold uppercase">Wie lange speichert ihr meine Daten?</h2>
+		<h2>Wie lange speichert ihr meine Daten?</h2>
 		<p>
 			Deine Daten speichern wir für eine Länge von 12 Monaten. Die Speicherung erfolgt
 			ausschließlich auf Servern in Deutschland.
 		</p>
-		<h2 class="text-3xl font-bold uppercase">Welche Rechte habe ich?</h2>
+		<h2>Welche Rechte habe ich?</h2>
 		<p>Du hast bei uns natürlich alle Rechte, die dir laut DSG-EKD zustehen! Dazu gehören u.a.:</p>
 		<ul class="list-disc pl-4">
-			<li class="">
+			<li>
 				Recht auf Löschung: Auf Wunsch löschen wir jederzeit alle Daten, die wir von dir erhoben
 				haben
 			</li>
-			<li class="">
+			<li>
 				Recht auf Auskunft: Du kannst bei uns jederzeit erfragen, welche Daten wir von dir
 				gespeichert haben
 			</li>
-			<li class="">
+			<li>
 				Recht auf Berichtigung: Sollten die von uns erhobenen Daten fehlerhaft sein, kannst du uns
 				stets informieren und wir berichtigen die Fehler
 			</li>
-			<li class="">
+			<li>
 				Recht auf Übertragung: Wenn du möchtest, können wir dir die erhobenen Daten gerne übertragen
 			</li>
-			<li class="">
+			<li>
 				Recht auf Einschränkung in der Verarbeitung: Wenn du möchtest, können wir deine Daten gerne
 				von der Verarbeitung ausnehmen (in dem Fall würden wir sie einfach löschen)
 			</li>
-			<li class="">
+			<li>
 				Recht auf Beschwerde: Du kannst dich bei einer Aufsichtsbehörde über uns beschweren – wir
 				würden uns natürlich freuen, wenn du vorher auf uns zukommst!
 			</li>
@@ -92,7 +91,7 @@
 
 		<p>All diese Rechte stehen dir natürlich kostenlos zur Verfügung!</p>
 
-		<h3 class="text-2xl font-bold uppercase">An wen kann ich mich wenden?</h3>
+		<h2>An wen kann ich mich wenden?</h2>
 		<p>
 			Falls du noch Fragen hast, freut sich unser Datenschutzbeauftragter immer über Post! Du
 			erreichst ihn per E-Mail via <a class="text-primary" href="mailto:datenschutz@smd.org"

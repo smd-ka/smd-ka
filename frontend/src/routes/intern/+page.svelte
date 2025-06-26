@@ -108,7 +108,7 @@
 				<div class="flex justify-center">
 					<Fa icon={faCamera} class="text-secondary-text text-7xl" />
 				</div>
-				<h2 class="py-4 text-center text-lg md:text-2xl">PRIT SAFT</h2>
+				<h2 class="py-4 text-center text-lg md:text-2xl">DSGVO PRIT</h2>
 			</a>
 		{/if}
 

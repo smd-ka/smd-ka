@@ -3,6 +3,7 @@
 	import { _postImages } from '../list/+page';
 	import Fa from 'svelte-fa';
 	import { PUBLIC_SEMESTER } from '$env/static/public';
+	import { convertGDPRtoString } from '$lib/gdpr';
 
 	export let data;
 	let filteredList = data.list;
@@ -22,9 +23,10 @@
 	}
 </script>
 
-<main class="container mx-auto my-6 px-4">
+<main class="container mx-auto px-4 py-12">
 	<div class="grid xl:grid-cols-2">
-		<h1 class="xl:pb-0">Bildrechte SAFT {PUBLIC_SEMESTER}</h1>
+		<h1 class="max-xl:text-center xl:pb-0">Bildrechte {PUBLIC_SEMESTER}</h1>
+
 		<div class="relative flex gap-2 px-4 pb-4">
 			<Fa class="absolute left-8 top-3 text-2xl" icon={faSearch} />
 			<input
@@ -35,7 +37,8 @@
 			/>
 		</div>
 	</div>
-	<div class="grid grid-cols-2 divide-y-2 divide-y-reverse">
+
+	<div class="card grid grid-cols-2 divide-y-2 divide-y-reverse">
 		<div><b>Name</b></div>
 		<b>Bildrechte</b>
 		{#each filteredList as item}
@@ -43,7 +46,7 @@
 				{item.name}
 			</div>
 			<div>
-				{_postImages(item.post_images)}
+				{convertGDPRtoString(item.gdpr)}
 			</div>
 		{/each}
 	</div>
