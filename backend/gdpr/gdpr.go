@@ -13,6 +13,8 @@ func UpdateGDPRRecord(app *pocketbase.PocketBase) {
 
 	// TODO: must be same purpose!!
 	// Using after Create as the ID of the record is not available before
+	// TODO: Frontend Commit Hash
+
 	app.OnRecordAfterCreateSuccess("gdpr").BindFunc(func(e *core.RecordEvent) error {
 		userId := e.Record.Get("user")
 		if userId == nil {
@@ -51,6 +53,33 @@ func UpdateGDPRRecord(app *pocketbase.PocketBase) {
 			if err != nil {
 				return err
 			}
+		}
+
+		return e.Next()
+	})
+
+	// Prerequisite: The user has already agreed to the GDPR terms and conditions when the request is made to create a new user.
+	app.OnRecordAfterCreateSuccess("users").BindFunc(func(e *core.RecordEvent) error {
+
+		collection, err := app.FindCollectionByNameOrId("gdpr")
+		if err != nil {
+			return err
+		}
+
+		// Create a new GDPR record for the user
+		gdprRecord := core.NewRecord(collection)
+		gdprRecord.Set("user", e.Record.Id)
+		// TODO set frontend commit hash
+		gdprRecord.Set("purpose", "intern_data")
+		gdprRecord.Set("permission", "approved")
+		gdprRecord.Set("name", e.Record.GetString("name"))
+		gdprRecord.Set("surname", e.Record.GetString("surname"))
+
+		fmt.Printf("Creating GDPR record: %+v\n", gdprRecord)
+
+		err = app.Save(gdprRecord)
+		if err != nil {
+			return err
 		}
 
 		return e.Next()

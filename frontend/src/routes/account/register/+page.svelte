@@ -9,6 +9,7 @@
 	import EmailInput from '$lib/components/forms/EmailInput.svelte';
 	import PasswordInput from '$lib/components/forms/PasswordInput.svelte';
 	import GenderInput from '$lib/components/forms/GenderInput.svelte';
+	import CheckboxInput from '$lib/components/forms/CheckboxInput.svelte';
 
 	let loading = false;
 	let emailError: 'invalid' | 'taken' | undefined;
@@ -108,6 +109,14 @@
 		{:else if passwordError === 'too short'}
 			<p class="px-3 text-sm text-red-500">Das Passwort muss mindestens acht Zeichen lang sein.</p>
 		{/if}
+
+		<CheckboxInput disabled={loading} required>
+			Ich erkläre mich mit der
+			<a class="text-primary underline hover:no-underline" href="/datenschutz/intern">
+				Datenschutzerklärung (intern)
+			</a>
+			einverstanden.
+		</CheckboxInput>
 
 		<button
 			disabled={loading}

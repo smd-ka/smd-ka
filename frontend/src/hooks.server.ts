@@ -29,7 +29,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 	if (
 		!pb.authStore.model?.roles.includes(PRIT_RESPONSABLE) &&
-		event.url.pathname.startsWith('/intern/saft/prit')
+		event.url.pathname.startsWith('/intern/prit')
 	) {
 		redirect(303, '/intern');
 	}

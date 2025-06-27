@@ -9,5 +9,5 @@
 
 <div class="flex gap-2">
 	<input bind:checked {required} {id} {disabled} {name} type="checkbox" />
-	<label for={id}>{label}</label>
+	<label for={id}>{label}<slot /></label>
 </div>
