@@ -7,6 +7,7 @@
 	import Fa from 'svelte-fa';
 	import { _handleDates, type CalendarEvent } from './+page';
 	import {
+		faArrowUpRightFromSquare,
 		faCheckCircle,
 		faPen,
 		faPencil,
@@ -91,7 +92,12 @@
 	}
 </script>
 
-<h3>"{shownEvent.title}" bearbeiten:</h3>
+<div class="flex justify-between">
+	<h3>"{shownEvent.title}" bearbeiten:</h3>
+	<a class="fa" href={'/events/kalender/' + shownEvent.id}
+		>anzeigen <Fa icon={faArrowUpRightFromSquare} /></a
+	>
+</div>
 <div class="pb-4 text-gray-600">Mit * markierte Felder sind Pflichtfelder.</div>
 
 <form class="grid gap-4 md:grid-cols-2" id="form" on:submit|preventDefault={updateEvent}>

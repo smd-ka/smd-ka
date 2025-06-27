@@ -1,14 +1,11 @@
 <script lang="ts">
 	import Fa from 'svelte-fa';
-	import type { PageData } from '../$types';
 	import { faChevronRight, faPlus } from '@fortawesome/free-solid-svg-icons';
-	import { onMount } from 'svelte';
 	import AddEventForm from './addEventForm.svelte';
 	import EditEventForm from './editEventForm.svelte';
 	import dayjs from 'dayjs';
-	import { _eventStore, type CalendarEvent } from './+page';
+	import { _eventStore, _shownEvent, type CalendarEvent } from './+page';
 
-	let shownEvent: CalendarEvent | undefined = undefined;
 	let loading = false;
 	let updated = false;
 
@@ -23,7 +20,7 @@
 	};
 
 	function onChangeEventSelection(event: CalendarEvent) {
-		shownEvent = event;
+		_shownEvent.set(event);
 		updated = false;
 	}
 </script>
@@ -38,7 +35,10 @@
 			<a class="!no-underline" href="/intern/kalender">Kalender bearbeiten</a>
 		</li>
 	</ol>
-	<button on:click={() => (shownEvent = undefined)} class="bg-primary fa rounded-md p-2 text-white">
+	<button
+		on:click={() => _shownEvent.set(undefined)}
+		class="bg-primary fa rounded-md p-2 text-white"
+	>
 		<Fa icon={faPlus}></Fa>
 		<span class="max-md:hidden"> Event hinzufügen </span>
 	</button>
@@ -65,7 +65,7 @@
 								disabled={loading}
 								class="overflow-hidden text-ellipsis py-2 text-left"
 							>
-								<b class="{shownEvent?.id === event.id ? 'text-primary underline' : ''}  "
+								<b class="{$_shownEvent?.id === event.id ? 'text-primary underline' : ''}  "
 									>{event.title}
 								</b>
 								<div>
@@ -81,10 +81,10 @@
 			<section
 				class="overflow-y-auto overflow-x-hidden rounded-md bg-white p-4 shadow-md lg:h-[82svh]"
 			>
-				{#if !shownEvent}
+				{#if !$_shownEvent}
 					<AddEventForm />
 				{:else}
-					<EditEventForm {shownEvent} bind:loading bind:updated />
+					<EditEventForm shownEvent={$_shownEvent} bind:loading bind:updated />
 				{/if}
 			</section>
 		</div>

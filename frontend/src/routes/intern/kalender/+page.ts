@@ -23,6 +23,7 @@ export type CalendarEvent = Record<string, unknown> & {
 };
 
 export const _eventStore = writable<CalendarEvent[]>([]);
+export const _shownEvent = writable<CalendarEvent | undefined>(undefined);
 
 export const load: PageLoad = async () => {
 	try {
