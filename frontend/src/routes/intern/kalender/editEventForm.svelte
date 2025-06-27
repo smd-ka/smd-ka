@@ -26,12 +26,77 @@
 	let dateError: string = '';
 	let error = undefined;
 
+	// Change detection variables
+	let hasChanges = false;
+	let initialFormData = new Map();
+	let formElement: HTMLFormElement;
+	let initialImageSrc = '';
+
 	const showPreview = (event: Event) => {
 		const files = (event.target as HTMLInputElement).files;
 		if (files && files.length > 0) {
 			src = URL.createObjectURL(files[0]);
 			image = files[0];
+			hasChanges = true; // Mark as changed when image is selected
 		}
+	};
+
+	// Initialize form data tracking
+	const initializeFormTracking = () => {
+		if (!formElement) return;
+
+		const formData = new FormData(formElement);
+		initialFormData.clear();
+
+		// Store initial values
+		for (const [key, value] of formData.entries()) {
+			initialFormData.set(key, value);
+		}
+
+		// Store initial image state
+		initialImageSrc = src;
+
+		hasChanges = false;
+	};
+
+	// Check if form has changes
+	const checkForChanges = () => {
+		if (!formElement) return;
+
+		const currentFormData = new FormData(formElement);
+
+		// Check if image was changed
+		if (image || src !== initialImageSrc) {
+			hasChanges = true;
+			return;
+		}
+
+		// Check form fields
+		for (const [key, value] of currentFormData.entries()) {
+			const initialValue = initialFormData.get(key) || '';
+			if (value !== initialValue) {
+				hasChanges = true;
+				return;
+			}
+		}
+
+		// Check if any initial fields are missing
+		for (const [key, value] of initialFormData.entries()) {
+			if (!currentFormData.has(key) && value !== '') {
+				hasChanges = true;
+				return;
+			}
+		}
+
+		hasChanges = false;
+	};
+
+	// Handle form input changes
+	const handleInputChange = () => {
+		if (updated) {
+			updated = false; // Reset updated state when user makes changes
+		}
+		checkForChanges();
 	};
 
 	$: {
@@ -47,6 +112,11 @@
 		} else {
 			src = '';
 		}
+	}
+
+	// Re-initialize tracking when shownEvent changes
+	$: if (shownEvent && formElement) {
+		setTimeout(() => initializeFormTracking(), 0);
 	}
 
 	async function updateEvent() {
@@ -70,9 +140,14 @@
 		try {
 			const record = await pb.collection('calendar').update<CalendarEvent>(shownEvent.id, formData);
 			updated = true;
+			hasChanges = false; // Reset changes after successful update
+			shownEvent = record; // Update the shownEvent with the new data
 			_eventStore.update((events) =>
 				events.map((event) => (event.id === record.id ? record : event))
 			);
+			// Reset image state
+			image = undefined;
+			setTimeout(() => initializeFormTracking(), 0);
 		} catch (err) {
 			error = err;
 		}
@@ -92,15 +167,30 @@
 	}
 </script>
 
+<h3>"{shownEvent.title}" bearbeiten:</h3>
 <div class="flex justify-between">
-	<h3>"{shownEvent.title}" bearbeiten:</h3>
-	<a class="fa" href={'/events/kalender/' + shownEvent.id}
+	<div class="pb-4 text-gray-600">Mit * markierte Felder sind Pflichtfelder.</div>
+	<a class="fa" target="_blank" href={'/events/kalender/' + shownEvent.id}
 		>anzeigen <Fa icon={faArrowUpRightFromSquare} /></a
 	>
 </div>
-<div class="pb-4 text-gray-600">Mit * markierte Felder sind Pflichtfelder.</div>
 
-<form class="grid gap-4 md:grid-cols-2" id="form" on:submit|preventDefault={updateEvent}>
+<form
+	class="grid gap-4 md:grid-cols-2"
+	id="form"
+	bind:this={formElement}
+	on:submit|preventDefault={updateEvent}
+	on:input={handleInputChange}
+	on:change={handleInputChange}
+	use:initializeFormTracking
+>
+	{#if error}
+		<div class="col-span-full">
+			<h3>Es ist ein Fehler aufgetreten:</h3>
+			<pre>{error}</pre>
+		</div>
+	{/if}
+
 	<div class="col-span-full">
 		<TextInput name="title" label="Titel*" value={shownEvent.title} disabled={loading} required />
 	</div>
@@ -193,7 +283,7 @@
 			type="button"
 			on:click={deleteEvent}
 			disabled={loading}
-			class="col-span-full flex w-fit items-center justify-center gap-2 place-self-end bg-red-500 p-4 text-white"
+			class="col-span-full flex w-fit items-center justify-center gap-2 place-self-end bg-red-500 p-4 text-white disabled:cursor-not-allowed disabled:opacity-50"
 		>
 			<Fa icon={faTrash} />
 			Event löschen
@@ -204,10 +294,10 @@
 
 		<button
 			type="submit"
-			disabled={loading}
+			disabled={loading || (!hasChanges && !updated)}
 			class="col-span-full flex w-fit items-center justify-center gap-2 place-self-end {updated
 				? 'bg-green-700'
-				: 'bg-black'}  p-4 text-white"
+				: 'bg-black'} p-4 text-white disabled:cursor-not-allowed disabled:opacity-50"
 		>
 			{#if updated}
 				<Fa icon={faCheckCircle} />
