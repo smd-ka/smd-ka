@@ -12,16 +12,6 @@
 	let loading = false;
 	let updated = false;
 
-	// onMount(() => {
-	// 	_eventStore.subscribe((events) => {
-	// 		if (events.length === 0) {
-	// 			shownEvent = undefined;
-	// 			return;
-	// 		}
-	// 		shownEvent = events[0]; // Set the first event as the shown event by default
-	// 	});
-	// });
-
 	const getDateString = (startDateString: string, endDateString: string) => {
 		if (!endDateString) {
 			return dayjs(startDateString).format('DD.MM.YYYY HH:mm');
@@ -60,6 +50,11 @@
 	<main class="container mx-auto px-4 pb-8">
 		<div></div>
 
+		<p class="mb-2 rounded-md bg-gray-300 text-center">
+			Übersetzung wird aktuell nur auf der Kings-Café-Seite angezeigt! Übersetzung ist aber auch für
+			die Hauptseite geplant.
+		</p>
+
 		<div class="grid gap-4 rounded-lg lg:grid-cols-[32rem_1fr]">
 			<section class="h-[82svh] overflow-y-auto overflow-x-hidden text-ellipsis max-lg:h-64">
 				<div class="mr-1 grid gap-2">
@@ -86,10 +81,6 @@
 			<section
 				class="overflow-y-auto overflow-x-hidden rounded-md bg-white p-4 shadow-md lg:h-[82svh]"
 			>
-				<p class="rounded-md bg-gray-200 text-center">
-					Übersetzung wird aktuell nur auf der Kings-Café-Seite angezeigt! Übersetzung ist aber auch
-					für die Hauptseite geplant.
-				</p>
 				{#if !shownEvent}
 					<AddEventForm />
 				{:else}
