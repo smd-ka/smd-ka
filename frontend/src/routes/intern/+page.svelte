@@ -104,7 +104,7 @@
 		{/if}
 
 		{#if isPritTeam}
-			<a href="/intern/saft/prit" class="tile">
+			<a href="/intern/prit" class="tile">
 				<div class="flex justify-center">
 					<Fa icon={faCamera} class="text-secondary-text text-7xl" />
 				</div>

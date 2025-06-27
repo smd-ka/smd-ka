@@ -14,6 +14,9 @@
 
 	// assign default avatar if no avatar is set
 
+	// TODO: total make over
+	// TODO: use gdpr for gdpr preference instead!
+
 	let src = getAvatarUrl();
 
 	let loading = false;

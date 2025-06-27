@@ -151,7 +151,7 @@
 			},
 			{
 				name: 'DSGVO PRIT',
-				url: '/intern/saft/prit',
+				url: '/intern/prit',
 				permission: PRIT_RESPONSABLE
 			}
 		]
