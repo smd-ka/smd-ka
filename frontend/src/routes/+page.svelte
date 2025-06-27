@@ -88,7 +88,7 @@
 								<img
 									src={imgSrc(event.image, event.id, event.collectionId, event.collectionName)}
 									class="w-full rounded-sm object-cover transition-all duration-300 hover:cursor-pointer group-hover:scale-[101%]"
-									alt="Erstsemester Programm"
+									alt={event.title}
 								/>
 							</a>
 							<div class="peer flex-1 border-x-2 border-b-2 px-4 py-2">
@@ -99,7 +99,7 @@
 												event.end_date_time
 											).format('DD. MMMM')}
 										{:else}
-											{dayjs(event.start_date_time).format('dddd, DD. MM // HH:mm')}
+											{dayjs(event.start_date_time).format('dddd, DD.MM // HH:mm')}
 										{/if}
 									</div>
 									<a class="hover:text-primary hover:cursor-pointer" href={event.location_url}>
