@@ -58,6 +58,20 @@ func UpdateGDPRRecord(app *pocketbase.PocketBase) {
 		return e.Next()
 	})
 
+	app.OnRecordCreate("users").BindFunc(func(e *core.RecordEvent) error {
+		// Check if the user has already agreed to the GDPR terms and conditions
+		gdprValue := e.Record.GetBool("gdpr")
+		if !gdprValue {
+			// TODO: custom error response
+			return fmt.Errorf("GDPR terms and conditions must be accepted before creating a user")
+		}
+		// If the user has agreed, we can proceed with the creation
+		// Remove the gdpr field from the record to avoid storing it in the database
+		e.Record.Set("gdpr", nil)
+		return e.Next()
+
+	})
+
 	// Prerequisite: The user has already agreed to the GDPR terms and conditions when the request is made to create a new user.
 	app.OnRecordAfterCreateSuccess("users").BindFunc(func(e *core.RecordEvent) error {
 
