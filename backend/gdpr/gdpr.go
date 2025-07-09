@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/pocketbase/pocketbase"
+	"github.com/pocketbase/pocketbase/apis"
 	"github.com/pocketbase/pocketbase/core"
 )
 
@@ -63,7 +64,7 @@ func UpdateGDPRRecord(app *pocketbase.PocketBase) {
 		gdprValue := e.Record.GetBool("gdpr")
 		if !gdprValue {
 			// TODO: custom error response
-			return fmt.Errorf("GDPR terms and conditions must be accepted before creating a user")
+			return apis.NewForbiddenError("GDPR terms and conditions must be accepted before creating a user", nil)
 		}
 		// If the user has agreed, we can proceed with the creation
 		// Remove the gdpr field from the record to avoid storing it in the database
