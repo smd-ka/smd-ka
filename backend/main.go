@@ -10,7 +10,6 @@ import (
 	"os"
 	"strings"
 
-	"github.com/joho/godotenv"
 	"github.com/pocketbase/pocketbase"
 	"github.com/pocketbase/pocketbase/plugins/ghupdate"
 	"github.com/pocketbase/pocketbase/plugins/migratecmd"
@@ -18,13 +17,6 @@ import (
 
 func main() {
 	app := pocketbase.New()
-
-	// Load env file
-	// Note that app will not fail if no env is provided!
-	err := godotenv.Load()
-	if err != nil {
-		app.Logger().Error(err.Error())
-	}
 
 	// GitHub selfupdate
 	ghupdate.MustRegister(app, app.RootCmd, ghupdate.Config{})
@@ -47,5 +39,4 @@ func main() {
 	if err := app.Start(); err != nil {
 		log.Fatal(err)
 	}
-
 }
