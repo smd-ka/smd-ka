@@ -2,9 +2,15 @@
 
 Our backend application is built using [PocketBase](https://pocketbase.io/). We're using the possibility to use pocketbase as a framework and therefore wrote our own main.go and go modules.
 
-## E-Mail Templates  
+## Evnironment Variables
 
-All e-mail templates are located in the `templates` folder. The templates are written in [Go HTML Template](https://pkg.go.dev/html/template) format. The templates are located right by the module that uses them. 
+The backend uses the following environment variables:
+
+- `AUTHENTIK_BEARER_TOKEN`: The bearer token for authenticating with Authentik. This is required for the backend to communicate with Authentik services.
+
+## E-Mail Templates
+
+All e-mail templates are located in the `templates` folder. The templates are written in [Go HTML Template](https://pkg.go.dev/html/template) format. The templates are located right by the module that uses them.
 
 ## Setup
 
@@ -14,9 +20,9 @@ This guide explains how to use [PocketBase](https://pocketbase.io/) with Go to b
 
 ## Prerequisites
 
-* Go installed (version 1.18 or later)
-* PocketBase binary downloaded from [PocketBase releases](https://github.com/pocketbase/pocketbase/releases)
-* Basic knowledge of Go programming
+- Go installed (version 1.18 or later)
+- PocketBase binary downloaded from [PocketBase releases](https://github.com/pocketbase/pocketbase/releases)
+- Basic knowledge of Go programming
 
 ## Getting Started
 
@@ -24,9 +30,8 @@ This guide explains how to use [PocketBase](https://pocketbase.io/) with Go to b
 
 1. Download the PocketBase binary for your platform.
 2. Run the PocketBase server:
-    
 
-```bash
+````bash
     ./pocketbase serve
     ```
 
@@ -38,7 +43,7 @@ Add the PocketBase Go SDK to your project:
 
 ```bash
 go get github.com/pocketbase/pocketbase
-```
+````
 
 ### 3. Initialize PocketBase in Your Go Project
 
@@ -114,8 +119,8 @@ func main() {
 
 ## Additional Resources
 
-* [PocketBase Documentation](https://pocketbase.io/docs/)
-* [PocketBase GitHub Repository](https://github.com/pocketbase/pocketbase)
+- [PocketBase Documentation](https://pocketbase.io/docs/)
+- [PocketBase GitHub Repository](https://github.com/pocketbase/pocketbase)
 
 ## License
 
