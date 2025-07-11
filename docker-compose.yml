@@ -9,6 +9,8 @@ services:
     build:
       context: ./backend
       dockerfile: ./Dockerfile
+    environment:
+      AUTHENTIK_BEARER_TOKEN: ${AUTHENTIK_BEARER_TOKEN:-}
     volumes:
       - pb_data:/pb/pb_data
       - ./backend/migrations:/pb/migrations
