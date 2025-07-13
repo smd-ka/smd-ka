@@ -150,6 +150,10 @@
 				extern: true
 			},
 			{
+				name: 'Allergie-Liste',
+				url: '/intern/allergy-list'
+			},
+			{
 				name: 'SAFT Anmeldungen',
 				url: '/intern/saft/list',
 				permission: SAFT_COORDINATOR

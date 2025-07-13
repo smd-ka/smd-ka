@@ -14,6 +14,8 @@ export type User = {
 	field_of_study?: string;
 	start_of_studies?: Date | string;
 	rili?: boolean;
+	vegetarian?: boolean;
+	alumni?: boolean;
 };
 
 export type SendableUser = Omit<User, 'avatar'> & {
