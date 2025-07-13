@@ -9,10 +9,13 @@ export const load: PageLoad = async () => {
 			filter: 'allergies != "" && alumni != true',
 			sort: '+name'
 		});
-		console.log(records);
-		return { records };
+		const vegetarianRecords = await pb.collection('users').getFullList({
+			fields: 'vegetarian',
+			filter: 'vegetarian = true'
+		});
+		return { records, vegetarians: vegetarianRecords.length };
 	} catch (error) {
 		console.error(error);
-		return { records: [] };
+		return { records: [], vegetarians: 0 };
 	}
 };
