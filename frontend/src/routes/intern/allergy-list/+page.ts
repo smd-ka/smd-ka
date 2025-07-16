@@ -11,7 +11,7 @@ export const load: PageLoad = async () => {
 		});
 		const vegetarianRecords = await pb.collection('users').getFullList({
 			fields: 'vegetarian',
-			filter: 'vegetarian = true'
+			filter: 'vegetarian = true && alumni != true'
 		});
 		return { records, vegetarians: vegetarianRecords.length };
 	} catch (error) {
