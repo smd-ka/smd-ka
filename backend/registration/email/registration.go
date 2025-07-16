@@ -21,7 +21,7 @@ func SetupVerification(app *pocketbase.PocketBase) {
 		e.Message.Subject = "[SMD-KA] Willkommen"
 		// Note that file paths are relative to the main.go
 		html, err := registry.LoadFiles(
-			"registration/register_client.html",
+			"registration/email/register_client.html",
 		).Render(map[string]any{
 			"name": e.Record.Get("name"),
 		})
@@ -36,7 +36,7 @@ func SetupVerification(app *pocketbase.PocketBase) {
 			return err
 		}
 		html, err = registry.LoadFiles(
-			"registration/register_verification.html",
+			"registration/email/register_verification.html",
 		).Render(map[string]any{
 			"record": string(recordAsJson),
 			"link":   e.App.Settings().Meta.AppURL + "/_/#/auth/confirm-verification/" + e.Meta["token"].(string),
@@ -68,7 +68,7 @@ func SetupVerification(app *pocketbase.PocketBase) {
 		registry := template.NewRegistry()
 
 		html, err := registry.LoadFiles(
-			"registration/client_verified.html",
+			"registration/email/client_verified.html",
 		).Render(map[string]any{
 			"name": e.Record.Get("name"),
 		})
