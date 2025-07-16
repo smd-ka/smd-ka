@@ -10,7 +10,8 @@
 		faTShirt,
 		faCamera,
 		faArrowRight,
-		faCalendar
+		faCalendar,
+		faCloud
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
@@ -33,19 +34,32 @@
 					Du befindest dich im internen Bereich der SMD Karlsruhe. Hier findest du alle wichtigen
 					Informationen und Funktionen, die für dich als Mitglied der SMD Karlsruhe relevant sind.
 				</p>
+
 				<p>
-					Neu in der SMD? Dann schau doch mal bei unserem Onboarding vorbei. Dort findest du alle
+					<b>Die SMD Cloud ist da!</b>
+					Damit du dafür kein weiteres Konto benötigst, kannst du dich mit deiner E-Mail und Passwort
+					des internen Bereichs anmelden bei unserem Single Sign-On (SSO) System anmelden. (Dafür ist
+					auch der Login with OAuth Button hier gedacht.)
+					<br />
+					Also nix wie los! Die Cloud findest du
+					<a class="text-primary" href="https://cloud.smd-karlsruhe.de">hier</a>. <br />
+					Klicke dann auf "Login with Authentik" und verwende deine E-Mail und Passwort des internen
+					Bereichs, um dich anzumelden.
+				</p>
+
+				<!-- <p>
+						Neu in der SMD? Dann schau doch mal bei unserem Onboarding vorbei. Dort findest du alle
 					Infos, die du brauchst, um bei uns durchzustarten.
 					<br />
 					<a
 						class="bg-primary flex w-fit items-center gap-2 rounded-sm px-4 py-2 text-white"
 						href="/intern/onboarding"
-					>
+						>
 						<Fa icon={faArrowRight} />
 						Hier geht's zum Onboarding
 					</a>
-				</p>
-				<p>
+				</p> -->
+				<p class="text-red-500">
 					Bitte beachte, dass du vertrauliche Informationen nicht weitergeben darfst. Falls du
 					Fragen hast, wende dich bitte an das Public Relations and IT (PRIT) Team.
 				</p>
@@ -67,6 +81,11 @@
 		<a class="tile" href="https://wiki.smd-karlsruhe.de">
 			<Fa icon={faWikipediaW} class="text-7xl text-[#DB7444]" />
 			<h2 class="py-4 text-center text-lg md:text-2xl">Wiki</h2>
+		</a>
+
+		<a class="tile" href="https://cloud.smd-karlsruhe.de">
+			<Fa icon={faCloud} class="text-7xl text-[#0078D4]" />
+			<h2 class="py-4 text-center text-lg md:text-2xl">Cloud</h2>
 		</a>
 
 		<a class="tile" href="https://portal.smd.org/">

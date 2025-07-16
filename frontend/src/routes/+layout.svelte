@@ -135,6 +135,11 @@
 				extern: true
 			},
 			{
+				name: 'Cloud',
+				url: 'https://cloud.smd-karlsruhe.de',
+				extern: true
+			},
+			{
 				name: 'Mastersheet',
 				url: 'https://docs.google.com/spreadsheets/d/1elIUUx3LKdrvCmuGbXDzUgSeF2iMWq7bZRdVswGHLYM/edit?usp=sharing',
 				extern: true
