@@ -66,17 +66,15 @@
 			<!-- TODO: redesign to match front page (maybe component?) -->
 			{#each data.events as event}
 				<div>
-					<div class="relative text-white">
+					<div class="group text-white">
 						<img
 							src={getImageSrc(event.image, event.id, event.collectionId, event.collectionName)}
-							class="h-72 w-full object-cover brightness-50"
+							class="w-full rounded-sm object-cover transition-all duration-300 hover:cursor-pointer group-hover:scale-[101%]"
 							alt={event.title}
 						/>
-						<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-							<h3 class="">{event.title}</h3>
-						</div>
 					</div>
 					<div class="pt-8">
+						<h3>{event.title}</h3>
 						<span class="flex items-center gap-2 text-xl font-bold">
 							<Fa icon={faCalendarDays} />
 							{#if event.end_date_time && !dayjs(event.start_date_time).isSame(dayjs(event.end_date_time), 'day')}
