@@ -9,9 +9,9 @@
 		faTable,
 		faTShirt,
 		faCamera,
-		faArrowRight,
 		faCalendar,
-		faCloud
+		faCloud,
+		faBurger
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
@@ -95,10 +95,18 @@
 
 		<a class="tile" href="/intern/profile">
 			<div class="flex justify-center">
-				<Fa icon={faUser} class="-blue text-7xl" />
+				<Fa icon={faUser} class="text-7xl " />
 			</div>
 			<h2 class="py-4 text-center text-lg md:text-2xl">Dein Profil</h2>
 		</a>
+
+		<a class="tile" href="/intern/allergy-list">
+			<div class="flex justify-center">
+				<Fa icon={faBurger} class="text-7xl text-red-400" />
+			</div>
+			<h2 class="py-4 text-center text-lg md:text-2xl">Allergie-Liste</h2>
+		</a>
+
 		<!-- <a class="tile" href="/saft/signup">
 			<div class="flex justify-center">
 				<Fa icon={faGlassWater} class="text-corperate text-7xl" />

@@ -45,6 +45,7 @@
 			'hidden_in_addresslist',
 			formData.get('hidden_in_addresslist') === 'on' ? 'true' : 'false'
 		);
+		formData.set('alumni', formData.get('alumni') === 'on' ? 'true' : 'false');
 		formData.set('vegetarian', formData.get('vegetarian') === 'on' ? 'true' : 'false');
 		if (!pb.authStore.model?.id) return (loading = false);
 		await pb.collection('users').update(pb.authStore.model.id, formData);
@@ -217,6 +218,14 @@
 					name="hidden_in_addresslist"
 					checked={pb.authStore.model?.hidden_in_addresslist}
 					label="Ich möchte nicht in der Adressliste auftauchen"
+					disabled={loading}
+				/>
+
+				<InputCheckbox
+					id="alumni"
+					name="alumni"
+					checked={pb.authStore.model?.alumni}
+					label="Ich bin ehemaliger SMDler/in (Alumni)"
 					disabled={loading}
 				/>
 
