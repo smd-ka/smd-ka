@@ -20,11 +20,40 @@ func SetupAuthentik(app *pocketbase.PocketBase) {
 	// Handle login requests
 	// If user has not been registered in authentik, we create a new user
 	// Else we just let the request pass through
+	app.OnRecordAuthRefreshRequest().BindFunc(func(e *core.RecordAuthRefreshRequestEvent) error {
+
+		if e.Record.GetBool("authentik_user_created") || !e.Record.GetBool("verified") {
+			return e.Next()
+		}
+
+		// Load bearer token from env
+		bearerToken := os.Getenv("AUTHENTIK_BEARER_TOKEN")
+		if bearerToken == "" {
+			return errors.New("missing bearer token. Did you set it in the env?")
+		}
+
+		name := e.Record.GetString("name") + " " + e.Record.GetString("surname")
+		userId, err := createUser(e.Record.Email(), name, bearerToken)
+
+		if err != nil {
+			return err
+		}
+
+		app.Logger().Info(fmt.Sprintf("User created in Authentik with ID: %d", userId))
+
+		setPassword(userId, e.Record.GetString("password"), bearerToken)
+
+		// Mark user so that this logic does not execute again
+		e.Record.Set("authentik_user_created", true)
+		app.Save(e.Record)
+
+		return e.Next()
+
+	})
 
 	app.OnRecordAuthWithPasswordRequest().BindFunc(func(e *core.RecordAuthWithPasswordRequestEvent) error {
 
-		if e.Record.GetBool("authentik_user_created") {
-			app.Logger().Debug("User already created")
+		if e.Record.GetBool("authentik_user_created") || !e.Record.GetBool("verified") {
 			return e.Next()
 		}
 
@@ -60,9 +89,10 @@ func createUser(email string, name string, token string) (int64, error) {
 	method := "POST"
 
 	type Payload struct {
-		Username string `json:"username"`
-		Name     string `json:"name"`
-		Email    string `json:"email"`
+		Username string   `json:"username"`
+		Name     string   `json:"name"`
+		Email    string   `json:"email"`
+		Groups   []string `json:"groups"`
 	}
 
 	// We use the email address as the username in Authentik
@@ -70,6 +100,7 @@ func createUser(email string, name string, token string) (int64, error) {
 		Username: email,
 		Name:     name,
 		Email:    email,
+		Groups:   []string{"3433464444974bbd8caad0c006453134"}, // Add the user to the "SMD" group
 	}
 
 	jsonData, err := json.Marshal(data)
