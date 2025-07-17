@@ -8,7 +8,7 @@
 	import Fa from 'svelte-fa';
 	import UrlInput from '$lib/components/forms/UrlInput.svelte';
 	import { goto } from '$app/navigation';
-	import { _handleDates } from './+page';
+	import { _eventStore, _handleDates, _shownEvent, type CalendarEvent } from './+page';
 	import CalendarCategorySelect from './calendarCategorySelect.svelte';
 
 	let src = '';
@@ -44,8 +44,12 @@
 
 		formData.append('image', image || '');
 		try {
-			const record = await pb.collection('calendar').create(formData);
-			goto(`/events/kalender/${record.id}`);
+			const newEvent: CalendarEvent = await pb.collection('calendar').create(formData);
+			_eventStore.update((events) => {
+				// Add the new event to the store
+				return [...events, newEvent];
+			});
+			_shownEvent.set(newEvent);
 		} catch (err) {
 			error = err;
 		}
@@ -65,7 +69,7 @@
 			</div>
 		{/if}
 		<TextInput name="title" label="Titel*" disabled={loading} required />
-		<TextInput name="title_en" label="Titel (Englisch)" disabled={loading} required />
+		<TextInput name="title_en" label="Titel (Englisch)" disabled={loading} />
 
 		<CalendarCategorySelect {loading} />
 
