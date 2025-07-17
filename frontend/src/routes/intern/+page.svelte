@@ -42,7 +42,7 @@
 					auch der Login with OAuth Button hier gedacht.)
 					<br />
 					Also nix wie los! Die Cloud findest du
-					<a class="text-primary" href="https://cloud.smd-karlsruhe.de">hier</a>. <br />
+					<a class="text-primary" href="https://cloud.smd-karlsruhe.de/apps/user_oidc/login/1">hier</a>. <br />
 					Klicke dann auf "Login with Authentik" und verwende deine E-Mail und Passwort des internen
 					Bereichs, um dich anzumelden.
 				</p>
@@ -83,7 +83,7 @@
 			<h2 class="py-4 text-center text-lg md:text-2xl">Wiki</h2>
 		</a>
 
-		<a class="tile" href="https://cloud.smd-karlsruhe.de">
+		<a class="tile" href="https://cloud.smd-karlsruhe.de/apps/user_oidc/login/1">
 			<Fa icon={faCloud} class="text-7xl text-[#0078D4]" />
 			<h2 class="py-4 text-center text-lg md:text-2xl">Cloud</h2>
 		</a>

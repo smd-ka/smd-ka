@@ -136,7 +136,7 @@
 			},
 			{
 				name: 'Cloud',
-				url: 'https://cloud.smd-karlsruhe.de',
+				url: 'https://cloud.smd-karlsruhe.de/apps/user_oidc/login/1',
 				extern: true
 			},
 			{
