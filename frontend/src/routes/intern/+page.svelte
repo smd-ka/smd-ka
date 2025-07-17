@@ -42,9 +42,10 @@
 					auch der Login with OAuth Button hier gedacht.)
 					<br />
 					Also nix wie los! Die Cloud findest du
-					<a class="text-primary" href="https://cloud.smd-karlsruhe.de/apps/user_oidc/login/1">hier</a>. <br />
-					Klicke dann auf "Login with Authentik" und verwende deine E-Mail und Passwort des internen
-					Bereichs, um dich anzumelden.
+					<a class="text-primary" href="https://cloud.smd-karlsruhe.de/apps/user_oidc/login/1"
+						>hier</a
+					>. <br />
+					Verwende deine E-Mail und Passwort des internen Bereichs, um dich anzumelden.
 				</p>
 
 				<!-- <p>
