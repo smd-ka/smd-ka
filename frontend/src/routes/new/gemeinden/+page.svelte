@@ -4,6 +4,7 @@
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import Fa from 'svelte-fa';
 	import {
+		faArrowRight,
 		faArrowUpRightFromSquare,
 		faCalendar,
 		faCalendarDays,
@@ -15,20 +16,36 @@
 </script>
 
 <HeroShot height={'h-[70svh]'} imgSrc={church} bgPosition={'bg-[center_50%]'}></HeroShot>
-<main class="main px-4">
+<main class="container mx-auto px-4 py-12">
 	<h1 class="font-caveat text-primary text-center normal-case">
 		Die SMD ist das Bindeglied zwischen Campus und Gemeinde
 	</h1>
 
 	<p>
-		Die SMD versteht sich als Übergmeindlich und bl Wir sind teil der evangelischen Allianz
-		Karlsruhe. Diese umfasse sehr viele Gemeinden in Karlsruhe. Eine vollständige Liste findest du
-		<a href="#">hier</a>.
-		<br />
+		Die SMD-Karlsruhe ist überkonfessionell. Wir sind und wollen bewusst in Gemeinden verwurzelt
+		sein. Unser SMD-Generalsekretär, Genort Spies drückt es folgendermaßen aus: "Wenn SMD-Arbeit
+		nicht in die Gemeinde hineinführt, dann hat sie ihr Ziel verfehlt." Die SMD kann und will keine
+		Gemeinde und auch kein Gemeinde-Ersatz sein. Gemeinde ist immer mehr als etwa eine
+		Hochschulgruppe. Unsere Gruppe nimmt nur ausschnitthaft und zeitweise einige gemeindliche
+		Aufgaben wahr. Aus unserer Gruppe soll missionarisches, lebendiges Christsein hervorgehen, das
+		im Horizont des Reiches Gottes steht - eingebunden in den Leib Christi, verbunden mit
+		Ortsgemeinden, angewiesen auf deren Gebet und Unterstützung.
 		<br />
 
-		Hier haben wir dir eine Auflistung derer Gemeinden mitgebracht, in die auch Aktiv SMDler gehen.
-		Zu Beginn jedes Semesters gibt es Chruchhopping
+		<a class="text-primary fa" href="https://www.smd.org/smd/ueber-uns/smd-und-gemeinde">
+			<Fa icon={faArrowRight} />
+			Mehr zum Thema SMD und Gemeinde
+		</a>
+		<br />
+
+		Als SMD-Karlsruhe sind wir Teil der evangelischen Allianz und stehen im regen Austausch mit den
+		Gemeinden. Wir genießen es, dass unsere SMDler aus so vielen verschiedenen Gemeinden und
+		Hintergründen in unserer Gruppe zusammenkommen. Um dir die Suche nach einer Gemeinde etwas zu
+		erleichtern, falls du noch keine hast, haben wir für dich unten eine kleine Auflistung von
+		Gemeinden in die SMDler regelmäßig gehen. Die evangelische Allianz ist groß;
+		<a class="text-primary" href="https://evalka.de/lerne-uns-kennen">
+			eine volle Liste aller Gemeinden und Mitglieder findest du hier.
+		</a>
 	</p>
 </main>
 
