@@ -2,11 +2,7 @@
 	import turmberg_img from '$lib/assets/pages/new/turmberg.jpg';
 	import schlossgarten_img from '$lib/assets/pages/new/schlossgarten.jpg';
 	import epplesee_img from '$lib/assets/pages/new/epplesee.jpg';
-	import { faCoins, faLocationDot } from '@fortawesome/free-solid-svg-icons';
-	import Fa from 'svelte-fa';
 	import background from '$lib/assets/pages/events/semesterprogramm/bg.png';
-
-	let carousel;
 </script>
 
 <main class="main">
