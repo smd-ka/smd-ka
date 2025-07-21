@@ -112,6 +112,10 @@
 				{
 					name: 'Wohnen',
 					url: '/new/wohnen'
+				},
+				{
+					name: 'Gemeinden',
+					url: '/new/gemeinden'
 				}
 			]
 		}
