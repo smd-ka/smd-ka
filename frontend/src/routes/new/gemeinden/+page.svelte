@@ -6,12 +6,8 @@
 	import {
 		faArrowRight,
 		faArrowUpRightFromSquare,
-		faCalendar,
-		faCalendarDays,
 		faClock,
-		faClockFour,
-		faLocationDot,
-		faTimeline
+		faLocationDot
 	} from '@fortawesome/free-solid-svg-icons';
 </script>
 
@@ -22,10 +18,10 @@
 	</h1>
 
 	<p>
-		Die SMD-Karlsruhe ist überkonfessionell. Wir sind und wollen bewusst in Gemeinden verwurzelt
-		sein. Unser SMD-Generalsekretär, Genort Spies drückt es folgendermaßen aus: "Wenn SMD-Arbeit
-		nicht in die Gemeinde hineinführt, dann hat sie ihr Ziel verfehlt." Die SMD kann und will keine
-		Gemeinde und auch kein Gemeinde-Ersatz sein. Gemeinde ist immer mehr als etwa eine
+		Die SMD-Karlsruhe ist überkonfessionell. Wir wollen in Gemeinden verwurzelt sein und sind das
+		bewusst auch. Unser SMD-Generalsekretär Gernot Spies drückt es folgendermaßen aus: "Wenn
+		SMD-Arbeit nicht in die Gemeinde hineinführt, dann hat sie ihr Ziel verfehlt." Die SMD kann und
+		will keine Gemeinde und auch kein Gemeinde-Ersatz sein. Gemeinde ist immer mehr als etwa eine
 		Hochschulgruppe. Unsere Gruppe nimmt nur ausschnitthaft und zeitweise einige gemeindliche
 		Aufgaben wahr. Aus unserer Gruppe soll missionarisches, lebendiges Christsein hervorgehen, das
 		im Horizont des Reiches Gottes steht - eingebunden in den Leib Christi, verbunden mit
@@ -42,7 +38,7 @@
 		Gemeinden. Wir genießen es, dass unsere SMDler aus so vielen verschiedenen Gemeinden und
 		Hintergründen in unserer Gruppe zusammenkommen. Um dir die Suche nach einer Gemeinde etwas zu
 		erleichtern, falls du noch keine hast, haben wir für dich unten eine kleine Auflistung von
-		Gemeinden in die SMDler regelmäßig gehen. Die evangelische Allianz ist groß;
+		Gemeinden, in die SMDler regelmäßig gehen. Die evangelische Allianz ist groß;
 		<a class="text-primary" href="https://evalka.de/lerne-uns-kennen">
 			eine volle Liste aller Gemeinden und Mitglieder findest du hier.
 		</a>
@@ -67,13 +63,16 @@
 						<Fa icon={faArrowUpRightFromSquare} />
 					</a>
 				</h3>
-				<p class="fa"><Fa icon={faClock} /> Sonntag, 10:45 Uhr</p>
-				<p class="fa">
-					<Fa icon={faLocationDot} /> Innenstadt-West; Reinhold-Frank-Straße 44A
-				</p>
-				<p><strong>Teilnehmer:</strong> ca. 120 Personen</p>
-				<p>Davor gibt es um 10 Uhr immer gemeinsames Gebets und Lobpreis, sowie Abendmahl.</p>
+				<div class="grid grid-cols-[1.5rem_1fr] items-center">
+					<Fa icon={faClock} />
+					<p>Sonntag, 10:45 Uhr</p>
+					<Fa icon={faLocationDot} />
+					<p>Innenstadt-West; Reinhold-Frank-Straße 44A</p>
+				</div>
+				<p><strong>Besucher:</strong> ca. 120 Personen</p>
+				<p>Davor gibt es um 10:00 Uhr immer gemeinsames Gebet und Lobpreis, sowie Abendmahl.</p>
 			</div>
+
 			<!-- Freie evangelische Gemeinde (FeG) -->
 			<div class="church-tile">
 				<h3 class="mb-2 text-xl font-semibold">
@@ -83,11 +82,13 @@
 						<Fa icon={faArrowUpRightFromSquare} />
 					</a>
 				</h3>
-				<p class="fa"><Fa icon={faClock} /> Sonntag, 9:30 und 11:15 Uhr</p>
-				<p class="fa">
-					<Fa icon={faLocationDot} /> Nordstadt; Am Wald 2
-				</p>
-				<p><strong>Teilnehmer:</strong> ca. 150 Personen</p>
+				<div class="grid grid-cols-[1.5rem_1fr] items-center">
+					<Fa icon={faClock} />
+					<p>Sonntag, 9:30 Uhr und 11:15 Uhr</p>
+					<Fa icon={faLocationDot} />
+					<p>Nordstadt; Am Wald 2</p>
+				</div>
+				<p><strong>Besucher:</strong> ca. 150 Personen je Gottesdienst</p>
 				<p>In den Ferien findet nur ein Gottesdienst um 10:00 Uhr statt.</p>
 			</div>
 
@@ -99,12 +100,17 @@
 						<Fa icon={faArrowUpRightFromSquare} />
 					</a>
 				</h3>
-				<p class="fa"><Fa icon={faClock} /> Sonntag, 11:00 Uhr</p>
-				<p class="fa">
-					<Fa icon={faLocationDot} /> Innenstadt-West; Amalienstraße 77
+				<div class="grid grid-cols-[1.5rem_1fr] items-center">
+					<Fa icon={faClock} />
+					<p>Sonntag, 11:00 Uhr</p>
+					<Fa icon={faLocationDot} />
+					<p>Innenstadt-West; Amalienstraße 77</p>
+				</div>
+				<p class="fa"></p>
+				<p><strong>Besucher:</strong> ca. 50 Personen</p>
+				<p>
+					Alle zwei Wochen Kirchengottesdienst, in den anderen Wochen finden Kirchengruppen statt.
 				</p>
-				<p><strong>Teilnehmer:</strong> ca. 50 Personen</p>
-				<p>Alle zwei Wochen Kirchengottesdienst, in den anderen finden Kirchengruppen statt.</p>
 			</div>
 
 			<!-- International Christian Fellowship (ICF) -->
@@ -120,12 +126,17 @@
 						<Fa icon={faArrowUpRightFromSquare} />
 					</a>
 				</h3>
-				<p class="fa"><Fa icon={faClock} /> Sonntag, 9:30, 11:15 und 18:30 Uhr</p>
-				<p class="fa">
-					<Fa icon={faLocationDot} /> Grünwinkel; Amalienstraße 77
+				<div class="grid grid-cols-[1.5rem_1fr] items-center">
+					<Fa icon={faClock} />
+					<p>Sonntag, 9:30 Uhr, 11:15 Uhr und 18:30 Uhr</p>
+					<Fa icon={faLocationDot} />
+					<p>Grünwinkel; Griesbachstraße 10b</p>
+				</div>
+				<p><strong>Besucher:</strong> ca. 300 Personen je Gottesdienst</p>
+				<p>
+					Nach dem etwas jugendlicher gestalteten Abendgottesdienst trifft sich immer die
+					Young-Adults-Community.
 				</p>
-				<p><strong>Teilnehmer:</strong> ca. 300 Personen</p>
-				<p>Nach dem Abendgottesdienst trifft sich immer die Young-Adults-Community</p>
 			</div>
 
 			<!-- Landeskirchliche Gemeinschaft -->
@@ -140,11 +151,13 @@
 						<Fa icon={faArrowUpRightFromSquare} />
 					</a>
 				</h3>
-				<p class="fa"><Fa icon={faClock} /> Sonntag, 10 Uhr</p>
-				<p class="fa">
-					<Fa icon={faLocationDot} /> Südweststadt; Gartenstraße 6
-				</p>
-				<p><strong>Teilnehmer:</strong> ca. 50 Personen</p>
+				<div class="grid grid-cols-[1.5rem_1fr] items-center">
+					<Fa icon={faClock} />
+					<p>Sonntag, 10:00 Uhr</p>
+					<Fa icon={faLocationDot} />
+					<p>Südweststadt; Gartenstraße 6</p>
+				</div>
+				<p><strong>Besucher:</strong> ca. 50 Personen</p>
 			</div>
 
 			<!-- Treffpunkt Leben -->
@@ -156,15 +169,17 @@
 						target="_blank"
 						rel="noopener noreferrer"
 					>
-						Treffpunkt Leben
+						Treffpunkt Leben (TL)
 						<Fa icon={faArrowUpRightFromSquare} />
 					</a>
 				</h3>
-				<p class="fa"><Fa icon={faClock} /> Sonntag, 9:30 und 11:45 Uhr</p>
-				<p class="fa">
-					<Fa icon={faLocationDot} /> Grünwinkel; Herrmann-Leichtlin-Straße 15
-				</p>
-				<p><strong>Teilnehmer:</strong> ca. 200 Personen</p>
+				<div class="grid grid-cols-[1.5rem_1fr] items-center">
+					<Fa icon={faClock} />
+					<p>Sonntag, 9:30 Uhr und 11:45 Uhr</p>
+					<Fa icon={faLocationDot} />
+					<p>Grünwinkel; Herrmann-Leichtlin-Straße 15</p>
+				</div>
+				<p><strong>Besucher:</strong> ca. 200 Personen</p>
 			</div>
 		</div>
 	</div>
