@@ -232,7 +232,7 @@
 		<p class="px-4 py-6 text-center font-bold">
 			Nur eine kleine Auswahl; du wirst lange genug studieren, um dich durch Karlsruhe
 			durchzufuttern (und trinken). Es gibt noch so viel mehr Cafés und Restaurants! Pack dir ein
-			paar Freunde oder (Lehr)Bücher ein und probier sie aus
+			paar Freunde oder (Lehr)Bücher ein und probier sie aus!
 		</p>
 	</div>
 </section>
