@@ -152,7 +152,7 @@
 						href="https://www.lkg-karlsruhe.de/"
 						target="_blank"
 						rel="noopener noreferrer"
-						>Landeskirchliche Gemeinschaft (LKG)
+						>Landeskirchliche Gemeinschaft (LkG)
 						<Fa icon={faArrowUpRightFromSquare} />
 					</a>
 				</h3>
