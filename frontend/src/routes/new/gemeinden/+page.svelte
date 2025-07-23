@@ -75,7 +75,7 @@
 					<p>Innenstadt-West; Reinhold-Frank-Straße 44A</p>
 				</div>
 				<p><strong>Besucher:</strong> ca. 120 Personen</p>
-				<p>Davor gibt es um 10:00 Uhr immer gemeinsames Gebet und Lobpreis, sowie Abendmahl.</p>
+				<p>Davor gibt es um 9:45 Uhr immer gemeinsames Gebet und Lobpreis, sowie Abendmahl.</p>
 			</div>
 
 			<!-- Freie evangelische Gemeinde (FeG) -->
