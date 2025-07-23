@@ -2,11 +2,7 @@
 	import turmberg_img from '$lib/assets/pages/new/turmberg.jpg';
 	import schlossgarten_img from '$lib/assets/pages/new/schlossgarten.jpg';
 	import epplesee_img from '$lib/assets/pages/new/epplesee.jpg';
-	import { faCoins, faLocationDot } from '@fortawesome/free-solid-svg-icons';
-	import Fa from 'svelte-fa';
 	import background from '$lib/assets/pages/events/semesterprogramm/bg.png';
-
-	let carousel;
 </script>
 
 <main class="main">
@@ -235,8 +231,8 @@
 
 		<p class="px-4 py-6 text-center font-bold">
 			Nur eine kleine Auswahl; du wirst lange genug studieren, um dich durch Karlsruhe
-			durchzufuttern (und trinken). Es es gibt noch so viel mehr Cafés und Restaurants! Pack dir ein
-			paar Freunde oder (Lehr)Bücher ein und probier sie aus
+			durchzufuttern (und trinken). Es gibt noch so viel mehr Cafés und Restaurants! Pack dir ein
+			paar Freunde oder (Lehr)Bücher ein und probier sie aus!
 		</p>
 	</div>
 </section>
