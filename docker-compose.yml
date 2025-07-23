@@ -38,6 +38,15 @@ services:
       - default
     restart: always
 
+  dokuwiki:
+    container_name: dokuwiki
+    image: php:7-apache-bullseye
+    volumes:
+      - 'dokuwiki_config:/var/www/html'
+    networks:
+      - default
+    restart: always
+
   caddy:
     container_name: caddy
     image: docker.io/library/caddy:2.8

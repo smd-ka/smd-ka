@@ -37,6 +37,15 @@ api.{$DOMAIN_SHORT} {
    reverse_proxy kings_cafe:3000
 }
 
+# DokuWiki
+# TO BE CHANGED TO wiki.smd-karlsruhe.de
+dokuwiki.{$DOMAIN_LONG} {
+    reverse_proxy dokuwiki:80 {
+        # X-Forwarded-For & X-Forwarded-Proto are set by default
+        header_up X-Real-IP {remote_host}
+    }
+}
+
 
 # Authentik
 
