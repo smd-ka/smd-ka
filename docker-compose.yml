@@ -38,6 +38,18 @@ services:
       - default
     restart: always
 
+  dokuwiki:
+    image: dokuwiki/dokuwiki:stable
+    restart: always
+    environment:
+      PHP_TIMEZONE: Europe/Berlin
+      #PHP_MEMORYLIMIT: 256M  #default is 256M
+      #PHP_UPLOADLIMIT: 128M #default is 128M
+    volumes:
+      - dokuwiki_data:/storage
+    networks:
+      - default
+
   caddy:
     container_name: caddy
     image: docker.io/library/caddy:2.8
@@ -110,3 +122,4 @@ volumes:
     # WARN: this volume’s name MUST be set to this
     name: nextcloud_aio_mastercontainer
   pb_data:
+  dokuwiki_data:
