@@ -39,7 +39,7 @@ api.{$DOMAIN_SHORT} {
 
 # DokuWiki
 # TO BE CHANGED TO wiki.smd-karlsruhe.de
-dokuwiki.{$DOMAIN_LONG} {
+wiki.{$DOMAIN_LONG} {
     reverse_proxy dokuwiki:8080 {
         # X-Forwarded-For & X-Forwarded-Proto are set by default
         header_up X-Real-IP {remote_host}
