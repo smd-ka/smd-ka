@@ -2,8 +2,16 @@
 	import type { PageData } from './$types';
 	import dayjs from 'dayjs';
 	import { _imgSrc } from './+page';
+	import { faPen } from '@fortawesome/free-solid-svg-icons';
+	import Fa from 'svelte-fa';
+	import { pb } from '$lib/pocketbase';
+	import { _shownEvent } from '../../intern/kalender/+page';
 
 	export let data: PageData;
+
+	const isLoggedIn = () => {
+		return pb.authStore.isValid && pb.authStore.model?.verified;
+	};
 </script>
 
 <main class="container mx-auto">
@@ -36,13 +44,18 @@
 						/>
 					</a>
 					<div>
-						<div class="py-2 text-sm text-gray-700">
+						<div class="fa py-2 text-sm text-gray-700">
 							{#if event.end_date_time && !dayjs(event.start_date_time).isSame(dayjs(event.end_date_time), 'day')}
 								{dayjs(event.start_date_time).format('DD. MMMM')} - {dayjs(
 									event.end_date_time
 								).format('DD. MMMM')}
 							{:else}
 								{dayjs(event.start_date_time).format('DD. MMMM // HH:mm')}
+							{/if}
+							{#if isLoggedIn()}
+								<button on:click={_shownEvent.set(event)}>
+									<a href="/intern/kalender/"><Fa icon={faPen} /></a>
+								</button>
 							{/if}
 						</div>
 						<div class="lg:text-3xl">

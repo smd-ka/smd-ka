@@ -4,15 +4,17 @@ import type { PageLoad } from './$types';
 import placeholder from '$lib/assets/pages/events/kalender/placeholder.png';
 import kingsCafePlaceholder from '$lib/assets/logos/kings-cafe.svg';
 import { getImageSrc } from '$lib/fetch_img';
+import type { CalendarEvent } from '../../intern/kalender/+page';
 
 export const load: PageLoad = async () => {
 	try {
 		const now = new Date();
 		const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString();
-		const records = await pb.collection('calendar').getFullList({
+		const records = await pb.collection('calendar').getFullList<CalendarEvent>({
 			sort: '+start_date_time',
 			filter: `start_date_time >= "${startOfToday}" && category!='german_bible_study'`
 		});
+		// TODO: make this consistent with the intern calendar store!!
 		calendarEvents.set(records);
 		return { events: records };
 	} catch (error) {
