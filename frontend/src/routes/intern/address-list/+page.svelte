@@ -5,14 +5,17 @@
 	import defaultAvatar from '$lib/assets/user_default.png';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import {
+		faBirthdayCake,
 		faChevronRight,
 		faEnvelope,
 		faFileExport,
 		faHouse,
 		faPhone,
-		faSearch
+		faSearch,
+		faUserGroup
 	} from '@fortawesome/free-solid-svg-icons';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
+	import dayjs from 'dayjs';
 
 	export let data;
 	let records: User[];
@@ -233,7 +236,7 @@
 		{#each filteredRecords as record}
 			<a class="!no-underline" href={`/intern/address-list/person/${record.id}`}>
 				<div
-					class=" grid grid-cols-[3rem_1fr_1rem] items-center gap-4 rounded-md bg-slate-100 px-4 py-2 md:grid-cols-[3rem_2fr_3fr_1rem] md:text-lg"
+					class=" grid grid-cols-[3rem_1fr_1rem_1rem] items-center gap-4 rounded-md bg-slate-100 px-4 py-2 md:grid-cols-[3rem_3fr_2fr_2fr_1rem] md:text-lg"
 				>
 					<img
 						src={src(record.avatar, record.id, record.collectionId, record.collectionName)}
@@ -248,65 +251,53 @@
 						{#if record.alumni}
 							<span class="text-sm text-gray-500"> (Alumni) </span>
 						{/if}
+						{#if record.team}
+							<div class="fa">
+								<Fa class="max-md:mt-0.5" icon={faUserGroup} />
+								<span class="max-md:hidden">SMD-Bereich: </span>{record.team}
+							</div>
+						{/if}
+					</div>
+					<div class="max-md:hidden">
+						{#if record.birthday}
+							<div class="fa">
+								<Fa class="max-md:mt-0.5" icon={faBirthdayCake} />
+								{dayjs(record.birthday).format('DD. MMMM YYYY')}
+							</div>
+						{/if}
+						{#if record.address}
+							<div class="fa">
+								<Fa class="max-md:mt-0.5" icon={faHouse} />
+								{record.address}
+							</div>
+						{/if}
+					</div>
+					<div class="max-md:hidden">
 						{#if record.phonenumber}
-							<div class="flex items-center gap-2">
+							<div class="fa">
 								<Fa icon={faPhone} />
 								<a href={`tel:${record.phonenumber}`}>
 									{record.phonenumber}
 								</a>
 							</div>
 						{/if}
-					</div>
-					<div class="max-md:hidden">
-						<div class="flex items-center gap-2 self-start">
+						<div class="fa">
 							<Fa icon={faEnvelope} />
 							<a href={`mailto:${record.email}`}>
 								{record.email}
 							</a>
 						</div>
-						{#if record.address}
-							<div class="flex gap-2">
-								<Fa class="max-md:mt-0.5" icon={faHouse} />
-								{record.address}
-							</div>
+					</div>
+
+					<div class=" flex text-xl md:hidden">
+						{#if record.phonenumber}
+							<a href={`tel:${record.phonenumber}`}>
+								<Fa icon={faPhone} />
+							</a>
 						{/if}
 					</div>
 
 					<Fa icon={faChevronRight} />
-
-					<!-- <div class="max-xl:hidden">
-						{#if record.field_of_study}
-							<div class="flex gap-2 md:items-center">
-								<Fa class="max-md:mt-0.5" icon={faGraduationCap} />
-								{record.field_of_study}
-								{#if record.start_of_studies}
-									seit
-									{new Date(record.start_of_studies).toLocaleDateString()}
-								{/if}
-							</div>
-						{/if}
-						{#if record.birthday}
-							<div class="flex items-center gap-2">
-								<Fa icon={faBirthdayCake} />
-								{new Date(record.birthday).toLocaleDateString()}
-							</div>
-						{/if}
-					</div>
-
-					<div class="max-xl:hidden">
-						{#if record.team}
-							<div class="flex gap-2 md:items-center">
-								<Fa class="max-md:mt-0.5" icon={faUserGroup} />
-								SMD-Bereich: {record.team}
-							</div>
-						{/if}
-						{#if record.rili}
-							<div class="flex gap-2 md:items-center">
-								<Fa class="max-md:mt-0.5" icon={faSignature} />
-								Rili
-							</div>
-						{/if}
-					</div> -->
 				</div>
 			</a>
 		{/each}
