@@ -236,7 +236,7 @@
 		{#each filteredRecords as record}
 			<a class="!no-underline" href={`/intern/address-list/person/${record.id}`}>
 				<div
-					class=" grid grid-cols-[3rem_1fr_1rem_1rem] items-center gap-4 rounded-md bg-slate-100 px-4 py-2 md:grid-cols-[3rem_3fr_2fr_2fr_1rem] md:text-lg"
+					class=" grid grid-cols-[3rem_1fr_1rem_1rem] items-center gap-4 rounded-md bg-slate-100 px-4 py-2 md:grid-cols-[3rem_3fr_2fr_1rem] md:text-lg xl:grid-cols-[3rem_3fr_2fr_2fr_1rem]"
 				>
 					<img
 						src={src(record.avatar, record.id, record.collectionId, record.collectionName)}
@@ -272,7 +272,7 @@
 							</div>
 						{/if}
 					</div>
-					<div class="max-md:hidden">
+					<div class="max-xl:hidden">
 						{#if record.phonenumber}
 							<div class="fa">
 								<Fa icon={faPhone} />
