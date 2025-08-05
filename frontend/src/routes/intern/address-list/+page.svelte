@@ -245,7 +245,9 @@
 							{record.name}
 							{record.surname}
 						</span>
-
+						{#if record.alumni}
+							<span class="text-sm text-gray-500"> (Alumni) </span>
+						{/if}
 						{#if record.phonenumber}
 							<div class="flex items-center gap-2">
 								<Fa icon={faPhone} />
