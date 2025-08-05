@@ -14,32 +14,41 @@
 	} from '@fortawesome/free-solid-svg-icons';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 
+	export let data;
 	let records: User[];
 	let filteredRecords: User[];
 	let error = false;
 	let loading = true;
 
+	// Search and filter state
 	let search = '';
+	let showAlumni = false;
+	let showRili = false;
+	let excludeAlumni = true;
 
-	onMount(async () => {
-		try {
-			records = await pb.collection('users').getFullList({
-				sort: 'name',
-				filter: 'verified = true'
-			});
-			filteredRecords = records;
-			loading = false;
-		} catch (e) {
-			console.log(e);
-			error = true;
-			loading = false;
-		}
+	onMount(() => {
+		records = data.list;
+		// Apply initial filter (hide alumni by default)
+		handleSearch(search);
+		loading = false;
 	});
 
 	function handleSearch(searchTerm: string) {
 		if (!records) return;
 		searchTerm = searchTerm.toLocaleLowerCase();
-		filteredRecords = records.filter((record) => {
+
+		// First filter by alumni status
+		let baseRecords = showRili ? records.filter((record) => record.rili) : records;
+
+		if (!showAlumni && excludeAlumni) {
+			baseRecords = baseRecords.filter((record) => !record.alumni);
+		}
+		if (showAlumni && !excludeAlumni) {
+			baseRecords = baseRecords.filter((record) => record.alumni);
+		}
+
+		// Then filter by search term
+		filteredRecords = baseRecords.filter((record) => {
 			if (searchTerm === '') return true;
 			return (
 				record.name.toLowerCase().includes(searchTerm) ||
@@ -57,11 +66,16 @@
 		handleSearch(search);
 	}
 
+	$: showAlumni, handleSearch(search);
+	$: showRili, handleSearch(search);
+	$: excludeAlumni, handleSearch(search);
+
 	// Function to generate contact vCard data
 	// TODO: Move to util file
+	// Maybe only export shown contacts?
 	function generateVCF(records) {
 		return records
-			.map((record) => {
+			.map((record: User) => {
 				const notes = [];
 				if (record.field_of_study) {
 					notes.push(
@@ -159,6 +173,57 @@
 			type="text"
 		/>
 	</div>
+	<div class="px-4">
+		<div class="mb-4 flex flex-wrap gap-2">
+			<button
+				class="rounded-full border-2 px-4 py-2 transition-colors duration-150
+					{search === '' && !showAlumni && !showRili && !excludeAlumni
+					? 'border-sky-500 bg-sky-500 text-white '
+					: 'border-sky-500 bg-white text-sky-500 hover:bg-sky-100'}"
+				on:click={() => {
+					search = '';
+					showAlumni = false;
+					showRili = false;
+					excludeAlumni = false;
+				}}
+			>
+				Alle
+			</button>
+			<button
+				class="rounded-full border-2 px-4 py-2 transition-colors duration-150
+					{excludeAlumni
+					? 'border-	-500 bg-orange-500 text-white'
+					: 'bg-orange border-orange-500 text-orange-500 hover:bg-slate-100'}"
+				on:click={() => {
+					excludeAlumni = !excludeAlumni;
+				}}
+			>
+				SMDler und SMDlerinnen
+			</button>
+			<button
+				class="rounded-full border-2 px-4 py-2 transition-colors duration-150
+					{showAlumni
+					? 'border-slate-500 bg-slate-500 text-white'
+					: 'border-slate-500 bg-white text-slate-500 hover:bg-slate-100'}"
+				on:click={() => {
+					showAlumni = !showAlumni;
+				}}
+			>
+				Alumni
+			</button>
+			<button
+				class="rounded-full border-2 px-4 py-2 transition-colors duration-150
+					{showRili
+					? 'border-emerald-500 bg-emerald-500 text-white'
+					: 'border-emerald-500 bg-white text-emerald-500 hover:bg-purple-100'}"
+				on:click={() => {
+					showRili = !showRili;
+				}}
+			>
+				RiLi
+			</button>
+		</div>
+	</div>
 
 	{#if loading}
 		<img class="flex h-32 w-32 self-center" src={loadingSpinner} alt="loading" />
@@ -180,6 +245,7 @@
 							{record.name}
 							{record.surname}
 						</span>
+
 						{#if record.phonenumber}
 							<div class="flex items-center gap-2">
 								<Fa icon={faPhone} />
@@ -207,38 +273,38 @@
 					<Fa icon={faChevronRight} />
 
 					<!-- <div class="max-xl:hidden">
-							{#if record.field_of_study}
-								<div class="flex gap-2 md:items-center">
-									<Fa class="max-md:mt-0.5" icon={faGraduationCap} />
-									{record.field_of_study}
-									{#if record.start_of_studies}
-										seit
-										{new Date(record.start_of_studies).toLocaleDateString()}
-									{/if}
-								</div>
-							{/if}
-							{#if record.birthday}
-								<div class="flex items-center gap-2">
-									<Fa icon={faBirthdayCake} />
-									{new Date(record.birthday).toLocaleDateString()}
-								</div>
-							{/if}
-						</div>
+						{#if record.field_of_study}
+							<div class="flex gap-2 md:items-center">
+								<Fa class="max-md:mt-0.5" icon={faGraduationCap} />
+								{record.field_of_study}
+								{#if record.start_of_studies}
+									seit
+									{new Date(record.start_of_studies).toLocaleDateString()}
+								{/if}
+							</div>
+						{/if}
+						{#if record.birthday}
+							<div class="flex items-center gap-2">
+								<Fa icon={faBirthdayCake} />
+								{new Date(record.birthday).toLocaleDateString()}
+							</div>
+						{/if}
+					</div>
 
-						<div class="max-xl:hidden">
-							{#if record.team}
-								<div class="flex gap-2 md:items-center">
-									<Fa class="max-md:mt-0.5" icon={faUserGroup} />
-									SMD-Bereich: {record.team}
-								</div>
-							{/if}
-							{#if record.rili}
-								<div class="flex gap-2 md:items-center">
-									<Fa class="max-md:mt-0.5" icon={faSignature} />
-									Rili
-								</div>
-							{/if}
-						</div> -->
+					<div class="max-xl:hidden">
+						{#if record.team}
+							<div class="flex gap-2 md:items-center">
+								<Fa class="max-md:mt-0.5" icon={faUserGroup} />
+								SMD-Bereich: {record.team}
+							</div>
+						{/if}
+						{#if record.rili}
+							<div class="flex gap-2 md:items-center">
+								<Fa class="max-md:mt-0.5" icon={faSignature} />
+								Rili
+							</div>
+						{/if}
+					</div> -->
 				</div>
 			</a>
 		{/each}
