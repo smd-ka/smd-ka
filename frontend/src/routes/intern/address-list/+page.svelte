@@ -195,8 +195,8 @@
 			<button
 				class="rounded-full border-2 px-4 py-2 transition-colors duration-150
 					{excludeAlumni
-					? 'border-	-500 bg-orange-500 text-white'
-					: 'bg-orange border-orange-500 text-orange-500 hover:bg-slate-100'}"
+					? 'border-orange-500 bg-orange-500 text-white'
+					: 'bg-orange border-orange-500 text-orange-500 hover:bg-orange-100'}"
 				on:click={() => {
 					excludeAlumni = !excludeAlumni;
 				}}
@@ -218,7 +218,7 @@
 				class="rounded-full border-2 px-4 py-2 transition-colors duration-150
 					{showRili
 					? 'border-emerald-500 bg-emerald-500 text-white'
-					: 'border-emerald-500 bg-white text-emerald-500 hover:bg-purple-100'}"
+					: 'border-emerald-500 bg-white text-emerald-500 hover:bg-emerald-100'}"
 				on:click={() => {
 					showRili = !showRili;
 				}}
