@@ -5,10 +5,11 @@
 	import TextInput from '$lib/components/forms/TextInput.svelte';
 	import UrlInput from '$lib/components/forms/UrlInput.svelte';
 	import Fa from 'svelte-fa';
-	import { _handleDates, type CalendarEvent } from './+page';
+	import { _duplicateEvent, _handleDates, _shownEvent, type CalendarEvent } from './+page';
 	import {
 		faArrowUpRightFromSquare,
 		faCheckCircle,
+		faClone,
 		faPen,
 		faPencil,
 		faPlus,
@@ -159,20 +160,35 @@
 		loading = true;
 		try {
 			await pb.collection('calendar').delete(shownEvent.id);
-			data.events = data.events.filter((event) => event.id !== shownEvent.id);
+			_eventStore.update((events) => events.filter((event) => event.id !== shownEvent.id));
 		} catch (err) {
 			error = err;
 		}
 		loading = false;
+		_shownEvent.set(undefined);
 	}
 </script>
 
 <h3>"{shownEvent.title}" bearbeiten:</h3>
 <div class="flex justify-between">
 	<div class="pb-4 text-gray-600">Mit * markierte Felder sind Pflichtfelder.</div>
-	<a class="fa" target="_blank" href={'/events/kalender/' + shownEvent.id}
-		>anzeigen <Fa icon={faArrowUpRightFromSquare} /></a
-	>
+
+	<div class="flex items-center gap-4">
+		<button
+			class="fa"
+			on:click={() => {
+				_duplicateEvent.set(shownEvent);
+				_shownEvent.set(undefined);
+			}}
+		>
+			<span class="max-md:hidden"> Event duplizieren </span>
+			<Fa icon={faClone} />
+		</button>
+
+		<a class="fa" target="_blank" href={'/events/kalender/' + shownEvent.id}
+			>anzeigen <Fa icon={faArrowUpRightFromSquare} /></a
+		>
+	</div>
 </div>
 
 <form

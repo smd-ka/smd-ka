@@ -8,14 +8,41 @@
 	import Fa from 'svelte-fa';
 	import UrlInput from '$lib/components/forms/UrlInput.svelte';
 	import { goto } from '$app/navigation';
-	import { _eventStore, _handleDates, _shownEvent, type CalendarEvent } from './+page';
+	import {
+		_duplicateEvent,
+		_eventStore,
+		_handleDates,
+		_shownEvent,
+		type CalendarEvent
+	} from './+page';
 	import CalendarCategorySelect from './calendarCategorySelect.svelte';
+	import { onMount } from 'svelte';
 
 	let src = '';
 	let image: undefined | File = undefined;
 	let loading = false;
 	let dateError: string = '';
 	let error = undefined;
+
+	// Set the preview image from duplicateEvent when it changes
+	$: if ($_duplicateEvent?.image) {
+		src = pb.files.getUrl(
+			{
+				collectionId: $_duplicateEvent.collectionId,
+				collectionName: $_duplicateEvent.collectionName,
+				id: $_duplicateEvent.id
+			},
+			$_duplicateEvent.image
+		);
+		fetch(src)
+			.then((res) => res.blob())
+			.then((blob) => {
+				image = new File([blob], $_duplicateEvent.image, { type: blob.type });
+			});
+	} else if (!image) {
+		// Only clear src if no new image is selected
+		src = '';
+	}
 
 	const showPreview = (event: Event) => {
 		const files = (event.target as HTMLInputElement).files;
@@ -47,7 +74,9 @@
 			const newEvent: CalendarEvent = await pb.collection('calendar').create(formData);
 			_eventStore.update((events) => {
 				// Add the new event to the store
-				return [...events, newEvent];
+				return [...events, newEvent].sort((a, b) => {
+					return new Date(a.start_date_time).getTime() - new Date(b.start_date_time).getTime();
+				});
 			});
 			_shownEvent.set(newEvent);
 		} catch (err) {
@@ -58,7 +87,11 @@
 </script>
 
 <main class="container mx-auto px-4 pb-12">
-	<h3>Kalender Event hinzufügen</h3>
+	{#if $_duplicateEvent}
+		<h3>Event duplizieren</h3>
+	{:else}
+		<h3>Kalender Event hinzufügen</h3>
+	{/if}
 	<div class="pb-2">Mit * markierte Felder sind Pflichtfelder.</div>
 
 	<form class="grid gap-4 md:grid-cols-2" id="form" on:submit|preventDefault={createEvent}>
@@ -68,29 +101,64 @@
 				<pre>{error}</pre>
 			</div>
 		{/if}
-		<TextInput name="title" label="Titel*" disabled={loading} required />
-		<TextInput name="title_en" label="Titel (Englisch)" disabled={loading} />
+		<TextInput
+			value={$_duplicateEvent?.title}
+			name="title"
+			label="Titel*"
+			disabled={loading}
+			required
+		/>
+		<TextInput
+			value={$_duplicateEvent?.title_en}
+			name="title_en"
+			label="Titel (Englisch)"
+			disabled={loading}
+		/>
 
-		<CalendarCategorySelect {loading} />
+		<CalendarCategorySelect category={$_duplicateEvent?.category} {loading} />
 
 		<div>
-			<DateTimeInput value={undefined} required name="start_date_time" disabled={loading}>
+			<DateTimeInput
+				value={$_duplicateEvent?.start_date_time}
+				required
+				name="start_date_time"
+				disabled={loading}
+			>
 				Datum und Uhrzeit (Start)*
 			</DateTimeInput>
 			<b class="text-red-500">
 				{dateError}
 			</b>
 		</div>
-		<DateTimeInput value={undefined} required name="end_date_time" disabled={loading}
-			>Datum und Uhrzeit (Ende)*</DateTimeInput
+		<DateTimeInput
+			value={$_duplicateEvent?.end_date_time}
+			required
+			name="end_date_time"
+			disabled={loading}>Datum und Uhrzeit (Ende)*</DateTimeInput
 		>
-		<TextInput name="location" label="Ort" disabled={loading} />
-		<UrlInput name="location_url" label="Google Maps Link zum Ort" disabled={loading} />
-		<TextInput name="speaker" label="Referent" />
 
-		<div class="col-span-full">
-			<TextArea name="description" label="Beschreibung" disabled={loading} />
-			<TextArea name="description_en" label="Beschreibung (Englisch)" disabled={loading} />
+		<TextInput value={$_duplicateEvent?.location} name="location" label="Ort" disabled={loading} />
+		<UrlInput
+			value={$_duplicateEvent?.location_url}
+			name="location_url"
+			label="Google Maps Link zum Ort"
+			disabled={loading}
+		/>
+		<TextInput value={$_duplicateEvent?.speaker} name="speaker" label="Referent" />
+
+		<div class="col-span-full grid gap-4">
+			<TextArea
+				value={$_duplicateEvent?.description}
+				name="description"
+				label="Beschreibung"
+				disabled={loading}
+			/>
+			<TextArea
+				value={$_duplicateEvent?.description_en}
+				name="description_en"
+				label="Beschreibung (Englisch)"
+				disabled={loading}
+			/>
 
 			<label for="image">
 				<div class="relative">

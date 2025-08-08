@@ -4,7 +4,7 @@
 	import AddEventForm from './addEventForm.svelte';
 	import EditEventForm from './editEventForm.svelte';
 	import dayjs from 'dayjs';
-	import { _eventStore, _shownEvent, type CalendarEvent } from './+page';
+	import { _duplicateEvent, _eventStore, _shownEvent, type CalendarEvent } from './+page';
 
 	let loading = false;
 	let updated = false;
@@ -21,6 +21,7 @@
 
 	function onChangeEventSelection(event: CalendarEvent) {
 		_shownEvent.set(event);
+		_duplicateEvent.set(undefined);
 		updated = false;
 	}
 </script>
@@ -36,7 +37,11 @@
 		</li>
 	</ol>
 	<button
-		on:click={() => _shownEvent.set(undefined)}
+		on:click={() => {
+			_shownEvent.set(undefined);
+			_duplicateEvent.set(undefined);
+			return;
+		}}
 		class="bg-primary fa rounded-md p-2 text-white"
 	>
 		<Fa icon={faPlus}></Fa>
