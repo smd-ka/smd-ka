@@ -26,7 +26,7 @@
 		</p>
 	</section>
 
-	<section>
+	<section class="grid gap-8">
 		<div class="pad">
 			<h1>Angebote für neue Studierende</h1>
 
@@ -46,8 +46,6 @@
 				Wir freuen uns auf dich!
 			</p>
 
-			<h2 class="pt-12">Erstsemester-Aktionen</h2>
-
 			{#if data.events.length === 0}
 				<p>
 					Zu Beginn vom Wintersemester planen wir coole Aktionen für dich! Die sind super, um uns
@@ -58,6 +56,7 @@
 				</p>
 			{/if}
 		</div>
+
 		<div
 			class="grid gap-8 px-4 md:grid-cols-2 {data.events.length > 2
 				? ' xl:grid-cols-3'
@@ -66,17 +65,12 @@
 			<!-- TODO: redesign to match front page (maybe component?) -->
 			{#each data.events as event}
 				<div>
-					<div class="relative text-white">
-						<img
-							src={getImageSrc(event.image, event.id, event.collectionId, event.collectionName)}
-							class="h-72 w-full object-cover brightness-50"
-							alt={event.title}
-						/>
-						<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-							<h3 class="">{event.title}</h3>
-						</div>
-					</div>
+					<img
+						src={getImageSrc(event.image, event.id, event.collectionId, event.collectionName)}
+						alt={event.title}
+					/>
 					<div class="pt-8">
+						<h3>{event.title}</h3>
 						<span class="flex items-center gap-2 text-xl font-bold">
 							<Fa icon={faCalendarDays} />
 							{#if event.end_date_time && !dayjs(event.start_date_time).isSame(dayjs(event.end_date_time), 'day')}
