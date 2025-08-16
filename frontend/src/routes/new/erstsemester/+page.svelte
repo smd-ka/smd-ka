@@ -11,40 +11,32 @@
 
 <main class="main">
 	<section class="pad">
-		<h1 class="text-center">Erstsemester - und nun?</h1>
+		<h1 class="text-center">Erstsemester - Let's Go</h1>
 		<p>
-			Du bist neu in Karlsruhe oder planst hierher zu ziehen für dein Studium? Du bist auf der Suche
-			nach christlicher Gemeinschaft? Was für ein Zufall (oder was für eine Fügung), denn dann bist
-			du hier genau richtig! Wir haben es auf dem Herzen, unseren Glauben authentisch im
-			Studienalltag zu leben. Bei uns hast du die Chance, schnell Anschluss zu finden, damit KA
-			nicht nur KlausurenAnstalt heißt, sondern für eine Stadt steht, die du gerne dein neues (oder
-			altes) Zuhause nennen kannst.
-		</p>
-		<p>
-			Wir haben ein vielfältiges Angebot an Veranstaltungen und Aktionen, bei denen du uns und
-			andere Erstsemester kennenlernen kannst. Wir freuen uns auf dich!
+			Du bist neu in Karlsruhe oder ziehst für dein Studium hierher? Du bist auf der Suche nach
+			christlicher Gemeinschaft? Was für ein Zufall (oder was für eine Fügung), denn dann bist du
+			hier genau richtig! Wir haben es auf dem Herzen, unseren Glauben authentisch im Studienalltag
+			zu leben. Bei uns hast du die Chance, schnell Anschluss zu finden, damit KA nicht nur
+			"KlausurenAnstalt" heißt, sondern für eine Stadt steht, die du gerne dein neues (oder altes)
+			Zuhause nennen kannst.
 		</p>
 	</section>
 
 	<section class="grid gap-8">
-		<div class="pad">
+		<div class="pad grid gap-4">
 			<h1>Angebote für neue Studierende</h1>
 
-			<p>
-				Komm vorbei – noch bevor die Vorlesungen starten, haben wir ein paar coole Aktionen für dich
-				geplant!<br />
-				Im Semester bist du herzlich zu unseren SMD-Abenden und Hauskreisen eingeladen. Die Anmeldung
-				für die Hauskreise gibt’s immer zum Start des Semesters.<br />
-				Bei Fragen, schreib uns gerne eine Mail an
-				<a class="whitespace-nowrap" href="mailto:erstsemester@smd-karlsruhe.de"
-					>erstsemester@smd-karlsruhe.de</a
-				>.<br />
-
-				Um auf dem Laufenden zu bleiben kannst du gerne unserer Signalgruppe beitreten – schick uns
-				dazu einfach deine Nummer per Mail, um nichts zu verpassen! (Oder frag bei einer der
-				Aktionen einen SMDler :)<br />
-				Wir freuen uns auf dich!
-			</p>
+			<div>
+				Egal ob du neue Leute, die Stadt oder die SMD Karlsruhe kennen lernen willst - Komm vorbei!
+				Besonders empfehlen wir dir den offenen Hauskreis, der ab dem 24. September jeden Mittwoch
+				um 19:30 Uhr stattfindet. Wir freuen uns auf dich!
+				<br />
+				Mehr Infos zu den konkreten Aktionen findest du direkt hier unten und auch in unseren Signal-Gruppen
+				sowie auf
+				<a href="https://www.instagram.com/smd_karlsruhe/" class="text-primary">Instagram</a>. Den
+				Link zu den Signal-Gruppen und weitere Kontaktmöglichkeiten findest du unter
+				<a href="/about/kontakt" class="text-primary"> Kontakt</a>.
+			</div>
 
 			{#if data.events.length === 0}
 				<p>
