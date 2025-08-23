@@ -33,7 +33,7 @@ services:
     image: ghcr.io/smd-ka/smd-ka/kings_cafe:main
     build:
       context: ./kings-cafe
-      dockerfile: ./Dockerfile
+      dockerfile: ../frontend/Dockerfile
     networks:
       - default
     restart: always
