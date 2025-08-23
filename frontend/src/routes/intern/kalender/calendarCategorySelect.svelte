@@ -7,6 +7,7 @@
 	<option value="" disabled selected>Kategorie, falls vorhanden</option>
 	<option value="smd_abend">SMD-Abend</option>
 	<option value="erstsemesteraktion">Erstsemesteraktion</option>
+	<option value="church_hopping">Church Hopping</option>
 	<option value="kingscafe">Kings-Café</option>
 	<option value="german_bible_study">Deutschkurs mit der Bibel</option>
 	<option value="MIT">MIT</option>
