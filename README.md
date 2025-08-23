@@ -20,13 +20,20 @@ In order to simplify deployment all the applications are dockerized. The [docker
 The backend and frontend are running in two separate containers. The [Nginx](https://www.nginx.com/) webserver which serves the two is running in another container. Its config can be found [here](/nginx/nginx.conf).
 
 
+<!-- title parsed by flake.nix -->
 ## Development
 
 This section serves as a short intro on how to get a suitable development environment
 for making changes & adaptions quickly
 and also on how to test them quickly locally.
 
+<!-- title parsed by flake.nix -->
 ### Configure Environment
+
+> [!NOTE]
+> There is a [Nix flake](./flake.nix) defined, so you can use `nix develop` if you have Nix installed.
+> This setups, or checks, if setuping it is not possible, for everything listed here.
+> Otherwise, just continue reading this paragraph.
 
 You should have following prepared & installed:
 - a POSIX / UNIX environment (Linux, Mac OSX, WSL on Windows, …)
@@ -34,6 +41,7 @@ You should have following prepared & installed:
   - alternatively Podman & Podman-Compose (making `podman-compose` available)
 
 Then you should execute following commands in your shell making your life easier:
+<!-- first sh code block will be executed by flake.devShells -->
 ```sh
 # create alias "compose"
 # check podman first, because it can provide docker-compatible commands
@@ -68,3 +76,13 @@ You can run the website in two different configs:
 
 Hint: The `kings-cafe` is an alternative frontend.
 Meaning to run that, replace occurencies of the directory `frontend` with `kings-cafe`.
+
+
+<!--
+Overall hints for editing this file:
+- devShells in flake.nix does attempt to parse sections of this README to show it to the user when launching `nix develop`.
+  So please, even if you do not use `nix develop`,
+  if you change titles of these sections (which are commented)
+  or change other markers (which are commented),
+  change them in flake.nix in the `readmeMarkers` variable as well.
+-->
