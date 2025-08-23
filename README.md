@@ -18,3 +18,53 @@ For our frontend we are using [Svelte Kit](https://kit.svelte.dev/). SvelteKit i
 
 In order to simplify deployment all the applications are dockerized. The [docker compose](/docker-compose.yml) specifies which containers exist. The main reason behind the dockerization is reliability. Also as a bonus with a dockerized app, you're not bound to a certain web hoster. We can move our website elsewhere if the provider raises prizes or causes other inconvinences.
 The backend and frontend are running in two separate containers. The [Nginx](https://www.nginx.com/) webserver which serves the two is running in another container. Its config can be found [here](/nginx/nginx.conf).
+
+
+## Development
+
+This section serves as a short intro on how to get a suitable development environment
+for making changes & adaptions quickly
+and also on how to test them quickly locally.
+
+### Configure Environment
+
+You should have following prepared & installed:
+- a POSIX / UNIX environment (Linux, Mac OSX, WSL on Windows, …)
+- Docker (making `docker compose` available)
+  - alternatively Podman & Podman-Compose (making `podman-compose` available)
+
+Then you should execute following commands in your shell making your life easier:
+```sh
+# create alias "compose"
+# check podman first, because it can provide docker-compatible commands
+if command -v podman && command -v podman-compose; then
+    alias compose="podman-compose";
+elif __check_command docker; then
+    alias compose="docker compose";
+else
+    echo "WARNING: you’re missing either podman & podman-compose or docker for testing this deployment!" >&2
+fi
+# setup .env for development
+echo "# DO NOT CHANGE ANYTHING HERE - IT GETS AUTOMATICALLY OVERWRITTEN!" > .env
+echo "# This file gets created by a script in README.md, as adaption of prod.env" >> .env
+# sed: removes comments; replaces TLDs with .local; increases port numbers by 8000
+sed -E '/^#/d;s/^(DOMAIN_.+=.+).[^.]+/\1local/;s/(.*_PORT)=([0-9]+)/echo "\1$((\2+8000))"/e' env.prod >> .env
+```
+
+### Running the Setup Locally
+
+This section focuses on running the website only.
+Testing the whole compose stack is out of scope.
+
+You can run the website in two different configs:
+- run only the frontend locally, leveraging the productive backend
+  ```sh
+  cd frontend  # or "kings-cafe"
+  npm run dev
+  # open the localhost:XXXX url given, or insert `o` then enter
+  ```
+- run both backend & frontend locally
+  (TODO add instructions and/or script)
+
+Hint: The `kings-cafe` is an alternative frontend.
+Meaning to run that, replace occurencies of the directory `frontend` with `kings-cafe`.
