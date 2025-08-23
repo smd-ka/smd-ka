@@ -59,9 +59,9 @@ services:
       DOMAIN_KINGS_CAFE: ${DOMAIN_KINGS_CAFE:-kings-cafe.de}
       DOMAIN_LECTURE_TALK: ${DOMAIN_LECTURE_TALK:-hoersaalvortrag-ka.de}
     ports:
-      - 80:80
-      - 443:443
-      - 443:443/udp
+      - ${HTTP_PORT}:80
+      - ${HTTPS_PORT}:443
+      - ${HTTPS_PORT}:443/udp
     networks:
       - default
       - caddy_net
