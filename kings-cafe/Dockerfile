@@ -1,5 +1,6 @@
 FROM docker.io/library/node:lts-alpine AS base
 
+
 # Build stage
 FROM base AS build
 WORKDIR /app
@@ -18,9 +19,9 @@ RUN npm install
 # Copy all source files
 COPY . .
 
-
 # Build the application
 RUN npm run build
+
 
 # Production stage
 FROM base AS production
