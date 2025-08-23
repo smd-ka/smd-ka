@@ -1,4 +1,4 @@
-FROM node:lts-alpine AS base
+FROM docker.io/library/node:lts-alpine AS base
 
 # Build stage
 FROM base AS build
