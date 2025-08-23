@@ -11,6 +11,7 @@ services:
       dockerfile: ./Dockerfile
     environment:
       AUTHENTIK_BEARER_TOKEN: ${AUTHENTIK_BEARER_TOKEN:-}
+      SMD_PRAYER_BOX_TARGET: ${SMD_PRAYER_BOX_TARGET:-}
     volumes:
       - pb_data:/pb/pb_data
       - ./backend/migrations:/pb/migrations

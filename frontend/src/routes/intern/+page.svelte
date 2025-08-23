@@ -3,6 +3,7 @@
 	import { PRIT_RESPONSABLE, SAFT_COORDINATOR, pb } from '$lib/pocketbase';
 	import {
 		faAddressBook,
+		faEnvelope,
 		faGlassWater,
 		faUser,
 		faRightFromBracket,
@@ -106,6 +107,13 @@
 				<Fa icon={faBurger} class="text-7xl text-red-400" />
 			</div>
 			<h2 class="py-4 text-center text-lg md:text-2xl">Allergie-Liste</h2>
+		</a>
+
+		<a class="tile" href="/intern/gebetsbox">
+			<div class="flex justify-center">
+				<Fa icon={faEnvelope} class="text-7xl text-red-400" />
+			</div>
+			<h2 class="py-4 text-center text-lg md:text-2xl">Gebetsbox</h2>
 		</a>
 
 		<!-- <a class="tile" href="/saft/signup">

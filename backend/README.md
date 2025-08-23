@@ -7,6 +7,7 @@ Our backend application is built using [PocketBase](https://pocketbase.io/). We'
 The backend uses the following environment variables:
 
 - `AUTHENTIK_BEARER_TOKEN`: The bearer token for authenticating with Authentik. This is required for the backend to communicate with Authentik services.
+- `SMD_PRAYER_BOX_TARGET`: The mail address which should receive the praying requests submitted in the internal area.
 
 ## E-Mail Templates
 
