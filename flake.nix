@@ -32,7 +32,6 @@
           smd-ka = pkgs.mkShell {
             # all these must be listed in ./README.md as well
             packages = with pkgs; [
-              # TODO is npm useful for deployment?
               go
               nodejs # includes npm; may select specific version with suffix _23
             ];
