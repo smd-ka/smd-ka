@@ -3,6 +3,7 @@ package main
 import (
 	"SMD-KA-Backend/contact"
 	_ "SMD-KA-Backend/migrations"
+	"SMD-KA-Backend/registration/authentik"
 	registration "SMD-KA-Backend/registration/email"
 	"SMD-KA-Backend/saft"
 	"log"
@@ -33,7 +34,7 @@ func main() {
 	registration.SetupVerification(app)
 	saft.SaftEmails(app)
 	contact.ContactForm(app)
-	// authentik.SetupAuthentik(app)
+	authentik.SetupAuthentik(app)
 
 	if err := app.Start(); err != nil {
 		log.Fatal(err)
