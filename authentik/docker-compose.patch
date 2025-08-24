@@ -1,26 +1,27 @@
 diff --git a/docker-compose.orig b/docker-compose.yml
-index 75c8b75..d3c5fa4 100644
+index e6ef91f..2ab5f99 100644
 --- a/docker-compose.yml
 +++ b/docker-compose.yml
-@@ -45,9 +45,11 @@ services:
-       - ./custom-templates:/templates
-     env_file:
-       - .env
+@@ -49,9 +49,11 @@ services:
+       AUTHENTIK_REDIS__HOST: redis
+       AUTHENTIK_SECRET_KEY: ${AUTHENTIK_SECRET_KEY:?secret key required}
+     image: ${AUTHENTIK_IMAGE:-ghcr.io/goauthentik/server}:${AUTHENTIK_TAG:-2025.8.1}
 -    ports:
--      - "${COMPOSE_PORT_HTTP:-9000}:9000"
--      - "${COMPOSE_PORT_HTTPS:-9443}:9443"
+-    - ${COMPOSE_PORT_HTTP:-9000}:9000
+-    - ${COMPOSE_PORT_HTTPS:-9443}:9443
 +    networks:
 +      default: {}
 +      caddy_net:
 +        aliases:
 +          - authentik_entrypoint
-     depends_on:
-       postgresql:
-         condition: service_healthy
-@@ -83,6 +85,13 @@ services:
-       redis:
-         condition: service_healthy
-
+     restart: unless-stopped
+     volumes:
+     - ./media:/media
+@@ -80,6 +82,14 @@ services:
+     - ./media:/media
+     - ./certs:/certs
+     - ./custom-templates:/templates
++
 +networks:
 +  default:
 +    driver: bridge
