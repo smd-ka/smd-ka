@@ -17,8 +17,8 @@
 		try {
 			const result = await pb.send('/api/intern/prayer-box', {
 				method: 'POST',
-				body: formData,
-			})
+				body: formData
+			});
 			loading = false;
 			if (result.success) {
 				form.reset();
@@ -29,6 +29,7 @@
 			}
 		} catch (e) {
 			console.error(e);
+			loading = false;
 			error = true;
 		}
 	}
@@ -45,13 +46,12 @@
 		</div>
 
 		<p>
-			Hier kannst du deine Gebetsanliegen gerne an dein Seelsorgeteam übermitteln.
-			Wir beten gerne für deine persönlichen Anliegen.
+			Hier kannst du deine Gebetsanliegen gerne an dein Seelsorgeteam übermitteln. Wir beten gerne
+			für deine persönlichen Anliegen.
 		</p>
 		<p class="my-4">
-			Deine Anfrage wird grundsätzlich ohne deinen Namen übermittelt
-			und wird selbstverständlich vertraulich behandelt.
-			Falls du möchtest, darfst du auch deinen Namen selbst dazuschreiben.
+			Deine Anfrage wird grundsätzlich ohne deinen Namen übermittelt und wird selbstverständlich
+			vertraulich behandelt. Falls du möchtest, darfst du auch deinen Namen selbst dazuschreiben.
 		</p>
 	</section>
 
@@ -66,15 +66,17 @@
 				<p class="text-red-500">Es ist ein Fehler aufgetreten. Bitte versuche es erneut.</p>
 			{/if}
 
-			<button disabled={loading} type="submit" class="w-fit bg-black p-4 text-white">
+			<button disabled={loading} type="submit" class="flex w-fit gap-4 bg-black p-4 text-white">
+				Abschicken
 				{#if loading}
 					<img class="left-2 h-8" src={loadingSpinner} alt="loading" />
 				{/if}
-				Abschicken</button
-			>
+			</button>
 		</form>
 		{#if success}
-			<p class="font-bold">Dein Gebetsanliegen ist erfolgreich bei uns angekommen. Wir beten gerne für dich.</p>
+			<p class="pt-4 font-bold">
+				Dein Gebetsanliegen ist erfolgreich bei uns angekommen. Wir beten gerne für dich.
+			</p>
 		{/if}
 	</section>
 </main>
