@@ -158,6 +158,10 @@
 				url: '/intern/allergy-list'
 			},
 			{
+				name: 'Gebetsbox',
+				url: '/intern/gebetsbox'
+			},
+			{
 				name: 'SAFT Anmeldungen',
 				url: '/intern/saft/list',
 				permission: SAFT_COORDINATOR

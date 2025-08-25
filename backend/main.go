@@ -2,6 +2,7 @@ package main
 
 import (
 	"SMD-KA-Backend/contact"
+	"SMD-KA-Backend/intern/prayer_box"
 	_ "SMD-KA-Backend/migrations"
 	"SMD-KA-Backend/registration/authentik"
 	registration "SMD-KA-Backend/registration/email"
@@ -34,6 +35,7 @@ func main() {
 	registration.SetupVerification(app)
 	saft.SaftEmails(app)
 	contact.ContactForm(app)
+	prayer_box.PrayerBoxForm(app)
 	authentik.SetupAuthentik(app)
 
 	if err := app.Start(); err != nil {
