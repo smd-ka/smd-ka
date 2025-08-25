@@ -143,12 +143,12 @@
 				<p class="text-red-500">Es ist ein Fehler aufgetreten. Bitte versuche es erneut.</p>
 			{/if}
 
-			<button disabled={loading} type="submit" class="w-fit bg-black p-4 text-white">
+			<button disabled={loading} type="submit" class="flex w-fit gap-4 bg-black p-4 text-white">
+				Abschicken
 				{#if loading}
 					<img class="left-2 h-8" src={loadingSpinner} alt="loading" />
 				{/if}
-				Abschicken</button
-			>
+			</button>
 		</form>
 		{#if success}
 			<p class="font-bold">Vielen Dank für deine Kontaktaufnahme. Wir melden uns!</p>
