@@ -146,7 +146,7 @@
 			<button disabled={loading} type="submit" class="flex w-fit gap-4 bg-black p-4 text-white">
 				Abschicken
 				{#if loading}
-					<img class="left-2 h-8" src={loadingSpinner} alt="loading" />
+					<img class="h-8" src={loadingSpinner} alt="loading" />
 				{/if}
 			</button>
 		</form>
