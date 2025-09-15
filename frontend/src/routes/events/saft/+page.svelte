@@ -37,12 +37,11 @@
 				</p>
 				<!-- <a href="/saft/signup" class="pointer mt-4 w-fit bg-black p-4 text-white">Jetzt anmelden</a> -->
 			</div>
-			<b>
+			<!-- <b>
 				Die Anmeldung für diese SAFT ist geschlossen. Falls du ganz spontan noch mit willst wende
 				dich dich an <a href="mailto:inreach@smd-karlsruhe.de">Daniel.</a>.
-			</b>
-
-			<!-- <div class="mt-4 w-fit bg-gray-500 p-4 text-white">Anmeldung ab Mitte April</div> -->
+			</b> -->
+			<div class="mt-4 w-fit bg-gray-500 p-4 text-white">Anmeldung ab Mitte Oktober</div>
 		</Saos>
 
 		<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
@@ -50,28 +49,20 @@
 				<h2>Die Fakten</h2>
 				<div class="flex items-center justify-end gap-2">
 					<Fa class="text-primary" icon={faCalendarDays} />
-					Datum: 1. - 4. Mai 2025
+					Datum: 14. - 16. November 2025
 				</div>
 				<div class="flex items-center justify-end gap-2">
 					<Fa class="text-primary" icon={faCoins} />
-					Preis: 40 € (35€ für Freitag bis Sonntag)
+					Preis: 60 € <!-- (XX € für Freitag bis Sonntag) -->
 				</div>
-				<p>
-					Herzliche Einladung zu unserer SAFT im Sommersemester 2025. Diese SAFT ist etwas
-					Besonderes, wir wollen gemeinsam campen und uns mit dem Thema “Zeuge sein” beschäftigen.
-					Vieles vom Programm liegt dabei in eurer Hand, seid also gespannt, was euch erwartet! Wer
-					mag, darf gerne an unserem Tech-Detox teilnehmen und das Handy daheim lassen. Ebenso
-					wollen wir (wenn möglich) ganz in der Gegenwart ankommen und ebenfalls auf Uhren
-					verzichten. Wir werden ca. 1,5 Stunden (mit der Bahn) von Karlsruhe entfernt sein.
-				</p>
-				<!-- <div class="flex justify-end gap-2">
+				<div class="flex justify-end gap-2">
 					<Fa class="text-primary mt-1 justify-self-end" icon={faLocationDot} />
 					Ort: Reichardtstraße 21,
 				</div>
 				<div>75417 Mühlacker (Mühlhausen)</div>
 				<a href="https://maps.app.goo.gl/gpNex3XSDMUVz4T46" class="w-fit bg-black p-4 text-white">
 					Auf Google Maps anschauen
-				</a> -->
+				</a>
 			</div>
 		</Saos>
 		<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
