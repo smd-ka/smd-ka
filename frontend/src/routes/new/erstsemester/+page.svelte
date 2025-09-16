@@ -26,10 +26,12 @@
 		<h2 class="text-center">Unser Erstsemesterprogramm</h2>
 
 		<div>
-			Bis das Semester startet (und unser "normales" Programm losgeht)
+			Bis das KIT-Semester am 27.10.2025 startet (und unser "normales" Programm losgeht)
 			gibt es einmal pro Woche eine Erstsemester-Aktion.
 			Auf kreative und einfache Weise kannst du so neue Leute kennenlernen
 			und die Stadt erkunden.
+			Bei den "Summerbreaks" bist du natürlich auch herzlich eingeladen,
+			uns kennenzulernen und ins Studentenleben einzutauchen.
 			Das Konzept "Offener Hauskreis" bietet dir eine zusätzliche Möglichkeit,
 			bei gemeinsamen Essen in einer kleinen Gruppe ins Gespräch zu kommen.
 			Das "Church Hopping" bietet dir die Gelegenheit,
