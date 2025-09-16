@@ -26,16 +26,22 @@
 		<h2 class="text-center">Unser Erstsemesterprogramm</h2>
 
 		<div>
-			Bis das Semester startet (und unser "normales" Programm losgeht) gibt es einmal pro Woche eine
-			Erstsemester-Aktion. Auf kreative und einfache Weise kannst du so neue Leute kennenlernen und
-			die Stadt erkunden. Das Konzept "Offener Hauskreis" bietet dir eine zusätzliche Möglichkeit,
-			bei gemeinsamen Essen in einer kleinen Gruppe ins Gespräch zu kommen. Das "Church Hopping"
-			bietet dir die Gelegenheit, sonntags mit SMD'lern in den Gottesdienst zu gehen, um einen
-			Überblick über die vielen Karlsruher Gemeinden zu bekommen. Mehr Infos zu den einzelnen
-			Aktionen findest du direkt hier unten sowie in unseren Signal-Gruppen und auch auf
-			<a href="https://www.instagram.com/smd_karlsruhe/" class="text-primary">Instagram</a>. Den
-			Link zu den Signal-Gruppen und weitere Kontaktmöglichkeiten findest du unter
-			<a href="/about/kontakt" class="text-primary"> Kontakt</a>.
+			Bis das KIT-Semester am 27.10.2025 startet (und unser "normales" Programm losgeht)
+			gibt es einmal pro Woche eine Erstsemester-Aktion.
+			Auf kreative und einfache Weise kannst du so neue Leute kennenlernen
+			und die Stadt erkunden.
+			Bei den "Summerbreaks" bist du natürlich auch herzlich eingeladen,
+			uns kennenzulernen und ins Studentenleben einzutauchen.
+			Das Konzept "Offener Hauskreis" bietet dir eine zusätzliche Möglichkeit,
+			bei gemeinsamen Essen in einer kleinen Gruppe ins Gespräch zu kommen.
+			Das "Church Hopping" bietet dir die Gelegenheit,
+			sonntags mit SMD'lern in den Gottesdienst zu gehen,
+			um einen Überblick über die vielen Karlsruher Gemeinden zu bekommen.
+			Mehr Infos zu den einzelnen Aktionen findest du direkt hier unten
+			sowie in unseren Signal-Gruppen und auch auf
+			<a href="https://www.instagram.com/smd_karlsruhe/" class="text-primary">Instagram</a>.
+			Den Link zu den Signal-Gruppen und weitere Kontaktmöglichkeiten findest du unter
+			<a href="/about/kontakt" class="text-primary">Kontakt</a>.
 		</div>
 
 		{#if !data.erstsemester_events || data.erstsemester_events.length === 0}
