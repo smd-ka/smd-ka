@@ -11,11 +11,11 @@ export const load: PageLoad = async () => {
 
 		const erstsemester_events = await pb.collection('calendar').getFullList<CalendarEvent>({
 			sort: '+start_date_time',
-			filter: `start_date_time >= "${startOfToday}" && (category="erstsemesteraktion" || category="church_hopping")`
+			filter: `end_date_time >= "${startOfToday}" && (category="erstsemesteraktion" || category="church_hopping")`
 		});
 		return { erstsemester_events };
 	} catch (error) {
 		console.error(error);
-		return { events: [] };
+		return { erstsemester_events: [] };
 	}
 };

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Fa from 'svelte-fa/src/fa.svelte';
-	import { faLocationDot, faCalendarDays, faLinkSlash } from '@fortawesome/free-solid-svg-icons';
+	import { faLocationDot, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 
 	import { getImageSrc } from '$lib/fetch_img';
 	import dayjs from 'dayjs';
