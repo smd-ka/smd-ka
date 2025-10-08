@@ -66,10 +66,6 @@
 					url: '/about/angebote'
 				},
 				{
-					name: 'Mitarbeiten',
-					url: '/about/mitarbeiten'
-				},
-				{
 					name: 'Kontakt',
 					url: '/about/kontakt'
 				},

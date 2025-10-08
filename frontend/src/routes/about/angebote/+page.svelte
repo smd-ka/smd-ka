@@ -186,7 +186,7 @@
 			>
 			<a
 				class="border-grey text-grey flex items-center gap-2 border-2 px-4 py-2 no-underline hover:underline"
-				href="/about/mitarbeiten"
+				href="/about/us"
 			>
 				<Fa icon={faChevronRight} />
 
