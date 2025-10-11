@@ -3,6 +3,7 @@
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import regions from '$lib/assets/pages/about/us/regions.png';
 	import leitungsteam from '$lib/assets/pages/about/us/leitungsteam.jpg';
+	import mitarbeiten from '$lib/assets/pages/about/us/mitarbeit_hands.jpg';
 
 	import { pb } from '$lib/pocketbase';
 	import type { PageData } from './$types';
@@ -66,7 +67,7 @@
 		</div>
 	</section>
 
-	<section class="px-4">
+	<section class="pad">
 		<h1 class="text-center">Unser Leitungsteam</h1>
 		<div class="grid gap-4 md:grid-cols-[fit-content(6rem)_1fr]">
 			<img
@@ -93,6 +94,26 @@
 				für Fragen und Anregungen unter
 				<a href="mailto:leiter@smd-karlsruhe.de"> leiter@smd-karlsruhe.de</a> zur Verfügung.
 			</p>
+		</div>
+	</section>
+
+	<section class="pad">
+		<h1 class="text-center">Mitarbeiten</h1>
+		<div class="grid gap-4 md:grid-cols-[1fr_fit-content(6rem)]">
+			<p>
+				Du hast Lust dich mit einzubringen? Wir freuen uns immer über neue Gesichter! Wir sind uns
+				sicher, dass du deinen Platz in einem unserer Teams finden wirst. Gerne kommen wir mit dir
+				ins Gespräch und finden heraus, wo du dich am wohlsten fühlst.
+				<br />
+
+				Sprich gerne jemanden aus dem Leitungsteam an oder schreib uns eine Mail an
+				<a href="mailto:leiter@smd-karlsruhe.de">leiter@smd-karlsruhe.de</a>.
+			</p>
+			<img
+				class="object-cover max-md:max-h-80 max-md:w-full md:max-w-80 lg:max-w-[30rem]"
+				alt="Symbolbild Mitarbeiten"
+				src={mitarbeiten}
+			/>
 		</div>
 	</section>
 
