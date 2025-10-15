@@ -11,7 +11,11 @@ export const load: PageLoad = async () => {
 			sort: '+start_date_time',
 			filter: `start_date_time >= "${startOfToday}" && category!='kingscafe' && category!='german_bible_study'`
 		});
-		return { events: records };
+		const nextSMDEvening = await pb.collection('calendar').getList(1, 1, {
+			sort: '+start_date_time',
+			filter: `start_date_time >= "${startOfToday}" && category='smd_abend'`
+		});
+		return { events: records, nextSMDEvening: nextSMDEvening.items[0] };
 	} catch (error) {
 		console.error(error);
 		return {};

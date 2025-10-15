@@ -11,7 +11,9 @@ export default {
 			mokoto: ['Mokoto', 'sans-serif'],
 			mincho: ['Shippori Mincho B1', 'serif'],
 			caveat: ['Caveat Variable', 'cursive'],
-			gagalin: ['Gagalin', 'sans-serif']
+			gagalin: ['Gagalin', 'sans-serif'],
+			poppins: ['Poppins', 'sans-serif'],
+			playfair: ['Playfair Display Variable', 'serif']
 		},
 		extend: {
 			colors: {
@@ -23,7 +25,8 @@ export default {
 				lilac: '#D0B0D4',
 				grey: '#323232',
 				'background-gray': '#EEEEEE',
-				'background-orange': '#fdc188'
+				'background-orange': '#fdc188',
+				ws2526Blue: '#0e47d8'
 			}
 		}
 	},
