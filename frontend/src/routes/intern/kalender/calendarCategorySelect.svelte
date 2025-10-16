@@ -1,6 +1,10 @@
 <script lang="ts">
-	export let category: string | undefined = '';
-	export let loading = false;
+	interface Props {
+		category?: string | undefined;
+		loading?: boolean;
+	}
+
+	let { category = '', loading = false }: Props = $props();
 </script>
 
 <select name="category" value={category} disabled={loading} class="w-full rounded-md border-2 py-3">

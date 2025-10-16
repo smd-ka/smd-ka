@@ -9,7 +9,11 @@
 	import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 
 	const src = (image: string, id: string, collectionId: string, collectionName: string) => {
 		return pb.files.getUrl(

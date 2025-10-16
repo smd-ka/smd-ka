@@ -3,7 +3,11 @@
 
 	import type { PageData } from './$types';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 
 	const src = (image: string, id: string, collectionId: string, collectionName: string) => {
 		return pb.files.getUrl(

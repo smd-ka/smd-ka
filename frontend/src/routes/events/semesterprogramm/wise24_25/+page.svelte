@@ -5,7 +5,11 @@
 	import type { PageData } from '../ws24_25/$types';
 	import SemesterProgramSelector from '../SemesterProgramSelector.svelte';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 </script>
 
 <HeroShot imgSrc={header} height={'h-[80svh]'} />

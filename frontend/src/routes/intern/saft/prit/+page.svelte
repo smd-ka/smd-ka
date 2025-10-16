@@ -1,12 +1,14 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { faSearch } from '@fortawesome/free-solid-svg-icons';
 	import { _postImages } from '../list/+page';
 	import Fa from 'svelte-fa';
 	import { PUBLIC_SEMESTER } from '$env/static/public';
 
-	export let data;
-	let filteredList = data.list;
-	let search = '';
+	let { data } = $props();
+	let filteredList = $state(data.list);
+	let search = $state('');
 
 	function handleSearch(searchTerm: string) {
 		if (!filteredList) return;
@@ -17,9 +19,9 @@
 		});
 	}
 
-	$: {
+	run(() => {
 		handleSearch(search);
-	}
+	});
 </script>
 
 <main class="container mx-auto my-6 px-4">

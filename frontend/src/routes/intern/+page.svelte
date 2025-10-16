@@ -21,7 +21,7 @@
 	let isSaftCoordinator = pb.authStore.model?.roles.includes(SAFT_COORDINATOR);
 	let isPritTeam = pb.authStore.model?.roles.includes(PRIT_RESPONSABLE);
 
-	let loading = false;
+	let loading = $state(false);
 </script>
 
 <main class="container mx-auto flex flex-col gap-8 py-20 pt-8">

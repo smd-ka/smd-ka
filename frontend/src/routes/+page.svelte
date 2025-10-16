@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { preventDefault } from 'svelte/legacy';
+
 	import Saos from 'saos';
 	import header from '$lib/assets/pages/home/schloss.jpg';
 	import { faArrowDown, faLocationDot, faChevronRight } from '@fortawesome/free-solid-svg-icons';
@@ -25,11 +27,15 @@
 	import ersti_background_oben from '$lib/assets/pages/home/ersti_background_oben.png';
 	import ersti_background_unten from '$lib/assets/pages/home/ersti_background_unten.png';
 
-	let success = false;
-	let error = false;
-	let loading = false;
+	let success = $state(false);
+	let error = $state(false);
+	let loading = $state(false);
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 
 	async function sendMail(event: Event) {
 		loading = true;
@@ -273,7 +279,7 @@
 	<div class="flex flex-col gap-8 px-4 xl:px-80">
 		<h1 class="pb-0">schreib uns</h1>
 		<h2 class="flex items-center justify-end gap-2">Hier <Fa icon={faArrowDown}></Fa></h2>
-		<form id="form" class="flex flex-col gap-6" on:submit|preventDefault={sendMail}>
+		<form id="form" class="flex flex-col gap-6" onsubmit={preventDefault(sendMail)}>
 			<TextInput name="name" label="Name" required />
 			<TextInput name="subject" label="Betreff" required />
 			<EmailInput name="email" label="Deine E-Mail-Addresse" required />

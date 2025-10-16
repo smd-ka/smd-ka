@@ -4,10 +4,15 @@
 	import { sineInOut } from 'svelte/easing';
 	import { slide } from 'svelte/transition';
 
-	export let imgSrc: string;
-	export let title: string;
+	interface Props {
+		imgSrc: string;
+		title: string;
+		children?: import('svelte').Snippet;
+	}
 
-	let showDescription = false;
+	let { imgSrc, title, children }: Props = $props();
+
+	let showDescription = $state(false);
 
 	function toggleDescription() {
 		showDescription = !showDescription;
@@ -15,7 +20,7 @@
 </script>
 
 <div class="h-full md:flex-1">
-	<button on:click={toggleDescription} class="relative h-full w-full">
+	<button onclick={toggleDescription} class="relative h-full w-full">
 		<img
 			src={imgSrc}
 			alt="erleben"
@@ -40,7 +45,7 @@
 			class="relative col-span-full mt-5 flex justify-center bg-gray-200 p-4"
 		>
 			<div class="absolute -top-3 h-6 w-6 rotate-45 bg-gray-200"></div>
-			<slot />
+			{@render children?.()}
 		</div>
 	{/if}
 </div>

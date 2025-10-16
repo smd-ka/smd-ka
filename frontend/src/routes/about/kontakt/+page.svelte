@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { preventDefault } from 'svelte/legacy';
+
 	import CheckboxInput from '$lib/components/forms/CheckboxInput.svelte';
 	import EmailInput from '$lib/components/forms/EmailInput.svelte';
 	import TextArea from '$lib/components/forms/TextArea.svelte';
@@ -16,9 +18,9 @@
 	import rightArrow from '$lib/assets/icons/right-arrow-handdrawn.svg';
 	import iphoneInstagram from '$lib/assets/pages/about/kontakt/Iphone_Instagram.png';
 
-	let success = false;
-	let error = false;
-	let loading = false;
+	let success = $state(false);
+	let error = $state(false);
+	let loading = $state(false);
 
 	async function sendMail(event: Event) {
 		loading = true;
@@ -129,7 +131,7 @@
 
 	<section id="form-section" class="pt-24 xl:px-80">
 		<h2 class="text-center max-sm:text-3xl">Kontaktformular</h2>
-		<form id="form" class="flex flex-col gap-6" on:submit|preventDefault={sendMail}>
+		<form id="form" class="flex flex-col gap-6" onsubmit={preventDefault(sendMail)}>
 			<TextInput name="name" label="Name" required />
 			<TextInput name="subject" label="Betreff" required />
 			<EmailInput name="email" label="Deine E-Mail-Addresse" required />

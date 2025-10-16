@@ -10,10 +10,10 @@
 	import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 	import { onDestroy, onMount } from 'svelte';
 
-	let carousel;
+	let carousel = $state();
 
-	let mobileScreen = true;
-	let programs: { title: string; subtitle: string; image: string; link: string }[] = [];
+	let mobileScreen = $state(true);
+	let programs: { title: string; subtitle: string; image: string; link: string }[] = $state([]);
 
 	onMount(() => {
 		if (browser) {
@@ -77,9 +77,11 @@
 				arrows={true}
 				bind:this={carousel}
 			>
-				<div slot="prev" class="text-grey grid items-center p-4 text-3xl lg:text-5xl">
-					<button on:click={carousel.goToPrev}> <Fa icon={faChevronLeft} /></button>
-				</div>
+				{#snippet prev()}
+								<div  class="text-grey grid items-center p-4 text-3xl lg:text-5xl">
+						<button onclick={carousel.goToPrev}> <Fa icon={faChevronLeft} /></button>
+					</div>
+							{/snippet}
 				{#each programs as { title, subtitle, image, link }}
 					<a class="flex justify-center px-2" href={link}>
 						<div class="max-w-96 rounded-md bg-white text-center shadow-md">
@@ -89,9 +91,11 @@
 						</div>
 					</a>
 				{/each}
-				<div slot="next" class="text-grey grid items-center p-4 text-3xl lg:text-5xl">
-					<button on:click={carousel.goToNext}> <Fa icon={faChevronRight} /></button>
-				</div>
+				{#snippet next()}
+								<div  class="text-grey grid items-center p-4 text-3xl lg:text-5xl">
+						<button onclick={carousel.goToNext}> <Fa icon={faChevronRight} /></button>
+					</div>
+							{/snippet}
 			</Carousel>
 		{/if}
 	</section>

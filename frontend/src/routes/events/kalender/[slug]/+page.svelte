@@ -6,7 +6,11 @@
 	import dayjs from 'dayjs';
 	import { _imgSrc } from '../+page';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 	const startDateTime = new Date(data.event.start_date_time);
 	const endDateTime = data.event.end_date_time ? new Date(data.event.end_date_time) : undefined;
 </script>

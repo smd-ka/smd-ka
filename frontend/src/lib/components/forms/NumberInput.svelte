@@ -1,10 +1,21 @@
 <script lang="ts">
-	export let label = '';
-	export let id = '';
-	export let name = '';
-	export let disabled = false;
-	export let required = false;
-	export let value = 0;
+	interface Props {
+		label?: string;
+		id?: string;
+		name?: string;
+		disabled?: boolean;
+		required?: boolean;
+		value?: number;
+	}
+
+	let {
+		label = '',
+		id = '',
+		name = '',
+		disabled = false,
+		required = false,
+		value = 0
+	}: Props = $props();
 </script>
 
 <div class="grid grid-cols-2 items-center gap-4">

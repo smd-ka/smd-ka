@@ -1,10 +1,21 @@
 <script lang="ts">
-	export let disabled = false;
-	export let name = '';
-	export let value = '';
-	export let label = '';
-	export let required: boolean = false;
-	export let id = name;
+	interface Props {
+		disabled?: boolean;
+		name?: string;
+		value?: string;
+		label?: string;
+		required?: boolean;
+		id?: any;
+	}
+
+	let {
+		disabled = false,
+		name = '',
+		value = $bindable(''),
+		label = '',
+		required = false,
+		id = name
+	}: Props = $props();
 </script>
 
 <div class="relative">

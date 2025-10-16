@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { preventDefault } from 'svelte/legacy';
+
 	import { getAvatarUrl, pb } from '$lib/pocketbase';
 	import defaultAvatar from '$lib/assets/user_default.png';
 	import Fa from 'svelte-fa/src/fa.svelte';
@@ -14,13 +16,13 @@
 
 	// assign default avatar if no avatar is set
 
-	let src = getAvatarUrl();
+	let src = $state(getAvatarUrl());
 
-	let loading = false;
+	let loading = $state(false);
 	let removingProfilePicture = false;
 	let profilePicture: undefined | File = undefined;
 
-	let afterRegistration = false;
+	let afterRegistration = $state(false);
 
 	onMount(() => {
 		const urlParams = new URLSearchParams(window.location.search);
@@ -81,7 +83,7 @@
 		{/if}
 		<form
 			id="form"
-			on:submit|preventDefault={updateProfile}
+			onsubmit={preventDefault(updateProfile)}
 			class=" grid justify-center gap-4 md:grid-cols-2 md:gap-12"
 		>
 			<div class="flex flex-col gap-4">
@@ -106,14 +108,14 @@
 							id="avatar"
 							accept="image/*"
 							hidden
-							on:change={showPreview}
+							onchange={showPreview}
 							disabled={loading}
 						/>
 					</label>
 					{#if src !== defaultAvatar}
 						<button
 							type="button"
-							on:click={deleteProfilePicture}
+							onclick={deleteProfilePicture}
 							class="text-secondary-text mt-4 flex items-center gap-2"
 						>
 							Profilbild löschen

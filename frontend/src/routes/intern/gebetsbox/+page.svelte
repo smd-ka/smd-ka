@@ -1,12 +1,14 @@
 <script lang="ts">
+	import { preventDefault } from 'svelte/legacy';
+
 	import TextArea from '$lib/components/forms/TextArea.svelte';
 	import { pb } from '$lib/pocketbase';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 	import rightArrow from '$lib/assets/icons/right-arrow-handdrawn.svg';
 
-	let success = false;
-	let error = false;
-	let loading = false;
+	let success = $state(false);
+	let error = $state(false);
+	let loading = $state(false);
 
 	async function issueForm(event: Event) {
 		loading = true;
@@ -60,7 +62,7 @@
 	</section>
 
 	<section id="form-section" class="pt-24 xl:px-80">
-		<form id="form" class="flex flex-col gap-6" on:submit|preventDefault={issueForm}>
+		<form id="form" class="flex flex-col gap-6" onsubmit={preventDefault(issueForm)}>
 			<TextArea name="message" label="Deine Nachricht" required />
 			{#if error}
 				<p class="text-red-500">Es ist ein Fehler aufgetreten. Bitte versuche es erneut.</p>

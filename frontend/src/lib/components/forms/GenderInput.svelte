@@ -1,5 +1,9 @@
 <script lang="ts">
-	export let currentGender: string = '';
+	interface Props {
+		currentGender?: string;
+	}
+
+	let { currentGender = '' }: Props = $props();
 </script>
 
 <div class="relative flex gap-4 rounded-md border-2 p-3">

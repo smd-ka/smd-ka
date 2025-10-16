@@ -3,7 +3,11 @@
 	import dayjs from 'dayjs';
 	import { _imgSrc } from './+page';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 </script>
 
 <main class="container mx-auto">

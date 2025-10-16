@@ -4,11 +4,14 @@
 	import { sineInOut } from 'svelte/easing';
 	import { fade } from 'svelte/transition';
 
-	export let src;
-	export let title;
-	export let subtitle;
+	let {
+		src,
+		title,
+		subtitle,
+		children
+	} = $props();
 
-	let showSlide = false;
+	let showSlide = $state(false);
 
 	const toggleShow = () => (showSlide = !showSlide);
 </script>
@@ -20,7 +23,7 @@
 			<div class=" grid justify-items-center text-center text-white backdrop-filter">
 				<h1 class="pb-0">{title}</h1>
 				<p class="font-caveat text-xl md:text-3xl">{subtitle}</p>
-				<button on:click={toggleShow} class="flex items-center gap-2 self-center">
+				<button onclick={toggleShow} class="flex items-center gap-2 self-center">
 					{#if showSlide}
 						<div>Beschreibung ausblenden</div>
 						<Fa icon={faArrowUp} />
@@ -36,7 +39,7 @@
 						transition:fade={{ duration: 200, easing: sineInOut }}
 						class="rounded-md bg-black bg-opacity-80 p-4 text-white backdrop-filter max-md:hidden xl:mx-60"
 					>
-						<p><slot /></p>
+						<p>{@render children?.()}</p>
 					</div>
 				{/if}
 			</div>
@@ -48,7 +51,7 @@
 			class="pad bg-grey p-4 text-white md:hidden"
 		>
 			<p>
-				<slot />
+				{@render children?.()}
 			</p>
 		</div>
 	{/if}

@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { getAvatarUrl, pb } from '$lib/pocketbase';
 	import { applyAction, enhance } from '$app/forms';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 
-	let isValid = pb.authStore.isValid;
-	let src = getAvatarUrl();
-	let loading = false;
+	let isValid = $state(pb.authStore.isValid);
+	let src = $state(getAvatarUrl());
+	let loading = $state(false);
 
 	pb.authStore.onChange(() => {
 		isValid = pb.authStore.isValid;
@@ -50,7 +50,7 @@
 {:else}
 	<a href="/account/login">
 		<Fa
-			class={$page.url.pathname.match('account/login') ? 'text-primary' : 'hover:text-primary'}
+			class={page.url.pathname.match('account/login') ? 'text-primary' : 'hover:text-primary'}
 			icon={faRightToBracket}
 		/>
 	</a>

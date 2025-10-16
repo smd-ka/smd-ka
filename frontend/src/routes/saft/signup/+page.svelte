@@ -4,10 +4,10 @@
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
 
-	let email = '';
-	let password = '';
-	let loading = false;
-	let errorMessage = '';
+	let email = $state('');
+	let password = $state('');
+	let loading = $state(false);
+	let errorMessage = $state('');
 
 	onMount(() => {
 		if (pb.authStore.isValid) goto('/saft/signup/form');
@@ -53,7 +53,7 @@
 			</div>
 
 			<div class="flex justify-center">
-				<form class="flex w-80 flex-col gap-4" on:submit={login}>
+				<form class="flex w-80 flex-col gap-4" onsubmit={login}>
 					<h2 class="text-center text-xl">Anmelden Intern</h2>
 					<div class="relative">
 						<input

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { preventDefault } from 'svelte/legacy';
+
 	import InputField from '$lib/components/forms/TextInput.svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 	import InputCheckbox from '$lib/components/forms/CheckboxInput.svelte';
@@ -19,10 +21,10 @@
 	];
 
 	let record: saftRegistration;
-	let loading = false;
-	let success = false;
-	let loggedIn = false;
-	let travelOption = '';
+	let loading = $state(false);
+	let success = $state(false);
+	let loggedIn = $state(false);
+	let travelOption = $state('');
 	let group = '';
 
 	onMount(() => {
@@ -81,7 +83,7 @@
 					Schön, dass du dabei bist {pb.authStore.model?.name}!
 				</p>
 			{/if}
-			<form id="form" class="my-4 flex flex-col gap-4" on:submit|preventDefault={signup}>
+			<form id="form" class="my-4 flex flex-col gap-4" onsubmit={preventDefault(signup)}>
 				<!-- Section for users that are not logged in -->
 				{#if !loggedIn}
 					<h3>Und du bist?</h3>

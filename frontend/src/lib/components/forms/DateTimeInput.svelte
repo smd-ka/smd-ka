@@ -1,20 +1,35 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import dayjs from 'dayjs';
 
-	export let disabled = false;
-	export let value: Date | string | undefined;
-	let formattedValue = '';
-	$: {
+	let formattedValue = $state('');
+	interface Props {
+		disabled?: boolean;
+		value: Date | string | undefined;
+		label?: string;
+		required?: boolean;
+		id?: string;
+		name?: string;
+		children?: import('svelte').Snippet;
+	}
+
+	let {
+		disabled = false,
+		value,
+		label = '',
+		required = false,
+		id = '',
+		name = '',
+		children
+	}: Props = $props();
+	run(() => {
 		if (!value) {
 			formattedValue = '';
 		} else {
 			formattedValue = dayjs(value).format('YYYY-MM-DDTHH:mm');
 		}
-	}
-	export let label = '';
-	export let required: boolean = false;
-	export let id = '';
-	export let name = '';
+	});
 </script>
 
 <div class="relative">
@@ -31,6 +46,6 @@
 		for={id}
 		class="text-secondary-text absolute -top-2.5 left-3 bg-white px-1 opacity-100 transition-all duration-100 peer-placeholder-shown:opacity-0"
 	>
-		<slot></slot>
+		{@render children?.()}
 	</label>
 </div>

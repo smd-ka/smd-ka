@@ -3,8 +3,12 @@
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 	import { goto } from '$app/navigation';
 
-	let email = '';
-	export let loading = false;
+	let email = $state('');
+	interface Props {
+		loading?: boolean;
+	}
+
+	let { loading = $bindable(false) }: Props = $props();
 	let errorMessage = '';
 
 	const login = async () => {
@@ -28,7 +32,7 @@
 				<img src={loadingSpinner} class=" h-32" alt="loading" />
 			</div>
 		{:else}
-			<form class="flex w-80 flex-col gap-4 p-4" on:submit={login}>
+			<form class="flex w-80 flex-col gap-4 p-4" onsubmit={login}>
 				<h1 class="py-5 text-center text-2xl">SMD-KA Intern</h1>
 				<div class="relative">
 					<input

@@ -1,10 +1,21 @@
 <script lang="ts">
-	export let label = '';
-	export let checked = false;
-	export let id = '';
-	export let name = '';
-	export let disabled = false;
-	export let required = false;
+	interface Props {
+		label?: string;
+		checked?: boolean;
+		id?: string;
+		name?: string;
+		disabled?: boolean;
+		required?: boolean;
+	}
+
+	let {
+		label = '',
+		checked = $bindable(false),
+		id = '',
+		name = '',
+		disabled = false,
+		required = false
+	}: Props = $props();
 </script>
 
 <div class="flex gap-2">

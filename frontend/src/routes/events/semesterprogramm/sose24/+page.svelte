@@ -5,7 +5,11 @@
 	import SemesterProgramSelector from '../SemesterProgramSelector.svelte';
 	import dayjs from 'dayjs';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 </script>
 
 <HeroShot imgSrc={header} height={'h-[80svh]'} />

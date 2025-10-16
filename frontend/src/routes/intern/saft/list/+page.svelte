@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { preventDefault } from 'svelte/legacy';
+
 	import { pb } from '$lib/pocketbase';
 	import {
 		faArrowUpFromBracket,
@@ -17,12 +19,12 @@
 		type SaftRegistrationFilter
 	} from './+page';
 
-	export let data;
+	let { data } = $props();
 
-	let filteredList = data.list;
-	let filter: SaftRegistrationFilter = 'all';
-	let paidLoading: number[] = [];
-	let paidError: number[] = [];
+	let filteredList = $state(data.list);
+	let filter: SaftRegistrationFilter = $state('all');
+	let paidLoading: number[] = $state([]);
+	let paidError: number[] = $state([]);
 
 	console.log(data);
 
@@ -164,7 +166,7 @@
 			>
 			<button
 				class="bg-light-blue flex items-center gap-2 rounded-md px-4 py-2"
-				on:click={() =>
+				onclick={() =>
 					navigator.clipboard.writeText(
 						filteredList
 							.filter((x) => x.email)
@@ -178,7 +180,7 @@
 
 			<button
 				class="bg-lime flex items-center gap-2 rounded-md px-4 py-2"
-				on:click|preventDefault={() => _exportToCsv(filteredList, filter)}
+				onclick={preventDefault(() => _exportToCsv(filteredList, filter))}
 			>
 				<Fa icon={faArrowUpFromBracket} />
 				Als CSV exportieren
@@ -186,7 +188,7 @@
 
 			<select
 				bind:value={filter}
-				on:change={() => (filteredList = _filterSaftRegistrations(filter, data.list))}
+				onchange={() => (filteredList = _filterSaftRegistrations(filter, data.list))}
 				class="rounded-md px-4 py-2"
 			>
 				<option value="all">Alle</option>
@@ -213,7 +215,7 @@
 						<input
 							disabled={paidLoading.includes(i)}
 							bind:checked={registration.paid}
-							on:change={() => togglePaid(i, registration.id, registration.paid)}
+							onchange={() => togglePaid(i, registration.id, registration.paid)}
 							type="checkbox"
 						/>
 						{#if paidLoading.includes(i)}

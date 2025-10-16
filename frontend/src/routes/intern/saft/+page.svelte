@@ -4,9 +4,9 @@
 	import { onMount } from 'svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 
-	let loading = true;
+	let loading = $state(true);
 	let error = false;
-	let records: saftRegistration[] = [];
+	let records: saftRegistration[] = $state([]);
 
 	onMount(async () => {
 		records = await pb

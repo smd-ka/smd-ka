@@ -5,10 +5,10 @@
 	import { onMount } from 'svelte';
 	import type { RecordAuthResponse } from 'pocketbase';
 
-	let email = '';
-	let password = '';
-	let loading = false;
-	let errorMessage = '';
+	let email = $state('');
+	let password = $state('');
+	let loading = $state(false);
+	let errorMessage = $state('');
 
 	onMount(() => {
 		if (pb.authStore.isValid) goto('/intern');
@@ -62,7 +62,7 @@
 					<img src={loadingSpinner} class="h-32" alt="loading" />
 				</div>
 			{:else}
-				<form method="post" class="flex w-80 flex-col gap-4 p-4" on:submit={login}>
+				<form method="post" class="flex w-80 flex-col gap-4 p-4" onsubmit={login}>
 					<h2>SMD-KA intern</h2>
 					<div class="relative">
 						<input
@@ -100,7 +100,7 @@
 						<p class="text-red-500">Ungültige E-Mail-Adresse oder Passwort</p>
 					{/if}
 					<button class="bg-black py-2 text-white">Log in</button>
-					<button on:click={loginOAuth} class="border-2 border-black py-1.5"
+					<button onclick={loginOAuth} class="border-2 border-black py-1.5"
 						>Log in with OAuth</button
 					>
 					<a href="/account/reset" class="text-center text-sm text-gray-400 hover:underline"

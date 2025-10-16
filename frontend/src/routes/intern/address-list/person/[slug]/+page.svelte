@@ -15,7 +15,7 @@
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 
-	let record: any;
+	let record: any = $state();
 
 	onMount(async () => {
 		page.subscribe((value) => {

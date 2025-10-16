@@ -1,3 +1,5 @@
+<!-- @migration-task Error while migrating Svelte code: `<button>` cannot be a descendant of `<button>`. The browser will 'repair' the HTML (by moving, removing, or inserting elements) which breaks Svelte's assumptions about the structure of your components.
+https://svelte.dev/e/node_invalid_placement -->
 <script lang="ts">
 	import '../app.css';
 	import '@fontsource/anton';
@@ -20,7 +22,7 @@
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { getAvatarUrl, pb, PRIT_RESPONSABLE, SAFT_COORDINATOR } from '$lib/pocketbase';
 	import ifes from '$lib/assets/logos/ifes.png';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { blur, slide } from 'svelte/transition';
 	import { headerImageHeight } from '$lib/stores';
 	import { sineInOut } from 'svelte/easing';
@@ -212,7 +214,7 @@
 				{#each tabs as tab}
 					<div>
 						<span
-							class="CategoryTitle peer {$page.url.pathname.includes(tab.baseUrl)
+							class="CategoryTitle peer {page.url.pathname.includes(tab.baseUrl)
 								? 'text-primary'
 								: ''}"
 						>
@@ -230,7 +232,7 @@
 				{#if isValid}
 					<div>
 						<span
-							class="CategoryTitle peer {$page.url.pathname.includes(tabsIntern.baseUrl)
+							class="CategoryTitle peer {page.url.pathname.includes(tabsIntern.baseUrl)
 								? 'text-primary'
 								: ''}"
 						>

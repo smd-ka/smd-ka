@@ -6,8 +6,8 @@
 	import dayjs from 'dayjs';
 	import { _duplicateEvent, _eventStore, _shownEvent, type CalendarEvent } from './+page';
 
-	let loading = false;
-	let updated = false;
+	let loading = $state(false);
+	let updated = $state(false);
 
 	const getDateString = (startDateString: string, endDateString: string) => {
 		if (!endDateString) {
@@ -37,7 +37,7 @@
 		</li>
 	</ol>
 	<button
-		on:click={() => {
+		onclick={() => {
 			_shownEvent.set(undefined);
 			_duplicateEvent.set(undefined);
 			return;
@@ -66,7 +66,7 @@
 					{#each $_eventStore as event}
 						<div class="rounded-md bg-white p-4 shadow-md">
 							<button
-								on:click={() => onChangeEventSelection(event)}
+								onclick={() => onChangeEventSelection(event)}
 								disabled={loading}
 								class="overflow-hidden text-ellipsis py-2 text-left"
 							>

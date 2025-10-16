@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { preventDefault } from 'svelte/legacy';
+
 	import { goto } from '$app/navigation';
 	import { pb } from '$lib/pocketbase';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
@@ -12,10 +14,10 @@
 	import DateInput from '$lib/components/forms/DateInput.svelte';
 	import TelephoneInputField from '$lib/components/forms/TelephoneInputField.svelte';
 
-	let loading = false;
-	let emailError: 'invalid' | 'taken' | undefined;
-	let passwordError: 'not matching' | 'too short' | undefined;
-	let unknowError: boolean = false;
+	let loading = $state(false);
+	let emailError: 'invalid' | 'taken' | undefined = $state();
+	let passwordError: 'not matching' | 'too short' | undefined = $state();
+	let unknowError: boolean = $state(false);
 
 	const convert = (str: string) => str.toLocaleLowerCase().replace(/[^\w]/gi, '');
 
@@ -67,7 +69,7 @@
 	<form
 		id="form"
 		class=" mt-8 grid w-full max-w-[28rem] gap-4 p-8 md:rounded-md md:border"
-		on:submit|preventDefault={register}
+		onsubmit={preventDefault(register)}
 	>
 		<div class="flex justify-center text-7xl">
 			<Fa icon={faRightToBracket} />

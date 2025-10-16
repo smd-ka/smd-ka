@@ -24,9 +24,9 @@
 	import { onDestroy, onMount } from 'svelte';
 	import CarouselSlideGermany from './CarouselSlideGermany.svelte';
 
-	let carouselKA;
-	let carouselGermany;
-	let mobileScreen = true;
+	let carouselKA = $state();
+	let carouselGermany = $state();
+	let mobileScreen = $state(true);
 
 	onMount(() => {
 		if (browser) {
@@ -52,12 +52,14 @@
 
 {#if browser}
 	<Carousel bind:this={carouselKA}>
-		<div
-			slot="prev"
-			class="absolute z-10 ml-4 flex h-[50svh] items-center text-3xl text-white lg:text-5xl xl:h-[76svh]"
-		>
-			<button on:click={carouselKA.goToPrev}> <Fa icon={faChevronLeft} /></button>
-		</div>
+		{#snippet prev()}
+				<div
+				
+				class="absolute z-10 ml-4 flex h-[50svh] items-center text-3xl text-white lg:text-5xl xl:h-[76svh]"
+			>
+				<button onclick={carouselKA.goToPrev}> <Fa icon={faChevronLeft} /></button>
+			</div>
+			{/snippet}
 
 		<CarouselSlide
 			title="SMD-Abend"
@@ -148,12 +150,14 @@
 			</p>
 		</CarouselSlide>
 
-		<div
-			slot="next"
-			class="absolute right-0 z-10 mr-4 flex h-[50svh] items-center text-3xl text-white lg:text-5xl xl:h-[76svh]"
-		>
-			<button on:click={carouselKA.goToNext}> <Fa icon={faChevronRight} /></button>
-		</div>
+		{#snippet next()}
+				<div
+				
+				class="absolute right-0 z-10 mr-4 flex h-[50svh] items-center text-3xl text-white lg:text-5xl xl:h-[76svh]"
+			>
+				<button onclick={carouselKA.goToNext}> <Fa icon={faChevronRight} /></button>
+			</div>
+			{/snippet}
 	</Carousel>
 {/if}
 
@@ -208,9 +212,11 @@
 				arrows={mobileScreen}
 				bind:this={carouselGermany}
 			>
-				<div slot="prev" class="text-grey grid items-center p-4 text-3xl lg:text-5xl">
-					<button on:click={carouselGermany.goToPrev}> <Fa icon={faChevronLeft} /></button>
-				</div>
+				{#snippet prev()}
+								<div  class="text-grey grid items-center p-4 text-3xl lg:text-5xl">
+						<button onclick={carouselGermany.goToPrev}> <Fa icon={faChevronLeft} /></button>
+					</div>
+							{/snippet}
 				<CarouselSlideGermany image={mentoring} title="Mentoring" link="https://mentoring.smd.org/">
 					Das Studium ist kein Spaziergang. Besser passt wohl das Bild einer Bergtour mit
 					Engstellen, Geröllfeldern und so manchem Auf und Ab. Da ist es gut, mit erfahrenen
@@ -231,9 +237,11 @@
 					Dieses Angebot der Arbeitsgemeinschaft christlicher Pädagogen bietet Vernetzung,
 					Unterstützung und Ermutigung für Lehramtsstudierende, Referendare und junge Lehrkräfte.
 				</CarouselSlideGermany>
-				<div slot="next" class="text-grey grid items-center p-4 text-3xl lg:text-5xl">
-					<button on:click={carouselGermany.goToNext}> <Fa icon={faChevronRight} /></button>
-				</div>
+				{#snippet next()}
+								<div  class="text-grey grid items-center p-4 text-3xl lg:text-5xl">
+						<button onclick={carouselGermany.goToNext}> <Fa icon={faChevronRight} /></button>
+					</div>
+							{/snippet}
 			</Carousel>
 		{/if}
 	</div>

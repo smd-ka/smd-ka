@@ -2,9 +2,12 @@
 	import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 
-	export let image;
-	export let title;
-	export let link;
+	let {
+		image,
+		title,
+		link,
+		children
+	} = $props();
 </script>
 
 <div class="bg-background-gray border-4 border-white">
@@ -16,6 +19,6 @@
 		</h3>
 	</a>
 	<p class="px-4 py-2">
-		<slot />
+		{@render children?.()}
 	</p>
 </div>

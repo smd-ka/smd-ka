@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run, preventDefault } from 'svelte/legacy';
+
 	import DateTimeInput from '$lib/components/forms/DateTimeInput.svelte';
 	import TextArea from '$lib/components/forms/TextArea.svelte';
 	import TextInput from '$lib/components/forms/TextInput.svelte';
@@ -18,31 +20,33 @@
 	import CalendarCategorySelect from './calendarCategorySelect.svelte';
 	import { onMount } from 'svelte';
 
-	let src = '';
-	let image: undefined | File = undefined;
-	let loading = false;
-	let dateError: string = '';
-	let error = undefined;
+	let src = $state('');
+	let image: undefined | File = $state(undefined);
+	let loading = $state(false);
+	let dateError: string = $state('');
+	let error = $state(undefined);
 
 	// Set the preview image from duplicateEvent when it changes
-	$: if ($_duplicateEvent?.image) {
-		src = pb.files.getUrl(
-			{
-				collectionId: $_duplicateEvent.collectionId,
-				collectionName: $_duplicateEvent.collectionName,
-				id: $_duplicateEvent.id
-			},
-			$_duplicateEvent.image
-		);
-		fetch(src)
-			.then((res) => res.blob())
-			.then((blob) => {
-				image = new File([blob], $_duplicateEvent.image, { type: blob.type });
-			});
-	} else if (!image) {
-		// Only clear src if no new image is selected
-		src = '';
-	}
+	run(() => {
+		if ($_duplicateEvent?.image) {
+			src = pb.files.getUrl(
+				{
+					collectionId: $_duplicateEvent.collectionId,
+					collectionName: $_duplicateEvent.collectionName,
+					id: $_duplicateEvent.id
+				},
+				$_duplicateEvent.image
+			);
+			fetch(src)
+				.then((res) => res.blob())
+				.then((blob) => {
+					image = new File([blob], $_duplicateEvent.image, { type: blob.type });
+				});
+		} else if (!image) {
+			// Only clear src if no new image is selected
+			src = '';
+		}
+	});
 
 	const showPreview = (event: Event) => {
 		const files = (event.target as HTMLInputElement).files;
@@ -94,7 +98,7 @@
 	{/if}
 	<div class="pb-2">Mit * markierte Felder sind Pflichtfelder.</div>
 
-	<form class="grid gap-4 md:grid-cols-2" id="form" on:submit|preventDefault={createEvent}>
+	<form class="grid gap-4 md:grid-cols-2" id="form" onsubmit={preventDefault(createEvent)}>
 		{#if error}
 			<div class="col-span-full">
 				<h3>Es ist ein Fehler aufgetreten:</h3>
@@ -184,7 +188,7 @@
 					id="image"
 					accept="image/*"
 					hidden
-					on:change={showPreview}
+					onchange={showPreview}
 				/>
 			</label>
 			<b>Bitte achtet darauf, dass die Bilder nicht größer als 500 KB sind.</b><br />

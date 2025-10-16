@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run, preventDefault } from 'svelte/legacy';
+
 	import { pb } from '$lib/pocketbase';
 	import DateTimeInput from '$lib/components/forms/DateTimeInput.svelte';
 	import TextArea from '$lib/components/forms/TextArea.svelte';
@@ -18,19 +20,23 @@
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 	import CalendarCategorySelect from './calendarCategorySelect.svelte';
 	import { _eventStore } from './+page';
-	export let shownEvent: CalendarEvent;
-	export let loading = false;
-	export let updated = false;
+	interface Props {
+		shownEvent: CalendarEvent;
+		loading?: boolean;
+		updated?: boolean;
+	}
 
-	let src = '';
+	let { shownEvent = $bindable(), loading = $bindable(false), updated = $bindable(false) }: Props = $props();
+
+	let src = $state('');
 	let image: undefined | File = undefined;
-	let dateError: string = '';
-	let error = undefined;
+	let dateError: string = $state('');
+	let error = $state(undefined);
 
 	// Change detection variables
-	let hasChanges = false;
+	let hasChanges = $state(false);
 	let initialFormData = new Map();
-	let formElement: HTMLFormElement;
+	let formElement: HTMLFormElement = $state();
 	let initialImageSrc = '';
 
 	const showPreview = (event: Event) => {
@@ -100,7 +106,7 @@
 		checkForChanges();
 	};
 
-	$: {
+	run(() => {
 		if (shownEvent?.image) {
 			src = pb.files.getUrl(
 				{
@@ -113,12 +119,14 @@
 		} else {
 			src = '';
 		}
-	}
+	});
 
 	// Re-initialize tracking when shownEvent changes
-	$: if (shownEvent && formElement) {
-		setTimeout(() => initializeFormTracking(), 0);
-	}
+	run(() => {
+		if (shownEvent && formElement) {
+			setTimeout(() => initializeFormTracking(), 0);
+		}
+	});
 
 	async function updateEvent() {
 		loading = true;
@@ -176,7 +184,7 @@
 	<div class="flex items-center gap-4">
 		<button
 			class="fa"
-			on:click={() => {
+			onclick={() => {
 				_duplicateEvent.set(shownEvent);
 				_shownEvent.set(undefined);
 			}}
@@ -195,9 +203,9 @@
 	class="grid gap-4 md:grid-cols-2"
 	id="form"
 	bind:this={formElement}
-	on:submit|preventDefault={updateEvent}
-	on:input={handleInputChange}
-	on:change={handleInputChange}
+	onsubmit={preventDefault(updateEvent)}
+	oninput={handleInputChange}
+	onchange={handleInputChange}
 	use:initializeFormTracking
 >
 	{#if error}
@@ -282,7 +290,7 @@
 					</div>
 				{/if}
 			</div>
-			<input type="file" name="image" id="image" accept="image/*" hidden on:change={showPreview} />
+			<input type="file" name="image" id="image" accept="image/*" hidden onchange={showPreview} />
 		</label>
 		<b>Bitte achtet darauf, dass die Bilder nicht größer als 500 KB sind.</b><br />
 		<a
@@ -297,7 +305,7 @@
 	<div class="col-span-full flex justify-end gap-8">
 		<button
 			type="button"
-			on:click={deleteEvent}
+			onclick={deleteEvent}
 			disabled={loading}
 			class="col-span-full flex w-fit items-center justify-center gap-2 place-self-end bg-red-500 p-4 text-white disabled:cursor-not-allowed disabled:opacity-50"
 		>
