@@ -101,7 +101,7 @@
 		<h1 class="text-center">Mitarbeiten</h1>
 		<div class="grid gap-4 md:grid-cols-[1fr_fit-content(6rem)]">
 			<p>
-				Du hast Lust dich mit einzubringen? Wir freuen uns immer über neue Gesichter! Wir sind uns
+				Du hast Lust, dich mit einzubringen? Wir freuen uns immer über neue Gesichter! Wir sind uns
 				sicher, dass du deinen Platz in einem unserer Teams finden wirst. Gerne kommen wir mit dir
 				ins Gespräch und finden heraus, wo du dich am wohlsten fühlst.
 				<br />
