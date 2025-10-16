@@ -291,7 +291,7 @@ https://svelte.dev/e/node_invalid_placement -->
 									};
 								}}
 							>
-								<button>Ausloggen</button>
+								<input type="submit" value="Ausloggen" />
 							</form>
 						</button>
 					</div>
