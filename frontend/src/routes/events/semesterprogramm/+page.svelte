@@ -26,16 +26,18 @@
 		</p>
 	</section>
 
-	<section class="grid gap-x-24 gap-y-6 py-12 md:grid-cols-2">
+	<section class="grid gap-x-24 gap-y-6 py-12 xl:grid-cols-2">
 		{#each data.events as event}
 			<div class="grid grid-cols-[6rem_1fr] gap-2">
 				<h3>
 					{dayjs(event.start_date_time).format('DD.MM.')}
 				</h3>
 				<div>
-					<h3>
-						{event.title}
-					</h3>
+					<a href={`/events/kalender/${event.id}`} class="hover:underline">
+						<h3>
+							{event.title}
+						</h3>
+					</a>
 					<div>
 						{#if event.speaker}
 							<span class="italic">

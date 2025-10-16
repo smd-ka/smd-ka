@@ -54,13 +54,13 @@
 			title: 'Voller Hoffnung',
 			subtitle: 'Unser Sommersemester 2025',
 			image: vollerhoffnung,
-			link: '/events/semesterprogramm/'
+			link: '/events/semesterprogramm/sose25'
 		},
 		{
 			title: 'WeiterGehen',
 			subtitle: 'Unser Wintersemester 2025/26',
 			image: weitergehen,
-			link: '/events/semesterprogramm/wise25_26'
+			link: '/events/semesterprogramm/'
 		}
 	];
 </script>
