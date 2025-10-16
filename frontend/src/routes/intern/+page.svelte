@@ -49,18 +49,6 @@
 					Verwende deine E-Mail und Passwort des internen Bereichs, um dich anzumelden.
 				</p>
 
-				<!-- <p>
-						Neu in der SMD? Dann schau doch mal bei unserem Onboarding vorbei. Dort findest du alle
-					Infos, die du brauchst, um bei uns durchzustarten.
-					<br />
-					<a
-						class="bg-primary flex w-fit items-center gap-2 rounded-sm px-4 py-2 text-white"
-						href="/intern/onboarding"
-						>
-						<Fa icon={faArrowRight} />
-						Hier geht's zum Onboarding
-					</a>
-				</p> -->
 				<p class="text-red-500">
 					Bitte beachte, dass du vertrauliche Informationen nicht weitergeben darfst. Falls du
 					Fragen hast, wende dich bitte an das Public Relations and IT (PRIT) Team.
