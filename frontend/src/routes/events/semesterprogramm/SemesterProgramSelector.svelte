@@ -2,6 +2,7 @@
 	import herzenssache from '$lib/assets/pages/events/semesterprogramm/herzenssache_21_9.jpg';
 	import outsidethebox from '$lib/assets/pages/events/semesterprogramm/outsidethebox_21_9.jpg';
 	import vollerhoffnung from '$lib/assets/pages/events/semesterprogramm/voller_hoffnung_21_9.jpg';
+	import weitergehen from '$lib/assets/pages/events/semesterprogramm/weitergehen_21_9.jpg';
 	import background from '$lib/assets/pages/events/semesterprogramm/bg.png';
 	import Carousel from 'svelte-carousel';
 	import { browser } from '$app/environment';
@@ -53,6 +54,12 @@
 			title: 'Voller Hoffnung',
 			subtitle: 'Unser Sommersemester 2025',
 			image: vollerhoffnung,
+			link: '/events/semesterprogramm/sose25'
+		},
+		{
+			title: 'WeiterGehen',
+			subtitle: 'Unser Wintersemester 2025/26',
+			image: weitergehen,
 			link: '/events/semesterprogramm/'
 		}
 	];
@@ -63,19 +70,18 @@
 		<h2 class="text-primary text-center">Weitere Semester</h2>
 
 		{#if browser}
-			<!-- Needs to be changed to mobileScreen, as soon as another semester is here -->
 			<Carousel
-				particlesToShow={mobileScreen ? 2 : 2}
-				swiping={false}
-				dots={false}
-				arrows={false}
+				particlesToShow={mobileScreen ? 1 : 3}
+				swiping={true}
+				dots={true}
+				arrows={true}
 				bind:this={carousel}
 			>
 				<div slot="prev" class="text-grey grid items-center p-4 text-3xl lg:text-5xl">
 					<button on:click={carousel.goToPrev}> <Fa icon={faChevronLeft} /></button>
 				</div>
 				{#each programs as { title, subtitle, image, link }}
-					<a class="flex justify-center" href={link}>
+					<a class="flex justify-center px-2" href={link}>
 						<div class="max-w-96 rounded-md bg-white text-center shadow-md">
 							<img alt="SOSE24" class="rounded-t-md object-cover" src={image} />
 							<h3 class="text-center">{title}</h3>

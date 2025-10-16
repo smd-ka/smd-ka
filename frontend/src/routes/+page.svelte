@@ -20,6 +20,11 @@
 	import placeholder from '$lib/assets/pages/events/kalender/placeholder.png';
 	import dayjs from 'dayjs';
 
+	import weitergehen_background from '$lib/assets/pages/home/weitergehen_background.jpg';
+	import weitergehen_abend_background from '$lib/assets/pages/home/weitergehen_abend_background.jpg';
+	import ersti_background_oben from '$lib/assets/pages/home/ersti_background_oben.png';
+	import ersti_background_unten from '$lib/assets/pages/home/ersti_background_unten.png';
+
 	let success = false;
 	let error = false;
 	let loading = false;
@@ -42,17 +47,6 @@
 		}
 	}
 
-	const sameDay = (start_date_time: string, end_date_time?: string) => {
-		if (!end_date_time) return true;
-		const d1 = new Date(start_date_time);
-		const d2 = new Date(end_date_time);
-		return (
-			d1.getFullYear() === d2.getFullYear() &&
-			d1.getMonth() === d2.getMonth() &&
-			d1.getDate() === d2.getDate()
-		);
-	};
-
 	function imgSrc(image: string, id: string, collectionId: string, collectionName: string) {
 		if (!image) {
 			return placeholder;
@@ -73,6 +67,78 @@
 </HeroShot>
 
 <main class="container mx-auto flex flex-col gap-24 py-12 text-lg">
+	<section class="grid grid-cols-1 gap-24 max-md:px-4 md:grid-cols-2 xl:grid-cols-3">
+		<div class="font-poppins text-ws2526Blue relative bg-[#f2f2f2] px-4 py-10 text-center">
+			<div class=" text-7xl font-bold uppercase italic">weiter</div>
+			<div class=" text-7xl font-bold uppercase">Gehen</div>
+			<p>Willkommen im Wintersemester 2025/26</p>
+			<img src={weitergehen_background} alt="Semesterdesign" class="px-20 py-10" />
+			<a
+				href="/events/semesterprogramm"
+				class="bg-ws2526Blue flex w-fit items-center gap-2 justify-self-center px-4 py-2 text-white"
+			>
+				Hier gehts zum Semesterprogramm
+				<Fa icon={faChevronRight} />
+			</a>
+		</div>
+
+		<div class="font-playfair relative bg-[#8cb8b7]">
+			<img src={ersti_background_oben} alt="Ersti Hintergrund" class="relative z-0 w-full" />
+			<p class="font-merriweather absolute left-2 top-0 text-xl text-white">Erstsemesteraktionen</p>
+			<div
+				class="absolute top-28 z-20 flex flex-col gap-4 px-4 py-10 text-center text-5xl text-white"
+			>
+				Willkommen in Karlsruhe
+			</div>
+			<p class="relative z-20 px-4 text-center text-xl">
+				Neu in der Stadt? <br /> Wir haben viele Events für dich vorbereitet!
+			</p>
+			<a
+				href="/new/erstsemester"
+				class="text-gray relative z-20 my-6 flex w-fit items-center gap-2 justify-self-center bg-white px-4 py-2"
+			>
+				Entdecke das Ersti-Programm
+				<Fa icon={faChevronRight} />
+			</a>
+			<img
+				src={ersti_background_unten}
+				alt="Ersti Hintergrund"
+				class="absolute bottom-0 z-0 w-full"
+			/>
+		</div>
+
+		<div
+			class="font-poppins text-ws2526Blue xl: relative bg-[#f2f2f2] px-4 py-10 text-center md:col-span-2 xl:col-span-1"
+		>
+			<div class="text-7xl font-bold uppercase italic">weiter</div>
+			<div class="text-7xl font-bold uppercase">Gehen</div>
+			<p>Nächster SMD-Abend</p>
+			<a href="/events/kalender/{data.nextSMDEvening.id}">
+				<div class="py-12">
+					{#if data.nextSMDEvening}
+						<p class=" font-bold">
+							{data.nextSMDEvening.title}
+						</p>
+
+						<div class="flex flex-col text-sm text-gray-500">
+							{dayjs(data.nextSMDEvening.start_date_time).format('dddd, DD.MM // HH:mm')}
+							{#if data.nextSMDEvening.location}
+								<a
+									class="hover:text-primary flex items-center justify-center gap-2 hover:cursor-pointer"
+									href={data.nextSMDEvening.location_url}
+								>
+									<Fa icon={faLocationDot} />
+									{data.nextSMDEvening.location}
+								</a>
+							{/if}
+						</div>
+					{/if}
+				</div>
+			</a>
+			<img src={weitergehen_abend_background} alt="Semesterdesign" class="px-10 pt-5" />
+		</div>
+	</section>
+
 	{#if data.events}
 		<section class="px-4">
 			<h1 class="text-center">Was läuft aktuell?</h1>
