@@ -69,8 +69,8 @@
 <main class="container mx-auto flex flex-col gap-24 py-12 text-lg">
 	<section class="grid grid-cols-1 gap-24 max-md:px-4 md:grid-cols-2 xl:grid-cols-3">
 		<div class="font-poppins text-ws2526Blue relative bg-[#f2f2f2] px-4 py-10 text-center">
-			<div class=" text-7xl uppercase italic">weiter</div>
-			<div class="text-ws2526Blue text-7xl uppercase">Gehen</div>
+			<div class=" text-7xl font-bold uppercase italic">weiter</div>
+			<div class=" text-7xl font-bold uppercase">Gehen</div>
 			<p>Willkommen im Wintersemester 2025/26</p>
 			<img src={weitergehen_background} alt="Semesterdesign" class="px-20 py-10" />
 			<a
@@ -110,8 +110,8 @@
 		<div
 			class="font-poppins text-ws2526Blue xl: relative bg-[#f2f2f2] px-4 py-10 text-center md:col-span-2 xl:col-span-1"
 		>
-			<div class=" text-7xl uppercase italic">weiter</div>
-			<div class="text-ws2526Blue text-7xl uppercase">Gehen</div>
+			<div class="text-7xl font-bold uppercase italic">weiter</div>
+			<div class="text-7xl font-bold uppercase">Gehen</div>
 			<p>Nächster SMD-Abend</p>
 			<a href="/events/kalender/{data.nextSMDEvening.id}">
 				<div class="py-12">
