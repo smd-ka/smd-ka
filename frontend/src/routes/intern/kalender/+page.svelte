@@ -5,9 +5,18 @@
 	import EditEventForm from './editEventForm.svelte';
 	import dayjs from 'dayjs';
 	import { _duplicateEvent, _eventStore, _shownEvent, type CalendarEvent } from './+page';
+	import { onMount } from 'svelte';
 
 	let loading = false;
 	let updated = false;
+
+	let eventList: CalendarEvent[] = [];
+
+	onMount(() => {
+		_eventStore.subscribe((events) => {
+			eventList = events;
+		});
+	});
 
 	const getDateString = (startDateString: string, endDateString: string) => {
 		if (!endDateString) {
@@ -23,6 +32,18 @@
 		_shownEvent.set(event);
 		_duplicateEvent.set(undefined);
 		updated = false;
+	}
+
+	function filterEventsByCategory(category: string) {
+		if (!category) {
+			_eventStore.subscribe((events) => {
+				eventList = events;
+			});
+			return;
+		}
+		_eventStore.subscribe((events) => {
+			eventList = events.filter((event) => event.category === category);
+		});
 	}
 </script>
 
@@ -63,7 +84,33 @@
 		<div class="grid gap-4 rounded-lg lg:grid-cols-[32rem_1fr]">
 			<section class="h-[82svh] overflow-y-auto overflow-x-hidden text-ellipsis max-lg:h-64">
 				<div class="mr-1 grid gap-2">
-					{#each $_eventStore as event}
+					<div class="flex">
+						<button
+							on:click={() => {
+								filterEventsByCategory('');
+							}}
+							class="fa mb-2 rounded-full bg-gray-800 p-2 text-white"
+						>
+							Alle
+						</button>
+						<button
+							on:click={() => {
+								filterEventsByCategory('smd_abend');
+							}}
+							class="bg-primary fa mb-2 rounded-full p-2 text-white"
+						>
+							SMD-Abend
+						</button>
+						<button
+							on:click={() => {
+								filterEventsByCategory('kingscafe');
+							}}
+							class="fa mb-2 ml-2 rounded-full bg-gray-800 p-2 text-white"
+						>
+							King's Café
+						</button>
+					</div>
+					{#each eventList as event}
 						<div class="rounded-md bg-white p-4 shadow-md">
 							<button
 								on:click={() => onChangeEventSelection(event)}
