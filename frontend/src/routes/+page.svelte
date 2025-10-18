@@ -73,13 +73,12 @@
 			<div class=" text-7xl font-bold uppercase">Gehen</div>
 			<p>Willkommen im Wintersemester 2025/26</p>
 			<img src={weitergehen_background} alt="Semesterdesign" class="px-20 py-10" />
-			<a
-				href="/events/semesterprogramm"
-				class="bg-ws2526Blue flex w-fit items-center gap-2 justify-self-center px-4 py-2 text-white"
-			>
-				Hier gehts zum Semesterprogramm
-				<Fa icon={faChevronRight} />
-			</a>
+			<div class="flex justify-center">
+				<a href="/events/semesterprogramm" class="bg-ws2526Blue fa px-4 py-2 text-white">
+					Hier gehts zum Semesterprogramm
+					<Fa icon={faChevronRight} />
+				</a>
+			</div>
 		</div>
 
 		<div class="font-playfair relative bg-[#8cb8b7]">
@@ -93,13 +92,12 @@
 			<p class="relative z-20 px-4 text-center text-xl">
 				Neu in der Stadt? <br /> Wir haben viele Events für dich vorbereitet!
 			</p>
-			<a
-				href="/new/erstsemester"
-				class="text-gray relative z-20 my-6 flex w-fit items-center gap-2 justify-self-center bg-white px-4 py-2"
-			>
-				Entdecke das Ersti-Programm
-				<Fa icon={faChevronRight} />
-			</a>
+			<div class="flex justify-center">
+				<a href="/new/erstsemester" class="text-gray fa relative z-20 my-6 bg-white px-4 py-2">
+					Entdecke das Ersti-Programm
+					<Fa icon={faChevronRight} />
+				</a>
+			</div>
 			<img
 				src={ersti_background_unten}
 				alt="Ersti Hintergrund"
