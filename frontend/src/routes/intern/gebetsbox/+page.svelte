@@ -39,7 +39,7 @@
 	<section class="text-center text-xl xl:px-60">
 		<div class="flex flex-wrap items-center justify-center">
 			<h1 class="pb-0 max-sm:text-4xl">Schicke dein Anliegen</h1>
-			<div class="flex items-center">
+			<div class="flex flex-wrap items-center justify-center">
 				<img alt="rechter Pfeil" class="mx-4 w-28" src={rightArrow} />
 				<h1 class="pb-0 max-sm:text-4xl">zum Seelsorgeteam</h1>
 			</div>
