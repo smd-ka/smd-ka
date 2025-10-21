@@ -123,13 +123,13 @@
 
 				<div class="grid gap-4">
 					<p>
-						Die <strong class="font-bold">Bahnanreise</strong> wird am Donnerstag gegen 13:00 vom
+						Die <strong class="font-bold">Bahnanreise</strong> wird am Freitag gegen 17:00 vom
 						Hauptbahnhof in Karlsruhe starten.
 						<br />Am Sonntag sind wir gegen 16:00 wieder zurück in Karlsruhe
 					</p>
 
 					<p>
-						Die <strong class="font-bold">Fahrradanreise</strong> wird am Donnerstag gegen 10:00 aus
+						Die <strong class="font-bold">Fahrradanreise</strong> wird am Freitag gegen 13:00 aus
 						der Stadtmitte von Karlsruhe starten.
 						<br /> Am Sonntag sind wir gegen 17:00 wieder zurück in Karlsruhe.
 					</p>
@@ -148,6 +148,7 @@
 						>Ich nehme an der Fahrradtour zur Anreise (und Abreise) teil.</option
 					>
 					<option value="takesTrain">Ich nehme an der Bahnfahrt teil.</option>
+					<option value="takesCar">Ich reise mit dem Auto an und kann Gepäck mitnehmen.</option>
 					<option value="takesOwn">Ich reise selbständig an. </option>
 				</select>
 
@@ -176,17 +177,17 @@
 
 				<p class="font-bold">Weitere Infos zur Anreise folgen per Mail.</p>
 
-				<h3>Essenspräferenzen und Material</h3>
+				<h3>Essenspräferenzen</h3>
 
-				<!-- <InputCheckbox
+				<InputCheckbox
 					name="would_sleep_on_floor"
 					label="Ich könnte mir vorstellen ggf. auf den Boden zu schlafen und Schlafsack / Isomatte dazu mitzubringen"
-				/> -->
+				/>
 
-				<!-- <InputCheckbox
+				<InputCheckbox
 					name="brings_cake"
 					label="Ich bringe Kuchen, Muffins oder Ähnliches mit für Kaffee und Kuchen am Samstag"
-				/> -->
+				/>
 
 				{#if loggedIn}
 					<b class="text-primary">Bitte gebe deine Essenspräferenzen in deinem Profil an!</b>
@@ -200,8 +201,9 @@
 					/>
 				{/if}
 
-				<!-- SAFT SS25  -->
-				<div>
+				<!-- +++ ZELT-SAFT +++ -->
+
+				<!-- <div>
 					<p>Ich kann folgend(e) Zelte mitbringen: Bitte die Personenanzahl pro Zelt angeben.</p>
 					<InputField name="tents" label="" disabled={loading} />
 				</div>
@@ -221,7 +223,9 @@
 				></NumberInput>
 
 				<NumberInput name="pad_count" label="Anzahl Isomatten, die ich verleihen könnte:"
-				></NumberInput>
+				></NumberInput> -->
+
+				<!-- +++ ZELT-SAFT +++ -->
 
 				<span><b>Rechtliches:</b> Und wie sieht's mit Bildern von dir aus? </span>
 				<select class="rounded-md border-2 py-3" name="post_images" required>
@@ -242,13 +246,21 @@
 					auf denen ihr gut ausseht, sollten Zweifel bestehen oder wir es als grenzwertig ansehen,
 					fragen wir nochmal im Einzelfall nach. Bitte habt Verständnis, dass wir dies nicht für
 					jedes Bild/Video machen wollen, da es unsere Arbeit dann ungemein erschwert. Danke
-					schonmal und ich freue mich auf fröhliche und lustige Bilder von der SAFT :P
+					schonmal und wir freuen uns auf fröhliche und lustige Bilder von der SAFT :P
 				</p>
 
 				<div class="flex flex-col">
 					<label for="comments">
-						<b>Sonstige Anmerkungen: Instrumente und Autos! </b>
+						<b>Sonstige Anmerkungen </b>
+						<p>Falls du ein Instrument hast und es mitbringen möchstest, lass es uns hier wissen.
+							Falls du angegeben hast, dass du mit dem Auto anreist und Gepäck mitnehmen kannst, lass uns
+							auch hier wissen wie viel Platz du hast.
+						</p>
 						<p>
+							Auch sonstige Anmerkungen zur Anmeldung zur SAFT kannst du hier gerne
+							vermerken.
+						</p>
+						<!-- <p>
 							Schreib uns hier auch gerne, falls du ein <b>Instrument mitbringen</b>
 							könntest oder du ein <b>Auto hast</b>, was wir nutzen könnten. Für die Instrumente
 							organisieren wir gerne einen Transport mit dem Auto.
@@ -256,7 +268,7 @@
 						<p>
 							Falls du Anmerkungen zu deinem Outdoormaterial hast, lass es uns gerne auch hier
 							Wissen.
-						</p>
+						</p> -->
 					</label>
 					<textarea class="rounded-md border-2" name="comments" id="comments" rows="5"></textarea>
 				</div>
