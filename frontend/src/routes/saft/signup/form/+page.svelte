@@ -166,7 +166,9 @@
 				{/if}
 
 				<div class="flex flex-col">
+					<!-- +++ SS25 +++
 					<CheckboxInput name="comes_friday" label="Anreise am Freitag"></CheckboxInput>
+					-->
 					<label for="travel_comments">
 						<bold class="font-bold">Anmerkungen zur Anreise oder Abreise.</bold> (z.B. ich reise verspätet
 						an oder ich reise früher wieder ab.)</label
