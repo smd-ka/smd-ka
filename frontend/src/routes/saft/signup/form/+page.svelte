@@ -71,7 +71,114 @@
 		{#if success}
 			<div class="grid gap-8">
 				<h1 class=" text-3xl font-bold uppercase">Du hast dich erfolgreich angemeldet!</h1>
-				<p>Wir haben dir eine Bestätigung per Email zukommen lassen ;).</p>
+				<p>
+					Wir haben dir eine Bestätigung
+					(wo auch das folgende drin steht)
+					per Email zukommen lassen ;).
+				</p>
+				<p>
+				Wir freuen uns riesig, dass du bei unserem gemeinsamen SAFT-Wochenende dabei bist!
+				Damit du dich schon gut & entspannt auf die SAFT vorbereiten kannst,
+				findest du in dieser Mail die wichtigesten Punkte schnell zusammengefasst.
+				</p>
+
+				<h3>1) Allgemeines & Organisatorisches</h3>
+
+				<ul class="list-disc">
+					<li>
+						<strong>Datum:</strong>
+						14. - 16. November 2025
+					</li>
+					<li>
+						<strong>Teilnahmebeitrag:</strong> 60 €;
+						bitte bis <strong>11.11.</strong> überweisen an:<br />
+						SMD Karlsruhe, IBAN: <code>DE26 5009 2100 0001 7549 39</code><br />
+						Alternativ Barzahlung vor Ort.
+					</li>
+					<li>
+						<strong>Anreise per Bahn:</strong>
+						Die Bahnanreise wird am Freitag gegen 16:00 vom Hauptbahnhof in Karlsruhe starten.
+						Am Sonntag sind wir gegen 16:00 wieder zurück in Karlsruhe
+						Genauere Infos folgen.
+					</li>
+					<li>
+						<strong>Anreise per Fahrrad:</strong>
+						Die Fahrradanreise wird am Freitag gegen 13:00 aus der Stadtmitte von Karlsruhe starten.
+						Am Sonntag sind wir gegen 17:00 wieder zurück in Karlsruhe.
+						Fahrradfahrer können ihr Gepäck vor der Fahrt abgeben.
+						Genauere Infos folgen.
+					</li>
+					<li>
+						<strong>Selbstständige Anreise:</strong>
+						Ab ca. 17:00 solltest du ankommen in der<br />
+						Reichardtstraße 21,
+						75417 Mühlacker (Mühlhausen).
+						<a href="https://maps.app.goo.gl/gpNex3XSDMUVz4T46">
+						Ort auf Google Maps
+						</a>
+					</li>
+				</ul>
+
+				<p>
+					Falls du für die SAFT Sportmaterialien mitnimmst
+					oder einen Workshop am Samstag Nachmittag anbieten möchtest,
+					trage dies bitte
+					<a href="https://docs.google.com/spreadsheets/d/1elIUUx3LKdrvCmuGbXDzUgSeF2iMWq7bZRdVswGHLYM/edit?usp=sharing#gid=1531100833">im Mastersheet unter "SAFT WS25/26"</a>
+					ein.
+				</p>
+
+				<h3>2) Packliste</h3>
+
+				<ul class="list-disc">
+					<li>
+						Bettbezug und Spannbettlacken
+						(kein Schlafsack auf den Betten erlaubt)
+						<ul class="list-disc ml-8">
+							<li>
+								(sofern du angekreuzt hast,
+								ggfs. mit Schlafsack auf den Boden schalfen zu können,
+								kommen wir nochmal auf dich zu,
+								sollte dies aufgrund der Teilnehmeranzahl erforderlich sein)
+							</li>
+						</ul>
+					</li>
+					<li>(wiedererkennbares) Geschirrhandtuch</li>
+					<li>für das gemeinsame Frühstück: dein Lieblings-Brotaufstrich</li>
+					<li>Kuchen (falls angekreuzt, oder als Überraschung)</li>
+				</ul>
+
+				<ul class="list-disc">
+					<li>Wetterfeste Kleidung (Regenjacke, warme Pullis, ggfs. Regenhose)</li>
+					<li>festes Schuhwerk und Sport-/Outdoorschuhe (die auch dreckig werden dürfen)</li>
+					<li>Wechselsachen (alles, was du für ein Wochenende brauchst)</li>
+					<li>Hausschuhe (Fußboden kann relativ kalt werden)</li>
+					<li>evntl. Badesachen (z.B. für eine nächtliche Fluss-Aktion)</li>
+				</ul>
+
+				<ul class="list-disc">
+					<li>
+						Bibel & Schreibzeug
+						<ul class="list-disc ml-8">
+							<li>Elbenfelder oder Schlachter-Übersetzung empfohlen</li>
+							<li>falls vorhanden auch gerne eine Studienbibel</li>
+							<li>evntl. ein kleines Notizheft oder Tagebuch (für Gebete & Gedanken)</li>
+						</ul>
+					</li>
+					<li>Spiele (z.B. Wikingerschach, Bälle, Karten- & Brettspiele, …)</li>
+					<li>Taschenlampe oder Stirnlampe (+ Ersatzbatterien)</li>
+					<li>Ohrstöpsel (für ruhigeren Schlaf)</li>
+					<li>Zeug zum Basteln (Cuttermesser, Schere, Kleber, Klebeband)</li>
+				</ul>
+
+				<p>
+					Bei Fragen melde dich gerne bei uns!
+				</p>
+
+				<p>
+					Wir freuen uns auf eine gesegnete, abenteuerliche und
+					gemeinschaftliche Zeit mit euch!
+				</p>
+				<p><strong>Euer SAFT-Orga-Team</strong></p>
 			</div>
 		{:else}
 			<h1 class="pb-0 text-5xl font-bold uppercase">SAFT Anmeldung</h1>
@@ -123,7 +230,7 @@
 
 				<div class="grid gap-4">
 					<p>
-						Die <strong class="font-bold">Bahnanreise</strong> wird am Freitag gegen 17:00 vom
+						Die <strong class="font-bold">Bahnanreise</strong> wird am Freitag gegen 16:00 vom
 						Hauptbahnhof in Karlsruhe starten.
 						<br />Am Sonntag sind wir gegen 16:00 wieder zurück in Karlsruhe
 					</p>
