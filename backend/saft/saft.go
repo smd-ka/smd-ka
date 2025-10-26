@@ -14,7 +14,7 @@ func SaftEmails(app *pocketbase.PocketBase) {
 
 	app.OnRecordCreate("saft").BindFunc(func(e *core.RecordEvent) error {
 
-		Subject := "[SMD-KA] SAFT Anmeldung SoSe25"
+		Subject := "[SMD-KA] SAFT Anmeldung WS25/26"  // format: SoSe25 or WS25/26
 
 		// E-Mail-Adress for questions (see template)
 		Email := "inreach@smd-karlsruhe.de"
