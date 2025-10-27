@@ -5,7 +5,7 @@ set -euxo pipefail
 # automatically executed by pipeline
 
 curl -O https://goauthentik.io/docker-compose.yml
-if patch -p1 < docker-compose.patch; then
+if patch --fuzz=3 --ignore-whitespace --strip=1 < docker-compose.patch; then
     :
 else
     err=$?
