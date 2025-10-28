@@ -72,12 +72,14 @@
 					target="_blank"
 					rel="noopener noreferrer"
 					aria-label="Signal-Gruppe öffnen (öffnet neues Fenster)"
-					class="grid grid-cols-[3rem_1fr] items-center gap-x-8 gap-y-4 p-2 no-underline hover:underline"
+					class="news-channel"
 				>
 					<Fa class="text-5xl" icon={faSignalMessenger} />
 					<div>
 						<div class="text-3xl italic">Messenger</div>
-						<div class="text-xl flex items-center gap-2">Signal-Gruppe <Fa icon={faArrowUpRightFromSquare} /></div>
+						<div class="flex items-center gap-2 text-xl">
+							Signal-Gruppe <Fa icon={faArrowUpRightFromSquare} />
+						</div>
 					</div>
 				</a>
 
@@ -87,38 +89,34 @@
 					target="_blank"
 					rel="noopener noreferrer"
 					aria-label="Instagram-Profil öffnen (öffnet neues Fenster)"
-					class="grid grid-cols-[3rem_1fr] items-center gap-x-8 gap-y-4 p-2 no-underline hover:underline"
+					class="news-channel"
 				>
 					<Fa class="text-5xl" icon={faInstagram} />
 					<div>
 						<div class="text-3xl italic">Instagram</div>
-						<div class="text-xl flex items-center gap-2">@smd_karlsruhe <Fa icon={faArrowUpRightFromSquare} /></div>
+						<div class="flex items-center gap-2 text-xl">
+							@smd_karlsruhe <Fa icon={faArrowUpRightFromSquare} />
+						</div>
 					</div>
 				</a>
 
 				<!-- E-Mail (contact form) -->
-				<a
-					href="#form-section"
-					aria-label="Zum Kontaktformular springen"
-					class="grid grid-cols-[3rem_1fr] items-center gap-x-8 gap-y-4 p-2 no-underline hover:underline"
-				>
+				<a href="#form-section" aria-label="Zum Kontaktformular springen" class="news-channel">
 					<Fa class="text-5xl" icon={faEnvelope} />
 					<div>
 						<div class="text-3xl italic">E-Mail-Verteiler</div>
-						<div class="text-xl flex items-center gap-2"><Fa icon={faChevronRight} /> über Kontaktformular anfragen</div>
+						<div class="flex items-center gap-2 text-xl">
+							<Fa icon={faChevronRight} /> über Kontaktformular anfragen
+						</div>
 					</div>
 				</a>
 
 				<!-- Webseite / Kalender -->
-				<a
-					href="/events/kalender"
-					aria-label="Kalender öffnen"
-					class="grid grid-cols-[3rem_1fr] items-center gap-x-8 gap-y-4 p-2 no-underline hover:underline"
-				>
+				<a href="/events/kalender" aria-label="Kalender öffnen" class="news-channel">
 					<Fa class="text-5xl" icon={faGlobe} />
 					<div>
 						<div class="text-3xl italic">Webseite</div>
-						<div class="text-xl flex items-center gap-2"><Fa icon={faChevronRight} /> Kalender</div>
+						<div class="flex items-center gap-2 text-xl"><Fa icon={faChevronRight} /> Kalender</div>
 					</div>
 				</a>
 			</div>
@@ -173,3 +171,9 @@
 		{/if}
 	</section>
 </main>
+
+<style>
+	.news-channel {
+		@apply grid grid-cols-[3rem_1fr] items-center gap-x-8 gap-y-4 p-2 no-underline hover:underline;
+	}
+</style>
