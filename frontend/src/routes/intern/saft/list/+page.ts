@@ -15,6 +15,8 @@ export type SaftRegistrationFilter =
 
 export const load: PageLoad = async () => {
 	try {
+		// 'saft_registrations' is a view, filtered by semester
+		// (i.e. this filter needs to be updated in the backend)
 		const records = await pb.collection('saft_registrations').getFullList({
 			sort: 'name'
 		});
