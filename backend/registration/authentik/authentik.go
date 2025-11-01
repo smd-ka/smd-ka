@@ -8,6 +8,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strings"
 
 	"github.com/pocketbase/pocketbase"
 	"github.com/pocketbase/pocketbase/core"
@@ -29,7 +30,12 @@ func SetupAuthentik(app *pocketbase.PocketBase) {
 		// Load bearer token from env
 		bearerToken := os.Getenv("AUTHENTIK_BEARER_TOKEN")
 		if bearerToken == "" {
-			return errors.New("missing bearer token. Did you set it in the env?")
+			return errors.New("missing AUTHENTIK_BEARER_TOKEN token. Did you set it in the env?")
+		}
+		// bearer token prefix can be used to disable integration dynamically
+		if strings.HasPrefix(bearerToken, "DISABLED:") {
+			app.Logger().Info(fmt.Sprintf("ignoring Authentik integration as AUTHENTIK_BEARER_TOKEN is set to %q", bearerToken))
+			return e.Next()
 		}
 
 		name := e.Record.GetString("name") + " " + e.Record.GetString("surname")
@@ -60,7 +66,12 @@ func SetupAuthentik(app *pocketbase.PocketBase) {
 		// Load bearer token from env
 		bearerToken := os.Getenv("AUTHENTIK_BEARER_TOKEN")
 		if bearerToken == "" {
-			return errors.New("missing bearer token. Did you set it in the env?")
+			return errors.New("missing AUTHENTIK_BEARER_TOKEN token. Did you set it in the env?")
+		}
+		// bearer token prefix can be used to disable integration dynamically
+		if strings.HasPrefix(bearerToken, "DISABLED:") {
+			app.Logger().Info(fmt.Sprintf("ignoring Authentik integration as AUTHENTIK_BEARER_TOKEN is set to %q", bearerToken))
+			return e.Next()
 		}
 
 		name := e.Record.GetString("name") + " " + e.Record.GetString("surname")
