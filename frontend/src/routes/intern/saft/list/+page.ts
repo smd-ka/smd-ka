@@ -92,6 +92,10 @@ export const _filterSaftRegistrations = (filter: SaftRegistrationFilter, list) =
 	}
 };
 
+function escapeCsv(text: string): string {
+	return '"' + text + '"';
+}
+
 export const _exportToCsv = (list, filter) => {
 	const rows = [
 		[
@@ -127,10 +131,10 @@ export const _exportToCsv = (list, filter) => {
 			x.email,
 			x.group === 'Landau' ? 'Landau' : 'Karlsruhe',
 			_travelOption(x.travel_option),
-			'"' + x.travel_comments + '"',
+			escapeCsv(x.travel_comments),
 			x.ticket,
 			x.would_sleep_on_floor ? 'Ja' : '',
-			'"' + x.comments + '"',
+			escapeCsv(x.comments),
 			x.brings_cake ? 'Ja' : '',
 			x.is_vegetarian ? 'Ja' : '',
 			x.allergies,
