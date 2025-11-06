@@ -150,7 +150,7 @@ export const _exportToCsv = (list, filter) => {
 		])
 	];
 
-	const csvContent = 'data:text/csv;charset=utf-8,' + rows.map((x) => x.join(',')).join('\n');
+	const csvContent = 'data:text/csv;charset=utf-8,' + rows.map((x) => x.join(',')).join('\r\n');  // CRLF according to RFC 4180
 
 	const encodedUri = encodeURI(csvContent);
 	const link = document.createElement('a');
