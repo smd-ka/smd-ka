@@ -90,6 +90,10 @@
 			<h3 class="col-span-full">Übersicht über alle Anmeldungen</h3>
 			<div>
 				<div>
+					Letzte Anmeldung um:
+					<b>{data.lastSubmission}</b>
+				</div>
+				<div>
 					<b>{data.list.length}</b>
 					Anmeldungen gesamt
 				</div>

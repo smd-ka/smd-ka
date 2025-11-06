@@ -45,6 +45,8 @@ export const load: PageLoad = async () => {
 		const availableBags = records.reduce((sum, x) => sum + x.bag_count, 0);
 		const availablePads = records.reduce((sum, x) => sum + x.pad_count, 0);
 
+		const lastSubmission = records.map((x) => x.created).reduce((prev, cur) => (prev > cur) ? prev : cur);
+
 		return {
 			list: records,
 			takesBikeCount,
@@ -63,7 +65,8 @@ export const load: PageLoad = async () => {
 			availableBags,
 			availablePads,
 			isFemale,
-			isMale
+			isMale,
+			lastSubmission,
 		};
 	} catch (error) {
 		console.error(error);
