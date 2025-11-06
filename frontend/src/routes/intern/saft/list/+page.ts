@@ -93,7 +93,11 @@ export const _filterSaftRegistrations = (filter: SaftRegistrationFilter, list) =
 };
 
 function escapeCsv(text: string): string {
-	return '"' + text + '"';
+	// text escaping according to RFC 4180, section 2:
+	// - 5. surround by double quotes
+	// - 6. the same for CRLF inside text
+	// - 7. escape double quote with extra double quote
+	return '"' + text.replaceAll('"', '""') + '"';
 }
 
 export const _exportToCsv = (list, filter) => {
