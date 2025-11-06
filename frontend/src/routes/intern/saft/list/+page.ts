@@ -103,6 +103,7 @@ function escapeCsv(text: string): string {
 export const _exportToCsv = (list, filter) => {
 	const rows = [
 		[
+			'Angemeldet um',
 			'Bezahlt',
 			'Name',
 			'Geschlecht',
@@ -128,6 +129,7 @@ export const _exportToCsv = (list, filter) => {
 			'Anzahl Isomatten zu verleihen'
 		],
 		...list.map((x) => [
+			x.created,
 			x.paid ? 'Ja' : 'Nein',
 			escapeCsv(x.name),
 			x.gender === 'female' ? 'w' : 'm',
