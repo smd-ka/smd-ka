@@ -52,6 +52,7 @@
 	}
 
 	const columns = [
+		'Angemeldet um',
 		'Bezahlt',
 		'Name',
 		'Geschlecht',
@@ -88,6 +89,10 @@
 		<div class="card grid lg:grid-cols-3">
 			<h3 class="col-span-full">Übersicht über alle Anmeldungen</h3>
 			<div>
+				<div>
+					Letzte Anmeldung um:
+					<b>{data.lastSubmission}</b>
+				</div>
 				<div>
 					<b>{data.list.length}</b>
 					Anmeldungen gesamt
@@ -202,13 +207,14 @@
 
 		<div class="flex overflow-auto">
 			<div
-				class="pad-childs grid grid-cols-[repeat(21,1fr)] divide-y-2 divide-y-reverse divide-x-reverse whitespace-nowrap"
+				class="pad-childs grid grid-cols-[repeat(22,1fr)] divide-y-2 divide-y-reverse divide-x-reverse whitespace-nowrap"
 			>
 				{#each columns as column}
 					<div><b>{column}</b></div>
 				{/each}
 
 				{#each filteredList as registration, i}
+					<div>{registration.created}</div>
 					<div class="flex items-start gap-4 py-1">
 						<input
 							disabled={paidLoading.includes(i)}

@@ -45,6 +45,8 @@ export const load: PageLoad = async () => {
 		const availableBags = records.reduce((sum, x) => sum + x.bag_count, 0);
 		const availablePads = records.reduce((sum, x) => sum + x.pad_count, 0);
 
+		const lastSubmission = records.map((x) => x.created).reduce((prev, cur) => (prev > cur) ? prev : cur);
+
 		return {
 			list: records,
 			takesBikeCount,
@@ -63,7 +65,8 @@ export const load: PageLoad = async () => {
 			availableBags,
 			availablePads,
 			isFemale,
-			isMale
+			isMale,
+			lastSubmission,
 		};
 	} catch (error) {
 		console.error(error);
@@ -92,9 +95,18 @@ export const _filterSaftRegistrations = (filter: SaftRegistrationFilter, list) =
 	}
 };
 
+function escapeCsv(text: string): string {
+	// text escaping according to RFC 4180, section 2:
+	// - 5. surround by double quotes
+	// - 6. the same for CRLF inside text
+	// - 7. escape double quote with extra double quote
+	return '"' + text.replaceAll('"', '""') + '"';
+}
+
 export const _exportToCsv = (list, filter) => {
 	const rows = [
 		[
+			'Angemeldet um',
 			'Bezahlt',
 			'Name',
 			'Geschlecht',
@@ -120,20 +132,21 @@ export const _exportToCsv = (list, filter) => {
 			'Anzahl Isomatten zu verleihen'
 		],
 		...list.map((x) => [
+			x.created,
 			x.paid ? 'Ja' : 'Nein',
-			x.name,
+			escapeCsv(x.name),
 			x.gender === 'female' ? 'w' : 'm',
-			x.phonenumber,
-			x.email,
+			escapeCsv(x.phonenumber),
+			escapeCsv(x.email),
 			x.group === 'Landau' ? 'Landau' : 'Karlsruhe',
 			_travelOption(x.travel_option),
-			'"' + x.travel_comments + '"',
-			x.ticket,
+			escapeCsv(x.travel_comments),
+			escapeCsv(x.ticket),
 			x.would_sleep_on_floor ? 'Ja' : '',
-			'"' + x.comments + '"',
+			escapeCsv(x.comments),
 			x.brings_cake ? 'Ja' : '',
 			x.is_vegetarian ? 'Ja' : '',
-			x.allergies,
+			escapeCsv(x.allergies),
 			_postImages(x.post_images),
 			// SS25
 			x.comes_friday ? 'Ja' : '',
@@ -146,7 +159,7 @@ export const _exportToCsv = (list, filter) => {
 		])
 	];
 
-	const csvContent = 'data:text/csv;charset=utf-8,' + rows.map((x) => x.join(',')).join('\n');
+	const csvContent = 'data:text/csv;charset=utf-8,' + rows.map((x) => x.join(',')).join('\r\n');  // CRLF according to RFC 4180
 
 	const encodedUri = encodeURI(csvContent);
 	const link = document.createElement('a');
