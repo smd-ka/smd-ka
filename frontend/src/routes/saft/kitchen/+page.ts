@@ -11,7 +11,9 @@ export const load: PageLoad = async () => {
 		const totalCount = records.length;
 		const vegetarianCount = records.filter((record) => record.is_vegetarian).length;
 		const cakeCount = records.filter((record) => record.brings_cake).length;
-		const filteredRecords = records.filter((record) => record.allergies || record.brings_cake);
+		const filteredRecords = records.filter(
+			(record) => record.allergies || record.brings_cake || record.is_vegetarian
+		);
 
 		return { list: filteredRecords, totalCount, cakeCount, vegetarianCount };
 	} catch (error) {
