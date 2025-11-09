@@ -16,6 +16,7 @@
 		_travelOptionIcon,
 		type SaftRegistrationFilter
 	} from './+page';
+	import dayjs from 'dayjs';
 
 	export let data;
 
@@ -91,7 +92,7 @@
 			<div>
 				<div>
 					Letzte Anmeldung um:
-					<b>{data.lastSubmission}</b>
+					<b> {dayjs(data.lastSubmission).format('DD.MM.YYYY HH:mm')} </b>
 				</div>
 				<div>
 					<b>{data.list.length}</b>
@@ -214,7 +215,9 @@
 				{/each}
 
 				{#each filteredList as registration, i}
-					<div>{registration.created}</div>
+					<div>
+						{dayjs(registration.created).format('DD.MM.YYYY HH:mm')}
+					</div>
 					<div class="flex items-start gap-4 py-1">
 						<input
 							disabled={paidLoading.includes(i)}
