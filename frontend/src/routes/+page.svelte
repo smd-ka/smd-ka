@@ -20,10 +20,8 @@
 	import placeholder from '$lib/assets/pages/events/kalender/placeholder.png';
 	import dayjs from 'dayjs';
 
-	import weitergehen_background from '$lib/assets/pages/home/weitergehen_background.jpg';
-	import weitergehen_abend_background from '$lib/assets/pages/home/weitergehen_abend_background.jpg';
-	import ersti_background_oben from '$lib/assets/pages/home/ersti_background_oben.png';
-	import ersti_background_unten from '$lib/assets/pages/home/ersti_background_unten.png';
+	import weitergehen_element from '$lib/assets/pages/home/weitergehen_element.jpg';
+	import ws2526_logo from '$lib/assets/pages/home/ws2526.jpg';
 
 	let success = false;
 	let error = false;
@@ -67,74 +65,28 @@
 </HeroShot>
 
 <main class="container mx-auto flex flex-col gap-24 py-12 text-lg">
-	<section class="grid grid-cols-1 gap-24 max-md:px-4 md:grid-cols-2 xl:grid-cols-3">
-		<div class="font-poppins text-ws2526Blue relative bg-[#f2f2f2] px-4 py-10 text-center">
+	<section
+		class="font-poppins text-ws2526Blue grid grid-cols-1 justify-between gap-8 bg-[#f2f2f2] px-20 py-10 text-center md:grid-cols-2 xl:grid-cols-3"
+	>
+		<div class="flex h-48 items-center justify-self-start max-xl:hidden">
+			<img src={ws2526_logo} alt="WS2526 Logo" class=" h-28 px-10 pt-5" />
+		</div>
+
+		<div class="flex flex-col items-center">
 			<div class=" text-7xl font-bold uppercase italic">weiter</div>
 			<div class=" text-7xl font-bold uppercase">Gehen</div>
-			<p>Willkommen im Wintersemester 2025/26</p>
-			<img src={weitergehen_background} alt="Semesterdesign" class="px-20 py-10" />
-			<div class="flex justify-center">
-				<a href="/events/semesterprogramm" class="bg-ws2526Blue fa px-4 py-2 text-white">
-					Hier gehts zum Semesterprogramm
-					<Fa icon={faChevronRight} />
-				</a>
-			</div>
-		</div>
-
-		<div class="font-playfair relative bg-[#8cb8b7]">
-			<img src={ersti_background_oben} alt="Ersti Hintergrund" class="relative z-0 w-full" />
-			<p class="font-merriweather absolute left-2 top-0 text-xl text-white">Erstsemesteraktionen</p>
-			<div
-				class="absolute top-28 z-20 flex flex-col gap-4 px-4 py-10 text-center text-5xl text-white"
-			>
-				Willkommen in Karlsruhe
-			</div>
-			<p class="relative z-20 px-4 text-center text-xl">
-				Neu in der Stadt? <br /> Wir haben viele Events für dich vorbereitet!
-			</p>
-			<div class="flex justify-center">
-				<a href="/new/erstsemester" class="text-gray fa relative z-20 my-6 bg-white px-4 py-2">
-					Entdecke das Ersti-Programm
-					<Fa icon={faChevronRight} />
-				</a>
-			</div>
-			<img
-				src={ersti_background_unten}
-				alt="Ersti Hintergrund"
-				class="absolute bottom-0 z-0 w-full"
-			/>
-		</div>
-
-		<div
-			class="font-poppins text-ws2526Blue xl: relative bg-[#f2f2f2] px-4 py-10 text-center md:col-span-2 xl:col-span-1"
-		>
-			<div class="text-7xl font-bold uppercase italic">weiter</div>
-			<div class="text-7xl font-bold uppercase">Gehen</div>
-			<p>Nächster SMD-Abend</p>
-			<a href="/events/kalender/{data.nextSMDEvening.id}">
-				<div class="py-12">
-					{#if data.nextSMDEvening}
-						<p class=" font-bold">
-							{data.nextSMDEvening.title}
-						</p>
-
-						<div class="flex flex-col text-sm text-gray-500">
-							{dayjs(data.nextSMDEvening.start_date_time).format('dddd, DD.MM // HH:mm')}
-							{#if data.nextSMDEvening.location}
-								<a
-									class="hover:text-primary flex items-center justify-center gap-2 hover:cursor-pointer"
-									href={data.nextSMDEvening.location_url}
-								>
-									<Fa icon={faLocationDot} />
-									{data.nextSMDEvening.location}
-								</a>
-							{/if}
-						</div>
-					{/if}
-				</div>
+			<div>Unser Wintersemester 2025/26</div>
+			<a href="/events/semesterprogramm" class="bg-ws2526Blue fa mt-6 w-fit px-4 py-2 text-white">
+				Hier gehts zum Semesterprogramm
+				<Fa icon={faChevronRight} />
 			</a>
-			<img src={weitergehen_abend_background} alt="Semesterdesign" class="px-10 pt-5" />
 		</div>
+
+		<img
+			src={weitergehen_element}
+			alt="Semesterdesign"
+			class="h-48 justify-self-end px-10 pt-5 max-md:hidden"
+		/>
 	</section>
 
 	{#if data.events}
