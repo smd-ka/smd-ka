@@ -65,14 +65,3 @@ export type Team = {
 	description: string;
 	image: string;
 };
-
-export enum church {
-	CG = 'CG',
-	LKG = 'LKG',
-	EMK = 'EMK',
-	ICF = 'ICF',
-	FEG = 'FEG',
-	EFG = 'EFG',
-	TL = 'TL',
-	FK = 'FK'
-}

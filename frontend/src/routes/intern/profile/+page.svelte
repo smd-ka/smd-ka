@@ -6,16 +6,19 @@
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 	import InputCheckbox from '$lib/components/forms/CheckboxInput.svelte';
 	import { onMount } from 'svelte';
-	import { church } from '$lib/models';
 
-	const churchOptions: Array<{ value: string; label: string }> = Object.values(church)
-		.filter((v): v is string => typeof v === 'string')
-		.map((v) => ({
-			value: v,
-			label: String(v)
-				.replace(/_/g, ' ')
-				.replace(/\b\w/g, (c) => c.toUpperCase())
-		}));
+	enum church {
+		CG = 'Christliche Gemeinde (CG)',
+		LKG = 'Landeskirchliche Gemeinschaft LkG)',
+		EMK = 'Evangelisch-methodistischen Kirche (EmK)',
+		ICF = 'International Christian Fellowship (ICF)',
+		FEG = 'Freie evangelische Gemeinde (FeG)',
+		EFG = 'Evangelisch-Freikirchliche Gemeinde (EFG)',
+		TL = 'Treffpunkt Leben (TL)',
+		FK = 'Fächerkirche'
+	}
+
+	const churchOptions = Object.entries(church).map(([key, label]) => ({ label, value: key }));
 
 	// Ensure church is an iterable array for Svelte {#each}
 	let src = getAvatarUrl();
