@@ -143,18 +143,16 @@
 					>.
 				</p>
 
-				<div class="flex justify-center gap-4">
-					<button
-						type="submit"
-						disabled={loading}
-						class="relative mt-4 flex items-center justify-self-end bg-black px-4 py-2 text-white"
-					>
-						{#if loading}
-							<img class="absolute left-16 h-8" src={loadingSpinner} alt="loading" />
-						{/if}
-						Profil aktualisieren
-					</button>
-				</div>
+				<button
+					type="submit"
+					disabled={loading}
+					class="relative mt-4 flex items-center justify-self-end bg-black px-4 py-2 text-white"
+				>
+					{#if loading}
+						<img class="absolute left-16 h-8" src={loadingSpinner} alt="loading" />
+					{/if}
+					Profil aktualisieren
+				</button>
 			</div>
 		</section>
 
