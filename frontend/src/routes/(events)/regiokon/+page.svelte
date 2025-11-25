@@ -2,17 +2,15 @@
 	import InputField from '$lib/components/forms/TextInput.svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 	import InputCheckbox from '$lib/components/forms/CheckboxInput.svelte';
-	import { getErrorMessage, pb } from '$lib/pocketbase';
 	import { onMount } from 'svelte';
-	import type { saftRegistration } from '$lib/models';
 	import EmailInputField from '$lib/components/forms/EmailInput.svelte';
 	import TelephoneInputField from '$lib/components/forms/TelephoneInputField.svelte';
 	import GenderInput from '$lib/components/forms/GenderInput.svelte';
-	import { PUBLIC_SEMESTER } from '$env/static/public';
 	import { _post_regiokon_signup, _SMDGroups } from './+page';
+	import flyer from '$lib/assets/pages/events/regiokon/regiokon_flyer.jpg';
+	import { pb } from '$lib/pocketbase';
 
 	let loading = false;
-	let success = false;
 	let loggedIn = false;
 
 	onMount(() => {
@@ -22,7 +20,8 @@
 	});
 </script>
 
-<main class="container mx-auto px-4 py-24 lg:px-40 xl:px-80">
+<main class="container mx-auto px-4 pb-24 pt-8 lg:px-40 xl:px-80">
+	<img class="mb-6" src={flyer} alt="Regiokon Flyer" />
 	<h1 class="pb-0 text-5xl font-bold uppercase">Regiokon Anmeldung</h1>
 	<span class="text-xl font-bold text-gray-600"
 		>TOGETHER FOR THE KINGDOM // 09.-11. Januar 2026</span
