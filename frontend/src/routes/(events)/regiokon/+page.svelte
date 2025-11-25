@@ -102,9 +102,23 @@
 		/>
 
 		<!-- Fields: post_images comments -->
-		<h3>Das Kleingedruckte</h3>
+		<h3>Das Kleingedruckte - Rechtliches</h3>
 
-		<span><b>Rechtliches:</b> Und wie sieht's mit Bildern von dir aus? </span>
+		<div>
+			<div class="flex gap-2">
+				<input required disabled={loading} name="gdpr_consent" type="checkbox" />
+				<label for="gdpr_consent"
+					>Ich stimme zu, dass meine Daten für die Organisation der Regiokon 2026 gespeichert und
+					verarbeitet werden.
+				</label>
+			</div>
+			Weitere Informationen findest du in unserer
+			<a href="/regiokon/datenschutz" class="text-blue-600 underline">
+				Datenschutzerklärung für die Regiokon
+			</a>.
+		</div>
+
+		<span>Und wie sieht's mit Bildern von dir aus? </span>
 		<select class="rounded-md border-2 py-3" name="post_images" required>
 			<option disabled selected value> -- Wähle eine Option -- </option>
 			<option value="yes"

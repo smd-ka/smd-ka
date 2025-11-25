@@ -3,7 +3,7 @@ import type { User } from '$lib/models';
 import { getErrorMessage, pb } from '$lib/pocketbase';
 import { writable } from 'svelte/store';
 
-export const _success_record = writable<RegiokonRecord | null>(null);
+export const _success_regiokon_record = writable<RegiokonRecord | null>(null);
 export const _loading = writable(false);
 
 export const _SMDGroups = [
@@ -62,7 +62,7 @@ export async function _post_regiokon_signup() {
 
 	try {
 		const record = await pb.collection('regiokon').create<RegiokonRecord>(formData);
-		_success_record.set(record);
+		_success_regiokon_record.set(record);
 	} catch (e: any) {
 		_loading.set(false);
 		console.error(getErrorMessage(e));
