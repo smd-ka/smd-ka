@@ -5,6 +5,7 @@ export type User = {
 	id: string;
 	collectionName: string;
 	collectionId: string;
+	gender: string;
 	avatar?: string;
 	phonenumber?: string;
 	address?: string;
