@@ -55,10 +55,10 @@
 		{#if !loggedIn}
 			<div>
 				<p>Meine SMD-Gruppe:</p>
-				<select name="group" class="w-full rounded-md border-2 py-3" required>
+				<select name="smd_group" class="w-full rounded-md border-2 py-3" required>
 					<option disabled selected value> -- Wähle eine Option -- </option>
 					{#each _SMDGroups as group}
-						<option value={group}>{group}</option>
+						<option value={group}>SMD {group}</option>
 					{/each}
 				</select>
 			</div>
