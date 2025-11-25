@@ -1,113 +1,184 @@
 <script lang="ts">
-	import { getErrorMessage, pb } from '$lib/pocketbase';
+	import InputField from '$lib/components/forms/TextInput.svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
-	import { goto } from '$app/navigation';
+	import InputCheckbox from '$lib/components/forms/CheckboxInput.svelte';
+	import { getErrorMessage, pb } from '$lib/pocketbase';
 	import { onMount } from 'svelte';
+	import type { saftRegistration } from '$lib/models';
+	import EmailInputField from '$lib/components/forms/EmailInput.svelte';
+	import TelephoneInputField from '$lib/components/forms/TelephoneInputField.svelte';
+	import GenderInput from '$lib/components/forms/GenderInput.svelte';
+	import { PUBLIC_SEMESTER } from '$env/static/public';
+	import { _SMDGroups } from './+page';
 
-	let email = '';
-	let password = '';
 	let loading = false;
-	let errorMessage = '';
+	let success = false;
+	let loggedIn = false;
+	let group = '';
 
 	onMount(() => {
-		if (pb.authStore.isValid) goto('/saft/signup/form');
+		if (pb.authStore.isValid) {
+			loggedIn = true;
+			group = 'Karlsruhe';
+		}
 	});
 
-	const login = async (event: Event) => {
-		event.preventDefault();
+	const signup = async () => {
 		loading = true;
-		try {
-			await pb.collection('users').authWithPassword(email, password);
-		} catch (e: any) {
-			loading = false;
-			errorMessage = getErrorMessage(e);
-			return;
+		const form = document.getElementById('form') as HTMLFormElement;
+		let formData = new FormData(form);
+
+		formData.set('is_vegetarian', formData.get('is_vegetarian') === 'on' ? 'true' : 'false');
+
+		formData.set('semester', PUBLIC_SEMESTER);
+		if (pb.authStore.isValid && pb.authStore.model?.id) {
+			formData.set('user', pb.authStore.model?.id);
+			formData.set('group', 'Karlsruhe');
 		}
 
-		await pb.authStore.loadFromCookie(document.cookie);
-		goto('/saft/signup/form');
+		try {
+			record = await pb.collection('saft').create(formData);
+			success = true;
+		} catch (e: any) {
+			loading = false;
+			console.error(getErrorMessage(e));
+			return;
+		}
+		loading = false;
 	};
 </script>
 
-<main class="container mx-auto grid px-4 py-24">
-	<h1 class="text-center text-5xl font-bold uppercase">Regiokon Anmeldung</h1>
-	<div class="py-8">
-		<div class="grid gap-10 lg:grid-cols-[1fr_1rem_1fr]">
-			<div class="flex flex-col items-center justify-center text-center text-lg md:px-10">
-				<p class="py-4">
-					Du kommst nicht aus Karlsruhe oder hast keinen SMD-KA Intern Account? <br />
-					Dann kannst du dich hier ohne Konto anmelden: Wir freuen uns auf dich!
+<main class="container mx-auto py-24">
+	<div class="px-4 lg:px-80">
+		{#if success}
+			<div>sa</div>
+		{:else}
+			<h1 class="pb-0 text-5xl font-bold uppercase">SAFT Anmeldung</h1>
+			<span class="text-xl font-bold text-gray-600">im {PUBLIC_SEMESTER}</span>
+			{#if loggedIn}
+				<p class="text-primary py-6 text-xl">
+					Schön, dass du dabei bist {pb.authStore.model?.name}!
 				</p>
-				<a
-					class=" bg-black p-4 text-center text-white no-underline hover:underline max-md:w-full"
-					href="/saft/signup/form">Ohne Konto anmelden</a
-				>
-			</div>
-
-			<div class="relative bg-gray-300 max-md:h-0.5 md:w-0.5">
-				<span
-					class="text-secondary-text absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white pl-4 tracking-[1rem] md:rotate-90"
-				>
-					ODER
-				</span>
-			</div>
-
-			<div class="flex justify-center">
-				<form class="flex w-80 flex-col gap-4" on:submit={login}>
-					<h2 class="text-center text-xl">Anmelden Intern</h2>
-					<div class="relative">
-						<input
-							bind:value={email}
-							class="peer w-full rounded-md border-2 p-3"
-							type="email"
-							name="email"
-							placeholder="E-Mail-Adresse"
-							required
-						/>
-						<label
-							for="email"
-							class="absolute -top-2.5 left-3 bg-white px-1 text-[#555555] opacity-100 transition-all duration-100 peer-placeholder-shown:opacity-0"
-						>
-							E-Mail-Adresse
-						</label>
-					</div>
-					<div class="relative">
-						<input
-							bind:value={password}
-							class="peer w-full rounded-md border-2 p-3"
-							type="password"
-							name="password"
-							placeholder="Passwort"
-							required
-						/>
-						<label
-							for="password"
-							class="absolute -top-2.5 left-3 bg-white px-1 text-[#555555] opacity-100 transition-all duration-100 peer-placeholder-shown:opacity-0"
-						>
-							Passwort
-						</label>
-					</div>
-					{#if errorMessage}
-						<p class="text-red-500">Ungültige E-Mail-Adresse oder Passwort</p>
-					{/if}
-					<button
+			{/if}
+			<form id="form" class="my-4 flex flex-col gap-4" on:submit|preventDefault={signup}>
+				<!-- Section for users that are not logged in -->
+				<!-- Fields: name surname email phone gender  -->
+				{#if !loggedIn}
+					<h3>Und du bist?</h3>
+					<InputField id="name" name="name" label="Name" disabled={loading} required />
+					<InputField id="surname" name="surname" label="Nachname" disabled={loading} required />
+					<EmailInputField
+						id="email"
+						name="email"
+						label="E-Mail-Adresse"
 						disabled={loading}
-						class="relative flex items-center justify-center bg-black p-3 text-white"
+						required
+					/>
+					<TelephoneInputField
+						name="phonenumber"
+						id="phonenumber"
+						label="Handynummer"
+						disabled={loading}
+						required
+					/>
+					<GenderInput />
+				{/if}
+
+				<!-- Fields: group travel_comments -->
+				<h3>Das Logistische</h3>
+
+				<div>
+					<p>Meine SMD-Gruppe:</p>
+					<select name="group" value={group} class="w-full rounded-md border-2 py-3" required>
+						<option disabled selected value> -- Wähle eine Option -- </option>
+						{#each _SMDGroups as g}
+							<option value={g}>{g}</option>
+						{/each}
+					</select>
+				</div>
+
+				<div class="flex flex-col">
+					<label for="travel_comments">
+						<b>Anmerkungen zur Anreise oder Abreise.</b> (z.B. ich reise verspätet an oder ich reise
+						früher wieder ab.)</label
 					>
-						{#if loading}
-							<img class="absolute left-16 h-8" src={loadingSpinner} alt="loading" />
-						{/if}
-						Login</button
+					<textarea class="rounded-md border-2" name="travel_comments" id="travel_comments" rows="2"
+					></textarea>
+				</div>
+
+				<p>Weitere Infos zur Anreise und Packliste folgen per Mail.</p>
+
+				<!-- Fields: is_vegetarian allergies -->
+				<h3>Essen! Hat da jemand Essen gesagt?!</h3>
+				<p>Wie passt es dir am besten?</p>
+
+				{#if loggedIn}
+					<b class="text-primary">Bitte gebe deine Essenspräferenzen in deinem Profil an!</b>
+				{:else}
+					<InputCheckbox name="is_vegetarian" label="Ich bin Vegetarier" />
+
+					<InputField
+						name="allergies"
+						label="Allergien oder Unverträglichkeiten"
+						disabled={loading}
+					/>
+				{/if}
+
+				<!-- Fields: question1 question2 -->
+				<h3>Wir hätten da noch ne Frage... oder zwei?</h3>
+				<InputField
+					name="question1"
+					label="Wo arbeitest du gerade in deiner Gruppe mit?"
+					disabled={loading}
+				/>
+				<InputField
+					name="question2"
+					label="Wo siehst du dich im nächsten Semester?"
+					disabled={loading}
+				/>
+
+				<!-- Fields: post_images comments -->
+				<h3>Das Kleingedruckte</h3>
+
+				<span><b>Rechtliches:</b> Und wie sieht's mit Bildern von dir aus? </span>
+				<select class="rounded-md border-2 py-3" name="post_images" required>
+					<option disabled selected value> -- Wähle eine Option -- </option>
+					<option value="yes"
+						>Ihr dürft Bilder von mir veröffentlichen. (Instagram, Webseite, Flyer, ...)</option
 					>
-					<a href="/account/reset" class="text-center text-sm text-gray-400 hover:underline"
-						>Passwort vergessen?</a
-					>
-					<section class="text-center text-sm text-gray-400">
-						Noch kein Konto?
-						<a href="/account/register" class="text-primary hover:underline">Jetzt eins anlegen.</a>
-					</section>
-				</form>
-			</div>
-		</div>
+					<option value="no_instagram"
+						>Ihr dürft Bilder von mir veröffentlichen, aber nicht auf Instagram
+					</option>
+					<option value="no_website"
+						>Ihr dürft Bilder von mir veröffentlichen, aber nicht auf der Webseite
+					</option>
+					<option value="never">Bitte veröffentlicht keine Bilder von mir</option>
+				</select>
+				<p class="text-sm font-bold">
+					Anmerkung des Public Relations und IT-Teams: Es werden generell nur Bilder veröffentlicht,
+					auf denen ihr gut ausseht, sollten Zweifel bestehen oder wir es als grenzwertig ansehen,
+					fragen wir nochmal im Einzelfall nach. Bitte habt Verständnis, dass wir dies nicht für
+					jedes Bild/Video machen wollen, da es unsere Arbeit dann ungemein erschwert. Danke
+					schonmal und wir freuen uns auf fröhliche und lustige Bilder von der Regiokon :P
+				</p>
+
+				<div class="flex flex-col">
+					<label for="comments">
+						<b>Das solltet ihr noch wissen ... (sonstige Anmerkungen)</b>
+					</label>
+					<textarea class="rounded-md border-2" name="comments" id="comments" rows="5"></textarea>
+				</div>
+
+				<button
+					disabled={loading}
+					class="relative flex items-center justify-center bg-black px-12 py-4 text-white md:w-fit"
+				>
+					{#if loading}
+						<img class="absolute left-2 h-8" src={loadingSpinner} alt="loading" />
+					{/if}
+					Anmelden
+				</button>
+			</form>
+		{/if}
 	</div>
 </main>
