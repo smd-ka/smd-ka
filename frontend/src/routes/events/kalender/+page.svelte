@@ -67,8 +67,8 @@
 								{/if}
 							</div>
 						{/if}
-						<p class="line-clamp-3 max-lg:hidden">
-							{event.description ? event.description : ''}
+						<p class="line-clamp-6 max-lg:hidden">
+							{@html event.description ? event.description : ''}
 						</p>
 					</div>
 				</div>
