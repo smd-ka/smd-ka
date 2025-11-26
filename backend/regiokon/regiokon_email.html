@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAFT Packliste</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      .email-container {
+        max-width: 700px;
+        margin: 30px auto;
+        background-color: #ffffff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      .content {
+        padding: 10px 30px;
+      }
+      h2 {
+        color: #e84c05;
+      }
+      h3 {
+        margin-top: 30px;
+        color: #333;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 5px;
+      }
+      ul {
+        padding-left: 20px;
+        margin-top: 10px;
+      }
+      li {
+        margin-bottom: 10px;
+      }
+      code {
+        background-color: #eee;
+        padding: 2px 4px;
+        border-radius: 4px;
+      }
+      .footer {
+        background-color: #f0f0f0;
+        padding: 20px;
+        text-align: center;
+        font-size: 0.9em;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="email-container">
+      <div class="content">
+        <h2>Hallo {{ .name }},</h2>
+        <p>
+          Du hast dich erfolgreich zur Regiokon2026 in Karlsruhe angemeldet. Wir
+          freuen uns riesig, dass du am Start bist! Damit du dich gut &
+          entspannt vorbereiten kannst, findest du in dieser Mail die
+          wichtigesten Punkte schnell zusammengefasst.
+        </p>
+
+        <h3>1) Allgemeines & Organisatorisches</h3>
+
+        <ul>
+          <li>
+            <strong>Datum:</strong>
+            09.- 11. Januar 2026
+          </li>
+          <li><strong>Teilnahmebeitrag:</strong> 30 € (bar vor Ort)</li>
+          <li><strong>Anreise:</strong> ab 17 Uhr möglich</li>
+          <li>
+            <strong>Ort:</strong>EMK, Hermann-Billing-Straße 11, 76137 Karlsruhe
+            <a href="https://maps.app.goo.gl/C3S3CYqYwnzfpVVGA">
+              Ort auf Google Maps
+            </a>
+          </li>
+        </ul>
+
+        <p>
+          Es gibt eine
+          <a href="https://cloud.smd-karlsruhe.de/s/zxzRsorP5Hq23MK">
+            Helferliste,
+          </a>
+          wo du dich für kleine Aufgaben eintragen kannst. Schreibe dazu einfach
+          deinen Namen dort rein, wo du mit anpacken kannst. Zudem kannst du
+          dort auch
+          <a href="https://cloud.smd-karlsruhe.de/s/zxzRsorP5Hq23MK">
+            Mitfahrgelegenheiten
+          </a>
+          suchen bzw. anbieten.
+          <br />
+          <br />
+          Es gibt
+          <a
+            href="https://signal.group/#CjQKIBYl8tmC298LXsafQFnpF1ZNftWD_95MLsoija-G3a_SEhCtK_lusNKrUc7nZT_EykK9"
+          >
+            Regio-Signal-Gruppe </a
+          >: Tritt gern bei für die aktuellsten Infos und Fotos!
+        </p>
+
+        <h3>2) Packliste</h3>
+        <ul>
+          <li>Isomatte und Schlafsack (Matratzenlager)</li>
+          <ul>
+            <li>
+              Falls du privat in Karlsruhe unterkommen möchtest, sag uns bitte
+              kurz Bescheid
+            </li>
+          </ul>
+          <li>Für das gemeinsame Frühstück: deinen Lieblings-Brotaufstrich</li>
+          <li>Kuchen (siehe Helferliste)</li>
+        </ul>
+
+        <ul>
+          <li>Wetterfeste Kleidung (Regenjacke, warme Pullis)</li>
+          <li>Wechselsachen (alles, was du für ein Wochenende brauchst)</li>
+          <li>Hausschuhe (Fußboden kann relativ kalt werden)</li>
+          <li>Evtl. Badesachen (z.B. für eine nächtliche Fluss-Aktion)</li>
+        </ul>
+
+        <ul>
+          <li>Bibel &amp; Schreibzeug (Notizheft)</li>
+          <li>Spiele (z.B. Karten- &amp; Brettspiele, …)</li>
+          <li>Ohrstöpsel (für ruhigeren Schlaf)</li>
+          <li>Ein Retro-Outfit (z.B. 70er, 80er Jahre)</li>
+          <li>Lustigen/kreativen Beitrag als Gruppe</li>
+        </ul>
+
+        <p>Bei Fragen melde dich gerne bei uns!</p>
+
+        <p>
+          Wir freuen uns auf eine gesegnete, abenteuerliche und
+          gemeinschaftliche Zeit mit euch!
+        </p>
+        <p><strong>Eure Regiokon-Orga (Christian und Felix) </strong></p>
+      </div>
+      <div class="footer"><a href="mailto:{{.email}}">{{.email}}</a>.</div>
+    </div>
+  </body>
+</html>
