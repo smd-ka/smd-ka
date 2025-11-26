@@ -25,7 +25,8 @@ export const _SMDGroups = [
 	'Trier',
 	'Tübingen',
 	'Weingarten',
-	'Wiesbaden'
+	'Wiesbaden',
+	'Weitere'
 ];
 
 export type RegiokonRecord = {
@@ -38,10 +39,15 @@ export type RegiokonRecord = {
 	allergies: string;
 	is_vegetarian: boolean;
 	smd_group: string;
+	travel_comments: string;
 	user: string;
 	group: (typeof _SMDGroups)[number];
 	created: string;
 	updated: string;
+	image_publication_consent: 'yes' | 'no_instagram' | 'no_website' | 'no';
+	comments: string;
+	question1: string;
+	question2: string;
 };
 
 export async function _post_regiokon_signup() {

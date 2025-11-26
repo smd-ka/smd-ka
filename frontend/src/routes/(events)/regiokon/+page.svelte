@@ -97,7 +97,7 @@
 		/>
 		<InputField
 			name="question2"
-			label="Wo siehst du dich im nächsten Semester?"
+			label="Welche Aufgabe/Erfahrung möchtest du im nächsten Semester machen?"
 			disabled={loading}
 		/>
 
@@ -119,7 +119,7 @@
 		</div>
 
 		<span>Und wie sieht's mit Bildern von dir aus? </span>
-		<select class="rounded-md border-2 py-3" name="post_images" required>
+		<select class="rounded-md border-2 py-3" name="image_publication_consent" required>
 			<option disabled selected value> -- Wähle eine Option -- </option>
 			<option value="yes"
 				>Ihr dürft Bilder von mir veröffentlichen. (Instagram, Webseite, Flyer, ...)</option
@@ -130,7 +130,7 @@
 			<option value="no_website"
 				>Ihr dürft Bilder von mir veröffentlichen, aber nicht auf der Webseite
 			</option>
-			<option value="never">Bitte veröffentlicht keine Bilder von mir</option>
+			<option value="no">Bitte veröffentlicht keine Bilder von mir</option>
 		</select>
 		<p class="text-sm font-bold">
 			Anmerkung des Public Relations und IT-Teams: Es werden generell nur Bilder veröffentlicht, auf

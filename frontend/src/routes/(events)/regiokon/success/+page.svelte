@@ -24,7 +24,13 @@
 			Antwort auf Frage 1: {$_success_regiokon_record.question1}
 			Antwort auf Frage 2: {$_success_regiokon_record.question2}
 			Dürfen wir Bilder von dir während der Veranstaltung machen und für
-			Veröffentlichungen verwenden? {$_success_regiokon_record.image_publication_consent}
+			Veröffentlichungen verwenden? {$_success_regiokon_record.image_publication_consent === 'yes'
+				? 'Ja'
+				: $_success_regiokon_record.image_publication_consent === 'no_website'
+					? 'Ja, aber nicht auf der Webseite'
+					: $_success_regiokon_record.image_publication_consent === 'no_instagram'
+						? 'Ja, aber nicht auf Instagram'
+						: 'Nein'}
 			Vegetarier: {$_success_regiokon_record.is_vegetarian ? 'Ja' : 'Nein'}
 			Allergien/Unverträglichkeiten: {$_success_regiokon_record.allergies}
 			Anmerkungen: {$_success_regiokon_record.comments}
