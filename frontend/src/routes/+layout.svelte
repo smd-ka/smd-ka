@@ -18,7 +18,13 @@
 		faX
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
-	import { getAvatarUrl, pb, PRIT_RESPONSABLE, SAFT_COORDINATOR } from '$lib/pocketbase';
+	import {
+		getAvatarUrl,
+		pb,
+		PRIT_RESPONSABLE,
+		REGIOKON_COORDINATOR,
+		SAFT_COORDINATOR
+	} from '$lib/pocketbase';
 	import ifes from '$lib/assets/logos/ifes.png';
 	import { page } from '$app/stores';
 	import { blur, slide } from 'svelte/transition';
@@ -166,6 +172,11 @@
 				name: 'SAFT PRIT',
 				url: '/intern/saft/prit',
 				permission: PRIT_RESPONSABLE
+			},
+			{
+				name: 'Regiokon Anmeldungen',
+				url: '/intern/regiokon/list',
+				permission: REGIOKON_COORDINATOR
 			}
 		]
 	};
