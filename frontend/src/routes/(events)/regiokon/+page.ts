@@ -57,14 +57,7 @@ export async function _post_regiokon_signup() {
 	const formData = new FormData(form);
 
 	// Pre-fill user data if logged in
-	fillFromLocalUser(formData);
-
-	formData.set('is_vegetarian', formData.get('is_vegetarian') === 'on' ? 'true' : 'false');
-
-	if (pb.authStore.isValid && pb.authStore.model?.id) {
-		formData.set('user', pb.authStore.model?.id);
-		formData.set('group', 'Karlsruhe');
-	}
+	fillFromLocalUserAndSetDefaults(formData);
 
 	try {
 		const record = await pb.collection('regiokon').create<RegiokonRecord>(formData);
@@ -78,7 +71,7 @@ export async function _post_regiokon_signup() {
 	goto('/regiokon/success');
 }
 
-const fillFromLocalUser = (formData: FormData) => {
+const fillFromLocalUserAndSetDefaults = (formData: FormData) => {
 	if (pb.authStore.isValid && pb.authStore.model) {
 		const user = pb.authStore.model as unknown as User;
 		formData.set('name', user.name || '');
@@ -88,5 +81,9 @@ const fillFromLocalUser = (formData: FormData) => {
 		formData.set('smd_group', 'Karlsruhe');
 		formData.set('gender', user.gender || '');
 		formData.set('allergies', user.allergies || '');
+		formData.set('is_vegetarian', user.vegetarian ? 'true' : 'false');
+		console.log(user.vegetarian);
+	} else {
+		formData.set('is_vegetarian', formData.get('is_vegetarian') === 'on' ? 'true' : 'false');
 	}
 };
