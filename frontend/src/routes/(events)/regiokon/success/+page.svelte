@@ -20,9 +20,9 @@
 			Geschlecht: {$_success_regiokon_record.gender === 'female' ? 'Weiblich' : 'Männlich'}
 			SMD-Gruppe: {$_success_regiokon_record.smd_group}
 			Anmerkungen zur Anreise: {$_success_regiokon_record.travel_comments}
-			<!-- TODO richtige Frage!!! -->
-			Antwort auf Frage 1: {$_success_regiokon_record.question1}
-			Antwort auf Frage 2: {$_success_regiokon_record.question2}
+
+			Wo arbeitest du gerade in deiner Gruppe mit?: {$_success_regiokon_record.question1}
+			Welche Aufgabe/Erfahrung möchtest du im nächsten Semester machen?: {$_success_regiokon_record.question2}
 			Dürfen wir Bilder von dir während der Veranstaltung machen und für
 			Veröffentlichungen verwenden? {$_success_regiokon_record.image_publication_consent === 'yes'
 				? 'Ja'

@@ -6,11 +6,10 @@
 	import EmailInputField from '$lib/components/forms/EmailInput.svelte';
 	import TelephoneInputField from '$lib/components/forms/TelephoneInputField.svelte';
 	import GenderInput from '$lib/components/forms/GenderInput.svelte';
-	import { _post_regiokon_signup, _SMDGroups } from './+page';
+	import { _loading, _post_regiokon_signup, _SMDGroups } from './+page';
 	import flyer from '$lib/assets/pages/events/regiokon/regiokon_flyer.jpg';
 	import { pb } from '$lib/pocketbase';
 
-	let loading = false;
 	let loggedIn = false;
 
 	onMount(() => {
@@ -36,14 +35,20 @@
 		<!-- Fields: name surname email phone gender  -->
 		{#if !loggedIn}
 			<h3>Und du bist?</h3>
-			<InputField id="name" name="name" label="Name" disabled={loading} required />
-			<InputField id="surname" name="surname" label="Nachname" disabled={loading} required />
-			<EmailInputField id="email" name="email" label="E-Mail-Adresse" disabled={loading} required />
+			<InputField id="name" name="name" label="Name" disabled={$_loading} required />
+			<InputField id="surname" name="surname" label="Nachname" disabled={$_loading} required />
+			<EmailInputField
+				id="email"
+				name="email"
+				label="E-Mail-Adresse"
+				disabled={$_loading}
+				required
+			/>
 			<TelephoneInputField
 				name="phone"
 				id="phone"
 				label="Handynummer"
-				disabled={loading}
+				disabled={$_loading}
 				required
 			/>
 			<GenderInput />
@@ -77,28 +82,35 @@
 
 		<!-- Fields: is_vegetarian allergies -->
 		<h3>Essen! Hat da jemand Essen gesagt?!</h3>
-		<p>Wie passt es dir am besten?</p>
 
 		{#if loggedIn}
-			<b class="text-primary">Bitte gebe deine Essenspräferenzen in deinem Profil an!</b>
+			<b class="text-primary"
+				>Bitte aktualisieren deine Essenspräferenzen in deinem Profil bevor du dich anmeldest!</b
+			>
 		{:else}
+			<p>Wie passt es dir am besten?</p>
 			<InputCheckbox name="is_vegetarian" label="Ich bin Vegetarier" />
 
-			<InputField name="allergies" label="Allergien oder Unverträglichkeiten" disabled={loading} />
+			<InputField
+				name="allergies"
+				label="Allergien oder Unverträglichkeiten"
+				disabled={$_loading}
+			/>
 		{/if}
 
-		<!-- TODO REQUIRED! -->
 		<!-- Fields: question1 question2 -->
 		<h3>Wir hätten da noch ne Frage... oder zwei?</h3>
 		<InputField
 			name="question1"
 			label="Wo arbeitest du gerade in deiner Gruppe mit?"
-			disabled={loading}
+			disabled={$_loading}
+			required
 		/>
 		<InputField
 			name="question2"
 			label="Welche Aufgabe/Erfahrung möchtest du im nächsten Semester machen?"
-			disabled={loading}
+			disabled={$_loading}
+			required
 		/>
 
 		<!-- Fields: post_images comments -->
@@ -106,7 +118,7 @@
 
 		<div>
 			<div class="flex gap-2">
-				<input required disabled={loading} name="gdpr_consent" type="checkbox" />
+				<input required disabled={$_loading} name="gdpr_consent" type="checkbox" />
 				<label for="gdpr_consent"
 					>Ich stimme zu, dass meine Daten für die Organisation der Regiokon 2026 gespeichert und
 					verarbeitet werden.
@@ -148,10 +160,10 @@
 		</div>
 
 		<button
-			disabled={loading}
+			disabled={$_loading}
 			class="relative flex items-center justify-center bg-black px-12 py-4 text-white md:w-fit"
 		>
-			{#if loading}
+			{#if $_loading}
 				<img class="absolute left-2 h-8" src={loadingSpinner} alt="loading" />
 			{/if}
 			Anmelden

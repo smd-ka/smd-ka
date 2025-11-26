@@ -13,6 +13,27 @@ func RegiokonEmail(app *pocketbase.PocketBase) {
 
 	app.OnRecordCreate("regiokon").BindFunc(func(e *core.RecordEvent) error {
 
+		//// Create Record in gdpr_images collection
+
+		collection, err := app.FindCollectionByNameOrId("gdpr_images")
+		if err != nil {
+			return err
+		}
+
+		record := core.NewRecord(collection)
+		record.Set("name", e.Record.Get("name"))
+		record.Set("surname", e.Record.Get("surname"))
+		record.Set("purpose", "regiokon")
+		record.Set("permission", e.Record.Get("image_publication_consent"))
+		record.Set("revoked", false)
+
+		err = app.Save(record)
+		if err != nil {
+			return err
+		}
+
+		//// Send confirmation email
+
 		Subject := "[SMD-KA] Regiokon26 - DU bist dabei!"
 		// E-Mail-Adress for questions (see template)
 		Email := "regiokon@smd-karlsruhe.de"
