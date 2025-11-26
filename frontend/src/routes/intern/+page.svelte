@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { applyAction, enhance } from '$app/forms';
-	import { PRIT_RESPONSABLE, SAFT_COORDINATOR, pb } from '$lib/pocketbase';
+	import { PRIT_RESPONSABLE, REGIOKON_COORDINATOR, SAFT_COORDINATOR, pb } from '$lib/pocketbase';
 	import {
 		faAddressBook,
 		faEnvelope,
@@ -12,14 +12,16 @@
 		faCamera,
 		faCalendar,
 		faCloud,
-		faBurger
+		faBurger,
+		faUserGroup
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
-	import { faWikipediaW } from '@fortawesome/free-brands-svg-icons';
+	import { fa42Group, faWikipediaW } from '@fortawesome/free-brands-svg-icons';
 
 	let isSaftCoordinator = pb.authStore.model?.roles.includes(SAFT_COORDINATOR);
 	let isPritTeam = pb.authStore.model?.roles.includes(PRIT_RESPONSABLE);
+	let isRegiokonCoordinator = pb.authStore.model?.roles.includes(REGIOKON_COORDINATOR);
 
 	let loading = false;
 </script>
@@ -133,6 +135,22 @@
 					<Fa icon={faCamera} class="text-secondary-text text-7xl" />
 				</div>
 				<h2 class="py-4 text-center text-lg md:text-2xl">PRIT SAFT</h2>
+			</a>
+
+			<a href="/intern/regiokon/prit" class="tile">
+				<div class="flex justify-center">
+					<Fa icon={faCamera} class="text-secondary-text text-7xl" />
+				</div>
+				<h2 class="py-4 text-center text-lg md:text-2xl">PRIT Regiokon</h2>
+			</a>
+		{/if}
+
+		{#if isRegiokonCoordinator}
+			<a href="/intern/regiokon/list" class="tile">
+				<div class="flex justify-center">
+					<Fa icon={faUserGroup} class="text-7xl text-green-400" />
+				</div>
+				<h2 class="py-4 text-center text-lg md:text-2xl">Regiokon Anmeldungen verwalten</h2>
 			</a>
 		{/if}
 
