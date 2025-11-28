@@ -100,19 +100,32 @@
 
 		<!-- Fields: question1 question2 -->
 		<h3>Wir hätten da noch ne Frage... oder zwei?</h3>
-		<InputField
-			name="question1"
-			label="Wo arbeitest du gerade in deiner Gruppe mit?"
-			disabled={$_loading}
-			required
-		/>
-		<InputField
-			name="question2"
-			label="Welche Aufgabe/Erfahrung möchtest du im nächsten Semester machen?"
-			disabled={$_loading}
-			required
-		/>
 
+		<div>
+			<label for="question1">Wo arbeitest du gerade in deiner Gruppe mit?</label>
+			<input
+				class="w-full rounded-md border-2 p-3"
+				id="question1"
+				name="question1"
+				placeholder="Wo arbeitest du gerade in deiner Gruppe mit?"
+				disabled={$_loading}
+				required
+			/>
+		</div>
+
+		<div>
+			<label for="question2"
+				>Welche Aufgabe/Erfahrung möchtest du im nächsten Semester machen?</label
+			>
+			<input
+				class="w-full rounded-md border-2 p-3"
+				id="question2"
+				name="question2"
+				placeholder="Welche Aufgabe/Erfahrung möchtest du im nächsten Semester machen?"
+				disabled={$_loading}
+				required
+			/>
+		</div>
 		<!-- Fields: post_images comments -->
 		<h3>Das Kleingedruckte - Rechtliches</h3>
 
