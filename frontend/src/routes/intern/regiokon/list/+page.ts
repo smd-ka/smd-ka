@@ -51,6 +51,7 @@ function escapeCsv(text: string): string {
 	// - 5. surround by double quotes
 	// - 6. the same for CRLF inside text
 	// - 7. escape double quote with extra double quote
+	if (!text) return '';
 	return '"' + text.replaceAll('"', '""') + '"';
 }
 
@@ -72,7 +73,7 @@ export const _exportToCsv = (list, filter) => {
 		...list.map((x) => [
 			escapeCsv(x.name),
 			escapeCsv(x.surname),
-			escapeCsv(x.group),
+			escapeCsv(x.smd_group),
 			x.gender === 'female' ? 'w' : 'm',
 			escapeCsv(x.phone),
 			escapeCsv(x.email),
@@ -91,7 +92,7 @@ export const _exportToCsv = (list, filter) => {
 	link.setAttribute('href', encodedUri);
 	link.setAttribute(
 		'download',
-		`SAFT_Anmeldungen_${list.length > 1 ? list[0].semester : ''}_${filter}.csv`
+		`Regiokon_Anmeldungen_${list.length > 1 ? list[0].semester : ''}_${filter}.csv`
 	);
 	document.body.appendChild(link); // Required for FF
 
