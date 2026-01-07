@@ -33,7 +33,9 @@
 		'Vegetarier',
 		'Allergien',
 		'Geschlecht',
-		'Bildrechte'
+		'Bildrechte',
+		'Wo arbeitest du gerade in deiner Gruppe mit?',
+		'Welche Aufgabe/Erfahrung möchtest du im nächsten Semester machen?'
 	];
 </script>
 
@@ -102,7 +104,7 @@
 
 		<div class="flex overflow-auto">
 			<div
-				class="pad-childs grid grid-cols-[repeat(10,1fr)] divide-y-2 divide-y-reverse divide-x-reverse whitespace-nowrap"
+				class="pad-childs grid grid-cols-[repeat(12,1fr)] divide-y-2 divide-y-reverse divide-x-reverse whitespace-nowrap"
 			>
 				{#each columns as column}
 					<div><b>{column}</b></div>
@@ -126,6 +128,12 @@
 					<div class="w-60 whitespace-pre-wrap">{registration.allergies}</div>
 					<div>{registration.gender === 'male' ? 'm' : 'w'}</div>
 					<div>{_postImages(registration.image_publication_consent)}</div>
+					<div class="w-96 whitespace-pre-wrap">
+						{registration.question1}
+					</div>
+					<div class="w-[32rem] whitespace-pre-wrap">
+						{registration.question2}
+					</div>
 				{/each}
 			</div>
 		</div>

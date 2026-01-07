@@ -68,7 +68,9 @@ export const _exportToCsv = (list, filter) => {
 			'Bemerkung',
 			'Vegetarier',
 			'Allergien',
-			'Bildrechte'
+			'Bildrechte',
+			'Wo arbeitest du gerade in deiner Gruppe mit?',
+			'Welche Aufgabe/Erfahrung möchtest du im nächsten Semester machen?'
 		],
 		...list.map((x) => [
 			escapeCsv(x.name),
@@ -81,7 +83,9 @@ export const _exportToCsv = (list, filter) => {
 			escapeCsv(x.comments),
 			x.is_vegetarian ? 'Ja' : '',
 			escapeCsv(x.allergies),
-			_postImages(x.image_publication_consent)
+			_postImages(x.image_publication_consent),
+			escapeCsv(x.question1),
+			escapeCsv(x.question2)
 		])
 	];
 
