@@ -6,6 +6,7 @@
 	import {
 		faBirthdayCake,
 		faChevronRight,
+		faChurch,
 		faEnvelope,
 		faGraduationCap,
 		faHouse,
@@ -110,6 +111,12 @@
 							seit
 							{new Date(record.start_of_studies).toLocaleDateString()}
 						{/if}
+					</div>
+				{/if}
+				{#if record.church}
+					<div class="flex gap-2 md:items-center">
+						<Fa class="max-md:mt-0.5" icon={faChurch} />
+						{record.church}
 					</div>
 				{/if}
 				{#if record.team}
