@@ -191,8 +191,8 @@
 		<div
 			class="{scrollY > $headerImageHeight - navbarHeight
 				? 'bg-grey'
-				: 'bg-transparent backdrop-blur-lg backdrop-brightness-90'} flex items-center justify-between gap-4 px-4
-				transition-all duration-200
+				: 'bg-transparent backdrop-blur-lg backdrop-brightness-90'} flex items-center justify-between gap-4 px-4 transition-all
+				duration-200 max-lg:py-3
 				"
 		>
 			<div class="flex items-center gap-2 text-white lg:hidden">
@@ -282,7 +282,7 @@
 						<h3 class="break-words text-primary">
 							Hallo, {pb.authStore.model?.name}
 						</h3>
-						<button on:click={() => (showMenu = false)} class="flex flex-col text-xl">
+						<button on:click={() => (showMenu = false)} class="flex flex-col text-left text-xl">
 							<a class="ml-4" href="/intern">Dashboard</a>
 							<a class="ml-4" href="/intern/profile">Profil</a>
 
@@ -306,7 +306,7 @@
 
 					<div>
 						<h3 class="text-primary">SMD-KA Intern</h3>
-						<button on:click={() => (showMenu = false)} class="flex flex-col text-xl">
+						<button on:click={() => (showMenu = false)} class="flex flex-col text-left text-xl">
 							{#each tabsIntern.routes as route}
 								{#if pb.authStore.model?.roles.includes(route.permission) || !route.permission}
 									<a class="fa ml-4" href={route.url}>
@@ -326,7 +326,7 @@
 						<h3 class="text-primary">
 							{tab.name}
 						</h3>
-						<button on:click={() => (showMenu = false)} class="flex flex-col text-xl">
+						<button on:click={() => (showMenu = false)} class="flex flex-col text-left text-xl">
 							{#each tab.routes as route}
 								<a class="ml-4" href={route.url}>{route.name}</a>
 							{/each}
