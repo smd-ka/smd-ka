@@ -9,6 +9,7 @@
 	import type { PageData } from './$types';
 	import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
+	import Saos from 'saos';
 
 	export let data: PageData;
 
@@ -41,127 +42,133 @@
 			gehören für uns dabei zusammen.
 		</p>
 	</section>
-
-	<section>
-		<div class="font-caveat pb-12 text-center text-4xl md:text-6xl">Was SMDler sagen...</div>
-		<div class="grid gap-4 px-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-			{#each data.statements as statement}
-				<div class="rounded-xl bg-gray-200">
-					<img
-						class="h-60 w-full rounded-t-xl object-cover"
-						src={src(
-							statement.picture,
-							statement.id,
-							statement.collectionId,
-							statement.collectionName
-						)}
-						alt="Profilbild"
-					/>
-					<div class="flex flex-col gap-2 p-4 sm:gap-8">
-						<b class="h-4">{statement.subject}</b>
-						<h2>{statement.name}</h2>
-						<p>{statement.statement}</p>
+	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
+		<section>
+			<div class="pb-12 text-center font-caveat text-4xl md:text-6xl">Was SMDler sagen...</div>
+			<div class="grid gap-4 px-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+				{#each data.statements as statement}
+					<div class="rounded-xl bg-gray-200">
+						<img
+							class="h-60 w-full rounded-t-xl object-cover"
+							src={src(
+								statement.picture,
+								statement.id,
+								statement.collectionId,
+								statement.collectionName
+							)}
+							alt="Profilbild"
+						/>
+						<div class="flex flex-col gap-2 p-4 sm:gap-8">
+							<b class="h-4">{statement.subject}</b>
+							<h2>{statement.name}</h2>
+							<p>{statement.statement}</p>
+						</div>
 					</div>
-				</div>
-			{/each}
-		</div>
-	</section>
+				{/each}
+			</div>
+		</section>
+	</Saos>
 
-	<section class="pad">
-		<h1 class="text-center">Unser Leitungsteam</h1>
-		<div class="grid gap-4 md:grid-cols-[fit-content(6rem)_1fr]">
-			<img
-				class="object-cover max-md:max-h-80 max-md:w-full md:max-w-80 lg:max-w-[30rem]"
-				alt="Leitungsteam"
-				src={leitungsteam}
-			/>
-			<p>
-				Unser Leitungsteam repräsentiert die Hochschul-SMD Karlsruhe und ist sowohl intern als auch
-				extern Ansprechpartner für alle Belange der Gruppe. Bei Fragen jeder Art sind unsere Leiter
-				sind unter
-				<a href="mailto:leiter@smd-karlsruhe.de">leiter@smd-karlsruhe.de</a> zu erreichen.
-				<br />
+	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
+		<section class="pad">
+			<h1 class="text-center">Unser Leitungsteam</h1>
+			<div class="grid gap-4 md:grid-cols-[fit-content(6rem)_1fr]">
+				<img
+					class="object-cover max-md:max-h-80 max-md:w-full md:max-w-80 lg:max-w-[30rem]"
+					alt="Leitungsteam"
+					src={leitungsteam}
+				/>
+				<p>
+					Unser Leitungsteam repräsentiert die Hochschul-SMD Karlsruhe und ist sowohl intern als
+					auch extern Ansprechpartner für alle Belange der Gruppe. Bei Fragen jeder Art sind unsere
+					Leiter sind unter
+					<a href="mailto:leiter@smd-karlsruhe.de">leiter@smd-karlsruhe.de</a> zu erreichen.
+					<br />
 
-				Das Leitungsteam dieses Semester besteht aus:
-				<br />
-				Claus, 23, geht gerne klettern und Radfahren und studiert im ersten Master-Semester Informatik
-				am KIT.
-				<br />
-				Samuel N., wandert gerne alleine durch die Alpen, 23 studiert im zweiten Master-Semester Bauingenieurwesen
-				am KIT.
-				<br />
-				<br />
-				"Wir freuen uns diese Semester die Gruppe mit Gottes Hilfe leiten zu dürfen und sind gespannt,
-				was er mit uns vorhat! Gerne denken wir dabei auch visionär über die Zukunft der SMD in Karlsruhe
-				nach und freuen uns über jeden, der sich mit einbringen möchte. Meldet euch gerne jederzeit!
-				:)" - Die Leiter
-			</p>
-		</div>
-	</section>
+					Das Leitungsteam dieses Semester besteht aus:
+					<br />
+					Claus, 23, geht gerne klettern und Radfahren und studiert im ersten Master-Semester Informatik
+					am KIT.
+					<br />
+					Samuel N., wandert gerne alleine durch die Alpen, 23 studiert im zweiten Master-Semester Bauingenieurwesen
+					am KIT.
+					<br />
+					<br />
+					"Wir freuen uns diese Semester die Gruppe mit Gottes Hilfe leiten zu dürfen und sind gespannt,
+					was er mit uns vorhat! Gerne denken wir dabei auch visionär über die Zukunft der SMD in Karlsruhe
+					nach und freuen uns über jeden, der sich mit einbringen möchte. Meldet euch gerne jederzeit!
+					:)" - Die Leiter
+				</p>
+			</div>
+		</section>
+	</Saos>
+	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
+		<section class="pad">
+			<h1 class="text-center">Mitarbeiten</h1>
+			<div class="grid gap-4 md:grid-cols-[1fr_fit-content(6rem)]">
+				<p>
+					Du hast Lust, dich mit einzubringen? Wir freuen uns immer über neue Gesichter! Wir sind
+					uns sicher, dass du deinen Platz in einem unserer Teams finden wirst. Gerne kommen wir mit
+					dir ins Gespräch und finden heraus, wo du dich am wohlsten fühlst.
+					<br />
 
-	<section class="pad">
-		<h1 class="text-center">Mitarbeiten</h1>
-		<div class="grid gap-4 md:grid-cols-[1fr_fit-content(6rem)]">
-			<p>
-				Du hast Lust, dich mit einzubringen? Wir freuen uns immer über neue Gesichter! Wir sind uns
-				sicher, dass du deinen Platz in einem unserer Teams finden wirst. Gerne kommen wir mit dir
-				ins Gespräch und finden heraus, wo du dich am wohlsten fühlst.
-				<br />
+					Sprich gerne jemanden aus dem Leitungsteam an oder schreib uns eine Mail an
+					<a href="mailto:leiter@smd-karlsruhe.de">leiter@smd-karlsruhe.de</a>.
+				</p>
+				<img
+					class="object-cover max-md:max-h-80 max-md:w-full md:max-w-80 lg:max-w-[30rem]"
+					alt="Symbolbild Mitarbeiten"
+					src={mitarbeiten}
+				/>
+			</div>
+		</section>
+	</Saos>
 
-				Sprich gerne jemanden aus dem Leitungsteam an oder schreib uns eine Mail an
-				<a href="mailto:leiter@smd-karlsruhe.de">leiter@smd-karlsruhe.de</a>.
-			</p>
-			<img
-				class="object-cover max-md:max-h-80 max-md:w-full md:max-w-80 lg:max-w-[30rem]"
-				alt="Symbolbild Mitarbeiten"
-				src={mitarbeiten}
-			/>
-		</div>
-	</section>
+	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
+		<section class="flex flex-col gap-8 px-4 py-20">
+			<h1 class="text-center">Unser Netzwerk</h1>
+			<div>
+				<img
+					class="pb-6 max-sm:w-full sm:float-right sm:w-[40] sm:max-w-sm xl:max-w-lg"
+					src={regions}
+					alt="Regionen"
+				/>
+				<p class="pt-4">
+					Die Hochschul-SMD ist ein deutschlandweites Netzwerk von ca. 80 christlichen
+					Hochschulgruppen; man findet sie also in fast jeder Universitätsstadt. Hier in Karlsruhe
+					sind wir eine am KIT (Karlsruher Institut für Technologie) und an der PH (Pädagogische
+					Hochschule) eingetragene Hochschulgruppe. Wir bleiben aber nicht nur unter uns, sondern
+					vernetzen uns überregional und wollen im Austausch miteinander voneinander lernen und uns
+					weiterentwickeln. Dafür gibt es primär zwei jährliche Veranstaltungen: das SMD-Forum, bei
+					dem sich ganz Deutschland trifft, und die RegioKon (RegionalKonferenz), bei der wir uns
+					mit anderen SMD-Gruppen aus unserer Region Süd-West treffen (siehe Karte).
 
-	<section class="flex flex-col gap-8 px-4 py-20">
-		<h1 class="text-center">Unser Netzwerk</h1>
-		<div>
-			<img
-				class="pb-6 max-sm:w-full sm:float-right sm:w-[40] sm:max-w-sm xl:max-w-lg"
-				src={regions}
-				alt="Regionen"
-			/>
-			<p class="pt-4">
-				Die Hochschul-SMD ist ein deutschlandweites Netzwerk von ca. 80 christlichen
-				Hochschulgruppen; man findet sie also in fast jeder Universitätsstadt. Hier in Karlsruhe
-				sind wir eine am KIT (Karlsruher Institut für Technologie) und an der PH (Pädagogische
-				Hochschule) eingetragene Hochschulgruppe. Wir bleiben aber nicht nur unter uns, sondern
-				vernetzen uns überregional und wollen im Austausch miteinander voneinander lernen und uns
-				weiterentwickeln. Dafür gibt es primär zwei jährliche Veranstaltungen: das SMD-Forum, bei
-				dem sich ganz Deutschland trifft, und die RegioKon (RegionalKonferenz), bei der wir uns mit
-				anderen SMD-Gruppen aus unserer Region Süd-West treffen (siehe Karte).
-
-				<a
-					class="flex items-center gap-2"
-					href="https://www.smd.org/hochschul-smd/hochschulgruppen/gruppenliste"
-				>
-					Liste aller Hochschul-SMD Gruppen
-					<Fa class="text-primary" icon={faArrowUpRightFromSquare} />
-				</a>
-			</p>
-			<p class="pt-4">
-				Neben der Hochschul-SMD gibt es auch noch die Schüler-SMD und Akademiker-SMD. Falls dich die
-				SMD genauer interessiert, schau doch mal auf der
-				<a class="flex items-center gap-2" href="https://www.smd.org">
-					Homepage der SMD
-					<Fa class="text-primary" icon={faArrowUpRightFromSquare} />
-				</a>
-			</p>
-			<p class="pt-4">
-				International sind wir auch vernetzt. Die SMD ist Teil der
-				<a href="https://ifesworld.org" class="flex items-center gap-2">
-					IFES
-					<Fa class="text-primary" icon={faArrowUpRightFromSquare} />
-				</a>
-				(International Fellowship of Evangelical Students). Die IFES ist ein weltweiter Dachverband von
-				christlichen Hochschulgruppen.
-			</p>
-		</div>
-	</section>
+					<a
+						class="flex items-center gap-2"
+						href="https://www.smd.org/hochschul-smd/hochschulgruppen/gruppenliste"
+					>
+						Liste aller Hochschul-SMD Gruppen
+						<Fa class="text-primary" icon={faArrowUpRightFromSquare} />
+					</a>
+				</p>
+				<p class="pt-4">
+					Neben der Hochschul-SMD gibt es auch noch die Schüler-SMD und Akademiker-SMD. Falls dich
+					die SMD genauer interessiert, schau doch mal auf der
+					<a class="flex items-center gap-2" href="https://www.smd.org">
+						Homepage der SMD
+						<Fa class="text-primary" icon={faArrowUpRightFromSquare} />
+					</a>
+				</p>
+				<p class="pt-4">
+					International sind wir auch vernetzt. Die SMD ist Teil der
+					<a href="https://ifesworld.org" class="flex items-center gap-2">
+						IFES
+						<Fa class="text-primary" icon={faArrowUpRightFromSquare} />
+					</a>
+					(International Fellowship of Evangelical Students). Die IFES ist ein weltweiter Dachverband
+					von christlichen Hochschulgruppen.
+				</p>
+			</div>
+		</section>
+	</Saos>
 </main>
