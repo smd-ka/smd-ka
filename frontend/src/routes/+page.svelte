@@ -10,18 +10,12 @@
 	import EmailInput from '$lib/components/forms/EmailInput.svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 	import { pb } from '$lib/pocketbase';
-	import glauben from '$lib/assets/pages/home/glauben.jpg';
-	import denken from '$lib/assets/pages/home/denken.jpg';
-	import erleben from '$lib/assets/pages/home/erleben.jpg';
-	import Motto from '$lib/components/Motto.svelte';
 	import type { PageData } from './$types';
 	import { getImageSrc } from '$lib/fetch_img';
 	import trailer from '$lib/assets/videos/trailer.mp4';
 	import placeholder from '$lib/assets/pages/events/kalender/placeholder.png';
 	import dayjs from 'dayjs';
-
-	import weitergehen_element from '$lib/assets/pages/home/weitergehen_element.jpg';
-	import ws2526_logo from '$lib/assets/pages/home/ws2526.jpg';
+	import HomeMotto from './_components/HomeMotto.svelte';
 
 	let success = false;
 	let error = false;
@@ -55,7 +49,7 @@
 
 <HeroShot imgSrc={header} bgPosition={'bg-[center_left_60%]'}>
 	<div
-		class="text-grey absolute left-1/2 top-1/3 w-full -translate-x-1/2 -translate-y-1/2 px-4 text-center"
+		class="absolute left-1/2 top-1/3 w-full -translate-x-1/2 -translate-y-1/2 px-4 text-center text-grey"
 	>
 		<div class="font-mincho text-4xl sm:text-5xl xl:text-7xl">Hier bist du richtig!</div>
 		<div class="font-caveat text-xl sm:text-2xl xl:text-3xl">
@@ -65,30 +59,6 @@
 </HeroShot>
 
 <main class="container mx-auto flex flex-col gap-24 py-12 text-lg">
-	<section
-		class="font-poppins text-ws2526Blue grid grid-cols-1 justify-between gap-8 bg-[#f2f2f2] px-20 py-10 text-center md:grid-cols-2 xl:grid-cols-3"
-	>
-		<div class="flex h-48 items-center justify-self-start max-xl:hidden">
-			<img src={ws2526_logo} alt="WS2526 Logo" class=" h-28 px-10 pt-5" />
-		</div>
-
-		<div class="flex flex-col items-center">
-			<div class=" text-7xl font-bold uppercase italic">weiter</div>
-			<div class=" text-7xl font-bold uppercase">Gehen</div>
-			<div>Unser Wintersemester 2025/26</div>
-			<a href="/events/semesterprogramm" class="bg-ws2526Blue fa mt-6 w-fit px-4 py-2 text-white">
-				Hier gehts zum Semesterprogramm
-				<Fa icon={faChevronRight} />
-			</a>
-		</div>
-
-		<img
-			src={weitergehen_element}
-			alt="Semesterdesign"
-			class="h-48 justify-self-end px-10 pt-5 max-md:hidden"
-		/>
-	</section>
-
 	{#if data.events}
 		<section class="px-4">
 			<h1 class="text-center">Was läuft aktuell?</h1>
@@ -118,7 +88,7 @@
 											{dayjs(event.start_date_time).format('dddd, DD.MM // HH:mm')}
 										{/if}
 									</div>
-									<a class="hover:text-primary fa hover:cursor-pointer" href={event.location_url}>
+									<a class="fa hover:cursor-pointer hover:text-primary" href={event.location_url}>
 										<Fa icon={faLocationDot} />
 										{#if event.location}
 											{event.location}
@@ -145,7 +115,7 @@
 				<div class="flex justify-center p-8">
 					<a
 						href="/events/kalender"
-						class="bg-primary flex items-center gap-2 rounded-sm px-4 py-2 text-white no-underline"
+						class="flex items-center gap-2 rounded-sm bg-primary px-4 py-2 text-white no-underline"
 					>
 						<Fa icon={faChevronRight} />
 						Alle Events
@@ -155,8 +125,10 @@
 		</section>
 	{/if}
 
+	<HomeMotto />
+
 	<section>
-		<h1 class="font-caveat text-center">Lust auf einen Sneak Peak?</h1>
+		<h1 class="text-center font-caveat">Lust auf einen Sneak Peak?</h1>
 		<video controls>
 			<source src={trailer} type="video/mp4" />
 			<track kind="captions" />
@@ -181,44 +153,6 @@
 			</p>
 		</section>
 	</Saos>
-
-	<section>
-		<h1 class="text-center">Unser Motto</h1>
-		<div class="flex gap-6 px-4 pt-4 max-md:flex-col">
-			<Motto imgSrc={denken} title="Denken">
-				An Gott zu glauben heißt nicht, den Verstand auszuschalten. Deswegen wollen wir –
-				Studierende aller Fachrichtungen und Konfessionen, die der Glaube an Jesus Christus
-				verbindet – miteinander nachdenken, uns austauschen und dabei an wertvollen Erkenntnissen
-				zunehmen.
-			</Motto>
-
-			<Motto imgSrc={glauben} title="Glauben">
-				<div class="flex justify-center">
-					<p class="">
-						“Was ist nun also der Glaube? Er ist das <b>Vertrauen</b> darauf, dass das, was wir
-						hoffen, sich erfüllen wird, und die <b>Überzeugung</b>, dass das, was man nicht sieht,
-						existiert.” - Hebräer 11,1
-					</p>
-				</div>
-			</Motto>
-
-			<Motto imgSrc={erleben} title="Erleben">
-				Wir können Gottes Wirken in jedem Lebensbereich erleben. Denn Gott verspricht, dass er in
-				jeder Lebenslage bei uns ist (Matthäus 28,20) und jeden Menschen liebt (Johannes 3,16).
-				Daran wollen wir uns erinnern und uns gegenseitig ermutigen, indem wir Zeugnis davon geben,
-				was wir mit Gott erleben.
-			</Motto>
-		</div>
-		<div class="flex justify-center p-8">
-			<a
-				href="/about/us"
-				class="bg-primary flex items-center gap-2 rounded-sm px-4 py-2 text-white no-underline"
-			>
-				<Fa icon={faChevronRight} />
-				Lerne mehr über uns
-			</a>
-		</div>
-	</section>
 
 	<div class="flex flex-col gap-8 px-4 xl:px-80">
 		<h1 class="pb-0">schreib uns</h1>
