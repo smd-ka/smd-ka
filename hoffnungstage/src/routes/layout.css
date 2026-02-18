@@ -1,0 +1,19 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/dm-sans';
+@plugin '@tailwindcss/typography';
+
+body {
+	font-family: 'DM Sans Variable', sans-serif;
+}
+
+h1 {
+	@apply py-6 text-5xl font-bold md:text-8xl xl:text-[10rem];
+}
+
+h2 {
+	@apply py-4 text-xl md:text-2xl xl:text-4xl;
+}
+
+h3 {
+	@apply text-sm md:text-lg xl:text-xl;
+}

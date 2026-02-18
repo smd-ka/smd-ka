@@ -1,8 +1,6 @@
-version: '3.8'
-
+version: "3.8"
 
 services:
-
   backend:
     container_name: backend
     image: ghcr.io/smd-ka/smd-ka/backend:main
@@ -39,6 +37,16 @@ services:
       - default
     restart: always
 
+  hoffnungstage:
+    container_name: hoffnungstage
+    image: ghcr.io/smd-ka/smd-ka/hoffnungstage:main
+    build:
+      context: ./hoffnungstage
+      dockerfile: ./Dockerfile
+    networks:
+      - default
+    restart: always
+
   dokuwiki:
     image: dokuwiki/dokuwiki:stable
     restart: always
@@ -59,6 +67,7 @@ services:
       DOMAIN_SHORT: ${DOMAIN_SHORT:-smd-ka.de}
       DOMAIN_KINGS_CAFE: ${DOMAIN_KINGS_CAFE:-kings-cafe.de}
       DOMAIN_LECTURE_TALK: ${DOMAIN_LECTURE_TALK:-hoersaalvortrag-ka.de}
+      DOMAIN_HOFFNUNGSTAGE: ${DOMAIN_HOFFNUNGSTAGE:-hoffnungstage-ka.de}
     ports:
       - 80:80
       - 443:443
@@ -84,9 +93,9 @@ services:
     environment:
       # binding of Nextcloud’s internal reverse proxy
       APACHE_ADDITIONAL_NETWORK: caddy_net
-      APACHE_IP_BINDING: 127.0.0.1  # <- binding applied by Docker (i.e. outside of container)
-      APACHE_PORT: 8081  # is also used as internal port
-      SKIP_DOMAIN_VALIDATION: "true"  # does not work for us anyway
+      APACHE_IP_BINDING: 127.0.0.1 # <- binding applied by Docker (i.e. outside of container)
+      APACHE_PORT: 8081 # is also used as internal port
+      SKIP_DOMAIN_VALIDATION: "true" # does not work for us anyway
     ports:
       # binding of Nextcloud AiO web UI
       - 127.0.0.1:8080:8080
@@ -94,8 +103,7 @@ services:
       - nextcloud_aio_mastercontainer:/mnt/docker-aio-config
       - /var/run/docker.sock:/var/run/docker.sock
     restart: always
-    network_mode: bridge  # attaches to "docker run"-bridge
-
+    network_mode: bridge # attaches to "docker run"-bridge
 
 networks:
   default:
@@ -111,8 +119,7 @@ networks:
   caddy_net:
     name: caddy_net
     driver: bridge
-    attachable: true  # allow containers outside any compose to attach
-
+    attachable: true # allow containers outside any compose to attach
 
 volumes:
   caddy_config:
