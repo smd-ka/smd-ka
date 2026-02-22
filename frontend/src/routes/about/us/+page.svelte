@@ -81,7 +81,7 @@
 			</p>
 			<div class="flex flex-col gap-4 py-12 md:gap-16 xl:flex-row xl:justify-center">
 				<div class="flex justify-center">
-					<img class="max-w-xl object-cover max-md:px-4" alt="Leitungsteam" src={leitungsteam} />
+					<img class="object-cover max-md:px-4 md:max-w-xl" alt="Leitungsteam" src={leitungsteam} />
 				</div>
 				<div class="flex flex-col justify-center gap-8">
 					<p class="text-center italic">
