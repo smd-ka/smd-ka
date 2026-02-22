@@ -10,6 +10,7 @@
 	import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import Saos from 'saos';
+	import Page from '../../+page.svelte';
 
 	export let data: PageData;
 
@@ -70,35 +71,42 @@
 	</Saos>
 
 	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
-		<section class="pad">
+		<section class="">
 			<h1 class="text-center">Unser Leitungsteam</h1>
-			<div class="grid gap-4 md:grid-cols-[fit-content(6rem)_1fr]">
-				<img
-					class="object-cover max-md:max-h-80 max-md:w-full md:max-w-80 lg:max-w-[30rem]"
-					alt="Leitungsteam"
-					src={leitungsteam}
-				/>
-				<p>
-					Unser Leitungsteam repräsentiert die Hochschul-SMD Karlsruhe und ist sowohl intern als
-					auch extern Ansprechpartner für alle Belange der Gruppe. Bei Fragen jeder Art sind unsere
-					Leiter sind unter
-					<a href="mailto:leiter@smd-karlsruhe.de">leiter@smd-karlsruhe.de</a> zu erreichen.
-					<br />
-
-					Das Leitungsteam dieses Semester besteht aus:
-					<br />
-					Claus, 23, geht gerne klettern und Radfahren und studiert im ersten Master-Semester Informatik
-					am KIT.
-					<br />
-					Samuel N., wandert gerne alleine durch die Alpen, 23 studiert im zweiten Master-Semester Bauingenieurwesen
-					am KIT.
-					<br />
-					<br />
-					"Wir freuen uns diese Semester die Gruppe mit Gottes Hilfe leiten zu dürfen und sind gespannt,
-					was er mit uns vorhat! Gerne denken wir dabei auch visionär über die Zukunft der SMD in Karlsruhe
-					nach und freuen uns über jeden, der sich mit einbringen möchte. Meldet euch gerne jederzeit!
-					:)" - Die Leiter
-				</p>
+			<p class="text-center">
+				Unser Leitungsteam repräsentiert die Hochschul-SMD Karlsruhe und ist sowohl intern als auch
+				extern Ansprechpartner für alle Belange der Gruppe. Bei Fragen jeder Art sind unsere Leiter
+				sind unter
+				<a href="mailto:leiter@smd-karlsruhe.de">leiter@smd-karlsruhe.de</a> zu erreichen.
+			</p>
+			<div class="flex flex-col gap-4 py-12 md:gap-16 xl:flex-row xl:justify-center">
+				<div class="flex justify-center">
+					<img class="max-w-xl object-cover max-md:px-4" alt="Leitungsteam" src={leitungsteam} />
+				</div>
+				<div class="flex flex-col justify-center gap-8">
+					<p class="text-center italic">
+						Unser Wunsch ist es, dass wir als Gruppe die Gute Nachricht von Jesus Christus auf dem
+						Campus und in der Stadt verbreiten und Studierenden dabei begleiten, eine lebendige
+						Beziehung zu Jesus aufzubauen. In unserer Gruppe soll die Liebe Gottes spürbar sein, die
+						Menschen verbindet und ihnen Hoffnung schenkt.
+						<br />
+						Als Leitungsteam wünschen wir uns sehr, dass sich jeder bei uns wohlfühlt. Wir haben stets
+						ein offenes Ohr und freuen uns über Anregungen, Kritik und natürlich auch Lob. Wir sind dankbar
+						für die Gemeinschaft, die wir in der SMD erleben dürfen, und freuen uns auf alles, was noch
+						kommt. - Euer Leitungsteam
+					</p>
+					<p class="xl:pt-12">
+						<b>Claus</b>, 23, geht gerne klettern und Radfahren und studiert im zweiten
+						Master-Semester Informatik am KIT.
+						<br />
+						<b>Leah</b>, 26, liebt es zu backen und studiert im Master Grundschullehramt (English
+						und Mathe) an der PH.
+						<br />
+						<b>Scharpfi</b> (Samuel Scharpf), 22, bereist gerne die Welt und studiert im Bachelor
+						Wirtschafts-Ing am KIT.
+						<br />
+					</p>
+				</div>
 			</div>
 		</section>
 	</Saos>
