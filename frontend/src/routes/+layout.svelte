@@ -132,21 +132,25 @@
 		routes: [
 			{
 				name: 'Adressliste',
-				url: '/intern/address-list'
+				url: '/intern/address-list',
+				showMobile: true
 			},
 			{
 				name: 'Kalender bearbeiten',
-				url: '/intern/kalender'
+				url: '/intern/kalender',
+				showMobile: true
 			},
 			{
 				name: 'Wiki',
 				url: 'https://wiki.smd-karlsruhe.de',
-				extern: true
+				extern: true,
+				showMobile: true
 			},
 			{
 				name: 'Cloud',
 				url: 'https://cloud.smd-karlsruhe.de/apps/user_oidc/login/1',
-				extern: true
+				extern: true,
+				showMobile: true
 			},
 			{
 				name: 'Mastersheet',
@@ -275,17 +279,24 @@
 				use:click_outside
 				on:outsideclick={() => (showMenu = false)}
 				transition:slide={{ duration: 200, easing: sineInOut }}
-				class="mobile-nav-height absolute top-0 z-0 mt-[4.5rem] w-fit max-w-full overflow-scroll bg-white p-4 pb-8 lg:hidden"
+				class="mobile-nav-height absolute top-0 z-0 mt-[4.5rem] w-fit max-w-full overflow-scroll bg-grey p-4 pb-8 text-gray-300 lg:hidden"
 			>
 				{#if isValid}
 					<div>
-						<h3 class="break-words text-primary">
-							Hallo, {pb.authStore.model?.name}
-						</h3>
+						<h3 class="text-white"><a href="/intern">SMD-KA Intern</a></h3>
 						<button on:click={() => (showMenu = false)} class="flex flex-col text-left text-xl">
-							<a class="ml-4" href="/intern">Dashboard</a>
-							<a class="ml-4" href="/intern/profile">Profil</a>
-
+							{#each tabsIntern.routes as route}
+								{#if route.showMobile && (pb.authStore.model?.roles.includes(route.permission) || !route.permission)}
+									<a class="fa ml-4" href={route.url}>
+										{route.name}
+										{#if route.extern}
+											<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
+										{/if}
+									</a>
+								{/if}
+							{/each}
+						</button>
+						<button on:click={() => (showMenu = false)} class="flex flex-col text-left text-xl">
 							<form
 								class="menu-link ml-4"
 								method="POST"
@@ -303,27 +314,12 @@
 							</form>
 						</button>
 					</div>
-
-					<div>
-						<h3 class="text-primary">SMD-KA Intern</h3>
-						<button on:click={() => (showMenu = false)} class="flex flex-col text-left text-xl">
-							{#each tabsIntern.routes as route}
-								{#if pb.authStore.model?.roles.includes(route.permission) || !route.permission}
-									<a class="fa ml-4" href={route.url}>
-										{route.name}
-										{#if route.extern}
-											<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
-										{/if}
-									</a>
-								{/if}
-							{/each}
-						</button>
-					</div>
+					<div class="my-2 h-0.5 bg-primary"></div>
 				{/if}
 
 				{#each tabs as tab}
 					<div>
-						<h3 class="text-primary">
+						<h3 class="text-white">
 							{tab.name}
 						</h3>
 						<button on:click={() => (showMenu = false)} class="flex flex-col text-left text-xl">
@@ -333,21 +329,24 @@
 						</button>
 					</div>
 				{/each}
+				<div class="my-2 h-0.5 bg-primary"></div>
 
-				<h3 class="text-primary">
+				<h3 class=" text-white">
 					<a class="flex items-center gap-2" href="https://kings-cafe.de">
 						International
 						<Fa class="text-xl" icon={faArrowUpRightFromSquare} />
 					</a>
 				</h3>
-				<button on:click={() => (showMenu = false)}>
-					<h3 class="text-primary">
-						<a class="flex items-center gap-2" href="/intern">
-							SMD-KA Intern
-							<Fa icon={faRightToBracket} />
-						</a>
-					</h3>
-				</button>
+				{#if !isValid}
+					<button on:click={() => (showMenu = false)}>
+						<h3 class="text-white">
+							<a class="flex items-center gap-2" href="/intern">
+								SMD-KA Intern
+								<Fa icon={faRightToBracket} />
+							</a>
+						</h3>
+					</button>
+				{/if}
 			</nav>
 		{/if}
 	</nav>
@@ -425,6 +424,10 @@
 <style>
 	a {
 		@apply no-underline;
+	}
+
+	h3 {
+		@apply font-normal;
 	}
 
 	.CategoryLinkList {
