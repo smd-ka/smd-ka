@@ -240,7 +240,7 @@
 				{#if isValid}
 					<div>
 						<span
-							class="CategoryTitle peer {$page.url.pathname.includes(tabsIntern.baseUrl)
+							class="CategoryTitle peer py-5 {$page.url.pathname.includes(tabsIntern.baseUrl)
 								? 'text-primary'
 								: ''}"
 						>
