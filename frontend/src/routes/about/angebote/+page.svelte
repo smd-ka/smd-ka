@@ -168,7 +168,7 @@
 	</section>
 
 	<section>
-		<h3 class="text-primary pb-2">Es gibt vieles zu entdecken ...</h3>
+		<h3 class="pb-2 text-primary">Es gibt vieles zu entdecken ...</h3>
 		<p>
 			... und wie findet man da jetzt <b>Anschluss?</b> Am besten einfach beim nächsten Treffen in Person
 			vorbeischauen. Besonders empfehlen wir dir unsere SMD-Abende, die (unterm Semester) alle zwei Wochen
@@ -178,14 +178,14 @@
 		</p>
 		<div class="mx-auto grid max-w-fit gap-4 py-4 text-2xl md:grid-cols-2 md:gap-16">
 			<a
-				class="bg-primary flex items-center gap-2 px-4 py-2 text-white no-underline hover:underline"
+				class="flex items-center gap-2 bg-primary px-4 py-2 text-white no-underline hover:underline"
 				href="/about/kontakt"
 			>
 				<Fa icon={faChevronRight} />
 				Bleib in Kontakt</a
 			>
 			<a
-				class="border-grey text-grey flex items-center gap-2 border-2 px-4 py-2 no-underline hover:underline"
+				class="flex items-center gap-2 border-2 border-grey px-4 py-2 text-grey no-underline hover:underline"
 				href="/about/us"
 			>
 				<Fa icon={faChevronRight} />
@@ -208,7 +208,7 @@
 				arrows={mobileScreen}
 				bind:this={carouselGermany}
 			>
-				<div slot="prev" class="text-grey grid items-center p-4 text-3xl lg:text-5xl">
+				<div slot="prev" class="grid items-center p-4 text-3xl text-grey lg:text-5xl">
 					<button on:click={carouselGermany.goToPrev}> <Fa icon={faChevronLeft} /></button>
 				</div>
 				<CarouselSlideGermany image={mentoring} title="Mentoring" link="https://mentoring.smd.org/">
@@ -231,7 +231,7 @@
 					Dieses Angebot der Arbeitsgemeinschaft christlicher Pädagogen bietet Vernetzung,
 					Unterstützung und Ermutigung für Lehramtsstudierende, Referendare und junge Lehrkräfte.
 				</CarouselSlideGermany>
-				<div slot="next" class="text-grey grid items-center p-4 text-3xl lg:text-5xl">
+				<div slot="next" class="grid items-center p-4 text-3xl text-grey lg:text-5xl">
 					<button on:click={carouselGermany.goToNext}> <Fa icon={faChevronRight} /></button>
 				</div>
 			</Carousel>

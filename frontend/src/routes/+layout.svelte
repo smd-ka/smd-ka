@@ -62,6 +62,7 @@
 		{
 			name: 'Über uns',
 			baseUrl: '/about',
+			defaultUrl: '/about/us',
 			routes: [
 				{
 					name: 'Wer wir sind',
@@ -84,6 +85,7 @@
 		{
 			name: 'Events',
 			baseUrl: '/events',
+			defaultUrl: '/events/kalender',
 			routes: [
 				{
 					name: 'Kalender',
@@ -102,6 +104,7 @@
 		{
 			name: 'Neu hier?',
 			baseUrl: '/new',
+			defaultUrl: '/new/erstsemester',
 			routes: [
 				{
 					name: 'Erstsemester',
@@ -129,21 +132,25 @@
 		routes: [
 			{
 				name: 'Adressliste',
-				url: '/intern/address-list'
+				url: '/intern/address-list',
+				showMobile: true
 			},
 			{
 				name: 'Kalender bearbeiten',
-				url: '/intern/kalender'
+				url: '/intern/kalender',
+				showMobile: true
 			},
 			{
 				name: 'Wiki',
 				url: 'https://wiki.smd-karlsruhe.de',
-				extern: true
+				extern: true,
+				showMobile: true
 			},
 			{
 				name: 'Cloud',
 				url: 'https://cloud.smd-karlsruhe.de/apps/user_oidc/login/1',
-				extern: true
+				extern: true,
+				showMobile: true
 			},
 			{
 				name: 'Mastersheet',
@@ -184,12 +191,12 @@
 
 <svelte:window bind:scrollY />
 <main class="flex min-h-screen flex-col">
-	<nav class=" border-primary sticky top-0 z-50 flex flex-[0_1_auto] flex-col border-b-4 shadow-md">
+	<nav class=" sticky top-0 z-50 flex flex-[0_1_auto] flex-col border-b-4 border-primary shadow-md">
 		<div
 			class="{scrollY > $headerImageHeight - navbarHeight
 				? 'bg-grey'
-				: 'bg-transparent backdrop-blur-lg backdrop-brightness-90'} flex items-center justify-between gap-4 px-4 py-3
-				transition-all duration-200
+				: 'bg-transparent backdrop-blur-lg backdrop-brightness-90'} flex items-center justify-between gap-4 px-4 transition-all
+				duration-200 max-lg:py-3
 				"
 		>
 			<div class="flex items-center gap-2 text-white lg:hidden">
@@ -217,9 +224,9 @@
 
 			<div class="flex items-center gap-4 text-xl text-white max-lg:hidden">
 				{#each tabs as tab}
-					<div>
+					<a href={tab.defaultUrl}>
 						<span
-							class="CategoryTitle peer {$page.url.pathname.includes(tab.baseUrl)
+							class="CategoryTitle peer py-5 {$page.url.pathname.includes(tab.baseUrl)
 								? 'text-primary'
 								: ''}"
 						>
@@ -231,13 +238,13 @@
 								<a href={route.url}>{route.name}</a>
 							{/each}
 						</div>
-					</div>
+					</a>
 				{/each}
 
 				{#if isValid}
 					<div>
 						<span
-							class="CategoryTitle peer {$page.url.pathname.includes(tabsIntern.baseUrl)
+							class="CategoryTitle peer py-5 {$page.url.pathname.includes(tabsIntern.baseUrl)
 								? 'text-primary'
 								: ''}"
 						>
@@ -272,17 +279,24 @@
 				use:click_outside
 				on:outsideclick={() => (showMenu = false)}
 				transition:slide={{ duration: 200, easing: sineInOut }}
-				class="mobile-nav-height absolute top-0 z-0 mt-[4.5rem] w-fit max-w-full overflow-scroll bg-white p-4 pb-8 lg:hidden"
+				class="mobile-nav-height absolute top-0 z-0 mt-[4.5rem] w-fit max-w-full overflow-scroll bg-grey p-4 pb-8 text-gray-300 lg:hidden"
 			>
 				{#if isValid}
 					<div>
-						<h3 class="text-primary break-words">
-							Hallo, {pb.authStore.model?.name}
-						</h3>
-						<button on:click={() => (showMenu = false)} class="flex flex-col text-xl">
-							<a class="ml-4" href="/intern">Dashboard</a>
-							<a class="ml-4" href="/intern/profile">Profil</a>
-
+						<h3 class="text-white"><a href="/intern">SMD-KA Intern</a></h3>
+						<button on:click={() => (showMenu = false)} class="flex flex-col text-left text-xl">
+							{#each tabsIntern.routes as route}
+								{#if route.showMobile && (pb.authStore.model?.roles.includes(route.permission) || !route.permission)}
+									<a class="fa ml-4" href={route.url}>
+										{route.name}
+										{#if route.extern}
+											<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
+										{/if}
+									</a>
+								{/if}
+							{/each}
+						</button>
+						<button on:click={() => (showMenu = false)} class="flex flex-col text-left text-xl">
 							<form
 								class="menu-link ml-4"
 								method="POST"
@@ -300,51 +314,39 @@
 							</form>
 						</button>
 					</div>
-
-					<div>
-						<h3 class="text-primary">SMD-KA Intern</h3>
-						<button on:click={() => (showMenu = false)} class="flex flex-col text-xl">
-							{#each tabsIntern.routes as route}
-								{#if pb.authStore.model?.roles.includes(route.permission) || !route.permission}
-									<a class="fa ml-4" href={route.url}>
-										{route.name}
-										{#if route.extern}
-											<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
-										{/if}
-									</a>
-								{/if}
-							{/each}
-						</button>
-					</div>
+					<div class="my-2 h-0.5 bg-primary"></div>
 				{/if}
 
 				{#each tabs as tab}
 					<div>
-						<h3 class="text-primary">
+						<h3 class="text-white">
 							{tab.name}
 						</h3>
-						<button on:click={() => (showMenu = false)} class="flex flex-col text-xl">
+						<button on:click={() => (showMenu = false)} class="flex flex-col text-left text-xl">
 							{#each tab.routes as route}
 								<a class="ml-4" href={route.url}>{route.name}</a>
 							{/each}
 						</button>
 					</div>
 				{/each}
+				<div class="my-2 h-0.5 bg-primary"></div>
 
-				<h3 class="text-primary">
+				<h3 class=" text-white">
 					<a class="flex items-center gap-2" href="https://kings-cafe.de">
 						International
 						<Fa class="text-xl" icon={faArrowUpRightFromSquare} />
 					</a>
 				</h3>
-				<button on:click={() => (showMenu = false)}>
-					<h3 class="text-primary">
-						<a class="flex items-center gap-2" href="/intern">
-							SMD-KA Intern
-							<Fa icon={faRightToBracket} />
-						</a>
-					</h3>
-				</button>
+				{#if !isValid}
+					<button on:click={() => (showMenu = false)}>
+						<h3 class="text-white">
+							<a class="flex items-center gap-2" href="/intern">
+								SMD-KA Intern
+								<Fa icon={faRightToBracket} />
+							</a>
+						</h3>
+					</button>
+				{/if}
 			</nav>
 		{/if}
 	</nav>
@@ -362,7 +364,7 @@
 			<div class="container mx-auto px-4 py-20 xl:px-40">
 				<div class="grid justify-center gap-20 md:grid-cols-2">
 					<section class="flex flex-col gap-4">
-						<h2 class="text-primary text-xl uppercase">Unser Netzwerk</h2>
+						<h2 class="text-xl uppercase text-primary">Unser Netzwerk</h2>
 						<div class="grid grid-cols-[5rem_1fr] gap-4">
 							<a href="https://smd.org" target="_blank">
 								<img src={smd_logo} alt="SMD Logo" class="" />
@@ -383,7 +385,7 @@
 					</section>
 
 					<section class="underline-a flex flex-col gap-3">
-						<h2 class="text-primary text-xl uppercase">Andere Gruppen</h2>
+						<h2 class="text-xl uppercase text-primary">Andere Gruppen</h2>
 						<a href="https://www.sfc-karlsruhe.de">SfC - Studierende für Christus</a>
 						<a href="https://esg-karlsruhe.de/">ESG - Evangelische Studierendengemeinde</a>
 						<a href="https://www.khg-karlsruhe.de/">KHG - Katholische Hochschulgemeinde</a>
@@ -424,15 +426,19 @@
 		@apply no-underline;
 	}
 
+	h3 {
+		@apply font-normal;
+	}
+
 	.CategoryLinkList {
-		@apply bg-primary absolute hidden justify-center  hover:grid peer-hover:grid;
+		@apply absolute top-[4.25rem] hidden justify-center bg-primary  hover:grid peer-hover:grid;
 	}
 	.CategoryLinkList > a {
 		@apply px-4 py-2 hover:bg-gray-100 hover:text-black;
 	}
 
 	.CategoryTitle {
-		@apply hover:text-primary flex items-center gap-2 hover:cursor-pointer;
+		@apply flex items-center gap-2 hover:cursor-pointer hover:text-primary;
 	}
 
 	.underline-a > a:hover {

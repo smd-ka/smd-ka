@@ -14,7 +14,7 @@
 		faArrowUpRightFromSquare
 	} from '@fortawesome/free-solid-svg-icons';
 	import rightArrow from '$lib/assets/icons/right-arrow-handdrawn.svg';
-	import iphoneInstagram from '$lib/assets/pages/about/kontakt/Iphone_Instagram.png';
+	import iPhoneMockupInstagram from '$lib/assets/pages/about/kontakt/mockup_instagram.jpg';
 
 	let success = false;
 	let error = false;
@@ -56,11 +56,13 @@
 	</section>
 
 	<section class="grid items-center justify-center xl:grid-cols-2">
-		<img
-			alt="Instagram Screenshot"
-			class="mx-4 h-[50rem] rotate-6 max-xl:hidden"
-			src={iphoneInstagram}
-		/>
+		<div class="flex justify-center">
+			<img
+				alt="Instagram Screenshot"
+				class="mx-4 h-[50rem] rotate-6 max-xl:hidden"
+				src={iPhoneMockupInstagram}
+			/>
+		</div>
 
 		<div>
 			<h2 class="normal-case max-xl:text-center">Nichts mehr verpassen!</h2>
@@ -123,11 +125,11 @@
 		</div>
 	</section>
 	<section class="flex justify-center py-12 xl:hidden">
-		<img alt="Instagram Screenshot" class=" h-[25rem] rotate-6" src={iphoneInstagram} />
+		<img alt="Instagram Screenshot" class=" h-[25rem] rotate-6" src={iPhoneMockupInstagram} />
 	</section>
 
 	<section class="xl:pt-24">
-		<h1 class="font-caveat text-center normal-case">Wir freuen uns von dir zu hören!</h1>
+		<h1 class="text-center font-caveat normal-case">Wir freuen uns von dir zu hören!</h1>
 
 		<div class="grid gap-x-4 text-xl xl:grid-cols-[1r_2fr]">
 			<p class="xl:justify-self-end">Egal ob du…</p>
