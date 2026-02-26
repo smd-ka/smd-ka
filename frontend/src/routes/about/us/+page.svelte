@@ -10,7 +10,6 @@
 	import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import Saos from 'saos';
-	import Page from '../../+page.svelte';
 
 	export let data: PageData;
 
@@ -71,7 +70,7 @@
 	</Saos>
 
 	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
-		<section class="">
+		<section class="px-4">
 			<h1 class="text-center">Unser Leitungsteam</h1>
 			<p class="text-center">
 				Unser Leitungsteam repräsentiert die Hochschul-SMD Karlsruhe und ist sowohl intern als auch
@@ -110,6 +109,7 @@
 			</div>
 		</section>
 	</Saos>
+
 	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
 		<section class="pad">
 			<h1 class="text-center">Mitarbeiten</h1>
