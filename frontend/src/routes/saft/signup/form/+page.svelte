@@ -24,12 +24,19 @@
 	let loggedIn = false;
 	let travelOption = '';
 	let group = '';
+	let registrationOpen: boolean | null = null;
 
-	onMount(() => {
+	onMount(async () => {
 		if (pb.authStore.isValid) {
 			loggedIn = true;
 		}
 		group = 'Karlsruhe';
+		try {
+			const status = await pb.send('/api/saft/registration-status', { method: 'GET' });
+			registrationOpen = status.open;
+		} catch {
+			registrationOpen = false;
+		}
 	});
 
 	const signup = async () => {
@@ -190,6 +197,13 @@
 		{:else}
 			<h1 class="pb-0 text-5xl font-bold uppercase">SAFT Anmeldung</h1>
 			<span class="text-xl font-bold text-gray-600">im {PUBLIC_SEMESTER}</span>
+			{#if registrationOpen === false}
+				<p class="my-6 text-xl font-bold text-red-600">
+					Die Anmeldung zur SAFT ist leider geschlossen.
+				</p>
+			{:else if registrationOpen === null}
+				<p class="my-6 text-gray-500">Anmeldestatus wird geladen…</p>
+			{:else}
 			{#if loggedIn}
 				<p class="text-primary py-6 text-xl">
 					Schön, dass du dabei bist {pb.authStore.model?.name}!
@@ -399,6 +413,7 @@
 					Anmelden
 				</button>
 			</form>
+			{/if}
 		{/if}
 	</div>
 </main>

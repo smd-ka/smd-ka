@@ -1,7 +1,9 @@
 package saft
 
 import (
+	"net/http"
 	"net/mail"
+	"time"
 
 	"github.com/pocketbase/dbx"
 	"github.com/pocketbase/pocketbase"
@@ -10,7 +12,19 @@ import (
 	"github.com/pocketbase/pocketbase/tools/template"
 )
 
+// registrationDeadline is the exclusive upper bound: registration is open before this instant,
+// meaning it is open through the end of 2025-11-16 (UTC).
+var registrationDeadline = time.Date(2025, time.November, 17, 0, 0, 0, 0, time.UTC)
+
 func SaftEmails(app *pocketbase.PocketBase) {
+
+	app.OnServe().BindFunc(func(se *core.ServeEvent) error {
+		se.Router.GET("/api/saft/registration-status", func(e *core.RequestEvent) error {
+			open := time.Now().UTC().Before(registrationDeadline)
+			return e.JSON(http.StatusOK, map[string]bool{"open": open})
+		})
+		return se.Next()
+	})
 
 	app.OnRecordCreate("saft").BindFunc(func(e *core.RecordEvent) error {
 
