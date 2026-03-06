@@ -7,6 +7,20 @@
 	import saftGroup from '$lib/assets/heroshots/saft_heroshot.png';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { faCalendarDays, faCoins, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+	import { onMount } from 'svelte';
+	import { pb } from '$lib/pocketbase';
+
+	let registrationOpen = null;
+
+	onMount(async () => {
+		try {
+			const status = await pb.send('/api/saft/registration-status', { method: 'GET' });
+			registrationOpen = status.open;
+		} catch (err) {
+			console.error('Failed to fetch SAFT registration status:', err);
+			registrationOpen = false;
+		}
+	});
 </script>
 
 <HeroShot imgSrc={header} height={'h-[70svh]'}></HeroShot>
@@ -35,13 +49,16 @@
 					der SMD Karlsruhe. Sie findet immer am Anfang des Semesters statt und ist eine gute Möglichkeit,
 					die SMD und andere Studierende kennenzulernen.
 				</p>
+				{#if registrationOpen}
 				<a href="/saft/signup" class="pointer mt-4 w-fit bg-black p-4 text-white">Jetzt anmelden</a>
-			</div>
-			<!-- <b>
-				Die Anmeldung für diese SAFT ist geschlossen. Falls du ganz spontan noch mit willst wende
-				dich dich an <a href="mailto:inreach@smd-karlsruhe.de">Daniel.</a>.
-			</b> -->
-			<!-- <div class="mt-4 w-fit bg-gray-500 p-4 text-white">Anmeldung ab Mitte Oktober</div> -->
+			{:else if registrationOpen === false}
+				<b>
+					Die Anmeldung für diese SAFT ist geschlossen. Falls du ganz spontan noch mit willst,
+					wende dich an <a href="mailto:inreach@smd-karlsruhe.de">inreach@smd-karlsruhe.de</a>.
+				</b>
+			{/if}
+		</div>
+		<!-- <div class="mt-4 w-fit bg-gray-500 p-4 text-white">Anmeldung ab Mitte Oktober</div> -->
 		</Saos>
 
 		<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
@@ -103,7 +120,14 @@
 		<section class="py-12">
 			<h3 class="pb-6">Du bist dabei? Dann nichts wie los melde dich an!</h3>
 
-			<a href="/saft/signup" class="bg-black p-4 text-white">Hier geht's zur Anmeldung</a>
+			{#if registrationOpen}
+				<a href="/saft/signup" class="bg-black p-4 text-white">Hier geht's zur Anmeldung</a>
+			{:else if registrationOpen === false}
+				<b>
+					Die Anmeldung für diese SAFT ist geschlossen. Falls du ganz spontan noch mit willst,
+					wende dich an <a href="mailto:inreach@smd-karlsruhe.de">inreach@smd-karlsruhe.de</a>.
+				</b>
+			{/if}
 		</section>
 	</div>
 </main>
