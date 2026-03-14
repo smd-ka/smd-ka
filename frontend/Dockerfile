@@ -1,5 +1,8 @@
+FROM docker.io/library/node:lts-alpine AS base
+
+
 # Build stage
-FROM node:lts-alpine AS build
+FROM base AS build
 WORKDIR /app
 
 # Define build argument (ARG)
@@ -16,12 +19,12 @@ RUN npm install
 # Copy all source files
 COPY . .
 
-
 # Build the application
 RUN npm run build
 
+
 # Production stage
-FROM node:lts-alpine AS production
+FROM base AS production
 
 # Copy built application and essential files from build stage
 COPY --from=build /app/build .
@@ -34,4 +37,3 @@ RUN npm ci --omit dev
 EXPOSE 3000
 
 CMD ["node", "."]
-
