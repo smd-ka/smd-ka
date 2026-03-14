@@ -68,11 +68,27 @@ You can run the website in two different configs:
 - run only the frontend locally, leveraging the productive backend
   ```sh
   cd frontend  # or "kings-cafe"
+  [[ -e env.local ]] && rm env.local || true  # remove pin to local backend
   npm run dev
   # open the localhost:XXXX url given, or insert `o` then enter
   ```
 - run both backend & frontend locally
-  (TODO add instructions and/or script)
+    1.  For that, you need a recent backup from the production site so that the backend can actually run.
+        Download this as superadmin from our backend.
+    2.  Then run the following snippet:
+        ```sh
+        fr_dir="frontend"  # or "kings-cafe"
+        echo "VITE_API_URL=http://127.0.0.1:8090/" > "$fr_dir/env.local"  # pin to local backend
+        cd backend
+        # rollback database to latest backup available
+        rm -rf pb_data
+        backup_list=( ~/Downloads/pb_backup_smd_ka_backend_*.zip )  # auto-picks latest backup
+        unzip "${backup_list[-1]}" -d ./pb_data
+        # start backend
+        AUTHENTIK_BEARER_TOKEN=DISABLED:local-debugging go run . serve
+        # afterwards start frontend with same command from above
+        (cd "../$fr_dir" && npm run dev)
+        ```
 
 Hint: The `kings-cafe` is an alternative frontend.
 Meaning to run that, replace occurencies of the directory `frontend` with `kings-cafe`.
