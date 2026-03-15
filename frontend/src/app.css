@@ -10,20 +10,26 @@
     src: url('./fonts/mokoto.ttf');
   }
 
-  @font-face { 
-    font-family: 'Gagalin'; 
-    src: 
-        url('./fonts/gagalin.otf')  
-        format('opentype'); 
-} 
+  @font-face {
+    font-family: 'Gagalin';
+    src:
+      url('./fonts/gagalin.otf') format('opentype');
+  }
+
+  html {
+    /* make overflow scrolling look better */
+    /* i.e. use same color as navbar & footer */
+    @apply bg-grey;
+  }
 
   body {
     @apply text-primary-text;
     @apply xl:text-lg;
+    /* revert overwritten background color */
+    background-color: white;
+  }
 
-  }  
-  
-  p > a {
+  p>a {
     @apply underline hover:no-underline;
   }
 
@@ -32,7 +38,7 @@
   }
 
   h2 {
-    @apply md:text-4xl text-3xl font-bold pb-4 ;
+    @apply md:text-4xl text-3xl font-bold pb-4;
   }
 
   h3 {
@@ -67,4 +73,3 @@
   }
 
 }
-
