@@ -1,6 +1,7 @@
 <script lang="ts">
 	import InputField from '$lib/components/forms/TextInput.svelte';
-	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
+	import loadingSpinner from '$lib/assets/loading_spinner.gif';
+	import loadingSpinnerWhite from '$lib/assets/loading_spinner_white.gif';
 	import InputCheckbox from '$lib/components/forms/CheckboxInput.svelte';
 	import { getErrorMessage, pb } from '$lib/pocketbase';
 	import { onMount } from 'svelte';
@@ -12,28 +13,48 @@
 	import NumberInput from '$lib/components/forms/NumberInput.svelte';
 	import CheckboxInput from '$lib/components/forms/CheckboxInput.svelte';
 
+	// textblocks reused for SAFT signup
+	import MessageAfterwards from '$lib/components/saft/MessageAfterwards.svelte';
+	import MessageClosed from '$lib/components/saft/MessageClosed.svelte';
+
+	import { RegistrationStatus, type RegistrationStatus, requestRegStatus } from '$lib/saftRegistrationApi.ts';
+
 	const ticketValues = [
 		'Deutschlandticket/Jugendticket BW',
 		'KVV-Bescheinigung',
 		'KVV-Semesterticket'
 	];
 
+	enum FormStatus {
+		Preparing,  // loading regStatus & preparing other values
+		Presenting,  // where regStatus matters
+		Submitting,  // same as presenting, but with loading hint
+		ErrorOnSubmit,  // same as presenting, with error hint
+		SuccessfullySubmit,  // show success message
+	}
+
+	// form status (affecting rendering)
+	let status: FormStatus = FormStatus.Preparing;
+	let regStatus: RegistrationStatus = RegistrationStatus.Unknown;
+	$: loading = status == FormStatus.Submitting;
+	$: success = status == FormStatus.SuccessfullySubmit;
+
 	let record: saftRegistration;
-	let loading = false;
-	let success = false;
 	let loggedIn = false;
 	let travelOption = '';
 	let group = '';
 
-	onMount(() => {
+	onMount(async () => {
 		if (pb.authStore.isValid) {
 			loggedIn = true;
 		}
 		group = 'Karlsruhe';
+		regStatus = await requestRegStatus();
+		status = FormStatus.Presenting;
 	});
 
 	const signup = async () => {
-		loading = true;
+		status = FormStatus.Submitting;
 		const form = document.getElementById('form') as HTMLFormElement;
 		let formData = new FormData(form);
 		formData.set(
@@ -56,13 +77,12 @@
 
 		try {
 			record = await pb.collection('saft').create(formData);
-			success = true;
+			status = FormStatus.SuccessfullySubmit;
 		} catch (e: any) {
-			loading = false;
+			status = FormStatus.ErrorOnSubmit;
 			console.error(getErrorMessage(e));
 			return;
 		}
-		loading = false;
 	};
 </script>
 
@@ -190,6 +210,22 @@
 		{:else}
 			<h1 class="pb-0 text-5xl font-bold uppercase">SAFT Anmeldung</h1>
 			<span class="text-xl font-bold text-gray-600">im {PUBLIC_SEMESTER}</span>
+			{#if regStatus == RegistrationStatus.Unknown}
+				<div class="my-4 flex gap-4">
+					<img class="h-8" src={loadingSpinner} alt="loading" />
+					<p class="text-gray-500">Anmeldestatus wird geladen…</p>
+				</div>
+			{:else if regStatus === RegistrationStatus.Closed}
+				<MessageClosed />
+			{:else if regStatus == RegistrationStatus.Afterwards}
+				<MessageAfterwards />
+			{:else if regStatus == RegistrationStatus.Failed}
+				<p class="my-6 text-xl font-bold text-red-600">
+					Irgendetwas ging schief.
+					Bitte überprüfe deine Internetverbindung
+					oder probiere es später noch einmal.
+				</p>
+			{:else}
 			{#if loggedIn}
 				<p class="text-primary py-6 text-xl">
 					Schön, dass du dabei bist {pb.authStore.model?.name}!
@@ -394,11 +430,12 @@
 					class="relative flex items-center justify-center bg-black px-12 py-4 text-white md:w-fit"
 				>
 					{#if loading}
-						<img class="absolute left-2 h-8" src={loadingSpinner} alt="loading" />
+						<img class="absolute left-2 h-8" src={loadingSpinnerWhite} alt="loading" />
 					{/if}
 					Anmelden
 				</button>
 			</form>
+			{/if}
 		{/if}
 	</div>
 </main>

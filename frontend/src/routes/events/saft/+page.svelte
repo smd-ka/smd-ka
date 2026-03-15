@@ -7,6 +7,11 @@
 	import saftGroup from '$lib/assets/heroshots/saft_heroshot.png';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { faCalendarDays, faCoins, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+	import { onMount } from 'svelte';
+	import { pb } from '$lib/pocketbase';
+
+	// hint: to re-open the signup, look into: backend/saft/reqStatus.go
+	import SignupButton from '$lib/components/saft/SignupButton.svelte';
 </script>
 
 <HeroShot imgSrc={header} height={'h-[70svh]'}></HeroShot>
@@ -35,13 +40,9 @@
 					der SMD Karlsruhe. Sie findet immer am Anfang des Semesters statt und ist eine gute Möglichkeit,
 					die SMD und andere Studierende kennenzulernen.
 				</p>
-				<a href="/saft/signup" class="pointer mt-4 w-fit bg-black p-4 text-white">Jetzt anmelden</a>
-			</div>
-			<!-- <b>
-				Die Anmeldung für diese SAFT ist geschlossen. Falls du ganz spontan noch mit willst wende
-				dich dich an <a href="mailto:inreach@smd-karlsruhe.de">Daniel.</a>.
-			</b> -->
-			<!-- <div class="mt-4 w-fit bg-gray-500 p-4 text-white">Anmeldung ab Mitte Oktober</div> -->
+				<SignupButton>Jetzt anmelden</SignupButton>
+		</div>
+		<!-- <div class="mt-4 w-fit bg-gray-500 p-4 text-white">Anmeldung ab Mitte Oktober</div> -->
 		</Saos>
 
 		<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
@@ -103,7 +104,7 @@
 		<section class="py-12">
 			<h3 class="pb-6">Du bist dabei? Dann nichts wie los melde dich an!</h3>
 
-			<a href="/saft/signup" class="bg-black p-4 text-white">Hier geht's zur Anmeldung</a>
+			<SignupButton>Hier geht’s zur Anmeldung</SignupButton>
 		</section>
 	</div>
 </main>

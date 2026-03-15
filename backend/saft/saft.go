@@ -1,18 +1,34 @@
 package saft
 
 import (
+	"net/http"
 	"net/mail"
 
 	"github.com/pocketbase/dbx"
 	"github.com/pocketbase/pocketbase"
+	"github.com/pocketbase/pocketbase/apis"
 	"github.com/pocketbase/pocketbase/core"
 	"github.com/pocketbase/pocketbase/tools/mailer"
 	"github.com/pocketbase/pocketbase/tools/template"
+
+	"SMD-KA-Backend/saft/regStatus"
 )
+
 
 func SaftEmails(app *pocketbase.PocketBase) {
 
+	app.OnServe().BindFunc(func(se *core.ServeEvent) error {
+		se.Router.GET("/api/saft/registration-status", func(e *core.RequestEvent) error {
+			return e.JSON(http.StatusOK, regStatus.ApiStatus())
+		})
+		return se.Next()
+	})
+
 	app.OnRecordCreate("saft").BindFunc(func(e *core.RecordEvent) error {
+
+		if !regStatus.AcceptSubmission() {
+			return apis.NewForbiddenError("Registration is closed", nil)
+		}
 
 		Subject := "[SMD-KA] SAFT Anmeldung WS25/26"  // format: SoSe25 or WS25/26
 

@@ -19,6 +19,8 @@
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 	import { fa42Group, faWikipediaW } from '@fortawesome/free-brands-svg-icons';
 
+	import SignupButton from '$lib/components/saft/SignupButton.svelte';
+
 	let isSaftCoordinator = pb.authStore.model?.roles.includes(SAFT_COORDINATOR);
 	let isPritTeam = pb.authStore.model?.roles.includes(PRIT_RESPONSABLE);
 	let isRegiokonCoordinator = pb.authStore.model?.roles.includes(REGIOKON_COORDINATOR);
@@ -106,12 +108,14 @@
 			<h2 class="py-4 text-center text-lg md:text-2xl">Gebetsbox</h2>
 		</a>
 
-		<!-- <a class="tile" href="/saft/signup">
-			<div class="flex justify-center">
-				<Fa icon={faGlassWater} class="text-corperate text-7xl" />
-			</div>
-			<h2 class="py-4 text-center text-lg md:text-2xl">SAFT Anmeldung</h2>
-		</a> -->
+		<SignupButton class="tile" raw>
+			<a class="tile" href="/saft/signup">
+				<div class="flex justify-center">
+					<Fa icon={faGlassWater} class="text-corperate text-7xl" />
+				</div>
+				<h2 class="py-4 text-center text-lg md:text-2xl">zur SAFT anmelden</h2>
+			</a>
+		</SignupButton>
 
 		<a class="tile" href="/intern/kalender">
 			<div class="flex justify-center text-orange-400">
