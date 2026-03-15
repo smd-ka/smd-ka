@@ -19,6 +19,29 @@ For our frontend we are using [Svelte Kit](https://kit.svelte.dev/). SvelteKit i
 In order to simplify deployment all the applications are dockerized. The [docker compose](/docker-compose.yml) specifies which containers exist. The main reason behind the dockerization is reliability. Also as a bonus with a dockerized app, you're not bound to a certain web hoster. We can move our website elsewhere if the provider raises prizes or causes other inconvinences.
 The backend and frontend are running in two separate containers. The [Nginx](https://www.nginx.com/) webserver which serves the two is running in another container. Its config can be found [here](/nginx/nginx.conf).
 
+### Automatic Backups
+
+<!-- describing this here, so this info is accessible in case of failure of our wiki -->
+
+We have automatic backups for the most crucial data enabled.
+This backup mechanism is enabled by Nextcloud AiO’s integration of BorgBackup.
+Nextcloud AiO should be configured to currently include the following volumes in its backups:
+- `authentik_database` (our user database)
+- `smd-ka_dokuwiki_data` (our internal wiki)
+- `smd-ka_pb_data` (data of web backend)
+
+<!-- serve some hints in case of catrastophic failure of our server -->
+The backup location is currently under control of @Zocker1999_NET (as of 2026-03-15).
+All backups created by BorgBackup are encrypted,
+therefore to access our backups, the encryption key is required,
+This key should be accessible by the leaders of our group
+and by the the leader of our PrIT team.
+The backup service does additionally create weekly snapshots
+which are not accessible to our server in case of a ransomware attack.
+
+Nextcloud AiO can guide users through restoring its own data,
+while the additional containers need to be restored manually.
+
 
 <!-- title parsed by flake.nix -->
 ## Development

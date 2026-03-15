@@ -13,6 +13,7 @@ services:
       AUTHENTIK_BEARER_TOKEN: ${AUTHENTIK_BEARER_TOKEN:-}
       SMD_PRAYER_BOX_TARGET: ${SMD_PRAYER_BOX_TARGET:-}
     volumes:
+      # this volume should be included in the Nextcloud AiO backup
       - pb_data:/pb/pb_data
       - ./backend/migrations:/pb/migrations
     networks:
@@ -47,6 +48,7 @@ services:
       #PHP_MEMORYLIMIT: 256M  #default is 256M
       #PHP_UPLOADLIMIT: 128M #default is 128M
     volumes:
+      # this volume should be included in the Nextcloud AiO backup
       - dokuwiki_data:/storage
     networks:
       - default
