@@ -40,6 +40,9 @@ func ContactForm(app *pocketbase.PocketBase) {
 			To:      []mail.Address{{Address: e.Record.Email()}},
 			Subject: Subject,
 			HTML:    html,
+			Headers: map[string]string{
+				"Reply-To":  LeiterEmail,
+			},
 		}
 
 		html, err = registry.LoadFiles(
@@ -64,6 +67,9 @@ func ContactForm(app *pocketbase.PocketBase) {
 			Bcc:     []mail.Address{{Address: WebmasterEmail}},
 			Subject: Subject,
 			HTML:    html,
+			Headers: map[string]string{
+				"Reply-To":  e.Record.Email(),
+			},
 		}
 		e.App.NewMailClient().Send(notificationMessage)
 		e.App.NewMailClient().Send(messageSender)
