@@ -9,6 +9,11 @@ import (
 	"github.com/pocketbase/pocketbase/tools/template"
 )
 
+const (
+	LeiterEmail   = "leiter@smd-karlsruhe.de"
+	WebmasterEmail = "webmaster@smd-karlsruhe.de"
+)
+
 func ContactForm(app *pocketbase.PocketBase) {
 
 	app.OnRecordCreate("contact").BindFunc(func(e *core.RecordEvent) error {
@@ -55,8 +60,8 @@ func ContactForm(app *pocketbase.PocketBase) {
 				Address: e.App.Settings().Meta.SenderAddress,
 				Name:    e.App.Settings().Meta.SenderName,
 			},
-			To:      []mail.Address{{Address: "leiter@smd-karlsruhe.de"}},
-			Bcc:     []mail.Address{{Address: "webmaster@smd-karlsruhe.de"}},
+			To:      []mail.Address{{Address: LeiterEmail}},
+			Bcc:     []mail.Address{{Address: WebmasterEmail}},
 			Subject: Subject,
 			HTML:    html,
 		}
