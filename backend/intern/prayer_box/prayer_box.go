@@ -59,6 +59,7 @@ func PrayerBoxForm(app *pocketbase.PocketBase) {
 					To:      []mail.Address{{Address: prayerBoxTarget}},
 					Subject: Subject,
 					HTML:    html,
+					// no Reply-To because sender stays anonymous
 				}
 				e.App.NewMailClient().Send(notificationMessage)
 			}
