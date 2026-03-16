@@ -36,7 +36,7 @@ func RegiokonEmail(app *pocketbase.PocketBase) {
 
 		Subject := "[SMD-KA] Regiokon26 - DU bist dabei!"
 		// E-Mail-Adress for questions (see template)
-		Email := "regiokon@smd-karlsruhe.de"
+		OrgaEmail := "regiokon@smd-karlsruhe.de"
 
 		registry := template.NewRegistry()
 
@@ -44,7 +44,7 @@ func RegiokonEmail(app *pocketbase.PocketBase) {
 			"regiokon/regiokon_email.html",
 		).Render(map[string]any{
 			"name":  e.Record.Get("name"),
-			"email": Email,
+			"email": OrgaEmail,
 		})
 
 		if err != nil {
