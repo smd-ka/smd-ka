@@ -55,6 +55,9 @@ func SaftEmails(app *pocketbase.PocketBase) {
 				To:      []mail.Address{{Address: user.Email}},
 				Subject: Subject,
 				HTML:    html,
+				Headers: map[string]string{
+					"Reply-To": OrgaEmail,
+				},
 			}
 			e.App.NewMailClient().Send(message)
 
@@ -79,6 +82,9 @@ func SaftEmails(app *pocketbase.PocketBase) {
 				To:      []mail.Address{{Address: e.Record.Email()}},
 				Subject: Subject,
 				HTML:    html,
+				Headers: map[string]string{
+					"Reply-To": OrgaEmail,
+				},
 			}
 			e.App.NewMailClient().Send(message)
 		}
