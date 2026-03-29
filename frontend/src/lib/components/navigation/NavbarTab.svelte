@@ -9,7 +9,7 @@
 	import type { NavTab } from './types';
 </script>
 
-<a href={tab.defaultUrl}>
+<a href={tab.defaultUrl ?? null}>
 	<span
 		class="CategoryTitle peer py-5 {$page.url.pathname.includes(tab.baseUrl) ? 'text-primary' : ''}"
 	>
