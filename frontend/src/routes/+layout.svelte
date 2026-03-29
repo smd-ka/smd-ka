@@ -1,4 +1,7 @@
 <script lang="ts">
+	import type { NavTab } from '$lib/components/navigation/types';
+	import NavbarTab from '$lib/components/navigation/NavbarTab.svelte';
+
 	import '../app.css';
 	import '@fontsource/anton';
 	import '@fontsource-variable/merriweather-sans';
@@ -58,7 +61,7 @@
 		});
 	});
 
-	const tabs = [
+	const tabs: NavTab[] = [
 		{
 			name: 'Über uns',
 			baseUrl: '/about',
@@ -126,7 +129,7 @@
 		}
 	];
 
-	const tabsIntern = {
+	const tabsIntern: NavTab = {
 		name: 'Intern',
 		baseUrl: '/intern',
 		routes: [
@@ -224,21 +227,7 @@
 
 			<div class="flex items-center gap-4 text-xl text-white max-lg:hidden">
 				{#each tabs as tab}
-					<a href={tab.defaultUrl}>
-						<span
-							class="CategoryTitle peer py-5 {$page.url.pathname.includes(tab.baseUrl)
-								? 'text-primary'
-								: ''}"
-						>
-							{tab.name}
-							<Fa class="text-lg" icon={faChevronDown}></Fa>
-						</span>
-						<div class="CategoryLinkList">
-							{#each tab.routes as route}
-								<a href={route.url}>{route.name}</a>
-							{/each}
-						</div>
-					</a>
+					<NavbarTab {tab} />
 				{/each}
 
 				{#if isValid}
@@ -430,6 +419,7 @@
 		@apply font-normal;
 	}
 
+	/* Category still required for rendering tabsIntern */
 	.CategoryLinkList {
 		@apply bg-primary absolute top-[4.25rem] hidden justify-center  hover:grid peer-hover:grid;
 	}
