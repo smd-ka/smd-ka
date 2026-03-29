@@ -9,6 +9,8 @@ export const SAFT_COORDINATOR = 'saftcoordinator';
 export const PRIT_RESPONSABLE = 'pritresponsable';
 export const REGIOKON_COORDINATOR = 'regiokoncordina';
 
+export type Role = typeof SAFT_COORDINATOR | typeof PRIT_RESPONSABLE | typeof REGIOKON_COORDINATOR;
+
 export const currentUser = writable(pb.authStore.model);
 
 export function getErrorMessage(error: unknown) {
@@ -49,7 +51,7 @@ export type UserRecord = {
 	phonenumber: string;
 	post_images: 'yes' | 'no';
 	rili: boolean;
-	roles: string[]; // Array of roles
+	roles: Role[]; // Array of roles
 	start_of_studies: string; // ISO date string
 	surname: string;
 	team: string;
