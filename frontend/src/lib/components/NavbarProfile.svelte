@@ -48,7 +48,7 @@
 		</form>
 	</div>
 {:else}
-	<a href="/account/login">
+	<a href="/account/login" title="Anmelden">
 		<Fa
 			class={$page.url.pathname.match('account/login') ? 'text-primary' : 'hover:text-primary'}
 			icon={faRightToBracket}

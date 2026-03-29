@@ -300,7 +300,7 @@
 					<button on:click={() => (showMenu = false)}>
 						<h3 class="text-white">
 							<a class="flex items-center gap-2" href="/intern">
-								SMD-KA Intern
+								Anmelden
 								<Fa icon={faRightToBracket} />
 							</a>
 						</h3>
