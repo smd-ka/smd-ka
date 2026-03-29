@@ -12,5 +12,6 @@ export interface NavTab {
     name: string;
     baseUrl: string;
     defaultUrl?: string;
+    permission?: Role;
     routes: NavTabRoute[];
 }

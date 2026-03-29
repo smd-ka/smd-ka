@@ -12,26 +12,30 @@
 	import { currentUser, userHasRole } from '$lib/pocketbase';
 </script>
 
-<a href={tab.defaultUrl ?? null}>
-	<span
-		class="CategoryTitle peer py-5 {$page.url.pathname.includes(tab.baseUrl) ? 'text-primary' : ''}"
-	>
-		{tab.name}
-		<Fa class="text-lg" icon={faChevronDown}></Fa>
-	</span>
-	<div class="CategoryLinkList">
-		{#each tab.routes as route}
-			{#if userHasRole($currentUser, route.permission)}
-				<a class="fa" href={route.url}>
-					{route.name}
-					{#if route.extern}
-						<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
-					{/if}
-				</a>
-			{/if}
-		{/each}
-	</div>
-</a>
+{#if userHasRole($currentUser, tab.permission)}
+	<a href={tab.defaultUrl ?? null}>
+		<span
+			class="CategoryTitle peer py-5 {$page.url.pathname.includes(tab.baseUrl)
+				? 'text-primary'
+				: ''}"
+		>
+			{tab.name}
+			<Fa class="text-lg" icon={faChevronDown}></Fa>
+		</span>
+		<div class="CategoryLinkList">
+			{#each tab.routes as route}
+				{#if userHasRole($currentUser, route.permission)}
+					<a class="fa" href={route.url}>
+						{route.name}
+						{#if route.extern}
+							<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
+						{/if}
+					</a>
+				{/if}
+			{/each}
+		</div>
+	</a>
+{/if}
 
 <style>
 	a {
