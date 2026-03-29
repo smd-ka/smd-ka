@@ -9,7 +9,14 @@
 
 <div>
 	<h3 class="text-white">
-		{tab.name}
+		<!-- manual check because of on:click -->
+		{#if tab.defaultUrl ?? false}
+			<a href={tab.defaultUrl} on:click={() => (showMenu = false)}>
+				{tab.name}
+			</a>
+		{:else}
+			{tab.name}
+		{/if}
 	</h3>
 	<button on:click={() => (showMenu = false)} class="flex flex-col text-left text-xl">
 		{#each tab.routes as route}
