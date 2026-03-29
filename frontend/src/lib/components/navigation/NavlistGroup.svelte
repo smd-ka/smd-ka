@@ -20,7 +20,10 @@
 	</h3>
 	<button on:click={() => (showMenu = false)} class="flex flex-col text-left text-xl">
 		{#each tab.routes as route}
-			<a class="ml-4" href={route.url}>{route.name}</a>
+			{@const showMobile = route.showMobile ?? true}
+			{#if showMobile}
+				<a class="ml-4" href={route.url}>{route.name}</a>
+			{/if}
 		{/each}
 	</button>
 </div>
