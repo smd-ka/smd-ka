@@ -7,6 +7,9 @@
 	import { page } from '$app/stores';
 
 	import type { NavTab } from './types';
+
+	// backend
+	import { currentUser, userHasRole } from '$lib/pocketbase';
 </script>
 
 <a href={tab.defaultUrl ?? null}>
@@ -18,7 +21,11 @@
 	</span>
 	<div class="CategoryLinkList">
 		{#each tab.routes as route}
-			<a href={route.url}>{route.name}</a>
+			{#if userHasRole($currentUser, route.permission)}
+				<a class="fa" href={route.url}>
+					{route.name}
+				</a>
+			{/if}
 		{/each}
 	</div>
 </a>
