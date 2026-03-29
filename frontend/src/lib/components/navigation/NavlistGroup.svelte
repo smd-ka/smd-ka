@@ -31,9 +31,10 @@
 			{@const showMobile = route.showMobile ?? true}
 			{@const isAuthorized = userHasRole($currentUser, tab.permission)}
 			{#if showMobile && isAuthorized}
+				{@const extern = route.extern ?? !route.url.startsWith('/')}
 				<a class="fa ml-4" href={route.url}>
 					{route.name}
-					{#if route.extern}
+					{#if extern}
 						<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
 					{/if}
 				</a>
