@@ -22,6 +22,7 @@
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import {
+		ANY_LOGGED_IN,
 		getAvatarUrl,
 		pb,
 		PRIT_RESPONSABLE,
@@ -132,6 +133,7 @@
 	const tabsIntern: NavTab = {
 		name: 'Intern',
 		baseUrl: '/intern',
+		permission: ANY_LOGGED_IN,
 		routes: [
 			{
 				name: 'Adressliste',
@@ -229,31 +231,7 @@
 				{#each tabs as tab}
 					<NavbarTab {tab} />
 				{/each}
-
-				{#if isValid}
-					<div>
-						<span
-							class="CategoryTitle peer py-5 {$page.url.pathname.includes(tabsIntern.baseUrl)
-								? 'text-primary'
-								: ''}"
-						>
-							{tabsIntern.name}
-							<Fa class="text-lg" icon={faChevronDown}></Fa>
-						</span>
-						<div class="CategoryLinkList">
-							{#each tabsIntern.routes as route}
-								{#if pb.authStore.model?.roles.includes(route.permission) || !route.permission}
-									<a class="fa" href={route.url}>
-										{route.name}
-										{#if route.extern}
-											<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
-										{/if}
-									</a>
-								{/if}
-							{/each}
-						</div>
-					</div>
-				{/if}
+				<NavbarTab tab={tabsIntern} />
 
 				<a class="hover:text-primary" href="https://kings-cafe.de">International</a>
 
@@ -417,18 +395,6 @@
 
 	h3 {
 		@apply font-normal;
-	}
-
-	/* Category still required for rendering tabsIntern */
-	.CategoryLinkList {
-		@apply bg-primary absolute top-[4.25rem] hidden justify-center  hover:grid peer-hover:grid;
-	}
-	.CategoryLinkList > a {
-		@apply px-4 py-2 hover:bg-gray-100 hover:text-black;
-	}
-
-	.CategoryTitle {
-		@apply hover:text-primary flex items-center gap-2 hover:cursor-pointer;
 	}
 
 	.underline-a > a:hover {
