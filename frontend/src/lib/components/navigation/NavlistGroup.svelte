@@ -5,6 +5,9 @@
 	export let showMenu: boolean;
 
 	import type { NavTab } from './types';
+
+	// backend
+	import { currentUser, userHasRole } from '$lib/pocketbase';
 </script>
 
 <div>
@@ -21,7 +24,8 @@
 	<button on:click={() => (showMenu = false)} class="flex flex-col text-left text-xl">
 		{#each tab.routes as route}
 			{@const showMobile = route.showMobile ?? true}
-			{#if showMobile}
+			{@const isAuthorized = userHasRole($currentUser, tab.permission)}
+			{#if showMobile && isAuthorized}
 				<a class="ml-4" href={route.url}>{route.name}</a>
 			{/if}
 		{/each}
