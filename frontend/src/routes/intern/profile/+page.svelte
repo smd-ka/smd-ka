@@ -94,7 +94,7 @@
 	<h1>Profil Bearbeiten</h1>
 
 	{#if afterRegistration}
-		<div class="rounded-md bg-primary bg-opacity-40 p-4">
+		<div class="bg-primary rounded-md bg-opacity-40 p-4">
 			Hi, schön, dass du dich für den internen Bereich registriert hast. Gibt doch gerne deine
 			restlichen Daten hier an, damit man dich in der Adressliste auch wiederfindet :)
 		</div>
@@ -104,7 +104,7 @@
 		<div class="flex flex-col items-center">
 			<label for="avatar" class="w-32 rounded-full hover:cursor-pointer">
 				<div class="relative">
-					<div class="absolute bottom-0 right-0 rounded-full bg-primary p-2 text-white shadow-lg">
+					<div class="bg-primary absolute bottom-0 right-0 rounded-full p-2 text-white shadow-lg">
 						<Fa icon={faPencil} />
 					</div>
 					<img
@@ -128,7 +128,7 @@
 				<button
 					type="button"
 					on:click={deleteProfilePicture}
-					class="mt-4 flex items-center gap-2 text-secondary-text"
+					class="text-secondary-text mt-4 flex items-center gap-2"
 				>
 					Profilbild löschen
 					<Fa icon={faTrash} class="mr-2" />
@@ -189,7 +189,7 @@
 		</div>
 
 		<div class="flex gap-4 self-start rounded-md border-2 p-3 md:mt-7">
-			<span class="px-1 text-secondary-text">Geschlecht:</span>
+			<span class="text-secondary-text px-1">Geschlecht:</span>
 			<label for="male">
 				<input
 					id="male"
@@ -380,6 +380,6 @@
 	}
 
 	.field label {
-		@apply ml-2 text-secondary-text;
+		@apply text-secondary-text ml-2;
 	}
 </style>

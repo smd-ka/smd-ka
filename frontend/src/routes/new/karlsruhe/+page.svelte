@@ -105,7 +105,7 @@
 			<a
 				href="https://maps.app.goo.gl/KGGCHYAdKRErAeEi9"
 				target="_blank"
-				class="rounded-lg bg-background-orange bg-opacity-50 p-4 shadow-lg transition-all duration-100 hover:scale-105"
+				class="bg-background-orange rounded-lg bg-opacity-50 p-4 shadow-lg transition-all duration-100 hover:scale-105"
 			>
 				<h3 class="text-center">Café Wohnzimmer</h3>
 				<p>
@@ -134,7 +134,7 @@
 			<a
 				href="https://maps.app.goo.gl/kS7Aq1PcCemoYoEy9"
 				target="_blank"
-				class="rounded-lg bg-background-orange bg-opacity-50 p-4 shadow-lg transition-all duration-100 hover:scale-105"
+				class="bg-background-orange rounded-lg bg-opacity-50 p-4 shadow-lg transition-all duration-100 hover:scale-105"
 			>
 				<h3 class="text-center">Iaro</h3>
 				<p>
@@ -164,7 +164,7 @@
 			<a
 				href="https://maps.app.goo.gl/MzZo7Xs8q3iipk2x5"
 				target="_blank"
-				class="ransition-all rounded-lg bg-background-orange bg-opacity-50 p-4 shadow-lg duration-100 hover:scale-105"
+				class="ransition-all bg-background-orange rounded-lg bg-opacity-50 p-4 shadow-lg duration-100 hover:scale-105"
 			>
 				<h3 class="text-center">Berry Su</h3>
 				<p>
@@ -191,7 +191,7 @@
 			<a
 				href="https://maps.app.goo.gl/yBLWhJtX4yeYAos76"
 				target="_blank"
-				class="rounded-lg bg-background-orange bg-opacity-50 p-4 shadow-lg duration-100 hover:scale-105"
+				class="bg-background-orange rounded-lg bg-opacity-50 p-4 shadow-lg duration-100 hover:scale-105"
 			>
 				<h3 class="text-center">Yollie - The Popice Café</h3>
 				<p>
@@ -218,7 +218,7 @@
 			<a
 				href="https://maps.app.goo.gl/SpVfubUshfwnQ7fn6"
 				target="_blank"
-				class="rounded-lg bg-background-orange bg-opacity-50 p-4 shadow-lg duration-100 hover:scale-105"
+				class="bg-background-orange rounded-lg bg-opacity-50 p-4 shadow-lg duration-100 hover:scale-105"
 			>
 				<h3 class="text-center">Café Mats</h3>
 				<p>

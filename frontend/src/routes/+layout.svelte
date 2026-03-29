@@ -191,7 +191,7 @@
 
 <svelte:window bind:scrollY />
 <main class="flex min-h-screen flex-col">
-	<nav class=" sticky top-0 z-50 flex flex-[0_1_auto] flex-col border-b-4 border-primary shadow-md">
+	<nav class="border-primary sticky top-0 z-50 flex flex-[0_1_auto] flex-col border-b-4 shadow-md">
 		<div
 			class="{scrollY > $headerImageHeight - navbarHeight
 				? 'bg-grey'
@@ -279,7 +279,7 @@
 				use:click_outside
 				on:outsideclick={() => (showMenu = false)}
 				transition:slide={{ duration: 200, easing: sineInOut }}
-				class="mobile-nav-height absolute top-0 z-0 mt-[4.5rem] w-fit max-w-full overflow-scroll bg-grey p-4 pb-8 text-gray-300 lg:hidden"
+				class="mobile-nav-height bg-grey absolute top-0 z-0 mt-[4.5rem] w-fit max-w-full overflow-scroll p-4 pb-8 text-gray-300 lg:hidden"
 			>
 				{#if isValid}
 					<div>
@@ -314,7 +314,7 @@
 							</form>
 						</button>
 					</div>
-					<div class="my-2 h-0.5 bg-primary"></div>
+					<div class="bg-primary my-2 h-0.5"></div>
 				{/if}
 
 				{#each tabs as tab}
@@ -329,7 +329,7 @@
 						</button>
 					</div>
 				{/each}
-				<div class="my-2 h-0.5 bg-primary"></div>
+				<div class="bg-primary my-2 h-0.5"></div>
 
 				<h3 class=" text-white">
 					<a class="flex items-center gap-2" href="https://kings-cafe.de">
@@ -364,7 +364,7 @@
 			<div class="container mx-auto px-4 py-20 xl:px-40">
 				<div class="grid justify-center gap-20 md:grid-cols-2">
 					<section class="flex flex-col gap-4">
-						<h2 class="text-xl uppercase text-primary">Unser Netzwerk</h2>
+						<h2 class="text-primary text-xl uppercase">Unser Netzwerk</h2>
 						<div class="grid grid-cols-[5rem_1fr] gap-4">
 							<a href="https://smd.org" target="_blank">
 								<img src={smd_logo} alt="SMD Logo" class="" />
@@ -385,7 +385,7 @@
 					</section>
 
 					<section class="underline-a flex flex-col gap-3">
-						<h2 class="text-xl uppercase text-primary">Andere Gruppen</h2>
+						<h2 class="text-primary text-xl uppercase">Andere Gruppen</h2>
 						<a href="https://www.sfc-karlsruhe.de">SfC - Studierende für Christus</a>
 						<a href="https://esg-karlsruhe.de/">ESG - Evangelische Studierendengemeinde</a>
 						<a href="https://www.khg-karlsruhe.de/">KHG - Katholische Hochschulgemeinde</a>
@@ -431,14 +431,14 @@
 	}
 
 	.CategoryLinkList {
-		@apply absolute top-[4.25rem] hidden justify-center bg-primary  hover:grid peer-hover:grid;
+		@apply bg-primary absolute top-[4.25rem] hidden justify-center  hover:grid peer-hover:grid;
 	}
 	.CategoryLinkList > a {
 		@apply px-4 py-2 hover:bg-gray-100 hover:text-black;
 	}
 
 	.CategoryTitle {
-		@apply flex items-center gap-2 hover:cursor-pointer hover:text-primary;
+		@apply hover:text-primary flex items-center gap-2 hover:cursor-pointer;
 	}
 
 	.underline-a > a:hover {

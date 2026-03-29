@@ -72,14 +72,13 @@
 			<div class="grid gap-8">
 				<h1 class=" text-3xl font-bold uppercase">Du hast dich erfolgreich angemeldet!</h1>
 				<p>
-					Wir haben dir eine Bestätigung
-					(wo auch das folgende drin steht)
-					per Email zukommen lassen ;).
+					Wir haben dir eine Bestätigung (wo auch das folgende drin steht) per Email zukommen lassen
+					;).
 				</p>
 				<p>
-				Wir freuen uns riesig, dass du bei unserem gemeinsamen SAFT-Wochenende dabei bist!
-				Damit du dich schon gut & entspannt auf die SAFT vorbereiten kannst,
-				findest du in dieser Mail die wichtigesten Punkte schnell zusammengefasst.
+					Wir freuen uns riesig, dass du bei unserem gemeinsamen SAFT-Wochenende dabei bist! Damit
+					du dich schon gut & entspannt auf die SAFT vorbereiten kannst, findest du in dieser Mail
+					die wichtigesten Punkte schnell zusammengefasst.
 				</p>
 
 				<h3>1) Allgemeines & Organisatorisches</h3>
@@ -90,47 +89,45 @@
 						14. - 16. November 2025
 					</li>
 					<li>
-						<strong>Teilnahmebeitrag:</strong> 45 €;
-						bitte bis <strong>11.11.</strong> überweisen an:<br />
+						<strong>Teilnahmebeitrag:</strong> 45 €; bitte bis <strong>11.11.</strong> überweisen
+						an:<br />
 						„Studentenmission in Deutschland“, IBAN: <code>DE26 5009 2100 0001 7549 39</code><br />
 						Alternativ Barzahlung vor Ort.
-						<ul class="list-disc ml-8">
+						<ul class="ml-8 list-disc">
 							<li>
-								Anmerkung zum Preis: Unsere realen Kosten liegen eher bei 55€ pro Person, aber wir wollen,
-								dass alle mitkommen können. Falls du also mehr geben kannst, freuen wir uns sehr über eine
-								Spende. Falls du weniger geben kannst, melde dich gerne bei uns, wir finden eine Lösung!
+								Anmerkung zum Preis: Unsere realen Kosten liegen eher bei 55€ pro Person, aber wir
+								wollen, dass alle mitkommen können. Falls du also mehr geben kannst, freuen wir uns
+								sehr über eine Spende. Falls du weniger geben kannst, melde dich gerne bei uns, wir
+								finden eine Lösung!
 							</li>
 						</ul>
 					</li>
 					<li>
 						<strong>Anreise per Bahn:</strong>
-						Die Bahnanreise wird am Freitag gegen 16:00 vom Hauptbahnhof in Karlsruhe starten.
-						Am Sonntag sind wir gegen 16:00 wieder zurück in Karlsruhe
-						Genauere Infos folgen.
+						Die Bahnanreise wird am Freitag gegen 16:00 vom Hauptbahnhof in Karlsruhe starten. Am Sonntag
+						sind wir gegen 16:00 wieder zurück in Karlsruhe Genauere Infos folgen.
 					</li>
 					<li>
 						<strong>Anreise per Fahrrad:</strong>
 						Die Fahrradanreise wird am Freitag gegen 13:00 aus der Stadtmitte von Karlsruhe starten.
-						Am Sonntag sind wir gegen 17:00 wieder zurück in Karlsruhe.
-						Fahrradfahrer können ihr Gepäck vor der Fahrt abgeben.
-						Genauere Infos folgen.
+						Am Sonntag sind wir gegen 17:00 wieder zurück in Karlsruhe. Fahrradfahrer können ihr Gepäck
+						vor der Fahrt abgeben. Genauere Infos folgen.
 					</li>
 					<li>
 						<strong>Selbstständige Anreise:</strong>
 						Ab ca. 17:00 solltest du ankommen in der<br />
-						Reichardtstraße 21,
-						75417 Mühlacker (Mühlhausen).
-						<a href="https://maps.app.goo.gl/gpNex3XSDMUVz4T46">
-						Ort auf Google Maps
-						</a>
+						Reichardtstraße 21, 75417 Mühlacker (Mühlhausen).
+						<a href="https://maps.app.goo.gl/gpNex3XSDMUVz4T46"> Ort auf Google Maps </a>
 					</li>
 				</ul>
 
 				<p>
-					Falls du für die SAFT Sportmaterialien mitnimmst
-					oder einen Workshop am Samstag Nachmittag anbieten möchtest,
-					trage dies bitte
-					<a href="https://docs.google.com/spreadsheets/d/1elIUUx3LKdrvCmuGbXDzUgSeF2iMWq7bZRdVswGHLYM/edit?usp=sharing#gid=1531100833">im Mastersheet unter "SAFT WS25/26"</a>
+					Falls du für die SAFT Sportmaterialien mitnimmst oder einen Workshop am Samstag Nachmittag
+					anbieten möchtest, trage dies bitte
+					<a
+						href="https://docs.google.com/spreadsheets/d/1elIUUx3LKdrvCmuGbXDzUgSeF2iMWq7bZRdVswGHLYM/edit?usp=sharing#gid=1531100833"
+						>im Mastersheet unter "SAFT WS25/26"</a
+					>
 					ein.
 				</p>
 
@@ -138,14 +135,12 @@
 
 				<ul class="list-disc">
 					<li>
-						Bettbezug und Spannbettlacken
-						(kein Schlafsack auf den Betten erlaubt)
-						<ul class="list-disc ml-8">
+						Bettbezug und Spannbettlacken (kein Schlafsack auf den Betten erlaubt)
+						<ul class="ml-8 list-disc">
 							<li>
-								(sofern du angekreuzt hast,
-								ggfs. mit Schlafsack auf den Boden schalfen zu können,
-								kommen wir nochmal auf dich zu,
-								sollte dies aufgrund der Teilnehmeranzahl erforderlich sein)
+								(sofern du angekreuzt hast, ggfs. mit Schlafsack auf den Boden schalfen zu können,
+								kommen wir nochmal auf dich zu, sollte dies aufgrund der Teilnehmeranzahl
+								erforderlich sein)
 							</li>
 						</ul>
 					</li>
@@ -165,7 +160,7 @@
 				<ul class="list-disc">
 					<li>
 						Bibel & Schreibzeug
-						<ul class="list-disc ml-8">
+						<ul class="ml-8 list-disc">
 							<li>Elbenfelder oder Schlachter-Übersetzung empfohlen</li>
 							<li>falls vorhanden auch gerne eine Studienbibel</li>
 							<li>evntl. ein kleines Notizheft oder Tagebuch (für Gebete & Gedanken)</li>
@@ -177,13 +172,10 @@
 					<li>Zeug zum Basteln (Cuttermesser, Schere, Kleber, Klebeband)</li>
 				</ul>
 
-				<p>
-					Bei Fragen melde dich gerne bei uns!
-				</p>
+				<p>Bei Fragen melde dich gerne bei uns!</p>
 
 				<p>
-					Wir freuen uns auf eine gesegnete, abenteuerliche und
-					gemeinschaftliche Zeit mit euch!
+					Wir freuen uns auf eine gesegnete, abenteuerliche und gemeinschaftliche Zeit mit euch!
 				</p>
 				<p><strong>Euer SAFT-Orga-Team</strong></p>
 			</div>
@@ -368,14 +360,12 @@
 				<div class="flex flex-col">
 					<label for="comments">
 						<b>Sonstige Anmerkungen </b>
-						<p>Falls du ein Instrument hast und es mitbringen möchstest, lass es uns hier wissen.
-							Falls du angegeben hast, dass du mit dem Auto anreist und Gepäck mitnehmen kannst, lass uns
-							auch hier wissen wie viel Platz du hast.
-						</p>
 						<p>
-							Auch sonstige Anmerkungen zur Anmeldung zur SAFT kannst du hier gerne
-							vermerken.
+							Falls du ein Instrument hast und es mitbringen möchstest, lass es uns hier wissen.
+							Falls du angegeben hast, dass du mit dem Auto anreist und Gepäck mitnehmen kannst,
+							lass uns auch hier wissen wie viel Platz du hast.
 						</p>
+						<p>Auch sonstige Anmerkungen zur Anmeldung zur SAFT kannst du hier gerne vermerken.</p>
 						<!-- <p>
 							Schreib uns hier auch gerne, falls du ein <b>Instrument mitbringen</b>
 							könntest oder du ein <b>Auto hast</b>, was wir nutzen könnten. Für die Instrumente

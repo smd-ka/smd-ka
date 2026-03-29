@@ -36,7 +36,7 @@
 	<div class="flex justify-center p-8">
 		<a
 			href="/about/us"
-			class="flex items-center gap-2 rounded-sm bg-primary px-4 py-2 text-white no-underline"
+			class="bg-primary flex items-center gap-2 rounded-sm px-4 py-2 text-white no-underline"
 		>
 			<Fa icon={faChevronRight} />
 			Lerne mehr über uns

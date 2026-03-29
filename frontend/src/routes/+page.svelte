@@ -49,7 +49,7 @@
 
 <HeroShot imgSrc={header} bgPosition={'bg-[center_left_60%]'}>
 	<div
-		class="absolute left-1/2 top-1/3 w-full -translate-x-1/2 -translate-y-1/2 px-4 text-center text-grey"
+		class="text-grey absolute left-1/2 top-1/3 w-full -translate-x-1/2 -translate-y-1/2 px-4 text-center"
 	>
 		<div class="font-mincho text-4xl sm:text-5xl xl:text-7xl">Hier bist du richtig!</div>
 		<div class="font-caveat text-xl sm:text-2xl xl:text-3xl">
@@ -88,7 +88,7 @@
 											{dayjs(event.start_date_time).format('dddd, DD.MM // HH:mm')}
 										{/if}
 									</div>
-									<a class="fa hover:cursor-pointer hover:text-primary" href={event.location_url}>
+									<a class="fa hover:text-primary hover:cursor-pointer" href={event.location_url}>
 										<Fa icon={faLocationDot} />
 										{#if event.location}
 											{event.location}
@@ -115,7 +115,7 @@
 				<div class="flex justify-center p-8">
 					<a
 						href="/events/kalender"
-						class="flex items-center gap-2 rounded-sm bg-primary px-4 py-2 text-white no-underline"
+						class="bg-primary flex items-center gap-2 rounded-sm px-4 py-2 text-white no-underline"
 					>
 						<Fa icon={faChevronRight} />
 						Alle Events
@@ -128,7 +128,7 @@
 	<HomeMotto />
 
 	<section>
-		<h1 class="text-center font-caveat">Lust auf einen Sneak Peak?</h1>
+		<h1 class="font-caveat text-center">Lust auf einen Sneak Peak?</h1>
 		<video controls>
 			<source src={trailer} type="video/mp4" />
 			<track kind="captions" />

@@ -44,7 +44,7 @@
 	</section>
 	<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
 		<section>
-			<div class="pb-12 text-center font-caveat text-4xl md:text-6xl">Was SMDler sagen...</div>
+			<div class="font-caveat pb-12 text-center text-4xl md:text-6xl">Was SMDler sagen...</div>
 			<div class="grid gap-4 px-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 				{#each data.statements as statement}
 					<div class="rounded-xl bg-gray-200">

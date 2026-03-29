@@ -129,7 +129,7 @@
 	</section>
 
 	<section class="xl:pt-24">
-		<h1 class="text-center font-caveat normal-case">Wir freuen uns von dir zu hören!</h1>
+		<h1 class="font-caveat text-center normal-case">Wir freuen uns von dir zu hören!</h1>
 
 		<div class="grid gap-x-4 text-xl xl:grid-cols-[1r_2fr]">
 			<p class="xl:justify-self-end">Egal ob du…</p>
