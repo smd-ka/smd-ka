@@ -67,7 +67,7 @@
                 # show development manual
                 ${sedRun deplSectionSel} | ${lib.getExe pkgs.glow} /dev/stdin
                 # flake.devShells exclusive
-                PS1="''${PS1}\\033[38;5;2m<devShells.smd-ka>\\033[0m "
+                PS1="''${PS1:-}\\033[38;5;2m<devShells.smd-ka>\\033[0m "
               '';
           };
         }
