@@ -2,7 +2,7 @@
 	// args
 	export let tab: NavTab;
 
-	import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+	import { faArrowUpRightFromSquare, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { page } from '$app/stores';
 
@@ -24,6 +24,9 @@
 			{#if userHasRole($currentUser, route.permission)}
 				<a class="fa" href={route.url}>
 					{route.name}
+					{#if route.extern}
+						<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
+					{/if}
 				</a>
 			{/if}
 		{/each}
