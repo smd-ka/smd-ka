@@ -5,11 +5,12 @@ const API_URL: string = import.meta.env.VITE_API_URL;
 
 export const pb = new PocketBase(API_URL);
 
+export const ANY_LOGGED_IN = 'ANY_LOGGED_IN';  // "virtual role"
 export const SAFT_COORDINATOR = 'saftcoordinator';
 export const PRIT_RESPONSABLE = 'pritresponsable';
 export const REGIOKON_COORDINATOR = 'regiokoncordina';
 
-export type Role = typeof SAFT_COORDINATOR | typeof PRIT_RESPONSABLE | typeof REGIOKON_COORDINATOR;
+export type Role = typeof ANY_LOGGED_IN | typeof SAFT_COORDINATOR | typeof PRIT_RESPONSABLE | typeof REGIOKON_COORDINATOR;
 
 export const currentUser = writable(pb.authStore.model);
 
