@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { NavTab } from '$lib/components/navigation/types';
 	import NavbarTab from '$lib/components/navigation/NavbarTab.svelte';
+	import NavlistGroup from '$lib/components/navigation/NavlistGroup.svelte';
 
 	import '../app.css';
 	import '@fontsource/anton';
@@ -285,16 +286,7 @@
 				{/if}
 
 				{#each tabs as tab}
-					<div>
-						<h3 class="text-white">
-							{tab.name}
-						</h3>
-						<button on:click={() => (showMenu = false)} class="flex flex-col text-left text-xl">
-							{#each tab.routes as route}
-								<a class="ml-4" href={route.url}>{route.name}</a>
-							{/each}
-						</button>
-					</div>
+					<NavlistGroup {tab} bind:showMenu />
 				{/each}
 				<div class="bg-primary my-2 h-0.5"></div>
 
