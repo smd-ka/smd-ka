@@ -36,6 +36,9 @@
 	}
 
 	.CategoryTitle {
-		@apply hover:text-primary flex items-center gap-2 hover:cursor-pointer;
+		@apply hover:text-primary flex cursor-default items-center gap-2;
+	}
+	[href] > .CategoryTitle {
+		@apply cursor-pointer;
 	}
 </style>
