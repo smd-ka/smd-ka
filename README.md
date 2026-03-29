@@ -89,9 +89,10 @@ Testing the whole compose stack is out of scope.
 
 You can run the website in two different configs:
 - run only the frontend locally, leveraging the productive backend
+  (explicit pin to productive backend required because otherwise the frontend does pin itself to the local one)
   ```sh
   cd frontend  # or "kings-cafe"
-  [[ -e env.local ]] && rm env.local || true  # remove pin to local backend
+  grep VITE_API_URL= .env > .env.prod  # pin to productive backend
   npm run dev
   # open the localhost:XXXX url given, or insert `o` then enter
   ```
@@ -101,7 +102,7 @@ You can run the website in two different configs:
     2.  Then run the following snippet:
         ```sh
         fr_dir="frontend"  # or "kings-cafe"
-        echo "VITE_API_URL=http://127.0.0.1:8090/" > "$fr_dir/env.local"  # pin to local backend
+        echo "VITE_API_URL=http://127.0.0.1:8090/" > "$fr_dir/.env.local"  # pin to local backend
         cd backend
         # rollback database to latest backup available
         rm -rf pb_data
