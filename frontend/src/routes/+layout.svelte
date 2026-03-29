@@ -161,34 +161,41 @@
 			{
 				name: 'Mastersheet',
 				url: 'https://docs.google.com/spreadsheets/d/1elIUUx3LKdrvCmuGbXDzUgSeF2iMWq7bZRdVswGHLYM/edit?usp=sharing',
-				extern: true
+				extern: true,
+				showMobile: false
 			},
 			{
 				name: 'Mitarbeiter Portal',
 				url: 'https://portal.smd.org/start',
-				extern: true
+				extern: true,
+				showMobile: false
 			},
 			{
 				name: 'Allergie-Liste',
-				url: '/intern/allergy-list'
+				url: '/intern/allergy-list',
+				showMobile: false
 			},
 			{
 				name: 'Gebetsbox',
-				url: '/intern/gebetsbox'
+				url: '/intern/gebetsbox',
+				showMobile: false
 			},
 			{
 				name: 'SAFT Anmeldungen',
 				url: '/intern/saft/list',
+				showMobile: false,
 				permission: SAFT_COORDINATOR
 			},
 			{
 				name: 'SAFT PRIT',
 				url: '/intern/saft/prit',
+				showMobile: false,
 				permission: PRIT_RESPONSABLE
 			},
 			{
 				name: 'Regiokon Anmeldungen',
 				url: '/intern/regiokon/list',
+				showMobile: false,
 				permission: REGIOKON_COORDINATOR
 			}
 		]
