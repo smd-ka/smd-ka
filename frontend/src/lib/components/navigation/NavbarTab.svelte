@@ -25,9 +25,10 @@
 		<div class="CategoryLinkList">
 			{#each tab.routes as route}
 				{#if userHasRole($currentUser, route.permission)}
+					{@const extern = route.extern ?? !route.url.startsWith('/')}
 					<a class="fa" href={route.url}>
 						{route.name}
-						{#if route.extern}
+						{#if extern}
 							<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
 						{/if}
 					</a>
