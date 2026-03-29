@@ -4,7 +4,12 @@
 	// bindables (becomes explicit in Svelte 5)
 	export let showMenu: boolean;
 
+	// types
 	import type { NavTab } from './types';
+
+	// UI elements
+	import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+	import Fa from 'svelte-fa/src/fa.svelte';
 
 	// backend
 	import { currentUser, userHasRole } from '$lib/pocketbase';
@@ -26,7 +31,12 @@
 			{@const showMobile = route.showMobile ?? true}
 			{@const isAuthorized = userHasRole($currentUser, tab.permission)}
 			{#if showMobile && isAuthorized}
-				<a class="ml-4" href={route.url}>{route.name}</a>
+				<a class="fa ml-4" href={route.url}>
+					{route.name}
+					{#if route.extern}
+						<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
+					{/if}
+				</a>
 			{/if}
 		{/each}
 	</button>
