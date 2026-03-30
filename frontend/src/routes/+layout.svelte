@@ -198,6 +198,12 @@
 				url: '/intern/regiokon/list',
 				showMobile: false,
 				permission: REGIOKON_COORDINATOR
+			},
+			{
+				name: 'Ausloggen',
+				action: logout,
+				showDesktop: false,
+				showMobile: true
 			}
 		]
 	};
