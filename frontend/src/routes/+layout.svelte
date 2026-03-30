@@ -134,6 +134,7 @@
 	const tabsIntern: NavTab = {
 		name: 'Intern',
 		baseUrl: '/intern',
+		defaultUrl: '/intern',
 		permission: ANY_LOGGED_IN,
 		routes: [
 			{
