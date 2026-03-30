@@ -6,29 +6,30 @@
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { page } from '$app/stores';
 
-	import type { NavTab } from './types';
+	import { inferNavTab, type NavTab } from './types';
 
 	// backend
 	import { currentUser, userHasRole } from '$lib/pocketbase';
+
+	let fTab = inferNavTab(tab);
 </script>
 
-{#if userHasRole($currentUser, tab.permission)}
-	<a href={tab.defaultUrl ?? null}>
+{#if userHasRole($currentUser, fTab.permission)}
+	<a href={fTab.defaultUrl ?? null}>
 		<span
-			class="CategoryTitle peer py-5 {$page.url.pathname.includes(tab.baseUrl)
+			class="CategoryTitle peer py-5 {$page.url.pathname.includes(fTab.baseUrl)
 				? 'text-primary'
 				: ''}"
 		>
-			{tab.name}
+			{fTab.name}
 			<Fa class="text-lg" icon={faChevronDown}></Fa>
 		</span>
 		<div class="CategoryLinkList">
-			{#each tab.routes as route}
+			{#each fTab.routes as route}
 				{#if userHasRole($currentUser, route.permission)}
-					{@const extern = route.extern ?? !route.url.startsWith('/')}
 					<a class="fa" href={route.url}>
 						{route.name}
-						{#if extern}
+						{#if route.extern}
 							<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
 						{/if}
 					</a>

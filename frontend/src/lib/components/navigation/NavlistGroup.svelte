@@ -4,8 +4,7 @@
 	// bindables (becomes explicit in Svelte 5)
 	export let showMenu: boolean;
 
-	// types
-	import type { NavTab } from './types';
+	import { inferNavTab, type NavTab } from './types';
 
 	// UI elements
 	import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
@@ -13,28 +12,29 @@
 
 	// backend
 	import { currentUser, userHasRole } from '$lib/pocketbase';
+
+	let fTab = inferNavTab(tab);
 </script>
 
 <div>
 	<h3 class="text-white">
 		<!-- manual check because of on:click -->
-		{#if tab.defaultUrl ?? false}
-			<a href={tab.defaultUrl} on:click={() => (showMenu = false)}>
-				{tab.name}
+		{#if fTab.defaultUrl ?? false}
+			<a href={fTab.defaultUrl} on:click={() => (showMenu = false)}>
+				{fTab.name}
 			</a>
 		{:else}
-			{tab.name}
+			{fTab.name}
 		{/if}
 	</h3>
 	<button on:click={() => (showMenu = false)} class="flex flex-col text-left text-xl">
-		{#each tab.routes as route}
+		{#each fTab.routes as route}
 			{@const showMobile = route.showMobile ?? true}
-			{@const isAuthorized = userHasRole($currentUser, tab.permission)}
+			{@const isAuthorized = userHasRole($currentUser, fTab.permission)}
 			{#if showMobile && isAuthorized}
-				{@const extern = route.extern ?? !route.url.startsWith('/')}
 				<a class="fa ml-4" href={route.url}>
 					{route.name}
-					{#if extern}
+					{#if route.extern}
 						<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
 					{/if}
 				</a>
