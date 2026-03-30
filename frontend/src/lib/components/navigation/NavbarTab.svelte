@@ -9,12 +9,13 @@
 	import { inferNavTab, type NavTab } from './types';
 
 	// backend
-	import { currentUser, userHasRole } from '$lib/pocketbase';
+	import { currentUser } from '$lib/pocketbase';
 
-	let fTab = inferNavTab(tab);
+	let fTab;
+	$: fTab = inferNavTab($currentUser, tab);
 </script>
 
-{#if userHasRole($currentUser, fTab.permission)}
+{#if fTab !== null}
 	<a href={fTab.defaultUrl ?? null}>
 		<span
 			class="CategoryTitle peer py-5 {$page.url.pathname.includes(fTab.baseUrl)
@@ -26,14 +27,12 @@
 		</span>
 		<div class="CategoryLinkList">
 			{#each fTab.routes as route}
-				{#if userHasRole($currentUser, route.permission)}
-					<a class="fa" href={route.url}>
-						{route.name}
-						{#if route.extern}
-							<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
-						{/if}
-					</a>
-				{/if}
+				<a class="fa" href={route.url}>
+					{route.name}
+					{#if route.extern}
+						<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
+					{/if}
+				</a>
 			{/each}
 		</div>
 	</a>

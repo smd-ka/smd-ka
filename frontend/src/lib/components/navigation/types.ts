@@ -1,4 +1,4 @@
-import type { RoleGuarded } from "$lib/pocketbase";
+import { userMayAccess, type MaybeModel, type RoleGuarded } from "$lib/pocketbase";
 
 export interface NavTabRoute extends RoleGuarded {
     name: string;
@@ -26,7 +26,9 @@ export interface FullNavTab extends NavTab {
     routes: FullNavTabRoute[];
 }
 
-function inferNavTabRoute(route: NavTabRoute): FullNavTabRoute {
+function inferNavTabRoute(user: MaybeModel, route: NavTabRoute): FullNavTabRoute | null {
+    if (!userMayAccess(user, route))
+        return null;
     return {
         showMobile: true,
         extern: !route.url.startsWith('/'),
@@ -34,9 +36,14 @@ function inferNavTabRoute(route: NavTabRoute): FullNavTabRoute {
     }
 }
 
-export function inferNavTab(tab: NavTab): FullNavTab {
+/**
+ * @returns null if the user may not access this tab
+ */
+export function inferNavTab(user: MaybeModel, tab: NavTab): FullNavTab | null {
+    if (!userMayAccess(user, tab))
+        return null;
     return {
         ...tab,  // order important
-        routes: tab.routes.map(inferNavTabRoute)
+        routes: tab.routes.map((r) => inferNavTabRoute(user, r)).filter((r) => r !== null)
     };
 }
