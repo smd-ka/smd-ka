@@ -1,8 +1,11 @@
 import { userMayAccess, type MaybeModel, type RoleGuarded } from "$lib/pocketbase";
 
+export type NavRouteAction = () => Promise<unknown> | unknown;
+
 export interface NavTabRoute extends RoleGuarded {
     name: string;
-    url: string;
+    url?: string;
+    action?: NavRouteAction;
     showMobile?: boolean;
     extern?: boolean;
 }
@@ -31,7 +34,7 @@ function inferNavTabRoute(user: MaybeModel, route: NavTabRoute): FullNavTabRoute
         return null;
     return {
         showMobile: true,
-        extern: !route.url.startsWith('/'),
+        extern: route.url ? !route.url.startsWith('/') : false,
         ...route,  // order important
     }
 }

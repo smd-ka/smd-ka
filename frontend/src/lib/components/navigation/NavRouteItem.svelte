@@ -9,14 +9,28 @@
 	export let forMobile: boolean = false;
 </script>
 
-<a class="{forMobile ? 'mobile' : 'desktop'} {itemClass}" href={route.url}>
-	<slot>
-		{route.name}
-		{#if route.extern}
-			<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
-		{/if}
-	</slot>
-</a>
+{#if route.action}
+	<button
+		class="{forMobile ? 'mobile' : 'desktop'} {itemClass}"
+		on:click={route.action ? () => route.action?.() : undefined}
+	>
+		<slot>
+			{route.name}
+			{#if route.extern}
+				<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
+			{/if}
+		</slot>
+	</button>
+{:else if route.url}
+	<a class="{forMobile ? 'mobile' : 'desktop'} {itemClass}" href={route.url}>
+		<slot>
+			{route.name}
+			{#if route.extern}
+				<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
+			{/if}
+		</slot>
+	</a>
+{/if}
 
 <style>
 	.desktop {
