@@ -10,11 +10,12 @@ export const SAFT_COORDINATOR = 'saftcoordinator';
 export const PRIT_RESPONSABLE = 'pritresponsable';
 export const REGIOKON_COORDINATOR = 'regiokoncordina';
 
+export type MaybeModel = BaseModel | null | undefined;
 export type Role = typeof ANY_LOGGED_IN | typeof SAFT_COORDINATOR | typeof PRIT_RESPONSABLE | typeof REGIOKON_COORDINATOR;
 
 // argument "model" is there to make the function reactive
 // intended use in Svelte code: userHasRole($currentUser, requiredRole)
-export function userHasRole(model: BaseModel | null | undefined, role: Role | null | undefined): boolean {
+export function userHasRole(model: MaybeModel, role: Role | null | undefined): boolean {
 	const noRoleRequired = role === null || role === undefined
 	if (noRoleRequired)
 		return true;
@@ -29,6 +30,14 @@ export function userHasRole(model: BaseModel | null | undefined, role: Role | nu
 }
 
 export const currentUser = writable(pb.authStore.model);
+
+export interface RoleGuarded {
+	permission?: Role;
+}
+
+export function userMayAccess(model: MaybeModel, guarded: RoleGuarded): boolean {
+	return userHasRole(model, guarded.permission)
+}
 
 export function getErrorMessage(error: unknown) {
 	const errorObj = error as ClientResponseError;

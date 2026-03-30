@@ -1,18 +1,16 @@
-import type { Role } from "$lib/pocketbase";
+import type { RoleGuarded } from "$lib/pocketbase";
 
-export interface NavTabRoute {
+export interface NavTabRoute extends RoleGuarded {
     name: string;
     url: string;
     showMobile?: boolean;
     extern?: boolean;
-    permission?: Role;
 }
 
-export interface NavTab {
+export interface NavTab extends RoleGuarded {
     name: string;
     baseUrl: string;
     defaultUrl?: string;
-    permission?: Role;
     routes: NavTabRoute[];
 }
 
