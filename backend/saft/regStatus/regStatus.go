@@ -2,6 +2,7 @@ package regStatus
 
 import (
 	"time"
+	_ "time/tzdata"  // fallback if OS does not have timezone DB
 )
 
 var (
