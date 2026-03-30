@@ -2,6 +2,7 @@
 	import type { NavTab } from '$lib/components/navigation/types';
 	import NavbarTab from '$lib/components/navigation/NavbarTab.svelte';
 	import NavlistGroup from '$lib/components/navigation/NavlistGroup.svelte';
+	import { logout } from '$lib/logout';
 
 	import '../app.css';
 	import '@fontsource/anton';
@@ -39,7 +40,6 @@
 	import { onMount } from 'svelte';
 	import NavbarProfile from '$lib/components/NavbarProfile.svelte';
 	import { click_outside } from '$lib/click_outside';
-	import { applyAction, enhance } from '$app/forms';
 	import dayjs from 'dayjs';
 	import 'dayjs/locale/de';
 
@@ -264,38 +264,7 @@
 				class="mobile-nav-height bg-grey absolute top-0 z-0 mt-[4.5rem] w-fit max-w-full overflow-scroll p-4 pb-8 text-gray-300 lg:hidden"
 			>
 				{#if isValid}
-					<div>
-						<h3 class="text-white"><a href="/intern">SMD-KA Intern</a></h3>
-						<button on:click={() => (showMenu = false)} class="flex flex-col text-left text-xl">
-							{#each tabsIntern.routes as route}
-								{#if route.showMobile && (pb.authStore.model?.roles.includes(route.permission) || !route.permission)}
-									<a class="fa ml-4" href={route.url}>
-										{route.name}
-										{#if route.extern}
-											<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
-										{/if}
-									</a>
-								{/if}
-							{/each}
-						</button>
-						<button on:click={() => (showMenu = false)} class="flex flex-col text-left text-xl">
-							<form
-								class="menu-link ml-4"
-								method="POST"
-								action="/account/logout"
-								use:enhance={() => {
-									loading = true;
-									return async ({ result }) => {
-										pb.authStore.clear();
-										await applyAction(result);
-										loading = false;
-									};
-								}}
-							>
-								<button>Ausloggen</button>
-							</form>
-						</button>
-					</div>
+					<NavlistGroup tab={tabsIntern} bind:showMenu />
 					<div class="bg-primary my-2 h-0.5"></div>
 				{/if}
 
