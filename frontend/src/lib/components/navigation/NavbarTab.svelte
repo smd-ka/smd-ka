@@ -2,11 +2,12 @@
 	// args
 	export let tab: NavTab;
 
-	import { faArrowUpRightFromSquare, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+	import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { page } from '$app/stores';
 
 	import { inferNavTab, type NavTab } from './types';
+	import NavRouteItem from './NavRouteItem.svelte';
 
 	// backend
 	import { currentUser } from '$lib/pocketbase';
@@ -27,12 +28,7 @@
 		</span>
 		<div class="CategoryLinkList">
 			{#each fTab.routes as route}
-				<a class="fa" href={route.url}>
-					{route.name}
-					{#if route.extern}
-						<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
-					{/if}
-				</a>
+				<NavRouteItem {route} class="fa" />
 			{/each}
 		</div>
 	</a>
@@ -45,9 +41,6 @@
 
 	.CategoryLinkList {
 		@apply bg-primary absolute top-[4.25rem] hidden justify-center  hover:grid peer-hover:grid;
-	}
-	.CategoryLinkList > a {
-		@apply px-4 py-2 hover:bg-gray-100 hover:text-black;
 	}
 
 	.CategoryTitle {

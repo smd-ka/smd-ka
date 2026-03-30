@@ -5,10 +5,7 @@
 	export let showMenu: boolean;
 
 	import { inferNavTab, type NavTab } from './types';
-
-	// UI elements
-	import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
-	import Fa from 'svelte-fa/src/fa.svelte';
+	import NavRouteItem from './NavRouteItem.svelte';
 
 	// backend
 	import { currentUser } from '$lib/pocketbase';
@@ -31,12 +28,7 @@
 		</h3>
 		<button on:click={() => (showMenu = false)} class="flex flex-col text-left text-xl">
 			{#each fTab.routes.filter((r) => r.showMobile) as route}
-				<a class="fa ml-4" href={route.url}>
-					{route.name}
-					{#if route.extern}
-						<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
-					{/if}
-				</a>
+				<NavRouteItem {route} class="fa ml-4" forMobile={true} />
 			{/each}
 		</button>
 	</div>
