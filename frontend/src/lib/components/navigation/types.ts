@@ -6,6 +6,7 @@ export interface NavTabRoute extends RoleGuarded {
     name: string;
     url?: string;
     action?: NavRouteAction;
+    showDesktop?: boolean;
     showMobile?: boolean;
     extern?: boolean;
 }
@@ -21,6 +22,7 @@ export interface NavTab extends RoleGuarded {
 // should only be used for actually rendering those
 
 export interface FullNavTabRoute extends NavTabRoute {
+    showDesktop: boolean;
     showMobile: boolean;
     extern: boolean;
 }
@@ -33,6 +35,7 @@ function inferNavTabRoute(user: MaybeModel, route: NavTabRoute): FullNavTabRoute
     if (!userMayAccess(user, route))
         return null;
     return {
+        showDesktop: true,
         showMobile: true,
         extern: route.url ? !route.url.startsWith('/') : false,
         ...route,  // order important

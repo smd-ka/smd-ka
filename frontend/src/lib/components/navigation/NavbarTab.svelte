@@ -27,7 +27,7 @@
 			<Fa class="text-lg" icon={faChevronDown}></Fa>
 		</span>
 		<div class="CategoryLinkList">
-			{#each fTab.routes as route}
+			{#each fTab.routes.filter((r) => r.showDesktop) as route}
 				<NavRouteItem {route} class="fa" />
 			{/each}
 		</div>
