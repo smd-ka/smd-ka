@@ -4,7 +4,7 @@
 
 <div class="hero" style="background-image: url({hochschultage})">
 	<section class="screen">
-		<a href="/" class="absolute top-0 right-0 p-4 font-bold">Unterstützen</a>
+		<a href="/unterstützen" class="absolute top-0 right-0 p-4 font-bold">Unterstützen</a>
 		<h1>Hoffnungstage</h1>
 		<h2>Die christliche Hoffnung an der Uni neu entdecken.</h2>
 		<h3>8 - 11 Juni 2026 // PH & KIT Campus</h3>
