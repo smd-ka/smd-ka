@@ -37,6 +37,16 @@ api.{$DOMAIN_SHORT} {
    reverse_proxy kings_cafe:3000
 }
 
+
+{$DOMAIN_HOFFNUNGSTAGE} {
+    reverse_proxy hoffnungstage-2026_entrypoint:3000
+}
+
+www.{$DOMAIN_HOFFNUNGSTAGE} {
+    redir https://{$DOMAIN_HOFFNUNGSTAGE}{uri}
+}
+
+
 # DokuWiki
 # TO BE CHANGED TO wiki.smd-karlsruhe.de
 wiki.{$DOMAIN_LONG} {
