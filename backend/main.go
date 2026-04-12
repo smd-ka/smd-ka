@@ -11,7 +11,6 @@ import (
 	"log"
 	"os"
 	"strings"
-	_ "time/tzdata"  // fallback if OS does not have timezone DB
 
 	"github.com/joho/godotenv"
 	"github.com/pocketbase/pocketbase"
