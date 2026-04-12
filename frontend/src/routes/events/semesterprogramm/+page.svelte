@@ -1,5 +1,5 @@
 <script lang="ts">
-	import header from '$lib/assets/pages/events/semesterprogramm/aufsWasssergehen_21_9.jpg';
+	import header from '$lib/assets/pages/events/semesterprogramm/aufsWassergehen_21_9.jpg';
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import dayjs from 'dayjs';
 	import type { PageData } from './$types';

@@ -3,7 +3,7 @@
 	import outsidethebox from '$lib/assets/pages/events/semesterprogramm/outsidethebox_21_9.jpg';
 	import vollerhoffnung from '$lib/assets/pages/events/semesterprogramm/voller_hoffnung_21_9.jpg';
 	import weitergehen from '$lib/assets/pages/events/semesterprogramm/weitergehen_21_9.jpg';
-	import aufswassergehen from '$lib/assets/pages/events/semesterprogramm/aufsWasssergehen_21_9.jpg';
+	import aufswassergehen from '$lib/assets/pages/events/semesterprogramm/aufsWassergehen_21_9.jpg';
 	import background from '$lib/assets/pages/events/semesterprogramm/bg.png';
 	import Carousel from 'svelte-carousel';
 	import { browser } from '$app/environment';
@@ -43,7 +43,7 @@
 			title: 'Aufs Wasser gehen',
 			subtitle: 'Unser Sommersemester 2026',
 			image: aufswassergehen,
-			link: '/events/semesterprogramm/'
+			link: '/events/semesterprogramm'
 		},
 		{
 			title: 'WeiterGehen',
