@@ -60,6 +60,12 @@
 			title: 'WeiterGehen',
 			subtitle: 'Unser Wintersemester 2025/26',
 			image: weitergehen,
+			link: '/events/semesterprogramm/wise25_26'
+		},
+		{
+			title: 'Aufs Wasser gehen',
+			subtitle: 'Unser Sommersemester 2026',
+			image: null,
 			link: '/events/semesterprogramm/'
 		}
 	];
@@ -67,7 +73,7 @@
 
 <div style="background-image: url({background});">
 	<section class="container mx-auto px-4 py-24">
-		<h2 class="text-primary text-center">Weitere Semester</h2>
+		<h2 class="text-center text-primary">Weitere Semester</h2>
 
 		{#if browser}
 			<Carousel
@@ -77,7 +83,7 @@
 				arrows={true}
 				bind:this={carousel}
 			>
-				<div slot="prev" class="text-grey grid items-center p-4 text-3xl lg:text-5xl">
+				<div slot="prev" class="grid items-center p-4 text-3xl text-grey lg:text-5xl">
 					<button on:click={carousel.goToPrev}> <Fa icon={faChevronLeft} /></button>
 				</div>
 				{#each programs as { title, subtitle, image, link }}
@@ -89,7 +95,7 @@
 						</div>
 					</a>
 				{/each}
-				<div slot="next" class="text-grey grid items-center p-4 text-3xl lg:text-5xl">
+				<div slot="next" class="grid items-center p-4 text-3xl text-grey lg:text-5xl">
 					<button on:click={carousel.goToNext}> <Fa icon={faChevronRight} /></button>
 				</div>
 			</Carousel>
