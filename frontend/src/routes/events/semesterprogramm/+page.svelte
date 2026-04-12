@@ -16,16 +16,15 @@
 		<h3 class=" text-center font-caveat text-primary">jeden zweiten Dienstag 18:30</h3>
 
 		<p class="center pad py-6 text-center">
-			Bist du schon mal auf dem Wasser gelaufen? Nein? Wir auch nicht. Aber das hat Petrus auch
+			Bist du schon mal auf dem Wasser gelaufen? Nein? Wir auch nicht. Aber das ist Petrus auch
 			nicht, bevor er es getan hat. Und genau darum soll es in diesem Semester gehen:
-			<b>Aufs Wasser gehen – Gott vertrauen</b>
+			<b> Aufs Wasser gehen – Gott vertrauen </b>
 			<br />
-			Inspiriert von Matthäus 14, 22-31, wo Jesus (und auch Petrus) auf dem Wasser wandelt, beschäftigen
-			wir uns an unserem SMD-Abenden in diesem Semester mit dem Thema Vertrauen. Wie auch Petrus wollen
+			Inspiriert von Matthäus 14, 22-33, wo Jesus (und auch Petrus) auf dem Wasser wandelt, beschäftigen
+			wir uns an unseren SMD-Abenden in diesem Semester mit dem Thema Vertrauen. Wie auch Petrus wollen
 			wir lernen, auf Jesus zu schauen und ihm zu vertrauen, auch wenn die Umstände um uns herum stürmisch
 			sind. Was das genau bedeutet? Das wollen wir gemeinsam herausfinden, und du bist herzlich eingeladen,
 			dabei zu sein!
-
 			<br />
 			Wir freuen uns auf dich!
 		</p>
