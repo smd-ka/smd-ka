@@ -1,7 +1,18 @@
+# === WARNING:
+#  - ALWAYS check for duplications in the reverse_proxy entrypoint
+#    otherwise one service could be shadowed by another
+#  - always use an explicit alias with suffix _entrypoint
+#    and which is sufficiently long to be unique
+#    (so that a service cannot be shadowed by similarly named container)
+#
+#  Excemptions because we cannot control their aliases:
+#  - nextcloud-aio-apache
+
+
 # Backend
 
 api.{$DOMAIN_LONG} {
-    reverse_proxy backend:8090 {
+    reverse_proxy smd-ka_backend_entrypoint:8090 {
         # X-Forwarded-For & X-Forwarded-Proto are set by default
         header_up X-Real-IP {remote_host}
     }
@@ -11,7 +22,7 @@ api.{$DOMAIN_LONG} {
 # Frontend
 
 {$DOMAIN_LONG} {
-    reverse_proxy frontend:3000 {
+    reverse_proxy smd-ka_frontend_entrypoint:3000 {
         # X-Forwarded-For & X-Forwarded-Proto are set by default
         header_up X-Real-IP {remote_host}
     }
@@ -34,7 +45,7 @@ api.{$DOMAIN_SHORT} {
 
 
 {$DOMAIN_KINGS_CAFE} {
-   reverse_proxy kings_cafe:3000
+   reverse_proxy kings-cafe_frontend_entrypoint:3000
 }
 
 
@@ -50,7 +61,7 @@ www.{$DOMAIN_HOFFNUNGSTAGE} {
 # DokuWiki
 # TO BE CHANGED TO wiki.smd-karlsruhe.de
 wiki.{$DOMAIN_LONG} {
-    reverse_proxy dokuwiki:8080 {
+    reverse_proxy smd-ka_dokuwiki_entrypoint:8080 {
         # X-Forwarded-For & X-Forwarded-Proto are set by default
         header_up X-Real-IP {remote_host}
     }

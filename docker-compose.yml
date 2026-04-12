@@ -17,7 +17,9 @@ services:
       - pb_data:/pb/pb_data
       - ./backend/migrations:/pb/migrations
     networks:
-      - default
+      default:
+        aliases:
+          - smd-ka_backend_entrypoint
     restart: always
 
   frontend:
@@ -27,7 +29,9 @@ services:
       context: ./frontend
       dockerfile: ./Dockerfile
     networks:
-      - default
+      default:
+        aliases:
+          - smd-ka_frontend_entrypoint
     restart: always
 
   kings_cafe:
@@ -37,7 +41,9 @@ services:
       context: ./kings-cafe
       dockerfile: ../frontend/Dockerfile
     networks:
-      - default
+      default:
+        aliases:
+          - kings-cafe_frontend_entrypoint
     restart: always
 
   dokuwiki:
@@ -51,7 +57,9 @@ services:
       # this volume should be included in the Nextcloud AiO backup
       - dokuwiki_data:/storage
     networks:
-      - default
+      default:
+        aliases:
+          - smd-ka_dokuwiki_entrypoint
 
   caddy:
     container_name: caddy
