@@ -3,6 +3,7 @@
 	import outsidethebox from '$lib/assets/pages/events/semesterprogramm/outsidethebox_21_9.jpg';
 	import vollerhoffnung from '$lib/assets/pages/events/semesterprogramm/voller_hoffnung_21_9.jpg';
 	import weitergehen from '$lib/assets/pages/events/semesterprogramm/weitergehen_21_9.jpg';
+	import aufswassergehen from '$lib/assets/pages/events/semesterprogramm/aufsWasssergehen_21_9.jpg';
 	import background from '$lib/assets/pages/events/semesterprogramm/bg.png';
 	import Carousel from 'svelte-carousel';
 	import { browser } from '$app/environment';
@@ -39,22 +40,10 @@
 
 	const allPrograms = [
 		{
-			title: 'Herzenssache',
-			subtitle: 'Unser Sommersemester 2024',
-			image: herzenssache,
-			link: '/events/semesterprogramm/sose24'
-		},
-		{
-			title: 'Outside the box',
-			subtitle: 'Unser Wintersemester 2024/25',
-			image: outsidethebox,
-			link: '/events/semesterprogramm/wise24_25'
-		},
-		{
-			title: 'Voller Hoffnung',
-			subtitle: 'Unser Sommersemester 2025',
-			image: vollerhoffnung,
-			link: '/events/semesterprogramm/sose25'
+			title: 'Aufs Wasser gehen',
+			subtitle: 'Unser Sommersemester 2026',
+			image: aufswassergehen,
+			link: '/events/semesterprogramm/'
 		},
 		{
 			title: 'WeiterGehen',
@@ -63,10 +52,22 @@
 			link: '/events/semesterprogramm/wise25_26'
 		},
 		{
-			title: 'Aufs Wasser gehen',
-			subtitle: 'Unser Sommersemester 2026',
-			image: null,
-			link: '/events/semesterprogramm/'
+			title: 'Voller Hoffnung',
+			subtitle: 'Unser Sommersemester 2025',
+			image: vollerhoffnung,
+			link: '/events/semesterprogramm/sose25'
+		},
+		{
+			title: 'Outside the box',
+			subtitle: 'Unser Wintersemester 2024/25',
+			image: outsidethebox,
+			link: '/events/semesterprogramm/wise24_25'
+		},
+		{
+			title: 'Herzenssache',
+			subtitle: 'Unser Sommersemester 2024',
+			image: herzenssache,
+			link: '/events/semesterprogramm/sose24'
 		}
 	];
 </script>
