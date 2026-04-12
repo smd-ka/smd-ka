@@ -6,6 +6,15 @@
 	import SemesterProgramSelector from '../SemesterProgramSelector.svelte';
 
 	export let data: PageData;
+
+	function safeUrl(url: string): string | null {
+		try {
+			const parsed = new URL(url);
+			return parsed.protocol === 'http:' || parsed.protocol === 'https:' ? url : null;
+		} catch {
+			return null;
+		}
+	}
 </script>
 
 <HeroShot imgSrc={header} height={'h-[80svh]'} />
@@ -45,9 +54,14 @@
 							</span>
 							|
 						{/if}
-						<a href={event.location_url} class="hover:underline">
-							{event.location}
-						</a>
+						{@const safeLocationUrl = safeUrl(event.location_url)}
+						{#if safeLocationUrl}
+							<a href={safeLocationUrl} class="hover:underline">
+								{event.location}
+							</a>
+						{:else}
+							<span>{event.location}</span>
+						{/if}
 					</div>
 				</div>
 			</div>
