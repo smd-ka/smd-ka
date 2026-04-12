@@ -33,7 +33,7 @@ func SaftEmails(app *pocketbase.PocketBase) {
 		Subject := "[SMD-KA] SAFT Anmeldung WS25/26"  // format: SoSe25 or WS25/26
 
 		// E-Mail-Adress for questions (see template)
-		Email := "inreach@smd-karlsruhe.de"
+		OrgaEmail := "inreach@smd-karlsruhe.de"
 
 		registry := template.NewRegistry()
 
@@ -56,7 +56,7 @@ func SaftEmails(app *pocketbase.PocketBase) {
 				"saft/saft_registration.html",
 			).Render(map[string]any{
 				"name":  user.Name,
-				"email": Email,
+				"email": OrgaEmail,
 			})
 
 			if err != nil {
@@ -71,6 +71,9 @@ func SaftEmails(app *pocketbase.PocketBase) {
 				To:      []mail.Address{{Address: user.Email}},
 				Subject: Subject,
 				HTML:    html,
+				Headers: map[string]string{
+					"Reply-To": OrgaEmail,
+				},
 			}
 			e.App.NewMailClient().Send(message)
 
@@ -80,7 +83,7 @@ func SaftEmails(app *pocketbase.PocketBase) {
 				"saft/saft_registration.html",
 			).Render(map[string]any{
 				"name":  e.Record.Get("name"),
-				"email": Email,
+				"email": OrgaEmail,
 			})
 
 			if err != nil {
@@ -95,6 +98,9 @@ func SaftEmails(app *pocketbase.PocketBase) {
 				To:      []mail.Address{{Address: e.Record.Email()}},
 				Subject: Subject,
 				HTML:    html,
+				Headers: map[string]string{
+					"Reply-To": OrgaEmail,
+				},
 			}
 			e.App.NewMailClient().Send(message)
 		}

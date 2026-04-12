@@ -53,6 +53,10 @@ func SetupVerification(app *pocketbase.PocketBase) {
 			To:      []mail.Address{{Address: e.App.Settings().Meta.SenderAddress}},
 			Subject: "[SMD-KA] Registrierung von " + e.Record.Get("name").(string),
 			HTML:    html,
+			Headers: map[string]string{
+				// potentially more useful than answering yourself
+				"Reply-To": e.Record.Email(),
+			},
 		}
 
 		e.App.NewMailClient().Send(message)
