@@ -3,6 +3,7 @@
 	import outsidethebox from '$lib/assets/pages/events/semesterprogramm/outsidethebox_21_9.jpg';
 	import vollerhoffnung from '$lib/assets/pages/events/semesterprogramm/voller_hoffnung_21_9.jpg';
 	import weitergehen from '$lib/assets/pages/events/semesterprogramm/weitergehen_21_9.jpg';
+	import aufswassergehen from '$lib/assets/pages/events/semesterprogramm/aufsWassergehen_21_9.jpg';
 	import background from '$lib/assets/pages/events/semesterprogramm/bg.png';
 	import Carousel from 'svelte-carousel';
 	import { browser } from '$app/environment';
@@ -39,16 +40,16 @@
 
 	const allPrograms = [
 		{
-			title: 'Herzenssache',
-			subtitle: 'Unser Sommersemester 2024',
-			image: herzenssache,
-			link: '/events/semesterprogramm/sose24'
+			title: 'Aufs Wasser gehen',
+			subtitle: 'Unser Sommersemester 2026',
+			image: aufswassergehen,
+			link: '/events/semesterprogramm'
 		},
 		{
-			title: 'Outside the box',
-			subtitle: 'Unser Wintersemester 2024/25',
-			image: outsidethebox,
-			link: '/events/semesterprogramm/wise24_25'
+			title: 'WeiterGehen',
+			subtitle: 'Unser Wintersemester 2025/26',
+			image: weitergehen,
+			link: '/events/semesterprogramm/wise25_26'
 		},
 		{
 			title: 'Voller Hoffnung',
@@ -57,17 +58,23 @@
 			link: '/events/semesterprogramm/sose25'
 		},
 		{
-			title: 'WeiterGehen',
-			subtitle: 'Unser Wintersemester 2025/26',
-			image: weitergehen,
-			link: '/events/semesterprogramm/'
+			title: 'Outside the box',
+			subtitle: 'Unser Wintersemester 2024/25',
+			image: outsidethebox,
+			link: '/events/semesterprogramm/wise24_25'
+		},
+		{
+			title: 'Herzenssache',
+			subtitle: 'Unser Sommersemester 2024',
+			image: herzenssache,
+			link: '/events/semesterprogramm/sose24'
 		}
 	];
 </script>
 
 <div style="background-image: url({background});">
 	<section class="container mx-auto px-4 py-24">
-		<h2 class="text-primary text-center">Weitere Semester</h2>
+		<h2 class="text-center text-primary">Weitere Semester</h2>
 
 		{#if browser}
 			<Carousel
@@ -77,7 +84,7 @@
 				arrows={true}
 				bind:this={carousel}
 			>
-				<div slot="prev" class="text-grey grid items-center p-4 text-3xl lg:text-5xl">
+				<div slot="prev" class="grid items-center p-4 text-3xl text-grey lg:text-5xl">
 					<button on:click={carousel.goToPrev}> <Fa icon={faChevronLeft} /></button>
 				</div>
 				{#each programs as { title, subtitle, image, link }}
@@ -89,7 +96,7 @@
 						</div>
 					</a>
 				{/each}
-				<div slot="next" class="text-grey grid items-center p-4 text-3xl lg:text-5xl">
+				<div slot="next" class="grid items-center p-4 text-3xl text-grey lg:text-5xl">
 					<button on:click={carousel.goToNext}> <Fa icon={faChevronRight} /></button>
 				</div>
 			</Carousel>
