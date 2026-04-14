@@ -103,101 +103,96 @@
 
 				<h3>1) Allgemeines & Organisatorisches</h3>
 
-				<ul class="list-disc">
-					<li>
-						<strong>Datum:</strong>
-						14. - 16. November 2025
-					</li>
-					<li>
-						<strong>Teilnahmebeitrag:</strong> 45 €; bitte bis <strong>11.11.</strong> überweisen
-						an:<br />
-						„Studentenmission in Deutschland“, IBAN: <code>DE26 5009 2100 0001 7549 39</code><br />
-						Alternativ Barzahlung vor Ort.
-						<ul class="ml-8 list-disc">
-							<li>
-								Anmerkung zum Preis: Unsere realen Kosten liegen eher bei 55€ pro Person, aber wir
-								wollen, dass alle mitkommen können. Falls du also mehr geben kannst, freuen wir uns
-								sehr über eine Spende. Falls du weniger geben kannst, melde dich gerne bei uns, wir
-								finden eine Lösung!
-							</li>
-						</ul>
-					</li>
-					<li>
-						<strong>Anreise per Bahn:</strong>
-						Die Bahnanreise wird am Freitag gegen 16:00 vom Hauptbahnhof in Karlsruhe starten. Am Sonntag
-						sind wir gegen 16:00 wieder zurück in Karlsruhe Genauere Infos folgen.
-					</li>
-					<li>
-						<strong>Anreise per Fahrrad:</strong>
-						Die Fahrradanreise wird am Freitag gegen 13:00 aus der Stadtmitte von Karlsruhe starten.
-						Am Sonntag sind wir gegen 17:00 wieder zurück in Karlsruhe. Fahrradfahrer können ihr Gepäck
-						vor der Fahrt abgeben. Genauere Infos folgen.
-					</li>
-					<li>
-						<strong>Selbstständige Anreise:</strong>
-						Ab ca. 17:00 solltest du ankommen in der<br />
-						Reichardtstraße 21, 75417 Mühlacker (Mühlhausen).
-						<a href="https://maps.app.goo.gl/gpNex3XSDMUVz4T46"> Ort auf Google Maps </a>
-					</li>
-				</ul>
+        <ul>
+          <li>
+            <strong>Datum:</strong>
+            30.04 bis 03.05.2026
+          </li>
+          <li>
+            <strong>Teilnahmebeitrag:</strong> 40 €;
+            bitte bis <strong>28.4.</strong> überweisen an:<br />
+            „Studentenmission in Deutschland“, IBAN: <code>DE26 5009 2100 0001 7549 39</code>, Verwendungszweck: Bitte vollen Namen angeben<br/>
+            Alternativ Barzahlung vor Ort, bitte passend.
+            <ul>
+              <li>
+                Anmerkung zum Preis: Falls du weniger geben kannst, melde dich gerne bei uns, wir finden eine Lösung!
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Anreise per Bahn:</strong>
+            Die Bahnanreise wird am Donnerstag gegen 15:00 Uh vom Hauptbahnhof in Karlsruhe starten.
+            Am Sonntag sind wir gegen 15:00 Uhr wieder zurück in Karlsruhe
+            Genauere Infos folgen.
+          </li>
+          <li>
+            <strong>Anreise per Fahrrad:</strong>
+            Die Fahrradanreise wird am Donnerstag gegen 12:30 Uhr aus der Stadtmitte von Karlsruhe starten.
+            Am Sonntag sind wir gegen 17:00 Uhr wieder zurück in Karlsruhe.
+            Fahrradfahrer können ihr Gepäck vor der Fahrt abgeben.
+            Genauere Infos folgen.
+          </li>
+          <li>
+            <strong>Selbstständige Anreise:</strong>
+            Ab ca. 17:00 Uhr solltest du ankommen im<br />
+            Mönchszellerweg 39
+            69257 Wiesenbach (Kühlberghütte).
+            <a href="https://maps.app.goo.gl/wVvywftginHZcXUV8">
+              Ort auf Google Maps
+            </a>
+          </li>
+        </ul>
 
-				<p>
-					Falls du für die SAFT Sportmaterialien mitnimmst oder einen Workshop am Samstag Nachmittag
-					anbieten möchtest, trage dies bitte
-					<a
-						href="https://docs.google.com/spreadsheets/d/1elIUUx3LKdrvCmuGbXDzUgSeF2iMWq7bZRdVswGHLYM/edit?usp=sharing#gid=1531100833"
-						>im Mastersheet unter "SAFT WS25/26"</a
-					>
-					ein.
-				</p>
+        <p> 
+          Falls du für die SAFT Sportmaterialien mitnimmst trage dies bitte
+          <a href="https://docs.google.com/spreadsheets/d/1elIUUx3LKdrvCmuGbXDzUgSeF2iMWq7bZRdVswGHLYM/edit?usp=sharing#gid=1249910745">im Mastersheet unter "SAFT SS26"</a>
+          ein.
+        </p>
 
-				<h3>2) Packliste</h3>
+        <h3>2) Packliste</h3>
 
-				<ul class="list-disc">
-					<li>
-						Bettbezug und Spannbettlacken (kein Schlafsack auf den Betten erlaubt)
-						<ul class="ml-8 list-disc">
-							<li>
-								(sofern du angekreuzt hast, ggfs. mit Schlafsack auf den Boden schalfen zu können,
-								kommen wir nochmal auf dich zu, sollte dies aufgrund der Teilnehmeranzahl
-								erforderlich sein)
-							</li>
-						</ul>
-					</li>
-					<li>(wiedererkennbares) Geschirrhandtuch</li>
-					<li>für das gemeinsame Frühstück: dein Lieblings-Brotaufstrich</li>
-					<li>Kuchen (falls angekreuzt, oder als Überraschung)</li>
-				</ul>
+        <ul>
+          <li>Schlafsack und Isomatte/Luftmatratze </li>
+          <li>Zelt </li>
+          <li>Evtl. kleines Kissen oder Kopfkissenbezug </li>
+          <li>(wiedererkennbares) Geschirrhandtuch</li>
+          <li>für das gemeinsame Frühstück: dein Lieblings-Brotaufstrich</li>
+          <li>Evtl. Hängematte</li>
+          <li>Evtl. Campingstuhl</li>
+          <li>Evtl. Picknickdecke</li>
+          <li>Evtl. Lichterketten (Batteriebetrieben)</li>
+          <li>Kuchen (falls angekreuzt, oder als Überraschung)</li>
+          <li>Beilage zum Grillen für Donnerstagabend (falls angekreuzt, oder als Überraschung)</li>
+        </ul>
 
-				<ul class="list-disc">
-					<li>Wetterfeste Kleidung (Regenjacke, warme Pullis, ggfs. Regenhose)</li>
-					<li>festes Schuhwerk und Sport-/Outdoorschuhe (die auch dreckig werden dürfen)</li>
-					<li>Wechselsachen (alles, was du für ein Wochenende brauchst)</li>
-					<li>Hausschuhe (Fußboden kann relativ kalt werden)</li>
-					<li>evntl. Badesachen (z.B. für eine nächtliche Fluss-Aktion)</li>
-				</ul>
+        <ul>
+          <li>Wetterfeste Kleidung (Regenjacke, warme Pullis, ggfs. Regenhose)</li>
+          <li>festes Schuhwerk und Sport-/Outdoorschuhe (die auch dreckig werden dürfen)</li>
+          <li>Wechselsachen (alles, was du für ein Wochenende brauchst)</li>
+          <li>Hausschuhe (Für in der Hütte bei schlechtem Wetter)</li>
+          <li>Handtuch</li>
+        </ul>
 
-				<ul class="list-disc">
-					<li>
-						Bibel & Schreibzeug
-						<ul class="ml-8 list-disc">
-							<li>Elbenfelder oder Schlachter-Übersetzung empfohlen</li>
-							<li>falls vorhanden auch gerne eine Studienbibel</li>
-							<li>evntl. ein kleines Notizheft oder Tagebuch (für Gebete & Gedanken)</li>
-						</ul>
-					</li>
-					<li>Spiele (z.B. Wikingerschach, Bälle, Karten- & Brettspiele, …)</li>
-					<li>Taschenlampe oder Stirnlampe (+ Ersatzbatterien)</li>
-					<li>Ohrstöpsel (für ruhigeren Schlaf)</li>
-					<li>Zeug zum Basteln (Cuttermesser, Schere, Kleber, Klebeband)</li>
-				</ul>
+        <ul>
+          <li>Bibel</li>
+          <li>ein kleines Notizheft oder Tagebuch (für Gebete & Gedanken)</li>
+          <li>
+            Spiele (z.B. Wikingerschach, Bälle, Karten- & Brettspiele, …)
+          </li>
+          <li>Taschenlampe oder Stirnlampe (+ Ersatzbatterien)</li>
+          <li>Taschenmesser</li>
+          <li>Ohrstöpsel (für ruhigeren Schlaf)</li>
+        </ul>
 
-				<p>Bei Fragen melde dich gerne bei uns!</p>
+        <p>
+          Bei Fragen melde dich gerne bei uns!
+        </p>
 
-				<p>
-					Wir freuen uns auf eine gesegnete, abenteuerliche und gemeinschaftliche Zeit mit euch!
-				</p>
-				<p><strong>Euer SAFT-Orga-Team</strong></p>
+        <p>
+          Wir freuen uns auf eine gesegnete, abenteuerliche und
+          gemeinschaftliche Zeit mit euch!
+        </p>
+        <p><strong>Euer SAFT-Orga-Team</strong></p>
 			</div>
 		{:else}
 			<h1 class="pb-0 text-5xl font-bold uppercase">SAFT Anmeldung</h1>
