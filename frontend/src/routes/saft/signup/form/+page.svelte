@@ -43,6 +43,7 @@
 	let loggedIn = false;
 	let travelOption = '';
 	let group = '';
+	let likes_cooking = null;
 
 	onMount(async () => {
 		if (pb.authStore.isValid) {
@@ -318,16 +319,35 @@
 
 				<h3>Essenspräferenzen</h3>
 
-				<InputCheckbox
+				<!--<InputCheckbox
 					name="would_sleep_on_floor"
 					label="Ich könnte mir vorstellen ggf. auf den Boden zu schlafen und Schlafsack / Isomatte dazu mitzubringen"
-				/>
+				/>-->
 
 				<InputCheckbox
 					name="brings_cake"
 					label="Ich bringe Kuchen, Muffins oder Ähnliches mit für Kaffee und Kuchen am Samstag"
 				/>
+				<div>
+					<p>Wir wollen am Donnerstagabend Grillen, dafür kann ich folgende Beilage mitbringen:</p>
+					<InputField name="side_dish" label="" disabled={loading} />
+				</div>
+				<div>
+				<p>Ich koche gerne (1 = ungerne, 5 = gerne)</p>
 
+				{#each [1, 2, 3, 4, 5] as num (num)}
+					<label>
+					<input
+						type="radio"
+						name="likes_cooking"
+						value={num}
+						bind:group={likes_cooking}
+						disabled={loading}
+					/>
+					{num}
+					</label>
+				{/each}
+				</div>
 				{#if loggedIn}
 					<b class="text-primary">Bitte gebe deine Essenspräferenzen in deinem Profil an!</b>
 				{:else}
@@ -342,13 +362,14 @@
 
 				<!-- +++ ZELT-SAFT +++ -->
 
-				<!-- <div>
+				<div>
 					<p>Ich kann folgend(e) Zelte mitbringen: Bitte die Personenanzahl pro Zelt angeben.</p>
 					<InputField name="tents" label="" disabled={loading} />
 				</div>
 
-				<InputCheckbox name="pot" label="Ich kann einen Gas/ Spirituskocher mit Topf mitbringen" />
-
+				<!-- <InputCheckbox name="pot" label="Ich kann einen Gas/ Spirituskocher mit Topf mitbringen" /> -->
+				
+				
 				<InputCheckbox
 					name="bag"
 					label="Ich habe einen Schlafsack mit mindestens Komforttemperatur 7 Grad"
@@ -362,7 +383,9 @@
 				></NumberInput>
 
 				<NumberInput name="pad_count" label="Anzahl Isomatten, die ich verleihen könnte:"
-				></NumberInput> -->
+				></NumberInput>
+				<InputCheckbox name="fairy_lights" label="Ich kann eine/mehrer batteriebetriebene(n) Lichterketten mitbringen"/>
+
 
 				<!-- +++ ZELT-SAFT +++ -->
 
