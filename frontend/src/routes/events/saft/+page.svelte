@@ -2,13 +2,11 @@
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import Saos from 'saos';
 	import promoVid from '$lib/assets/videos/saft.mp4';
-	import header from '$lib/assets/pages/events/saft/saft_group_WS24-25.jpg';
-	import saftFunny from '$lib/assets/saft/saft_funny.png';
-	import saftGroup from '$lib/assets/heroshots/saft_heroshot.png';
+	import header from '$lib/assets/pages/events/saft/saft_volleyball.jpg';
+	import saftGroup from '$lib/assets/pages/events/saft/saft_ws25_26.jpg';
+	import saftDuck from '$lib/assets/pages/events/saft/saft_duck.jpg';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { faCalendarDays, faCoins, faLocationDot } from '@fortawesome/free-solid-svg-icons';
-	import { onMount } from 'svelte';
-	import { pb } from '$lib/pocketbase';
 
 	// hint: to re-open the signup, look into: backend/saft/reqStatus.go
 	import SignupButton from '$lib/components/saft/SignupButton.svelte';
@@ -27,7 +25,7 @@
 			<img
 				class="h-72 w-full object-cover object-top max-lg:order-last"
 				alt="Bild von der SAFT"
-				src={saftFunny}
+				src={saftDuck}
 			/>
 		</Saos>
 
@@ -41,8 +39,8 @@
 					die SMD und andere Studierende kennenzulernen.
 				</p>
 				<SignupButton>Jetzt anmelden</SignupButton>
-		</div>
-		<!-- <div class="mt-4 w-fit bg-gray-500 p-4 text-white">Anmeldung ab Mitte Oktober</div> -->
+			</div>
+			<!-- <div class="mt-4 w-fit bg-gray-500 p-4 text-white">Anmeldung ab Mitte Oktober</div> -->
 		</Saos>
 
 		<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
@@ -57,7 +55,7 @@
 					Preis: 45 € <!-- (XX € für Freitag bis Sonntag) -->
 				</div>
 				<div class="flex justify-end gap-2">
-					<Fa class="text-primary mt-1 justify-self-end" icon={faLocationDot} />
+					<Fa class="mt-1 justify-self-end text-primary" icon={faLocationDot} />
 					Ort: Reichardtstraße 21,
 				</div>
 				<div>75417 Mühlacker (Mühlhausen)</div>
@@ -70,7 +68,11 @@
 			</div>
 		</Saos>
 		<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
-			<img alt="Semesterprogramm" src={saftGroup} />
+			<img
+				alt="Semesterprogramm"
+				class="h-72 w-full object-cover object-top max-lg:order-last"
+				src={saftGroup}
+			/>
 		</Saos>
 		<p class="col-span-2 px-4 text-sm xl:px-60">
 			Anmerkung zum Preis: Unsere realen Kosten liegen eher bei 55€ pro Person, aber wir wollen,
