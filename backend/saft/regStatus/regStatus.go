@@ -18,8 +18,8 @@ func init() {
 		panic(err)
 	}
 	// change these dates here to unlock the SAFT registration formular
-	RegistrationDeadline = time.Date(2025, time.November, 10, 0, 0, 0, 0, deadlineTimezone)
-	AfterwardsDeadline = time.Date(2025, time.November, 17, 0, 0, 0, 0, deadlineTimezone)
+	RegistrationDeadline = time.Date(2026, time.April, 28, 23, 59, 0, 0, deadlineTimezone)
+	AfterwardsDeadline = time.Date(2026, time.May, 03, 0, 0, 0, 0, deadlineTimezone)
 }
 
 
