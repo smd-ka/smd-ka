@@ -428,11 +428,7 @@
 							<p>
 								Auch sonstige Anmerkungen zur Anmeldung zur SAFT kannst du hier gerne vermerken.
 							</p>
-							<!-- <p>
-							Schreib uns hier auch gerne, falls du ein <b>Instrument mitbringen</b>
-							könntest oder du ein <b>Auto hast</b>, was wir nutzen könnten. Für die Instrumente
-							organisieren wir gerne einen Transport mit dem Auto.
-						</p>
+							<!--
 						<p>
 							Falls du Anmerkungen zu deinem Outdoormaterial hast, lass es uns gerne auch hier
 							Wissen.
