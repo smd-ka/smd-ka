@@ -26,7 +26,8 @@ func SaftEmails(app *pocketbase.PocketBase) {
 
 	app.OnRecordCreate("saft").BindFunc(func(e *core.RecordEvent) error {
 
-		if !regStatus.AcceptSubmission() {
+		semester := e.Record.Get("semester").(string)
+		if !regStatus.AcceptSubmission(semester) {
 			return apis.NewForbiddenError("Registration is closed", nil)
 		}
 
