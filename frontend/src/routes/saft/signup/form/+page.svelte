@@ -72,6 +72,7 @@
 		formData.set('pot', formData.get('pot') === 'on' ? 'true' : 'false');
 		formData.set('bag', formData.get('bag') === 'on' ? 'true' : 'false');
 		formData.set('pad', formData.get('pad') === 'on' ? 'true' : 'false');
+		formData.set('fairy_lights', formData.get('pad') === 'on' ? 'true' : 'false');
 
 		formData.set('semester', PUBLIC_SEMESTER);
 		if (pb.authStore.isValid && pb.authStore.model?.id) {
