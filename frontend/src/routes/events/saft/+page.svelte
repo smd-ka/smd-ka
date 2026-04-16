@@ -48,19 +48,18 @@
 				<h2>Die Fakten</h2>
 				<div class="flex items-center justify-end gap-2">
 					<Fa class="text-primary" icon={faCalendarDays} />
-					Datum: 14. - 16. November 2025
+					Datum: 30.04 - 03.05.2026
 				</div>
 				<div class="flex items-center justify-end gap-2">
 					<Fa class="text-primary" icon={faCoins} />
-					Preis: 45 € <!-- (XX € für Freitag bis Sonntag) -->
+					Preis: 40 € <!-- (XX € für Freitag bis Sonntag) -->
 				</div>
 				<div class="flex justify-end gap-2">
 					<Fa class="mt-1 justify-self-end text-primary" icon={faLocationDot} />
-					Ort: Reichardtstraße 21,
+					Ort: nähe Heidelberg, Kühberghütte
 				</div>
-				<div>75417 Mühlacker (Mühlhausen)</div>
 				<a
-					href="https://maps.app.goo.gl/gpNex3XSDMUVz4T46"
+					href="https://maps.app.goo.gl/GD2SXFPAEzTq7EKE7"
 					class="w-fit justify-self-end bg-black p-4 text-white"
 				>
 					Auf Google Maps anschauen
@@ -69,16 +68,11 @@
 		</Saos>
 		<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
 			<img
-				alt="Semesterprogramm"
+				alt="Bild von der SAFT"
 				class="h-72 w-full object-cover object-top max-lg:order-last"
 				src={saftGroup}
 			/>
 		</Saos>
-		<p class="col-span-2 px-4 text-sm xl:px-60">
-			Anmerkung zum Preis: Unsere realen Kosten liegen eher bei 55€ pro Person, aber wir wollen,
-			dass alle mitkommen können. Falls du also mehr geben kannst, freuen wir uns sehr über eine
-			Spende. Falls du weniger geben kannst, melde dich gerne bei uns, wir finden eine Lösung!
-		</p>
 	</section>
 
 	<div class="px-4 xl:px-60">
