@@ -46,7 +46,6 @@
 	let loggedIn = false;
 	let travelOption = '';
 	let group = '';
-	let likes_cooking = null;
 
 	onMount(async () => {
 		if (pb.authStore.isValid) {
@@ -336,22 +335,26 @@
 						</p>
 						<InputField name="side_dish" label="" disabled={loading} />
 					</div>
-					<div>
-						<p>Ich koche gerne (1 = ungerne, 5 = gerne)</p>
+					<fieldset class="mt-1">
+						<legend>Ich koche gerne (1 = ungerne, 5 = gerne)</legend>
 
-						{#each [1, 2, 3, 4, 5] as num (num)}
-							<label>
-								<input
-									type="radio"
-									name="likes_cooking"
-									value={num}
-									bind:group={likes_cooking}
-									disabled={loading}
-								/>
-								{num}
-							</label>
-						{/each}
-					</div>
+						<div class="flex flex-row gap-4 md:ml-4">
+							{#each [1, 2, 3, 4, 5] as num (num)}
+								<label for="likes_cooking_radio_{num}">
+									<input
+										type="radio"
+										name="likes_cooking"
+										id="likes_cooking_radio_{num}"
+										value={num}
+										required
+										disabled={loading}
+									/>
+									{num}
+								</label>
+							{/each}
+						</div>
+					</fieldset>
+
 					{#if loggedIn}
 						<b class="text-primary">Bitte gebe deine Essenspräferenzen in deinem Profil an!</b>
 					{:else}
