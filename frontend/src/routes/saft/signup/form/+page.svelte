@@ -11,7 +11,6 @@
 	import GenderInput from '$lib/components/forms/GenderInput.svelte';
 	import { PUBLIC_SEMESTER } from '$env/static/public';
 	import NumberInput from '$lib/components/forms/NumberInput.svelte';
-	import CheckboxInput from '$lib/components/forms/CheckboxInput.svelte';
 
 	// textblocks reused for SAFT signup
 	import MessageAfterwards from '$lib/components/saft/MessageAfterwards.svelte';
@@ -303,7 +302,7 @@
 
 					<div class="flex flex-col">
 						<!-- +++ SS25 +++
-					<CheckboxInput name="comes_friday" label="Anreise am Freitag"></CheckboxInput>
+					<InputCheckbox name="comes_friday" label="Anreise am Freitag"></InputCheckbox>
 					-->
 						<label for="travel_comments">
 							<bold class="font-bold">Anmerkungen zur Anreise oder Abreise.</bold> (z.B. ich reise verspätet
