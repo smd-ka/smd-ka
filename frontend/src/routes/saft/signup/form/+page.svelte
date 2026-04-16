@@ -428,11 +428,10 @@
 							<p>
 								Auch sonstige Anmerkungen zur Anmeldung zur SAFT kannst du hier gerne vermerken.
 							</p>
-							<!--
-						<p>
-							Falls du Anmerkungen zu deinem Outdoormaterial hast, lass es uns gerne auch hier
-							Wissen.
-						</p> -->
+							<p>
+								Falls du Anmerkungen zu deinem Outdoormaterial hast, lass es uns gerne auch hier
+								Wissen.
+							</p>
 						</label>
 						<textarea class="rounded-md border-2" name="comments" id="comments" rows="5"></textarea>
 					</div>
