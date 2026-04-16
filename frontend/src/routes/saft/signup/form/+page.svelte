@@ -128,7 +128,7 @@
 					<li>
 						<strong>Anreise per Bahn:</strong>
 						Die Bahnanreise wird am Donnerstag gegen 15:00 Uh vom Hauptbahnhof in Karlsruhe starten.
-						Am Sonntag sind wir gegen 15:00 Uhr wieder zurück in Karlsruhe Genauere Infos folgen.
+						Am Sonntag sind wir gegen 16:00 Uhr wieder zurück in Karlsruhe Genauere Infos folgen.
 					</li>
 					<li>
 						<strong>Anreise per Fahrrad:</strong>
@@ -258,13 +258,13 @@
 
 					<div class="grid gap-4">
 						<p>
-							Die <strong class="font-bold">Bahnanreise</strong> wird am Freitag gegen 16:00 vom
+							Die <strong class="font-bold">Bahnanreise</strong> wird am Freitag gegen 15:00 vom
 							Hauptbahnhof in Karlsruhe starten.
 							<br />Am Sonntag sind wir gegen 16:00 wieder zurück in Karlsruhe
 						</p>
 
 						<p>
-							Die <strong class="font-bold">Fahrradanreise</strong> wird am Freitag gegen 13:00 aus
+							Die <strong class="font-bold">Fahrradanreise</strong> wird am Freitag gegen 12:30 aus
 							der Stadtmitte von Karlsruhe starten.
 							<br /> Am Sonntag sind wir gegen 17:00 wieder zurück in Karlsruhe.
 						</p>
