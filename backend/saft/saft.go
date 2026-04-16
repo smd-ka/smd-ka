@@ -26,11 +26,12 @@ func SaftEmails(app *pocketbase.PocketBase) {
 
 	app.OnRecordCreate("saft").BindFunc(func(e *core.RecordEvent) error {
 
-		if !regStatus.AcceptSubmission() {
+		semester := e.Record.Get("semester").(string)
+		if !regStatus.AcceptSubmission(semester) {
 			return apis.NewForbiddenError("Registration is closed", nil)
 		}
 
-		Subject := "[SMD-KA] SAFT Anmeldung WS25/26"  // format: SoSe25 or WS25/26
+		Subject := "[SMD-KA] SAFT Anmeldung " + regStatus.AcceptedSemester
 
 		// E-Mail-Adress for questions (see template)
 		OrgaEmail := "inreach@smd-karlsruhe.de"

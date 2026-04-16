@@ -7,6 +7,9 @@ import (
 
 var (
 	deadlineTimezone *time.Location
+	// the exact string that is accepted for new submissions
+	// must in practice be synced with frontend's PUBLIC_SEMESTER env var
+	AcceptedSemester string
 	RegistrationDeadline time.Time
 	AfterwardsDeadline time.Time
 )
@@ -18,8 +21,9 @@ func init() {
 		panic(err)
 	}
 	// change these dates here to unlock the SAFT registration formular
-	RegistrationDeadline = time.Date(2025, time.November, 10, 0, 0, 0, 0, deadlineTimezone)
-	AfterwardsDeadline = time.Date(2025, time.November, 17, 0, 0, 0, 0, deadlineTimezone)
+	AcceptedSemester = "SS26"
+	RegistrationDeadline = time.Date(2026, time.April, 28, 23, 59, 0, 0, deadlineTimezone)
+	AfterwardsDeadline = time.Date(2026, time.May, 03, 0, 0, 0, 0, deadlineTimezone)
 }
 
 
@@ -43,9 +47,9 @@ const (
 
 
 
-func AcceptSubmission() bool {
+func AcceptSubmission(receivedSemester string) bool {
 	status := Determine(nil)
-	return status == Open
+	return status == Open && AcceptedSemester == receivedSemester
 }
 
 // the JSON dict how the frontend expects it
@@ -54,6 +58,7 @@ func ApiStatus() map[string]interface{} {
 	return map[string]interface{} {
 		"open": status == Open,
 		"status": status,
+		"acceptedSemester": AcceptedSemester,
 		"registrationDeadline": RegistrationDeadline.Format(time.RFC3339),
 		"afterwardsDeadline": AfterwardsDeadline.Format(time.RFC3339),
 	}

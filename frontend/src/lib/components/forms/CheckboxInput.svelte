@@ -5,6 +5,14 @@
 	export let name = '';
 	export let disabled = false;
 	export let required = false;
+
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		if (!id) {
+			id = 'textInput_' + name;
+		}
+	});
 </script>
 
 <div class="flex gap-2">
