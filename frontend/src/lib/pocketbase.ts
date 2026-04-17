@@ -1,15 +1,43 @@
-import PocketBase, { ClientResponseError } from 'pocketbase';
+import PocketBase, { BaseModel, ClientResponseError } from 'pocketbase';
 import { writable } from 'svelte/store';
 import defaultAvatar from '$lib/assets/user_default.png';
 const API_URL: string = import.meta.env.VITE_API_URL;
 
 export const pb = new PocketBase(API_URL);
 
+export const ANY_LOGGED_IN = 'ANY_LOGGED_IN';  // "virtual role"
 export const SAFT_COORDINATOR = 'saftcoordinator';
 export const PRIT_RESPONSABLE = 'pritresponsable';
 export const REGIOKON_COORDINATOR = 'regiokoncordina';
 
+export type MaybeModel = BaseModel | null | undefined;
+export type Role = typeof ANY_LOGGED_IN | typeof SAFT_COORDINATOR | typeof PRIT_RESPONSABLE | typeof REGIOKON_COORDINATOR;
+
+// argument "model" is there to make the function reactive
+// intended use in Svelte code: userHasRole($currentUser, requiredRole)
+export function userHasRole(model: MaybeModel, role: Role | null | undefined): boolean {
+	const noRoleRequired = role === null || role === undefined
+	if (noRoleRequired)
+		return true;
+	const userNotLoggedIn = model === null || model == undefined
+	if (userNotLoggedIn)
+		return false;
+	const anyPermitted = role === ANY_LOGGED_IN;
+	if (anyPermitted)
+		return true;
+	const hasActualRole = model.roles.includes(role);
+	return hasActualRole;
+}
+
 export const currentUser = writable(pb.authStore.model);
+
+export interface RoleGuarded {
+	permission?: Role;
+}
+
+export function userMayAccess(model: MaybeModel, guarded: RoleGuarded): boolean {
+	return userHasRole(model, guarded.permission)
+}
 
 export function getErrorMessage(error: unknown) {
 	const errorObj = error as ClientResponseError;
@@ -49,7 +77,7 @@ export type UserRecord = {
 	phonenumber: string;
 	post_images: 'yes' | 'no';
 	rili: boolean;
-	roles: string[]; // Array of roles
+	roles: Role[]; // Array of roles
 	start_of_studies: string; // ISO date string
 	surname: string;
 	team: string;

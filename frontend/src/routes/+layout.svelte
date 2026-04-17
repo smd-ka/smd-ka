@@ -1,4 +1,9 @@
 <script lang="ts">
+	import type { NavTab } from '$lib/components/navigation/types';
+	import NavbarTab from '$lib/components/navigation/NavbarTab.svelte';
+	import NavlistGroup from '$lib/components/navigation/NavlistGroup.svelte';
+	import { logout } from '$lib/logout';
+
 	import '../app.css';
 	import '@fontsource/anton';
 	import '@fontsource-variable/merriweather-sans';
@@ -19,6 +24,7 @@
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import {
+		ANY_LOGGED_IN,
 		getAvatarUrl,
 		pb,
 		PRIT_RESPONSABLE,
@@ -34,7 +40,6 @@
 	import { onMount } from 'svelte';
 	import NavbarProfile from '$lib/components/NavbarProfile.svelte';
 	import { click_outside } from '$lib/click_outside';
-	import { applyAction, enhance } from '$app/forms';
 	import dayjs from 'dayjs';
 	import 'dayjs/locale/de';
 
@@ -58,7 +63,7 @@
 		});
 	});
 
-	const tabs = [
+	const tabs: NavTab[] = [
 		{
 			name: 'Über uns',
 			baseUrl: '/about',
@@ -126,9 +131,11 @@
 		}
 	];
 
-	const tabsIntern = {
+	const tabsIntern: NavTab = {
 		name: 'Intern',
 		baseUrl: '/intern',
+		defaultUrl: '/intern',
+		permission: ANY_LOGGED_IN,
 		routes: [
 			{
 				name: 'Adressliste',
@@ -155,35 +162,48 @@
 			{
 				name: 'Mastersheet',
 				url: 'https://docs.google.com/spreadsheets/d/1elIUUx3LKdrvCmuGbXDzUgSeF2iMWq7bZRdVswGHLYM/edit?usp=sharing',
-				extern: true
+				extern: true,
+				showMobile: false
 			},
 			{
 				name: 'Mitarbeiter Portal',
 				url: 'https://portal.smd.org/start',
-				extern: true
+				extern: true,
+				showMobile: false
 			},
 			{
 				name: 'Allergie-Liste',
-				url: '/intern/allergy-list'
+				url: '/intern/allergy-list',
+				showMobile: false
 			},
 			{
 				name: 'Gebetsbox',
-				url: '/intern/gebetsbox'
+				url: '/intern/gebetsbox',
+				showMobile: false
 			},
 			{
 				name: 'SAFT Anmeldungen',
 				url: '/intern/saft/list',
+				showMobile: false,
 				permission: SAFT_COORDINATOR
 			},
 			{
 				name: 'SAFT PRIT',
 				url: '/intern/saft/prit',
+				showMobile: false,
 				permission: PRIT_RESPONSABLE
 			},
 			{
 				name: 'Regiokon Anmeldungen',
 				url: '/intern/regiokon/list',
+				showMobile: false,
 				permission: REGIOKON_COORDINATOR
+			},
+			{
+				name: 'Ausloggen',
+				action: logout,
+				showDesktop: false,
+				showMobile: true
 			}
 		]
 	};
@@ -224,47 +244,9 @@
 
 			<div class="flex items-center gap-4 text-xl text-white max-lg:hidden">
 				{#each tabs as tab}
-					<a href={tab.defaultUrl}>
-						<span
-							class="CategoryTitle peer py-5 {$page.url.pathname.includes(tab.baseUrl)
-								? 'text-primary'
-								: ''}"
-						>
-							{tab.name}
-							<Fa class="text-lg" icon={faChevronDown}></Fa>
-						</span>
-						<div class="CategoryLinkList">
-							{#each tab.routes as route}
-								<a href={route.url}>{route.name}</a>
-							{/each}
-						</div>
-					</a>
+					<NavbarTab {tab} />
 				{/each}
-
-				{#if isValid}
-					<div>
-						<span
-							class="CategoryTitle peer py-5 {$page.url.pathname.includes(tabsIntern.baseUrl)
-								? 'text-primary'
-								: ''}"
-						>
-							{tabsIntern.name}
-							<Fa class="text-lg" icon={faChevronDown}></Fa>
-						</span>
-						<div class="CategoryLinkList">
-							{#each tabsIntern.routes as route}
-								{#if pb.authStore.model?.roles.includes(route.permission) || !route.permission}
-									<a class="fa" href={route.url}>
-										{route.name}
-										{#if route.extern}
-											<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
-										{/if}
-									</a>
-								{/if}
-							{/each}
-						</div>
-					</div>
-				{/if}
+				<NavbarTab tab={tabsIntern} />
 
 				<a class="hover:text-primary" href="https://kings-cafe.de">International</a>
 
@@ -282,52 +264,12 @@
 				class="mobile-nav-height bg-grey absolute top-0 z-0 mt-[4.5rem] w-fit max-w-full overflow-scroll p-4 pb-8 text-gray-300 lg:hidden"
 			>
 				{#if isValid}
-					<div>
-						<h3 class="text-white"><a href="/intern">SMD-KA Intern</a></h3>
-						<button on:click={() => (showMenu = false)} class="flex flex-col text-left text-xl">
-							{#each tabsIntern.routes as route}
-								{#if route.showMobile && (pb.authStore.model?.roles.includes(route.permission) || !route.permission)}
-									<a class="fa ml-4" href={route.url}>
-										{route.name}
-										{#if route.extern}
-											<Fa class="text-lg" icon={faArrowUpRightFromSquare}></Fa>
-										{/if}
-									</a>
-								{/if}
-							{/each}
-						</button>
-						<button on:click={() => (showMenu = false)} class="flex flex-col text-left text-xl">
-							<form
-								class="menu-link ml-4"
-								method="POST"
-								action="/account/logout"
-								use:enhance={() => {
-									loading = true;
-									return async ({ result }) => {
-										pb.authStore.clear();
-										await applyAction(result);
-										loading = false;
-									};
-								}}
-							>
-								<button>Ausloggen</button>
-							</form>
-						</button>
-					</div>
+					<NavlistGroup tab={tabsIntern} bind:showMenu />
 					<div class="bg-primary my-2 h-0.5"></div>
 				{/if}
 
 				{#each tabs as tab}
-					<div>
-						<h3 class="text-white">
-							{tab.name}
-						</h3>
-						<button on:click={() => (showMenu = false)} class="flex flex-col text-left text-xl">
-							{#each tab.routes as route}
-								<a class="ml-4" href={route.url}>{route.name}</a>
-							{/each}
-						</button>
-					</div>
+					<NavlistGroup {tab} bind:showMenu />
 				{/each}
 				<div class="bg-primary my-2 h-0.5"></div>
 
@@ -341,7 +283,7 @@
 					<button on:click={() => (showMenu = false)}>
 						<h3 class="text-white">
 							<a class="flex items-center gap-2" href="/intern">
-								SMD-KA Intern
+								Anmelden
 								<Fa icon={faRightToBracket} />
 							</a>
 						</h3>
@@ -428,17 +370,6 @@
 
 	h3 {
 		@apply font-normal;
-	}
-
-	.CategoryLinkList {
-		@apply bg-primary absolute top-[4.25rem] hidden justify-center  hover:grid peer-hover:grid;
-	}
-	.CategoryLinkList > a {
-		@apply px-4 py-2 hover:bg-gray-100 hover:text-black;
-	}
-
-	.CategoryTitle {
-		@apply hover:text-primary flex items-center gap-2 hover:cursor-pointer;
 	}
 
 	.underline-a > a:hover {

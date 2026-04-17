@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { applyAction, enhance } from '$app/forms';
+	import { logout } from '$lib/logout';
 	import { PRIT_RESPONSABLE, REGIOKON_COORDINATOR, SAFT_COORDINATOR, pb } from '$lib/pocketbase';
 	import {
 		faAddressBook,
@@ -159,20 +159,15 @@
 		{/if}
 
 		<div class="tile">
-			<form
-				method="POST"
-				action="/account/logout"
-				use:enhance={() => {
+			<button
+				on:click={async () => {
 					loading = true;
-					return async ({ result }) => {
-						pb.authStore.clear();
-						await applyAction(result);
-						loading = false;
-					};
+					await logout();
+					loading = false;
 				}}
-				class=" text-primary flex flex-col items-center justify-center gap-4 py-4 text-xl"
+				class="text-primary flex flex-col items-center justify-center gap-4 py-4 text-xl"
 			>
-				<button class="hover:bg-curulean-dark flex gap-2 align-middle" type="submit">
+				<div class="hover:bg-curulean-dark flex gap-2 align-middle">
 					{#if loading}
 						<img src={loadingSpinner} class="h-7" alt="loading" />
 					{:else}
@@ -181,8 +176,8 @@
 							Logout
 						</div>
 					{/if}
-				</button>
-			</form>
+				</div>
+			</button>
 		</div>
 	</div>
 </main>

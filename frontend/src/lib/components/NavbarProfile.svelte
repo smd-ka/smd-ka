@@ -3,7 +3,7 @@
 	import Fa from 'svelte-fa';
 	import { page } from '$app/stores';
 	import { getAvatarUrl, pb } from '$lib/pocketbase';
-	import { applyAction, enhance } from '$app/forms';
+	import { logout } from '$lib/logout';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 
 	let isValid = pb.authStore.isValid;
@@ -31,24 +31,19 @@
 		<a class="menu-link" href="/intern">Dashboard</a>
 		<a class="menu-link" href="/intern/profile">Profil</a>
 
-		<form
+		<button
 			class="menu-link"
-			method="POST"
-			action="/account/logout"
-			use:enhance={() => {
+			on:click={async () => {
 				loading = true;
-				return async ({ result }) => {
-					pb.authStore.clear();
-					await applyAction(result);
-					loading = false;
-				};
+				await logout();
+				loading = false;
 			}}
 		>
-			<button>Ausloggen</button>
-		</form>
+			Ausloggen
+		</button>
 	</div>
 {:else}
-	<a href="/account/login">
+	<a href="/account/login" title="Anmelden">
 		<Fa
 			class={$page.url.pathname.match('account/login') ? 'text-primary' : 'hover:text-primary'}
 			icon={faRightToBracket}
