@@ -56,7 +56,7 @@
 				</div>
 				<div class="flex justify-end gap-2">
 					<Fa class="mt-1 justify-self-end text-primary" icon={faLocationDot} />
-					Ort: nähe Heidelberg, Kühberghütte
+					Ort: Nähe Heidelberg, Kühberghütte
 				</div>
 				<a
 					href="https://maps.app.goo.gl/GD2SXFPAEzTq7EKE7"
