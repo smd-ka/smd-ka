@@ -74,7 +74,7 @@ func copyUserDataToRecord(app *pocketbase.PocketBase, userId string, e *core.Rec
 		Name         string `db:"name" json:"name"`
 		Surname      string `db:"surname" json:"surname"`
 		Email        string `db:"email" json:"email"`
-		Gender       string `db:"gender" json: "gender"`
+		Gender       string `db:"gender" json:"gender"`
 		PhoneNumber  string `db:"phonenumber" json:"phonenumber"`
 		Allergies    string `db:"allergies" json:"allergies"`
 		IsVegetarian bool   `db:"vegetarian" json:"vegetarian"`
