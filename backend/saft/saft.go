@@ -47,7 +47,8 @@ func SaftEmails(app *pocketbase.PocketBase) {
 
 		// Save image consent to DB
 		postImages := e.Record.GetString("post_images")
-		err = gdprConsent.CreateImageConsentRecord(app, e.Record.GetString("name"), e.Record.GetString("surname"), postImages)
+		purpose := "saft" + regStatus.AcceptedSemester
+		err = gdprConsent.CreateImageConsentRecord(app, e.Record.GetString("name"), e.Record.GetString("surname"), postImages, purpose)
 		if err != nil {
 			return err
 		}

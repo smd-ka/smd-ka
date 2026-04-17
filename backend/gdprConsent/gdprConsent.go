@@ -5,7 +5,7 @@ import (
 	"github.com/pocketbase/pocketbase/core"
 )
 
-func CreateImageConsentRecord(app *pocketbase.PocketBase, name string, surname string, postImages string) error {
+func CreateImageConsentRecord(app *pocketbase.PocketBase, name string, surname string, postImages string, purpose string) error {
 
 	collection, err := app.FindCollectionByNameOrId("gdpr_images")
 	if err != nil {
@@ -15,7 +15,7 @@ func CreateImageConsentRecord(app *pocketbase.PocketBase, name string, surname s
 	record := core.NewRecord(collection)
 	record.Set("name", name)
 	record.Set("surname", surname)
-	record.Set("purpose", "saft")
+	record.Set("purpose", purpose)
 	record.Set("permission", postImages)
 	record.Set("revoked", false)
 
