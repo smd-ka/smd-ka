@@ -212,7 +212,7 @@
 				</p>
 			{:else}
 				{#if loggedIn}
-					<p class="text-primary py-6 text-xl">
+					<p class="py-6 text-xl text-primary">
 						Schön, dass du dabei bist {pb.authStore.model?.name}!
 					</p>
 				{/if}
@@ -409,7 +409,7 @@
 						<option value="no_website"
 							>Ihr dürft Bilder von mir veröffentlichen, aber nicht auf der Webseite
 						</option>
-						<option value="never">Bitte veröffentlicht keine Bilder von mir</option>
+						<option value="no">Bitte veröffentlicht keine Bilder von mir</option>
 					</select>
 					<p class="text-sm font-bold">
 						Anmerkung des Public Relations und IT-Teams: Es werden generell nur Bilder

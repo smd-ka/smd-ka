@@ -1,5 +1,5 @@
 <script lang="ts">
-	import saft_group from '$lib/assets/saft/saft_group_ss24.jpg';
+	import saft_group from '$lib/assets/pages/about/spenden/saft_ws25_26_group.jpg';
 </script>
 
 <main class="container mx-auto grid gap-4 px-4 py-20">
