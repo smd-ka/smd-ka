@@ -91,6 +91,7 @@
 				<a
 					href={location.url}
 					target="_blank"
+					rel="noopener noreferrer"
 					class="rounded-lg p-4 shadow-lg transition-all duration-100 hover:scale-105 {location.isCafe
 						? 'bg-background-orange'
 						: 'bg-slate-300'} bg-opacity-50"
