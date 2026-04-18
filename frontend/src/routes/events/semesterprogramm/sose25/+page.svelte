@@ -1,11 +1,11 @@
 <script lang="ts">
+	import type { LayoutData } from '../$types';
 	import header from '$lib/assets/pages/events/semesterprogramm/voller_hoffnung_21_9.jpg';
 	import HeroShot from '$lib/components/HeroShot.svelte';
-	import dayjs from 'dayjs';
-	import type { PageData } from './$types';
-	import SemesterProgramSelector from '../SemesterProgramSelector.svelte';
+	import SemesterEventView from '../_components/SemesterEventView.svelte';
+	import SemesterProgramSelector from '../_components/SemesterProgramSelector.svelte';
 
-	export let data: PageData;
+	export let data: LayoutData;
 </script>
 
 <HeroShot imgSrc={header} height={'h-[80svh]'} />
@@ -26,29 +26,7 @@
 		</p>
 	</section>
 
-	<section class="grid gap-x-24 gap-y-6 py-12 md:grid-cols-2">
-		{#each data.events as event}
-			<div class="grid grid-cols-[6rem_1fr] gap-2">
-				<h3>
-					{dayjs(event.start_date_time).format('DD.MM.')}
-				</h3>
-				<div>
-					<h3>
-						{event.title}
-					</h3>
-					<div>
-						{#if event.speaker}
-							<span class="italic">
-								{event.speaker}
-							</span>
-							|
-						{/if}
-						{event.location}
-					</div>
-				</div>
-			</div>
-		{/each}
-	</section>
+	<SemesterEventView events={data.events} />
 </main>
 
 <SemesterProgramSelector />

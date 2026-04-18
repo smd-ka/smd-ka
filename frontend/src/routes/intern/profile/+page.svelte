@@ -2,9 +2,10 @@
 	import { getAvatarUrl, pb } from '$lib/pocketbase';
 	import defaultAvatar from '$lib/assets/user_default.png';
 	import Fa from 'svelte-fa/src/fa.svelte';
-	import { faChevronRight, faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
+	import { faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 	import InputCheckbox from '$lib/components/forms/CheckboxInput.svelte';
+	import AddressBar from '$lib/components/navigation/AddressBar.svelte';
 	import { onMount } from 'svelte';
 
 	enum church {
@@ -79,17 +80,12 @@
 </script>
 
 <main class="container mx-auto py-4">
-	<nav class="container mx-auto px-4 py-4">
-		<ol class="inline-flex list-none">
-			<li class="flex items-center">
-				<a class="!no-underline" href="/intern">Intern</a>
-				<Fa icon={faChevronRight} class="mx-2" />
-			</li>
-			<li class="flex items-center">
-				<a class="!no-underline" href="/intern/profile">Profil</a>
-			</li>
-		</ol>
-	</nav>
+	<AddressBar
+		crumbs={[
+			['Intern', '/intern'],
+			['Profil', '/intern/profile']
+		]}
+	/>
 
 	<h1>Profil Bearbeiten</h1>
 
