@@ -33,7 +33,8 @@
 			</div>
 
 			<div class="flex justify-center">
-				<LoginForm title="Anmeldung" redirectTo="/saft/signup/form" />
+				<!-- hide account creation because it may make time until that account is accepted -->
+				<LoginForm title="Anmeldung" redirectTo="/saft/signup/form" showAccountCreation={false} />
 			</div>
 		</div>
 	</div>
