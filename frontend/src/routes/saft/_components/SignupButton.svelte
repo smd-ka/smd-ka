@@ -12,7 +12,7 @@
 		RegistrationStatus,
 		type RegistrationStatus,
 		requestRegStatus
-	} from '$lib/saftRegistrationApi.ts';
+	} from '$lib/saftRegistrationApi';
 	// components
 	import MessageAfterwards from './MessageAfterwards.svelte';
 	import MessageClosed from './MessageClosed.svelte';
