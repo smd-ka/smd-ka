@@ -48,11 +48,19 @@
 		await goto(getRedirectTarget());
 	};
 
+	function isSafeInternalRedirect(target: string | null): target is string {
+		return target !== null && target.startsWith('/') && !target.startsWith('//');
+	}
+
 	const getRedirectTarget = () => {
-		if (redirectTo !== null) return redirectTo;
+		if (redirectTo !== null) {
+			return isSafeInternalRedirect(redirectTo) ? redirectTo : '/intern';
+		}
+
 		const urlParams = new URLSearchParams(window.location.search);
 		const redirect = urlParams.get('redirect');
-		return redirect ?? '/intern';
+
+		return isSafeInternalRedirect(redirect) ? redirect : '/intern';
 	};
 </script>
 
