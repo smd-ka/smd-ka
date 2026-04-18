@@ -21,7 +21,7 @@
 				.collection('users')
 				.authWithPassword(email, password);
 
-			handleRedirect();
+			await handleRedirect();
 		} catch (e: any) {
 			loading = false;
 			errorMessage = getErrorMessage(e);
@@ -37,20 +37,20 @@
 			await pb.collection('users').authWithOAuth2({
 				provider: 'oidc'
 			});
-			handleRedirect();
+			await handleRedirect();
 		} catch (e: any) {
 			loading = false;
 			errorMessage = 'Der Login mit authentik hat nicht geklappt.';
 		}
 	};
 
-	const handleRedirect = () => {
+	const handleRedirect = async () => {
 		const urlParams = new URLSearchParams(window.location.search);
 		const redirect = urlParams.get('redirect');
 		if (redirect) {
-			goto(redirect);
+			await goto(redirect);
 		}
-		goto('/intern');
+		await goto('/intern');
 	};
 </script>
 
