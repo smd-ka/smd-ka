@@ -13,6 +13,9 @@
 	import NumberInput from '$lib/components/forms/NumberInput.svelte';
 
 	// textblocks reused for SAFT signup
+	import InfoTravelBike from '../../_components/InfoTravelBike.svelte';
+	import InfoTravelIndependent from '../../_components/InfoTravelIndependent.svelte';
+	import InfoTravelTrain from '../../_components/InfoTravelTrain.svelte';
 	import MessageAfterwards from '$lib/components/saft/MessageAfterwards.svelte';
 	import MessageClosed from '$lib/components/saft/MessageClosed.svelte';
 
@@ -126,21 +129,13 @@
 						</ul>
 					</li>
 					<li>
-						<strong>Anreise per Bahn:</strong>
-						Die Bahnanreise wird am Donnerstag gegen 15:00 Uh vom Hauptbahnhof in Karlsruhe starten.
-						Am Sonntag sind wir gegen 16:00 Uhr wieder zurück in Karlsruhe Genauere Infos folgen.
+						<InfoTravelTrain />
 					</li>
 					<li>
-						<strong>Anreise per Fahrrad:</strong>
-						Die Fahrradanreise wird am Donnerstag gegen 12:30 Uhr aus der Stadtmitte von Karlsruhe starten.
-						Am Sonntag sind wir gegen 17:00 Uhr wieder zurück in Karlsruhe. Fahrradfahrer können ihr
-						Gepäck vor der Fahrt abgeben. Genauere Infos folgen.
+						<InfoTravelBike />
 					</li>
 					<li>
-						<strong>Selbstständige Anreise:</strong>
-						Ab ca. 17:00 Uhr solltest du ankommen im<br />
-						Mönchszellerweg 39 69257 Wiesenbach (Kühlberghütte).
-						<a href="https://maps.app.goo.gl/wVvywftginHZcXUV8"> Ort auf Google Maps </a>
+						<InfoTravelIndependent />
 					</li>
 				</ul>
 
@@ -258,15 +253,11 @@
 
 					<div class="grid gap-4">
 						<p>
-							Die <strong class="font-bold">Bahnanreise</strong> wird am Freitag gegen 15:00 vom
-							Hauptbahnhof in Karlsruhe starten.
-							<br />Am Sonntag sind wir gegen 16:00 wieder zurück in Karlsruhe
+							<InfoTravelTrain />
 						</p>
 
 						<p>
-							Die <strong class="font-bold">Fahrradanreise</strong> wird am Freitag gegen 12:30 aus
-							der Stadtmitte von Karlsruhe starten.
-							<br /> Am Sonntag sind wir gegen 17:00 wieder zurück in Karlsruhe.
+							<InfoTravelBike />
 						</p>
 
 						<!-- <p>Landauer bitte selbständig angeben :)</p> -->
