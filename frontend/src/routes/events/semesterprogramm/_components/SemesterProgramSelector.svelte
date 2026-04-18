@@ -2,39 +2,18 @@
 	import background from '$lib/assets/pages/events/semesterprogramm/bg.png';
 	import Carousel from 'svelte-carousel';
 	import { browser } from '$app/environment';
+	import { page } from '$app/stores';
 	import Fa from 'svelte-fa';
 	import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-	import { onDestroy, onMount } from 'svelte';
 	import { allPrograms } from '../data';
 
 	const PREFIX = '/events/semesterprogramm/';
 
-	let carousel;
+	let carousel: any;
 
-	let mobileScreen = true;
-	let programs: { title: string; subtitle: string; image: string; slug: string }[] = [];
-
-	onMount(() => {
-		if (browser) {
-			updateScreenWidth();
-			window.addEventListener('resize', updateScreenWidth);
-		}
-		programs = allPrograms.filter((p) => `${PREFIX}${p.slug}` !== window.location.pathname);
-	});
-
-	onDestroy(() => {
-		if (browser) {
-			window.removeEventListener('resize', updateScreenWidth);
-		}
-	});
-
-	function updateScreenWidth() {
-		const md = 768;
-		if (window.innerWidth >= md) {
-			return (mobileScreen = false);
-		}
-		mobileScreen = true;
-	}
+	$: mobileScreen = browser ? window.innerWidth < 768 : true;
+	$: currentPath = $page.url.pathname;
+	$: programs = allPrograms.filter((p) => `${PREFIX}${p.slug}` !== currentPath);
 </script>
 
 <div style="background-image: url({background});">
