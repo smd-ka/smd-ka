@@ -9,7 +9,7 @@
 
 <p>
 	Wir freuen uns riesig, dass du bei unserem gemeinsamen SAFT-Wochenende dabei bist! Damit du dich
-	schon gut & entspannt auf die SAFT vorbereiten kannst, findest du folgend die wichtigesten Punkte
+	schon gut & entspannt auf die SAFT vorbereiten kannst, findest du hier die wichtigsten Punkte
 	schnell zusammengefasst.
 </p>
 
