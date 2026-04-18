@@ -13,7 +13,7 @@
 <main class="container mx-auto px-4 py-12">
 	<section class="">
 		<h2 class="pb-0 text-center">Unser Wintersemester 2025/26</h2>
-		<h3 class=" text-center font-caveat text-primary">jeden zweiten Dienstag 18:30</h3>
+		<h3 class="font-caveat text-primary text-center">jeden zweiten Dienstag 18:30</h3>
 
 		<p class="center pad py-6 text-center">
 			Unser Semesterthema WeiterGehen lädt dich dazu ein im Glauben einen Schritt weiter zu gehen.
