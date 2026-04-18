@@ -1,5 +1,4 @@
 <script lang="ts">
-	// ONLY submit trusted values here!
 	export let start: string;
 	export let end: string;
 
@@ -9,8 +8,15 @@
 
 	let events: any[] = [];
 
+	function isStrictIsoDate(value: string): boolean {
+		return /^\d{4}-\d{2}-\d{2}$/.test(value);
+	}
+
 	onMount(async () => {
 		try {
+			if (!isStrictIsoDate(start) || !isStrictIsoDate(end)) {
+				throw new Error('Invalid date format. Expected YYYY-MM-DD.');
+			}
 			const records = await pb.collection('calendar').getFullList({
 				sort: '+start_date_time',
 				filter: `category='smd_abend' && start_date_time >= "${start} 00:00:00" && end_date_time < "${end} 00:00:00"`
