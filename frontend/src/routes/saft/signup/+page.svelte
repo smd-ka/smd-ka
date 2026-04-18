@@ -4,8 +4,10 @@
 	import { onMount } from 'svelte';
 	import LoginForm from '$lib/components/LoginForm.svelte';
 
+	const FormUrl = '/saft/signup/form';
+
 	onMount(() => {
-		if (pb.authStore.isValid) goto('/saft/signup/form');
+		if (pb.authStore.isValid) goto(FormUrl);
 	});
 </script>
 
@@ -20,7 +22,7 @@
 				</p>
 				<a
 					class=" bg-black p-4 text-center text-white no-underline hover:underline max-md:w-full"
-					href="/saft/signup/form">Ohne Konto anmelden</a
+					href={FormUrl}>Ohne Konto anmelden</a
 				>
 			</div>
 
@@ -34,7 +36,7 @@
 
 			<div class="flex justify-center">
 				<!-- hide account creation because it may make time until that account is accepted -->
-				<LoginForm title="Anmeldung" redirectTo="/saft/signup/form" showAccountCreation={false} />
+				<LoginForm title="Anmeldung" redirectTo={FormUrl} showAccountCreation={false} />
 			</div>
 		</div>
 	</div>
