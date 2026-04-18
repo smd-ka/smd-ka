@@ -5,6 +5,7 @@
 
 <script lang="ts">
 	export let showAccountCreation: boolean = true;
+	export let redirectTo: string | null = null;
 
 	import { getErrorMessage, pb, type UserRecord } from '$lib/pocketbase';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
@@ -47,6 +48,7 @@
 	};
 
 	const getRedirectTarget = () => {
+		if (redirectTo !== null) return redirectTo;
 		const urlParams = new URLSearchParams(window.location.search);
 		const redirect = urlParams.get('redirect');
 		return redirect ?? '/intern';
