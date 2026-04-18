@@ -4,6 +4,8 @@
 -->
 
 <script lang="ts">
+	export let showAccountCreation: boolean = true;
+
 	import { getErrorMessage, pb, type UserRecord } from '$lib/pocketbase';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 	import { goto } from '$app/navigation';
@@ -108,8 +110,10 @@
 		{/if}
 	</section>
 
-	<section class="text-center text-sm text-gray-400">
-		Noch kein Konto?
-		<a href="/account/register" class="text-primary hover:underline">Jetzt eins anlegen.</a>
-	</section>
+	{#if showAccountCreation}
+		<section class="text-center text-sm text-gray-400">
+			Noch kein Konto?
+			<a href="/account/register" class="text-primary hover:underline">Jetzt eins anlegen.</a>
+		</section>
+	{/if}
 </div>
