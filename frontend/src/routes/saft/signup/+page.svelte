@@ -13,19 +13,16 @@
 		if (pb.authStore.isValid) goto('/saft/signup/form');
 	});
 
-	const login = async (event: Event) => {
-		event.preventDefault();
+	const login = async () => {
 		loading = true;
 		try {
 			await pb.collection('users').authWithPassword(email, password);
+			await goto('/saft/signup/form');
 		} catch (e: any) {
 			loading = false;
 			errorMessage = getErrorMessage(e);
 			return;
 		}
-
-		await pb.authStore.loadFromCookie(document.cookie);
-		goto('/saft/signup/form');
 	};
 </script>
 
