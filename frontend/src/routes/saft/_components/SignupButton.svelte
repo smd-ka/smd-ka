@@ -8,11 +8,7 @@
 
 	// API lib
 	import { onMount } from 'svelte';
-	import {
-		RegistrationStatus,
-		type RegistrationStatus,
-		requestRegStatus
-	} from '$lib/saftRegistrationApi';
+	import { RegistrationStatus, requestRegStatus } from '$lib/saftRegistrationApi';
 	// components
 	import MessageAfterwards from './MessageAfterwards.svelte';
 	import MessageClosed from './MessageClosed.svelte';
