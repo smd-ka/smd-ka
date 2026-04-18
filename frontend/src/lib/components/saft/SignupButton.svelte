@@ -1,13 +1,17 @@
 <script lang="ts">
-	export let href: string = "/saft/signup";
-	let classes: string = "pointer mt-4 w-fit bg-black p-4 text-white";
+	export let href: string = '/saft/signup';
+	let classes: string = 'pointer mt-4 w-fit bg-black p-4 text-white';
 	export { classes as class };
 	// only show when actually open (even not while loading)
 	export let raw: boolean = false;
 
 	// API lib
 	import { onMount } from 'svelte';
-	import { RegistrationStatus, type RegistrationStatus, requestRegStatus } from '$lib/saftRegistrationApi.ts';
+	import {
+		RegistrationStatus,
+		type RegistrationStatus,
+		requestRegStatus
+	} from '$lib/saftRegistrationApi.ts';
 	// components
 	import MessageAfterwards from '$lib/components/saft/MessageAfterwards.svelte';
 	import MessageClosed from '$lib/components/saft/MessageClosed.svelte';
@@ -23,14 +27,11 @@
 	{#if status === RegistrationStatus.Open}
 		<slot />
 	{/if}
+{:else if status === RegistrationStatus.Closed}
+	<MessageClosed />
+{:else if status === RegistrationStatus.Afterwards}
+	<MessageAfterwards />
 {:else}
-	{#if status === RegistrationStatus.Closed}
-		<MessageClosed />
-	{:else if status === RegistrationStatus.Afterwards}
-		<MessageAfterwards />
-	{:else}
-		<!-- if we are unsure here, its better invite people to the registration page, where the check will be more restrictive -->
-		<a href="/saft/signup" class={classes}><slot /></a>
-	{/if}
+	<!-- if we are unsure here, its better invite people to the registration page, where the check will be more restrictive -->
+	<a href="/saft/signup" class={classes}><slot /></a>
 {/if}
-
