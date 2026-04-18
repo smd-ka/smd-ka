@@ -20,11 +20,7 @@
 	import MessageAfterwards from '../../_components/MessageAfterwards.svelte';
 	import MessageClosed from '../../_components/MessageClosed.svelte';
 
-	import {
-		RegistrationStatus,
-		type RegistrationStatus,
-		requestRegStatus
-	} from '$lib/saftRegistrationApi.ts';
+	import { RegistrationStatus, requestRegStatus } from '$lib/saftRegistrationApi';
 
 	const ticketValues = [
 		'Deutschlandticket/Jugendticket BW',
