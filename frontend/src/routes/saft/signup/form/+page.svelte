@@ -12,6 +12,7 @@
 	import { PUBLIC_SEMESTER } from '$env/static/public';
 	import NumberInput from '$lib/components/forms/NumberInput.svelte';
 
+	import PritPublicImageDisclaimer from '../../../_components/PritPublicImageDisclaimer.svelte';
 	// textblocks reused for SAFT signup
 	import AllInfos from '../../_components/AllInfos.svelte';
 	import InfoTravelBike from '../../_components/InfoTravelBike.svelte';
@@ -316,12 +317,7 @@
 						<option value="no">Bitte veröffentlicht keine Bilder von mir</option>
 					</select>
 					<p class="text-sm font-bold">
-						Anmerkung des Public Relations und IT-Teams: Es werden generell nur Bilder
-						veröffentlicht, auf denen ihr gut ausseht, sollten Zweifel bestehen oder wir es als
-						grenzwertig ansehen, fragen wir nochmal im Einzelfall nach. Bitte habt Verständnis, dass
-						wir dies nicht für jedes Bild/Video machen wollen, da es unsere Arbeit dann ungemein
-						erschwert. Danke schonmal und wir freuen uns auf fröhliche und lustige Bilder von der
-						SAFT :P
+						<PritPublicImageDisclaimer location="von der SAFT" />
 					</p>
 
 					<div class="flex flex-col">
