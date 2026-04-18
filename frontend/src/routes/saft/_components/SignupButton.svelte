@@ -1,3 +1,4 @@
+<!-- hint: this button might also be included from pages outside this path -->
 <script lang="ts">
 	export let href: string = '/saft/signup';
 	let classes: string = 'pointer mt-4 w-fit bg-black p-4 text-white';
@@ -13,8 +14,8 @@
 		requestRegStatus
 	} from '$lib/saftRegistrationApi.ts';
 	// components
-	import MessageAfterwards from '$lib/components/saft/MessageAfterwards.svelte';
-	import MessageClosed from '$lib/components/saft/MessageClosed.svelte';
+	import MessageAfterwards from './MessageAfterwards.svelte';
+	import MessageClosed from './MessageClosed.svelte';
 
 	let status: RegistrationStatus = RegistrationStatus.Unknown;
 

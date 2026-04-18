@@ -17,8 +17,8 @@
 	import InfoTravelBike from '../../_components/InfoTravelBike.svelte';
 	import InfoTravelIndependent from '../../_components/InfoTravelIndependent.svelte';
 	import InfoTravelTrain from '../../_components/InfoTravelTrain.svelte';
-	import MessageAfterwards from '$lib/components/saft/MessageAfterwards.svelte';
-	import MessageClosed from '$lib/components/saft/MessageClosed.svelte';
+	import MessageAfterwards from '../../_components/MessageAfterwards.svelte';
+	import MessageClosed from '../../_components/MessageClosed.svelte';
 
 	import {
 		RegistrationStatus,

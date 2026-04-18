@@ -9,7 +9,7 @@
 	import { faCalendarDays, faCoins, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 	// hint: to re-open the signup, look into: backend/saft/reqStatus.go
-	import SignupButton from '$lib/components/saft/SignupButton.svelte';
+	import SignupButton from '../../saft/_components/SignupButton.svelte';
 </script>
 
 <HeroShot imgSrc={header} height={'h-[70svh]'}></HeroShot>
