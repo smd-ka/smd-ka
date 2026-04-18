@@ -1,8 +1,8 @@
 <script lang="ts">
 	import header from '$lib/assets/pages/events/semesterprogramm/aufsWassergehen_21_9.jpg';
 	import HeroShot from '$lib/components/HeroShot.svelte';
-	import SemesterEventView from './_components/SemesterEventView.svelte';
-	import SemesterProgramSelector from './_components/SemesterProgramSelector.svelte';
+	import SemesterEventView from '../_components/SemesterEventView.svelte';
+	import SemesterProgramSelector from '../_components/SemesterProgramSelector.svelte';
 
 	export const prerender = true;
 </script>

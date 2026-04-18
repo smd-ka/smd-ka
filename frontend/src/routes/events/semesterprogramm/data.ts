@@ -12,12 +12,13 @@ export type SemesterProgram = {
 }
 
 // order important for carousel
+// first used as redirect for general semesterprogram
 export const allPrograms: SemesterProgram[] = [
 	{
 		title: 'Aufs Wasser gehen',
 		subtitle: 'Unser Sommersemester 2026',
 		image: aufswassergehen,
-		link: '/events/semesterprogramm'
+		link: '/events/semesterprogramm/sose26'
 	},
 	{
 		title: 'WeiterGehen',
