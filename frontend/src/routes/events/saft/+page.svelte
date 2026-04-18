@@ -24,7 +24,7 @@
 		<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
 			<img
 				class="h-72 w-full object-cover object-top max-lg:order-last"
-				alt="Bild von der SAFT"
+				alt="Miniente als Deko der Murmelbahn"
 				src={saftDuck}
 			/>
 		</Saos>
@@ -68,8 +68,8 @@
 		</Saos>
 		<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
 			<img
-				alt="Bild von der SAFT"
 				class="h-72 w-full object-cover object-top max-lg:order-last"
+				alt="lustiges Gruppenfoto von der SAFT"
 				src={saftGroup}
 			/>
 		</Saos>
