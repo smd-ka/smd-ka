@@ -52,7 +52,7 @@
 	<AddressBar
 		crumbs={[
 			['Intern', '/intern'],
-			['Address List', '/address-list'],
+			['Address List', '/intern/address-list'],
 			[`${record.name} ${record.surname}`, `/intern/address-list/person/${record.id}`]
 		]}
 	/>
