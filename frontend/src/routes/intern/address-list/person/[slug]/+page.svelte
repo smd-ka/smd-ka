@@ -15,6 +15,7 @@
 		faUserGroup
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
+	import AddressBar from '$lib/components/navigation/AddressBar.svelte';
 
 	let record: any;
 
@@ -48,23 +49,13 @@
 </script>
 
 {#if record}
-	<nav class="container mx-auto px-4 py-4">
-		<ol class="inline-flex list-none">
-			<li class="flex items-center">
-				<a class="!no-underline" href="/intern">Intern</a>
-				<Fa icon={faChevronRight} class="mx-2" />
-			</li>
-			<li class="flex items-center">
-				<a class="!no-underline" href="/intern/address-list">Address List</a>
-				<Fa icon={faChevronRight} class="mx-2" />
-			</li>
-			<li class="flex items-center">
-				<a class="!no-underline" href={`/intern/address-list/person/${record.id}`}
-					>{record.name} {record.surname}</a
-				>
-			</li>
-		</ol>
-	</nav>
+	<AddressBar
+		crumbs={[
+			['Intern', '/intern'],
+			['Address List', '/address-list'],
+			[`${record.name} ${record.surname}`, `/intern/address-list/person/${record.id}`]
+		]}
+	/>
 
 	<div class="container mx-auto flex justify-center gap-2 py-8">
 		<div class="person-card">

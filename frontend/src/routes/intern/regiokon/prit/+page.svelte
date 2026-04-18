@@ -1,8 +1,9 @@
 <script lang="ts">
-	import { faChevronRight, faSearch } from '@fortawesome/free-solid-svg-icons';
+	import { faSearch } from '@fortawesome/free-solid-svg-icons';
 	import { _postImages } from '../list/+page';
 	import Fa from 'svelte-fa';
 	import { PUBLIC_SEMESTER } from '$env/static/public';
+	import AddressBar from '$lib/components/navigation/AddressBar.svelte';
 
 	export let data;
 	let filteredList = data.list;
@@ -22,17 +23,12 @@
 	}
 </script>
 
-<nav class="container mx-auto px-4 py-4">
-	<ol class="inline-flex list-none">
-		<li class="flex items-center">
-			<a class="!no-underline" href="/intern">Intern</a>
-			<Fa icon={faChevronRight} class="mx-2" />
-		</li>
-		<li class="flex items-center">
-			<a class="!no-underline" href="/intern/regiokon/prit">PRIT Regiokon</a>
-		</li>
-	</ol>
-</nav>
+<AddressBar
+	crumbs={[
+		['Intern', '/intern'],
+		['PRIT Regiokon', '/intern/regiokon/prit']
+	]}
+/>
 
 <main class="container mx-auto px-4">
 	<div class="grid md:flex md:justify-between">
