@@ -3,8 +3,6 @@
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import SemesterEventView from '../_components/SemesterEventView.svelte';
 	import SemesterProgramSelector from '../_components/SemesterProgramSelector.svelte';
-
-	export const prerender = true;
 </script>
 
 <HeroShot imgSrc={header} height={'h-[80svh]'} />
