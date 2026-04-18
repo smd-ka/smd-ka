@@ -169,7 +169,7 @@
 				<h3 class="mb-2 text-xl font-semibold">
 					<a
 						class="fa"
-						href="https://treffpunkt-leben.org/"
+						href="https://treffpunkt-leben.de/"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
