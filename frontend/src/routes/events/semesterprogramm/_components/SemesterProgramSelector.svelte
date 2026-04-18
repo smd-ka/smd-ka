@@ -7,17 +7,19 @@
 	import { onDestroy, onMount } from 'svelte';
 	import { allPrograms } from '../data';
 
+	const PREFIX = '/events/semesterprogramm/';
+
 	let carousel;
 
 	let mobileScreen = true;
-	let programs: { title: string; subtitle: string; image: string; link: string }[] = [];
+	let programs: { title: string; subtitle: string; image: string; slug: string }[] = [];
 
 	onMount(() => {
 		if (browser) {
 			updateScreenWidth();
 			window.addEventListener('resize', updateScreenWidth);
 		}
-		programs = allPrograms.filter((p) => p.link !== window.location.pathname);
+		programs = allPrograms.filter((p) => `${PREFIX}${p.slug}` !== window.location.pathname);
 	});
 
 	onDestroy(() => {
@@ -50,8 +52,8 @@
 				<div slot="prev" class="text-grey grid items-center p-4 text-3xl lg:text-5xl">
 					<button on:click={carousel.goToPrev}> <Fa icon={faChevronLeft} /></button>
 				</div>
-				{#each programs as { title, subtitle, image, link }}
-					<a class="flex justify-center px-2" href={link}>
+				{#each programs as { title, subtitle, image, slug }}
+					<a class="flex justify-center px-2" href={`${PREFIX}${slug}`}>
 						<div class="max-w-96 rounded-md bg-white text-center shadow-md">
 							<img alt="SOSE24" class="rounded-t-md object-cover" src={image} />
 							<h3 class="text-center">{title}</h3>
