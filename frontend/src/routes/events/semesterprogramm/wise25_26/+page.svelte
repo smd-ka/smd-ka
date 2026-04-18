@@ -1,8 +1,11 @@
 <script lang="ts">
+	import type { LayoutData } from '../$types';
 	import header from '$lib/assets/pages/events/semesterprogramm/weitergehen_21_9.jpg';
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import SemesterEventView from '../_components/SemesterEventView.svelte';
 	import SemesterProgramSelector from '../_components/SemesterProgramSelector.svelte';
+
+	export let data: LayoutData;
 </script>
 
 <HeroShot imgSrc={header} height={'h-[80svh]'} />
@@ -23,7 +26,7 @@
 		</p>
 	</section>
 
-	<SemesterEventView start="2025-10-01" end="2026-03-01" />
+	<SemesterEventView events={data.events} />
 </main>
 
 <SemesterProgramSelector />

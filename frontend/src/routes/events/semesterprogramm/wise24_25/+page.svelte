@@ -1,8 +1,11 @@
 <script lang="ts">
+	import type { LayoutData } from '../$types';
 	import header from '$lib/assets/pages/events/semesterprogramm/outsidethebox_21_9.jpg';
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import SemesterEventView from '../_components/SemesterEventView.svelte';
 	import SemesterProgramSelector from '../_components/SemesterProgramSelector.svelte';
+
+	export let data: LayoutData;
 </script>
 
 <HeroShot imgSrc={header} height={'h-[80svh]'} />
@@ -14,7 +17,7 @@
 		<h3 class=" text-primary font-caveat text-center">jeden zweiten Dienstag 18:30</h3>
 	</section>
 
-	<SemesterEventView start="2024-09-01" end="2025-03-01" />
+	<SemesterEventView events={data.events} />
 </main>
 
 <SemesterProgramSelector />
