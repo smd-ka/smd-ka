@@ -1,11 +1,10 @@
 <script lang="ts">
 	import header from '$lib/assets/pages/events/semesterprogramm/aufsWassergehen_21_9.jpg';
 	import HeroShot from '$lib/components/HeroShot.svelte';
-	import dayjs from 'dayjs';
-	import type { PageData } from './$types';
+	import SemesterEventView from './_components/SemesterEventView.svelte';
 	import SemesterProgramSelector from './_components/SemesterProgramSelector.svelte';
 
-	export let data: PageData;
+	export const prerender = true;
 </script>
 
 <HeroShot imgSrc={header} height="h-[80svh]" bgPosition="bg-[position:28%_center] md:bg-center" />
@@ -30,33 +29,7 @@
 		</p>
 	</section>
 
-	<section class="grid gap-x-24 gap-y-6 py-12 xl:grid-cols-2">
-		{#each data.events as event}
-			<div class="grid grid-cols-[6rem_1fr] gap-2">
-				<h3>
-					{dayjs(event.start_date_time).format('DD.MM.')}
-				</h3>
-				<div>
-					<a href={`/events/kalender/${event.id}`} class="hover:underline">
-						<h3>
-							{event.title}
-						</h3>
-					</a>
-					<div>
-						{#if event.speaker}
-							<span class="italic">
-								{event.speaker}
-							</span>
-							|
-						{/if}
-						<a href={event.location_url} class="hover:underline">
-							{event.location}
-						</a>
-					</div>
-				</div>
-			</div>
-		{/each}
-	</section>
+	<SemesterEventView start="2026-03-01" end="2026-10-01" />
 </main>
 
 <SemesterProgramSelector />
