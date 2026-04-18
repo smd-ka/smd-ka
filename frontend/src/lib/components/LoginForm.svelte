@@ -100,8 +100,9 @@
 				{#if errorMessage}
 					<p class="text-red-500">Ungültige E-Mail-Adresse oder Passwort</p>
 				{/if}
-				<button class="bg-black py-2 text-white">Log in</button>
-				<button on:click={loginOAuth} class="border-2 border-black py-1.5">Log in with OAuth</button
+				<button type="submit" class="bg-black py-2 text-white">Log in</button>
+				<button type="button" on:click={loginOAuth} class="border-2 border-black py-1.5"
+					>Log in with OAuth</button
 				>
 				<a href="/account/reset" class="text-center text-sm text-gray-400 hover:underline"
 					>Passwort vergessen?</a
