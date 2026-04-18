@@ -22,7 +22,7 @@ func init() {
 	}
 	// change these dates here to unlock the SAFT registration formular
 	AcceptedSemester = "SS26"
-	RegistrationDeadline = time.Date(2026, time.April, 28, 23, 59, 0, 0, deadlineTimezone)
+	RegistrationDeadline = time.Date(2026, time.April, 29, 0, 0, 0, 0, deadlineTimezone)
 	AfterwardsDeadline = time.Date(2026, time.May, 03, 0, 0, 0, 0, deadlineTimezone)
 }
 
