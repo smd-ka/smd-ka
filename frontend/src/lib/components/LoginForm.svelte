@@ -43,12 +43,13 @@
 	};
 
 	const handleRedirect = async () => {
+		await goto(getRedirectTarget());
+	};
+
+	const getRedirectTarget = () => {
 		const urlParams = new URLSearchParams(window.location.search);
 		const redirect = urlParams.get('redirect');
-		if (redirect) {
-			await goto(redirect);
-		}
-		await goto('/intern');
+		return redirect ?? '/intern';
 	};
 </script>
 
