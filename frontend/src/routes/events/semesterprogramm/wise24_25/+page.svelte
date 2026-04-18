@@ -3,7 +3,7 @@
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import dayjs from 'dayjs';
 	import type { PageData } from '../ws24_25/$types';
-	import SemesterProgramSelector from '../SemesterProgramSelector.svelte';
+	import SemesterProgramSelector from '../_components/SemesterProgramSelector.svelte';
 
 	export let data: PageData;
 </script>
