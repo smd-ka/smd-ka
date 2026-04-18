@@ -4,6 +4,7 @@
 -->
 
 <script lang="ts">
+	export let title: string = 'SMD-KA intern';
 	export let showAccountCreation: boolean = true;
 	export let redirectTo: string | null = null;
 
@@ -63,7 +64,7 @@
 			</div>
 		{:else}
 			<form method="post" class="flex w-80 flex-col gap-4 p-4" on:submit={login}>
-				<h2>SMD-KA intern</h2>
+				<h2>{title}</h2>
 				<div class="relative">
 					<input
 						bind:value={email}
