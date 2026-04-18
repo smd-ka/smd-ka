@@ -140,9 +140,8 @@
 		<div>
 			<p class="text-secondary-text">
 				Hier kannst du deine Profildaten bearbeiten. Diese werden in der internen Adressliste
-				angezeigt. Bei Problemen oder Fragen melde dich gerne beim <a
-					href="mailto:webmaster@smd-karlsruhe.de">PRIT-Team</a
-				>.
+				angezeigt. Bei Problemen oder Fragen melde dich gerne beim
+				<a href="mailto:webmaster@smd-karlsruhe.de">PRIT-Team</a>.
 			</p>
 
 			<button
