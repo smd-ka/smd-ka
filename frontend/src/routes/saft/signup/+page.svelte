@@ -21,9 +21,11 @@
 					Dann kannst du dich hier ohne Konto anmelden:
 				</p>
 				<a
-					class=" bg-black p-4 text-center text-white no-underline hover:underline max-md:w-full"
-					href={FormUrl}>Ohne Konto anmelden</a
+					class="bg-black p-4 text-center text-white no-underline hover:underline max-md:w-full"
+					href={FormUrl}
 				>
+					Ohne Konto anmelden
+				</a>
 			</div>
 
 			<div class="relative bg-gray-300 max-md:h-0.5 md:w-0.5">
