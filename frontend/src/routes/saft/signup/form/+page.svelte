@@ -208,7 +208,7 @@
 				</p>
 			{:else}
 				{#if loggedIn}
-					<p class="py-6 text-xl text-primary">
+					<p class="text-primary py-6 text-xl">
 						Schön, dass du dabei bist {pb.authStore.model?.name}!
 					</p>
 				{/if}
