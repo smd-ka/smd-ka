@@ -55,8 +55,8 @@
 					Preis: 40 € <!-- (XX € für Freitag bis Sonntag) -->
 				</div>
 				<div class="flex justify-end gap-2">
-					<Fa class="mt-1 justify-self-end text-primary" icon={faLocationDot} />
-					Ort: Nähe Heidelberg, Kühberghütte
+					<Fa class="text-primary mt-1 justify-self-end" icon={faLocationDot} />
+					Ort: Nähe Heidelberg, Kühlberghütte
 				</div>
 				<a
 					href="https://maps.app.goo.gl/GD2SXFPAEzTq7EKE7"
