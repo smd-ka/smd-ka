@@ -26,7 +26,7 @@
 
 		<div class="grid grid-cols-2 divide-y-2 divide-y-reverse">
 			{#each usersWithAllergies as user (user.id)}
-				<p class="">
+				<p>
 					{user.name}
 					{user.surname}
 				</p>
