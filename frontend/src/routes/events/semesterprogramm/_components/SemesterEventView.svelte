@@ -47,9 +47,15 @@
 						</span>
 						|
 					{/if}
-					<a href={event.location_url} class="hover:underline">
-						{event.location}
-					</a>
+					{#if event.location_url}
+						<a href={event.location_url} class="hover:underline">
+							{event.location}
+						</a>
+					{:else}
+						<span>
+							{event.location}
+						</span>
+					{/if}
 				</div>
 			</div>
 		</div>
