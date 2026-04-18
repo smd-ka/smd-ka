@@ -97,6 +97,7 @@
 	<div class="px-4 lg:px-80">
 		{#if success}
 			<div class="grid gap-8">
+				<!-- mind consistency with mail template in backend! -->
 				<h1 class=" text-3xl font-bold uppercase">Du hast dich erfolgreich angemeldet!</h1>
 				<p>
 					Wir haben dir eine Bestätigung (wo auch das folgende drin steht) per Email zukommen lassen
