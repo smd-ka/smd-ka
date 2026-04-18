@@ -3,6 +3,7 @@
 	import schlossgarten_img from '$lib/assets/pages/new/schlossgarten.jpg';
 	import epplesee_img from '$lib/assets/pages/new/epplesee.jpg';
 	import background from '$lib/assets/pages/events/semesterprogramm/bg.png';
+	import { Locations } from './locations';
 </script>
 
 <main class="main">
@@ -86,147 +87,22 @@
 		</h2>
 
 		<div class="grid gap-4 md:grid-cols-3 xl:grid-cols-5">
-			<a
-				href="https://maps.app.goo.gl/ZAv8JF2UQCbBC7iNA"
-				target="_blank"
-				class="rounded-lg bg-slate-300 bg-opacity-50 p-4 shadow-lg transition-all duration-100 hover:scale-105"
-			>
-				<h3 class="text-center">Oxford Pub</h3>
-
-				<p>
-					+ Lecker und günstig <br />
-					+ Super nah am KIT <br />
-					+ Bekannt für gute Burger <br />
-					+ Über 100 Biersorten <br />
-					+ So richtige pub vibes
-				</p>
-			</a>
-
-			<a
-				href="https://maps.app.goo.gl/KGGCHYAdKRErAeEi9"
-				target="_blank"
-				class="bg-background-orange rounded-lg bg-opacity-50 p-4 shadow-lg transition-all duration-100 hover:scale-105"
-			>
-				<h3 class="text-center">Café Wohnzimmer</h3>
-				<p>
-					+ In unmittelbarer KIT-Nähe <br />
-					+ Macht seinem Namen alle Ehre<br />
-					+ Explizit glutenfreie Kuchen <br />
-					+ Auch zum Mitnehmen
-				</p>
-			</a>
-
-			<a
-				href="https://maps.app.goo.gl/piRfuJ7n3KyvZPwC8"
-				target="_blank"
-				class="rounded-lg bg-slate-300 bg-opacity-50 p-4 shadow-lg transition-all duration-100 hover:scale-105"
-			>
-				<h3 class="text-center">Café Bleu</h3>
-
-				<p>
-					+ Entgegen des Namens kein Café, sondern tatsächlich ein Restaurant<br />
-					+ Zentral am Mühlburger Tor <br />
-					+ Studentenfreundliche Preise und lecker <br />
-					+ Netter Biergarten
-				</p>
-			</a>
-
-			<a
-				href="https://maps.app.goo.gl/kS7Aq1PcCemoYoEy9"
-				target="_blank"
-				class="bg-background-orange rounded-lg bg-opacity-50 p-4 shadow-lg transition-all duration-100 hover:scale-105"
-			>
-				<h3 class="text-center">Iaro</h3>
-				<p>
-					+ KIT-Nähe; Karl-Wilhelm-Platz<br />
-					+ Minimalistische Ästhetik <br />
-					+ Hauseigene Produkte <br />
-					+ Bieten Workshops zu Latte Art und als Barista ein <br />
-					+ Gibts auch in der Weststadt (Sophienstraße)
-				</p>
-			</a>
-
-			<a
-				href="https://maps.app.goo.gl/8mqb3caoun7Ggq2M9"
-				target="_blank"
-				class="ransition-all rounded-lg bg-slate-300 bg-opacity-50 p-4 shadow-lg duration-100 hover:scale-105"
-			>
-				<h3 class="text-center">Kim Fat</h3>
-
-				<p>
-					+ Günstig <br />
-					+ Direkt am Zirkel <br />
-					+ Chinesische, thailändische und vietnamesische Gerichte <br />
-					+ Klein und fein, betrieben nur von einem Ehepaar <br />
-				</p>
-			</a>
-
-			<a
-				href="https://maps.app.goo.gl/MzZo7Xs8q3iipk2x5"
-				target="_blank"
-				class="ransition-all bg-background-orange rounded-lg bg-opacity-50 p-4 shadow-lg duration-100 hover:scale-105"
-			>
-				<h3 class="text-center">Berry Su</h3>
-				<p>
-					+ Coole Specials je nach Jahreszeit <br />
-					+ Super leckerer Kuchen <br />
-					+ Zentral, Kaiserstraße <br />
-				</p>
-			</a>
-
-			<a
-				href="https://maps.app.goo.gl/9F7jtu93P8AcL5yeA"
-				target="_blank"
-				class="rounded-lg bg-slate-300 bg-opacity-50 p-4 shadow-lg duration-100 hover:scale-105"
-			>
-				<h3 class="text-center">L'Osteria</h3>
-
-				<p>
-					+ Günstig, Italienisch <br />
-					+ Sehr große Pizzen <br />
-					+ Zentral, direkt beim Marktplatz <br />
-				</p>
-			</a>
-
-			<a
-				href="https://maps.app.goo.gl/yBLWhJtX4yeYAos76"
-				target="_blank"
-				class="bg-background-orange rounded-lg bg-opacity-50 p-4 shadow-lg duration-100 hover:scale-105"
-			>
-				<h3 class="text-center">Yollie - The Popice Café</h3>
-				<p>
-					+ Innenstadt: Waldstraße <br />
-					+ die Waffeln sind zu empfehlen <br />
-					+ Etwas teurer, aber lecker <br />
-					+ Boho Stil <br />
-				</p>
-			</a>
-
-			<a
-				href="https://maps.app.goo.gl/oVWvYWyqUF8c3Nod9"
-				target="_blank"
-				class="rounded-lg bg-slate-300 bg-opacity-50 p-4 shadow-lg duration-100 hover:scale-105"
-			>
-				<h3 class="text-center">El Taquito</h3>
-				<p>
-					+ Innenstadt; Passagenhof <br />
-					+ Verschiedene mexikanische Gerichte <br />
-					+ Super lecker
-				</p>
-			</a>
-
-			<a
-				href="https://maps.app.goo.gl/SpVfubUshfwnQ7fn6"
-				target="_blank"
-				class="bg-background-orange rounded-lg bg-opacity-50 p-4 shadow-lg duration-100 hover:scale-105"
-			>
-				<h3 class="text-center">Café Mats</h3>
-				<p>
-					+ Liebevoll gestaltete Produkte <br />
-					+ (Fast) alles hausgemacht <br />
-					+ Sehr gut für Teeliebhaber <br />
-				</p>
-			</a>
+			{#each Locations as location}
+				<a
+					href={location.url}
+					target="_blank"
+					class="rounded-lg p-4 shadow-lg transition-all duration-100 hover:scale-105 {location.isCafe
+						? 'bg-background-orange'
+						: 'bg-slate-300'} bg-opacity-50"
+				>
+					<h3 class="text-center">{location.name}</h3>
+					<p>
+						{#each location.pros as pro}
+							+ {pro}<br />
+						{/each}
+					</p>
+				</a>
+			{/each}
 		</div>
 
 		<p class="px-4 py-6 text-center font-bold">
