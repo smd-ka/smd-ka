@@ -64,7 +64,7 @@
 			</div>
 		{:else}
 			<form method="post" class="flex w-80 flex-col gap-4 p-4" on:submit={login}>
-				<h2>{title}</h2>
+				<h2 class="text-center">{title}</h2>
 				<div class="relative">
 					<input
 						bind:value={email}
