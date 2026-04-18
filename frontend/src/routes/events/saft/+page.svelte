@@ -60,7 +60,7 @@
 				</div>
 				<a
 					href="https://maps.app.goo.gl/GD2SXFPAEzTq7EKE7"
-					class="w-fit justify-self-end bg-black p-4 text-white"
+					class="mt-4 w-fit justify-self-end bg-black p-4 text-white"
 				>
 					Auf Google Maps anschauen
 				</a>
