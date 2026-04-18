@@ -33,5 +33,5 @@
 	<MessageAfterwards />
 {:else}
 	<!-- if we are unsure here, its better invite people to the registration page, where the check will be more restrictive -->
-	<a href="/saft/signup" class={classes}><slot /></a>
+	<a {href} class={classes}><slot /></a>
 {/if}
