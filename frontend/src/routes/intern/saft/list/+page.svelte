@@ -141,6 +141,7 @@
 					<b>{data.availableBags}</b> verfügbare Schlafsäcke <br />
 					<b>{data.sleepingPadsMissing}</b> Personen, die ne Iso brauchen <br />
 					<b>{data.availablePads}</b> verfügbare Isomatten <br />
+					<b>{data.fairyLightsCount}</b> Lichterketten <br />
 				</div>
 			</div>
 			<div>
@@ -151,10 +152,6 @@
 				<div>
 					<bold class="font-bold">{data.isMale}</bold>
 					Anzahl Männer
-				</div>
-				<div>
-					<bold class="font-bold">{data.fairyLightsCount}</bold>
-					Lichterketten
 				</div>
 			</div>
 
