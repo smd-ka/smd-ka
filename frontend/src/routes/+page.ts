@@ -9,7 +9,7 @@ export const load: PageLoad = async () => {
 		const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString();
 		const records = await pb.collection('calendar').getList(1, 4, {
 			sort: '+start_date_time',
-			filter: `start_date_time >= "${startOfToday}" && category!='kingscafe' && category!='german_bible_study'`
+			filter: `start_date_time >= "${startOfToday}" && category!='kingscafe' && category!='german_bible_study' && category!='MIT'`
 		});
 		const nextSMDEvening = await pb.collection('calendar').getList(1, 1, {
 			sort: '+start_date_time',
