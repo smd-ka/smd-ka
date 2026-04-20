@@ -74,7 +74,7 @@
 		formData.set('pot', formData.get('pot') === 'on' ? 'true' : 'false');
 		formData.set('bag', formData.get('bag') === 'on' ? 'true' : 'false');
 		formData.set('pad', formData.get('pad') === 'on' ? 'true' : 'false');
-		formData.set('fairy_lights', formData.get('pad') === 'on' ? 'true' : 'false');
+		formData.set('fairy_lights', formData.get('fairy_lights') === 'on' ? 'true' : 'false');
 
 		formData.set('semester', PUBLIC_SEMESTER);
 		if (pb.authStore.isValid && pb.authStore.model?.id) {
@@ -208,7 +208,7 @@
 				</p>
 			{:else}
 				{#if loggedIn}
-					<p class="text-primary py-6 text-xl">
+					<p class="py-6 text-xl text-primary">
 						Schön, dass du dabei bist {pb.authStore.model?.name}!
 					</p>
 				{/if}
