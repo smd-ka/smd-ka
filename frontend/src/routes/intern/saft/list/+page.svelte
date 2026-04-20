@@ -68,13 +68,16 @@
 		'Bemerkung',
 		'E-Mail-Adresse',
 		'Telefonnummer',
-		// SS25
+		// summer semester outdoor
 		'Schlafsack',
 		'Isomatte',
 		'Gaskocher mit Topf',
 		'Zelte',
 		'Anzahl Schlafsäcke zu verleihen',
 		'Anzahl Isomatten zu verleihen',
+		'Beilage zum Grillen',
+		'Lichterkette',
+		'Kochen (1-5)',
 		//
 		'Kuchen',
 		'Vegetarier',
@@ -138,6 +141,7 @@
 					<b>{data.availableBags}</b> verfügbare Schlafsäcke <br />
 					<b>{data.sleepingPadsMissing}</b> Personen, die ne Iso brauchen <br />
 					<b>{data.availablePads}</b> verfügbare Isomatten <br />
+					<b>{data.fairyLightsCount}</b> Lichterketten <br />
 				</div>
 			</div>
 			<div>
@@ -169,7 +173,7 @@
 				Email an den Verteiler senden</a
 			>
 			<button
-				class="bg-light-blue flex items-center gap-2 rounded-md px-4 py-2"
+				class="flex items-center gap-2 rounded-md bg-light-blue px-4 py-2"
 				on:click={() =>
 					navigator.clipboard.writeText(
 						filteredList
@@ -183,7 +187,7 @@
 			</button>
 
 			<button
-				class="bg-lime flex items-center gap-2 rounded-md px-4 py-2"
+				class="flex items-center gap-2 rounded-md bg-lime px-4 py-2"
 				on:click|preventDefault={() => _exportToCsv(filteredList, filter)}
 			>
 				<Fa icon={faArrowUpFromBracket} />
@@ -208,7 +212,8 @@
 
 		<div class="flex overflow-auto">
 			<div
-				class="pad-childs grid grid-cols-[repeat(22,1fr)] divide-y-2 divide-y-reverse divide-x-reverse whitespace-nowrap"
+				class="pad-childs grid divide-y-2 divide-y-reverse divide-x-reverse whitespace-nowrap"
+				style={`grid-template-columns: repeat(${columns.length}, 1fr);`}
 			>
 				{#each columns as column}
 					<div><b>{column}</b></div>
@@ -263,6 +268,9 @@
 					<div>{registration.tents}</div>
 					<div>{registration.bag_count}</div>
 					<div>{registration.pad_count}</div>
+					<div class="w-60 whitespace-pre-wrap">{registration.side_dish}</div>
+					<div>{registration.fairy_lights ? 'Ja' : ''}</div>
+					<div>{registration.likes_cooking ?? ''}</div>
 
 					<div>{registration.brings_cake ? 'Ja' : ''}</div>
 					<div>{registration.is_vegetarian ? 'Ja' : ''}</div>

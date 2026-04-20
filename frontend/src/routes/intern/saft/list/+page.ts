@@ -37,13 +37,14 @@ export const load: PageLoad = async () => {
 		const hasKVVCount = records.filter((x) => x.ticket === 'KVV-Bescheinigung').length;
 		const hasKVVSemesterCount = records.filter((x) => x.ticket === 'KVV-Semesterticket').length;
 
-		// SS25
+		// ZELT-SAFT
 		const comesFridayCount = records.filter((x) => x.comes_friday).length;
 		const pots = records.filter((x) => x.pot).length;
 		const sleepingBagsMissing = records.filter((x) => !x.bag).length;
 		const sleepingPadsMissing = records.filter((x) => !x.pad).length;
 		const availableBags = records.reduce((sum, x) => sum + x.bag_count, 0);
 		const availablePads = records.reduce((sum, x) => sum + x.pad_count, 0);
+		const fairyLightsCount = records.filter((x) => x.fairy_lights).length;
 
 		const lastSubmission = records.map((x) => x.created).reduce((prev, cur) => (prev > cur) ? prev : cur);
 
@@ -66,6 +67,7 @@ export const load: PageLoad = async () => {
 			availablePads,
 			isFemale,
 			isMale,
+			fairyLightsCount,
 			lastSubmission,
 		};
 	} catch (error) {
@@ -122,14 +124,17 @@ export const _exportToCsv = (list, filter) => {
 			'Vegetarier',
 			'Allergien',
 			'Bildrechte',
-			// SS25
+			// ZELT-SAFT
 			'Anreise Freitag',
 			'Schlafsack',
 			'Isomatte',
 			'Gaskocher mit Topf',
 			'Zelte',
 			'Anzahl Schlafsäcke zu verleihen',
-			'Anzahl Isomatten zu verleihen'
+			'Anzahl Isomatten zu verleihen',
+			'Beilage zum Grillen',
+			'Lichterkette',
+			'Kochen (1-5)'
 		],
 		...list.map((x) => [
 			x.created,
@@ -148,14 +153,17 @@ export const _exportToCsv = (list, filter) => {
 			x.is_vegetarian ? 'Ja' : '',
 			escapeCsv(x.allergies),
 			_postImages(x.post_images),
-			// SS25
+			// ZELT-SAFT
 			x.comes_friday ? 'Ja' : '',
 			x.bag ? 'Ja' : '',
 			x.pad ? 'Ja' : '',
 			x.pot ? 'Ja' : '',
 			x.tents,
 			x.bag_count,
-			x.pad_count
+			x.pad_count,
+			escapeCsv(x.side_dish ?? ''),
+			x.fairy_lights ? 'Ja' : '',
+			x.likes_cooking ?? ''
 		])
 	];
 

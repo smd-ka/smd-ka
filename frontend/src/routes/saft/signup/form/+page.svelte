@@ -69,7 +69,7 @@
 		);
 		formData.set('brings_cake', formData.get('brings_cake') === 'on' ? 'true' : 'false');
 		formData.set('is_vegetarian', formData.get('is_vegetarian') === 'on' ? 'true' : 'false');
-		// SS25
+		// ZELT-SAFT
 		formData.set('comes_friday', formData.get('comes_friday') === 'on' ? 'true' : 'false');
 		formData.set('pot', formData.get('pot') === 'on' ? 'true' : 'false');
 		formData.set('bag', formData.get('bag') === 'on' ? 'true' : 'false');
@@ -293,7 +293,7 @@
 					{/if}
 
 					<div class="flex flex-col">
-						<!-- +++ SS25 +++
+						<!-- +++ ZELT-SAFT +++
 					<InputCheckbox name="comes_friday" label="Anreise am Freitag"></InputCheckbox>
 					-->
 						<label for="travel_comments">
