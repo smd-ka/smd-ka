@@ -9,7 +9,7 @@
 	import { faCalendarDays, faCoins, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 	// hint: to re-open the signup, look into: backend/saft/reqStatus.go
-	import SignupButton from '$lib/components/saft/SignupButton.svelte';
+	import SignupButton from '../../saft/_components/SignupButton.svelte';
 </script>
 
 <HeroShot imgSrc={header} height={'h-[70svh]'}></HeroShot>
@@ -24,7 +24,7 @@
 		<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
 			<img
 				class="h-72 w-full object-cover object-top max-lg:order-last"
-				alt="Bild von der SAFT"
+				alt="Miniente als Deko der Murmelbahn"
 				src={saftDuck}
 			/>
 		</Saos>
@@ -55,12 +55,12 @@
 					Preis: 40 € <!-- (XX € für Freitag bis Sonntag) -->
 				</div>
 				<div class="flex justify-end gap-2">
-					<Fa class="mt-1 justify-self-end text-primary" icon={faLocationDot} />
-					Ort: Nähe Heidelberg, Kühberghütte
+					<Fa class="text-primary mt-1 justify-self-end" icon={faLocationDot} />
+					Ort: Nähe Heidelberg, Kühlberghütte
 				</div>
 				<a
 					href="https://maps.app.goo.gl/GD2SXFPAEzTq7EKE7"
-					class="w-fit justify-self-end bg-black p-4 text-white"
+					class="mt-4 w-fit justify-self-end bg-black p-4 text-white"
 				>
 					Auf Google Maps anschauen
 				</a>
@@ -68,8 +68,8 @@
 		</Saos>
 		<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
 			<img
-				alt="Bild von der SAFT"
 				class="h-72 w-full object-cover object-top max-lg:order-last"
+				alt="lustiges Gruppenfoto von der SAFT"
 				src={saftGroup}
 			/>
 		</Saos>

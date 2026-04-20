@@ -6,6 +6,7 @@
 	import EmailInputField from '$lib/components/forms/EmailInput.svelte';
 	import TelephoneInputField from '$lib/components/forms/TelephoneInputField.svelte';
 	import GenderInput from '$lib/components/forms/GenderInput.svelte';
+	import PritPublicImageDisclaimer from '../../_components/PritPublicImageDisclaimer.svelte';
 	import { _loading, _post_regiokon_signup, _SMDGroups } from './+page';
 	import flyer from '$lib/assets/pages/events/regiokon/regiokon_flyer.jpg';
 	import { pb } from '$lib/pocketbase';
@@ -158,11 +159,7 @@
 			<option value="no">Bitte veröffentlicht keine Bilder von mir</option>
 		</select>
 		<p class="text-sm font-bold">
-			Anmerkung des Public Relations und IT-Teams: Es werden generell nur Bilder veröffentlicht, auf
-			denen ihr gut ausseht, sollten Zweifel bestehen oder wir es als grenzwertig ansehen, fragen
-			wir nochmal im Einzelfall nach. Bitte habt Verständnis, dass wir dies nicht für jedes
-			Bild/Video machen wollen, da es unsere Arbeit dann ungemein erschwert. Danke schonmal und wir
-			freuen uns auf fröhliche und lustige Bilder von der Regiokon :P
+			<PritPublicImageDisclaimer location="von der Regiokon" />
 		</p>
 
 		<div class="flex flex-col">

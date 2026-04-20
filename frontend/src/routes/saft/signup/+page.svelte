@@ -1,32 +1,14 @@
 <script lang="ts">
-	import { getErrorMessage, pb } from '$lib/pocketbase';
-	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
+	import { pb } from '$lib/pocketbase';
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
+	import LoginForm from '$lib/components/LoginForm.svelte';
 
-	let email = '';
-	let password = '';
-	let loading = false;
-	let errorMessage = '';
+	const FormUrl = '/saft/signup/form';
 
 	onMount(() => {
-		if (pb.authStore.isValid) goto('/saft/signup/form');
+		if (pb.authStore.isValid) goto(FormUrl);
 	});
-
-	const login = async (event: Event) => {
-		event.preventDefault();
-		loading = true;
-		try {
-			await pb.collection('users').authWithPassword(email, password);
-		} catch (e: any) {
-			loading = false;
-			errorMessage = getErrorMessage(e);
-			return;
-		}
-
-		await pb.authStore.loadFromCookie(document.cookie);
-		goto('/saft/signup/form');
-	};
 </script>
 
 <main class="container mx-auto grid px-4 py-24">
@@ -38,10 +20,9 @@
 					Du hast kein Konto für SMD-KA Intern? <br />
 					Dann kannst du dich hier ohne Konto anmelden:
 				</p>
-				<a
-					class=" bg-black p-4 text-center text-white no-underline hover:underline max-md:w-full"
-					href="/saft/signup/form">Ohne Konto anmelden</a
-				>
+				<a class="bg-black p-4 text-center text-white no-underline max-md:w-full" href={FormUrl}>
+					Ohne Konto anmelden
+				</a>
 			</div>
 
 			<div class="relative bg-gray-300 max-md:h-0.5 md:w-0.5">
@@ -53,60 +34,8 @@
 			</div>
 
 			<div class="flex justify-center">
-				<form class="flex w-80 flex-col gap-4" on:submit={login}>
-					<h2 class="text-center text-xl">Anmelden Intern</h2>
-					<div class="relative">
-						<input
-							bind:value={email}
-							class="peer w-full rounded-md border-2 p-3"
-							type="email"
-							name="email"
-							placeholder="E-Mail-Adresse"
-							required
-						/>
-						<label
-							for="email"
-							class="absolute -top-2.5 left-3 bg-white px-1 text-[#555555] opacity-100 transition-all duration-100 peer-placeholder-shown:opacity-0"
-						>
-							E-Mail-Adresse
-						</label>
-					</div>
-					<div class="relative">
-						<input
-							bind:value={password}
-							class="peer w-full rounded-md border-2 p-3"
-							type="password"
-							name="password"
-							placeholder="Passwort"
-							required
-						/>
-						<label
-							for="password"
-							class="absolute -top-2.5 left-3 bg-white px-1 text-[#555555] opacity-100 transition-all duration-100 peer-placeholder-shown:opacity-0"
-						>
-							Passwort
-						</label>
-					</div>
-					{#if errorMessage}
-						<p class="text-red-500">Ungültige E-Mail-Adresse oder Passwort</p>
-					{/if}
-					<button
-						disabled={loading}
-						class="relative flex items-center justify-center bg-black p-3 text-white"
-					>
-						{#if loading}
-							<img class="absolute left-16 h-8" src={loadingSpinner} alt="loading" />
-						{/if}
-						Login</button
-					>
-					<a href="/account/reset" class="text-center text-sm text-gray-400 hover:underline"
-						>Passwort vergessen?</a
-					>
-					<section class="text-center text-sm text-gray-400">
-						Noch kein Konto?
-						<a href="/account/register" class="text-primary hover:underline">Jetzt eins anlegen.</a>
-					</section>
-				</form>
+				<!-- hide account creation because it may make time until that account is accepted -->
+				<LoginForm title="Anmeldung" redirectTo={FormUrl} showAccountCreation={false} />
 			</div>
 		</div>
 	</div>

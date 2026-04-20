@@ -5,25 +5,44 @@ import (
 	_ "time/tzdata"  // fallback if OS does not have timezone DB
 )
 
-var (
-	deadlineTimezone *time.Location
+const (
 	// the exact string that is accepted for new submissions
 	// must in practice be synced with frontend's PUBLIC_SEMESTER env var
-	AcceptedSemester string
+	AcceptedSemester = "SS26"
+
+	readableIsoFormat = "2006-01-02 15:04:05" // without timezone & with space
+	deadlineTimezoneName = "Europe/Berlin"
+
+	// change these dates here to unlock the SAFT registration formular
+	registrationDeadlineIso = "2026-04-29 00:00:00"
+	afterwardsDeadlineIso = "2026-05-03 00:00:00"
+)
+
+var (
+	deadlineTimezone *time.Location
 	RegistrationDeadline time.Time
 	AfterwardsDeadline time.Time
 )
 
 func init() {
 	var err error
-	deadlineTimezone, err = time.LoadLocation("Europe/Berlin")
+	deadlineTimezone, err = time.LoadLocation(deadlineTimezoneName)
 	if err != nil {
 		panic(err)
 	}
-	// change these dates here to unlock the SAFT registration formular
-	AcceptedSemester = "SS26"
-	RegistrationDeadline = time.Date(2026, time.April, 28, 23, 59, 0, 0, deadlineTimezone)
-	AfterwardsDeadline = time.Date(2026, time.May, 03, 0, 0, 0, 0, deadlineTimezone)
+	// parsing does not induce a lot of work as it happens on launch
+	RegistrationDeadline = parseDeadline(registrationDeadlineIso)
+	AfterwardsDeadline = parseDeadline(afterwardsDeadlineIso)
+}
+
+func parseDeadline(iso string) time.Time {
+	var parsed time.Time
+	var err error
+	parsed, err = time.ParseInLocation(readableIsoFormat, iso, deadlineTimezone)
+	if err != nil {
+		panic(err)
+	}
+	return parsed
 }
 
 

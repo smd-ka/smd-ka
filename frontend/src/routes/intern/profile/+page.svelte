@@ -5,6 +5,7 @@
 	import { faChevronRight, faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 	import InputCheckbox from '$lib/components/forms/CheckboxInput.svelte';
+	import PritPublicImageDisclaimer from '../../_components/PritPublicImageDisclaimer.svelte';
 	import { onMount } from 'svelte';
 
 	enum church {
@@ -139,9 +140,8 @@
 		<div>
 			<p class="text-secondary-text">
 				Hier kannst du deine Profildaten bearbeiten. Diese werden in der internen Adressliste
-				angezeigt. Bei Problemen oder Fragen melde dich gerne beim <a
-					href="mailto:webmaster@smd-karlsruhe.de">PRIT-Team</a
-				>.
+				angezeigt. Bei Problemen oder Fragen melde dich gerne beim
+				<a href="mailto:webmaster@smd-karlsruhe.de">PRIT-Team</a>.
 			</p>
 
 			<button
@@ -264,11 +264,7 @@
 			</select>
 			<p></p>
 			<p class="py-2 text-sm font-bold">
-				Anmerkung des Public Relations und IT-Teams: Es werden generell nur Bilder veröffentlicht,
-				auf denen ihr gut ausseht, sollten Zweifel bestehen oder wir es als grenzwertig ansehen,
-				fragen wir nochmal im Einzelfall nach. Bitte habt Verständnis, dass wir dies nicht für jedes
-				Bild/Video machen wollen, da es unsere Arbeit dann ungemein erschwert. Danke schonmal und
-				wir freuen uns auf fröhliche und lustige Bilder :P
+				<PritPublicImageDisclaimer />
 			</p>
 		</div>
 

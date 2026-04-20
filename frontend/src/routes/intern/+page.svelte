@@ -19,7 +19,7 @@
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 	import { fa42Group, faWikipediaW } from '@fortawesome/free-brands-svg-icons';
 
-	import SignupButton from '$lib/components/saft/SignupButton.svelte';
+	import SignupButton from '../saft/_components/SignupButton.svelte';
 
 	let isSaftCoordinator = pb.authStore.model?.roles.includes(SAFT_COORDINATOR);
 	let isPritTeam = pb.authStore.model?.roles.includes(PRIT_RESPONSABLE);
