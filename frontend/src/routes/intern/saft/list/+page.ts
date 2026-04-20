@@ -37,7 +37,7 @@ export const load: PageLoad = async () => {
 		const hasKVVCount = records.filter((x) => x.ticket === 'KVV-Bescheinigung').length;
 		const hasKVVSemesterCount = records.filter((x) => x.ticket === 'KVV-Semesterticket').length;
 
-		// SS25
+		// ZELT-SAFT
 		const comesFridayCount = records.filter((x) => x.comes_friday).length;
 		const pots = records.filter((x) => x.pot).length;
 		const sleepingBagsMissing = records.filter((x) => !x.bag).length;
@@ -124,7 +124,7 @@ export const _exportToCsv = (list, filter) => {
 			'Vegetarier',
 			'Allergien',
 			'Bildrechte',
-			// SS25
+			// ZELT-SAFT
 			'Anreise Freitag',
 			'Schlafsack',
 			'Isomatte',
@@ -153,7 +153,7 @@ export const _exportToCsv = (list, filter) => {
 			x.is_vegetarian ? 'Ja' : '',
 			escapeCsv(x.allergies),
 			_postImages(x.post_images),
-			// SS25
+			// ZELT-SAFT
 			x.comes_friday ? 'Ja' : '',
 			x.bag ? 'Ja' : '',
 			x.pad ? 'Ja' : '',
