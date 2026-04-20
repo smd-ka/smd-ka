@@ -68,13 +68,16 @@
 		'Bemerkung',
 		'E-Mail-Adresse',
 		'Telefonnummer',
-		// SS25
+		// summer semester outdoor
 		'Schlafsack',
 		'Isomatte',
 		'Gaskocher mit Topf',
 		'Zelte',
 		'Anzahl Schlafsäcke zu verleihen',
 		'Anzahl Isomatten zu verleihen',
+		'Beilage zum Grillen',
+		'Lichterkette',
+		'Kochen (1-5)',
 		//
 		'Kuchen',
 		'Vegetarier',
@@ -149,6 +152,10 @@
 					<bold class="font-bold">{data.isMale}</bold>
 					Anzahl Männer
 				</div>
+				<div>
+					<bold class="font-bold">{data.fairyLightsCount}</bold>
+					Lichterketten
+				</div>
 			</div>
 
 			<!-- nochmal block mit Gender -->
@@ -208,7 +215,7 @@
 
 		<div class="flex overflow-auto">
 			<div
-				class="pad-childs grid grid-cols-[repeat(22,1fr)] divide-y-2 divide-y-reverse divide-x-reverse whitespace-nowrap"
+				class="pad-childs grid grid-cols-[repeat(25,1fr)] divide-y-2 divide-y-reverse divide-x-reverse whitespace-nowrap"
 			>
 				{#each columns as column}
 					<div><b>{column}</b></div>
@@ -263,6 +270,9 @@
 					<div>{registration.tents}</div>
 					<div>{registration.bag_count}</div>
 					<div>{registration.pad_count}</div>
+					<div class="w-60 whitespace-pre-wrap">{registration.side_dish}</div>
+					<div>{registration.fairy_lights ? 'Ja' : ''}</div>
+					<div>{registration.likes_cooking ?? ''}</div>
 
 					<div>{registration.brings_cake ? 'Ja' : ''}</div>
 					<div>{registration.is_vegetarian ? 'Ja' : ''}</div>

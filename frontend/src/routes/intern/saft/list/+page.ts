@@ -44,6 +44,7 @@ export const load: PageLoad = async () => {
 		const sleepingPadsMissing = records.filter((x) => !x.pad).length;
 		const availableBags = records.reduce((sum, x) => sum + x.bag_count, 0);
 		const availablePads = records.reduce((sum, x) => sum + x.pad_count, 0);
+		const fairyLightsCount = records.filter((x) => x.fairy_lights).length;
 
 		const lastSubmission = records.map((x) => x.created).reduce((prev, cur) => (prev > cur) ? prev : cur);
 
@@ -66,6 +67,7 @@ export const load: PageLoad = async () => {
 			availablePads,
 			isFemale,
 			isMale,
+			fairyLightsCount,
 			lastSubmission,
 		};
 	} catch (error) {
@@ -129,7 +131,10 @@ export const _exportToCsv = (list, filter) => {
 			'Gaskocher mit Topf',
 			'Zelte',
 			'Anzahl Schlafsäcke zu verleihen',
-			'Anzahl Isomatten zu verleihen'
+			'Anzahl Isomatten zu verleihen',
+			'Beilage zum Grillen',
+			'Lichterkette',
+			'Kochen (1-5)'
 		],
 		...list.map((x) => [
 			x.created,
@@ -155,7 +160,10 @@ export const _exportToCsv = (list, filter) => {
 			x.pot ? 'Ja' : '',
 			x.tents,
 			x.bag_count,
-			x.pad_count
+			x.pad_count,
+			escapeCsv(x.side_dish ?? ''),
+			x.fairy_lights ? 'Ja' : '',
+			x.likes_cooking ?? ''
 		])
 	];
 
