@@ -10,5 +10,7 @@
 </script>
 
 <main class="flex justify-center gap-4 md:py-24">
-	<LoginForm />
+	<div class="md:rounded-md md:border">
+		<LoginForm />
+	</div>
 </main>
