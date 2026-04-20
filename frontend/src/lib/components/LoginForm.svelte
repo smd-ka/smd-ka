@@ -64,7 +64,7 @@
 	};
 </script>
 
-<div class="flex w-96 flex-col items-center gap-4 py-6 md:rounded-md md:border">
+<div class="flex w-96 flex-col items-center gap-4 py-6">
 	<section>
 		{#if loading}
 			<div class="my-20 flex items-center justify-center">
