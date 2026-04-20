@@ -212,7 +212,8 @@
 
 		<div class="flex overflow-auto">
 			<div
-				class="pad-childs grid grid-cols-[repeat(25,1fr)] divide-y-2 divide-y-reverse divide-x-reverse whitespace-nowrap"
+				class="pad-childs grid divide-y-2 divide-y-reverse divide-x-reverse whitespace-nowrap"
+				style={`grid-template-columns: repeat(${columns.length}, 1fr);`}
 			>
 				{#each columns as column}
 					<div><b>{column}</b></div>
