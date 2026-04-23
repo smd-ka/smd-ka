@@ -339,17 +339,28 @@
 						<textarea class="rounded-md border-2" name="comments" id="comments" rows="5"></textarea>
 					</div>
 
-					<button
-						disabled={loading}
-						class="relative flex items-center justify-center bg-black px-12 py-4 text-white md:w-fit"
-					>
-						{#if loading}
-							<img class="absolute left-2 h-8" src={loadingSpinnerWhite} alt="loading" />
-						{/if}
-						Anmelden
-					</button>
+					<div class="button-row">
+						<button type="submit" disabled={loading}>
+							{#if loading}
+								<img class="absolute left-2 h-8" src={loadingSpinnerWhite} alt="loading" />
+							{/if}
+							Anmelden
+						</button>
+					</div>
 				</form>
 			{/if}
 		{/if}
 	</div>
 </main>
+
+<style>
+	.button-row {
+		@apply flex flex-row flex-wrap gap-8;
+	}
+	.button-row button {
+		@apply px-12 py-4;
+	}
+	button {
+		@apply relative flex items-center justify-center bg-black px-4 py-2 text-white md:w-fit;
+	}
+</style>
