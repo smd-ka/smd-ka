@@ -83,7 +83,11 @@ func copyUserDataToRecord(app *pocketbase.PocketBase, userId string, e *core.Rec
 	// Create empty user
 	user := User{}
 
-	app.DB().Select("id", "name", "email", "surname", "allergies", "vegetarian", "phonenumber", "gender").From("users").AndWhere(dbx.Like("id", userId)).One(&user)
+	err := app.DB().Select("id", "name", "email", "surname", "allergies", "vegetarian", "phonenumber", "gender").From("users").AndWhere(dbx.Like("id", userId)).One(&user)
+	// when looking up that user fails, forward error
+	if err != nil {
+		return err
+	}
 
 	// Set user data to record for template
 	e.Record.Set("name", user.Name)
