@@ -5,7 +5,6 @@ import (
 	"net/mail"
 	"strings"
 
-	"github.com/pocketbase/dbx"
 	"github.com/pocketbase/pocketbase"
 	"github.com/pocketbase/pocketbase/apis"
 	"github.com/pocketbase/pocketbase/core"
@@ -49,7 +48,7 @@ func SaftEmails(app *pocketbase.PocketBase) {
 		if user_id != "" {
 			// verifies that user is authenticated
 			// and copies user data for the registration
-			err = copyUserDataToRecord(app, user_id, e)
+			err = copyUserDataToRecord(user_id, e)
 		} else {
 			// otherwise validate that bot question was answered correctly
 			err = validateCaptchaLite(e)
@@ -108,43 +107,30 @@ func validateBotQuestion(answer string) bool {
 	return b.String() == BotQuestionExpected
 }
 
-// is expected to fail when userId is invalid
-// but not, when userId was just unset
-// TODO (security) verify that the user with that id was authenticated during the request
-func copyUserDataToRecord(app *pocketbase.PocketBase, userId string, e *core.RecordRequestEvent) error {
-	if userId == "" {
-		return nil
-	}
-
-	// Define how the output of the query below looks like
-	type User struct {
-		Id           string `db:"id" json:"id"`
-		Name         string `db:"name" json:"name"`
-		Surname      string `db:"surname" json:"surname"`
-		Email        string `db:"email" json:"email"`
-		Gender       string `db:"gender" json:"gender"`
-		PhoneNumber  string `db:"phonenumber" json:"phonenumber"`
-		Allergies    string `db:"allergies" json:"allergies"`
-		IsVegetarian bool   `db:"vegetarian" json:"vegetarian"`
-	}
-
-	// Create empty user
-	user := User{}
-
-	err := app.DB().Select("id", "name", "email", "surname", "allergies", "vegetarian", "phonenumber", "gender").From("users").AndWhere(dbx.HashExp{"id": userId}).One(&user)
-	// when looking up that user fails, forward error
+func copyUserDataToRecord(user_id string, e *core.RecordRequestEvent) error {
+	// load user data from currently signed in user
+	reqInfo, err := e.RequestInfo()
 	if err != nil {
 		return err
 	}
+	user := reqInfo.Auth
+	if user == nil {
+		return apis.NewUnauthorizedError("must be authenticated", nil)
+	}
 
-	// Set user data to record for template
-	e.Record.Set("name", user.Name)
-	e.Record.Set("surname", user.Surname)
-	e.Record.Set("email", user.Email)
-	e.Record.Set("allergies", user.Allergies)
-	e.Record.Set("is_vegetarian", user.IsVegetarian)
-	e.Record.Set("phonenumber", user.PhoneNumber)
-	e.Record.Set("gender", user.Gender)
+	// verify that the same user is mentioned (because that gets saved to the db)
+	if user.Id != user_id {
+		return apis.NewUnauthorizedError("must be authenticated", nil)
+	}
+
+	// copy user data to record
+	e.Record.Set("name", user.GetString("name"))
+	e.Record.Set("surname", user.GetString("surname"))
+	e.Record.Set("email", user.GetString("email"))
+	e.Record.Set("allergies", user.GetString("allergies"))
+	e.Record.Set("is_vegetarian", user.GetBool("vegetarian"))
+	e.Record.Set("phonenumber", user.GetString("phonenumber"))
+	e.Record.Set("gender", user.GetString("gender"))
 
 	return nil
 }
