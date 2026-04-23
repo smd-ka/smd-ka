@@ -44,6 +44,7 @@
 	let regStatus: RegistrationStatus = RegistrationStatus.Unknown;
 	$: loading = status == FormStatus.Submitting;
 	$: success = status == FormStatus.SuccessfullySubmit;
+	$: errorOnSubmit = status == FormStatus.ErrorOnSubmit;
 
 	let record: saftRegistration;
 	let loggedIn = false;
@@ -357,6 +358,20 @@
 								required
 							/>
 						</div>
+					{/if}
+
+					{#if errorOnSubmit}
+						<p class="text-red-600">
+							Beim Anmelden trat ein Fehler auf.
+							{#if !loggedIn}
+								Prüfe bitte, ob deine Antwort auf die letzte Frage richtig (geschrieben) ist ;).
+								<!-- change start of next sentence -->
+								Sonst lade bitte
+							{:else}
+								Bitte lade
+							{/if}
+							die Seite neu oder probiere es später erneut.
+						</p>
 					{/if}
 
 					<div class="button-row">
