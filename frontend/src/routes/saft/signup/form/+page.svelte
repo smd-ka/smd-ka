@@ -5,6 +5,7 @@
 	import InputCheckbox from '$lib/components/forms/CheckboxInput.svelte';
 	import { getErrorMessage, pb } from '$lib/pocketbase';
 	import { onMount } from 'svelte';
+	import { dev } from '$app/environment';
 	import type { saftRegistration } from '$lib/models';
 	import EmailInputField from '$lib/components/forms/EmailInput.svelte';
 	import TelephoneInputField from '$lib/components/forms/TelephoneInputField.svelte';
@@ -22,6 +23,7 @@
 	import MessageClosed from '../../_components/MessageClosed.svelte';
 
 	import { RegistrationStatus, requestRegStatus } from '$lib/saftRegistrationApi';
+	import { fillSaftFormTest } from './testFiller';
 
 	const ticketValues = [
 		'Deutschlandticket/Jugendticket BW',
@@ -120,6 +122,11 @@
 					noch einmal.
 				</p>
 			{:else}
+				{#if dev}
+					<button type="button" disabled={loading} on:click={() => fillSaftFormTest(loggedIn)}>
+						Testdaten einfügen
+					</button>
+				{/if}
 				{#if loggedIn}
 					<p class="py-6 text-xl text-primary">
 						Schön, dass du dabei bist {pb.authStore.model?.name}!
@@ -340,6 +347,11 @@
 					</div>
 
 					<div class="button-row">
+						{#if dev}
+							<button type="button" disabled={loading} on:click={() => fillSaftFormTest(loggedIn)}>
+								Testdaten einfügen
+							</button>
+						{/if}
 						<button type="submit" disabled={loading}>
 							{#if loading}
 								<img class="absolute left-2 h-8" src={loadingSpinnerWhite} alt="loading" />
