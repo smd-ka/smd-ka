@@ -3,6 +3,7 @@ package saft
 import (
 	"net/http"
 	"net/mail"
+	"strings"
 
 	"github.com/pocketbase/dbx"
 	"github.com/pocketbase/pocketbase"
@@ -15,10 +16,13 @@ import (
 	"SMD-KA-Backend/saft/regStatus"
 )
 
-// Constants for SAFT registration emails
 const (
+	// Constants for SAFT registration emails
 	Subject   = "[SMD-KA] SAFT Anmeldung "
 	OrgaEmail = "inreach@smd-karlsruhe.de"
+
+	// checked against lowercase, without any characters outside [a-z]
+	BotQuestionExpected = "abendmahl"
 )
 
 func SaftEmails(app *pocketbase.PocketBase) {
@@ -41,7 +45,15 @@ func SaftEmails(app *pocketbase.PocketBase) {
 
 		// Submission by user?
 		user_id := e.Record.GetString("user")
-		err := copyUserDataToRecord(app, user_id, e)
+		var err error
+		if user_id != "" {
+			// verifies that user is authenticated
+			// and copies user data for the registration
+			err = copyUserDataToRecord(app, user_id, e)
+		} else {
+			// otherwise validate that bot question was answered correctly
+			err = validateCaptchaLite(e)
+		}
 		if err != nil {
 			return err
 		}
@@ -64,6 +76,41 @@ func SaftEmails(app *pocketbase.PocketBase) {
 	})
 }
 
+func validateCaptchaLite(e *core.RecordRequestEvent) error {
+	botData := struct {
+		Answer string `json:"bot_question" form:"bot_question"`
+	}{}
+	err := e.BindBody(&botData)
+	if err == nil && validateBotQuestion(botData.Answer) {
+		return nil
+	}
+	// when that fails as well, show unauthenticated error
+	// -> diverting bots & users from the fact, that a 'field' was missing
+	return apis.NewUnauthorizedError("must be authenticated", nil)
+}
+
+// returns true when answer is as expected
+// after toLower & removing all runes that are not in a-z
+func validateBotQuestion(answer string) bool {
+	expLen := len(BotQuestionExpected)
+	actLen := len(answer)
+	// also reject, when answer is way too long to be realistic
+	if expLen > actLen || actLen > (2*expLen) {
+		return false
+	}
+	var b strings.Builder
+	b.Grow(actLen)
+	for _, r := range strings.ToLower(answer) {
+		if r >= 'a' && r <= 'z' {
+			b.WriteRune(r)
+		}
+	}
+	return b.String() == BotQuestionExpected
+}
+
+// is expected to fail when userId is invalid
+// but not, when userId was just unset
+// TODO (security) verify that the user with that id was authenticated during the request
 func copyUserDataToRecord(app *pocketbase.PocketBase, userId string, e *core.RecordRequestEvent) error {
 	if userId == "" {
 		return nil

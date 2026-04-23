@@ -346,6 +346,19 @@
 						<textarea class="rounded-md border-2" name="comments" id="comments" rows="5"></textarea>
 					</div>
 
+					{#if !loggedIn}
+						<div class="flex flex-col">
+							<p>Bei was teilen wir Brot &amp; Wein?</p>
+							<InputField
+								id="bot_question"
+								name="bot_question"
+								label="Das …"
+								disabled={loading}
+								required
+							/>
+						</div>
+					{/if}
+
 					<div class="button-row">
 						{#if dev}
 							<button type="button" disabled={loading} on:click={() => fillSaftFormTest(loggedIn)}>
