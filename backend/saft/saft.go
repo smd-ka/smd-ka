@@ -30,7 +30,8 @@ func SaftEmails(app *pocketbase.PocketBase) {
 		return se.Next()
 	})
 
-	app.OnRecordCreate("saft").BindFunc(func(e *core.RecordEvent) error {
+	// only triggers on external API requests
+	app.OnRecordCreateRequest("saft").BindFunc(func(e *core.RecordRequestEvent) error {
 
 		// SAFT registration open?
 		semester := e.Record.GetString("semester")
@@ -63,7 +64,7 @@ func SaftEmails(app *pocketbase.PocketBase) {
 	})
 }
 
-func copyUserDataToRecord(app *pocketbase.PocketBase, userId string, e *core.RecordEvent) error {
+func copyUserDataToRecord(app *pocketbase.PocketBase, userId string, e *core.RecordRequestEvent) error {
 	if userId == "" {
 		return nil
 	}
@@ -101,7 +102,7 @@ func copyUserDataToRecord(app *pocketbase.PocketBase, userId string, e *core.Rec
 	return nil
 }
 
-func sendSAFTConfirmationEmail(app *pocketbase.PocketBase, e *core.RecordEvent) error {
+func sendSAFTConfirmationEmail(app *pocketbase.PocketBase, e *core.RecordRequestEvent) error {
 
 	registry := template.NewRegistry()
 
