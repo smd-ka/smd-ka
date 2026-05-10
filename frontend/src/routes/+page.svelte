@@ -49,7 +49,7 @@
 
 <HeroShot imgSrc={header} bgPosition={'bg-[center_left_60%]'}>
 	<div
-		class="text-grey absolute left-1/2 top-1/3 w-full -translate-x-1/2 -translate-y-1/2 px-4 text-center"
+		class="absolute left-1/2 top-1/3 w-full -translate-x-1/2 -translate-y-1/2 px-4 text-center text-white mix-blend-difference"
 	>
 		<div class="font-mincho text-4xl sm:text-5xl xl:text-7xl">Hier bist du richtig!</div>
 		<div class="font-caveat text-xl sm:text-2xl xl:text-3xl">
