@@ -5,7 +5,6 @@
 	import defaultAvatar from '$lib/assets/user_default.png';
 	import {
 		faBirthdayCake,
-		faChevronRight,
 		faChurch,
 		faEnvelope,
 		faGraduationCap,
@@ -15,7 +14,7 @@
 		faUserGroup
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
-	import AddressBar from '$lib/components/navigation/AddressBar.svelte';
+	import Breadcrumbs from '$lib/components/navigation/Breadcrumbs.svelte';
 
 	let record: any;
 
@@ -49,7 +48,7 @@
 </script>
 
 {#if record}
-	<AddressBar
+	<Breadcrumbs
 		crumbs={[
 			['Intern', '/intern'],
 			['Address List', '/intern/address-list'],
@@ -131,7 +130,7 @@
 		@apply p-4 max-sm:w-full;
 	}
 	.person-card > img {
-		@apply border-primary mx-auto flex h-32 w-32 rounded-full object-cover;
+		@apply mx-auto flex h-32 w-32 rounded-full border-primary object-cover;
 	}
 	.person-card > h2 {
 		@apply py-4 text-center uppercase;

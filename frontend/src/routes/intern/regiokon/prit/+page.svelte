@@ -2,8 +2,7 @@
 	import { faSearch } from '@fortawesome/free-solid-svg-icons';
 	import { _postImages } from '../list/+page';
 	import Fa from 'svelte-fa';
-	import { PUBLIC_SEMESTER } from '$env/static/public';
-	import AddressBar from '$lib/components/navigation/AddressBar.svelte';
+	import Breadcrumbs from '$lib/components/navigation/Breadcrumbs.svelte';
 
 	export let data;
 	let filteredList = data.list;
@@ -23,7 +22,7 @@
 	}
 </script>
 
-<AddressBar
+<Breadcrumbs
 	crumbs={[
 		['Intern', '/intern'],
 		['PRIT Regiokon', '/intern/regiokon/prit']

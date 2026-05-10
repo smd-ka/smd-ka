@@ -5,7 +5,7 @@
 	import EditEventForm from './editEventForm.svelte';
 	import dayjs from 'dayjs';
 	import { _duplicateEvent, _eventStore, _shownEvent, type CalendarEvent } from './+page';
-	import AddressBar from '$lib/components/navigation/AddressBar.svelte';
+	import Breadcrumbs from '$lib/components/navigation/Breadcrumbs.svelte';
 
 	let loading = false;
 	let updated = false;
@@ -27,7 +27,7 @@
 	}
 </script>
 
-<AddressBar
+<Breadcrumbs
 	crumbs={[
 		['Intern', '/intern'],
 		['Kalender bearbeiten', '/intern/kalender']
@@ -39,12 +39,12 @@
 			_duplicateEvent.set(undefined);
 			return;
 		}}
-		class="bg-primary fa rounded-md p-2 text-white"
+		class="fa rounded-md bg-primary p-2 text-white"
 	>
 		<Fa icon={faPlus}></Fa>
 		<span class="max-md:hidden"> Event hinzufügen </span>
 	</button>
-</AddressBar>
+</Breadcrumbs>
 
 {#if !$_eventStore}
 	<p>loadingSpinner</p>

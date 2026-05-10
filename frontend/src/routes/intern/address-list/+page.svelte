@@ -16,7 +16,7 @@
 	} from '@fortawesome/free-solid-svg-icons';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 	import dayjs from 'dayjs';
-	import AddressBar from '$lib/components/navigation/AddressBar.svelte';
+	import Breadcrumbs from '$lib/components/navigation/Breadcrumbs.svelte';
 
 	export let data;
 	let records: User[];
@@ -140,7 +140,7 @@
 	};
 </script>
 
-<AddressBar
+<Breadcrumbs
 	crumbs={[
 		['Intern', '/intern'],
 		['Address List', '/intern/address-list']
@@ -237,7 +237,7 @@
 					<img
 						src={src(record.avatar, record.id, record.collectionId, record.collectionName)}
 						alt="avatar"
-						class="border-primary h-12 w-12 items-center rounded-full object-cover"
+						class="h-12 w-12 items-center rounded-full border-primary object-cover"
 					/>
 					<div>
 						<span class="text-xl">

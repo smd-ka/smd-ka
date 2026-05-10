@@ -6,7 +6,7 @@
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 	import InputCheckbox from '$lib/components/forms/CheckboxInput.svelte';
 	import PritPublicImageDisclaimer from '../../_components/PritPublicImageDisclaimer.svelte';
-	import AddressBar from '$lib/components/navigation/AddressBar.svelte';
+	import Breadcrumbs from '$lib/components/navigation/Breadcrumbs.svelte';
 	import { onMount } from 'svelte';
 
 	enum church {
@@ -81,7 +81,7 @@
 </script>
 
 <main class="container mx-auto py-4">
-	<AddressBar
+	<Breadcrumbs
 		crumbs={[
 			['Intern', '/intern'],
 			['Profil', '/intern/profile']
