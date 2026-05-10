@@ -1,10 +1,11 @@
 <script lang="ts">
 	import Fa from 'svelte-fa';
-	import { faChevronRight, faPlus } from '@fortawesome/free-solid-svg-icons';
+	import { faPlus } from '@fortawesome/free-solid-svg-icons';
 	import AddEventForm from './addEventForm.svelte';
 	import EditEventForm from './editEventForm.svelte';
 	import dayjs from 'dayjs';
 	import { _duplicateEvent, _eventStore, _shownEvent, type CalendarEvent } from './+page';
+	import Breadcrumbs from '$lib/components/navigation/Breadcrumbs.svelte';
 
 	let loading = false;
 	let updated = false;
@@ -26,28 +27,24 @@
 	}
 </script>
 
-<nav class="container mx-auto flex justify-between px-4 py-4">
-	<ol class="inline-flex list-none">
-		<li class="flex items-center">
-			<a class="!no-underline" href="/intern">Intern</a>
-			<Fa icon={faChevronRight} class="mx-2" />
-		</li>
-		<li class="flex items-center">
-			<a class="!no-underline" href="/intern/kalender">Kalender bearbeiten</a>
-		</li>
-	</ol>
+<Breadcrumbs
+	crumbs={[
+		['Intern', '/intern'],
+		['Kalender bearbeiten', '/intern/kalender']
+	]}
+>
 	<button
 		on:click={() => {
 			_shownEvent.set(undefined);
 			_duplicateEvent.set(undefined);
 			return;
 		}}
-		class="bg-primary fa rounded-md p-2 text-white"
+		class="fa rounded-md bg-primary p-2 text-white"
 	>
 		<Fa icon={faPlus}></Fa>
 		<span class="max-md:hidden"> Event hinzufügen </span>
 	</button>
-</nav>
+</Breadcrumbs>
 
 {#if !$_eventStore}
 	<p>loadingSpinner</p>

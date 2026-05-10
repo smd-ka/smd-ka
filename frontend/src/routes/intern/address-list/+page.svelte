@@ -16,6 +16,7 @@
 	} from '@fortawesome/free-solid-svg-icons';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 	import dayjs from 'dayjs';
+	import Breadcrumbs from '$lib/components/navigation/Breadcrumbs.svelte';
 
 	export let data;
 	let records: User[];
@@ -139,17 +140,12 @@
 	};
 </script>
 
-<nav class="container mx-auto px-4 py-4">
-	<ol class="inline-flex list-none">
-		<li class="flex items-center">
-			<a class="!no-underline" href="/intern">Intern</a>
-			<Fa icon={faChevronRight} class="mx-2" />
-		</li>
-		<li class="flex items-center">
-			<a class="!no-underline" href="/intern/address-list">Address List</a>
-		</li>
-	</ol>
-</nav>
+<Breadcrumbs
+	crumbs={[
+		['Intern', '/intern'],
+		['Address List', '/intern/address-list']
+	]}
+/>
 
 <main class="container mx-auto flex flex-col gap-2 pb-12">
 	<div class="p-8">
@@ -241,7 +237,7 @@
 					<img
 						src={src(record.avatar, record.id, record.collectionId, record.collectionName)}
 						alt="avatar"
-						class="border-primary h-12 w-12 items-center rounded-full object-cover"
+						class="h-12 w-12 items-center rounded-full border-primary object-cover"
 					/>
 					<div>
 						<span class="text-xl">

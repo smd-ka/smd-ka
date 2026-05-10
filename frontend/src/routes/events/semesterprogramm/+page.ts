@@ -1,17 +1,6 @@
-import { pb } from '$lib/pocketbase';
-import type { PageLoad } from './$types';
+import { allPrograms } from './data';
+import { redirect } from '@sveltejs/kit';
 
-export const prerender = true;
-
-export const load: PageLoad = async () => {
-	try {
-		const records = await pb.collection('calendar').getFullList({
-			sort: '+start_date_time',
-			filter: `category='smd_abend' && start_date_time >= "2026-03-01 00:00:00" && end_date_time < "2026-10-01 00:00:00"`
-		});
-		return { events: records };
-	} catch (error) {
-		console.error(error);
-		return { events: [] };
-	}
-};
+export function load() {
+	redirect(302, `/events/semesterprogramm/${allPrograms[0].slug}`);
+}
