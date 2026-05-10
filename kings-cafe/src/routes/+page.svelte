@@ -15,7 +15,6 @@
 	import logo from '$lib/assets/logos/kings-cafe_white.svg';
 	import logo_black from '$lib/assets/logos/kings-cafe.svg';
 	import evening from '$lib/assets/pages/home/evening.jpg';
-	import { faTelegram } from '@fortawesome/free-brands-svg-icons';
 	import { onDestroy, onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import Carousel from 'svelte-carousel';
@@ -80,7 +79,7 @@
 </script>
 
 <HeroShot imgSrc={header} bgPosition={'bg-[center_left_60%]'}>
-	<div class="text-grey absolute top-1/2 flex w-full -translate-y-1/2 justify-center text-center">
+	<div class="absolute top-1/2 flex w-full -translate-y-1/2 justify-center text-center text-grey">
 		<img src={logo} alt="Kings Cafe Logo" class="" />
 	</div>
 </HeroShot>
@@ -91,7 +90,7 @@
 		animation_out={'slide-out-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}
 	>
 		<div class="flex flex-col items-center">
-			<h1 class="font-caveat text-center">Jeden Sonntag 19:00</h1>
+			<h1 class="text-center font-caveat">Jeden Sonntag 19:00</h1>
 			<div class="flex gap-4 max-md:flex-col">
 				<a
 					class="fa bg-primary px-4 py-2 text-lg text-white no-underline hover:underline md:text-2xl"
@@ -130,14 +129,14 @@
 			organisieren wir Aktivitäten wie Wanderungen im Schwarzwald und Spieleabende Wir lernen gerne
 			andere Kulturen kennenlernen und freuen uns auf dich!
 			<br />
-			<b>Bonus:</b> Davor, immer Sonntags ab 18:15 Uhr gibt es einen „Deutschkurs mit der Bibel“ für
-			alle, die intensiver etwas Deutsch und den christlichen Glauben lernen wollen. Du bist herzlich
-			willkommen – egal, wie gut dein Deutsch ist.
+			<b>Bonus:</b> Davor, immer Sonntags ab 18:15 Uhr gibt es einen „Deutschkurs mit der Bibel“ für alle,
+			die intensiver etwas Deutsch und den christlichen Glauben lernen wollen. Du bist herzlich willkommen
+			– egal, wie gut dein Deutsch ist.
 		</p>
 		<div class="flex justify-center py-8">
 			<a
 				href="#trailer"
-				class="bg-primary flex items-center gap-2 px-4 py-2 text-white no-underline hover:underline"
+				class="flex items-center gap-2 bg-primary px-4 py-2 text-white no-underline hover:underline"
 			>
 				Sneak Peak (Trailer)
 				<Fa icon={faArrowDown} />
@@ -150,15 +149,15 @@
 
 		{#if browser && data.events}
 			<Carousel infinite={false} particlesToShow={mobileScreen ? 1 : 3} bind:this={carousel}>
-				<div slot="prev" class="text-grey grid items-center p-2 text-3xl lg:text-5xl">
+				<div slot="prev" class="grid items-center p-2 text-3xl text-grey lg:text-5xl">
 					<button on:click={carousel.goToPrev}> <Fa icon={faChevronLeft} /></button>
 				</div>
 
 				{#each data.events.items as event}
 					<div class="md:p-4">
 						<div class="h-full border border-gray-400 shadow-md">
-							<div class="bg-grey rounded-t-md p-4 py-12">
-								<h3 class="text-primary text-center">{event.title}</h3>
+							<div class="rounded-t-md bg-grey p-4 py-12">
+								<h3 class="text-center text-primary">{event.title}</h3>
 								<div class="py-2 text-base font-bold text-white">
 									{getFullDate(event.start_date_time, event.end_date_time)}
 								</div>
@@ -179,6 +178,8 @@
 
 							<div class="whitespace-pre-line p-4">
 								<p>
+									<!-- Disable ESLint for HTML tags here as this comes from our own backend -->
+									<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 									{@html event.description}
 								</p>
 							</div>
@@ -186,7 +187,7 @@
 					</div>
 				{/each}
 
-				<div slot="next" class="text-grey grid items-center p-2 text-3xl lg:text-5xl">
+				<div slot="next" class="grid items-center p-2 text-3xl text-grey lg:text-5xl">
 					<button on:click={carousel.goToNext}> <Fa icon={faChevronRight} /></button>
 				</div>
 			</Carousel>

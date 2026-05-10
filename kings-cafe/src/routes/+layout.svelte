@@ -29,10 +29,10 @@
 				"
 		>
 			<a
-				class="fond-bold font-mincho flex items-center gap-2 py-2 text-2xl text-white md:basis-full"
+				class="fond-bold flex items-center gap-2 py-2 font-mincho text-2xl text-white md:basis-full"
 				href="/"
 			>
-				<img class="font-mincho max-h-12" src={logo} alt="SMD Logo" />
+				<img class="max-h-12 font-mincho" src={logo} alt="SMD Logo" />
 				KING's Café
 			</a>
 			<div class="flex justify-center gap-4 md:basis-full">
@@ -46,23 +46,24 @@
 					href="/en"
 					class="{$page.route.id == '/en' ? ' outline outline-2 outline-white' : ''} fi fi-gb"
 					title="English"
-				></a>
+				>
+				</a>
 			</div>
 
 			<div class="flex basis-full items-center justify-end gap-4 text-xl text-white max-md:hidden">
-				<a class="font-caveat flex items-center gap-2" href="https://smd-karlsruhe.de">
+				<a class="flex items-center gap-2 font-caveat" href="https://smd-karlsruhe.de">
 					<p class="-rotate-12">Powered by</p>
 					<img class="max-h-7" src={smd_ka_logo} alt="SMD Logo" />
 				</a>
 			</div>
 		</div>
 
-		<div class="bg-primary h-1"></div>
+		<div class="h-1 bg-primary"></div>
 	</nav>
 
 	<!-- -------- begin content --------- -->
 
-	<div class=" flex-[1_1_auto]">
+	<div class="flex-[1_1_auto]">
 		<slot />
 	</div>
 
@@ -73,7 +74,7 @@
 			<div class="container mx-auto px-4 py-20 xl:px-40">
 				<div class="grid justify-center gap-20 md:grid-cols-2">
 					<section class="flex flex-col gap-4">
-						<h2 class="text-primary text-xl uppercase">Unser Netzwerk</h2>
+						<h2 class="text-xl uppercase text-primary">Unser Netzwerk</h2>
 						<div class="grid grid-cols-[5rem_1fr] gap-4">
 							<a href="https://smd.org" target="_blank">
 								<img src={smd_logo} alt="SMD Logo" class="" />
@@ -94,7 +95,7 @@
 					</section>
 
 					<section class="underline-a flex flex-col gap-3">
-						<h2 class="text-primary text-xl uppercase">Andere Gruppen</h2>
+						<h2 class="text-xl uppercase text-primary">Andere Gruppen</h2>
 						<a href="https://www.sfc-karlsruhe.de">SfC - Studierende für Christus</a>
 						<a href="https://esg-karlsruhe.de/">ESG - Evangelische Studierendengemeinde</a>
 						<a href="https://www.khg-karlsruhe.de/">KHG - Katholische Hochschulgemeinde</a>
