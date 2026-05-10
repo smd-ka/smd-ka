@@ -13,7 +13,6 @@ export interface NavTabRoute extends RoleGuarded {
 
 export interface NavTab extends RoleGuarded {
     name: string;
-    baseUrl: string;
     defaultUrl?: string;
     routes: NavTabRoute[];
 }
