@@ -11,18 +11,16 @@
 	const startDateTime = new Date(data.event.start_date_time);
 	const endDateTime = data.event.end_date_time ? new Date(data.event.end_date_time) : undefined;
 
-	let showEnglish = false;
-	let initializedLanguage = false;
+	let showEnglish = Boolean(
+		data.event &&
+			$page.url.searchParams.get('en') === '1' &&
+			(data.event.title_en || data.event.description_en)
+	);
 	let canShowEnglish = false;
 	let renderedTitle = '';
 	let renderedDescription = '';
 
 	$: canShowEnglish = Boolean(data.event?.title_en || data.event?.description_en);
-	$: if (data.event && !initializedLanguage) {
-		const wantsEnglish = $page.url.searchParams.get('en') === '1';
-		showEnglish = wantsEnglish && canShowEnglish;
-		initializedLanguage = true;
-	}
 	$: renderedTitle =
 		showEnglish && data.event?.title_en ? data.event.title_en : (data.event?.title ?? '');
 	$: renderedDescription =
@@ -32,9 +30,6 @@
 
 	const toggleLanguage = () => {
 		showEnglish = !showEnglish;
-		if (showEnglish && !canShowEnglish) {
-			showEnglish = false;
-		}
 	};
 </script>
 
@@ -55,7 +50,10 @@
 	<main class="container mx-auto px-8 py-12 xl:px-40">
 		<button
 			type="button"
-			class="mb-4 bg-primary px-4 py-2 text-sm text-white"
+			class="mb-4 bg-primary px-4 py-2 text-sm text-white disabled:cursor-not-allowed disabled:opacity-50"
+			aria-label="Toggle language / Sprache wechseln"
+			aria-pressed={showEnglish}
+			disabled={!canShowEnglish}
 			on:click={toggleLanguage}
 		>
 			DE | EN
