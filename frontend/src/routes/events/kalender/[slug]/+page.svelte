@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 	import type { PageData } from '../$types';
 	import Fa from 'svelte-fa/src/fa.svelte';
@@ -9,6 +10,27 @@
 	export let data: PageData;
 	const startDateTime = new Date(data.event.start_date_time);
 	const endDateTime = data.event.end_date_time ? new Date(data.event.end_date_time) : undefined;
+
+	let showEnglish = Boolean(
+		data.event &&
+			$page.url.searchParams.get('en') === '1' &&
+			(data.event.title_en || data.event.description_en)
+	);
+	let canShowEnglish = false;
+	let renderedTitle = '';
+	let renderedDescription = '';
+
+	$: canShowEnglish = Boolean(data.event?.title_en || data.event?.description_en);
+	$: renderedTitle =
+		showEnglish && data.event?.title_en ? data.event.title_en : (data.event?.title ?? '');
+	$: renderedDescription =
+		showEnglish && data.event?.description_en
+			? data.event.description_en
+			: (data.event?.description ?? '');
+
+	const toggleLanguage = () => {
+		showEnglish = !showEnglish;
+	};
 </script>
 
 {#if !data.event}
@@ -17,7 +39,7 @@
 			Die Veranstaltung konnte nicht gefunden werden
 		</div>
 		<a
-			class="bg-primary flex w-fit items-center gap-2 justify-self-center px-4 py-2 text-white no-underline hover:underline"
+			class="flex w-fit items-center gap-2 justify-self-center bg-primary px-4 py-2 text-white no-underline hover:underline"
 			href="/events/kalender"
 		>
 			<Fa icon={faChevronRight} />
@@ -26,11 +48,22 @@
 	</div>
 {:else}
 	<main class="container mx-auto px-8 py-12 xl:px-40">
-		<a href="/events/kalender" class="text-primary text-sm no-underline hover:underline">
-			Kalender > {_categoryToDisplayName(data.event.category) || data.event.title}
+		<button
+			type="button"
+			class="mb-4 bg-primary px-4 py-2 text-sm text-white disabled:cursor-not-allowed disabled:opacity-50"
+			aria-label="Toggle language / Sprache wechseln"
+			aria-pressed={showEnglish}
+			disabled={!canShowEnglish}
+			on:click={toggleLanguage}
+		>
+			DE | EN
+		</button>
+
+		<a href="/events/kalender" class="text-sm text-primary no-underline hover:underline">
+			Kalender > {_categoryToDisplayName(data.event.category) || renderedTitle}
 		</a>
 
-		<h1 class="break-words pb-0">{data.event.title}</h1>
+		<h1 class="break-words pb-0">{renderedTitle}</h1>
 		<div class="pb-6 text-gray-500">
 			{#if endDateTime && !dayjs(startDateTime).isSame(dayjs(endDateTime), 'day')}
 				{dayjs(startDateTime).format('DD. MMMM YYYY')} -
@@ -41,7 +74,7 @@
 		</div>
 
 		<img
-			alt="Foto für {data.event.title}"
+			alt="Foto für {renderedTitle}"
 			src={_imgSrc(
 				data.event.image,
 				data.event.id,
@@ -52,7 +85,7 @@
 		/>
 
 		<section class="grid gap-8 py-12 md:grid-cols-[3fr_fit-content(18rem)]">
-			<div class="whitespace-pre-line">{@html data.event.description}</div>
+			<div class="whitespace-pre-line">{@html renderedDescription}</div>
 			<div class="max-md:order-first">
 				<h3 class="uppercase">Details</h3>
 				{#if dayjs(startDateTime).isSame(dayjs(endDateTime), 'day')}
@@ -95,7 +128,7 @@
 
 		<div class="py-12">
 			<a
-				class="bg-primary flex w-fit items-center gap-2 justify-self-center px-4 py-2 text-white no-underline hover:underline"
+				class="flex w-fit items-center gap-2 justify-self-center bg-primary px-4 py-2 text-white no-underline hover:underline"
 				href="/events/kalender"
 			>
 				<Fa icon={faChevronRight} />
