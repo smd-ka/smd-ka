@@ -8,7 +8,6 @@
 		faChevronRight,
 		faMap
 	} from '@fortawesome/free-solid-svg-icons';
-	import Fa from 'svelte-fa/src/fa.svelte';
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import type { PageData } from './$types';
 	import trailer from '$lib/assets/pages/home/trailer_compressed.mp4';
@@ -18,6 +17,7 @@
 	import { onDestroy, onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import Carousel from 'svelte-carousel';
+	import Fa from 'svelte-fa';
 
 	interface Props {
 		data: PageData;
