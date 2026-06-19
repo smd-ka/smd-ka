@@ -2,9 +2,19 @@
 	import { onDestroy, onMount } from 'svelte';
 	import { headerImageHeight } from '$lib/stores';
 
-	export let imgSrc: string;
-	export let bgPosition = 'bg-center';
-	export let height = 'h-dvh';
+	interface Props {
+		imgSrc: string;
+		bgPosition?: string;
+		height?: string;
+		children?: import('svelte').Snippet;
+	}
+
+	let {
+		imgSrc,
+		bgPosition = 'bg-center',
+		height = 'h-dvh',
+		children
+	}: Props = $props();
 
 	let resizeObserver: ResizeObserver;
 
@@ -34,5 +44,5 @@
 		class=" absolute top-0 {height} w-full bg-red-300 bg-cover brightness-50 {bgPosition}"
 		style="background-image: url({imgSrc});"
 	></div>
-	<slot />
+	{@render children?.()}
 </section>

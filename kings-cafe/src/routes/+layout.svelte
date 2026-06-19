@@ -12,9 +12,14 @@
 	import ifes from '$lib/assets/logos/ifes.png';
 	import { headerImageHeight } from '$lib/stores';
 	import '/node_modules/flag-icons/css/flag-icons.min.css';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
 
-	let scrollY: number;
+	let { children }: Props = $props();
+
+	let scrollY: number = $state();
 	const navbarHeight = 90;
 </script>
 
@@ -64,7 +69,7 @@
 	<!-- -------- begin content --------- -->
 
 	<div class="flex-[1_1_auto]">
-		<slot />
+		{@render children?.()}
 	</div>
 
 	<!-- -------- begin footer --------- -->
