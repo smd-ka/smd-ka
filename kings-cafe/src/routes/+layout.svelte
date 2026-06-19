@@ -8,7 +8,7 @@
 	import smd_logo from '$lib/assets/logos/smd_invers.png';
 	import insta from '$lib/assets/logos/insta.svg';
 	import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-	import Fa from 'svelte-fa'
+	import Fa from 'svelte-fa';
 	import ifes from '$lib/assets/logos/ifes.png';
 	import { headerImageHeight } from '$lib/stores';
 	import '/node_modules/flag-icons/css/flag-icons.min.css';

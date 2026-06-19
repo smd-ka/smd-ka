@@ -155,10 +155,10 @@
 		{#if browser && data.events}
 			<Carousel infinite={false} particlesToShow={mobileScreen ? 1 : 3} bind:this={carousel}>
 				{#snippet prev()}
-								<div  class="grid items-center p-2 text-3xl text-grey lg:text-5xl">
+					<div class="grid items-center p-2 text-3xl text-grey lg:text-5xl">
 						<button onclick={carousel.goToPrev}> <Fa icon={faChevronLeft} /></button>
 					</div>
-							{/snippet}
+				{/snippet}
 
 				{#each data.events.items as event}
 					<div class="md:p-4">
@@ -195,10 +195,10 @@
 				{/each}
 
 				{#snippet next()}
-								<div  class="grid items-center p-2 text-3xl text-grey lg:text-5xl">
+					<div class="grid items-center p-2 text-3xl text-grey lg:text-5xl">
 						<button onclick={carousel.goToNext}> <Fa icon={faChevronRight} /></button>
 					</div>
-							{/snippet}
+				{/snippet}
 			</Carousel>
 		{/if}
 	</section>

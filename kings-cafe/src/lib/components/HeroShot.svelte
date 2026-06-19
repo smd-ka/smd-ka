@@ -9,12 +9,7 @@
 		children?: import('svelte').Snippet;
 	}
 
-	let {
-		imgSrc,
-		bgPosition = 'bg-center',
-		height = 'h-dvh',
-		children
-	}: Props = $props();
+	let { imgSrc, bgPosition = 'bg-center', height = 'h-dvh', children }: Props = $props();
 
 	let resizeObserver: ResizeObserver;
 
