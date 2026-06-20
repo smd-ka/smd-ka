@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { onDestroy, onMount } from 'svelte';
+	import { onDestroy, onMount, type Snippet } from 'svelte';
 	import { headerImageHeight } from '$lib/stores';
 
 	interface Props {
 		imgSrc: string;
 		bgPosition?: string;
 		height?: string;
-		children?: import('svelte').Snippet;
+		children?: Snippet;
 	}
 
 	let { imgSrc, bgPosition = 'bg-center', height = 'h-dvh', children }: Props = $props();
