@@ -15,6 +15,7 @@
 	import placeholder from '$lib/assets/pages/events/kalender/placeholder.png';
 	import dayjs from 'dayjs';
 	import HomeMotto from './_components/HomeMotto.svelte';
+	import Fa from 'svelte-fa';
 
 	let success = false;
 	let error = false;

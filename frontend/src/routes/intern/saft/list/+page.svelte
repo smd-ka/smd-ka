@@ -6,7 +6,6 @@
 		faExclamationTriangle,
 		faEnvelope
 	} from '@fortawesome/free-solid-svg-icons';
-	import Fa from 'svelte-fa/src/fa.svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 	import {
 		_exportToCsv,
@@ -17,6 +16,7 @@
 		type SaftRegistrationFilter
 	} from './+page';
 	import dayjs from 'dayjs';
+	import Fa from 'svelte-fa';
 
 	export let data;
 

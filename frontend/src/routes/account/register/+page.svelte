@@ -3,7 +3,6 @@
 	import { pb } from '$lib/pocketbase';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 	import { faRightToBracket } from '@fortawesome/free-solid-svg-icons';
-	import Fa from 'svelte-fa/src/fa.svelte';
 	import TextInput from '$lib/components/forms/TextInput.svelte';
 	import type { ClientResponseError } from 'pocketbase';
 	import EmailInput from '$lib/components/forms/EmailInput.svelte';
@@ -11,11 +10,12 @@
 	import GenderInput from '$lib/components/forms/GenderInput.svelte';
 	import DateInput from '$lib/components/forms/DateInput.svelte';
 	import TelephoneInputField from '$lib/components/forms/TelephoneInputField.svelte';
+	import Fa from 'svelte-fa';
 
 	let loading = false;
 	let emailError: 'invalid' | 'taken' | undefined;
 	let passwordError: 'not matching' | 'too short' | undefined;
-	let unknowError: boolean = false;
+	let unknowError = false;
 
 	const convert = (str: string) => str.toLocaleLowerCase().replace(/[^\w]/gi, '');
 

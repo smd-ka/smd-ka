@@ -3,7 +3,6 @@
 	export let tab: NavTab;
 
 	import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-	import Fa from 'svelte-fa/src/fa.svelte';
 	import { page } from '$app/stores';
 
 	import { inferNavTab, type NavTab } from './types';
@@ -11,6 +10,7 @@
 
 	// backend
 	import { currentUser } from '$lib/pocketbase';
+	import Fa from 'svelte-fa';
 
 	let fTab;
 	$: fTab = inferNavTab($currentUser, tab);
@@ -40,11 +40,11 @@
 	}
 
 	.CategoryLinkList {
-		@apply bg-primary absolute top-[4.25rem] hidden justify-center  hover:grid peer-hover:grid;
+		@apply absolute top-[4.25rem] hidden justify-center bg-primary  hover:grid peer-hover:grid;
 	}
 
 	.CategoryTitle {
-		@apply hover:text-primary flex cursor-default items-center gap-2;
+		@apply flex cursor-default items-center gap-2 hover:text-primary;
 	}
 	[href] > .CategoryTitle {
 		@apply cursor-pointer;

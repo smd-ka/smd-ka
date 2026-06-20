@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
-	import Fa from 'svelte-fa/src/fa.svelte';
+	import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+	import Fa from 'svelte-fa';
 	import { sineInOut } from 'svelte/easing';
 	import { slide } from 'svelte/transition';
 
@@ -28,7 +28,7 @@
 			<Fa
 				icon={faChevronDown}
 				class="text-4xl  {showDescription
-					? 'text-primary rotate-180'
+					? 'rotate-180 text-primary'
 					: 'rotate-0 text-white'} transition-all duration-300"
 			/>
 		</div>

@@ -3,7 +3,6 @@
 	import { pb } from '$lib/pocketbase';
 	import { onMount } from 'svelte';
 	import defaultAvatar from '$lib/assets/user_default.png';
-	import Fa from 'svelte-fa/src/fa.svelte';
 	import {
 		faBirthdayCake,
 		faChevronRight,
@@ -17,6 +16,7 @@
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 	import dayjs from 'dayjs';
 	import Breadcrumbs from '$lib/components/navigation/Breadcrumbs.svelte';
+	import Fa from 'svelte-fa';
 
 	export let data;
 	let records: User[];

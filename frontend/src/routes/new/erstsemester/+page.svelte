@@ -1,10 +1,10 @@
 <script lang="ts">
-	import Fa from 'svelte-fa/src/fa.svelte';
 	import { faLocationDot, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 
 	import { getImageSrc } from '$lib/fetch_img';
 	import dayjs from 'dayjs';
 	import type { PageData } from './$types';
+	import Fa from 'svelte-fa';
 
 	export let data: PageData;
 </script>

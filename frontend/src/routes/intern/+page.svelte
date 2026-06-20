@@ -15,11 +15,11 @@
 		faBurger,
 		faUserGroup
 	} from '@fortawesome/free-solid-svg-icons';
-	import Fa from 'svelte-fa/src/fa.svelte';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
-	import { fa42Group, faWikipediaW } from '@fortawesome/free-brands-svg-icons';
+	import { faWikipediaW } from '@fortawesome/free-brands-svg-icons';
 
 	import SignupButton from '../saft/_components/SignupButton.svelte';
+	import Fa from 'svelte-fa';
 
 	let isSaftCoordinator = pb.authStore.model?.roles.includes(SAFT_COORDINATOR);
 	let isPritTeam = pb.authStore.model?.roles.includes(PRIT_RESPONSABLE);
@@ -31,7 +31,7 @@
 <main class="container mx-auto flex flex-col gap-8 py-20 pt-8">
 	<div class="grid gap-8 max-md:mx-6 lg:grid-cols-5">
 		<div class="tile !font-sans md:col-span-3 md:row-span-2">
-			<h2 class="text-primary text-2xl md:text-4xl">
+			<h2 class="text-2xl text-primary md:text-4xl">
 				Willkommen {pb.authStore.model?.name ?? ''}
 			</h2>
 			<div class="grid gap-2">
@@ -60,7 +60,7 @@
 			</div>
 		</div>
 		<a class="tile bg-cover" href="/intern/address-list">
-			<Fa icon={faAddressBook} class="text-light-blue text-7xl" />
+			<Fa icon={faAddressBook} class="text-7xl text-light-blue" />
 			<h2 class="py-4 text-center text-lg md:text-2xl">Adressliste</h2>
 		</a>
 
@@ -127,7 +127,7 @@
 		{#if isSaftCoordinator}
 			<a href="/intern/saft/list" class="tile">
 				<div class="flex justify-center">
-					<Fa icon={faGlassWater} class="text-secondary-text text-7xl" />
+					<Fa icon={faGlassWater} class="text-7xl text-secondary-text" />
 				</div>
 				<h2 class="py-4 text-center text-lg md:text-2xl">SAFT Anmeldungen verwalten</h2>
 			</a>
@@ -136,14 +136,14 @@
 		{#if isPritTeam}
 			<a href="/intern/saft/prit" class="tile">
 				<div class="flex justify-center">
-					<Fa icon={faCamera} class="text-secondary-text text-7xl" />
+					<Fa icon={faCamera} class="text-7xl text-secondary-text" />
 				</div>
 				<h2 class="py-4 text-center text-lg md:text-2xl">PRIT SAFT</h2>
 			</a>
 
 			<a href="/intern/regiokon/prit" class="tile">
 				<div class="flex justify-center">
-					<Fa icon={faCamera} class="text-secondary-text text-7xl" />
+					<Fa icon={faCamera} class="text-7xl text-secondary-text" />
 				</div>
 				<h2 class="py-4 text-center text-lg md:text-2xl">PRIT Regiokon</h2>
 			</a>
@@ -165,7 +165,7 @@
 					await logout();
 					loading = false;
 				}}
-				class="text-primary flex flex-col items-center justify-center gap-4 py-4 text-xl"
+				class="flex flex-col items-center justify-center gap-4 py-4 text-xl text-primary"
 			>
 				<div class="hover:bg-curulean-dark flex gap-2 align-middle">
 					{#if loading}

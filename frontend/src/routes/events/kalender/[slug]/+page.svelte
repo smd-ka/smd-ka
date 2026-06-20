@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 	import type { PageData } from '../$types';
-	import Fa from 'svelte-fa/src/fa.svelte';
 	import { _categoryToDisplayName } from './+page';
 	import dayjs from 'dayjs';
 	import { _imgSrc } from '../+page';
+	import Fa from 'svelte-fa';
 
 	export let data: PageData;
 	const startDateTime = new Date(data.event.start_date_time);
@@ -17,7 +17,7 @@
 			Die Veranstaltung konnte nicht gefunden werden
 		</div>
 		<a
-			class="bg-primary flex w-fit items-center gap-2 justify-self-center px-4 py-2 text-white no-underline hover:underline"
+			class="flex w-fit items-center gap-2 justify-self-center bg-primary px-4 py-2 text-white no-underline hover:underline"
 			href="/events/kalender"
 		>
 			<Fa icon={faChevronRight} />
@@ -26,7 +26,7 @@
 	</div>
 {:else}
 	<main class="container mx-auto px-8 py-12 xl:px-40">
-		<a href="/events/kalender" class="text-primary text-sm no-underline hover:underline">
+		<a href="/events/kalender" class="text-sm text-primary no-underline hover:underline">
 			Kalender > {_categoryToDisplayName(data.event.category) || data.event.title}
 		</a>
 
@@ -95,7 +95,7 @@
 
 		<div class="py-12">
 			<a
-				class="bg-primary flex w-fit items-center gap-2 justify-self-center px-4 py-2 text-white no-underline hover:underline"
+				class="flex w-fit items-center gap-2 justify-self-center bg-primary px-4 py-2 text-white no-underline hover:underline"
 				href="/events/kalender"
 			>
 				<Fa icon={faChevronRight} />

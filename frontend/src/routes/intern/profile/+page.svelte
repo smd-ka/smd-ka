@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { getAvatarUrl, pb } from '$lib/pocketbase';
 	import defaultAvatar from '$lib/assets/user_default.png';
-	import Fa from 'svelte-fa/src/fa.svelte';
 	import { faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
 	import loadingSpinner from '$lib/assets/loading_spinner_white.gif';
 	import InputCheckbox from '$lib/components/forms/CheckboxInput.svelte';
 	import PritPublicImageDisclaimer from '../../_components/PritPublicImageDisclaimer.svelte';
 	import Breadcrumbs from '$lib/components/navigation/Breadcrumbs.svelte';
 	import { onMount } from 'svelte';
+	import Fa from 'svelte-fa';
 
 	enum church {
 		CG = 'Christliche Gemeinde (CG)',

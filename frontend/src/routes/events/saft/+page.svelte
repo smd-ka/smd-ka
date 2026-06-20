@@ -5,11 +5,11 @@
 	import header from '$lib/assets/pages/events/saft/saft_volleyball.jpg';
 	import saftGroup from '$lib/assets/pages/events/saft/saft_ws25_26.jpg';
 	import saftDuck from '$lib/assets/pages/events/saft/saft_duck.jpg';
-	import Fa from 'svelte-fa/src/fa.svelte';
 	import { faCalendarDays, faCoins, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 	// hint: to re-open the signup, look into: backend/saft/reqStatus.go
 	import SignupButton from '../../saft/_components/SignupButton.svelte';
+	import Fa from 'svelte-fa';
 </script>
 
 <HeroShot imgSrc={header} height={'h-[70svh]'}></HeroShot>
@@ -55,7 +55,7 @@
 					Preis: 40 € <!-- (XX € für Freitag bis Sonntag) -->
 				</div>
 				<div class="flex justify-end gap-2">
-					<Fa class="text-primary mt-1 justify-self-end" icon={faLocationDot} />
+					<Fa class="mt-1 justify-self-end text-primary" icon={faLocationDot} />
 					Ort: Nähe Heidelberg, Kühlberghütte
 				</div>
 				<a

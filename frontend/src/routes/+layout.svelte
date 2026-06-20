@@ -17,12 +17,10 @@
 	import {
 		faArrowUpRightFromSquare,
 		faBars,
-		faChevronDown,
 		faEnvelope,
 		faRightToBracket,
 		faX
 	} from '@fortawesome/free-solid-svg-icons';
-	import Fa from 'svelte-fa/src/fa.svelte';
 	import {
 		ANY_LOGGED_IN,
 		getAvatarUrl,
@@ -42,6 +40,7 @@
 	import { click_outside } from '$lib/click_outside';
 	import dayjs from 'dayjs';
 	import 'dayjs/locale/de';
+	import Fa from 'svelte-fa';
 
 	dayjs.locale('de');
 
@@ -211,7 +210,7 @@
 
 <svelte:window bind:scrollY />
 <main class="flex min-h-screen flex-col">
-	<nav class="border-primary sticky top-0 z-50 flex flex-[0_1_auto] flex-col border-b-4 shadow-md">
+	<nav class="sticky top-0 z-50 flex flex-[0_1_auto] flex-col border-b-4 border-primary shadow-md">
 		<div
 			class="{scrollY > $headerImageHeight - navbarHeight
 				? 'bg-grey'
@@ -261,17 +260,17 @@
 				use:click_outside
 				on:outsideclick={() => (showMenu = false)}
 				transition:slide={{ duration: 200, easing: sineInOut }}
-				class="mobile-nav-height bg-grey absolute top-0 z-0 mt-[4.5rem] w-fit max-w-full overflow-scroll p-4 pb-8 text-gray-300 lg:hidden"
+				class="mobile-nav-height absolute top-0 z-0 mt-[4.5rem] w-fit max-w-full overflow-scroll bg-grey p-4 pb-8 text-gray-300 lg:hidden"
 			>
 				{#if isValid}
 					<NavlistGroup tab={tabsIntern} bind:showMenu />
-					<div class="bg-primary my-2 h-0.5"></div>
+					<div class="my-2 h-0.5 bg-primary"></div>
 				{/if}
 
 				{#each tabs as tab}
 					<NavlistGroup {tab} bind:showMenu />
 				{/each}
-				<div class="bg-primary my-2 h-0.5"></div>
+				<div class="my-2 h-0.5 bg-primary"></div>
 
 				<h3 class=" text-white">
 					<a class="flex items-center gap-2" href="https://kings-cafe.de">
@@ -306,7 +305,7 @@
 			<div class="container mx-auto px-4 py-20 xl:px-40">
 				<div class="grid justify-center gap-20 md:grid-cols-2">
 					<section class="flex flex-col gap-4">
-						<h2 class="text-primary text-xl uppercase">Unser Netzwerk</h2>
+						<h2 class="text-xl uppercase text-primary">Unser Netzwerk</h2>
 						<div class="grid grid-cols-[5rem_1fr] gap-4">
 							<a href="https://smd.org" target="_blank">
 								<img src={smd_logo} alt="SMD Logo" class="" />
@@ -327,7 +326,7 @@
 					</section>
 
 					<section class="underline-a flex flex-col gap-3">
-						<h2 class="text-primary text-xl uppercase">Andere Gruppen</h2>
+						<h2 class="text-xl uppercase text-primary">Andere Gruppen</h2>
 						<a href="https://www.sfc-karlsruhe.de">SfC - Studierende für Christus</a>
 						<a href="https://esg-karlsruhe.de/">ESG - Evangelische Studierendengemeinde</a>
 						<a href="https://www.khg-karlsruhe.de/">KHG - Katholische Hochschulgemeinde</a>

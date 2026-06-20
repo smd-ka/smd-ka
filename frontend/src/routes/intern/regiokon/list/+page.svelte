@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { pb } from '$lib/pocketbase';
 	import { faArrowUpFromBracket, faCopy, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-	import Fa from 'svelte-fa/src/fa.svelte';
 	import {
 		_exportToCsv,
 		_filterSaftRegistrations,
@@ -10,6 +9,7 @@
 		_travelOptionIcon,
 		type SaftRegistrationFilter
 	} from './+page';
+	import Fa from 'svelte-fa';
 
 	export let data;
 
@@ -70,7 +70,7 @@
 				Email an den Verteiler senden</a
 			>
 			<button
-				class="bg-light-blue flex items-center gap-2 rounded-md px-4 py-2"
+				class="flex items-center gap-2 rounded-md bg-light-blue px-4 py-2"
 				on:click={() =>
 					navigator.clipboard.writeText(
 						filteredList
@@ -84,7 +84,7 @@
 			</button>
 
 			<button
-				class="bg-lime flex items-center gap-2 rounded-md px-4 py-2"
+				class="flex items-center gap-2 rounded-md bg-lime px-4 py-2"
 				on:click|preventDefault={() => _exportToCsv(filteredList, filter)}
 			>
 				<Fa icon={faArrowUpFromBracket} />

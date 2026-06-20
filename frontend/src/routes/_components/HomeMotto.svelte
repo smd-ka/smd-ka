@@ -3,8 +3,8 @@
 	import denken from '$lib/assets/pages/home/denken.jpg';
 	import erleben from '$lib/assets/pages/home/erleben.jpg';
 	import Motto from '$lib/components/Motto.svelte';
-	import Fa from 'svelte-fa/src/fa.svelte';
 	import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+	import Fa from 'svelte-fa';
 </script>
 
 <section>
@@ -36,7 +36,7 @@
 	<div class="flex justify-center p-8">
 		<a
 			href="/about/us"
-			class="bg-primary flex items-center gap-2 rounded-sm px-4 py-2 text-white no-underline"
+			class="flex items-center gap-2 rounded-sm bg-primary px-4 py-2 text-white no-underline"
 		>
 			<Fa icon={faChevronRight} />
 			Lerne mehr über uns

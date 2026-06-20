@@ -13,8 +13,8 @@
 		faSignature,
 		faUserGroup
 	} from '@fortawesome/free-solid-svg-icons';
-	import Fa from 'svelte-fa/src/fa.svelte';
 	import Breadcrumbs from '$lib/components/navigation/Breadcrumbs.svelte';
+	import Fa from 'svelte-fa';
 
 	let record: any;
 

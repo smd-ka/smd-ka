@@ -1,12 +1,12 @@
 <script lang="ts">
 	import type { FullNavTabRoute } from './types';
 	import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
-	import Fa from 'svelte-fa/src/fa.svelte';
+	import Fa from 'svelte-fa';
 
 	export let route: FullNavTabRoute;
-	let itemClass: string = '';
+	let itemClass = '';
 	export { itemClass as class };
-	export let forMobile: boolean = false;
+	export let forMobile = false;
 </script>
 
 {#if route.action}
