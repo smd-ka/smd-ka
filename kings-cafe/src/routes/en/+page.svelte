@@ -8,7 +8,6 @@
 		faChevronRight,
 		faMap
 	} from '@fortawesome/free-solid-svg-icons';
-	import Fa from 'svelte-fa/src/fa.svelte';
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import type { PageData } from './$types';
 	import trailer from '$lib/assets/pages/home/trailer_compressed.mp4';
@@ -18,11 +17,16 @@
 	import { onDestroy, onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import Carousel from 'svelte-carousel';
+	import Fa from 'svelte-fa';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
 
-	let mobileScreen = true;
-	let carousel;
+	let { data }: Props = $props();
+
+	let mobileScreen = $state(true);
+	let carousel = $state();
 
 	onMount(() => {
 		if (browser) {
@@ -150,9 +154,11 @@
 
 		{#if browser && data.events}
 			<Carousel infinite={false} particlesToShow={mobileScreen ? 1 : 3} bind:this={carousel}>
-				<div slot="prev" class="grid items-center p-2 text-3xl text-grey lg:text-5xl">
-					<button on:click={carousel.goToPrev}> <Fa icon={faChevronLeft} /></button>
-				</div>
+				{#snippet prev()}
+					<div class="grid items-center p-2 text-3xl text-grey lg:text-5xl">
+						<button onclick={carousel.goToPrev}> <Fa icon={faChevronLeft} /></button>
+					</div>
+				{/snippet}
 
 				{#each data.events.items as event}
 					<div class="md:p-4">
@@ -188,9 +194,11 @@
 					</div>
 				{/each}
 
-				<div slot="next" class="grid items-center p-2 text-3xl text-grey lg:text-5xl">
-					<button on:click={carousel.goToNext}> <Fa icon={faChevronRight} /></button>
-				</div>
+				{#snippet next()}
+					<div class="grid items-center p-2 text-3xl text-grey lg:text-5xl">
+						<button onclick={carousel.goToNext}> <Fa icon={faChevronRight} /></button>
+					</div>
+				{/snippet}
 			</Carousel>
 		{/if}
 	</section>

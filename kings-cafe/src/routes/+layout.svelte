@@ -8,13 +8,18 @@
 	import smd_logo from '$lib/assets/logos/smd_invers.png';
 	import insta from '$lib/assets/logos/insta.svg';
 	import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-	import Fa from 'svelte-fa/src/fa.svelte';
+	import Fa from 'svelte-fa';
 	import ifes from '$lib/assets/logos/ifes.png';
 	import { headerImageHeight } from '$lib/stores';
 	import '/node_modules/flag-icons/css/flag-icons.min.css';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
 
-	let scrollY: number;
+	let { children }: Props = $props();
+
+	let scrollY: number = $state();
 	const navbarHeight = 90;
 </script>
 
@@ -38,13 +43,13 @@
 			<div class="flex justify-center gap-4 md:basis-full">
 				<a
 					href="/"
-					class="{$page.route.id == '/' ? 'outline outline-2 outline-white' : ''} fi fi-de"
+					class="{page.route.id == '/' ? 'outline outline-2 outline-white' : ''} fi fi-de"
 					title="Deutsch"
 				>
 				</a>
 				<a
 					href="/en"
-					class="{$page.route.id == '/en' ? ' outline outline-2 outline-white' : ''} fi fi-gb"
+					class="{page.route.id == '/en' ? ' outline outline-2 outline-white' : ''} fi fi-gb"
 					title="English"
 				>
 				</a>
@@ -64,7 +69,7 @@
 	<!-- -------- begin content --------- -->
 
 	<div class="flex-[1_1_auto]">
-		<slot />
+		{@render children?.()}
 	</div>
 
 	<!-- -------- begin footer --------- -->
