@@ -1,7 +1,5 @@
 // See https://kit.svelte.dev/docs/types#app
 
-import type { pb } from '$lib/pocketbase';
-
 // for information about these interfaces
 
 declare module '@fortawesome/pro-solid-svg-icons/index.es' {
@@ -22,4 +20,4 @@ declare global {
 	}
 }
 
-export { };
+export {};

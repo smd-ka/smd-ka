@@ -3,8 +3,8 @@
 	import { headerImageHeight } from '$lib/stores';
 
 	export let imgSrc: string;
-	export let bgPosition: string = 'bg-center';
-	export let height: string = 'h-dvh';
+	export let bgPosition = 'bg-center';
+	export let height = 'h-dvh';
 
 	let resizeObserver: ResizeObserver;
 
