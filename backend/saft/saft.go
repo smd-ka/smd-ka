@@ -3,8 +3,8 @@ package saft
 import (
 	"net/http"
 	"net/mail"
+	"strings"
 
-	"github.com/pocketbase/dbx"
 	"github.com/pocketbase/pocketbase"
 	"github.com/pocketbase/pocketbase/apis"
 	"github.com/pocketbase/pocketbase/core"
@@ -15,10 +15,13 @@ import (
 	"SMD-KA-Backend/saft/regStatus"
 )
 
-// Constants for SAFT registration emails
 const (
+	// Constants for SAFT registration emails
 	Subject   = "[SMD-KA] SAFT Anmeldung "
 	OrgaEmail = "inreach@smd-karlsruhe.de"
+
+	// checked against lowercase, without any characters outside [a-z]
+	BotQuestionExpected = "abendmahl"
 )
 
 func SaftEmails(app *pocketbase.PocketBase) {
@@ -30,7 +33,8 @@ func SaftEmails(app *pocketbase.PocketBase) {
 		return se.Next()
 	})
 
-	app.OnRecordCreate("saft").BindFunc(func(e *core.RecordEvent) error {
+	// only triggers on external API requests
+	app.OnRecordCreateRequest("saft").BindFunc(func(e *core.RecordRequestEvent) error {
 
 		// SAFT registration open?
 		semester := e.Record.GetString("semester")
@@ -40,7 +44,15 @@ func SaftEmails(app *pocketbase.PocketBase) {
 
 		// Submission by user?
 		user_id := e.Record.GetString("user")
-		err := copyUserDataToRecord(app, user_id, e)
+		var err error
+		if user_id != "" {
+			// verifies that user is authenticated
+			// and copies user data for the registration
+			err = copyUserDataToRecord(user_id, e)
+		} else {
+			// otherwise validate that bot question was answered correctly
+			err = validateCaptchaLite(e)
+		}
 		if err != nil {
 			return err
 		}
@@ -63,45 +75,67 @@ func SaftEmails(app *pocketbase.PocketBase) {
 	})
 }
 
-func copyUserDataToRecord(app *pocketbase.PocketBase, userId string, e *core.RecordEvent) error {
-	if userId == "" {
+func validateCaptchaLite(e *core.RecordRequestEvent) error {
+	botData := struct {
+		Answer string `json:"bot_question" form:"bot_question"`
+	}{}
+	err := e.BindBody(&botData)
+	if err == nil && validateBotQuestion(botData.Answer) {
 		return nil
 	}
+	// when that fails as well, show unauthenticated error
+	// -> diverting bots & users from the fact, that a 'field' was missing
+	return apis.NewUnauthorizedError("must be authenticated", nil)
+}
 
-	// Define how the output of the query below looks like
-	type User struct {
-		Id           string `db:"id" json:"id"`
-		Name         string `db:"name" json:"name"`
-		Surname      string `db:"surname" json:"surname"`
-		Email        string `db:"email" json:"email"`
-		Gender       string `db:"gender" json:"gender"`
-		PhoneNumber  string `db:"phonenumber" json:"phonenumber"`
-		Allergies    string `db:"allergies" json:"allergies"`
-		IsVegetarian bool   `db:"vegetarian" json:"vegetarian"`
+// returns true when answer is as expected
+// after toLower & removing all runes that are not in a-z
+func validateBotQuestion(answer string) bool {
+	expLen := len(BotQuestionExpected)
+	actLen := len(answer)
+	// also reject, when answer is way too long to be realistic
+	if expLen > actLen || actLen > (2*expLen) {
+		return false
 	}
+	var b strings.Builder
+	b.Grow(actLen)
+	for _, r := range strings.ToLower(answer) {
+		if r >= 'a' && r <= 'z' {
+			b.WriteRune(r)
+		}
+	}
+	return b.String() == BotQuestionExpected
+}
 
-	// Create empty user
-	user := User{}
-
-	err := app.DB().Select("id", "name", "email", "surname", "allergies", "vegetarian", "phonenumber", "gender").From("users").AndWhere(dbx.HashExp{"id": userId}).One(&user)
-	// when looking up that user fails, forward error
+func copyUserDataToRecord(user_id string, e *core.RecordRequestEvent) error {
+	// load user data from currently signed in user
+	reqInfo, err := e.RequestInfo()
 	if err != nil {
 		return err
 	}
+	user := reqInfo.Auth
+	if user == nil {
+		return apis.NewUnauthorizedError("must be authenticated", nil)
+	}
 
-	// Set user data to record for template
-	e.Record.Set("name", user.Name)
-	e.Record.Set("surname", user.Surname)
-	e.Record.Set("email", user.Email)
-	e.Record.Set("allergies", user.Allergies)
-	e.Record.Set("is_vegetarian", user.IsVegetarian)
-	e.Record.Set("phonenumber", user.PhoneNumber)
-	e.Record.Set("gender", user.Gender)
+	// verify that the same user is mentioned (because that gets saved to the db)
+	if user.Id != user_id {
+		return apis.NewUnauthorizedError("must be authenticated", nil)
+	}
+
+	// copy user data to record
+	e.Record.Set("name", user.GetString("name"))
+	e.Record.Set("surname", user.GetString("surname"))
+	e.Record.Set("email", user.GetString("email"))
+	e.Record.Set("allergies", user.GetString("allergies"))
+	e.Record.Set("is_vegetarian", user.GetBool("vegetarian"))
+	e.Record.Set("phonenumber", user.GetString("phonenumber"))
+	e.Record.Set("gender", user.GetString("gender"))
 
 	return nil
 }
 
-func sendSAFTConfirmationEmail(app *pocketbase.PocketBase, e *core.RecordEvent) error {
+func sendSAFTConfirmationEmail(app *pocketbase.PocketBase, e *core.RecordRequestEvent) error {
 
 	registry := template.NewRegistry()
 
