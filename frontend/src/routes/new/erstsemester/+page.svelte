@@ -27,9 +27,9 @@
 
 		<div>
 			<p class="font-bold">
-				Bis das KIT-Semester am 20.04.2026 wieder startet, (und unser "normales" Programm losgeht)
-				bist du herzlich zu unseren "Springbreaks" eingeladen (zu finden im <a
-					href="/events/kalender">Kalender</a
+				Bis das KIT-Semester am 27.10.2026 wieder startet, (und unser "normales" Programm losgeht)
+				bist du herzlich zu unseren Summerbreaks eingeladen (zu finden im <a href="/events/kalender"
+					>Kalender</a
 				>). Dort kannst du uns kennenzulernen, ins Studentenleben in KA einzutauchen und einfach ne
 				gute Zeit genießen.
 			</p>
