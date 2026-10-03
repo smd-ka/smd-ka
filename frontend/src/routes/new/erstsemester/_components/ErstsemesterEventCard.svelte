@@ -9,13 +9,12 @@
 </script>
 
 <div class="event-card flex flex-col gap-4">
-	<img
-		src={getEventImageSrc(event)}
-		alt={event.title}
-	/>
+	<a href="/events/kalender/{event.id}">
+		<img src={getEventImageSrc(event)} alt={event.title} />
+	</a>
 	<div>
 		<h3 class="text-primary">
-			{event.title}
+			<a href="/events/kalender/{event.id}" class="event-link">{event.title}</a>
 		</h3>
 		<span class="flex items-center gap-2 text-xl font-bold">
 			<Fa icon={faCalendarDays} />
@@ -36,6 +35,14 @@
 </div>
 
 <style>
+	.event-link {
+		@apply no-underline;
+	}
+
+	.event-link:hover {
+		@apply underline;
+	}
+
 	.location-link[href]:hover {
 		@apply underline;
 	}
