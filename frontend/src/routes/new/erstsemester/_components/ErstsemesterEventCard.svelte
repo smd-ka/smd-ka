@@ -8,13 +8,15 @@
 	export let event: CalendarEvent;
 </script>
 
-<div class="flex flex-col gap-4">
+<div class="event-card flex flex-col gap-4">
 	<img
 		src={getEventImageSrc(event)}
 		alt={event.title}
 	/>
 	<div>
-		<h3>{event.title}</h3>
+		<h3 class="text-primary">
+			{event.title}
+		</h3>
 		<span class="flex items-center gap-2 text-xl font-bold">
 			<Fa icon={faCalendarDays} />
 			{formatEventDateRange(event)}

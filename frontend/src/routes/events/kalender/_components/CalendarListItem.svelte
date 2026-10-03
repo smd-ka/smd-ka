@@ -15,11 +15,11 @@
 	</span>
 </div>
 
-<div class="grid gap-2 lg:grid-cols-2">
+<div class="event-card grid gap-2 lg:grid-cols-2">
 	<a class="lg:order-last" href={'/events/kalender/' + event.id}>
 		<img
 			src={getEventImageSrc(event)}
-			class="w-full object-cover brightness-90 transition-all duration-200 hover:brightness-100"
+			class="w-full object-cover"
 			alt={event.title}
 		/>
 	</a>

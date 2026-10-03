@@ -72,4 +72,12 @@
     @apply flex items-center gap-2;
   }
 
+  .event-card img {
+    @apply transition-all duration-200;
+  }
+
+  .event-card:hover img {
+    @apply brightness-110;
+  }
+
 }
