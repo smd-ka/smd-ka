@@ -36,13 +36,13 @@
 		{#if event.location}
 			<div class="font-bold">
 				Ort:
-				{#if event.location_url}
-					<a href={event.location_url} target="_blank" rel="noopener">
-						{event.location}
-					</a>
-				{:else}
+				<a
+					href={event.location_url || null}
+					target="_blank"
+					rel="noopener"
+					class="location-link">
 					{event.location}
-				{/if}
+				</a>
 			</div>
 		{/if}
 		<p class="line-clamp-6 max-lg:hidden">
@@ -50,3 +50,9 @@
 		</p>
 	</div>
 </div>
+
+<style>
+	.location-link[href]:hover {
+		@apply underline;
+	}
+</style>

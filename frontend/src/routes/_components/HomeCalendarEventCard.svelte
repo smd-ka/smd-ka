@@ -20,7 +20,7 @@
 			<div>
 				{formatEventDateRange(event, 'dddd, DD.MM // HH:mm')}
 			</div>
-			<a class="fa hover:cursor-pointer hover:text-primary" href={event.location_url}>
+			<a class="location-link fa" href={event.location_url || null}>
 				<Fa icon={faLocationDot} />
 				{#if event.location}
 					{event.location}
@@ -37,3 +37,9 @@
 		<a href="/events/kalender/{event.id}" class="text-primary">Mehr erfahren</a>
 	</div>
 </div>
+
+<style>
+	.location-link[href]:hover {
+		@apply text-primary cursor-pointer;
+	}
+</style>

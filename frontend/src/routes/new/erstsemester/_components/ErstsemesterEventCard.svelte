@@ -21,7 +21,7 @@
 		</span>
 		<span class="flex items-center gap-2 text-xl font-bold">
 			<Fa icon={faLocationDot} />
-			<a href={event.location_url} class="hover:underline">
+			<a href={event.location_url || null} class="location-link">
 				{event.location}
 			</a>
 		</span>
@@ -30,3 +30,9 @@
 		{@html event.description}
 	</p>
 </div>
+
+<style>
+	.location-link[href]:hover {
+		@apply underline;
+	}
+</style>
