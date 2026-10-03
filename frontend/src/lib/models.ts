@@ -66,3 +66,30 @@ export type Team = {
 	description: string;
 	image: string;
 };
+
+export type CalendarEvent = {
+	id: string;
+	collectionId: string;
+	collectionName: string;
+	/** ISO-ish string (without "T" between date & time) */
+	created: string;
+	/** ISO-ish string (without "T" between date & time) */
+	updated: string;
+	category: string;
+	title: string;
+	title_en: string;
+	/** may contain HTML */
+	description: string;
+	/** may contain HTML */
+	description_en: string;
+	/** ISO-ish string (without "T" between date & time) */
+	start_date_time: string;
+	/** ISO-ish string (without "T" between date & time) */
+	end_date_time: string;
+	location: string;
+	location_url: string;
+	speaker: string;
+	/** empty string means no image */
+	image: string;
+	expand: Record<string, unknown>;
+};

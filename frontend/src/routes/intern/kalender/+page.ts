@@ -1,26 +1,7 @@
 import { pb } from '$lib/pocketbase';
 import type { PageLoad } from './$types';
 import { writable } from 'svelte/store';
-
-export type CalendarEvent = Record<string, unknown> & {
-	id: string;
-	collectionId: string;
-	collectionName: string;
-	created: string;
-	updated: string;
-	category: string;
-	title: string;
-	title_en: string;
-	description: string;
-	description_en: string;
-	start_date_time: string;
-	end_date_time: string;
-	location: string;
-	location_url: string;
-	speaker: string;
-	image: string;
-	expand: Record<string, unknown>;
-};
+import type { CalendarEvent } from '$lib/models';
 
 export const _eventStore = writable<CalendarEvent[]>([]);
 export const _shownEvent = writable<CalendarEvent | undefined>(undefined);
