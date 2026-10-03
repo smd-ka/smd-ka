@@ -1,6 +1,6 @@
 <script lang="ts">
 	import dayjs from 'dayjs';
-	import { getEventImageSrc } from '$lib/calendar';
+	import { formatEventDateRange, getEventImageSrc } from '$lib/calendar';
 	import type { CalendarEvent } from '$lib/models';
 
 	export let event: CalendarEvent;
@@ -25,13 +25,7 @@
 	</a>
 	<div>
 		<div class="py-2 text-sm text-gray-700">
-			{#if event.end_date_time && !dayjs(event.start_date_time).isSame(dayjs(event.end_date_time), 'day')}
-				{dayjs(event.start_date_time).format('DD. MMMM')} - {dayjs(event.end_date_time).format(
-					'DD. MMMM'
-				)}
-			{:else}
-				{dayjs(event.start_date_time).format('DD. MMMM // HH:mm')}
-			{/if}
+			{formatEventDateRange(event)}
 		</div>
 		<div class="lg:text-3xl">
 			<a

@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { faLocationDot, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 
-	import { getEventImageSrc } from '$lib/calendar';
-	import dayjs from 'dayjs';
+	import { getEventImageSrc, formatEventDateRange } from '$lib/calendar';
 	import Fa from 'svelte-fa';
 	import type { CalendarEvent } from '$lib/models';
 
@@ -18,13 +17,7 @@
 		<h3>{event.title}</h3>
 		<span class="flex items-center gap-2 text-xl font-bold">
 			<Fa icon={faCalendarDays} />
-			{#if event.end_date_time && !dayjs(event.start_date_time).isSame(dayjs(event.end_date_time), 'day')}
-				{dayjs(event.start_date_time).format('DD. MMMM')} - {dayjs(event.end_date_time).format(
-					'DD. MMMM'
-				)}
-			{:else}
-				{dayjs(event.start_date_time).format('DD. MMMM // HH:mm')}
-			{/if}
+			{formatEventDateRange(event)}
 		</span>
 		<span class="flex items-center gap-2 text-xl font-bold">
 			<Fa icon={faLocationDot} />

@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
-	import dayjs from 'dayjs';
-	import { getEventImageSrc } from '$lib/calendar';
+	import { formatEventDateRange, getEventImageSrc } from '$lib/calendar';
 	import type { CalendarEvent } from '$lib/models';
 
 	export let event: CalendarEvent;
@@ -19,13 +18,7 @@
 	<div class="peer flex-1 border-x-2 border-b-2 px-4 py-2">
 		<div class="flex justify-between text-gray-500 max-xl:flex-col">
 			<div>
-				{#if event.end_date_time && !dayjs(event.start_date_time).isSame(dayjs(event.end_date_time), 'day')}
-					{dayjs(event.start_date_time).format('DD. MMMM')} - {dayjs(event.end_date_time).format(
-						'DD. MMMM'
-					)}
-				{:else}
-					{dayjs(event.start_date_time).format('dddd, DD.MM // HH:mm')}
-				{/if}
+				{formatEventDateRange(event, 'dddd, DD.MM // HH:mm')}
 			</div>
 			<a class="fa hover:cursor-pointer hover:text-primary" href={event.location_url}>
 				<Fa icon={faLocationDot} />

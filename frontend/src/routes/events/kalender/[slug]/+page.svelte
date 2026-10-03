@@ -3,7 +3,7 @@
 	import type { PageData } from '../$types';
 	import { _categoryToDisplayName } from './+page';
 	import dayjs from 'dayjs';
-	import { getEventImageSrc } from '$lib/calendar';
+	import { formatEventDateRange, getEventImageSrc } from '$lib/calendar';
 	import Fa from 'svelte-fa';
 
 	export let data: PageData;
@@ -32,12 +32,7 @@
 
 		<h1 class="break-words pb-0">{data.event.title}</h1>
 		<div class="pb-6 text-gray-500">
-			{#if endDateTime && !dayjs(startDateTime).isSame(dayjs(endDateTime), 'day')}
-				{dayjs(startDateTime).format('DD. MMMM YYYY')} -
-				{dayjs(endDateTime).format('DD. MMMM YYYY')}
-			{:else}
-				{dayjs(startDateTime).format('DD. MMMM YYYY // HH:mm')}
-			{/if}
+			{formatEventDateRange(data.event, 'DD. MMMM YYYY // HH:mm', 'DD. MMMM YYYY')}
 		</div>
 
 		<img
