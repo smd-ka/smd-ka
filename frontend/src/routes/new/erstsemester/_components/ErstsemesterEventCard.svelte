@@ -19,12 +19,14 @@
 			<Fa icon={faCalendarDays} />
 			{formatEventDateRange(event)}
 		</span>
-		<span class="flex items-center gap-2 text-xl font-bold">
-			<Fa icon={faLocationDot} />
-			<a href={event.location_url || null} class="location-link">
-				{event.location}
-			</a>
-		</span>
+		{#if event.location}
+			<span class="flex items-center gap-2 text-xl font-bold">
+				<Fa icon={faLocationDot} />
+				<a href={event.location_url || null} class="location-link">
+					{event.location}
+				</a>
+			</span>
+		{/if}
 	</div>
 	<p class="py-4">
 		{@html event.description}

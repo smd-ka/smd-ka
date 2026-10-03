@@ -20,12 +20,12 @@
 			<div>
 				{formatEventDateRange(event, 'dddd, DD.MM // HH:mm')}
 			</div>
-			<a class="location-link fa" href={event.location_url || null}>
-				<Fa icon={faLocationDot} />
-				{#if event.location}
+			{#if event.location}
+				<a class="location-link fa" href={event.location_url || null}>
+					<Fa icon={faLocationDot} />
 					{event.location}
-				{/if}
-			</a>
+				</a>
+			{/if}
 		</div>
 		<div class="text-2xl font-bold">
 			{event.title}
