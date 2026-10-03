@@ -2,23 +2,16 @@
 	import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
 	import dayjs from 'dayjs';
-	import { getImageSrc } from '$lib/fetch_img';
-	import placeholder from '$lib/assets/pages/events/kalender/placeholder.png';
+	import { getEventImageSrc } from '$lib/calendar';
+	import type { CalendarEvent } from '$lib/models';
 
-	export let event: any;
-
-	function imgSrc(image: string, id: string, collectionId: string, collectionName: string) {
-		if (!image) {
-			return placeholder;
-		}
-		return getImageSrc(image, id, collectionId, collectionName);
-	}
+	export let event: CalendarEvent;
 </script>
 
 <div class="group flex h-full flex-col">
 	<a href="/events/kalender/{event.id}">
 		<img
-			src={imgSrc(event.image, event.id, event.collectionId, event.collectionName)}
+			src={getEventImageSrc(event)}
 			class="w-full rounded-sm object-cover transition-all duration-300 hover:cursor-pointer group-hover:scale-[101%]"
 			alt={event.title}
 		/>

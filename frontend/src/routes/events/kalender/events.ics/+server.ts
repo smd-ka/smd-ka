@@ -1,6 +1,6 @@
 import type { RequestHandler } from './$types';
 import { pb } from '$lib/pocketbase';
-import { _imgSrc } from '../+page';
+import { getEventImageSrc } from '$lib/calendar';
 import type { CalendarEvent } from '$lib/models';
 import { getImageMimeType } from '../image-mime';
 
@@ -110,7 +110,7 @@ function renderDescription(description: OptionalValue, properties: DictValues): 
  * Return only the VEVENT lines for the given record.
  */
 function recordToVeventLines(record: CalendarEvent): string[] {
-    let imageSrc = _imgSrc(record.image, record.id, record.collectionId, record.collectionName, record.category);
+    let imageSrc = getEventImageSrc(record);
     if (imageSrc.startsWith("/")) imageSrc = `${BASE_URL}${imageSrc}`;
 
     const rawLines: string[] = [

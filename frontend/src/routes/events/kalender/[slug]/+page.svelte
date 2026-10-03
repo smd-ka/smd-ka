@@ -3,7 +3,7 @@
 	import type { PageData } from '../$types';
 	import { _categoryToDisplayName } from './+page';
 	import dayjs from 'dayjs';
-	import { _imgSrc } from '../+page';
+	import { getEventImageSrc } from '$lib/calendar';
 	import Fa from 'svelte-fa';
 
 	export let data: PageData;
@@ -42,13 +42,7 @@
 
 		<img
 			alt="Foto für {data.event.title}"
-			src={_imgSrc(
-				data.event.image,
-				data.event.id,
-				data.event.collectionId,
-				data.event.collectionName,
-				data.event.category
-			)}
+			src={getEventImageSrc(data.event)}
 		/>
 
 		<section class="grid gap-8 py-12 md:grid-cols-[3fr_fit-content(18rem)]">

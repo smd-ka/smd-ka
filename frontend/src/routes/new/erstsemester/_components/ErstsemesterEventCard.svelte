@@ -1,16 +1,17 @@
 <script lang="ts">
 	import { faLocationDot, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 
-	import { getImageSrc } from '$lib/fetch_img';
+	import { getEventImageSrc } from '$lib/calendar';
 	import dayjs from 'dayjs';
 	import Fa from 'svelte-fa';
+	import type { CalendarEvent } from '$lib/models';
 
-	export let event: any;
+	export let event: CalendarEvent;
 </script>
 
 <div>
 	<img
-		src={getImageSrc(event.image, event.id, event.collectionId, event.collectionName)}
+		src={getEventImageSrc(event)}
 		alt={event.title}
 	/>
 	<div class="pt-8">
