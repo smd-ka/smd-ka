@@ -4,5 +4,14 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "eslint.validate": ["javascript", "typescript", "svelte"]
+  "editor.insertSpaces": false,
+  "eslint.validate": ["javascript", "typescript", "svelte"],
+  "files.eol": "\n",
+  "files.exclude": {
+    ".direnv": true,
+  },
+  "search.exclude": {
+    "**/.svelte-kit": true
+  },
+  "svelte.enable-ts-plugin": true,
 }
