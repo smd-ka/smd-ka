@@ -5,7 +5,8 @@
 	import TextInput from '$lib/components/forms/TextInput.svelte';
 	import UrlInput from '$lib/components/forms/UrlInput.svelte';
 	import Fa from 'svelte-fa';
-	import { _duplicateEvent, _handleDates, _shownEvent, type CalendarEvent } from './+page';
+	import { _duplicateEvent, _handleDates, _shownEvent } from './+page';
+	import type { CalendarEvent } from '$lib/models';
 	import {
 		faArrowUpRightFromSquare,
 		faCheckCircle,

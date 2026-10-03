@@ -1,5 +1,5 @@
 import { pb } from '$lib/pocketbase';
-import type { CalendarEvent } from '../../intern/kalender/+page';
+import type { CalendarEvent } from '$lib/models';
 import type { PageLoad } from './$types';
 
 export const prerender = true;

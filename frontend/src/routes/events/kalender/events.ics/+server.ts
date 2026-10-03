@@ -1,6 +1,7 @@
 import type { RequestHandler } from './$types';
 import { pb } from '$lib/pocketbase';
 import { _imgSrc } from '../+page';
+import type { CalendarEvent } from '$lib/models';
 import { getImageMimeType } from '../image-mime';
 
 const BASE_URL = 'https://smd-karlsruhe.de';
@@ -10,31 +11,7 @@ const BASE_URL = 'https://smd-karlsruhe.de';
 const IMPLEMENTATION_DOMAIN = 'smd-karlsruhe.de';
 const IMPLEMENTATION_ID = '20251017-implementation';
 
-type RecordLike = {
-    collectionId: string;
-    collectionName: string;
-    id: string;
-    title?: string;
-    title_en?: string;
-    description?: string;
-    description_en?: string;
-    image: string;
-    /** ISO-ish string (without "T" between date & time) */
-    start_date_time: string;
-    /** ISO-ish string (without "T" between date & time) */
-    end_date_time?: string;
-    location?: string;
-    location_url?: string;
-    speaker?: string;
-    /** ISO-ish string (without "T" between date & time) */
-    created: string;
-    /** ISO-ish string (without "T" between date & time) */
-    updated: string;
-    category: string;
-    [k: string]: any;
-};
-
-async function retrieveEvents(): Promise<RecordLike[]> {
+async function retrieveEvents(): Promise<CalendarEvent[]> {
     return await pb.collection('calendar').getFullList({
         sort: '+start_date_time',
         filter: `category!='german_bible_study'`
@@ -132,7 +109,7 @@ function renderDescription(description: OptionalValue, properties: DictValues): 
 /**
  * Return only the VEVENT lines for the given record.
  */
-function recordToVeventLines(record: RecordLike): string[] {
+function recordToVeventLines(record: CalendarEvent): string[] {
     let imageSrc = _imgSrc(record.image, record.id, record.collectionId, record.collectionName, record.category);
     if (imageSrc.startsWith("/")) imageSrc = `${BASE_URL}${imageSrc}`;
 

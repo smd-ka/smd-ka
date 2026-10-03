@@ -4,7 +4,8 @@
 	import AddEventForm from './addEventForm.svelte';
 	import EditEventForm from './editEventForm.svelte';
 	import dayjs from 'dayjs';
-	import { _duplicateEvent, _eventStore, _shownEvent, type CalendarEvent } from './+page';
+	import { _duplicateEvent, _eventStore, _shownEvent } from './+page';
+	import type { CalendarEvent } from '$lib/models';
 	import Breadcrumbs from '$lib/components/navigation/Breadcrumbs.svelte';
 
 	let loading = false;

@@ -12,9 +12,9 @@
 		_duplicateEvent,
 		_eventStore,
 		_handleDates,
-		_shownEvent,
-		type CalendarEvent
+		_shownEvent
 	} from './+page';
+	import type { CalendarEvent } from '$lib/models';
 	import CalendarCategorySelect from './calendarCategorySelect.svelte';
 	import { onMount } from 'svelte';
 
