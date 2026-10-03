@@ -32,7 +32,7 @@
 		</div>
 
 		<p class="line-clamp-2">
-			{@html event.description}
+			{@html event.description ?? ''}
 		</p>
 		<a href="/events/kalender/{event.id}" class="text-primary">Mehr erfahren</a>
 	</div>

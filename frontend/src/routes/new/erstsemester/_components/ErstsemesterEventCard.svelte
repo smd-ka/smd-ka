@@ -28,8 +28,8 @@
 			</span>
 		{/if}
 	</div>
-	<p class="py-4">
-		{@html event.description}
+	<p class="py-4 line-clamp-3">
+		{@html event.description ?? ''}
 	</p>
 </div>
 
