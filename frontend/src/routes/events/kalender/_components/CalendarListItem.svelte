@@ -41,11 +41,7 @@
 		{#if event.location}
 			<div class="font-bold">
 				Ort:
-				{#if event.maps_url}
-					<a href={event.maps_url} target="_blank" rel="noopener">
-						{event.location}
-					</a>
-				{:else if event.location_url}
+				{#if event.location_url}
 					<a href={event.location_url} target="_blank" rel="noopener">
 						{event.location}
 					</a>
