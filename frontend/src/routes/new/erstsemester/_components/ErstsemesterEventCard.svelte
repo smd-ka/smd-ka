@@ -8,12 +8,12 @@
 	export let event: CalendarEvent;
 </script>
 
-<div>
+<div class="flex flex-col gap-4">
 	<img
 		src={getEventImageSrc(event)}
 		alt={event.title}
 	/>
-	<div class="pt-8">
+	<div>
 		<h3>{event.title}</h3>
 		<span class="flex items-center gap-2 text-xl font-bold">
 			<Fa icon={faCalendarDays} />
@@ -28,7 +28,7 @@
 			</span>
 		{/if}
 	</div>
-	<p class="py-4 line-clamp-3">
+	<p class="line-clamp-3">
 		{@html event.description ?? ''}
 	</p>
 </div>
