@@ -15,6 +15,7 @@
 	} from '@fortawesome/free-solid-svg-icons';
 	import rightArrow from '$lib/assets/icons/right-arrow-handdrawn.svg';
 	import iPhoneMockupInstagram from '$lib/assets/pages/about/kontakt/mockup_instagram.jpg';
+	import { SIGNAL_GROUP_URL, INSTAGRAM_URL } from '$lib/links';
 
 	let success = false;
 	let error = false;
@@ -70,7 +71,7 @@
 			<div class="flex flex-col gap-y-4 text-3xl">
 				<!-- Messenger / Signal -->
 				<a
-					href="https://signal.group/#CjQKILxV0vWmZBW7kvIbxe4V3RoXfcjBBYOhUr8ezW78a75EEhCe2qNDAZ0IGRWzryk6GpfC"
+					href={SIGNAL_GROUP_URL}
 					target="_blank"
 					rel="noopener noreferrer"
 					aria-label="Signal-Gruppe öffnen (öffnet neues Fenster)"
@@ -87,7 +88,7 @@
 
 				<!-- Instagram -->
 				<a
-					href="https://www.instagram.com/smd_karlsruhe/"
+					href={INSTAGRAM_URL}
 					target="_blank"
 					rel="noopener noreferrer"
 					aria-label="Instagram-Profil öffnen (öffnet neues Fenster)"

@@ -33,6 +33,7 @@
 	import { page } from '$app/stores';
 	import { blur, slide } from 'svelte/transition';
 	import { headerImageHeight } from '$lib/stores';
+	import { INSTAGRAM_URL } from '$lib/links';
 	import { sineInOut } from 'svelte/easing';
 	import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 	import { onMount } from 'svelte';
@@ -346,10 +347,7 @@
 					</div>
 
 					<div class="flex gap-4 max-md:flex-col max-md:items-end md:items-center md:justify-end">
-						<a
-							href="https://www.instagram.com/smd_karlsruhe/"
-							class="flex items-center gap-4 text-3xl"
-						>
+						<a href={INSTAGRAM_URL} class="flex items-center gap-4 text-3xl">
 							<Fa icon={faInstagram} />
 						</a>
 						<a class="pr-1 text-3xl" href="mailto:leiter@smd-karlsruhe.de">
