@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ErstsemesterEventCard from './_components/ErstsemesterEventCard.svelte';
-	import { INSTAGRAM_URL } from '$lib/links';
+	import { SIGNAL_GROUP_URL, INSTAGRAM_URL } from '$lib/links';
 
 	export let data: PageData;
 </script>
@@ -34,9 +34,10 @@
 
 			<p>
 				Mehr Infos zu den einzelnen Aktionen (fürs Wintersemester) findest du auch direkt hier unten
-				sowie in unseren Signal-Gruppen und auch auf
-				<a href={INSTAGRAM_URL}>Instagram</a>. Den Link zu den Signal-Gruppen und weitere
-				Kontaktmöglichkeiten findest du unter
+				sowie in unseren
+				<a href={SIGNAL_GROUP_URL} target="_blank" rel="noopener noreferrer">Signal-Gruppen</a>
+				und auch auf
+				<a href={INSTAGRAM_URL}>Instagram</a>. Weitere Kontaktmöglichkeiten findest du unter
 				<a href="/about/kontakt">Kontakt</a>.
 			</p>
 
