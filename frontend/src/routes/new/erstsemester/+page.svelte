@@ -33,8 +33,7 @@
 			<br />
 
 			<p>
-				Mehr Infos zu den einzelnen Aktionen (fürs Wintersemester) findest du auch direkt hier unten
-				sowie in unseren
+				Mehr Infos zu den einzelnen Aktionen findest du auch direkt hier unten sowie in unseren
 				<a href={SIGNAL_GROUP_URL} target="_blank" rel="noopener noreferrer">Signal-Gruppen</a>
 				und auch auf
 				<a href={INSTAGRAM_URL}>Instagram</a>. Weitere Kontaktmöglichkeiten findest du unter
