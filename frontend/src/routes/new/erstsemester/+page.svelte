@@ -35,9 +35,9 @@
 			<p>
 				Mehr Infos zu den einzelnen Aktionen (fürs Wintersemester) findest du auch direkt hier unten
 				sowie in unseren Signal-Gruppen und auch auf
-				<a href={INSTAGRAM_URL} class="text-primary">Instagram</a>. Den Link zu den Signal-Gruppen
-				und weitere Kontaktmöglichkeiten findest du unter
-				<a href="/about/kontakt" class="text-primary">Kontakt</a>.
+				<a href={INSTAGRAM_URL}>Instagram</a>. Den Link zu den Signal-Gruppen und weitere
+				Kontaktmöglichkeiten findest du unter
+				<a href="/about/kontakt">Kontakt</a>.
 			</p>
 
 			<p></p>
@@ -65,3 +65,9 @@
 		{/if}
 	</section>
 </main>
+
+<style>
+	a[href] {
+		@apply text-primary;
+	}
+</style>
