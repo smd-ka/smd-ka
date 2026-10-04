@@ -1,12 +1,13 @@
 import { pb } from '$lib/pocketbase';
 import type { CalendarEvent } from '$lib/models';
 import type { PageLoad } from './$types';
+import dayjs from 'dayjs';
 
 export const prerender = true;
 
 export const load: PageLoad = async () => {
 	const now = new Date();
-	const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString();
+	const startOfToday = dayjs(now).startOf('day').toISOString();
 	let erstsemester_events: CalendarEvent[] = [];
 
 	try {
