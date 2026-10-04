@@ -7,7 +7,7 @@
 
 <main class="main">
 	<section class="pad">
-		<h1 class="text-center">Erstsemester? - Let's Go!</h1>
+		<h1>Erstsemester? - Let's Go!</h1>
 		<p>
 			Du bist neu in der Stadt und/oder ziehst für dein Studium nach Karlsruhe? Schön, dass du uns
 			gefunden hast - wir haben da etwas für dich vorbereitet! Wir wünschen uns, dass dir der
@@ -19,7 +19,7 @@
 	</section>
 
 	<section class="pad grid gap-4">
-		<h2 class="text-center">Unser Erstsemesterprogramm</h2>
+		<h2>Unser Erstsemesterprogramm</h2>
 
 		<div>
 			<p class="font-bold">
@@ -67,6 +67,12 @@
 </main>
 
 <style>
+	h1,
+	h2,
+	h3 {
+		@apply text-center;
+	}
+
 	a[href] {
 		@apply text-primary;
 	}
