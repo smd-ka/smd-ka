@@ -4,12 +4,10 @@ import { filterConcat, filterIn } from '$lib/pb_filters';
 import type { PageLoad } from './$types';
 import dayjs from 'dayjs';
 
-export const prerender = true;
+// content too dynamic to be prerendered (events change, semester changes)
+export const prerender = false;
 
-const ERSTI_CATEGORIES = [
-	'church_hopping',
-	'erstsemesteraktion'
-];
+const ERSTI_CATEGORIES = ['church_hopping', 'erstsemesteraktion'];
 
 export const load: PageLoad = async () => {
 	const now = new Date();
