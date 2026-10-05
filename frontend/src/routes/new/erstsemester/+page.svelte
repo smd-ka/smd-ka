@@ -12,8 +12,8 @@
 	<section class="pad">
 		<h1>Erstsemester? - Let's Go!</h1>
 		<p>
-			Du bist neu in der Stadt und/oder ziehst für dein Studium nach Karlsruhe? Schön, dass du uns
-			gefunden hast - wir haben da etwas für dich vorbereitet! Wir wünschen uns, dass dir der
+			Du bist neu in der Stadt oder ziehst für dein Studium nach Karlsruhe? Schön, dass du uns
+			gefunden hast - wir haben etwas für dich vorbereitet! Wir wünschen uns, dass dir der
 			Studienstart gut gelingt und du dich bei allen Veränderungen schnell zurechtfindest. Durch
 			verschiedene Formate geben wir dir die Möglichkeit, nette Menschen, die Stadt und die SMD
 			kennenzulernen. Du bist herzlich eingeladen bei unseren Veranstaltungen vorbeizuschauen oder
