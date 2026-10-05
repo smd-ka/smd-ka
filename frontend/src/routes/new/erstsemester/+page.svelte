@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { dev } from '$app/environment';
+
 	import { faChevronRight, faMessage } from '@fortawesome/free-solid-svg-icons';
 	import ErstsemesterEventCard from './_components/ErstsemesterEventCard.svelte';
 	import { SIGNAL_GROUP_URL, INSTAGRAM_URL } from '$lib/links';
@@ -78,6 +80,17 @@
 </script>
 
 <main class="main">
+	{#if dev}
+		<label class="mx-auto block w-fit">
+			programMode=
+			<select bind:value={programMode}>
+				{#each Object.entries(Mode) as [name, value]}
+					<option {value}>{name}</option>
+				{/each}
+			</select>
+		</label>
+	{/if}
+
 	<section class="pad">
 		<h1>Erstsemester? - Let's Go!</h1>
 		<p>
