@@ -50,7 +50,7 @@ export const RecommendedChurches: ChurchInfo[] = [
 	{
 		name: 'Treffpunkt Leben (TL)',
 		url: 'https://treffpunkt-leben.de/',
-		timings: 'Sonntag, 9:30 Uhr und 11:45 Uhr',
+		timings: 'Sonntag, 9:30 Uhr und 11:30 Uhr',
 		location: 'Grünwinkel; Herrmann-Leichtlin-Straße 15',
 		attenderNumber: 'ca. 200 Personen'
 	}
