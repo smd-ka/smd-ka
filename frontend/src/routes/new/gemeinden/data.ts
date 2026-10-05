@@ -18,7 +18,7 @@ export const RecommendedChurches: ChurchInfo[] = [
 	},
 	{
 		name: 'Freie evangelische Gemeinde (FeG)',
-		url: 'https://karlsruhe.feg.de/',
+		url: 'https://feg-karlsruhe.de/',
 		timings: 'Sonntag, 9:30 Uhr und 11:15 Uhr',
 		location: 'Nordstadt; Am Wald 2',
 		attenderNumber: 'ca. 150 Personen je Gottesdienst',
