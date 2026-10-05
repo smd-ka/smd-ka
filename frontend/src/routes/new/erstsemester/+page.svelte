@@ -1,6 +1,9 @@
 <script lang="ts">
+	import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 	import ErstsemesterEventCard from './_components/ErstsemesterEventCard.svelte';
 	import { SIGNAL_GROUP_URL, INSTAGRAM_URL } from '$lib/links';
+	import Button from '$lib/components/Button.svelte';
+	import Fa from 'svelte-fa';
 
 	export let data: PageData;
 </script>
@@ -62,6 +65,13 @@
 				{/each}
 			</div>
 		{/if}
+
+		<div class="button-bar p-4">
+			<Button href="/events/kalender">
+				<Fa icon={faChevronRight} />
+				Zum Kalender mit allen Events
+			</Button>
+		</div>
 	</section>
 </main>
 
@@ -74,5 +84,9 @@
 
 	a[href] {
 		@apply text-primary;
+	}
+
+	.button-bar {
+		@apply flex flex-wrap justify-center gap-4;
 	}
 </style>
