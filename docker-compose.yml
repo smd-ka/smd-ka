@@ -63,7 +63,7 @@ services:
 
   caddy:
     container_name: caddy
-    image: docker.io/library/caddy:2.8
+    image: docker.io/library/caddy:2  # do not pin minor version for partial auto updates
     environment:
       DOMAIN_LONG: ${DOMAIN_LONG:-smd-karlsruhe.de}
       DOMAIN_SHORT: ${DOMAIN_SHORT:-smd-ka.de}
