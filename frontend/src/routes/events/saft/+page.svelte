@@ -52,7 +52,9 @@
 				</div>
 				<div class="flex items-center justify-end gap-2">
 					<Fa class="text-primary" icon={faCoins} />
-					Preis: 40 € <!-- (XX € für Freitag bis Sonntag) -->
+					Preis: als <abbr title="wenn du in deinem ersten Uni-Semester bist">Ersti</abbr> 25 €,
+					sonst 50 €
+					<!-- (XX € für Freitag bis Sonntag) -->
 				</div>
 				<div class="flex justify-end gap-2">
 					<Fa class="mt-1 justify-self-end text-primary" icon={faLocationDot} />

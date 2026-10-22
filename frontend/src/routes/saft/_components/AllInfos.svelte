@@ -21,7 +21,7 @@
 		13.11 bis 15.11.2026
 	</li>
 	<li>
-		<strong>Teilnahmebeitrag:</strong> 40 €; bitte bis <strong>28.4.</strong> überweisen an:<br />
+		<strong>Teilnahmebeitrag:</strong> 50 € (als Ersti 25 €); bitte bis <strong>28.4.</strong> überweisen an:<br />
 		„Studentenmission in Deutschland“, IBAN: <code>DE26 5009 2100 0001 7549 39</code>,
 		Verwendungszweck: Bitte vollen Namen angeben<br />
 		Alternativ Barzahlung vor Ort, bitte passend.
