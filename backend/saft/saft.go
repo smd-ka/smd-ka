@@ -18,7 +18,7 @@ import (
 // Constants for SAFT registration emails
 const (
 	Subject   = "[SMD-KA] SAFT Anmeldung "
-	OrgaEmail = "inreach@smd-karlsruhe.de"
+	OrgaEmail = "connect@smd-karlsruhe.de"
 )
 
 func SaftEmails(app *pocketbase.PocketBase) {
