@@ -25,8 +25,6 @@
 
 	const ticketValues = [
 		'Deutschlandticket/Jugendticket BW',
-		'KVV-Bescheinigung',
-		'KVV-Semesterticket'
 	];
 
 	enum FormStatus {
@@ -67,13 +65,13 @@
 		);
 		formData.set('brings_cake', formData.get('brings_cake') === 'on' ? 'true' : 'false');
 		formData.set('is_vegetarian', formData.get('is_vegetarian') === 'on' ? 'true' : 'false');
-		// ZELT-SAFT
+		/*// ZELT-SAFT
 		formData.set('comes_friday', formData.get('comes_friday') === 'on' ? 'true' : 'false');
 		formData.set('pot', formData.get('pot') === 'on' ? 'true' : 'false');
 		formData.set('bag', formData.get('bag') === 'on' ? 'true' : 'false');
 		formData.set('pad', formData.get('pad') === 'on' ? 'true' : 'false');
 		formData.set('fairy_lights', formData.get('fairy_lights') === 'on' ? 'true' : 'false');
-
+		*/
 		formData.set('semester', PUBLIC_SEMESTER);
 		if (pb.authStore.isValid && pb.authStore.model?.id) {
 			formData.set('user', pb.authStore.model?.id);
@@ -225,21 +223,23 @@
 
 					<h3>Essenspräferenzen</h3>
 
-					<!--<InputCheckbox
+					<InputCheckbox
 					name="would_sleep_on_floor"
 					label="Ich könnte mir vorstellen ggf. auf den Boden zu schlafen und Schlafsack / Isomatte dazu mitzubringen"
-				/>-->
+					/>
 
 					<InputCheckbox
 						name="brings_cake"
 						label="Ich bringe Kuchen, Muffins oder Ähnliches mit für Kaffee und Kuchen am Samstag"
 					/>
+					<!-- +++ ZELT-SAFT +++
 					<div>
 						<p>
 							Wir wollen am Donnerstagabend Grillen, dafür kann ich folgende Beilage mitbringen:
 						</p>
 						<InputField name="side_dish" label="" disabled={loading} />
 					</div>
+			
 					<fieldset class="mt-1">
 						<legend>Ich koche gerne (1 = ungerne, 5 = gerne)</legend>
 
@@ -259,7 +259,7 @@
 							{/each}
 						</div>
 					</fieldset>
-
+-->
 					{#if loggedIn}
 						<b class="text-primary">Bitte gebe deine Essenspräferenzen in deinem Profil an!</b>
 					{:else}
@@ -272,14 +272,14 @@
 						/>
 					{/if}
 
-					<!-- +++ ZELT-SAFT +++ -->
+					<!-- +++ ZELT-SAFT +++ 
 
 					<div>
 						<p>Ich kann folgend(e) Zelte mitbringen: Bitte die Personenanzahl pro Zelt angeben.</p>
 						<InputField name="tents" label="" disabled={loading} />
 					</div>
-
-					<!-- <InputCheckbox name="pot" label="Ich kann einen Gas/ Spirituskocher mit Topf mitbringen" /> -->
+					
+					<InputCheckbox name="pot" label="Ich kann einen Gas/ Spirituskocher mit Topf mitbringen" />
 
 					<InputCheckbox
 						name="bag"
@@ -299,7 +299,7 @@
 						name="fairy_lights"
 						label="Ich kann eine/mehrer batteriebetriebene(n) Lichterketten mitbringen"
 					/>
-
+				-->
 					<!-- +++ ZELT-SAFT +++ -->
 
 					<span><b>Rechtliches:</b> Und wie sieht's mit Bildern von dir aus? </span>
@@ -331,10 +331,12 @@
 							<p>
 								Auch sonstige Anmerkungen zur Anmeldung zur SAFT kannst du hier gerne vermerken.
 							</p>
+							<!--+++ ZELT-SAFT +++ 
 							<p>
 								Falls du Anmerkungen zu deinem Outdoormaterial hast, lass es uns gerne auch hier
 								Wissen.
 							</p>
+						-->
 						</label>
 						<textarea class="rounded-md border-2" name="comments" id="comments" rows="5"></textarea>
 					</div>

@@ -8,7 +8,7 @@ import (
 const (
 	// the exact string that is accepted for new submissions
 	// must in practice be synced with frontend's PUBLIC_SEMESTER env var
-	AcceptedSemester = "SS26"
+	AcceptedSemester = "WS2627"
 
 	readableIsoFormat = "2006-01-02 15:04:05" // without timezone & with space
 	deadlineTimezoneName = "Europe/Berlin"
