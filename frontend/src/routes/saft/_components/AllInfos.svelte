@@ -18,7 +18,7 @@
 <ul>
 	<li>
 		<strong>Datum:</strong>
-		30.04 bis 03.05.2026
+		13.11 bis 15.11.2026
 	</li>
 	<li>
 		<strong>Teilnahmebeitrag:</strong> 40 €; bitte bis <strong>28.4.</strong> überweisen an:<br />

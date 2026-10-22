@@ -17,7 +17,7 @@
 	</div>
 
 	{#if data.error}
-		<div>Es ist ein Fehler aufgetreten bitte versuche es erneut oder wende dich an Claus.</div>
+		<div>Es ist ein Fehler aufgetreten bitte versuche es erneut oder wende dich an Felix.</div>
 	{/if}
 
 	<section class=" grid grid-cols-4 gap-1 pt-4">
