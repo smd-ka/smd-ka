@@ -11,6 +11,7 @@
 	import { RegistrationStatus, requestRegStatus } from '$lib/saftRegistrationApi';
 	// components
 	import MessageAfterwards from './MessageAfterwards.svelte';
+	import MessageBefore from './MessageBefore.svelte';
 	import MessageClosed from './MessageClosed.svelte';
 
 	let status: RegistrationStatus = RegistrationStatus.Unknown;
@@ -24,6 +25,8 @@
 	{#if status === RegistrationStatus.Open}
 		<slot />
 	{/if}
+{:else if status === RegistrationStatus.Before}
+	<MessageBefore />
 {:else if status === RegistrationStatus.Closed}
 	<MessageClosed />
 {:else if status === RegistrationStatus.Afterwards}
