@@ -5,7 +5,6 @@
 	import SemesterEventView from '../_components/SemesterEventView.svelte';
 	import SemesterProgramSelector from '../_components/SemesterProgramSelector.svelte';
 
-	export const prerender = true;
 	export let data: LayoutData;
 </script>
 
