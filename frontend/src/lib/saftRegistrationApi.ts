@@ -6,12 +6,14 @@ export const RegistrationStatus = {
     Unknown: 0,
     // fetching status was impossible (& present error to user)
     Failed: 1,
+    // registration is not opened yet (but event is still upcoming)
+    Before: 2,
     // registration is normally open
-    Open: 2,
+    Open: 3,
     // registration is closed (but still before event, i.e. maybe show "contact us" hint)
-    Closed: 3,
+    Closed: 4,
     // event ended (i.e. makes no sense to show "contact us" hint anymore)
-    Afterwards: 4,
+    Afterwards: 5,
 } as const;
 
 export type RegistrationStatus = typeof RegistrationStatus[keyof typeof RegistrationStatus];

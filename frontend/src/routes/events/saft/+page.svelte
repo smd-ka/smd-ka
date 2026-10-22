@@ -2,8 +2,8 @@
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import Saos from 'saos';
 	import promoVid from '$lib/assets/videos/saft.mp4';
-	import header from '$lib/assets/pages/events/saft/saft_volleyball.jpg';
-	import saftGroup from '$lib/assets/pages/events/saft/saft_ws25_26.jpg';
+	import header from '$lib/assets/pages/events/saft/saft_ws25_26.jpg';
+	import saftVolleyball from '$lib/assets/pages/events/saft/saft_volleyball.jpg';
 	import saftDuck from '$lib/assets/pages/events/saft/saft_duck.jpg';
 	import { faCalendarDays, faCoins, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
@@ -48,18 +48,20 @@
 				<h2>Die Fakten</h2>
 				<div class="flex items-center justify-end gap-2">
 					<Fa class="text-primary" icon={faCalendarDays} />
-					Datum: 30.04 - 03.05.2026
+					Datum: 13.11 - 15.11.2026
 				</div>
 				<div class="flex items-center justify-end gap-2">
 					<Fa class="text-primary" icon={faCoins} />
-					Preis: 40 € <!-- (XX € für Freitag bis Sonntag) -->
+					Preis: als <abbr title="wenn du in deinem ersten Uni-Semester bist">Ersti</abbr> 25 €,
+					sonst 50 €
+					<!-- (XX € für Freitag bis Sonntag) -->
 				</div>
 				<div class="flex justify-end gap-2">
 					<Fa class="mt-1 justify-self-end text-primary" icon={faLocationDot} />
-					Ort: Nähe Heidelberg, Kühlberghütte
+					Ort: Mühlhausen an der Enz
 				</div>
 				<a
-					href="https://maps.app.goo.gl/GD2SXFPAEzTq7EKE7"
+					href="https://maps.app.goo.gl/kftSAq3HLz51qkVU9"
 					class="mt-4 w-fit justify-self-end bg-black p-4 text-white"
 				>
 					Auf Google Maps anschauen
@@ -69,8 +71,8 @@
 		<Saos animation="slide-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both">
 			<img
 				class="h-72 w-full object-cover object-top max-lg:order-last"
-				alt="lustiges Gruppenfoto von der SAFT"
-				src={saftGroup}
+				alt="Volleyball auf der Saft"
+				src={saftVolleyball}
 			/>
 		</Saos>
 	</section>

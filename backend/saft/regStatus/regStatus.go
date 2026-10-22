@@ -13,15 +13,21 @@ const (
 	readableIsoFormat = "2006-01-02 15:04:05" // without timezone & with space
 	deadlineTimezoneName = "Europe/Berlin"
 
-	// change these dates here to unlock the SAFT registration formular
+	// change these dates here to control the SAFT registration form
+
+	// regOpen == "" -> Before state until afterwards
+	registrationOpenIso = ""
+	// only honored with regOpen set & afterwards not passed
 	registrationDeadlineIso = "2026-04-29 00:00:00"
-	afterwardsDeadlineIso = "2026-05-03 00:00:00"
+	// should be end date of SAFT (or 1 day before) -> direct late submissions to email until then
+	afterwardsDeadlineIso = "2026-11-16 00:00:00"
 )
 
 var (
-	deadlineTimezone *time.Location
+	deadlineTimezone     *time.Location
+	RegistrationOpen     time.Time
 	RegistrationDeadline time.Time
-	AfterwardsDeadline time.Time
+	AfterwardsDeadline   time.Time
 )
 
 func init() {
@@ -31,8 +37,17 @@ func init() {
 		panic(err)
 	}
 	// parsing does not induce a lot of work as it happens on launch
+	RegistrationOpen = parseDeadlineOrZero(registrationOpenIso)
 	RegistrationDeadline = parseDeadline(registrationDeadlineIso)
 	AfterwardsDeadline = parseDeadline(afterwardsDeadlineIso)
+}
+
+// parses deadline; returns zero time.Time if iso is empty (i.e. unset/not opened)
+func parseDeadlineOrZero(iso string) time.Time {
+	if iso == "" {
+		return time.Time{}
+	}
+	return parseDeadline(iso)
 }
 
 func parseDeadline(iso string) time.Time {
@@ -56,6 +71,8 @@ const (
 	Unknown RegistrationStatus = iota
 	// fetching status was impossible (& present error to user)
 	Failed
+	// registration is not opened yet (but event is still upcoming)
+	Before
 	// registration is normally open
 	Open
 	// registration is closed (but still before event, i.e. maybe show "contact us" hint)
@@ -90,11 +107,17 @@ func Determine(atTime *time.Time) RegistrationStatus {
 	} else {
 		now = *atTime
 	}
-	if now.Before(RegistrationDeadline) {
-		return Open
-	} else if now.Before(AfterwardsDeadline) {
-		return Closed
-	} else {
+	// resilient check order (see comments above)
+	if now.After(AfterwardsDeadline) {
 		return Afterwards
+	} else if RegistrationOpen.IsZero() {
+		return Before
+	} else if now.After(RegistrationDeadline) {
+		return Closed
+	} else if now.Before(RegistrationOpen) {
+		return Before
+	} else {
+		// most protected state, because largest consequences
+		return Open
 	}
 }

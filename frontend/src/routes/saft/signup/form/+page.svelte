@@ -19,6 +19,7 @@
 	import InfoTravelIndependent from '../../_components/InfoTravelIndependent.svelte';
 	import InfoTravelTrain from '../../_components/InfoTravelTrain.svelte';
 	import MessageAfterwards from '../../_components/MessageAfterwards.svelte';
+	import MessageBefore from '../../_components/MessageBefore.svelte';
 	import MessageClosed from '../../_components/MessageClosed.svelte';
 
 	import { RegistrationStatus, requestRegStatus } from '$lib/saftRegistrationApi';
@@ -108,6 +109,8 @@
 					<img class="h-8" src={loadingSpinner} alt="loading" />
 					<p class="text-gray-500">Anmeldestatus wird geladen…</p>
 				</div>
+			{:else if regStatus === RegistrationStatus.Before}
+				<MessageBefore />
 			{:else if regStatus === RegistrationStatus.Closed}
 				<MessageClosed />
 			{:else if regStatus == RegistrationStatus.Afterwards}
