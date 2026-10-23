@@ -12,11 +12,11 @@
 
 <main class="container mx-auto px-4 py-12">
 	<section class="">
-		<h1 class="font-anton text-primary text-center font-bold tracking-wide">
+		<h1 class="text-center font-anton font-bold tracking-wide text-primary">
 			Herzens<span class="bordered-text text-white">sache</span>
 		</h1>
 		<h2 class="pb-0 text-center">Unser Sommersemester 2024</h2>
-		<h3 class=" text-primary font-caveat text-center">jeden zweiten Dienstag 18:30</h3>
+		<h3 class="text-center font-caveat text-primary">jeden zweiten Dienstag 18:30</h3>
 	</section>
 
 	<SemesterEventView events={data.events} />

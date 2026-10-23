@@ -29,7 +29,7 @@ export const load: LayoutServerLoad = async ({ url }) => {
 		start_date_time: record.start_date_time,
 		speaker: record.speaker,
 		location: record.location,
-		location_url: record.location_url,
+		location_url: record.location_url
 	}));
 
 	return {

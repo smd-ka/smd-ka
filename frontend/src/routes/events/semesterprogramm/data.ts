@@ -24,7 +24,7 @@ export const allPrograms: SemesterProgram[] = [
 		subtitle: 'Unser Wintersemester 2026/27',
 		image: allesklar,
 		start: '2026-10-01',
-		end: '2027-04-01',
+		end: '2027-04-01'
 	},
 	{
 		slug: 'sose26',
@@ -32,7 +32,7 @@ export const allPrograms: SemesterProgram[] = [
 		subtitle: 'Unser Sommersemester 2026',
 		image: aufswassergehen,
 		start: '2026-04-01',
-		end: '2026-10-01',
+		end: '2026-10-01'
 	},
 	{
 		slug: 'wise25_26',
@@ -40,7 +40,7 @@ export const allPrograms: SemesterProgram[] = [
 		subtitle: 'Unser Wintersemester 2025/26',
 		image: weitergehen,
 		start: '2025-10-01',
-		end: '2026-04-01',
+		end: '2026-04-01'
 	},
 	{
 		slug: 'sose25',
@@ -48,7 +48,7 @@ export const allPrograms: SemesterProgram[] = [
 		subtitle: 'Unser Sommersemester 2025',
 		image: vollerhoffnung,
 		start: '2025-04-01',
-		end: '2025-10-01',
+		end: '2025-10-01'
 	},
 	{
 		slug: 'wise24_25',
@@ -56,7 +56,7 @@ export const allPrograms: SemesterProgram[] = [
 		subtitle: 'Unser Wintersemester 2024/25',
 		image: outsidethebox,
 		start: '2024-10-01',
-		end: '2025-04-01',
+		end: '2025-04-01'
 	},
 	{
 		slug: 'sose24',
@@ -64,6 +64,6 @@ export const allPrograms: SemesterProgram[] = [
 		subtitle: 'Unser Sommersemester 2024',
 		image: herzenssache,
 		start: '2024-04-01',
-		end: '2024-10-01',
+		end: '2024-10-01'
 	}
 ];

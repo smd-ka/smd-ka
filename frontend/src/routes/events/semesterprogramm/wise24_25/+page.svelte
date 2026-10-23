@@ -12,9 +12,9 @@
 
 <main class="container mx-auto px-4 py-12">
 	<section class="">
-		<h1 class="font-gagalin text-primary text-center tracking-wide">Outside the Box</h1>
+		<h1 class="text-center font-gagalin tracking-wide text-primary">Outside the Box</h1>
 		<h2 class="pb-0 text-center">Unser Wintersemester 2024/25</h2>
-		<h3 class=" text-primary font-caveat text-center">jeden zweiten Dienstag 18:30</h3>
+		<h3 class="text-center font-caveat text-primary">jeden zweiten Dienstag 18:30</h3>
 	</section>
 
 	<SemesterEventView events={data.events} />
