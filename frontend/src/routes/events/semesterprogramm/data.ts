@@ -3,7 +3,7 @@ import outsidethebox from '$lib/assets/pages/events/semesterprogramm/outsidetheb
 import vollerhoffnung from '$lib/assets/pages/events/semesterprogramm/voller_hoffnung_21_9.jpg';
 import weitergehen from '$lib/assets/pages/events/semesterprogramm/weitergehen_21_9.jpg';
 import aufswassergehen from '$lib/assets/pages/events/semesterprogramm/aufsWassergehen_21_9.jpg';
-import allesklar from '$lib/assets/pages/events/semesterprogramm/allesKlar_21_9.jpg'; // jpg has more compatibility
+import allesklar from '$lib/assets/pages/events/semesterprogramm/allesKlar_21_9.avif';
 
 export type SemesterProgram = {
 	slug: string;
