@@ -5,6 +5,7 @@
 	export let imgSrc: string;
 	export let bgPosition: string = 'bg-center';
 	export let height: string = 'h-dvh';
+	export let title: string = '';
 
 	let resizeObserver: ResizeObserver;
 
@@ -31,6 +32,9 @@
 <section id="header_section" class="{height} -mb-[72px]">
 	<div
 		id="header_image"
+		role="img"
+		aria-label={title}
+		title={title}
 		class=" absolute top-0 {height} w-full bg-cover {bgPosition}"
 		style="background-image: url({imgSrc});"
 	></div>

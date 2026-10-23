@@ -7,7 +7,10 @@ export const prerender = true;
 export const load: LayoutServerLoad = async ({ url }) => {
 	const slug = url.pathname.split('/').pop() ?? '';
 	if (slug === 'semesterprogramm') {
-		return { events: [] };
+		return {
+			program: allPrograms[0],
+			events: []
+		};
 	}
 
 	const program = allPrograms.find((p) => p.slug === slug);
@@ -29,5 +32,8 @@ export const load: LayoutServerLoad = async ({ url }) => {
 		location_url: record.location_url,
 	}));
 
-	return { events };
+	return {
+		program,
+		events
+	};
 };
