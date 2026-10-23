@@ -21,7 +21,7 @@
 		13.11 bis 15.11.2026
 	</li>
 	<li>
-		<strong>Teilnahmebeitrag:</strong> 50 € (als Ersti 25 €); bitte bis <strong>28.4.</strong> überweisen an:<br />
+		<strong>Teilnahmebeitrag:</strong> 50 € (Ersties 25 €); bitte bis <strong>11.11.</strong> überweisen an:<br />
 		„Studentenmission in Deutschland“, IBAN: <code>DE26 5009 2100 0001 7549 39</code>,
 		Verwendungszweck: Bitte vollen Namen angeben<br />
 		Alternativ Barzahlung vor Ort, bitte passend.
@@ -42,7 +42,7 @@
 		<InfoTravelIndependent />
 	</li>
 </ul>
-
+<!--
 <p>
 	Falls du für die SAFT Sportmaterialien mitnimmst trage dies bitte
 	<a
@@ -51,9 +51,24 @@
 	>
 	ein.
 </p>
+-->
 
 <h3>2) Packliste</h3>
-
+<ul>
+		<li>Bettwäsche</li>
+		<li>(wiedererkennbares) Geschirrtuch</li>
+		<li>Hausschuhe</li>
+		<li>deinen Lieblings Frühstück Brotaufstrich</li>
+		<li>Taschenlampe/Stirnlampe</li>
+		<li>Bibel</li>
+		<li>Klamotten, Handtuch, ggf. Sportzeug, festes Schuhwerk, Wetterfeste Kleidung</li>
+		<li>Badesachen</li>
+		<li>Brettspiele (ganz viele)</li>
+		<li>bei Bedarf Ohrenstöpsel/Schlafmaske</li>
+		<li>Maske falls vorhanden</li>
+		<li>gute Laune bitte mitbringen, dafür haben wir nicht gesorgt!</li>
+	</ul>
+<!-- ZELT SAFT
 <ul>
 	<li>Schlafsack und Isomatte/Luftmatratze</li>
 	<li>Zelt</li>
@@ -84,7 +99,7 @@
 	<li>Taschenmesser</li>
 	<li>Ohrstöpsel (für ruhigeren Schlaf)</li>
 </ul>
-
+-->
 <p>Bei Fragen melde dich gerne bei uns!</p>
 
 <p>Wir freuen uns auf eine gesegnete, abenteuerliche und gemeinschaftliche Zeit mit euch!</p>
