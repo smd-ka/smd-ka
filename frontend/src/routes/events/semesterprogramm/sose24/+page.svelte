@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { LayoutData } from '../$types';
-	import header from '$lib/assets/pages/events/semesterprogramm/herzenssache_21_9.jpg';
 	import HeroShot from '$lib/components/HeroShot.svelte';
 	import SemesterEventView from '../_components/SemesterEventView.svelte';
 	import SemesterProgramSelector from '../_components/SemesterProgramSelector.svelte';
@@ -8,7 +7,11 @@
 	export let data: LayoutData;
 </script>
 
-<HeroShot imgSrc={header} height={'h-[80svh]'} />
+<HeroShot
+	imgSrc={data.program.image}
+	height={'h-[80svh]'}
+	title="{data.program.title} - {data.program.subtitle}"
+/>
 
 <main class="container mx-auto px-4 py-12">
 	<section class="">
