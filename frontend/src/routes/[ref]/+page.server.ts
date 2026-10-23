@@ -18,7 +18,10 @@ import { error, redirect } from '@sveltejs/kit';
  * Recommended to add time info into ref, e.g. semester, year, etc.
  */
 const permanentReferences: Record<string, string> = {
+	// added for testing
 	sose26: '/events/semesterprogramm/sose26',
+	// used on semester flyers as QR code
+	wise26: '/events/semesterprogramm/wise26_27',
 };
 
 /**

@@ -3,6 +3,7 @@ import outsidethebox from '$lib/assets/pages/events/semesterprogramm/outsidetheb
 import vollerhoffnung from '$lib/assets/pages/events/semesterprogramm/voller_hoffnung_21_9.jpg';
 import weitergehen from '$lib/assets/pages/events/semesterprogramm/weitergehen_21_9.jpg';
 import aufswassergehen from '$lib/assets/pages/events/semesterprogramm/aufsWassergehen_21_9.jpg';
+import allesklar from '$lib/assets/pages/events/semesterprogramm/allesKlar_21_9.jpg'; // jpg has more compatibility
 
 export type SemesterProgram = {
 	slug: string;
@@ -17,6 +18,14 @@ export type SemesterProgram = {
 // order important for carousel
 // first used as redirect for general semesterprogram
 export const allPrograms: SemesterProgram[] = [
+	{
+		slug: 'wise26_27',
+		title: 'alles klar?!',
+		subtitle: 'Unser Wintersemester 2026/27',
+		image: allesklar,
+		start: '2026-10-01',
+		end: '2027-04-01',
+	},
 	{
 		slug: 'sose26',
 		title: 'Aufs Wasser gehen',
