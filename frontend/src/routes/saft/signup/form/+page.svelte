@@ -26,6 +26,7 @@
 
 	const ticketValues = [
 		'Deutschlandticket/Jugendticket BW',
+		'Kein Ticket'
 	];
 
 	enum FormStatus {
@@ -224,12 +225,14 @@
 
 					<p class="font-bold">Weitere Infos zur Anreise folgen per Mail.</p>
 
-					<h3>Essenspräferenzen</h3>
+					
 
 					<InputCheckbox
 					name="would_sleep_on_floor"
 					label="Ich könnte mir vorstellen ggf. auf den Boden zu schlafen und Schlafsack / Isomatte dazu mitzubringen"
 					/>
+					
+					
 
 					<InputCheckbox
 						name="brings_cake"
@@ -263,6 +266,7 @@
 						</div>
 					</fieldset>
 -->
+					<h3>Essenspräferenzen</h3>
 					{#if loggedIn}
 						<b class="text-primary">Bitte gebe deine Essenspräferenzen in deinem Profil an!</b>
 					{:else}
