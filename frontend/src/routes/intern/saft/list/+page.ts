@@ -31,11 +31,10 @@ export const load: PageLoad = async () => {
 		const isFemale = records.filter((x) => x.gender == 'female').length;
 		const isMale = records.filter((x) => x.gender == 'male').length;
 
-		const hasDTicketCount = records.filter(
-			(x) => x.ticket === 'Deutschlandticket/Jugendticket BW'
-		).length;
-		const hasKVVCount = records.filter((x) => x.ticket === 'KVV-Bescheinigung').length;
-		const hasKVVSemesterCount = records.filter((x) => x.ticket === 'KVV-Semesterticket').length;
+		const ticketCounts = [...new Set(records.map((x) => x.ticket))].filter((ticket) => ticket).toSorted().map((ticket) => ({
+			ticket,
+			count: records.filter((x) => x.ticket === ticket).length
+		}));
 
 		// ZELT-SAFT
 		const comesFridayCount = records.filter((x) => x.comes_friday).length;
@@ -55,9 +54,7 @@ export const load: PageLoad = async () => {
 			takesTrainCount,
 			takesGroupCount,
 			takesCarCount,
-			hasDTicketCount,
-			hasKVVCount,
-			hasKVVSemesterCount,
+			ticketCounts,
 			landauCount,
 			comesFridayCount,
 			pots,

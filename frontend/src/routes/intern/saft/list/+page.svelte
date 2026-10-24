@@ -126,12 +126,9 @@
 					Bahnfahrer, davon
 				</div>
 				<div class="pl-8">
-					<b>{data.hasDTicketCount}</b>
-					mit D-Ticket<br />
-					<b>{data.hasKVVCount}</b>
-					mit KVV-Bescheinigung<br />
-					<b>{data.hasKVVSemesterCount}</b>
-					mit KVV-Semesterticket
+					{#each data.ticketCounts ?? [] as entry}
+						<b>{entry.count}</b> mit {entry.ticket}<br />
+					{/each}
 				</div>
 			</div>
 			<div>
