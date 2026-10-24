@@ -1,9 +1,13 @@
-# This dockerfile does not automatically update the app. 
-# Instead the packages need to be updated manually 
-# (and applied to the go.mod, go.sum). 
+# This dockerfile does not automatically update the app.
+# Instead the packages need to be updated manually
+# (and applied to the go.mod, go.sum).
 
-# Stage 1: Build the Go (pocketbase) binary 
+# Stage 1: Build the Go (pocketbase) binary
 FROM golang:latest AS builder
+
+# temp workaround because of incompatibility of go 1.27 json2 with current pocketbase version
+# can or even needs to be reverted on pocketbase upgrade
+ENV GOEXPERIMENT=nojsonv2
 
 # Set working directory
 WORKDIR /pb
