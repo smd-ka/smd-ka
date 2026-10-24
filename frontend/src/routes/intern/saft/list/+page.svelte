@@ -59,7 +59,7 @@
 		'Geschlecht',
 		'An/Abreise Option',
 		// SS25
-		'Anreise Freitag',
+		// 'Anreise Freitag',
 		//
 		'An/Abreise Kommentar',
 		'Ticket',
@@ -69,6 +69,7 @@
 		'E-Mail-Adresse',
 		'Telefonnummer',
 		// summer semester outdoor
+		/*
 		'Schlafsack',
 		'Isomatte',
 		'Gaskocher mit Topf',
@@ -78,6 +79,7 @@
 		'Beilage zum Grillen',
 		'Lichterkette',
 		'Kochen (1-5)',
+		*/
 		//
 		'Kuchen',
 		'Vegetarier',
@@ -126,12 +128,9 @@
 					Bahnfahrer, davon
 				</div>
 				<div class="pl-8">
-					<b>{data.hasDTicketCount}</b>
-					mit D-Ticket<br />
-					<b>{data.hasKVVCount}</b>
-					mit KVV-Bescheinigung<br />
-					<b>{data.hasKVVSemesterCount}</b>
-					mit KVV-Semesterticket
+					{#each data.ticketCounts ?? [] as entry}
+						<b>{entry.count}</b> mit {entry.ticket}<br />
+					{/each}
 				</div>
 			</div>
 			<div>
@@ -244,7 +243,7 @@
 						<Fa icon={_travelOptionIcon(registration.travel_option)} />
 						{_travelOption(registration.travel_option)}
 					</div>
-					<div>{registration.comes_friday ? 'ja' : ''}</div>
+					<!-- <div>{registration.comes_friday ? 'ja' : ''}</div> -->
 					<div class="w-72 whitespace-pre-wrap">
 						{registration.travel_comments || ''}
 					</div>
@@ -260,8 +259,9 @@
 					<div>{registration.email}</div>
 					<div>{registration.phonenumber}</div>
 
-					<!-- SS25 -->
+					<!-- summer semester outdoor -->
 
+					<!--
 					<div>{registration.bag ? 'ja' : ''}</div>
 					<div>{registration.pad ? 'ja' : ''}</div>
 					<div>{registration.pot ? 'ja' : ''}</div>
@@ -271,6 +271,7 @@
 					<div class="w-60 whitespace-pre-wrap">{registration.side_dish}</div>
 					<div>{registration.fairy_lights ? 'Ja' : ''}</div>
 					<div>{registration.likes_cooking ?? ''}</div>
+					-->
 
 					<div>{registration.brings_cake ? 'Ja' : ''}</div>
 					<div>{registration.is_vegetarian ? 'Ja' : ''}</div>
