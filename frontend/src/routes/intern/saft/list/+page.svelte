@@ -59,7 +59,7 @@
 		'Geschlecht',
 		'An/Abreise Option',
 		// SS25
-		'Anreise Freitag',
+		// 'Anreise Freitag',
 		//
 		'An/Abreise Kommentar',
 		'Ticket',
@@ -243,7 +243,7 @@
 						<Fa icon={_travelOptionIcon(registration.travel_option)} />
 						{_travelOption(registration.travel_option)}
 					</div>
-					<div>{registration.comes_friday ? 'ja' : ''}</div>
+					<!-- <div>{registration.comes_friday ? 'ja' : ''}</div> -->
 					<div class="w-72 whitespace-pre-wrap">
 						{registration.travel_comments || ''}
 					</div>
