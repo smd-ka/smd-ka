@@ -69,6 +69,7 @@
 		'E-Mail-Adresse',
 		'Telefonnummer',
 		// summer semester outdoor
+		/*
 		'Schlafsack',
 		'Isomatte',
 		'Gaskocher mit Topf',
@@ -78,6 +79,7 @@
 		'Beilage zum Grillen',
 		'Lichterkette',
 		'Kochen (1-5)',
+		*/
 		//
 		'Kuchen',
 		'Vegetarier',
@@ -257,8 +259,9 @@
 					<div>{registration.email}</div>
 					<div>{registration.phonenumber}</div>
 
-					<!-- SS25 -->
+					<!-- summer semester outdoor -->
 
+					<!--
 					<div>{registration.bag ? 'ja' : ''}</div>
 					<div>{registration.pad ? 'ja' : ''}</div>
 					<div>{registration.pot ? 'ja' : ''}</div>
@@ -268,6 +271,7 @@
 					<div class="w-60 whitespace-pre-wrap">{registration.side_dish}</div>
 					<div>{registration.fairy_lights ? 'Ja' : ''}</div>
 					<div>{registration.likes_cooking ?? ''}</div>
+					-->
 
 					<div>{registration.brings_cake ? 'Ja' : ''}</div>
 					<div>{registration.is_vegetarian ? 'Ja' : ''}</div>
