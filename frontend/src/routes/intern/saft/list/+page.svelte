@@ -6,7 +6,8 @@
 		faCopy,
 		faEnvelope,
 		faExclamationTriangle,
-		faGhost
+		faGhost,
+		faPhone
 	} from '@fortawesome/free-solid-svg-icons';
 	import { faSignalMessenger } from '@fortawesome/free-brands-svg-icons';
 	import InstantCheckbox from '$lib/components/forms/InstantCheckbox.svelte';
@@ -93,6 +94,7 @@
 
 	const columns = [
 		'Angemeldet um',
+		'Kontakt',
 		'Bezahlt',
 		'Name',
 		'Geschlecht',
@@ -105,8 +107,6 @@
 		// 'Gruppe',
 		'Bodenschläfer',
 		'Bemerkung',
-		'E-Mail-Adresse',
-		'Telefonnummer',
 		// summer semester outdoor
 		/*
 		'Schlafsack',
@@ -259,6 +259,31 @@
 					<div>
 						{dayjs(registration.created).format('DD.MM.YYYY HH:mm')}
 					</div>
+					<div class="flex items-start gap-2 p-2">
+						<a
+							class="icon-link"
+							href={`mailto:${registration.email}`}
+							title={`Email an ${registration.name} schreiben (${registration.email})`}
+						>
+							<Fa icon={faEnvelope} />
+						</a>
+						<a
+							class="icon-link"
+							href={telHref(registration.phonenumber)}
+							title={`${registration.name} per Telefon anrufen (${registration.phonenumber})`}
+						>
+							<Fa icon={faPhone} />
+						</a>
+						<a
+							class="icon-link"
+							href={signalHref(registration.phonenumber)}
+							target="_blank"
+							rel="noreferrer"
+							title={`${registration.name} per Signal schreiben (${registration.phonenumber})`}
+						>
+							<Fa icon={faSignalMessenger} />
+						</a>
+					</div>
 					<div>
 						<InstantCheckbox
 							id={registration.id}
@@ -287,19 +312,6 @@
 
 					<div class="w-72 whitespace-pre-wrap">
 						{registration.comments || ''}
-					</div>
-					<div><a href={`mailto:${registration.email}`}>{registration.email}</a></div>
-					<div>
-						<a href={telHref(registration.phonenumber)}>{registration.phonenumber}</a>
-						<a
-							class="icon-link ml-2"
-							href={signalHref(registration.phonenumber)}
-							target="_blank"
-							rel="noreferrer"
-							title="Per Signal schreiben"
-						>
-							<Fa icon={faSignalMessenger} />
-						</a>
 					</div>
 
 					<!-- summer semester outdoor -->
