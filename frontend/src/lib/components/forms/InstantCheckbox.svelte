@@ -11,6 +11,11 @@
 	/** performs the actual save; must reject on failure */
 	export let update: (id: string, paid: boolean) => Promise<unknown>;
 
+	const dispatch = createEventDispatcher<{
+		error: { id: string };
+		resolved: { id: string };
+	}>();
+
 	let loading = false;
 	let hasError = false;
 
@@ -20,9 +25,11 @@
 		hasError = false;
 		try {
 			await update(id, checked);
+			dispatch('resolved', { id });
 		} catch (e) {
 			console.error(e);
 			hasError = true;
+			dispatch('error', { id });
 			checked = !checked; // revert
 		} finally {
 			loading = false;

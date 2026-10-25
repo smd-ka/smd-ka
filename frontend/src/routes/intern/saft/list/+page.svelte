@@ -25,6 +25,18 @@
 	let filteredList = data.list;
 	let filter: SaftRegistrationFilter = 'all';
 
+	let paidError: string[] = [];
+	/** flip the key to retrigger the error block */
+	let paidErrorKey = false;
+	function addPaidError(id: string) {
+		paidError = [...paidError, id];
+		paidErrorKey = !paidErrorKey; // flip retriggers key block
+	}
+	function resetPaidError(id: string) {
+		paidError = paidError.filter((x) => x !== id);
+		filteredList = _filterSaftRegistrations(filter, data.list);
+	}
+
 	$: filteredList = _filterSaftRegistrations(filter, data.list);
 
 	console.log(data);
@@ -151,12 +163,6 @@
 			<!-- nochmal block mit Gender -->
 		</div>
 
-		<div class="flex flex-wrap items-center pt-6">
-			<b class="pr-2">Achtung!</b>
-			Sollte dieses Symbol <Fa class="px-2 text-red-700" icon={faExclamationTriangle} /> neben dem Haken
-			angezeigt werden, dann wurde die Änderung nicht gespeichert!
-		</div>
-
 		<div class="flex gap-2 py-2 max-md:flex-col md:gap-4">
 			<a
 				class="flex items-center gap-2 rounded-md bg-orange-600 px-4 py-2 no-underline"
@@ -206,6 +212,8 @@
 							id={registration.id}
 							bind:checked={registration.paid}
 							update={togglePaid}
+							on:error={(e) => addPaidError(e.detail.id)}
+							on:resolved={(e) => resetPaidError(e.detail.id)}
 						/>
 					</div>
 					<div>{registration.name}</div>
@@ -252,6 +260,18 @@
 				{/each}
 			</div>
 		</div>
+
+		{#key paidErrorKey}
+			{#if paidError.length > 0}
+				<div
+					class="animate-flash sticky bottom-4 z-10 m-3 mt-6 flex flex-wrap items-center rounded-lg bg-red-300 px-4 py-2"
+				>
+					<Fa class="px-2 text-red-700" icon={faExclamationTriangle} />
+					<b class="pr-2">Achtung!</b>
+					Manche Änderungen konnten nicht gespeichert werden. Bitte überprüfe die markierten Einträge.
+				</div>
+			{/if}
+		{/key}
 	{/if}
 </main>
 
@@ -259,5 +279,30 @@
 	.pad-childs > div {
 		padding-left: 0.5rem;
 		padding-right: 0.5rem;
+	}
+
+	.animate-flash {
+		animation: flash 0.5s linear 3;
+	}
+
+	@keyframes flash {
+		0% {
+			transform: rotate(0deg);
+			filter: brightness(1);
+		}
+		25% {
+			transform: rotate(1deg);
+		}
+		50% {
+			transform: rotate(0deg);
+			filter: brightness(1.5);
+		}
+		75% {
+			transform: rotate(-1deg);
+		}
+		100% {
+			transform: rotate(0deg);
+			filter: brightness(1);
+		}
 	}
 </style>
