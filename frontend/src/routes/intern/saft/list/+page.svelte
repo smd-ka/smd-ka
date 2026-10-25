@@ -31,12 +31,16 @@
 
 	console.log(data);
 
-	const mailingList = (list) => {
-		return `mailto:webmaster@smd-karlsruhe?bcc=:${list
-			.map((x) => x.email)
-			.filter((x) => x)
-			.join(';')}`;
-	};
+	$: recipientEmails = filteredList
+		.map((x) => (typeof x.email === 'string' ? x.email.trim() : ''))
+		.filter((x) => x !== '');
+	$: mailAddressesString = recipientEmails.join(';');
+	$: mailingList = (() => {
+		// follow RFC 6068 strictly (commas and percent-encoding)
+		const params = new URLSearchParams();
+		params.set('bcc', recipientEmails.join(','));
+		return `mailto:webmaster@smd-karlsruhe?${params.toString()}`;
+	})();
 
 	async function togglePaid(
 		id: number,
@@ -170,20 +174,14 @@
 		<div class="flex gap-2 py-2 max-md:flex-col md:gap-4">
 			<a
 				class="flex items-center gap-2 rounded-md bg-orange-600 px-4 py-2 no-underline"
-				href={mailingList(filteredList)}
+				href={mailingList}
 			>
 				<Fa icon={faEnvelope} />
 				Email an den Verteiler senden</a
 			>
 			<button
 				class="flex items-center gap-2 rounded-md bg-light-blue px-4 py-2"
-				on:click={() =>
-					navigator.clipboard.writeText(
-						filteredList
-							.filter((x) => x.email)
-							.map((x) => x.email)
-							.join(';')
-					)}
+				on:click={() => navigator.clipboard.writeText(mailAddressesString)}
 			>
 				<Fa icon={faCopy} />
 				Email Verteiler Kopieren
