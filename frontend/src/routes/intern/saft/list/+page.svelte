@@ -39,7 +39,7 @@
 		// follow RFC 6068 strictly (commas and percent-encoding)
 		const params = new URLSearchParams();
 		params.set('bcc', recipientEmails.join(','));
-		return `mailto:webmaster@smd-karlsruhe?${params.toString()}`;
+		return `mailto:?${params.toString()}`;
 	})();
 
 	async function togglePaid(
