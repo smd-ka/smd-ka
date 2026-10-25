@@ -18,6 +18,7 @@
 	} from './+page';
 	import dayjs from 'dayjs';
 	import Fa from 'svelte-fa';
+	import { telHref } from '$lib/profile';
 
 	export let data;
 
@@ -252,8 +253,8 @@
 					<div class="w-72 whitespace-pre-wrap">
 						{registration.comments || ''}
 					</div>
-					<div>{registration.email}</div>
-					<div>{registration.phonenumber}</div>
+					<div><a href={`mailto:${registration.email}`}>{registration.email}</a></div>
+					<div><a href={telHref(registration.phonenumber)}>{registration.phonenumber}</a></div>
 
 					<!-- summer semester outdoor -->
 
