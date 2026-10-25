@@ -21,10 +21,13 @@ export const load: PageLoad = async () => {
 		const isFemale = records.filter((x) => x.gender == 'female').length;
 		const isMale = records.filter((x) => x.gender == 'male').length;
 
-		const ticketCounts = [...new Set(records.map((x) => x.ticket))].filter((ticket) => ticket).toSorted().map((ticket) => ({
-			ticket,
-			count: records.filter((x) => x.ticket === ticket).length
-		}));
+		const ticketCounts = [...new Set(records.map((x) => x.ticket))]
+			.filter((ticket) => ticket)
+			.toSorted()
+			.map((ticket) => ({
+				ticket,
+				count: records.filter((x) => x.ticket === ticket).length
+			}));
 
 		// ZELT-SAFT
 		const comesFridayCount = records.filter((x) => x.comes_friday).length;
@@ -35,7 +38,9 @@ export const load: PageLoad = async () => {
 		const availablePads = records.reduce((sum, x) => sum + x.pad_count, 0);
 		const fairyLightsCount = records.filter((x) => x.fairy_lights).length;
 
-		const lastSubmission = records.map((x) => x.created).reduce((prev, cur) => (prev > cur) ? prev : cur);
+		const lastSubmission = records
+			.map((x) => x.created)
+			.reduce((prev, cur) => (prev > cur ? prev : cur));
 
 		return {
 			list: records,
@@ -55,7 +60,7 @@ export const load: PageLoad = async () => {
 			isFemale,
 			isMale,
 			fairyLightsCount,
-			lastSubmission,
+			lastSubmission
 		};
 	} catch (error) {
 		console.error(error);
@@ -150,7 +155,7 @@ export const _exportToCsv = (list, filter) => {
 		])
 	];
 
-	const csvContent = 'data:text/csv;charset=utf-8,' + rows.map((x) => x.join(',')).join('\r\n');  // CRLF according to RFC 4180
+	const csvContent = 'data:text/csv;charset=utf-8,' + rows.map((x) => x.join(',')).join('\r\n'); // CRLF according to RFC 4180
 
 	const encodedUri = encodeURI(csvContent);
 	const link = document.createElement('a');
