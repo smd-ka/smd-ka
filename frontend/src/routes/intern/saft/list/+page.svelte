@@ -27,6 +27,8 @@
 	let paidLoading: number[] = [];
 	let paidError: number[] = [];
 
+	$: filteredList = _filterSaftRegistrations(filter, data.list);
+
 	console.log(data);
 
 	const mailingList = (list) => {
@@ -197,7 +199,6 @@
 
 			<select
 				bind:value={filter}
-				on:change={() => (filteredList = _filterSaftRegistrations(filter, data.list))}
 				class="rounded-md px-4 py-2"
 			>
 				{#each Object.entries(_saftRegistrationFilters) as [key, { label }]}
