@@ -3,8 +3,8 @@
 	import {
 		faArrowUpFromBracket,
 		faCopy,
-		faExclamationTriangle,
-		faEnvelope
+		faEnvelope,
+		faExclamationTriangle
 	} from '@fortawesome/free-solid-svg-icons';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 	import {
@@ -197,10 +197,7 @@
 				Als CSV exportieren
 			</button>
 
-			<select
-				bind:value={filter}
-				class="rounded-md px-4 py-2"
-			>
+			<select bind:value={filter} class="rounded-md px-4 py-2">
 				{#each Object.entries(_saftRegistrationFilters) as [key, { label }]}
 					<option value={key}>{label}</option>
 				{/each}
