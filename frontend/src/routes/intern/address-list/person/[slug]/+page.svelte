@@ -15,6 +15,7 @@
 	} from '@fortawesome/free-solid-svg-icons';
 	import Breadcrumbs from '$lib/components/navigation/Breadcrumbs.svelte';
 	import Fa from 'svelte-fa';
+	import { telHref } from '$lib/profile';
 
 	let record: any;
 
@@ -73,9 +74,10 @@
 					</a>
 				</div>
 				{#if record.phonenumber}
+					{@const phoneHref = telHref(record.phonenumber)}
 					<div>
 						<Fa icon={faPhone} />
-						<a href={`tel:${record.phonenumber}`}>
+						<a href={phoneHref}>
 							{record.phonenumber}
 						</a>
 					</div>
