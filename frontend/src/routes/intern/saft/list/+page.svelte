@@ -31,8 +31,8 @@
 
 	const mailingList = (list) => {
 		return `mailto:webmaster@smd-karlsruhe?bcc=:${list
-			.filter((x) => x.email)
 			.map((x) => x.email)
+			.filter((x) => x)
 			.join(';')}`;
 	};
 
