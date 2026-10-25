@@ -1,10 +1,12 @@
 <script lang="ts">
+	import { dev } from '$app/environment';
 	import { pb } from '$lib/pocketbase';
 	import {
 		faArrowUpFromBracket,
 		faCopy,
 		faEnvelope,
-		faExclamationTriangle
+		faExclamationTriangle,
+		faGhost
 	} from '@fortawesome/free-solid-svg-icons';
 	import InstantCheckbox from '$lib/components/forms/InstantCheckbox.svelte';
 	import {
@@ -41,8 +43,33 @@
 
 	console.log(data);
 
+	/** determines debug mode of this page */
+	enum ToggleMode {
+		/** real update - persists to the backend */
+		REAL = 'real',
+		/** simulate a successful update - without changing anything in the backend */
+		SUCCESS = 'success',
+		/** simulate a failing update */
+		ERROR = 'error'
+	}
+	let toggleMode = ToggleMode.REAL;
+
 	async function togglePaid(id: string, paid: boolean) {
-		await pb.collection('saft').update(id, { paid })
+		// "if (dev)" can be optimized away by the compiler in production builds
+		if (dev) {
+			console.log(`togglePaid(${id}, ${paid}) in mode ${toggleMode}`);
+			// sleep so that loading state is clearly visible
+			await new Promise<void>((r) => setTimeout(() => r(), 1000));
+			switch (toggleMode) {
+				case ToggleMode.SUCCESS:
+					return;
+				case ToggleMode.ERROR:
+					throw new Error('simulated error while toggling paid status');
+				case ToggleMode.REAL:
+					break;
+			}
+		}
+		await pb.collection('saft').update(id, { paid });
 	}
 
 	$: recipientEmails = filteredList
@@ -164,6 +191,23 @@
 		</div>
 
 		<div class="flex gap-2 py-2 max-md:flex-col md:gap-4">
+			{#if dev}
+				{@const destructive = toggleMode === ToggleMode.REAL}
+				<label
+					class="flex w-fit items-center gap-2 rounded-md border px-3 py-1.5 text-sm testmode-{destructive
+						? 'destructive'
+						: 'normal'}"
+				>
+					<span class="font-bold">Testmodus für "Bezahlt":</span>
+					<select bind:value={toggleMode} class="w-44 px-2 py-1">
+						<option value={ToggleMode.REAL}>Anfrage an Backend</option>
+						<option value={ToggleMode.SUCCESS}>simulierter Erfolg</option>
+						<option value={ToggleMode.ERROR}>simulierter Fehler</option>
+					</select>
+					<Fa class="h-4 w-4" icon={destructive ? faExclamationTriangle : faGhost} />
+				</label>
+			{/if}
+
 			<a
 				class="flex items-center gap-2 rounded-md bg-orange-600 px-4 py-2 no-underline"
 				href={mailingList}
@@ -304,5 +348,13 @@
 			transform: rotate(0deg);
 			filter: brightness(1);
 		}
+	}
+
+	.testmode-normal {
+		@apply border-blue-400 bg-blue-50 text-blue-700;
+	}
+
+	.testmode-destructive {
+		@apply border-red-400 bg-red-50 text-red-700;
 	}
 </style>
