@@ -11,6 +11,7 @@
 		_exportToCsv,
 		_filterSaftRegistrations,
 		_postImages,
+		_saftRegistrationFilters,
 		_travelOption,
 		_travelOptionIcon,
 		type SaftRegistrationFilter
@@ -198,14 +199,9 @@
 				on:change={() => (filteredList = _filterSaftRegistrations(filter, data.list))}
 				class="rounded-md px-4 py-2"
 			>
-				<option value="all">Alle</option>
-				<option value="paid">Bezahlt</option>
-				<option value="unpaid">Unbezahlt</option>
-				<option value="bike">Fahrradfahrer</option>
-				<option value="train">Bahnfahrer</option>
-				<option value="floor_sleeper">Bodenschläfer</option>
-				<option value="female">Frauen</option>
-				<option value="male">Männer</option>
+				{#each Object.entries(_saftRegistrationFilters) as [key, { label }]}
+					<option value={key}>{label}</option>
+				{/each}
 			</select>
 		</div>
 
