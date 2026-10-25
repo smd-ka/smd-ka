@@ -40,6 +40,7 @@
 		const params = new URLSearchParams();
 		// without "To", preferring "Bcc" only, to avoid exposing email addresses to each other
 		params.set('bcc', recipientEmails.join(','));
+		params.set('subject', 'SAFT');
 		return `mailto:?${params.toString()}`;
 	})();
 
