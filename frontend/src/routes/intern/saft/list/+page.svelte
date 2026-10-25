@@ -19,8 +19,13 @@
 		type SaftRegistrationFilter
 	} from './+page';
 	import dayjs from 'dayjs';
+	import relativeTime from 'dayjs/plugin/relativeTime';
+	import 'dayjs/locale/de';
 	import Fa from 'svelte-fa';
 	import { telHref } from '$lib/profile';
+
+	dayjs.extend(relativeTime);
+	dayjs.locale('de'); // TODO configure globally
 
 	export let data;
 
@@ -129,8 +134,10 @@
 			<h3 class="col-span-full">Übersicht über alle Anmeldungen</h3>
 			<div>
 				<div>
-					Letzte Anmeldung um:
-					<b> {dayjs(data.lastSubmission).format('DD.MM.YYYY HH:mm')} </b>
+					Letzte Anmeldung:
+					<b title={dayjs(data.lastSubmission).format('DD.MM.YYYY HH:mm')}>
+						{dayjs(data.lastSubmission).fromNow()}
+					</b>
 				</div>
 				<div>
 					<b>{data.list.length}</b>
