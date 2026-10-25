@@ -38,6 +38,7 @@
 	$: mailingList = (() => {
 		// follow RFC 6068 strictly (commas and percent-encoding)
 		const params = new URLSearchParams();
+		// without "To", preferring "Bcc" only, to avoid exposing email addresses to each other
 		params.set('bcc', recipientEmails.join(','));
 		return `mailto:?${params.toString()}`;
 	})();
