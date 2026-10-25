@@ -6,7 +6,7 @@
 		faEnvelope,
 		faExclamationTriangle
 	} from '@fortawesome/free-solid-svg-icons';
-	import loadingSpinner from '$lib/assets/loading_spinner.gif';
+	import InstantCheckbox from '$lib/components/forms/InstantCheckbox.svelte';
 	import {
 		_exportToCsv,
 		_filterSaftRegistrations,
@@ -24,12 +24,14 @@
 
 	let filteredList = data.list;
 	let filter: SaftRegistrationFilter = 'all';
-	let paidLoading: number[] = [];
-	let paidError: number[] = [];
 
 	$: filteredList = _filterSaftRegistrations(filter, data.list);
 
 	console.log(data);
+
+	async function togglePaid(id: string, paid: boolean) {
+		await pb.collection('saft').update(id, { paid })
+	}
 
 	$: recipientEmails = filteredList
 		.map((x) => (typeof x.email === 'string' ? x.email.trim() : ''))
@@ -43,24 +45,6 @@
 		params.set('subject', 'SAFT');
 		return `mailto:?${params.toString()}`;
 	})();
-
-	async function togglePaid(
-		id: number,
-		registrationId: string | undefined,
-		paid: boolean | undefined
-	) {
-		if (!registrationId) return;
-		try {
-			paidLoading = [...paidLoading, id];
-			paidError = paidError.filter((x) => x !== id);
-			const result = await pb.collection('saft').update(registrationId, { paid: paid });
-		} catch (e: any) {
-			console.error(e);
-			paidError = [...paidError, id];
-		}
-		paidLoading = paidLoading.filter((x) => x !== id);
-		filteredList = _filterSaftRegistrations(filter, data.list);
-	}
 
 	const columns = [
 		'Angemeldet um',
@@ -213,23 +197,16 @@
 					<div><b>{column}</b></div>
 				{/each}
 
-				{#each filteredList as registration, i}
+				{#each filteredList as registration}
 					<div>
 						{dayjs(registration.created).format('DD.MM.YYYY HH:mm')}
 					</div>
-					<div class="flex items-start gap-4 py-1">
-						<input
-							disabled={paidLoading.includes(i)}
+					<div>
+						<InstantCheckbox
+							id={registration.id}
 							bind:checked={registration.paid}
-							on:change={() => togglePaid(i, registration.id, registration.paid)}
-							type="checkbox"
+							update={togglePaid}
 						/>
-						{#if paidLoading.includes(i)}
-							<img class="h-4 w-4" src={loadingSpinner} alt="loading" />
-						{/if}
-						{#if paidError.includes(i)}
-							<Fa class="text-red-700" icon={faExclamationTriangle} />
-						{/if}
 					</div>
 					<div>{registration.name}</div>
 					<div>{registration.gender === 'male' ? 'm' : 'w'}</div>
