@@ -8,6 +8,7 @@
 		faExclamationTriangle,
 		faGhost
 	} from '@fortawesome/free-solid-svg-icons';
+	import { faSignalMessenger } from '@fortawesome/free-brands-svg-icons';
 	import InstantCheckbox from '$lib/components/forms/InstantCheckbox.svelte';
 	import {
 		_exportToCsv,
@@ -22,7 +23,7 @@
 	import relativeTime from 'dayjs/plugin/relativeTime';
 	import 'dayjs/locale/de';
 	import Fa from 'svelte-fa';
-	import { telHref } from '$lib/profile';
+	import { telHref, signalHref } from '$lib/profile';
 
 	dayjs.extend(relativeTime);
 	dayjs.locale('de'); // TODO configure globally
@@ -288,7 +289,18 @@
 						{registration.comments || ''}
 					</div>
 					<div><a href={`mailto:${registration.email}`}>{registration.email}</a></div>
-					<div><a href={telHref(registration.phonenumber)}>{registration.phonenumber}</a></div>
+					<div>
+						<a href={telHref(registration.phonenumber)}>{registration.phonenumber}</a>
+						<a
+							class="icon-link ml-2"
+							href={signalHref(registration.phonenumber)}
+							target="_blank"
+							rel="noreferrer"
+							title="Per Signal schreiben"
+						>
+							<Fa icon={faSignalMessenger} />
+						</a>
+					</div>
 
 					<!-- summer semester outdoor -->
 

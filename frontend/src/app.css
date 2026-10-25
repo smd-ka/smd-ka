@@ -80,4 +80,16 @@
     @apply brightness-110;
   }
 
+  .icon-link {
+    @apply inline-flex items-center;
+  }
+
+  /*
+   * Icon links whose href is resolved at runtime.
+   * Svelte drops `href` entirely when null -> so hide without link.
+   */
+  .icon-link:not([href]) {
+    display: none;
+  }
+
 }

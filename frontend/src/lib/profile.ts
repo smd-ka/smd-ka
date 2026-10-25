@@ -14,3 +14,9 @@ export function telHref(raw: string | undefined | null): string | null {
 	const parsed = parsePhone(raw);
 	return parsed ? parsed.getURI() : null;
 }
+
+/** `https://signal.me/#p/...` deep-link (chat on Signal), or null if phone number invalid. */
+export function signalHref(raw: string | undefined | null): string | null {
+	const parsed = parsePhone(raw);
+	return parsed ? `https://signal.me/#p/${parsed.number}` : null;
+}
