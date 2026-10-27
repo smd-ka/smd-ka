@@ -13,10 +13,12 @@
 		faSearch,
 		faUserGroup
 	} from '@fortawesome/free-solid-svg-icons';
+	import { faSignalMessenger } from '@fortawesome/free-brands-svg-icons';
 	import loadingSpinner from '$lib/assets/loading_spinner.gif';
 	import dayjs from 'dayjs';
 	import Breadcrumbs from '$lib/components/navigation/Breadcrumbs.svelte';
 	import Fa from 'svelte-fa';
+	import { telHref, signalHref } from '$lib/profile.js';
 
 	export let data;
 	let records: User[];
@@ -230,6 +232,9 @@
 
 	{#if !loading && !error}
 		{#each filteredRecords as record}
+			{@const fullName = `${record.name.trim()} ${record.surname.trim()}`}
+			{@const phoneHref = telHref(record.phonenumber)}
+			{@const signalLink = signalHref(record.phonenumber)}
 			<a class="!no-underline" href={`/intern/address-list/person/${record.id}`}>
 				<div
 					class=" grid grid-cols-[3rem_1fr_1rem_1rem] items-center gap-4 rounded-md bg-slate-100 px-4 py-2 md:grid-cols-[3rem_3fr_2fr_1rem] md:text-lg xl:grid-cols-[3rem_3fr_2fr_2fr_1rem]"
@@ -241,8 +246,7 @@
 					/>
 					<div>
 						<span class="text-xl">
-							{record.name}
-							{record.surname}
+							{fullName}
 						</span>
 						{#if record.alumni}
 							<span class="text-sm text-gray-500"> (Alumni) </span>
@@ -272,8 +276,17 @@
 						{#if record.phonenumber}
 							<div class="fa">
 								<Fa icon={faPhone} />
-								<a href={`tel:${record.phonenumber}`}>
+								<a class="icon-link" href={phoneHref}>
 									{record.phonenumber}
+								</a>
+								<a
+									class="icon-link"
+									href={signalLink}
+									target="_blank"
+									rel="noreferrer"
+									title={`${fullName} per Signal schreiben`}
+								>
+									<Fa icon={faSignalMessenger} />
 								</a>
 							</div>
 						{/if}
@@ -285,12 +298,19 @@
 						</div>
 					</div>
 
-					<div class=" flex text-xl md:hidden">
-						{#if record.phonenumber}
-							<a href={`tel:${record.phonenumber}`}>
-								<Fa icon={faPhone} />
-							</a>
-						{/if}
+					<div class="flex flex-col gap-1 text-xl md:hidden">
+						<a class="icon-link" href={phoneHref}>
+							<Fa icon={faPhone} />
+						</a>
+						<a
+							class="icon-link"
+							href={signalLink}
+							target="_blank"
+							rel="noreferrer"
+							title={`${fullName} per Signal schreiben`}
+						>
+							<Fa icon={faSignalMessenger} />
+						</a>
 					</div>
 
 					<Fa icon={faChevronRight} />

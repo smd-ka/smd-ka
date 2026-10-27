@@ -13,8 +13,10 @@
 		faSignature,
 		faUserGroup
 	} from '@fortawesome/free-solid-svg-icons';
+	import { faSignalMessenger } from '@fortawesome/free-brands-svg-icons';
 	import Breadcrumbs from '$lib/components/navigation/Breadcrumbs.svelte';
 	import Fa from 'svelte-fa';
+	import { telHref, signalHref } from '$lib/profile';
 
 	let record: any;
 
@@ -73,12 +75,23 @@
 					</a>
 				</div>
 				{#if record.phonenumber}
+					{@const phoneHref = telHref(record.phonenumber)}
+					{@const sigHref = signalHref(record.phonenumber)}
 					<div>
-						<Fa icon={faPhone} />
-						<a href={`tel:${record.phonenumber}`}>
+						<a class="fa" href={phoneHref}>
+							<Fa icon={faPhone} />
 							{record.phonenumber}
 						</a>
 					</div>
+					<a
+						class="fa"
+						href={sigHref}
+						target="_blank"
+						rel="noreferrer"
+					>
+						<Fa icon={faSignalMessenger} />
+						mit Signal anschreiben
+					</a>
 				{/if}
 				{#if record.birthday}
 					<div>

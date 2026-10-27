@@ -1,17 +1,7 @@
 import { pb } from '$lib/pocketbase';
 import { faBicycle, faCar, faPeopleGroup, faTrain } from '@fortawesome/free-solid-svg-icons';
 import type { PageLoad } from './$types';
-
-export type SaftRegistrationFilter =
-	| 'all'
-	| 'paid'
-	| 'unpaid'
-	| 'bike'
-	| 'train'
-	| 'landau'
-	| 'floor_sleeper'
-	| 'female'
-	| 'male';
+import type { Record } from 'pocketbase';
 
 export const load: PageLoad = async () => {
 	try {
@@ -31,10 +21,13 @@ export const load: PageLoad = async () => {
 		const isFemale = records.filter((x) => x.gender == 'female').length;
 		const isMale = records.filter((x) => x.gender == 'male').length;
 
-		const ticketCounts = [...new Set(records.map((x) => x.ticket))].filter((ticket) => ticket).toSorted().map((ticket) => ({
-			ticket,
-			count: records.filter((x) => x.ticket === ticket).length
-		}));
+		const ticketCounts = [...new Set(records.map((x) => x.ticket))]
+			.filter((ticket) => ticket)
+			.toSorted()
+			.map((ticket) => ({
+				ticket,
+				count: records.filter((x) => x.ticket === ticket).length
+			}));
 
 		// ZELT-SAFT
 		const comesFridayCount = records.filter((x) => x.comes_friday).length;
@@ -45,7 +38,9 @@ export const load: PageLoad = async () => {
 		const availablePads = records.reduce((sum, x) => sum + x.pad_count, 0);
 		const fairyLightsCount = records.filter((x) => x.fairy_lights).length;
 
-		const lastSubmission = records.map((x) => x.created).reduce((prev, cur) => (prev > cur) ? prev : cur);
+		const lastSubmission = records
+			.map((x) => x.created)
+			.reduce((prev, cur) => (prev > cur ? prev : cur));
 
 		return {
 			list: records,
@@ -65,7 +60,7 @@ export const load: PageLoad = async () => {
 			isFemale,
 			isMale,
 			fairyLightsCount,
-			lastSubmission,
+			lastSubmission
 		};
 	} catch (error) {
 		console.error(error);
@@ -73,26 +68,22 @@ export const load: PageLoad = async () => {
 	}
 };
 
-export const _filterSaftRegistrations = (filter: SaftRegistrationFilter, list) => {
-	switch (filter) {
-		case 'all':
-			return list;
-		case 'paid':
-			return list.filter((x) => x.paid);
-		case 'unpaid':
-			return list.filter((x) => !x.paid);
-		case 'bike':
-			return list.filter((x) => x.travel_option === 'takesBike');
-		case 'train':
-			return list.filter((x) => x.travel_option === 'takesTrain');
-		case 'floor_sleeper':
-			return list.filter((x) => x.would_sleep_on_floor);
-		case 'female':
-			return list.filter((x) => x.gender === 'female');
-		case 'male':
-			return list.filter((x) => x.gender === 'male');
-	}
-};
+export type SaftFilterSpec = { label: string; matches: (record: Record) => boolean };
+export const _saftRegistrationFilters = {
+	all: { label: 'Alle', matches: () => true },
+	paid: { label: 'Bezahlt', matches: (record) => record.paid },
+	unpaid: { label: 'Unbezahlt', matches: (record) => !record.paid },
+	bike: { label: 'Fahrradfahrer', matches: (record) => record.travel_option === 'takesBike' },
+	train: { label: 'Bahnfahrer', matches: (record) => record.travel_option === 'takesTrain' },
+	floor_sleeper: { label: 'Bodenschläfer', matches: (record) => record.would_sleep_on_floor },
+	female: { label: 'Frauen', matches: (record) => record.gender === 'female' },
+	male: { label: 'Männer', matches: (record) => record.gender === 'male' }
+} satisfies { [key: string]: SaftFilterSpec };
+export type SaftRegistrationFilter = keyof typeof _saftRegistrationFilters;
+
+export function _filterSaftRegistrations(filter: SaftRegistrationFilter, list: Record[]): Record[] {
+	return list.filter(_saftRegistrationFilters[filter].matches);
+}
 
 function escapeCsv(text: string): string {
 	// text escaping according to RFC 4180, section 2:
@@ -164,7 +155,7 @@ export const _exportToCsv = (list, filter) => {
 		])
 	];
 
-	const csvContent = 'data:text/csv;charset=utf-8,' + rows.map((x) => x.join(',')).join('\r\n');  // CRLF according to RFC 4180
+	const csvContent = 'data:text/csv;charset=utf-8,' + rows.map((x) => x.join(',')).join('\r\n'); // CRLF according to RFC 4180
 
 	const encodedUri = encodeURI(csvContent);
 	const link = document.createElement('a');

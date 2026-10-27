@@ -1,59 +1,100 @@
 <script lang="ts">
+	import { dev } from '$app/environment';
 	import { pb } from '$lib/pocketbase';
 	import {
 		faArrowUpFromBracket,
 		faCopy,
+		faEnvelope,
 		faExclamationTriangle,
-		faEnvelope
+		faGhost,
+		faPhone
 	} from '@fortawesome/free-solid-svg-icons';
-	import loadingSpinner from '$lib/assets/loading_spinner.gif';
+	import { faSignalMessenger } from '@fortawesome/free-brands-svg-icons';
+	import InstantCheckbox from '$lib/components/forms/InstantCheckbox.svelte';
 	import {
 		_exportToCsv,
 		_filterSaftRegistrations,
 		_postImages,
+		_saftRegistrationFilters,
 		_travelOption,
 		_travelOptionIcon,
 		type SaftRegistrationFilter
 	} from './+page';
 	import dayjs from 'dayjs';
+	import relativeTime from 'dayjs/plugin/relativeTime';
+	import 'dayjs/locale/de';
 	import Fa from 'svelte-fa';
+	import { telHref, signalHref } from '$lib/profile';
+
+	dayjs.extend(relativeTime);
+	dayjs.locale('de'); // TODO configure globally
 
 	export let data;
 
 	let filteredList = data.list;
 	let filter: SaftRegistrationFilter = 'all';
-	let paidLoading: number[] = [];
-	let paidError: number[] = [];
 
-	console.log(data);
-
-	const mailingList = (list) => {
-		return `mailto:webmaster@smd-karlsruhe?bcc=:${list
-			.filter((x) => x.email)
-			.map((x) => x.email)
-			.join(';')}`;
-	};
-
-	async function togglePaid(
-		id: number,
-		registrationId: string | undefined,
-		paid: boolean | undefined
-	) {
-		if (!registrationId) return;
-		try {
-			paidLoading = [...paidLoading, id];
-			paidError = paidError.filter((x) => x !== id);
-			const result = await pb.collection('saft').update(registrationId, { paid: paid });
-		} catch (e: any) {
-			console.error(e);
-			paidError = [...paidError, id];
-		}
-		paidLoading = paidLoading.filter((x) => x !== id);
+	let paidError: string[] = [];
+	/** flip the key to retrigger the error block */
+	let paidErrorKey = false;
+	function addPaidError(id: string) {
+		paidError = [...paidError, id];
+		paidErrorKey = !paidErrorKey; // flip retriggers key block
+	}
+	function resetPaidError(id: string) {
+		paidError = paidError.filter((x) => x !== id);
 		filteredList = _filterSaftRegistrations(filter, data.list);
 	}
 
+	$: filteredList = _filterSaftRegistrations(filter, data.list);
+
+	console.log(data);
+
+	/** determines debug mode of this page */
+	enum ToggleMode {
+		/** real update - persists to the backend */
+		REAL = 'real',
+		/** simulate a successful update - without changing anything in the backend */
+		SUCCESS = 'success',
+		/** simulate a failing update */
+		ERROR = 'error'
+	}
+	let toggleMode = ToggleMode.REAL;
+
+	async function togglePaid(id: string, paid: boolean) {
+		// "if (dev)" can be optimized away by the compiler in production builds
+		if (dev) {
+			console.log(`togglePaid(${id}, ${paid}) in mode ${toggleMode}`);
+			// sleep so that loading state is clearly visible
+			await new Promise<void>((r) => setTimeout(() => r(), 1000));
+			switch (toggleMode) {
+				case ToggleMode.SUCCESS:
+					return;
+				case ToggleMode.ERROR:
+					throw new Error('simulated error while toggling paid status');
+				case ToggleMode.REAL:
+					break;
+			}
+		}
+		await pb.collection('saft').update(id, { paid });
+	}
+
+	$: recipientEmails = filteredList
+		.map((x) => (typeof x.email === 'string' ? x.email.trim() : ''))
+		.filter((x) => x !== '');
+	$: mailAddressesString = recipientEmails.join(';');
+	$: mailingList = (() => {
+		// follow RFC 6068 strictly (commas and percent-encoding)
+		const params = new URLSearchParams();
+		// without "To", preferring "Bcc" only, to avoid exposing email addresses to each other
+		params.set('bcc', recipientEmails.join(','));
+		params.set('subject', 'SAFT');
+		return `mailto:?${params.toString()}`;
+	})();
+
 	const columns = [
 		'Angemeldet um',
+		'Kontakt',
 		'Bezahlt',
 		'Name',
 		'Geschlecht',
@@ -66,8 +107,6 @@
 		// 'Gruppe',
 		'Bodenschläfer',
 		'Bemerkung',
-		'E-Mail-Adresse',
-		'Telefonnummer',
 		// summer semester outdoor
 		/*
 		'Schlafsack',
@@ -96,8 +135,10 @@
 			<h3 class="col-span-full">Übersicht über alle Anmeldungen</h3>
 			<div>
 				<div>
-					Letzte Anmeldung um:
-					<b> {dayjs(data.lastSubmission).format('DD.MM.YYYY HH:mm')} </b>
+					Letzte Anmeldung:
+					<b title={dayjs(data.lastSubmission).format('DD.MM.YYYY HH:mm')}>
+						{dayjs(data.lastSubmission).fromNow()}
+					</b>
 				</div>
 				<div>
 					<b>{data.list.length}</b>
@@ -157,29 +198,34 @@
 			<!-- nochmal block mit Gender -->
 		</div>
 
-		<div class="flex flex-wrap items-center pt-6">
-			<b class="pr-2">Achtung!</b>
-			Sollte dieses Symbol <Fa class="px-2 text-red-700" icon={faExclamationTriangle} /> neben dem Haken
-			angezeigt werden, dann wurde die Änderung nicht gespeichert!
-		</div>
-
 		<div class="flex gap-2 py-2 max-md:flex-col md:gap-4">
+			{#if dev}
+				{@const destructive = toggleMode === ToggleMode.REAL}
+				<label
+					class="flex w-fit items-center gap-2 rounded-md border px-3 py-1.5 text-sm testmode-{destructive
+						? 'destructive'
+						: 'normal'}"
+				>
+					<span class="font-bold">Testmodus für "Bezahlt":</span>
+					<select bind:value={toggleMode} class="w-44 px-2 py-1">
+						<option value={ToggleMode.REAL}>Anfrage an Backend</option>
+						<option value={ToggleMode.SUCCESS}>simulierter Erfolg</option>
+						<option value={ToggleMode.ERROR}>simulierter Fehler</option>
+					</select>
+					<Fa class="h-4 w-4" icon={destructive ? faExclamationTriangle : faGhost} />
+				</label>
+			{/if}
+
 			<a
 				class="flex items-center gap-2 rounded-md bg-orange-600 px-4 py-2 no-underline"
-				href={mailingList(filteredList)}
+				href={mailingList}
 			>
 				<Fa icon={faEnvelope} />
 				Email an den Verteiler senden</a
 			>
 			<button
 				class="flex items-center gap-2 rounded-md bg-light-blue px-4 py-2"
-				on:click={() =>
-					navigator.clipboard.writeText(
-						filteredList
-							.filter((x) => x.email)
-							.map((x) => x.email)
-							.join(';')
-					)}
+				on:click={() => navigator.clipboard.writeText(mailAddressesString)}
 			>
 				<Fa icon={faCopy} />
 				Email Verteiler Kopieren
@@ -193,19 +239,10 @@
 				Als CSV exportieren
 			</button>
 
-			<select
-				bind:value={filter}
-				on:change={() => (filteredList = _filterSaftRegistrations(filter, data.list))}
-				class="rounded-md px-4 py-2"
-			>
-				<option value="all">Alle</option>
-				<option value="paid">Bezahlt</option>
-				<option value="unpaid">Unbezahlt</option>
-				<option value="bike">Fahrradfahrer</option>
-				<option value="train">Bahnfahrer</option>
-				<option value="floor_sleeper">Bodenschläfer</option>
-				<option value="female">Frauen</option>
-				<option value="male">Männer</option>
+			<select bind:value={filter} class="rounded-md px-4 py-2">
+				{#each Object.entries(_saftRegistrationFilters) as [key, { label }]}
+					<option value={key}>{label}</option>
+				{/each}
 			</select>
 		</div>
 
@@ -218,23 +255,43 @@
 					<div><b>{column}</b></div>
 				{/each}
 
-				{#each filteredList as registration, i}
+				{#each filteredList as registration}
 					<div>
 						{dayjs(registration.created).format('DD.MM.YYYY HH:mm')}
 					</div>
-					<div class="flex items-start gap-4 py-1">
-						<input
-							disabled={paidLoading.includes(i)}
+					<div class="flex items-start gap-2 p-2">
+						<a
+							class="icon-link"
+							href={`mailto:${registration.email}`}
+							title={`Email an ${registration.name} schreiben (${registration.email})`}
+						>
+							<Fa icon={faEnvelope} />
+						</a>
+						<a
+							class="icon-link"
+							href={telHref(registration.phonenumber)}
+							title={`${registration.name} per Telefon anrufen (${registration.phonenumber})`}
+						>
+							<Fa icon={faPhone} />
+						</a>
+						<a
+							class="icon-link"
+							href={signalHref(registration.phonenumber)}
+							target="_blank"
+							rel="noreferrer"
+							title={`${registration.name} per Signal schreiben (${registration.phonenumber})`}
+						>
+							<Fa icon={faSignalMessenger} />
+						</a>
+					</div>
+					<div>
+						<InstantCheckbox
+							id={registration.id}
 							bind:checked={registration.paid}
-							on:change={() => togglePaid(i, registration.id, registration.paid)}
-							type="checkbox"
+							update={togglePaid}
+							on:error={(e) => addPaidError(e.detail.id)}
+							on:resolved={(e) => resetPaidError(e.detail.id)}
 						/>
-						{#if paidLoading.includes(i)}
-							<img class="h-4 w-4" src={loadingSpinner} alt="loading" />
-						{/if}
-						{#if paidError.includes(i)}
-							<Fa class="text-red-700" icon={faExclamationTriangle} />
-						{/if}
 					</div>
 					<div>{registration.name}</div>
 					<div>{registration.gender === 'male' ? 'm' : 'w'}</div>
@@ -256,8 +313,6 @@
 					<div class="w-72 whitespace-pre-wrap">
 						{registration.comments || ''}
 					</div>
-					<div>{registration.email}</div>
-					<div>{registration.phonenumber}</div>
 
 					<!-- summer semester outdoor -->
 
@@ -280,6 +335,18 @@
 				{/each}
 			</div>
 		</div>
+
+		{#key paidErrorKey}
+			{#if paidError.length > 0}
+				<div
+					class="animate-flash sticky bottom-4 z-10 m-3 mt-6 flex flex-wrap items-center rounded-lg bg-red-300 px-4 py-2"
+				>
+					<Fa class="px-2 text-red-700" icon={faExclamationTriangle} />
+					<b class="pr-2">Achtung!</b>
+					Manche Änderungen konnten nicht gespeichert werden. Bitte überprüfe die markierten Einträge.
+				</div>
+			{/if}
+		{/key}
 	{/if}
 </main>
 
@@ -287,5 +354,38 @@
 	.pad-childs > div {
 		padding-left: 0.5rem;
 		padding-right: 0.5rem;
+	}
+
+	.animate-flash {
+		animation: flash 0.5s linear 3;
+	}
+
+	@keyframes flash {
+		0% {
+			transform: rotate(0deg);
+			filter: brightness(1);
+		}
+		25% {
+			transform: rotate(1deg);
+		}
+		50% {
+			transform: rotate(0deg);
+			filter: brightness(1.5);
+		}
+		75% {
+			transform: rotate(-1deg);
+		}
+		100% {
+			transform: rotate(0deg);
+			filter: brightness(1);
+		}
+	}
+
+	.testmode-normal {
+		@apply border-blue-400 bg-blue-50 text-blue-700;
+	}
+
+	.testmode-destructive {
+		@apply border-red-400 bg-red-50 text-red-700;
 	}
 </style>
