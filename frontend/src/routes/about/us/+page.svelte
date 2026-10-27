@@ -95,14 +95,10 @@
 						kommt. - Euer Leitungsteam
 					</p>
 					<p class="xl:pt-12">
-						<b>Claus</b>, 23, geht gerne klettern und Radfahren und studiert im zweiten
-						Master-Semester Informatik am KIT.
+						<b>Mattis</b>, 24, puzzelt gerne und studiert im
+						Master Informatik am KIT.
 						<br />
-						<b>Leah</b>, 26, liebt es zu backen und studiert im Master Grundschullehramt (English
-						und Mathe) an der PH.
-						<br />
-						<b>Scharpfi</b> (Samuel Scharpf), 22, bereist gerne die Welt und studiert im Bachelor
-						Wirtschafts-Ing am KIT.
+						<b>Daniel</b>, 27, geht gerne Radfahren und studiert im Master Master Sportwissenschaften am KIT.
 						<br />
 					</p>
 				</div>
