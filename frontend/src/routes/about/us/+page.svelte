@@ -98,7 +98,7 @@
 						<b>Mattis</b>, 24, puzzelt gerne und studiert im
 						Master Informatik am KIT.
 						<br />
-						<b>Daniel</b>, 27, geht gerne Radfahren und studiert im Master Master Sportwissenschaften am KIT.
+						<b>Daniel</b>, 27, geht gerne Radfahren und studiert im Master Sportwissenschaften am KIT.
 						<br />
 					</p>
 				</div>
