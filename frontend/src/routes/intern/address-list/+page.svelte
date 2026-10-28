@@ -153,7 +153,7 @@
 	<div class="p-8">
 		<h1 class=" text-3xl md:text-4xl">SMD Adressliste</h1>
 		<p>
-			Hier findest du alle SMDler*innen, die sich in der Adressliste eingetragen haben (also hier im
+			Hier findest du alle SMDler und SMDlerinnen, die sich in der Adressliste eingetragen haben (also hier im
 			internen Bereich registriert sind). Die Adressliste ist nur für den internen Gebrauch gedacht.
 			Bitte gehe verantwortungsvoll mit den Daten um.
 		</p>
