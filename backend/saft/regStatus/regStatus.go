@@ -18,7 +18,7 @@ const (
 	// regOpen == "" -> Before state until afterwards
 	registrationOpenIso = "2026-10-23 18:30:00"
 	// only honored with regOpen set & afterwards not passed
-	registrationDeadlineIso = "2026-11-11 00:00:00"
+	registrationDeadlineIso = "2026-11-05 00:00:00"
 	// should be end date of SAFT (or 1 day before) -> direct late submissions to email until then
 	afterwardsDeadlineIso = "2026-11-15 00:00:00"
 )
